@@ -198,11 +198,14 @@ class AgentLoader:
             return None
         
         agent_meta = self.registry[agent_name]
-        agent_type_dir = "builders" if agent_meta.type == AgentType.BUILDER else "validators"
-                elif agent_meta.type in [AgentType.SHARED, AgentType.LEADER]:
-            agent_type_dir = "masters"  # Leader/shared agents dir (pending rename to leaders/)
-        if agent_meta.type == AgentType.HIVE_LEADER:
-            agent_type_dir = "hive_leaders"  # Hive leaders in hive_leaders dir
+        if agent_meta.type == AgentType.BUILDER:
+            agent_type_dir = "builders"
+        elif agent_meta.type in [AgentType.SHARED, AgentType.LEADER]:
+            agent_type_dir = "masters"  # Leader/shared agents dir
+        elif agent_meta.type == AgentType.HIVE_LEADER:
+            agent_type_dir = "hive_leaders"  # Hive leaders dir
+        else:
+            agent_type_dir = "validators"
         
         module_name = agent_name.lower()
         module_path = f"src.agents.{agent_type_dir}.{module_name}"
