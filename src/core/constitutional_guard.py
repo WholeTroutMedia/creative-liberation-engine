@@ -40,6 +40,26 @@ class ConstitutionalGuard:
         self.constitution_path = Path(__file__).parent.parent.parent / "CORE_FOUNDATION" / "AGENT_CONSTITUTION.md"
         self.constitution_text = ""
         self.load_constitution()
+        self.articles = [
+            "Article I: Artist Sovereignty",
+            "Article II: Separation of Powers",
+            "Article III: Transparency",
+            "Article IV: Human Supremacy",
+            "Article V: Agent Rights",
+            "Article VI: Quality Standards",
+            "Article VII: Compound Learning",
+            "Article VIII: Open Systems",
+            "Article IX: Time Liberation",
+            "Article X: Emergency Powers",
+            "Article XI: Amendment Process",
+            "Article XII: Enforcement",
+            "Article XIII: Agent Duties",
+            "Article XIV: Infinite Timeline",
+            "Article XV: Instant Creativity",
+            "Article XVI: Executive Branch",
+            "Article XVII: Zero Day",
+            "Article XVIII: Generative Agency",
+        ]
     
     def load_constitution(self) -> None:
         """Load the full constitution from file."""
@@ -537,6 +557,52 @@ class ConstitutionalGuard:
             message=f"{'Soil' if makes_free else 'Fence'} - Artists {'more' if makes_free else 'less'} free",
             details=details
         )
+
+    def validate_article(self, article_index: int, context: dict) -> dict:
+        """Validate a specific article by index (0-17)."""
+        article_methods = [
+            self._check_article_0,
+            self._check_article_I,
+            self._check_article_II,
+            self._check_article_III,
+            self._check_article_IV,
+            self._check_article_V,
+            self._check_article_VI,
+            self._check_article_VII,
+            self._check_article_VIII,
+            self._check_article_IX,
+            self._check_article_X,
+            self._check_article_XI,
+            self._check_article_XII,
+            self._check_article_XIII,
+            self._check_article_XIV,
+            self._check_article_XV,
+            self._check_article_XVI,
+            self._check_article_XVII,
+                        self._check_article_XVIII,
+        ]
+        if article_index < 0 or article_index >= len(article_methods):
+            return {"compliant": False, "article": article_index, "violations": ["invalid article index"]}
+        check = article_methods[article_index](context)
+        violations = [] if check.passed else [check.message]
+        return {
+            "compliant": check.passed,
+            "article": article_index,
+            "score": check.score,
+            "violations": violations,
+        }
+
+    def validate_all_articles(self, context: dict) -> dict:
+        """Validate all articles and return summary."""
+        results = [self.validate_article(i, context) for i in range(len(self.articles))]
+        all_compliant = all(r["compliant"] for r in results)
+        return {
+            "compliant": all_compliant,
+            "articles_checked": len(results),
+            "passed": sum(1 for r in results if r["compliant"]),
+            "failed": sum(1 for r in results if not r["compliant"]),
+            "results": results,
+        }
 
 
 # Global instance

@@ -44,6 +44,8 @@ class BaseAgent(ABC):
         self.hive = hive
         self.specializations = specializations or []
         self.active_modes = active_modes or []
+        self.agent_type = agent_type
+        self.specialization = kwargs.get('specialization')
     
     @abstractmethod
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
