@@ -35,12 +35,15 @@ class BaseAgent(ABC):
     pass constitutional checks before execution.
     """
     
-    def __init__(self, name: str, agent_type: str):
+    def __init__(self, name: str, agent_type: str, hive: Optional[str] = None, specializations: Optional[List[str]] = None, active_modes: Optional[List[str]] = None):
         self.name = name
         self.type = agent_type
         self.active = False
         self.execution_count = 0
         self.logger = logging.getLogger(f"agent.{name}")
+        self.hive = hive
+        self.specializations = specializations or []
+        self.active_modes = active_modes or []
     
     @abstractmethod
     def execute(self, context: Dict[str, Any]) -> Dict[str, Any]:
