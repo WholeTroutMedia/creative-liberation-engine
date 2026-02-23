@@ -69,14 +69,12 @@ def test_execute_validate_mode(mock_gates):
     mock_gates.return_value = None
     orchestrator = InceptionOrchestrator()
 
-    # First ship something
     ship_result = orchestrator.execute_mode(
         ModeType.SHIP,
         {"prompt": "Test", "direct_prompt": True},
         validate_constitution=False,
     )
 
-    # Then validate
     validation = orchestrator.execute_mode(
         ModeType.VALIDATE,
         {"build_output": ship_result},
@@ -87,9 +85,11 @@ def test_execute_validate_mode(mock_gates):
     assert "results" in validation
 
 
+@patch.object(InceptionOrchestrator, "_validate_constitutional_compliance")
 @patch.object(InceptionOrchestrator, "_validate_ship_gates")
-def test_express_workflow(mock_gates):
+def test_express_workflow(mock_gates, mock_constitution):
     mock_gates.return_value = None
+    mock_constitution.return_value = None
     orchestrator = InceptionOrchestrator()
     result = orchestrator.execute_express_workflow("Quick test app")
 
