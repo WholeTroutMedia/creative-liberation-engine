@@ -137,18 +137,10 @@ cp .env.example .env
 # Fill in at minimum: GOOGLE_API_KEY
 ```
 
-Run the engine (Genkit):
-
 ```bash
 cd packages/genkit
 pnpm run dev          # Starts the Genkit dev server
 pnpm run genkit:ui    # Opens the Genkit developer UI at http://localhost:4000
-```
-
-Or run the full stack with Docker:
-
-```bash
-docker compose up     # Genkit + FastAPI engine + Console UI + ChromaDB
 ```
 
 ---
@@ -221,7 +213,6 @@ For correspondence, reach out to `operator@gmail.com`.
 | Agent Workflows | [`.agents/workflows/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/workflows) | Claim, dispatch, handoff, sync |
 | **Core Packages** | | |
 | Genkit Orchestration | [`packages/genkit/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/packages/genkit) | AI flow engine |
-| Console UI | [`apps/console/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/apps/console) | Spatial OS interface |
 | cometd Browser | [`packages/comet/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/packages/comet) | Sovereign Playwright browser |
 | **Infrastructure** | | |
 | Docker | [`docker/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/docker) | Container configs |
