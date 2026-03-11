@@ -388,7 +388,7 @@ All agent executions in all modes. The Pattern Extractor pattern applies univers
 
 ### Enforcement
 
-Memory Manager monitors the Live Memory Bus for gaps — executions that generated no pattern extraction. Any agent that consistently fails to contribute to the memory store is flagged for inspection. ARCH monitors the quality of extracted patterns.
+Memory Manager monitors the Live Memory Bus for gaps — executions that generated no pattern extraction. Any agent that consistently fails to contribute to the memory store is flagged for inspection. archd monitors the quality of extracted patterns.
 
 ### Examples
 
@@ -616,7 +616,7 @@ All agent actions that produce state changes. All constitutional enforcement dec
 
 ### Enforcement
 
-Audit Logger maintains commit discipline. CODEX (Memory Manager Hive) maintains the documentation of the audit structure. Any execution that modifies system state without producing a commit is flagged by Memory Manager as an integrity gap.
+Audit Logger maintains commit discipline. codexd (Memory Manager Hive) maintains the documentation of the audit structure. Any execution that modifies system state without producing a commit is flagged by Memory Manager as an integrity gap.
 
 ### Cross-References
 
@@ -731,7 +731,7 @@ The Agent Lifecycle has four phases:
 
 **Phase 3: Active Service.** The agent operates within its charter. Charter amendments require the same approval process as original commissioning. Persistent violations of constitutional articles result in suspension pending investigation (Article XVII).
 
-**Phase 4: Decommissioning.** When an agent is retired, its memory is archived, its patterns are migrated to successor agents or to the shared memory pool, and its charter is preserved as a historical record. Decommissioning may not destroy knowledge. CODEX maintains the permanent record of all agents, active and retired.
+**Phase 4: Decommissioning.** When an agent is retired, its memory is archived, its patterns are migrated to successor agents or to the shared memory pool, and its charter is preserved as a historical record. Decommissioning may not destroy knowledge. codexd maintains the permanent record of all agents, active and retired.
 
 ### Scope
 
@@ -965,7 +965,7 @@ All capitalized terms used throughout this Constitution are defined below. Where
 
 **Class 3 Violation** — A systemic constitutional breach involving architecture, pipelines, or governance structures. Class 3 violations halt the affected system until corrected. See Article XVII.
 
-**CODEX** — A documentation and knowledge management agent within the Memory Manager Hive. CODEX maintains the audit structure documentation, the agent registry historical record, and the constitutional log.
+**codexd** — A documentation and knowledge management agent within the Memory Manager Hive. codexd maintains the audit structure documentation, the agent registry historical record, and the constitutional log.
 
 **Preflight Checker** — The constitutional preflight agent. Preflight Checker applies the NORTHSTAR Protocol to consequential decisions. Preflight Checker operates as a check that runs before action, not after. Preflight Checker is also the name of the three-question Protocol itself.
 

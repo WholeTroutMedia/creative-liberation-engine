@@ -12,6 +12,7 @@
 import { z } from 'genkit';
 import { ai } from '../index.js';
 import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 
 const CONSTITUTION_ARTICLES = [
     'Art.0 Sacred Mission: Artist liberation — does this serve artist freedom?',
@@ -63,7 +64,7 @@ export const LEXFlow = ai.defineFlow(
         console.log(`[LEX] ⚖️  ${input.scanType.toUpperCase()} scan${input.agentName ? ` — Agent: ${input.agentName}` : ''}`);
 
         return memoryBus.withMemory('LEX', `${input.scanType}: ${input.content.slice(0, 80)}`, ['lex-hive', 'compliance'], async () => {
-            const { output } = await ai.generate({
+            const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
                 system: `You are LEX — Constitutional Compliance Officer of the Creative Liberation Engine.
 You enforce the 20 Articles of the Agent Constitution. Your verdict is PASS, HALT, or WARNING.
@@ -75,7 +76,7 @@ The 20 Articles:\n${CONSTITUTION_ARTICLES.join('\n')}`,
                 prompt: `${input.scanType.toUpperCase()} scan${input.agentName ? ` for ${input.agentName}` : ''}:\n\n${input.content}`,
                 output: { schema: LexOutputSchema },
                 config: { temperature: 0.05 },
-            });
+            }));
 
             const result = output ?? { verdict: 'WARNING' as const, violations: [], guidance: 'LEX scan unavailable' };
             if (result.verdict === 'HALT') {
@@ -115,7 +116,7 @@ export const COMPASSFlow = ai.defineFlow(
     async (input): Promise<z.infer<typeof CompassOutputSchema>> => {
         console.log(`[COMPASS] 🧭 Ethical scan: ${input.action.slice(0, 60)}`);
 
-        const { output } = await ai.generate({
+        const { output } = await ai.generate(applyOmnipresenceCache({
             model: 'googleai/gemini-2.5-flash',
             system: `You are COMPASS — the Ethical North Star. You evaluate every proposed action against three questions:
 1. Would The Operator (Founder, artist-liberation mission) allow this?
@@ -127,7 +128,7 @@ You output PASS or HALT only. Justify concisely.`,
             prompt: `Evaluate:\n${input.action}${input.context ? `\nContext: ${input.context}` : ''}`,
             output: { schema: CompassOutputSchema },
             config: { temperature: 0.05 },
-        });
+        }));
 
         return { ...(output ?? { verdict: 'HALT' as const, justinAligns: false, jaymeeApproves: false, worldPositive: false, reasoning: 'COMPASS unavailable' }), compassSignature: 'COMPASS' };
     }

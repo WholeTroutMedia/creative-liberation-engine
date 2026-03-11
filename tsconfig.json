@@ -115,6 +115,9 @@
             "path": "packages/toolbox"
         },
         {
+            "path": "packages/spatial-codex"
+        },
+        {
             "path": "packages/memory"
         },
         {

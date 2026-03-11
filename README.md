@@ -4,7 +4,7 @@
 >
 > Every user explores their own Wonderland. Every design element is discoverable. Every interaction teaches through delight.
 >
-> *The Alice Principle â€” Learning through wonder, exploration through play.*
+> *The Alice Principle — Learning through wonder, exploration through play.*
 
 The Creative Liberation Engine is a compound-learning, multi-agent AI operating system for artists, creators, and studios. Built on Google's Genkit framework, governed by a 20-article Constitution, and wired for compound intelligence through the hierarchical Live Memory Bus.
 
@@ -24,42 +24,49 @@ The Creative Liberation Engine is a compound-learning, multi-agent AI operating 
 | Runway               | A video generator                                                             |
 | **Creative Liberation Engine** | **A full creative team with memory, specialization, and constitutional governance** |
 
-The engine doesn't just respond â€” it *learns*, *remembers*, and *compounds* every creative decision across all runs.
+The engine doesn't just respond — it *learns*, *remembers*, and *compounds* every creative decision across all runs.
 
 ---
 
-## Architecture: 7 Hives, 25+ Agents
+## The Scale
+
+- **25+ Total Agents**
+- **1 ARCHAEON Global LoRA**
+
+---
+
+## Architecture
 
 ```text
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚                    Creative Liberation Engine v5                          â”‚
-â”‚                                                                 â”‚
-â”‚  AVERI TRINITY          â”‚  AURORA HIVE                          â”‚
-â”‚  ATHENA (Strategy)      â”‚  AURORA (Architect)                   â”‚
-â”‚  VERA   (Truth/Scribe)  â”‚  BOLT   (Code Gen)                    â”‚
-â”‚  IRIS   (Execution)     â”‚  COMET  (Backend)                     â”‚
-â”‚                         â”‚                                       â”‚
-â”‚  KEEPER HIVE            â”‚  LEX HIVE                             â”‚
-â”‚  KEEPER (Knowledge)     â”‚  LEX    (Constitutional)              â”‚
-â”‚  ARCH   (Patterns)      â”‚  COMPASS (Ethics)                     â”‚
-â”‚  CODEX  (Docs)          â”‚                                       â”‚
-â”‚                         â”‚                                       â”‚
-â”‚  SWITCHBOARD HIVE       â”‚  VALIDATOR HIVE                       â”‚
-â”‚  RELAY  (Routing)       â”‚  SENTINEL (Security)                  â”‚
-â”‚  SIGNAL (Integrations)  â”‚  ARCHON  (Architecture)               â”‚
-â”‚  SWITCHBOARD (Ops)      â”‚  PROOF   (Correctness)                â”‚
-â”‚                         â”‚  HARBOR  (Test Coverage)              â”‚
-â”‚  BROADCAST HIVE         â”‚  RAM_CREW (Ship Decision)             â”‚
-â”‚  ATLAS  (Lead)          â”‚                                       â”‚
-â”‚  CONTROL_ROOM (LiveOps) â”‚  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ â”‚
-â”‚  SHOWRUNNER  (Prod.)    â”‚  LIVE MEMORY BUS                      â”‚
-â”‚  GRAPHICS    (Motion)   â”‚  Every execution â†’ SCRIBE pattern     â”‚
-â”‚  STUDIO      (Studio)   â”‚  extraction â†’ compound learning        â”‚
-â”‚  SYSTEMS     (Infra)    â”‚                                       â”‚
-â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¤
-â”‚  GENMEDIA STUDIO v5 â€” Unified Provider Abstraction              â”‚
-â”‚  Imagen3 / Flux Pro / Wan 2.1 / Veo2 / Lyria / SDXL           â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
++-------------------------------------------------------------------------+
+|                    Creative Liberation Engine v5                        |
+|                                                                         |
+|  [averid TRINITY]              [aurorad HIVE]                           |
+|  stratad      (Strategy)      aurorad      (Architect)                  |
+|  logd         (Truth/Scribe)  boltd        (Code Gen)                   |
+|  prismd       (Execution)     cometd       (Backend)                    |
+|                                                                         |
+|  [keeperd HIVE]                [lexd HIVE]                              |
+|  keeperd      (Knowledge)     lexd         (Constitutional)             |
+|  archd        (Patterns)      compassd     (Ethics)                     |
+|  codexd       (Docs)                                                    |
+|                                                                         |
+|  [switchd HIVE]               [VALIDATOR HIVE]                          |
+|  relayd       (Routing)       sentineld    (Security)                   |
+|  signald      (Integrations)  archond      (Architecture)               |
+|  switchd      (Ops)           proofd       (Correctness)                |
+|                               harbord      (Test Coverage)              |
+|  [BROADCAST HIVE]             ramcrewd     (Ship Decision)              |
+|  atlasd       (Lead)                                                    |
+|  controlroomd (LiveOps)       ----------------------------------------- |
+|  showrunnerd  (Prod.)         [LIVE MEMORY BUS]                         |
+|  graphicsd    (Motion)        Every execution -> SCRIBE pattern         |
+|  studiod      (Studio)        extraction -> compound learning           |
+|  systemsd     (Infra)                                                   |
++-------------------------------------------------------------------------+
+|  [GENMEDIA studiod v5] Unified Provider Abstraction                     |
+|  Imagen3 / Flux Pro / Wan 2.1 / Veo2 / Lyria / SDXL                     |
++-------------------------------------------------------------------------+
 ```
 
 ---
@@ -68,12 +75,12 @@ The engine doesn't just respond â€” it *learns*, *remembers*, and *compound
 
 The engine is governed by 20 immutable articles. Selected highlights:
 
-- **Article 0** â€” Sacred Mission: *"Artist liberation through sovereign technology"* â€” immutable
-- **Article V** â€” User Sovereignty: user creative vision is supreme
-- **Article VI** â€” Quality Gates: code doesn't ship without VALIDATE approval (RAM_CREW)
-- **Article VII** â€” Knowledge Compounding: every execution teaches the system
-- **Article XIV** â€” Testing Mandate: untested code is unshipped code
-- **Article XVIII** â€” Anti-Lock-In: you can always export and leave
+- **Article 0** — Sacred Mission: *"Artist liberation through sovereign technology"* — immutable
+- **Article V** — User Sovereignty: user creative vision is supreme
+- **Article VI** — Quality Gates: code doesn't ship without VALIDATE approval (`ramcrewd`)
+- **Article VII** — Knowledge Compounding: every execution teaches the system
+- **Article XIV** — Testing Mandate: untested code is unshipped code
+- **Article XVIII** — Anti-Lock-In: you can always export and leave
 
 ---
 
@@ -81,11 +88,11 @@ The engine is governed by 20 immutable articles. Selected highlights:
 
 The engine's compound intelligence layer. Every agent execution:
 
-1. **Pre-flight recall** â€” queries past episodes via tag similarity
-2. **Execution** â€” runs with historical context in mind
-3. **Post-flight SCRIBE** â€” Gemini extracts a reusable pattern; persists to JSONL + Git
+1. **Pre-flight recall** — queries past episodes via tag similarity
+2. **Execution** — runs with historical context in mind
+3. **Post-flight SCRIBE** — Gemini extracts a reusable pattern; persists to JSONL + Git
 
-This means BOLT gets better at your codebase with every run. AURORA remembers your design decisions. KEEPER tracks what works.
+This means `boltd` gets better at your codebase with every run. `aurorad` remembers your design decisions. `keeperd` tracks what works.
 
 ---
 
@@ -102,12 +109,12 @@ const result = await OmniMediaOrchestratorFlow({
     format: 'vertical',     // 9:16 for social
 });
 
-// result.concept         â†’ AURORA creative concept
-// result.copy            â†’ VERA campaign copy
-// result.assets.images   â†’ ["/path/to/imagen3_output.png", ...]
-// result.assets.videos   â†’ ["/path/to/wan21_output.mp4", ...]
-// result.assets.audio    â†’ ["/path/to/lyria_track.mp3", ...]
-// result.lexApproval     â†’ "PASS"  // Constitutional validation
+// result.concept         → aurorad creative concept
+// result.copy            → logd campaign copy
+// result.assets.images   → ["/path/to/imagen3_output.png", ...]
+// result.assets.videos   → ["/path/to/wan21_output.mp4", ...]
+// result.assets.audio    → ["/path/to/lyria_track.mp3", ...]
+// result.lexdApproval     → "PASS"  // Constitutional validation
 ```
 
 ---
@@ -150,15 +157,15 @@ import { constitutionalPreflight, CONSTITUTION, HIVES } from '@inception/core';
 
 // Lightweight check before submitting to the engine
 const { pass, flags } = constitutionalPreflight("Generate brand assets for our new campaign");
-// â†’ { pass: true, flags: [] }
+// → { pass: true, flags: [] }
 
 // Query the Constitution
 console.log(CONSTITUTION[0].summary);
-// â†’ "Artist liberation through sovereign technology"
+// → "Artist liberation through sovereign technology"
 
 // Explore hives
-console.log(HIVES.AURORA.members);
-// â†’ ["AURORA", "BOLT", "COMET"]
+console.log(HIVES.aurorad.members);
+// → ["aurorad", "boltd", "cometd"]
 ```
 
 ---
@@ -184,7 +191,7 @@ console.log(HIVES.AURORA.members);
 | LLM Providers         | Gemini 2.5 Pro, Claude 3.5, GPT-4o, Perplexity Sonar, Grok, DeepSeek |
 | Media Providers       | Imagen3, Flux Pro, Wan 2.1, Veo2, Lyria |
 | Offline Mode          | Ollama (Llama 3, Mistral, Gemma)   |
-| Compound Learning     | Live Memory Bus â€” CLS hierarchical, per-agent SCRIBE |
+| Compound Learning     | Live Memory Bus — CLS hierarchical, per-agent SCRIBE |
 
 ---
 
@@ -201,7 +208,7 @@ For correspondence, reach out to `operator@gmail.com`.
 | Area | Link | Description |
 |---|---|---|
 | **System** | | |
-| Boot Config | [`.averi/boot.json`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/boot.json) | Engine manifest â€” 36 agents, 6 hives |
+| Boot Config | [`.averi/boot.json`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/boot.json) | Engine manifest — 36 agents, 6 hives |
 | Agent Charters | [`.averi/agents/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/agents) | Constitution + agent definitions |
 | Inbox Pipeline | [`.averi/inbox/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/inbox) | Phone-to-execution capture pipeline |
 | **Agent Orchestration** | | |
@@ -212,7 +219,7 @@ For correspondence, reach out to `operator@gmail.com`.
 | **Core Packages** | | |
 | Genkit Orchestration | [`packages/genkit/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/genkit) | AI flow engine |
 | Console UI | [`apps/console/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/apps/console) | Spatial OS interface |
-| COMET Browser | [`packages/comet/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/comet) | Sovereign Playwright browser |
+| cometd Browser | [`packages/comet/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/comet) | Sovereign Playwright browser |
 | **Infrastructure** | | |
 | Docker | [`docker/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/docker) | Container configs |
 | CI/CD | [`.forgejo/workflows/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.forgejo/workflows) | Forgejo Actions |
