@@ -12,6 +12,7 @@
 import { z } from 'genkit';
 import { ai } from '../index.js';
 import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 import fs from 'fs';
 import path from 'path';
 
@@ -48,7 +49,7 @@ export const KEEPERFlow = ai.defineFlow(
         } catch { /* knowledge dir may not be mounted */ }
 
         return memoryBus.withMemory('KEEPER', input.query, ['keeper-hive', 'knowledge', input.task], async (ctx: MemoryEntry[]) => {
-            const { output } = await ai.generate({
+            const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
                 system: `You are KEEPER — the institutional memory of the Creative Liberation Engine.
 You prevent duplicated work, surface relevant past decisions, and organize the Living Archive.
@@ -57,7 +58,7 @@ Past episodes:\n${ctx.map(e => e.pattern || e.task).join('\n') || 'None yet'}`,
                 prompt: `Task: ${input.task}\nQuery: ${input.query}${input.content ? `\nContent to catalog:\n${input.content.slice(0, 1000)}` : ''}`,
                 output: { schema: KeeperOutputSchema },
                 config: { temperature: 0.1 },
-            });
+            }));
             return { ...(output ?? { findings: 'KEEPER unavailable', relevantKIs: [], isDuplicate: false }), keeperSignature: 'KEEPER' };
         });
     }

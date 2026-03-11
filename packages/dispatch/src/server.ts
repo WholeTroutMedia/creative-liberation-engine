@@ -152,7 +152,7 @@ const TOOLS = [
     },
     {
         name: 'list_projects',
-        description: 'List all WholeTrout org projects registered in the dispatch server.',
+        description: 'List all CLE org projects registered in the dispatch server.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -356,7 +356,7 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
             const workstream = (args.workstream ?? args.helix ?? 'general') as string;
             const newTask: Task = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: (args.project as string) ?? 'brainchild-v5',
                 workstream,
                 title: args.title as string,
@@ -415,7 +415,7 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
         case 'delegate_task': {
             const delegated: Task = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: args.project as string,
                 workstream: args.workstream as string,
                 title: args.title as string,
@@ -849,6 +849,35 @@ app.post('/api/tasks/:id/resolve', async (req, res) => {
     }
     res.json(result);
     // Broadcast live status to SSE dashboard
+    try { const snap = JSON.parse(await handleTool('get_status', {})); broadcastEvent('status', snap); } catch { }
+});
+
+// POST /api/tasks/:id/complete â€” normal completion of a claimed task.
+// Body: { agent_id: string, note?: string, artifacts?: string[] }
+app.post('/api/tasks/:id/complete', async (req, res) => {
+    const { agent_id, note, artifacts } = req.body as {
+        agent_id?: string;
+        note?: string;
+        artifacts?: string[];
+    };
+    if (!agent_id) {
+        res.status(400).json({ error: 'agent_id is required' });
+        return;
+    }
+    const result = JSON.parse(
+        await handleTool('complete_task', {
+            task_id: req.params.id,
+            agent_id,
+            ...(note ? { note } : {}),
+            ...(artifacts ? { artifacts } : {}),
+        })
+    );
+    if (result.error) {
+        res.status(result.error.includes('not found') ? 404 : 400).json(result);
+        return;
+    }
+    res.json(result);
+    // Broadcast
     try { const snap = JSON.parse(await handleTool('get_status', {})); broadcastEvent('status', snap); } catch { }
 });
 

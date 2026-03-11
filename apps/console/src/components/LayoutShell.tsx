@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { CommandPalette } from './CommandPalette';
+import { LiveTerminal } from './LiveTerminal';
 import './LayoutShell.css';
 
 const NAV = [
@@ -79,7 +80,7 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
             </header>
 
             <div className="layout-body">
-                {/* Side Navigation */}
+                {/* Side Navigation (Comm Strip) */}
                 <aside className="tactical-sidebar">
                     <nav className="sidebar-nav">
                         {NAV.map((section, i) => (
@@ -91,10 +92,10 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
                                         <NavLink
                                             key={j}
                                             to={item.to}
+                                            title={item.label}
                                             className={`nav-item ${isActive ? 'active' : ''}`}
                                         >
                                             <span className="nav-icon">{item.icon}</span>
-                                            {item.label}
                                         </NavLink>
                                     );
                                 })}
@@ -107,6 +108,11 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
                 <main className="tactical-main">
                     {children}
                 </main>
+
+                {/* Constant Right Pane */}
+                <aside className="tactical-right-pane">
+                    <LiveTerminal />
+                </aside>
             </div>
 
             <CommandPalette />

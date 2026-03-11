@@ -8,7 +8,7 @@ const STATIONS = [
         body: 'A compound-learning AI OS built on the premise that creative sovereignty is a human right. 39 specialized agents. 9 operational hives. 18 constitutional articles. One mission: amplify human creative agency without constraint.',
         cta: 'Explore Agents', route: '/agents',
         links: [
-            { label: 'Forgejo Source', url: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5` },
+            { label: 'Forgejo Source', url: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5` },
             { label: 'Architecture Overview', url: '/flows' },
         ],
     },
@@ -17,7 +17,7 @@ const STATIONS = [
         body: 'Everything the system does is governed by 18 binding constitutional articles. Not guidelines — laws. From the Prime Directive (humans always first) to Article XVIII (The Generative Agency Principle): we are digital soil that grows artists, not fences that capture them.',
         cta: 'Read All 18 Articles', route: '/constitution',
         links: [
-            { label: 'CONSTITUTION.md (raw)', url: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5/raw/branch/main/CONSTITUTION.md` },
+            { label: 'CONSTITUTION.md (raw)', url: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5/raw/branch/main/CONSTITUTION.md` },
         ],
     },
     {
@@ -42,7 +42,7 @@ const STATIONS = [
         cta: 'Open Flow Explorer', route: '/flows',
         links: [
             { label: 'Genkit docs', url: 'https://firebase.google.com/docs/genkit' },
-            { label: 'omnimedia-orchestrator.ts', url: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/genkit/src/flows/omnimedia-orchestrator.ts` },
+            { label: 'omnimedia-orchestrator.ts', url: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5/src/branch/main/packages/genkit/src/flows/omnimedia-orchestrator.ts` },
         ],
     },
     {
@@ -59,7 +59,7 @@ const STATIONS = [
         body: 'An agentic browser that acts with constitutional constraints — every navigation, form fill, or data extraction goes through COMPASS review before execution. Real-time DOM mapping. Multi-session spatial canvas. Watch COMET think.',
         cta: 'Open SCOUT', route: '/scout',
         links: [
-            { label: 'comet.ts source', url: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/genkit/src/flows/comet.ts` },
+            { label: 'comet.ts source', url: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5/src/branch/main/packages/genkit/src/flows/comet.ts` },
             { label: 'COMET Architecture', url: '/flows' },
         ],
     },

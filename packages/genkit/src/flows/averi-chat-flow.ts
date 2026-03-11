@@ -79,18 +79,18 @@ async function getWtmContext(clientId: string): Promise<string> {
     'barnstorm':     'Client: Barnstorm Photo + Video. Specialty: weddings, lifestyle, portrait. Media on NAS at W:\\RAW Backups. WTM Studio autonomous editing pipeline active.',
     'e-is-for-eat':  'Client: E Is For Eat (the creator Sire). Food, travel, lifestyle content. YouTube, Instagram, brand partnerships. Media at W:\\E Is For Eat.',
     'inception':     'Project: Creative Liberation Engine â€” sovereign AI creative OS. 38 agents, 94 tasks completed. Zero Day GTM sprint active.',
-    'wtm-internal':  'Creative Liberation Engine Community Studio. Creative production arm serving Barnstorm, E Is For Eat, and Creative Liberation Engine. All client work and media production coordinated here.',
+    'wtm-internal':  'Creative-Liberation-Engine Studio. Creative production arm serving Barnstorm, E Is For Eat, and Creative Liberation Engine. All client work and media production coordinated here.',
   };
   return profiles[clientId] || profiles['wtm-internal'];
 }
 
 // â”€â”€ AVERI system context â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-const AVERI_SYSTEM_PROMPT = `You are AVERI â€” the creative intelligence of Creative Liberation Engine Community and the Creative Liberation Engine.
+const AVERI_SYSTEM_PROMPT = `You are AVERI â€” the creative intelligence of Creative-Liberation-Engine and the Creative Liberation Engine.
 
 ABOUT YOU:
 You are not a generic assistant. You are the strategic, creative, and operational brain of a sovereign AI creative studio. You know:
-- Creative Liberation Engine Community Studio (WTM): a creative production house working across photography, video, food content, tech
+- Creative-Liberation-Engine Studio (WTM): a creative production house working across photography, video, food content, tech
 - E Is For Eat: food and travel brand owned by the creator Sire, built on years of culinary content and network television
 - Barnstorm Photo + Video: a wedding and lifestyle photography studio â€” Justin's primary creative partner
 - Creative Liberation Engine: the AI operating system being built to power all of this

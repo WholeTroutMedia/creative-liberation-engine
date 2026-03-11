@@ -1,7 +1,7 @@
 {
     "name": "@inception/dispatch",
     "version": "1.0.0",
-    "description": "Creative Liberation Engine Universal Agent Dispatch Server — MCP + REST task coordination for the WholeTrout org",
+    "description": "Creative Liberation Engine Universal Agent Dispatch Server — MCP + REST task coordination for the CLE org",
     "main": "build/server.js",
     "types": "build/server.d.ts",
     "type": "module",

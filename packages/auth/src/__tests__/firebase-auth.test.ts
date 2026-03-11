@@ -57,7 +57,7 @@ function isValidFirebaseConfig(config: unknown): config is FirebaseConfig {
 
 const MOCK_USER: any = {
   uid: 'user-uid-inception-42',
-  email: 'justin@inceptionengine.systems',
+  email: 'justin@CreativeLiberationEngine.systems',
   displayName: 'The Operator',
   getIdToken: vi.fn().mockResolvedValue('eyJhbGciOiJSUzI1NiJ9.payload.sig'),
 };

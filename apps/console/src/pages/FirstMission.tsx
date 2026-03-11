@@ -179,7 +179,7 @@ export function FirstMission({ onComplete, onBack }: FirstMissionProps) {
                     <div className="ambient-feed-title">Live Activity</div>
                     {[
                         { time: 'just now', msg: 'ATHENA completed design token audit — score 91/100' },
-                        { time: '12s ago', msg: 'Campaign pipeline triggered for client WholeTrout' },
+                        { time: '12s ago', msg: 'Campaign pipeline triggered for client CLE' },
                         { time: '1m ago', msg: 'VERA flagged 2 contrast failures in theme override' },
                         { time: '3m ago', msg: 'nas-watcher daemon polled 14 tasks from dispatch queue' },
                         { time: '7m ago', msg: 'Zero-Day intake session completed — LEX draft generated' },

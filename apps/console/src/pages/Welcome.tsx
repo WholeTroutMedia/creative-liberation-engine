@@ -563,7 +563,7 @@ export default function Welcome() {
                 <div style={{ fontSize: 11, color: 'rgba(245,240,232,0.18)', letterSpacing: 0.8 }}>FSL-1.1-ALv2 · Constitutional AI · GENESIS V5.0.0</div>
                 <div style={{ display: 'flex', gap: 22 }}>
                     {[
-                        { l: 'Source (Forgejo)', h: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5`, ext: true },
+                        { l: 'Source (Forgejo)', h: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5`, ext: true },
                         { l: 'CONSTITUTION.md', h: '/constitution', ext: false },
                         { l: 'Agent Catalog', h: '/agents', ext: false },
                     ].map(lnk => (

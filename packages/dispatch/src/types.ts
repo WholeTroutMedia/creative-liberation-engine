@@ -1,5 +1,5 @@
 // Creative Liberation Engine Dispatch Server — Type Definitions
-// All WholeTrout org task coordination primitives
+// All CLE org task coordination primitives
 
 export type TaskStatus = 'queued' | 'active' | 'blocked' | 'done' | 'failed' | 'handoff';
 export type TaskPriority = 'P0' | 'P1' | 'P2' | 'P3';
@@ -7,7 +7,7 @@ export type AgentTool = 'cle' | 'cursor' | 'claude-desktop' | 'script' | 'cron' 
 
 export interface Task {
     id: string;                          // T20260305-001
-    org: string;                         // Creative Liberation Engine Community
+    org: string;                         // Creative-Liberation-Engine
     project: string;                     // brainchild-v5
     workstream: string;                  // genkit-flows
     title: string;
@@ -58,7 +58,7 @@ export interface AgentNotification {
 
 export interface Project {
     id: string;                          // e.g. brainchild-v5
-    org: string;                         // Creative Liberation Engine Community
+    org: string;                         // Creative-Liberation-Engine
     name: string;
     repo_url: string;                    // Forgejo URL
     workstreams: string[];               // defined workstreams for this project

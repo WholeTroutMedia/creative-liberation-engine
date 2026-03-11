@@ -15,6 +15,7 @@ import { z } from 'genkit';
 import { ai } from '../index.js';
 import { memoryBus } from '@inception/memory';
 import { scribeRemember, scribeRecall } from '../memory/scribe.js';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SCHEMAS
@@ -123,14 +124,14 @@ PASS THRESHOLD: average of axes ≥ 0.65.
 If critiquePass=false, write a concise revisionDirective that the model can use in a single retry to correct the output. Be specific — name exactly what was wrong and what to fix. Maximum 2 sentences.`,
         };
 
-        const { output } = await ai.generate({
+        const { output } = await ai.generate(applyOmnipresenceCache({
             model: 'googleai/gemini-2.5-flash',
             system: systemPrompt,
             prompt: modeInstructions[input.mode],
             output: { schema: VeraOutputSchema },
             config: { temperature: 0.1 },
             tools: [scribeRemember, scribeRecall],
-        });
+        }));
 
         if (!output) {
             return {

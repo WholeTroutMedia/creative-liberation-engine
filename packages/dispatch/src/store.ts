@@ -33,7 +33,7 @@ function db(): Database.Database {
 const SCHEMA = `
     CREATE TABLE IF NOT EXISTS tasks (
         id                    TEXT PRIMARY KEY,
-        org                   TEXT NOT NULL DEFAULT 'Creative Liberation Engine Community',
+        org                   TEXT NOT NULL DEFAULT 'Creative-Liberation-Engine',
         project               TEXT NOT NULL,
         workstream            TEXT NOT NULL,
         title                 TEXT NOT NULL,
@@ -168,7 +168,7 @@ async function migrateJsonIfExists(): Promise<void> {
 
 function taskToRow(t: Task): Record<string, unknown> {
     return {
-        id: t.id, org: t.org ?? 'Creative Liberation Engine Community',
+        id: t.id, org: t.org ?? 'Creative-Liberation-Engine',
         project: t.project, workstream: t.workstream,
         title: t.title, description: t.description ?? null,
         acceptance_criteria: t.acceptance_criteria ? JSON.stringify(t.acceptance_criteria) : null,
@@ -349,28 +349,28 @@ async function seedProjectsIfEmpty(): Promise<void> {
     const now = new Date().toISOString();
     const DEFAULT_PROJECTS: Project[] = [
         {
-            id: 'brainchild-v5', org: 'Creative Liberation Engine Community', name: 'Creative Liberation Engine v5 (GENESIS)',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/brainchild-v5',
+            id: 'brainchild-v5', org: 'Creative-Liberation-Engine', name: 'Creative Liberation Engine v5 (GENESIS)',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/brainchild-v5',
             workstreams: ['genkit-flows', 'console-ui', 'inception-core', 'synology-mcp',
                 'zero-day', 'infra-docker', 'comet-browser', 'spatial-visionos',
                 'genkit-server', 'dispatch'],
             registered_at: now, active: true,
         },
         {
-            id: 'brainchild-v4', org: 'Creative Liberation Engine Community', name: 'Creative Liberation Engine v4',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/brainchild-v4',
+            id: 'brainchild-v4', org: 'Creative-Liberation-Engine', name: 'Creative Liberation Engine v4',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/brainchild-v4',
             workstreams: ['python-engine', 'legacy-memory', 'agent-catalog'],
             registered_at: now, active: true,
         },
         {
-            id: 'andgather', org: 'Creative Liberation Engine Community', name: '&Gather Social Intelligence',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/andgather',
+            id: 'andgather', org: 'Creative-Liberation-Engine', name: '&Gather Social Intelligence',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/andgather',
             workstreams: ['social-graph', 'event-engine', 'mobile-app'],
             registered_at: now, active: true,
         },
         {
-            id: 'nbc-nexus', org: 'Creative Liberation Engine Community', name: 'NBC Nexus Broadcast Platform',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/nbc-nexus',
+            id: 'nbc-nexus', org: 'Creative-Liberation-Engine', name: 'NBC Nexus Broadcast Platform',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/nbc-nexus',
             workstreams: ['broadcast-ui', 'content-pipeline', 'atlas-agent'],
             registered_at: now, active: true,
         },

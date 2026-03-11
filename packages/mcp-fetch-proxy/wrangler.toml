@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 
 # Cloudflare Workers environment variables
 [vars]
-DISPATCH_URL = "https://dispatch.creative-liberation-engine.io"  # Override with real Cloudflare Tunnel URL
+DISPATCH_URL = "https://dispatch.creative-liberation-engine.com"  # Override with real Cloudflare Tunnel URL
 GENKIT_FALLBACK_URL = "https://cle-[hash]-uc.a.run.app"
 
 # KV namespace for API key storage (create with: wrangler kv:namespace create "API_KEYS")
@@ -19,5 +19,5 @@ preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
 name = "inception-mcp-gateway-prod"
 
 [env.production.vars]
-DISPATCH_URL = "https://dispatch.creative-liberation-engine.io"
+DISPATCH_URL = "https://dispatch.creative-liberation-engine.com"
 GENKIT_FALLBACK_URL = "https://cle-[hash]-uc.a.run.app"

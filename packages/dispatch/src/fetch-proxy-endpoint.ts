@@ -41,7 +41,7 @@ const ALLOWED_DOMAINS = [
     'generativelanguage.googleapis.com',
     'us-central1-run.googleapis.com',
     'gitea.wholetout.media',
-    'gitea.creative-liberation-engine.io',
+    'gitea.creative-liberation-engine.com',
 ];
 
 function isAllowed(url: string): boolean {

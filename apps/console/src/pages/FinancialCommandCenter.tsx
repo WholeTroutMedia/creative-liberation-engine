@@ -39,10 +39,10 @@ const COSTS: CostLine[] = [
   { label: 'Firestore', category: 'gcp', monthly_usd: 2, detail: 'Sessions, memory fragments, agent state', trend: 'stable' },
   { label: 'Gemini API', category: 'gcp', monthly_usd: 40, detail: 'gemini-2.5-pro · multi-helix wave usage · variable', trend: 'up' },
   { label: 'GCS', category: 'gcp', monthly_usd: 1, detail: 'Build artifacts, media buffers', trend: 'stable' },
-  { label: 'NAS (Creative Liberation Engine Community)', category: 'sovereign', monthly_usd: 0, detail: 'Owned hardware · Dispatch, Redis, Genkit, Forgejo, Docker — $0 cloud', trend: 'stable' },
+  { label: 'NAS (Creative-Liberation-Engine)', category: 'sovereign', monthly_usd: 0, detail: 'Owned hardware · Dispatch, Redis, Genkit, Forgejo, Docker — $0 cloud', trend: 'stable' },
   { label: 'Workstation (RTX 3080)', category: 'sovereign', monthly_usd: 0, detail: 'Owned hardware · local compute, renders, dev — $0 cloud', trend: 'stable' },
   { label: 'Forgejo (Git)', category: 'sovereign', monthly_usd: 0, detail: 'Self-hosted on NAS · $0 vs $21/mo GitHub Team', trend: 'stable' },
-  { label: 'Domain + DNS', category: 'external', monthly_usd: 2, detail: 'creative-liberation-engine.io + creative-liberation-engine.io', trend: 'stable' },
+  { label: 'Domain + DNS', category: 'external', monthly_usd: 2, detail: 'creative-liberation-engine.com + creative-liberation-engine.io', trend: 'stable' },
   { label: 'Resend (Email)', category: 'external', monthly_usd: 0, detail: 'Zero-Day outreach — 3k/mo free tier', trend: 'stable' },
 ]
 

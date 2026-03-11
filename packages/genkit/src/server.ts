@@ -46,9 +46,10 @@ import { InceptionGuard } from './core/constitutional-guard.js';
 import { guestIntelligenceFlow } from './flows/guestIntelligence.js';
 import { strangerAlertFlow } from './flows/strangerAlert.js';
 import { birdWatcherFlow } from './flows/birdWatcher.js';
+import { deployTrainingToEonFlow } from './flows/eon-reality-orchestration.js';
+import { initializeOmnipresenceCache } from './core/context-cache.js';
 
 // ---------------------------------------------------------------------------
-// Genkit CLI Runtime Registration
 // The CLI's RuntimeManager watches .genkit/runtimes/*.json for runtime discovery.
 // Two-part fix:
 //   1. Write AFTER port 3100 is ready (prevents immediate health-check delete)
@@ -141,6 +142,9 @@ if (SOVEREIGN_MODE) {
 // ---------------------------------------------------------------------------
 // Server Setup
 // ---------------------------------------------------------------------------
+
+// Initialize the SCRIBE Omnipresence Context Cache asynchronously
+initializeOmnipresenceCache().catch(console.error);
 
 // Provision internal tokens for all agents in the roster at boot time
 agentOAuth.issueAllAgentTokens();

@@ -1,7 +1,6 @@
 .dispatch-pane {
-    width: 380px;
-    background-color: #09090b;
-    border-right: 1px solid #27272a;
+    width: 100%;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -13,13 +12,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #27272a;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
 }
 
 .pane-title {
-    color: #a1a1aa;
+    color: #FFFFFF;
+    font-weight: 700;
     letter-spacing: 0.05em;
 }
 
@@ -38,8 +38,8 @@
     display: flex;
     padding: 16px;
     gap: 16px;
-    border-bottom: 1px solid #18181b;
-    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
 }
 
 .metric {
@@ -48,8 +48,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #18181b;
-    border: 1px solid #27272a;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 12px 8px;
 }
@@ -79,9 +79,10 @@
 }
 
 .list-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    color: #52525b;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFFFFF;
     margin-bottom: 8px;
     letter-spacing: 0.05em;
 }
@@ -90,7 +91,7 @@
     display: flex;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #18181b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     gap: 12px;
 }
 
@@ -124,7 +125,7 @@
     align-items: center;
     padding: 8px 0;
     gap: 12px;
-    border-bottom: 1px solid #18181b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .agent-dot {
