@@ -46,7 +46,7 @@
 >
 > Commits to `main` also auto-trigger the NAS runner. **SSH password prompts are a hard failure. File a system blocker instead.**
 
-### Step 1 — TRINITY-1 Auto-Resume (CRITICAL)
+### Step 1 — CORE-1 Auto-Resume (CRITICAL)
 
 Read `HANDOFF.md` at repo root silently (`view_file`). Parse the JSON block and check the `phase` and `from` fields.
 

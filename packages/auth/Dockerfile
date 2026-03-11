@@ -1,5 +1,5 @@
 # ─── AUTH — Creative Liberation Engine Authentication Service ───────────────────────────
-# @cle/auth | Firebase Auth + JWT gateway + session management
+# @inception/auth | Firebase Auth + JWT gateway + session management
 # Sovereign auth layer — Firebase credentials, Google OAuth, API key validation
 FROM node:22-alpine AS base
 

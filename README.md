@@ -30,8 +30,7 @@ The engine doesn't just respond — it *learns*, *remembers*, and *compounds* ev
 
 ## The Scale
 
-- **25+ Total Agents**
-- **1 klorad Global LoRA**
+- **40+ Total Agents & LoRAs**
 
 ---
 
@@ -41,7 +40,7 @@ The engine doesn't just respond — it *learns*, *remembers*, and *compounds* ev
 +-------------------------------------------------------------------------+
 |                    Creative Liberation Engine v5                        |
 |                                                                         |
-|  [averid TRINITY]              [kuid HIVE]                           |
+|  [CORE TRINITY]                [kuid HIVE]                           |
 |  kstratd      (Strategy)      kuid      (Architect)                  |
 |  kmemd         (Truth/klogd)  kbuildd        (Code Gen)                   |
 |  kexecd       (Execution)     cometd       (Backend)                    |
@@ -208,14 +207,14 @@ For correspondence, reach out to `operator@gmail.com`.
 | Area | Link | Description |
 |---|---|---|
 | **System** | | |
-| Boot Config | [`.averi/boot.json`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/boot.json) | Engine manifest — 36 agents, 6 hives |
-| Agent Charters | [`.averi/agents/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/agents) | Constitution + agent definitions |
-| Inbox Pipeline | [`.averi/inbox/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/inbox) | Phone-to-execution capture pipeline |
+| Boot Config | [`.agents/boot.json`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/boot.json) | Engine manifest — 40+ agents |
+| Agent Charters | [`.agents/charters/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/charters) | Constitution + agent definitions |
+| Inbox Pipeline | [`.agents/inbox/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/inbox) | Phone-to-execution capture pipeline |
 | **Agent Orchestration** | | |
-| ANTIGRAVITY Protocol | [`.agent/ANTIGRAVITY.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/ANTIGRAVITY.md) | Agent identity + coordination rules |
-| Project Board | [`.agent/project_dispatch.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/project_dispatch.md) | Live workstream kanban |
-| Instance Registry | [`.agent/dispatch/registry.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/dispatch/registry.md) | Multi-instance coordination |
-| Agent Workflows | [`.agent/workflows/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/workflows) | Claim, dispatch, handoff, sync |
+| Engine Protocol | [`.agents/ENGINE.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/ENGINE.md) | Agent identity + coordination rules |
+| Project Board | [`.agents/dispatch/project_dispatch.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/dispatch/project_dispatch.md) | Live workstream kanban |
+| Instance Registry | [`.agents/dispatch/registry.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/dispatch/registry.md) | Multi-instance coordination |
+| Agent Workflows | [`.agents/workflows/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agents/workflows) | Claim, dispatch, handoff, sync |
 | **Core Packages** | | |
 | Genkit Orchestration | [`packages/genkit/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/packages/genkit) | AI flow engine |
 | Console UI | [`apps/console/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/apps/console) | Spatial OS interface |

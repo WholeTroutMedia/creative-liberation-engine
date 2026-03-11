@@ -1,5 +1,5 @@
 /* App.css */
-.kruled-cmd-bar {
+.athena-cmd-bar {
     position: fixed;
     bottom: 20px;
     left: 50%;
@@ -19,12 +19,12 @@
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
 }
 
-.kruled-cmd-bar.focused {
+.athena-cmd-bar.focused {
     border-color: var(--amber-border);
     box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7), 0 0 32px rgba(245, 165, 36, 0.10);
 }
 
-.kruled-label {
+.athena-label {
     font-size: 9px;
     font-weight: 900;
     letter-spacing: 2.5px;
@@ -32,7 +32,7 @@
     flex-shrink: 0;
 }
 
-.kruled-input {
+.athena-input {
     flex: 1;
     background: none;
     border: none;
@@ -43,7 +43,7 @@
     caret-color: var(--amber);
 }
 
-.kruled-btn {
+.athena-btn {
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -60,7 +60,7 @@
     color: var(--text-tertiary);
 }
 
-.kruled-btn.active {
+.athena-btn.active {
     background: var(--amber);
     color: #000;
 }
