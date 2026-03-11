@@ -16,6 +16,7 @@
 import { z } from 'genkit';
 import { ai } from '../index.js';
 import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
@@ -118,14 +119,14 @@ Standards:
 
 After implementing, return the primary code artifact and list of modified files.${memoryContext}`;
 
-            const { output } = await ai.generate({
+            const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
                 system: systemPrompt,
                 prompt: `Task: ${input.task}${input.context ? `\n\nContext:\n${input.context}` : ''}${input.targetFile ? `\n\nTarget file: ${input.targetFile}` : ''}`,
                 tools: [fileReadTool, fileWriteTool, fileListTool, gitStatusTool, gitCommitTool, npmRunTool],
                 output: { schema: BoltOutputSchema },
                 config: { temperature: 0.2 },
-            });
+            }));
 
             // Auto-commit if requested
             let commitHash: string | undefined;

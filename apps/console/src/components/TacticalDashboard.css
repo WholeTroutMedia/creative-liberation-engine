@@ -1,58 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap');
+
 .tactical-dash-layout {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #0B0C10;
+    font-family: 'Inter', sans-serif;
 }
 
-.tactical-left-pane {
+.tactical-pane-top,
+.tactical-pane-bottom {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    border-right: 1px solid #27272a;
-    background: #09090b;
-}
-
-.tactical-pane-tabs {
-    display: flex;
-    border-bottom: 1px solid #27272a;
-    background: #18181b;
-}
-
-.tactical-tab {
-    padding: 12px 24px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: #a1a1aa;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-}
-
-.tactical-tab:hover {
-    color: #e4e4e7;
-    background: rgba(255,255,255,0.02);
-}
-
-.tactical-tab.active {
-    color: #F5A524;
-    border-bottom-color: #F5A524;
-    background: rgba(245, 165, 36, 0.05);
-}
-
-.tactical-pane-content {
-    flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
-    /* Since HealthMetricsTab and DispatchBoard have absolute widths, 
-       we can let them set their own width, or let flex handle it */
+    background: rgba(15, 23, 42, 0.5); /* #0F172A80 Oceanic Navy */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tactical-right-pane {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    min-width: 0; /* allows child to shrink */
+@keyframes microBlurLoad {
+    0% { filter: blur(8px); opacity: 0; transform: scale(0.99); }
+    100% { filter: blur(0px); opacity: 1; transform: scale(1); }
 }
+
+.tactical-pane-top { animation: microBlurLoad 0.4s ease-out forwards; }
+.tactical-pane-bottom { animation: microBlurLoad 0.5s ease-out forwards; }

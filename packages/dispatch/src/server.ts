@@ -852,6 +852,35 @@ app.post('/api/tasks/:id/resolve', async (req, res) => {
     try { const snap = JSON.parse(await handleTool('get_status', {})); broadcastEvent('status', snap); } catch { }
 });
 
+// POST /api/tasks/:id/complete â€” normal completion of a claimed task.
+// Body: { agent_id: string, note?: string, artifacts?: string[] }
+app.post('/api/tasks/:id/complete', async (req, res) => {
+    const { agent_id, note, artifacts } = req.body as {
+        agent_id?: string;
+        note?: string;
+        artifacts?: string[];
+    };
+    if (!agent_id) {
+        res.status(400).json({ error: 'agent_id is required' });
+        return;
+    }
+    const result = JSON.parse(
+        await handleTool('complete_task', {
+            task_id: req.params.id,
+            agent_id,
+            ...(note ? { note } : {}),
+            ...(artifacts ? { artifacts } : {}),
+        })
+    );
+    if (result.error) {
+        res.status(result.error.includes('not found') ? 404 : 400).json(result);
+        return;
+    }
+    res.json(result);
+    // Broadcast
+    try { const snap = JSON.parse(await handleTool('get_status', {})); broadcastEvent('status', snap); } catch { }
+});
+
 // Health check
 app.get('/health', (_, res) => res.json({ status: 'ok', service: 'inception-dispatch', version: '1.0.0', sse_clients: sseClients.size }));
 

@@ -1,0 +1,22 @@
+import type { Task, Agent, Project, SessionLog } from './types.js';
+export declare function ensureStore(): Promise<void>;
+export declare function getTasks(): Promise<Task[]>;
+export declare function getTask(id: string): Promise<Task | undefined>;
+export declare function saveTask(task: Task): Promise<void>;
+export declare function getQueuedTasks(filters?: {
+    project?: string;
+    workstream?: string;
+    priority?: string;
+    assigned_to_agent?: string;
+    assigned_to_capability?: string;
+}): Promise<Task[]>;
+export declare function getAgents(): Promise<Agent[]>;
+export declare function getAgent(agent_id: string): Promise<Agent | undefined>;
+export declare function saveAgent(agent: Agent): Promise<void>;
+export declare function removeAgent(agent_id: string): Promise<void>;
+export declare function getProjects(): Promise<Project[]>;
+export declare function saveSession(session: SessionLog): Promise<void>;
+export declare function getSecret(title: string): Promise<string | undefined>;
+export declare function setSecret(title: string, plainText: string): Promise<void>;
+export declare function listSecrets(): Promise<string[]>;
+export declare function deleteSecret(title: string): Promise<boolean>;

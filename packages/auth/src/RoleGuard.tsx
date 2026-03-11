@@ -67,7 +67,7 @@ export function useUserRole(): { role: UserRole; loading: boolean } {
   // Domain heuristic fallback for internal dev — never used in production
   const email = user.email ?? '';
   if (
-    email.endsWith('@inceptionengine.systems') ||
+    email.endsWith('@CreativeLiberationEngine.systems') ||
     email.endsWith('@creative-liberation-engine.io')
   ) {
     return { role: 'admin', loading: false };

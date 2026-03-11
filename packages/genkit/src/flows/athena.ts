@@ -16,6 +16,7 @@ import { z } from 'genkit';
 import { ai } from '../index.js';
 import { scribeRemember, scribeRecall } from '../memory/scribe.js';
 import { keeperBootForATHENA } from '../memory/keeper.js';
+import { getOmnipresenceCacheName } from '../core/context-cache.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SCHEMAS
@@ -147,12 +148,23 @@ Identify which agents to activate and in what sequence.
 Your directive is the single executable next step.`,
         };
 
+        const omnipresenceCache = getOmnipresenceCacheName();
+        const systemInstruction = omnipresenceCache 
+            ? `[SCRIBE OMNIPRESENCE KV CACHE ACTIVE]\n` + systemPrompt
+            : systemPrompt;
+
+        const genConfig: any = { temperature: input.mode === 'strategy' ? 0.7 : 0.2 };
+        if (omnipresenceCache) {
+             genConfig.version = 'gemini-1.5-pro-002'; // KV Cache models must match
+             genConfig.cachedContent = omnipresenceCache;
+        }
+
         const { output } = await ai.generate({
-            model: 'googleai/gemini-2.5-flash',
-            system: systemPrompt,
+            model: omnipresenceCache ? 'googleai/gemini-1.5-pro' : 'googleai/gemini-2.5-flash',
+            system: systemInstruction,
             prompt: modePrompts[input.mode],
             output: { schema: AthenaOutputSchema },
-            config: { temperature: input.mode === 'strategy' ? 0.7 : 0.2 },
+            config: genConfig,
             tools: [scribeRemember, scribeRecall],
         });
 

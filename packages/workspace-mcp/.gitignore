@@ -1,0 +1,39 @@
+# ---- Python artefacts --------------------------------------------------
+__pycache__/
+*.py[cod]
+*.so
+.mcp.json
+claude.md
+.beads/*
+.beads/issues.jsonl
+
+# ---- Packaging ---------------------------------------------------------
+*.egg-info/
+build/
+dist/
+
+# ---- Environments & tooling -------------------------------------------
+.env
+.venv/
+venv/
+.idea/
+.vscode/
+
+# ---- macOS clutter -----------------------------------------------------
+.DS_Store
+
+# ---- Secrets -----------------------------------------------------------
+client_secret.json
+
+# ---- Logs --------------------------------------------------------------
+mcp_server_debug.log
+
+# ---- Local development files -------------------------------------------
+/.credentials
+/.claude
+.serena/
+Caddyfile
+ecosystem.config.cjs
+
+# ---- Agent instructions (not for distribution) -------------------------
+.github/instructions/

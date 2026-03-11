@@ -73,18 +73,18 @@ const CORS_ORIGINS = [
   'http://127.0.0.1:3000',
   'http://127.0.0.1:4100',
   'http://127.0.0.1:5050',
-  // Production â€” inceptionengine.systems
-  'https://inceptionengine.systems',
-  'https://www.inceptionengine.systems',
-  'https://app.inceptionengine.systems',
-  'https://api.inceptionengine.systems',
+  // Production â€” CreativeLiberationEngine.systems
+  'https://CreativeLiberationEngine.systems',
+  'https://www.CreativeLiberationEngine.systems',
+  'https://app.CreativeLiberationEngine.systems',
+  'https://api.CreativeLiberationEngine.systems',
 ];
 
 app.use(cors({
   origin: (origin, callback) => {
     // Allow same-origin / non-browser requests (agents, curl, etc.)
     if (!origin) return callback(null, true);
-    if (CORS_ORIGINS.includes(origin) || origin.endsWith('.inceptionengine.systems')) {
+    if (CORS_ORIGINS.includes(origin) || origin.endsWith('.CreativeLiberationEngine.systems')) {
       return callback(null, true);
     }
     callback(new Error(`CORS: origin '${origin}' not in allowlist`));

@@ -44,52 +44,83 @@
 }
 
 .layout-body {
-    display: flex;
+    display: grid;
+    grid-template-columns: 60px 1fr 300px;
     flex: 1;
     overflow: hidden;
 }
 
 .tactical-sidebar {
-    width: 240px;
     background-color: #18181b;
     border-right: 1px solid #27272a;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar for sleekness */
+.tactical-sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    padding: 16px 8px;
-    gap: 24px;
+    padding: 16px 0;
+    gap: 16px;
+    align-items: center;
 }
 
 .nav-section {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
 }
 
 .nav-group-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.70rem;
-    color: #52525b;
-    padding: 0 8px;
-    margin-bottom: 4px;
-    letter-spacing: 0.05em;
+    display: none;
 }
 
 .nav-item {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 8px;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     color: #a1a1aa;
     text-decoration: none;
-    font-size: 0.85rem;
-    border-radius: 6px;
+    font-size: 0;
+    border-radius: 8px;
     transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-item::after {
+    content: attr(title);
+    position: absolute;
+    left: 48px;
+    background: #f4f4f5;
+    color: #09090b;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-5px);
+    transition: all 0.2s ease;
+    font-family: 'JetBrains Mono', monospace;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.nav-item:hover::after {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .nav-item:hover {
@@ -103,17 +134,25 @@
 }
 
 .nav-icon {
-    font-size: 1rem;
-    width: 16px;
+    font-size: 1.2rem;
     text-align: center;
 }
 
 .tactical-main {
-    flex: 1;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     display: flex;
+    flex-direction: column;
     background-color: #09090b;
+}
+
+.tactical-right-pane {
+    border-left: 1px solid #27272a;
+    background-color: #09090b;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 /* Command Palette Overlay */

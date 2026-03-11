@@ -18,6 +18,7 @@
 import { z } from 'genkit';
 import { ai } from '../index.js';
 import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 
 const AuroraInputSchema = z.object({
     mode: z.enum(['ideate', 'plan', 'review']),
@@ -51,7 +52,7 @@ export const AURORAFlow = ai.defineFlow(
                 review: `Conduct an architectural review. Identify: compliance with design system, separation of concerns, scalability concerns, missing test coverage (Article XIV), security gaps (Article XVI).`,
             };
 
-            const { output } = await ai.generate({
+            const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
                 system: `You are AURORA — Lead Architect of the Creative Liberation Engine. You design systems that are beautiful, scalable, and constitutional.
 Design system: Blank canvas (No rigid predefined system). Typography: Open to suggestion based on the design direction.
@@ -59,7 +60,7 @@ You plan. BOLT ships. Never write implementation code — write specs that BOLT 
                 prompt: `${modePrompts[input.mode]}\n\n${input.prompt}${input.context ? `\n\nContext:\n${input.context}` : ''}`,
                 output: { schema: AuroraOutputSchema },
                 config: { temperature: 0.3 },
-            });
+            }));
 
             return { ...(output ?? { architecture: '', components: [], fileMap: {}, designTokens: {} }), auroraSignature: 'AURORA' };
         });

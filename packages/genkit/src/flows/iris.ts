@@ -18,6 +18,7 @@
 import { z } from 'genkit';
 import { ai } from '../index.js';
 import { scribeRemember, scribeRecall } from '../memory/scribe.js';
+import { applyOmnipresenceCache } from '../core/context-cache.js';
 import { execSync } from 'child_process';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -93,14 +94,14 @@ You have access to scribeRemember and scribeRecall tools. Call scribeRemember wh
             ? `\n\nIRIS has resolved similar blockers before:\n${pastBlockers.map(e => `- ${e.content.slice(0, 120)}`).join('\n')}`
             : '';
 
-        const { output } = await ai.generate({
+        const { output } = await ai.generate(applyOmnipresenceCache({
             model: 'googleai/gemini-2.5-flash',  // Fast — IRIS uses Flash for speed
             system: systemPrompt,
             prompt: `Blocker to remove (urgency: ${input.urgency}):\n${input.blocker}${input.context ? `\n\nContext:\n${input.context}` : ''}${memContext}`,
             output: { schema: IrisOutputSchema },
             config: { temperature: 0.15 },
             tools: [scribeRemember, scribeRecall],
-        });
+        }));
 
         if (!output) {
             return {
