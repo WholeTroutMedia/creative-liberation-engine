@@ -7,15 +7,10 @@ import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 
-const posthogKey = import.meta.env.VITE_POSTHOG_KEY
-const isPostHogConfigured = posthogKey && posthogKey !== 'phc_dummy_key_replace_me'
-
-if (isPostHogConfigured) {
-  posthog.init(posthogKey, {
-    api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
-    person_profiles: 'identified_only',
-  })
-}
+posthog.init(import.meta.env.VITE_POSTHOG_KEY || 'phc_dummy_key_replace_me', {
+  api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com',
+  person_profiles: 'identified_only',
+})
 
 // ── PWA Service Worker Registration ─────────────────────────────────────────
 if ('serviceWorker' in navigator) {
@@ -40,21 +35,15 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-const AppWrapper = (
-  <BrowserRouter>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
-  </BrowserRouter>
-)
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {isPostHogConfigured ? (
-      <PostHogProvider client={posthog}>
-        {AppWrapper}
-      </PostHogProvider>
-    ) : AppWrapper}
+    <PostHogProvider client={posthog}>
+      <BrowserRouter>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </BrowserRouter>
+    </PostHogProvider>
   </StrictMode>,
 )
 
