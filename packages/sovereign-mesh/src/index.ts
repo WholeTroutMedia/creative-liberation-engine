@@ -6,7 +6,7 @@ export * from './schema/index.js';
 // Event bus + store
 export { SAREventBus, SARStore, createSARClients } from './events/event-bus.js';
 
-// CORTEX agents
+// CORE agents
 export {
     collectDevices,
     collectStorage,
@@ -14,18 +14,18 @@ export {
     collectDisplays,
     collectSystemInfo,
     collectWorkstationSnapshot,
-} from './cortex/workstation-agent.js';
+} from './CORE/workstation-agent.js';
 
 export {
     collectNASContainers,
     collectNASVolumes,
     collectNASSnapshot,
-} from './cortex/nas-client.js';
+} from './CORE/nas-client.js';
 
 export {
     collectGCPServices,
     collectGCPSnapshot,
-} from './cortex/gcp-watcher.js';
+} from './CORE/gcp-watcher.js';
 
 // NERVE attention engine
 export { buildAttentionBrief, formatBootPanel } from './nerve/attention-engine.js';

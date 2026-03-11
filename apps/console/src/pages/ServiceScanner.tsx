@@ -38,7 +38,7 @@ const GENESIS_SERVICES: ServiceDef[] = [
     { id: 'genmedia', name: 'GenMedia Studio', url: `${FORGE_URL}/health`, port: 4300, category: 'media', required: false },
     { id: 'comet', name: 'COMET Browser', url: `${API_BASE}:7100/health`, port: 7100, category: 'agent', required: false },
     { id: 'ghost', name: 'GHOST QA Engine', url: `${API_BASE}:6000/health`, port: 6000, category: 'agent', required: false },
-    { id: 'scribe', name: 'Scribe Daemon', url: `${API_BASE}:9100/health`, port: 9100, category: 'agent', required: false },
+    { id: 'klogd', name: 'klogd Daemon', url: `${API_BASE}:9100/health`, port: 9100, category: 'agent', required: false },
     { id: 'gateway', name: 'API Gateway', url: `${GATEWAY_URL}/health`, port: 3080, category: 'core', required: false },
     { id: 'blueprints', name: 'Blueprints Runtime', url: `${API_BASE}:4200/health`, port: 4200, category: 'ai', required: false },
 ];

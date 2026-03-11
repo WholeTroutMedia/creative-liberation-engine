@@ -5,7 +5,7 @@ import { ai } from '../index.js';
  * THREE WISE MEN — Dialectic Validation Engine
  *
  * Represents the Past (Balthazar - Precedent), Present (Melchior - Practicality), 
- * and Future (Caspar - Extensibility). Used by ATHENA for profound architectural choices.
+ * and Future (Caspar - Extensibility). Used by kruled for profound architectural choices.
  */
 
 export const WiseMenInputSchema = z.object({

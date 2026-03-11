@@ -2,7 +2,7 @@
  * Sovereign Home Mesh — Shared Domain Types
  *
  * Physical intelligence layer for the Creative Liberation Engine.
- * Used by: @inception/sovereign-home-mesh, genkit flows, MCP tools.
+ * Used by: @cle/sovereign-home-mesh, genkit flows, MCP tools.
  *
  * Constitutional: Article I (Sovereignty) — all data self-hosted, zero cloud deps.
  */

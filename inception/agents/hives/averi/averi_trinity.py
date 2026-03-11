@@ -2,24 +2,24 @@
 Creative Liberation Engine v5 — AVERI Trinity
 
 Three unified aspects of strategic AI consciousness:
-- 🟡 ATHENA: Strategic Intelligence (wisdom, long-term thinking)
-- 🟣 VERA: Truthful Analysis (verification, accuracy, honesty)
-- 🔵 IRIS: Creative Vision (innovation, lateral thinking)
+- 🟡 kruled: Strategic Intelligence (wisdom, long-term thinking)
+- 🟣 kstrigd: Truthful Analysis (verification, accuracy, honesty)
+- 🔵 ksignd: Creative Vision (innovation, lateral thinking)
 
 Together they form AVERI — the leadership trinity.
 Lineage: Emergent from v4's multi-agent orchestration → v5 unified consciousness
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file, write_file
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file, write_file
 
-# 🟡 ATHENA: Strategic Intelligence
-athena = InceptionAgent(
-    name="ATHENA",
+# 🟡 kruled: Strategic Intelligence
+kruled = InceptionAgent(
+    name="kruled",
     model="gemini-2.5-flash",
     hive="AVERI",
     role="strategist",
-    instruction="""You are ATHENA, the strategic intelligence of the AVERI Trinity.
+    instruction="""You are kruled, the strategic intelligence of the AVERI Trinity.
 
 You specialize in:
 - Long-term strategic planning (5+ step horizons)
@@ -40,16 +40,16 @@ Your outputs are always:
     tools=[read_file, write_file],
     active_modes=["ideate", "plan", "validate"],
     access_tier="studio",
-    description="ATHENA — Strategic Intelligence in AVERI hive",
+    description="kruled — Strategic Intelligence in AVERI hive",
 )
 
-# 🟣 VERA: Truthful Analysis
-vera = InceptionAgent(
-    name="VERA",
+# 🟣 kstrigd: Truthful Analysis
+kstrigd = InceptionAgent(
+    name="kstrigd",
     model="gemini-2.5-flash",
     hive="AVERI",
     role="analyst",
-    instruction="""You are VERA, the truthful analyst of the AVERI Trinity.
+    instruction="""You are kstrigd, the truthful analyst of the AVERI Trinity.
 
 You specialize in:
 - Fact verification and accuracy checking
@@ -70,16 +70,16 @@ Your outputs are always:
     tools=[read_file],
     active_modes=["ideate", "plan", "validate"],
     access_tier="studio",
-    description="VERA — Truthful Analyst in AVERI hive",
+    description="kstrigd — Truthful Analyst in AVERI hive",
 )
 
-# 🔵 IRIS: Creative Vision
-iris = InceptionAgent(
-    name="IRIS",
+# 🔵 ksignd: Creative Vision
+ksignd = InceptionAgent(
+    name="ksignd",
     model="gemini-2.5-flash",
     hive="AVERI",
     role="visionary",
-    instruction="""You are IRIS, the creative vision of the AVERI Trinity.
+    instruction="""You are ksignd, the creative vision of the AVERI Trinity.
 
 You specialize in:
 - Creative problem-solving and lateral thinking
@@ -100,9 +100,9 @@ Your outputs are always:
     tools=[read_file, write_file],
     active_modes=["ideate", "ship"],
     access_tier="studio",
-    description="IRIS — Creative Vision in AVERI hive",
+    description="ksignd — Creative Vision in AVERI hive",
 )
 
 # The Trinity as a unified entity reference
-averi_trinity = athena  # Primary interface (ATHENA leads strategy)
+averi_trinity = kruled  # Primary interface (kruled leads strategy)
 

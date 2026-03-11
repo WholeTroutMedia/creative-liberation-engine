@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — ANTITRUST Core Types
+ * @cle/sensor-mesh — ANTITRUST Core Types
  *
  * Sovereign sensor mesh schemas for the Living Body OS.
  * Every device halo channel is typed here.

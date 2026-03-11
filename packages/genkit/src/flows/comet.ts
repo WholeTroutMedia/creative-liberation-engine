@@ -1,10 +1,10 @@
 /**
  * COMET — Backend Automator, API Engineer, Database Ops
- * Hive: AURORA | Role: Automator | Access: Studio
+ * Hive: kuid | Role: Automator | Access: Studio
  *
  * COMET handles the backend layer: APIs, databases, microservices,
  * CI/CD, Docker, and system integrations.
- * Pairs with BOLT for full-stack delivery.
+ * Pairs with kbuildd for full-stack delivery.
  *
  * Tool grants: 7
  *   HTTP (get/post), Shell (execute), File (read/write),
@@ -16,7 +16,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 import { execSync, exec } from 'child_process';
 import fs from 'fs';
 import https from 'https';
@@ -106,7 +106,7 @@ export const COMETFlow = ai.defineFlow(
         const sessionId = input.sessionId ?? `comet_${Date.now()}`;
         console.log(`[COMET] 🌠 Activating — Backend task: ${input.task.slice(0, 80)}`);
 
-        return memoryBus.withMemory('COMET', input.task, ['aurora-hive', 'automator', 'backend'], async (context: MemoryEntry[]) => {
+        return memoryBus.withMemory('COMET', input.task, ['kuid-hive', 'automator', 'backend'], async (context: MemoryEntry[]) => {
             const memCtx = context.length > 0
                 ? `\nPast relevant tasks:\n${context.map(e => `- ${e.task}: ${e.pattern || e.outcome}`).join('\n')}`
                 : '';

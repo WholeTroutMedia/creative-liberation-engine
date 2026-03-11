@@ -3,7 +3,7 @@
  * @description Integration tests for the ANTITRUST Living Sensor Mesh
  * Tests all 5 tiers: ZigSimBridge, BiometricBridge, VisionNode, SpatialDirector, InstrumentRouter
  *
- * @package @inception/sensor-mesh
+ * @package @cle/sensor-mesh
  * @constitutional Article IX — No MVPs. Full coverage or don't ship.
  */
 

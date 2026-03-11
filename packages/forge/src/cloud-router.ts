@@ -1,7 +1,7 @@
 /**
  * FORGE Cloud Router
  *
- * Bridges the FORGE asset generation pipeline to the @inception/cloud-mesh
+ * Bridges the FORGE asset generation pipeline to the @cle/cloud-mesh
  * execution router. When asset generation or theme bundling jobs are triggered,
  * this module selects the cheapest/fastest healthy cloud target and routes the
  * workload there, recording actual cost against the FORGE ledger.
@@ -18,8 +18,8 @@ import {
   type CloudMeshExecutor,
   type MeshHealthMonitor,
   type MeshConfig,
-} from '@inception/cloud-mesh';
-import type { ExecutionPlan, MeshExecutionResult } from '@inception/cloud-mesh';
+} from '@cle/cloud-mesh';
+import type { ExecutionPlan, MeshExecutionResult } from '@cle/cloud-mesh';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

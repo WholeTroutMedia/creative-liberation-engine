@@ -13,7 +13,7 @@ const LoRAInputSchema = z.object({
 });
 
 // ─── VISION — Visual Intelligence Enhancement ─────────────────────────────────
-// Hive: LoRA Layer | Activated by: AURORA, BOLT, CREATIVE_DIRECTOR
+// Hive: LoRA Layer | Activated by: kuid, kbuildd, CREATIVE_DIRECTOR
 // Owns: image QA, design critique, cross-modal consistency, visual scoring
 const VisionOutputSchema = z.object({
     result: z.string(),
@@ -44,7 +44,7 @@ Task: ${input.task}${input.content ? `\nContent to analyze: ${input.content}` : 
 );
 
 // ─── SYNTAX — Code Intelligence Enhancement ───────────────────────────────────
-// Hive: LoRA Layer | Activated by: BOLT, COMET, IRIS, ARCH
+// Hive: LoRA Layer | Activated by: kbuildd, COMET, ksignd, ARCH
 // Owns: structural code analysis, refactoring patterns, framework idioms, dead code detection
 const SyntaxOutputSchema = z.object({
     result: z.string(),
@@ -75,7 +75,7 @@ Task: ${input.task}${input.content ? `\nCode to analyze:\n${input.content}` : ''
 );
 
 // ─── SIFT — Research Synthesis Enhancement ────────────────────────────────────
-// Hive: LoRA Layer | Activated by: ATHENA, KEEPER, ARCH, COMET
+// Hive: LoRA Layer | Activated by: kruled, kstated, ARCH, COMET
 // Owns: multi-source fact checking, signal vs noise extraction, citation synthesis
 const SiftOutputSchema = z.object({
     result: z.string(),
@@ -138,7 +138,7 @@ Task: ${input.task}${input.content ? `\nContent: ${input.content}` : ''}${input.
 );
 
 // ─── SPATIAL — 3D/XR/Volumetric Intelligence Enhancement ─────────────────────
-// Hive: LoRA Layer | Activated by: BLENDER, VFX, AURORA, BOLT
+// Hive: LoRA Layer | Activated by: BLENDER, VFX, kuid, kbuildd
 // Owns: spatial composition, AR overlay design, Canvas installations, XR depth-zone UI
 const SpatialOutputSchema = z.object({
     result: z.string(),

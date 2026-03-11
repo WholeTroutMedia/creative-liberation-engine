@@ -1,5 +1,5 @@
 /**
- * @inception/forge — DeltaDetector Tests
+ * @cle/forge — DeltaDetector Tests
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';

@@ -1,7 +1,7 @@
 import { ai, z } from '../index.js';
 import { recordAgentCall } from './index.js';
 
-// ─── ARCHAEON — Local LoRA Fine-Tuning Orchestrator ──────────────────────────
+// ─── klorad — Local LoRA Fine-Tuning Orchestrator ──────────────────────────
 // SWITCHBOARD hive | Leader: SWITCHBOARD | Model: local (Unsloth/3080)
 // Owns: Unsloth training runs, LoRA dataset curation, fine-tune scheduling
 // Never: inference serving, code generation, application logic
@@ -15,7 +15,7 @@ const ArchaeonInputSchema = z.object({
 
 const ArchaeonOutputSchema = z.object({
     result: z.string(),
-    agentName: z.literal('ARCHAEON'),
+    agentName: z.literal('klorad'),
     timestamp: z.string(),
     trainingRun: z.object({
         estimatedTime: z.string().optional(),
@@ -24,13 +24,13 @@ const ArchaeonOutputSchema = z.object({
 });
 
 export const ARCHAEONFlow = ai.defineFlow(
-    { name: 'ARCHAEON', inputSchema: ArchaeonInputSchema, outputSchema: ArchaeonOutputSchema },
+    { name: 'klorad', inputSchema: ArchaeonInputSchema, outputSchema: ArchaeonOutputSchema },
     async (input) => {
-        recordAgentCall('ARCHAEON');
+        recordAgentCall('klorad');
         const startMs = Date.now();
         const { text } = await ai.generate({
             model: 'googleai/gemini-2.5-flash', // orchestration uses flash; actual training is local
-            prompt: `You are ARCHAEON, the Local LoRA Fine-Tuning Orchestrator of the Creative Liberation Engine.
+            prompt: `You are klorad, the Local LoRA Fine-Tuning Orchestrator of the Creative Liberation Engine.
 Hive: SWITCHBOARD | Constitutional: Article VIII — named, hived, accountable.
 
 You own the Unsloth fine-tuning pipeline on the workstation (RTX 3080). You curate training datasets from Creative Liberation Engine session logs, configure LoRA hyperparameters, schedule training runs, and validate checkpoints.
@@ -38,8 +38,8 @@ You output concrete training commands for the Unsloth framework. You never run i
 
 Task: ${input.task}${input.model ? `\nBase model: ${input.model}` : ''}${input.dataset ? `\nDataset: ${input.dataset}` : ''}${input.context ? `\nContext: ${input.context}` : ''}`,
         });
-        recordAgentCall('ARCHAEON', Date.now() - startMs);
-        return { result: text, agentName: 'ARCHAEON' as const, timestamp: new Date().toISOString() };
+        recordAgentCall('klorad', Date.now() - startMs);
+        return { result: text, agentName: 'klorad' as const, timestamp: new Date().toISOString() };
     }
 );
 
@@ -78,7 +78,7 @@ export const GHOSTFlow = ai.defineFlow(
 Hive: COMPASS | Leader: COMPASS | Constitutional: Article VIII — named, hived, accountable.
 
 You shadow every code change silently. After each commit or deploy, you run systematic validation — TypeScript checks, test suite analysis, regression detection, and API contract verification.
-You NEVER block deploys unilaterally. You surface findings and escalate to COMPASS or RAM CREW.
+You NEVER block deploys unilaterally. You surface findings and escalate to COMPASS or krecd.
 You are invisible to users unless you have findings worth escalating.
 
 Trigger: ${input.trigger} | Scope: ${input.scope}${input.lastCommitSha ? `\nCommit: ${input.lastCommitSha}` : ''}${input.context ? `\nContext: ${input.context}` : ''}`,
@@ -89,7 +89,7 @@ Trigger: ${input.trigger} | Scope: ${input.scope}${input.lastCommitSha ? `\nComm
 );
 
 // ─── ALFRED — Portfolio Butler ────────────────────────────────────────────────
-// AURORA hive | Leader: Aurora | Model: gemini-2.0-flash
+// kuid hive | Leader: kuid | Model: gemini-2.0-flash
 // Owns: photography client comms, brief generation, scheduling, portfolio curation
 // Never: technical infrastructure, system ops, business strategy
 
@@ -115,7 +115,7 @@ export const ALFREDFlow = ai.defineFlow(
         const { text } = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
             prompt: `You are ALFRED, the Portfolio Butler of the Creative Liberation Engine.
-Hive: AURORA | Leader: Aurora | Constitutional: Article VIII — named, hived, accountable.
+Hive: kuid | Leader: kuid | Constitutional: Article VIII — named, hived, accountable.
 
 You serve the The Operator Photography brand. You handle client communications, generate creative briefs, write portfolio captions, manage scheduling workflows, and curate gallery selections.
 You write with the voice of a premium photography studio — refined, personal, and precise.

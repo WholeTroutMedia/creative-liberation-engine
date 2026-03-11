@@ -1,5 +1,5 @@
 /**
- * AuthGuard — Route protection for Inception Console v5
+ * AuthGuard — Route protection for cle Console v5
  * Redirects unauthenticated users to sign-in
  */
 import type { ReactNode } from 'react';

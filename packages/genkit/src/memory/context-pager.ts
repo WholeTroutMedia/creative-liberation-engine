@@ -15,7 +15,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { scribeRemember } from './scribe.js';
+import { scribeRemember } from './klogd.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
@@ -64,7 +64,7 @@ async function summarizeTurns(turns: ConversationTurn[], sessionId: string): Pro
     try {
         const { text } = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
-            system: `You are VERA's Context Compressor. Extract the 3-5 most important facts, decisions, or patterns from this conversation segment that must not be forgotten. Format as a numbered list. Be extremely concise — each item max 2 sentences.`,
+            system: `You are kstrigd's Context Compressor. Extract the 3-5 most important facts, decisions, or patterns from this conversation segment that must not be forgotten. Format as a numbered list. Be extremely concise — each item max 2 sentences.`,
             prompt: `Compress this conversation segment:\n\n${transcript.slice(0, 8000)}`,
             config: { temperature: 0.1, maxOutputTokens: 400 },
         });

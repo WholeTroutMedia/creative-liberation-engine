@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — SpatialDirector
+ * @cle/sensor-mesh — SpatialDirector
  *
  * Tier 3 — THE CONSTELLATION
  *

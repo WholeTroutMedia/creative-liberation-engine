@@ -1,5 +1,5 @@
 /**
- * @inception/forge — AssetArchiver
+ * @cle/forge — AssetArchiver
  *
  * Converts CheckpointEvents into durable ForgeAsset records.
  * Persists to JSON store on NAS (sovereign-first). Each asset gets:
@@ -8,7 +8,7 @@
  *   - Default draft commerce metadata
  *   - A SHA-256 provenance hash of the full record
  *
- * Future: swap JSON store for SCRIBE MCP or IPFS for distributed archiving.
+ * Future: swap JSON store for klogd MCP or IPFS for distributed archiving.
  */
 
 import { createHash, randomUUID } from 'crypto';

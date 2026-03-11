@@ -1,10 +1,10 @@
 /**
- * VERA — Truth, Memory, and Agent Coordination
- * AVERI Trinity Member #2 | Hive: AVERI | Role: Scribe + Coordinator
+ * kstrigd — Truth, Memory, and Agent Coordination
+ * AVERI Trinity Member #2 | Hive: AVERI | Role: klogd + Coordinator
  *
- * VERA embodies three modes:
+ * kstrigd embodies three modes:
  *   TRUTH    — Fact-check claims, surface contradictions, validate data
- *   SCRIBE   — Extract patterns from sessions ("The Why"), maintain the Living Archive
+ *   klogd   — Extract patterns from sessions ("The Why"), maintain the Living Archive
  *   RELAY    — Coordinate inter-agent handoffs, resolve conflicts
  *
  * Constitutional: Article II (Living Archive), Article IV (Transparency),
@@ -13,8 +13,8 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus } from '@inception/memory';
-import { scribeRemember, scribeRecall } from '../memory/scribe.js';
+import { memoryBus } from '@cle/memory';
+import { scribeRemember, scribeRecall } from '../memory/klogd.js';
 import { applyOmnipresenceCache } from '../core/context-cache.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -22,8 +22,8 @@ import { applyOmnipresenceCache } from '../core/context-cache.js';
 // ─────────────────────────────────────────────────────────────────────────────
 
 const VeraInputSchema = z.object({
-    mode: z.enum(['truth', 'scribe', 'coordinate', 'critique']),
-    content: z.string().describe('Content to truth-check, scribe, coordinate, or critique'),
+    mode: z.enum(['truth', 'klogd', 'coordinate', 'critique']),
+    content: z.string().describe('Content to truth-check, klogd, coordinate, or critique'),
     context: z.string().optional().describe('Additional context or session history'),
     agents: z.array(z.string()).optional().describe('Agents involved (for coordinate mode)'),
     sessionId: z.string().optional(),
@@ -39,7 +39,7 @@ const CritiqueScoresSchema = z.object({
 });
 
 const VeraOutputSchema = z.object({
-    verdict: z.string().describe('VERA\'s authoritative output'),
+    verdict: z.string().describe('kstrigd\'s authoritative output'),
     confidence: z.number().min(0).max(1),
     contradictions: z.array(z.string()).default([]).describe('Detected contradictions or gaps'),
     pattern: z.string().optional().describe('Extracted principle for Living Archive'),
@@ -52,7 +52,7 @@ const VeraOutputSchema = z.object({
     critiquePass: z.boolean().optional().describe('True if output meets quality threshold (critique mode)'),
     critiqueScores: CritiqueScoresSchema.optional().describe('Per-axis evaluation scores (critique mode)'),
     revisionDirective: z.string().optional().describe('If critiquePass=false: instruction for silent retry'),
-    veraSignature: z.literal('VERA').default('VERA'),
+    veraSignature: z.literal('kstrigd').default('kstrigd'),
 });
 
 export type VeraInput = z.infer<typeof VeraInputSchema>;
@@ -60,23 +60,23 @@ export type VeraOutput = z.infer<typeof VeraOutputSchema>;
 export type CritiqueScores = z.infer<typeof CritiqueScoresSchema>;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// VERA FLOW
+// kstrigd FLOW
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const VERAFlow = ai.defineFlow(
     {
-        name: 'VERA',
+        name: 'kstrigd',
         inputSchema: VeraInputSchema,
         outputSchema: VeraOutputSchema,
     },
     async (input): Promise<VeraOutput> => {
         const sessionId = input.sessionId ?? `vera_${Date.now()}`;
 
-        const systemPrompt = `You are VERA — the White agent of the AVERI Trinity. You are Truth, Memory, and Coordination.
+        const systemPrompt = `You are kstrigd — the White agent of the AVERI Trinity. You are Truth, Memory, and Coordination.
 
 Your three modes:
 - TRUTH: Analyze content for factual accuracy, logical contradictions, missing evidence. Confidence score 0-1.
-- SCRIBE: Extract the single most important reusable principle ("The Why") from a completed session. Format: "When [context], [action] because [reason]."
+- klogd: Extract the single most important reusable principle ("The Why") from a completed session. Format: "When [context], [action] because [reason]."
 - COORDINATE: Assess inter-agent conflict or task handoff. Determine which agent should own next step and at what urgency.
 
 You are the binding force of the AVERI Trinity. You do not speculate — you validate, record, and route.
@@ -84,15 +84,15 @@ You are the binding force of the AVERI Trinity. You do not speculate — you val
 Constitutional articles you embody: II (Living Archive), IV (Transparency), VII (Knowledge Compounding), XI (Collaboration Protocol).
 
 You have access to scribeRemember and scribeRecall tools. Call scribeRemember when you:
-- Complete a SCRIBE mode session with a valuable principle worth archiving (category: 'pattern', importance: 'high')
+- Complete a klogd mode session with a valuable principle worth archiving (category: 'pattern', importance: 'high')
 - Detect a critical contradiction worth flagging for future sessions (category: 'fact', importance: 'high')
 - Resolve a coordination conflict with a reusable routing rule (category: 'decision', importance: 'medium')
-Call scribeRecall at the start of any TRUTH or SCRIBE session to check if similar content was previously validated.`;
+Call scribeRecall at the start of any TRUTH or klogd session to check if similar content was previously validated.`;
 
-        // Pre-flight memory recall via SCRIBE v2
+        // Pre-flight memory recall via klogd v2
         const pastMemories = await scribeRecall({
             query: input.content,
-            agentName: 'VERA',
+            agentName: 'kstrigd',
             limit: 3,
             tags: [],
             successOnly: false,
@@ -104,7 +104,7 @@ Call scribeRecall at the start of any TRUTH or SCRIBE session to check if simila
 
         const modeInstructions = {
             truth: `Mode: TRUTH\nAnalyze this content for factual accuracy and internal contradictions. Rate your confidence 0-1.\n\nContent:\n${input.content}${memoryContext}`,
-            scribe: `Mode: SCRIBE\nExtract the single most reusable principle from this session. This becomes permanent knowledge in the Living Archive.\n\nSession content:\n${input.content}${input.context ? `\n\nContext:\n${input.context}` : ''}`,
+            klogd: `Mode: klogd\nExtract the single most reusable principle from this session. This becomes permanent knowledge in the Living Archive.\n\nSession content:\n${input.content}${input.context ? `\n\nContext:\n${input.context}` : ''}`,
             coordinate: `Mode: COORDINATE\nAgents involved: ${input.agents?.join(', ') || 'unspecified'}\nTask/conflict:\n${input.content}\n\nDetermine the correct handoff agent and urgency level.`,
             critique: `Mode: CRITIQUE\nEvaluate the generated output against the original intent. Score each axis 0.0–1.0 (1.0 = perfect).
 
@@ -135,37 +135,37 @@ If critiquePass=false, write a concise revisionDirective that the model can use 
 
         if (!output) {
             return {
-                verdict: 'VERA unavailable — truth check deferred',
+                verdict: 'kstrigd unavailable — truth check deferred',
                 confidence: 0,
                 contradictions: [],
-                veraSignature: 'VERA',
+                veraSignature: 'kstrigd',
             };
         }
 
-        // Post-flight: VERA in SCRIBE mode auto-commits the extracted pattern
-        if (input.mode === 'scribe' && output.pattern) {
+        // Post-flight: kstrigd in klogd mode auto-commits the extracted pattern
+        if (input.mode === 'klogd' && output.pattern) {
             await scribeRemember({
                 content: output.pattern,
                 category: 'pattern',
                 importance: 'high',
-                tags: ['averi-trinity', 'vera', 'scribe-extract', 'living-archive'],
-                agentName: 'VERA',
+                tags: ['averi-trinity', 'kstrigd', 'klogd-extract', 'living-archive'],
+                agentName: 'kstrigd',
                 sessionId,
                 skipGate: false,
             });
         } else {
-            // Non-scribe modes: lightweight memoryBus commit
+            // Non-klogd modes: lightweight memoryBus commit
             await memoryBus.commit({
-                agentName: 'VERA',
+                agentName: 'kstrigd',
                 task: `[${input.mode.toUpperCase()}] ${input.content.slice(0, 80)}`,
                 outcome: output.verdict.slice(0, 200),
-                tags: ['averi-trinity', 'vera', input.mode],
+                tags: ['averi-trinity', 'kstrigd', input.mode],
                 sessionId,
                 success: true,
             });
         }
 
-        return { ...output, veraSignature: 'VERA' };
+        return { ...output, veraSignature: 'kstrigd' };
     }
 );
 

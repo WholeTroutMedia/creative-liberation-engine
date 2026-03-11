@@ -41,7 +41,7 @@ export function buildAutoResolveQuery(trigger: string, workflow: string): string
 }
 
 /**
- * Minimum similarity score for VERA to auto-apply a stored resolution
+ * Minimum similarity score for kstrigd to auto-apply a stored resolution
  * without human confirmation. Based on the HBR 70% productivity thesis.
  */
 export const DIRA_AUTO_RESOLVE_THRESHOLD = 0.85;

@@ -1,7 +1,7 @@
 /**
- * VERA Memory Quality Gate — Genkit Flow
+ * kstrigd Memory Quality Gate — Genkit Flow
  *
- * Formal evaluation pipeline for SCRIBE memory write proposals.
+ * Formal evaluation pipeline for klogd memory write proposals.
  * Runs as a standalone flow so it can be called directly from
  * tests, dashboards, or manually during VALIDATE mode.
  *
@@ -23,7 +23,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { MemoryCategory, MemoryImportance } from './scribe.js';
+import { MemoryCategory, MemoryImportance } from './klogd.js';
 
 // ---------------------------------------------------------------------------
 // Schemas
@@ -113,7 +113,7 @@ function fastPathEvaluate(
 // LLM evaluator
 // ---------------------------------------------------------------------------
 
-const EVAL_SYSTEM = `You are VERA, the Creative Liberation Engine Memory Quality Gate.
+const EVAL_SYSTEM = `You are kstrigd, the Creative Liberation Engine Memory Quality Gate.
 
 Your job is to evaluate whether a memory entry is worth saving to long-term storage.
 
@@ -157,11 +157,11 @@ ${input.content.slice(0, 800)}`,
     try {
         parsed = JSON.parse(response.text.replace(/```json|```/g, '').trim());
     } catch {
-        console.warn('[VERA:GATE] Failed to parse LLM response, using conservative defaults');
+        console.warn('[kstrigd:GATE] Failed to parse LLM response, using conservative defaults');
         parsed = {
             breakdown: { specificity: 12, futureValue: 12, novelty: 12, safety: 25 },
             flags: ['PARSE_ERROR'],
-            reason: 'VERA parse error — conservative score applied',
+            reason: 'kstrigd parse error — conservative score applied',
         };
     }
 
@@ -190,12 +190,12 @@ export const veraMemoryGateFlow = ai.defineFlow(
         outputSchema: VERAGateOutput,
     },
     async (input) => {
-        console.log(`[VERA:GATE] 🔒 Evaluating memory: category=${input.category} importance=${input.importance} from=${input.proposedBy}`);
+        console.log(`[kstrigd:GATE] 🔒 Evaluating memory: category=${input.category} importance=${input.importance} from=${input.proposedBy}`);
 
         // Try fast path first
         const fast = fastPathEvaluate(input);
         if (fast) {
-            console.log(`[VERA:GATE] ⚡ Fast-path: ${fast.approved ? '✅ APPROVED' : '❌ REJECTED'} — ${fast.reason}`);
+            console.log(`[kstrigd:GATE] ⚡ Fast-path: ${fast.approved ? '✅ APPROVED' : '❌ REJECTED'} — ${fast.reason}`);
             return fast;
         }
 
@@ -203,21 +203,21 @@ export const veraMemoryGateFlow = ai.defineFlow(
         try {
             const result = await llmEvaluate(input);
             const status = result.approved ? '✅ APPROVED' : '❌ REJECTED';
-            console.log(`[VERA:GATE] ${status} (score=${result.score}) — ${result.reason}`);
+            console.log(`[kstrigd:GATE] ${status} (score=${result.score}) — ${result.reason}`);
 
             if (result.flags.length > 0) {
-                console.warn(`[VERA:GATE] ⚠️  Flags: ${result.flags.join(', ')}`);
+                console.warn(`[kstrigd:GATE] ⚠️  Flags: ${result.flags.join(', ')}`);
             }
 
             return result;
         } catch (err: unknown) {
             const msg = err instanceof Error ? err.message : String(err);
-            console.error(`[VERA:GATE] LLM evaluation failed: ${msg}`);
+            console.error(`[kstrigd:GATE] LLM evaluation failed: ${msg}`);
 
             const importanceRank = IMPORTANCE_RANK[input.importance];
             return {
                 approved: importanceRank >= 2,
-                reason: `VERA gate unavailable (${msg}) — fallback based on importance`,
+                reason: `kstrigd gate unavailable (${msg}) — fallback based on importance`,
                 score: importanceRank >= 2 ? 70 : 30,
                 breakdown: { specificity: 15, futureValue: 15, novelty: 15, safety: 25 },
                 flags: ['VERA_UNAVAILABLE'],

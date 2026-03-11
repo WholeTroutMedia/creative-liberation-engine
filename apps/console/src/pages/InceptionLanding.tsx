@@ -1,5 +1,5 @@
 /**
- * Inception Landing — W2 (Showcase page built with Nano Banana scroll animation)
+ * cle Landing — W2 (Showcase page built with Nano Banana scroll animation)
  *
  * IE's own landing/marketing page demonstrating the scroll animation pipeline.
  * Hero with 3D agent network visualization, scroll-driven sections, live stats.
@@ -40,7 +40,7 @@ function StatCounter({ value, label, suffix }: { value: number; label: string; s
     );
 }
 
-const AGENTS_RING = ['ATHENA', 'VERA', 'IRIS', 'FORGE', 'SCRIBE', 'PRISM', 'KEEPER', 'AURORA'];
+const AGENTS_RING = ['kruled', 'kstrigd', 'ksignd', 'FORGE', 'klogd', 'kexecd', 'kstated', 'kuid'];
 
 function AgentOrbit() {
     const [angle, setAngle] = useState(0);

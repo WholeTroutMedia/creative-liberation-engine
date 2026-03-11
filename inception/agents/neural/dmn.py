@@ -173,7 +173,7 @@ class DefaultModeNetwork:
         patterns = await self.extract_cross_session_patterns()
         for pattern in patterns:
             if self.memory:
-                from inception.memory.types import Memory, MemoryType
+                from cle.memory.types import Memory, MemoryType
                 await self.memory.store(Memory(
                     content=f"Cross-session pattern: {pattern.pattern_type} (freq={pattern.frequency}, success={pattern.success_rate:.0%})",
                     memory_type=MemoryType.PATTERN,
@@ -272,7 +272,7 @@ class DefaultModeNetwork:
                 probability=0.6,
                 estimated_time_to_occurrence=1800.0,
                 complexity=0.7,
-                required_agents=["ATLAS", "KEEPER"],
+                required_agents=["ATLAS", "kstated"],
             ))
         if metrics.get("cpu", 0) > 0.8:
             scenarios.append(FutureScenario(
@@ -312,7 +312,7 @@ class DefaultModeNetwork:
     async def extract_cross_session_patterns(self) -> list[CrossSessionPattern]:
         if not self.memory:
             return []
-        from inception.memory.types import MemoryQuery, MemoryType
+        from cle.memory.types import MemoryQuery, MemoryType
         result = await self.memory.query(MemoryQuery(text="*", memory_type=MemoryType.EPISODIC, limit=100))
         if not result.memories:
             return []

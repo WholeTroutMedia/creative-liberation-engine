@@ -11,8 +11,8 @@ import logging
 import re
 from typing import Any, Optional
 
-from inception.agents.base import InceptionAgent
-from inception.agents.registry import AgentRegistry
+from cle.agents.base import InceptionAgent
+from cle.agents.registry import AgentRegistry
 
 logger = logging.getLogger(__name__)
 
@@ -22,8 +22,8 @@ logger = logging.getLogger(__name__)
 # ============================================================
 
 ROUTE_PATTERNS: dict[str, list[str]] = {
-    # Aurora Hive
-    "BOLT": [
+    # kuid Hive
+    "kbuildd": [
         r"\b(code|implement|build|create|write|fix|debug|refactor)\b",
         r"\b(function|class|module|component|api|endpoint)\b",
         r"\b(python|typescript|javascript|react|fastapi)\b",
@@ -32,12 +32,12 @@ ROUTE_PATTERNS: dict[str, list[str]] = {
         r"\b(browser|navigate|scrape|automat|selenium|playwright)\b",
         r"\b(click|scroll|screenshot|web\s*page)\b",
     ],
-    "Aurora": [
+    "kuid": [
         r"\b(design|architect|ui|ux|layout|visual|aesthetic)\b",
         r"\b(color|font|style|theme|component\s*library)\b",
     ],
-    # Keeper Hive
-    "KEEPER": [
+    # kstated Hive
+    "kstated": [
         r"\b(organize|structure|catalog|index|knowledge)\b",
         r"\b(documentation|wiki|reference|archive)\b",
     ],
@@ -49,8 +49,8 @@ ROUTE_PATTERNS: dict[str, list[str]] = {
         r"\b(document|readme|guide|tutorial|api\s*docs)\b",
         r"\b(changelog|specification|blueprint)\b",
     ],
-    # Lex Hive
-    "LEX": [
+    # kdocsd Hive
+    "kdocsd": [
         r"\b(legal|compliance|license|privacy|gdpr|terms)\b",
         r"\b(contract|agreement|policy)\b",
     ],
@@ -94,14 +94,14 @@ class TaskRouter:
     Usage:
         router = TaskRouter(registry)
         matches = router.route("Build a FastAPI endpoint for user auth")
-        # Returns: [("BOLT", 3), ("SIGNAL", 1)]
+        # Returns: [("kbuildd", 3), ("SIGNAL", 1)]
     """
 
     # Hive priority for tie-breaking (lower = higher priority)
     HIVE_PRIORITY: dict[str, int] = {
-        "AURORA": 1,
-        "KEEPER": 2,
-        "LEX": 3,
+        "kuid": 1,
+        "kstated": 2,
+        "kdocsd": 3,
         "SWITCHBOARD": 4,
         "BROADCAST": 5,
         "AVERI": 6,
@@ -163,10 +163,10 @@ class TaskRouter:
             logger.info(f"Routed task to: {names}")
         else:
             logger.warning(f"No agent matched for task: {task[:80]}...")
-            # Default to BOLT for unmatched tasks in SHIP mode
-            if mode == "ship" and self.registry.get("BOLT"):
-                result = [("BOLT", 0.1)]
-                logger.info("Defaulting to BOLT for unmatched SHIP task")
+            # Default to kbuildd for unmatched tasks in SHIP mode
+            if mode == "ship" and self.registry.get("kbuildd"):
+                result = [("kbuildd", 0.1)]
+                logger.info("Defaulting to kbuildd for unmatched SHIP task")
 
         return result
 

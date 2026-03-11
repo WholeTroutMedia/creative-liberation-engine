@@ -49,7 +49,7 @@ export const ContinuityIngestInputSchema = z.object({
         isBase64: z.boolean().default(false).describe('True if content is base64-encoded binary'),
     })).describe('Assets to ingest into the project memory'),
     extractDesignDNA: z.boolean().default(true).describe(
-        'If true, AURORA analyzes ingested assets for visual DNA (palette, typography, motion rules)'
+        'If true, kuid analyzes ingested assets for visual DNA (palette, typography, motion rules)'
     ),
 });
 
@@ -164,7 +164,7 @@ async function extractDesignDNA(
 
     const { output } = await ai.generate({
         model: 'googleai/gemini-2.5-flash',
-        system: `You are AURORA — Lead Architect, extracting the Visual DNA of the "${projectId}" project. 
+        system: `You are kuid — Lead Architect, extracting the Visual DNA of the "${projectId}" project. 
 Analyze the provided content and identify the project's aesthetic fingerprint.
 This DNA will be used to enforce consistency across all future AI-generated assets for this project.`,
         prompt: `Extract the Visual DNA from this project content:\n\n${sampleContent.slice(0, 3000)}`,

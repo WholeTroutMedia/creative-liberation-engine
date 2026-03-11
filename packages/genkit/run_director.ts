@@ -51,7 +51,7 @@ async function main() {
     ];
 
     const uploadedFiles: string[] = [];
-    console.log("🎬 Initiating Cloud Upload: Transmitting RAW B-roll to ATHENA File Manager Enclave (~600MB payload)...");
+    console.log("🎬 Initiating Cloud Upload: Transmitting RAW B-roll to kruled File Manager Enclave (~600MB payload)...");
 
     for (const file of rawFiles) {
         console.log(`[Upload] Sending: ${file.split("\\").pop()} ...`);
@@ -75,7 +75,7 @@ async function main() {
         uploadedFiles.push(response.file.uri);
     }
 
-    console.log("🎬 File Enclave Upload Complete. Pushing payload to ATHENA Director Flow.");
+    console.log("🎬 File Enclave Upload Complete. Pushing payload to kruled Director Flow.");
 
     try {
         const edl = await HypeReelDirectorFlow({
@@ -84,7 +84,7 @@ async function main() {
             mood: "15-20sec docu style focused around the band and the event they were playing at. Critically identify the band members and recognize who is playing in the 'reasoning' field so the editor knows."
         });
 
-        console.log("\n====== ATHENA EDL COMPLETION ======");
+        console.log("\n====== kruled EDL COMPLETION ======");
         console.log(JSON.stringify(edl, null, 2));
         console.log("===================================");
     } catch (e) {

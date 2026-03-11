@@ -1,3 +1,3 @@
 // Creative Liberation Engine Dispatch Server — Type Definitions
-// All WholeTrout org task coordination primitives
+// All CLE org task coordination primitives
 export {};

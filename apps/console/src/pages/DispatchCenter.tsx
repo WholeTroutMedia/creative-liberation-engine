@@ -47,7 +47,7 @@ const WORKSTREAM_COLORS: Record<string, string> = {
     'genkit-server': '#F5A524',
     'comet-browser': '#4285F4',
     'console-ui-c': '#7c3aed',
-    'inception-core': '#9B72CF',
+    'cle-core': '#9B72CF',
     'synology-mcp': '#20B2AA',
     'spatial-visionos': '#FF6B35',
     'free': 'rgba(255,255,255,0.3)',
@@ -488,7 +488,7 @@ export default function DispatchCenter() {
                         <SectionHeader title="AVAILABLE WORKSTREAMS" />
                         <div className="dc-ws-list">
                             {[
-                                'genkit-flows', 'genkit-server', 'inception-core',
+                                'genkit-flows', 'genkit-server', 'cle-core',
                                 'synology-mcp', 'comet-browser', 'spatial-visionos', 'free',
                             ].map(ws => {
                                 const wc = wsColor(ws)

@@ -3,7 +3,7 @@ import * as path from 'path';
 import type { Task } from './types.js';
 
 // The path where the JSONL training corpus accumulates
-const CORPUS_DIR = path.join(process.cwd(), '../../.agents/scribe/training_corpus');
+const CORPUS_DIR = path.join(process.cwd(), '../../.agents/klogd/training_corpus');
 const CORPUS_FILE = path.join(CORPUS_DIR, 'baseline.jsonl');
 
 interface ArchaeonTriple {
@@ -18,7 +18,7 @@ interface ArchaeonTriple {
 
 /**
  * Transforms a completed dispatch task into a formal LoRA training triple
- * and appends it to the SCRIBE JSONL corpus for future fine-tuning.
+ * and appends it to the klogd JSONL corpus for future fine-tuning.
  */
 export async function logArchaeonTrainingSample(task: Task, success: boolean, executionTimeMs: number = 0) {
     try {
@@ -50,8 +50,8 @@ export async function logArchaeonTrainingSample(task: Task, success: boolean, ex
         }
 
         fs.appendFileSync(CORPUS_FILE, JSON.stringify(sample) + '\n');
-        console.log(`[archaeon] Logged training sample for ${task.id} -> ${sample.outcome_signal}`);
+        console.log(`[klorad] Logged training sample for ${task.id} -> ${sample.outcome_signal}`);
     } catch (err) {
-        console.error(`[archaeon] Failed to write training sample:`, err);
+        console.error(`[klorad] Failed to write training sample:`, err);
     }
 }

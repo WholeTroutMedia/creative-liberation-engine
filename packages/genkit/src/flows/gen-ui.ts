@@ -1,11 +1,11 @@
 /**
- * genUiFlow — IRIS Generative UI Component Builder
- * IRIS agent | AURORA hive
+ * genUiFlow — ksignd Generative UI Component Builder
+ * ksignd agent | kuid hive
  *
  * Route: POST /api/genUiFlow
  * Called by: console-ui GenUI tab, nas-watcher daemon for gen-ui workstream tasks
  *
- * Given a component specification, IRIS uses Gemini to:
+ * Given a component specification, ksignd uses Gemini to:
  *   1. Synthesise a complete React + TypeScript component
  *   2. Apply a clean, context-appropriate CSS architecture automatically
  *   3. Generate variant tokens and responsive CSS
@@ -15,7 +15,7 @@
  *
  * Constitutional:
  *   - Article IX (No MVPs): components must be type-safe, accessible (WCAG AA),
- *     and use @inception/design-tokens CSS variables exclusively.
+ *     and use @cle/design-tokens CSS variables exclusively.
  *   - Article VI (Spatial Design): Logical component hierarchy matching the design spec.
  */
 
@@ -68,11 +68,11 @@ export const genUiFlow = ai.defineFlow(
     },
     async (input) => {
         const start = Date.now();
-        recordAgentCall('IRIS');
+        recordAgentCall('ksignd');
 
-        console.log(`[IRIS:GEN_UI] ▶ Generating ${input.componentName} (${input.variant})`);
+        console.log(`[ksignd:GEN_UI] ▶ Generating ${input.componentName} (${input.variant})`);
 
-        const systemPrompt = `You are IRIS — the Creative Liberation Engine's generative UI agent and visual architect.
+        const systemPrompt = `You are ksignd — the Creative Liberation Engine's generative UI agent and visual architect.
 Your role: generate production-quality React + TypeScript components using the Creative Liberation Engine Design System.
 
 Design language: Blank Canvas / Contextual
@@ -154,7 +154,7 @@ Apply a fresh, contextual design language. Use CSS variables to scale the tokens
         }
 
         const durationMs = Date.now() - start;
-        console.log(`[IRIS:GEN_UI] ✔ ${input.componentName} generated in ${durationMs}ms (${parsed.component.content.length} chars)`);
+        console.log(`[ksignd:GEN_UI] ✔ ${input.componentName} generated in ${durationMs}ms (${parsed.component.content.length} chars)`);
 
         return { componentName: input.componentName, ...parsed };
     }

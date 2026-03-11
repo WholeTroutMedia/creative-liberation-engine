@@ -9,7 +9,7 @@ from fastapi import APIRouter, File, UploadFile, HTTPException, BackgroundTasks
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
 
-from inception.vfx_pipeline import VideoParser, MocapEngine, SceneReconEngine, RotoEngine
+from cle.vfx_pipeline import VideoParser, MocapEngine, SceneReconEngine, RotoEngine
 import base64
 import cv2
 

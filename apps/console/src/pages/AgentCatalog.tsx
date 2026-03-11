@@ -2,25 +2,25 @@ import { useState } from 'react'
 
 /* ── Agent data ──────────────────────────────────────────────── */
 const AGENTS = [
-    // AURORA hive
-    { id: 'athena', name: 'ATHENA', hive: 'AURORA', role: 'Supreme Orchestrator', mode: 'IDEATE', color: '#F5A524', lead: true, desc: 'Strategic command, agent dispatch, constitutional guardian. The mind of Genesis.' },
-    { id: 'vera', name: 'VERA', hive: 'AURORA', role: 'Vision & Research', mode: 'IDEATE', color: '#F5A524', lead: false, desc: 'Deep research synthesis, vision extraction, competitive analysis, trend mapping.' },
-    { id: 'iris', name: 'IRIS', hive: 'AURORA', role: 'Creative Director', mode: 'IDEATE', color: '#F5A524', lead: false, desc: 'Aesthetic vision, brand identity, design language decisions, creative leadership.' },
+    // kuid hive
+    { id: 'kruled', name: 'kruled', hive: 'kuid', role: 'Supreme Orchestrator', mode: 'IDEATE', color: '#F5A524', lead: true, desc: 'Strategic command, agent dispatch, constitutional guardian. The mind of Genesis.' },
+    { id: 'kstrigd', name: 'kstrigd', hive: 'kuid', role: 'Vision & Research', mode: 'IDEATE', color: '#F5A524', lead: false, desc: 'Deep research synthesis, vision extraction, competitive analysis, trend mapping.' },
+    { id: 'ksignd', name: 'ksignd', hive: 'kuid', role: 'Creative Director', mode: 'IDEATE', color: '#F5A524', lead: false, desc: 'Aesthetic vision, brand identity, design language decisions, creative leadership.' },
     // AVERI continuation
     { id: 'averi-1', name: 'AVERI-1', hive: 'AVERI', role: 'Intake Specialist', mode: 'PLAN', color: '#C17D4A', lead: true, desc: 'Client onboarding, smart intake sessions, project intent extraction, brief generation.' },
     { id: 'averi-2', name: 'AVERI-2', hive: 'AVERI', role: 'Brief Synthesiser', mode: 'PLAN', color: '#C17D4A', lead: false, desc: 'Creative brief generation from raw client input. Identifies scope, deliverables, timeline.' },
-    { id: 'lex-1', name: 'LEX-1', hive: 'LEX', role: 'Contract Drafter', mode: 'PLAN', color: '#4285F4', lead: true, desc: 'AI-driven legal contract generation. Jurisdiction-aware, multi-clause, Stripe integration.' },
-    { id: 'lex-2', name: 'LEX-2', hive: 'LEX', role: 'Compliance Officer', mode: 'VALIDATE', color: '#4285F4', lead: false, desc: 'Reviews agent outputs against constitutional articles. Flag, reject, or surface violations.' },
-    // KEEPER hive
-    { id: 'keeper-1', name: 'KEEPER-1', hive: 'KEEPER', role: 'Memory Archivist', mode: 'SHIP', color: '#9B72CF', lead: true, desc: 'Manages ChromaDB vector store, RAG retrieval, session context, and memory operations.' },
-    { id: 'keeper-2', name: 'KEEPER-2', hive: 'KEEPER', role: 'Knowledge Synthesiser', mode: 'IDEATE', color: '#9B72CF', lead: false, desc: 'Distills conversations into persistent knowledge items. Builds long-term institutional memory.' },
-    { id: 'keeper-3', name: 'KEEPER-3', hive: 'KEEPER', role: 'Search & Retrieval', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Semantic and hybrid search across the knowledge base. Ranks by relevance and recency.' },
-    { id: 'keeper-4', name: 'KEEPER-4', hive: 'KEEPER', role: 'NAS Sync Agent', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Bi-directional sync between local memory and Synology NAS sovereign storage.' },
-    { id: 'keeper-5', name: 'KEEPER-5', hive: 'KEEPER', role: 'GitHub Memory Store', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Pushes distilled knowledge to GitHub for persistent cross-session AI memory.' },
+    { id: 'kdocsd-1', name: 'kdocsd-1', hive: 'kdocsd', role: 'Contract Drafter', mode: 'PLAN', color: '#4285F4', lead: true, desc: 'AI-driven legal contract generation. Jurisdiction-aware, multi-clause, Stripe integration.' },
+    { id: 'kdocsd-2', name: 'kdocsd-2', hive: 'kdocsd', role: 'Compliance Officer', mode: 'VALIDATE', color: '#4285F4', lead: false, desc: 'Reviews agent outputs against constitutional articles. Flag, reject, or surface violations.' },
+    // kstated hive
+    { id: 'kstated-1', name: 'kstated-1', hive: 'kstated', role: 'Memory Archivist', mode: 'SHIP', color: '#9B72CF', lead: true, desc: 'Manages ChromaDB vector store, RAG retrieval, session context, and memory operations.' },
+    { id: 'kstated-2', name: 'kstated-2', hive: 'kstated', role: 'Knowledge Synthesiser', mode: 'IDEATE', color: '#9B72CF', lead: false, desc: 'Distills conversations into persistent knowledge items. Builds long-term institutional memory.' },
+    { id: 'kstated-3', name: 'kstated-3', hive: 'kstated', role: 'Search & Retrieval', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Semantic and hybrid search across the knowledge base. Ranks by relevance and recency.' },
+    { id: 'kstated-4', name: 'kstated-4', hive: 'kstated', role: 'NAS Sync Agent', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Bi-directional sync between local memory and Synology NAS sovereign storage.' },
+    { id: 'kstated-5', name: 'kstated-5', hive: 'kstated', role: 'GitHub Memory Store', mode: 'SHIP', color: '#9B72CF', lead: false, desc: 'Pushes distilled knowledge to GitHub for persistent cross-session AI memory.' },
     // SWITCHBOARD hive
     { id: 'relay', name: 'RELAY', hive: 'SWITCHBOARD', role: 'Provider Router', mode: 'SHIP', color: '#22c55e', lead: true, desc: 'Routes AI requests across providers with fallback/retry logic and constitutional middleware.' },
     { id: 'switchboard-2', name: 'NEXUS', hive: 'SWITCHBOARD', role: 'Model Selector', mode: 'SHIP', color: '#22c55e', lead: false, desc: 'Dynamic model selection based on task requirements, latency targets, and cost constraints.' },
-    { id: 'scribe', name: 'SCRIBE', hive: 'SWITCHBOARD', role: 'Session Recorder', mode: 'SHIP', color: '#22c55e', lead: false, desc: 'Logs all AI interactions, decisions, and outputs for traceability and constitutional review.' },
+    { id: 'klogd', name: 'klogd', hive: 'SWITCHBOARD', role: 'Session Recorder', mode: 'SHIP', color: '#22c55e', lead: false, desc: 'Logs all AI interactions, decisions, and outputs for traceability and constitutional review.' },
     { id: 'genkit-bridge', name: 'BRIDGE', hive: 'SWITCHBOARD', role: 'Genkit Bridge', mode: 'SHIP', color: '#22c55e', lead: false, desc: 'Sidecar service enabling v4 Python engine to use v5 Genkit multi-provider orchestration.' },
     // BROADCAST hive
     { id: 'atlas', name: 'ATLAS', hive: 'BROADCAST', role: 'NBC Lead', mode: 'SHIP', color: '#FF6B35', lead: true, desc: 'Leads NBC Nexus broadcast platform. Coordinates content pipeline, scheduling, publishing.' },

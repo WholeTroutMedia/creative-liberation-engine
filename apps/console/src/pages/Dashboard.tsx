@@ -55,12 +55,12 @@ const GENESIS_SERVICES: Svc[] = [
 
 /* ── Hive roster ─────────────────────────────────────────────── */
 const HIVES = [
-    { name: 'AURORA', agents: 3, lead: 'ATHENA', color: '#F5A524', role: 'Orchestration & Strategy' },
-    { name: 'KEEPER', agents: 5, lead: 'VERA', color: '#9B72CF', role: 'Research & Knowledge' },
-    { name: 'LEX', agents: 2, lead: 'LEX-1', color: '#4285F4', role: 'Legal & Contracts' },
+    { name: 'kuid', agents: 3, lead: 'kruled', color: '#F5A524', role: 'Orchestration & Strategy' },
+    { name: 'kstated', agents: 5, lead: 'kstrigd', color: '#9B72CF', role: 'Research & Knowledge' },
+    { name: 'kdocsd', agents: 2, lead: 'kdocsd-1', color: '#4285F4', role: 'Legal & Contracts' },
     { name: 'SWITCHBOARD', agents: 4, lead: 'RELAY', color: '#22c55e', role: 'Provider Orchestration' },
     { name: 'BROADCAST', agents: 7, lead: 'ATLAS', color: '#FF6B35', role: 'Content & Media' },
-    { name: 'AVERI', agents: 6, lead: 'IRIS', color: '#C17D4A', role: 'Creative Leadership' },
+    { name: 'AVERI', agents: 6, lead: 'ksignd', color: '#C17D4A', role: 'Creative Leadership' },
     { name: 'SPECIALIST', agents: 6, lead: 'NEXUS', color: '#20B2AA', role: 'Domain Execution' },
     { name: 'VALIDATOR', agents: 4, lead: 'GHOST', color: '#ef4444', role: 'QA & Constitution' },
     { name: 'ENHANCEMENT', agents: 3, lead: 'OPTIMUS', color: '#8B5CF6', role: 'Self-Optimisation' },

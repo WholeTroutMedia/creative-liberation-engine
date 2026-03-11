@@ -72,7 +72,7 @@ async function ensureCollection(name: string): Promise<string | null> {
 
 export const chromaRetriever = ai.defineRetriever(
     {
-        name: 'inception/chromadb',
+        name: 'cle/chromadb',
         configSchema: z.object({
             nResults: z.number().default(10).describe('Number of results to retrieve'),
             projectId: z.string().optional().describe(

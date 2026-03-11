@@ -3,17 +3,17 @@ import {
   Tooltip, ResponsiveContainer, BarChart, Bar
 } from 'recharts';
 import { Activity, Terminal, GitCommit, GitMerge, Cpu, Eye, ArrowUpRight } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardBody as CardContent } from '@inception/ui';
+import { Card, CardHeader, CardTitle, CardBody as CardContent } from '@cle/ui';
 
 // High density mock representation of actual local/dispatch execution data
 const performanceData = [
-  { time: '04:00', inception: 1200, human: 40, variance: 1160 },
-  { time: '04:10', inception: 1800, human: 42, variance: 1758 },
-  { time: '04:20', inception: 2600, human: 75, variance: 2525 },
-  { time: '04:30', inception: 4100, human: 110, variance: 3990 },
-  { time: '04:40', inception: 5800, human: 135, variance: 5665 },
-  { time: '04:50', inception: 6400, human: 150, variance: 6250 },
-  { time: '05:00', inception: 7021, human: 155, variance: 6866 },
+  { time: '04:00', cle: 1200, human: 40, variance: 1160 },
+  { time: '04:10', cle: 1800, human: 42, variance: 1758 },
+  { time: '04:20', cle: 2600, human: 75, variance: 2525 },
+  { time: '04:30', cle: 4100, human: 110, variance: 3990 },
+  { time: '04:40', cle: 5800, human: 135, variance: 5665 },
+  { time: '04:50', cle: 6400, human: 150, variance: 6250 },
+  { time: '05:00', cle: 7021, human: 155, variance: 6866 },
 ];
 
 const commitDistribution = [
@@ -146,7 +146,7 @@ export default function VelocityTelemetry() {
                 />
                 <Area 
                   type="monotone" 
-                  dataKey="inception" 
+                  dataKey="cle" 
                   stroke="#6366f1" 
                   strokeWidth={2}
                   fillOpacity={1} 

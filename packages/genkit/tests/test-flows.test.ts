@@ -17,7 +17,7 @@ describe('TaskClassification Schema', () => {
             modeSuggestion: 'SHIP' as const,
             requiresBrowser: false,
             estimatedCredits: 2,
-            suggestedAgents: ['BOLT', 'AURORA'],
+            suggestedAgents: ['kbuildd', 'kuid'],
             reasoning: 'This is a standard feature build requiring code and design.',
         };
 
@@ -33,7 +33,7 @@ describe('TaskClassification Schema', () => {
             modeSuggestion: 'SHIP',
             requiresBrowser: false,
             estimatedCredits: 1,
-            suggestedAgents: ['BOLT'],
+            suggestedAgents: ['kbuildd'],
             reasoning: 'Test',
         };
 
@@ -49,7 +49,7 @@ describe('TaskClassification Schema', () => {
             modeSuggestion: 'INVALID_MODE', // Invalid
             requiresBrowser: false,
             estimatedCredits: 1,
-            suggestedAgents: ['BOLT'],
+            suggestedAgents: ['kbuildd'],
             reasoning: 'Test',
         };
 
@@ -68,7 +68,7 @@ describe('TaskClassification Schema', () => {
                 modeSuggestion: mode,
                 requiresBrowser: false,
                 estimatedCredits: 1,
-                suggestedAgents: ['BOLT'],
+                suggestedAgents: ['kbuildd'],
                 reasoning: `Testing ${mode} mode`,
             };
 
@@ -79,10 +79,10 @@ describe('TaskClassification Schema', () => {
 });
 
 // =============================================================================
-// ATHENA Schema Tests
+// kruled Schema Tests
 // =============================================================================
 
-import { AthenaInputSchema, AthenaOutputSchema } from '../src/flows/athena.js';
+import { AthenaInputSchema, AthenaOutputSchema } from '../src/flows/kruled.js';
 
 describe('AthenaInputSchema', () => {
     it('should validate valid strategy mode input', () => {
@@ -136,7 +136,7 @@ describe('AthenaInputSchema', () => {
 });
 
 describe('AthenaOutputSchema', () => {
-    it('should validate a complete ATHENA output', () => {
+    it('should validate a complete kruled output', () => {
         const result = AthenaOutputSchema.safeParse({
             directive: 'Build the AVERI gateway as a constitutional middleware layer',
             rationale: 'Centralizing constitutional review at the gateway ensures all agents comply',
@@ -148,10 +148,10 @@ describe('AthenaOutputSchema', () => {
                     recommendation: 'preferred',
                 },
             ],
-            suggestedAgents: ['BOLT', 'COMPASS'],
+            suggestedAgents: ['kbuildd', 'COMPASS'],
             nextMode: 'SHIP',
             constitutionalFlags: ['Article IX: Ship Complete'],
-            athenaSignature: 'ATHENA',
+            athenaSignature: 'kruled',
         });
         expect(result.success).toBe(true);
     });
@@ -161,7 +161,7 @@ describe('AthenaOutputSchema', () => {
             directive: 'test',
             rationale: 'test',
             nextMode: 'EXECUTE', // invalid — not in enum
-            athenaSignature: 'ATHENA',
+            athenaSignature: 'kruled',
         });
         expect(result.success).toBe(false);
     });
@@ -171,7 +171,7 @@ describe('AthenaOutputSchema', () => {
             directive: 'test',
             rationale: 'test',
             nextMode: 'SHIP',
-            athenaSignature: 'VERA', // must be literal 'ATHENA'
+            athenaSignature: 'kstrigd', // must be literal 'kruled'
         });
         expect(result.success).toBe(false);
     });
@@ -187,7 +187,7 @@ describe('AthenaOutputSchema', () => {
             expect(result.data.options).toEqual([]);
             expect(result.data.suggestedAgents).toEqual([]);
             expect(result.data.constitutionalFlags).toEqual([]);
-            expect(result.data.athenaSignature).toBe('ATHENA');
+            expect(result.data.athenaSignature).toBe('kruled');
         }
     });
 });

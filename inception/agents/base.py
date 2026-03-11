@@ -45,12 +45,12 @@ class InceptionAgent:
     Base class for all Creative Liberation Engine agents.
 
     ADK-inspired definition pattern:
-        bolt = InceptionAgent(
-            name="BOLT",
+        kbuildd = InceptionAgent(
+            name="kbuildd",
             model="gemini-2.5-flash",
-            hive="AURORA",
+            hive="kuid",
             role="builder",
-            instruction="You are BOLT, the primary coder...",
+            instruction="You are kbuildd, the primary coder...",
             tools=[file_write, file_read, git_commit],
             output_schema=BuildResult,
             active_modes=["ship"],
@@ -69,7 +69,7 @@ class InceptionAgent:
         self,
         name: str,
         model: str = "gemini-2.5-flash",
-        hive: str = "AURORA",
+        hive: str = "kuid",
         role: str = "builder",
         instruction: str = "",
         tools: Optional[list[Callable]] = None,

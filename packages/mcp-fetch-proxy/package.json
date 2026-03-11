@@ -1,5 +1,5 @@
 {
-    "name": "@inception/mcp-fetch-proxy",
+    "name": "@cle/mcp-fetch-proxy",
     "version": "1.0.0",
     "description": "MCP Fetch Proxy — enables COMET browser to POST to dispatch/API endpoints via a trusted gateway",
     "bin": {

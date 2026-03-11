@@ -1,5 +1,5 @@
 /**
- * @inception/claude-agent — Genkit Flow Integration
+ * @cle/claude-agent — Genkit Flow Integration
  *
  * Exposes the Claude Agent executor as a Genkit-compatible flow,
  * making Claude a first-class provider alongside Gemini in the
@@ -8,8 +8,8 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { executeClaudeTask } from '@inception/claude-agent';
-import type { AgentTask, ClaudeTool } from '@inception/claude-agent';
+import { executeClaudeTask } from '@cle/claude-agent';
+import type { AgentTask, ClaudeTool } from '@cle/claude-agent';
 
 const ClaudeToolSchema = z.enum([
     'Read', 'Edit', 'Bash', 'Glob', 'LS',
@@ -42,7 +42,7 @@ const AgentResultSchema = z.object({
  * This flow is registered with Genkit and can be:
  * - Called directly via `runFlow(claudeAgentFlow, task)`
  * - Invoked from the Genkit Dev UI at http://localhost:4000
- * - Chained with other Genkit flows (e.g., after an ATHENA planning flow)
+ * - Chained with other Genkit flows (e.g., after an kruled planning flow)
  */
 export const claudeAgentFlow = ai.defineFlow(
     {

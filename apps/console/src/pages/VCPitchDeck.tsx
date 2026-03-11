@@ -127,7 +127,7 @@ const SLIDES: SlideContent[] = [
           <Shield color="#9B72CF" size={36} style={{ marginBottom: 12 }} />
           <h3 style={{ margin: '0 0 10px', fontSize: 24, color: '#9B72CF', fontWeight: 800 }}>Zero Admin</h3>
           <div style={{ color: 'rgba(245,240,232,0.5)', fontSize: 16, lineHeight: 1.6 }}>
-            Intake, proposals, legally-sound contracts, and provisioning happen autonomously via LEX and the Zero-Day server.
+            Intake, proposals, legally-sound contracts, and provisioning happen autonomously via kdocsd and the Zero-Day server.
           </div>
         </TiltCard>
         <TiltCard bg="rgba(34,197,94,0.05)" borderColor="rgba(34,197,94,0.2)">
@@ -164,7 +164,7 @@ const SLIDES: SlideContent[] = [
              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div style={{ color: '#ef4444', fontSize: 16, textDecoration: 'line-through', opacity: 0.7 }}>4-6 hours (Human)</div>
               <div style={{ color: '#22c55e', fontSize: 22, fontWeight: 900, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-                <ArrowRight size={18} color="rgba(255,255,255,0.3)" /> Instant (LEX)
+                <ArrowRight size={18} color="rgba(255,255,255,0.3)" /> Instant (kdocsd)
               </div>
             </div>
           </TiltCard>
@@ -174,7 +174,7 @@ const SLIDES: SlideContent[] = [
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <div style={{ color: '#ef4444', fontSize: 16, textDecoration: 'line-through', opacity: 0.7 }}>Continuous drain</div>
               <div style={{ color: '#22c55e', fontSize: 22, fontWeight: 900, display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-                <ArrowRight size={18} color="rgba(255,255,255,0.3)" /> Built-in (VERA)
+                <ArrowRight size={18} color="rgba(255,255,255,0.3)" /> Built-in (kstrigd)
               </div>
             </div>
           </TiltCard>

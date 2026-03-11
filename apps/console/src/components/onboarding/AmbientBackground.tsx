@@ -6,7 +6,7 @@ export const AmbientBackground = () => {
             {/* Background base */}
             <div className="absolute inset-0 bg-primary opacity-80" />
 
-            {/* Aurora glow blobs */}
+            {/* kuid glow blobs */}
             <motion.div
                 animate={{
                     scale: [1, 1.2, 1],

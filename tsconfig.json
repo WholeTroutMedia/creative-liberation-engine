@@ -4,7 +4,7 @@
     // so the LS can resolve `../../tsconfig.base.json` from any package tsconfig.
     //
     // For building individual packages, run `tsc` inside each package directory.
-    // For workspace-wide type checking: pnpm --filter "@inception/*" type-check
+    // For workspace-wide type checking: pnpm --filter "@cle/*" type-check
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
         "composite": true,
@@ -91,10 +91,10 @@
             "path": "packages/god-prompt"
         },
         {
-            "path": "packages/inception-browser"
+            "path": "packages/cle-browser"
         },
         {
-            "path": "packages/inception-core"
+            "path": "packages/cle-core"
         },
         {
             "path": "packages/nas-watcher"

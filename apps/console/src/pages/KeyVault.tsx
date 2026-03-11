@@ -30,9 +30,9 @@ export default function KeyVault() {
     const [customDraftKey, setCustomDraftKey] = useState('')
     const [customDraftValue, setCustomDraftValue] = useState('')
 
-    // Load from Dispatch Vault
+    // Load from Dispatch kstored
     useEffect(() => {
-        fetch('http://localhost:5050/api/vault')
+        fetch('http://localhost:5050/api/kstored')
             .then(res => res.json())
             .then(data => {
                 if (data.secrets) {
@@ -41,14 +41,14 @@ export default function KeyVault() {
                     setKeys(loaded)
                 }
             })
-            .catch(err => console.error('Failed to load vault keys', err));
+            .catch(err => console.error('Failed to load kstored keys', err));
     }, [])
 
     const saveCustomKey = async () => {
         if (!customDraftKey.trim() || !customDraftValue.trim()) return;
         const id = customDraftKey.trim();
         const val = customDraftValue.trim();
-        await fetch('http://localhost:5050/api/vault', {
+        await fetch('http://localhost:5050/api/kstored', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: id, value: val })
@@ -64,7 +64,7 @@ export default function KeyVault() {
         const val = (drafts[id] ?? '').trim()
         if (!val) return
 
-        await fetch('http://localhost:5050/api/vault', {
+        await fetch('http://localhost:5050/api/kstored', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ title: id, value: val })
@@ -77,7 +77,7 @@ export default function KeyVault() {
     }
 
     const removeKey = async (id: string) => {
-        await fetch(`http://localhost:5050/api/vault/${id}`, { method: 'DELETE' });
+        await fetch(`http://localhost:5050/api/kstored/${id}`, { method: 'DELETE' });
         setKeys(prev => { const n = { ...prev }; delete n[id]; return n })
     }
 
@@ -90,7 +90,7 @@ export default function KeyVault() {
 
             {/* Header */}
             <div className="kv-header">
-                <div className="kv-supertitle">KEY VAULT</div>
+                <div className="kv-supertitle">KEY kstored</div>
                 <div className="kv-title-row">
                     <h1 className="kv-title">API Keys</h1>
                     <span className="kv-count">

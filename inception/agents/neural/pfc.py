@@ -1,5 +1,5 @@
 """
-Creative Liberation Engine v5 — Prefrontal Cortex (PFC) Planner
+Creative Liberation Engine v5 — Prefrontal CORE (PFC) Planner
 
 Higher-level planning and decision-making system.
 Coordinates between neural subsystems (DMN, attractors, small-world)
@@ -8,7 +8,7 @@ and provides executive function for complex multi-step tasks.
 Lineage: v3 planner/agent.json + attractor dynamics + DMN integration → v5
 
 Research Foundation:
-- BioRxiv: Mechanistic theory of planning in prefrontal cortex (2025)
+- BioRxiv: Mechanistic theory of planning in prefrontal CORE (2025)
 
 The PFC is the "conductor" that orchestrates all other neural systems.
 """
@@ -185,10 +185,10 @@ class PrefrontalCortex:
     async def _assign_agents(self, steps: list[PlanStep], context: PlanningContext) -> list[PlanStep]:
         """Assign the best agent to each step."""
         role_mapping = {
-            "analyze": "ARCH", "design": "Aurora", "architect": "Aurora",
-            "implement": "BOLT", "build": "BOLT", "write": "BOLT", "code": "BOLT",
-            "test": "BOLT", "document": "CODEX", "review": "ARCH",
-            "compliance": "COMPASS", "constitutional": "COMPASS", "legal": "LEX",
+            "analyze": "ARCH", "design": "kuid", "architect": "kuid",
+            "implement": "kbuildd", "build": "kbuildd", "write": "kbuildd", "code": "kbuildd",
+            "test": "kbuildd", "document": "CODEX", "review": "ARCH",
+            "compliance": "COMPASS", "constitutional": "COMPASS", "legal": "kdocsd",
         }
 
         for step in steps:
@@ -199,7 +199,7 @@ class PrefrontalCortex:
                         step.agent_name = agent
                         break
                 if not step.agent_name:
-                    step.agent_name = "BOLT"
+                    step.agent_name = "kbuildd"
 
         return steps
 
@@ -273,7 +273,7 @@ class PrefrontalCortex:
             del self._active_plans[plan.id]
 
             if self.memory:
-                from inception.memory.types import Memory, MemoryType
+                from cle.memory.types import Memory, MemoryType
                 await self.memory.store(Memory(
                     content=f"Plan completed: {plan.goal} ({len(plan.steps)} steps, {plan.actual_ms:.0f}ms)",
                     memory_type=MemoryType.PROCEDURAL,

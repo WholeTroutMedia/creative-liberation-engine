@@ -11,9 +11,9 @@ Crew members:
 Lineage: New in v5 — evolved from v4's broadcast_agent pattern
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file, write_file
-from inception.agents.tools.web import web_fetch
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file, write_file
+from cle.agents.tools.web import web_fetch
 
 # ANCHOR: Content Publisher
 anchor = InceptionAgent(

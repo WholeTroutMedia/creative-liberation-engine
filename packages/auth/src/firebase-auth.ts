@@ -1,5 +1,5 @@
 /**
- * @inception/auth — Firebase Auth integration
+ * @cle/auth — Firebase Auth integration
  * Helix-A: Phase 1A — React 19 + Vite 5 + GoogleAuthProvider
  * 
  * Provides Firebase Auth for multi-tenant platform with:

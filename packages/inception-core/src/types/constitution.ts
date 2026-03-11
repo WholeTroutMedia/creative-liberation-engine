@@ -1,10 +1,10 @@
 /**
- * @inception/core — Constitutional Governance Types
+ * @cle/core — Constitutional Governance Types
  *
  * Types for constitutional review, article enforcement, and
  * compliance tracking. Zero runtime dependencies.
  *
- * Constitutional: Article III (Constitutional Compliance) — LEX enforces
+ * Constitutional: Article III (Constitutional Compliance) — kdocsd enforces
  * all articles against all agent actions.
  */
 
@@ -38,7 +38,7 @@ export const IMMUTABLE_ARTICLES: readonly ArticleId[] = [0, 1, 3, 5, 17, 18, 19]
 
 // ─── Article Violation ────────────────────────────────────────────────────────
 
-/** A specific article violation detected by LEX or constitutionalPreflight */
+/** A specific article violation detected by kdocsd or constitutionalPreflight */
 export interface ArticleViolation {
     /** Which article was violated */
     article: ArticleId;
@@ -50,7 +50,7 @@ export interface ArticleViolation {
 
 // ─── Constitutional Review ────────────────────────────────────────────────────
 
-/** Full constitutional review result from LEX */
+/** Full constitutional review result from kdocsd */
 export interface ConstitutionalReview {
     /** Whether the action is permitted */
     approved: boolean;
@@ -58,7 +58,7 @@ export interface ConstitutionalReview {
     violations: ArticleViolation[];
     /** Articles that were checked */
     articlesChecked: ArticleId[];
-    /** Reviewer agent (usually 'LEX' or 'COMPASS') */
+    /** Reviewer agent (usually 'kdocsd' or 'COMPASS') */
     reviewedBy: string;
     /** ISO timestamp of when review was performed */
     reviewedAt: string;

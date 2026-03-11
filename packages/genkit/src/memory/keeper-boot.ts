@@ -1,5 +1,5 @@
 /**
- * KEEPER v2 Boot Protocol — SC-04
+ * kstated v2 Boot Protocol — SC-04
  *
  * Replaces flat KI summary with dynamic targeted recall on session start.
  * On boot:
@@ -8,12 +8,12 @@
  *   3. Inject top results as compressed memory brief at top of system prompt
  *   4. Surface critical-importance items as boot alerts
  *
- * This makes KEEPER v2 context-aware from the first token.
+ * This makes kstated v2 context-aware from the first token.
  */
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { scribeRecall } from './scribe.js';
+import { scribeRecall } from './klogd.js';
 import fs from 'fs';
 import path from 'path';
 
@@ -76,7 +76,7 @@ export async function keeperBootRecall(options: {
     const taskContext = explicitTask ?? handoff?.task ?? handoff?.workstream ?? workstream ?? 'general session start';
     const queryWorkstream = workstream ?? handoff?.workstream ?? 'free';
 
-    console.log(`[KEEPER-BOOT] 🚀 Boot recall — task: "${taskContext.slice(0, 60)}" workstream: ${queryWorkstream}`);
+    console.log(`[kstated-BOOT] 🚀 Boot recall — task: "${taskContext.slice(0, 60)}" workstream: ${queryWorkstream}`);
 
     // Multi-query recall: task-specific + workstream-specific
     const [taskResults, workstreamResults] = await Promise.all([
@@ -112,7 +112,7 @@ export async function keeperBootRecall(options: {
         .map(r => `⚪ [${r.category.toUpperCase()}] ${r.content.slice(0, 80)}`);
 
     const memoryBriefLines = [
-        `## KEEPER v2 Memory Brief — ${new Date().toISOString()}`,
+        `## kstated v2 Memory Brief — ${new Date().toISOString()}`,
         `**Task context:** ${taskContext}`,
         `**Workstream:** ${queryWorkstream}`,
         `**Memories recalled:** ${uniqueResults.length}`,
@@ -141,7 +141,7 @@ export async function keeperBootRecall(options: {
     const memoryBrief = memoryBriefLines.join('\n');
     const bootAlerts = criticalItems; // Surface crit items as alerts in boot panel
 
-    console.log(`[KEEPER-BOOT] ✅ Boot brief: ${uniqueResults.length} memories, ${criticalItems.length} critical alerts`);
+    console.log(`[kstated-BOOT] ✅ Boot brief: ${uniqueResults.length} memories, ${criticalItems.length} critical alerts`);
 
     return {
         memoryBrief,

@@ -1,12 +1,12 @@
 /**
- * scribe-mcp unit tests
- * Tests the core SCRIBE memory operations in isolation (without MCP transport).
+ * klogd-mcp unit tests
+ * Tests the core klogd memory operations in isolation (without MCP transport).
  * Exercises: remember, recall, context, forget, handoff logic.
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';
 
-// ─── In-process SCRIBE core (mirrors mcp-server.ts logic, testable) ──────────
+// ─── In-process klogd core (mirrors mcp-server.ts logic, testable) ──────────
 
 export interface MemoryEntry {
   key: string;
@@ -161,78 +161,78 @@ class ScribeStore {
 
 // ─── Tests ───────────────────────────────────────────────────────────────────
 
-let scribe: ScribeStore;
+let klogd: ScribeStore;
 
 beforeEach(() => {
-  scribe = new ScribeStore(`session-test-${Date.now()}`);
+  klogd = new ScribeStore(`session-test-${Date.now()}`);
 });
 
-describe('scribe.remember', () => {
+describe('klogd.remember', () => {
   it('stores a memory entry and returns the key', () => {
-    const result = scribe.remember({ value: 'hello world', source: 'test-agent' });
+    const result = klogd.remember({ value: 'hello world', source: 'test-agent' });
     expect(result.stored).toBe(true);
     expect(result.key).toBeTruthy();
     expect(result.totalMemories).toBe(1);
   });
 
   it('respects a user-provided key', () => {
-    const result = scribe.remember({ key: 'custom-key', value: 'data' });
+    const result = klogd.remember({ key: 'custom-key', value: 'data' });
     expect(result.key).toBe('custom-key');
   });
 
   it('stores multiple entries independently', () => {
-    scribe.remember({ value: 'entry 1' });
-    scribe.remember({ value: 'entry 2' });
-    const r = scribe.remember({ value: 'entry 3' });
+    klogd.remember({ value: 'entry 1' });
+    klogd.remember({ value: 'entry 2' });
+    const r = klogd.remember({ value: 'entry 3' });
     expect(r.totalMemories).toBe(3);
   });
 
   it('stores tags correctly', () => {
-    scribe.remember({ key: 'tagged', value: 'tagged value', tags: ['alpha', 'beta'] });
-    const recall = scribe.recall({ key: 'tagged' });
+    klogd.remember({ key: 'tagged', value: 'tagged value', tags: ['alpha', 'beta'] });
+    const recall = klogd.recall({ key: 'tagged' });
     expect(recall.results[0]?.tags).toEqual(['alpha', 'beta']);
   });
 });
 
-describe('scribe.recall', () => {
+describe('klogd.recall', () => {
   beforeEach(() => {
-    scribe.remember({ key: 'k1', value: 'The quick brown fox', tags: ['animal'] });
-    scribe.remember({ key: 'k2', value: 'Creative Liberation Engine v5', tags: ['engine'] });
-    scribe.remember({ key: 'k3', value: 'SCRIBE memory layer', tags: ['engine', 'memory'] });
+    klogd.remember({ key: 'k1', value: 'The quick brown fox', tags: ['animal'] });
+    klogd.remember({ key: 'k2', value: 'Creative Liberation Engine v5', tags: ['engine'] });
+    klogd.remember({ key: 'k3', value: 'klogd memory layer', tags: ['engine', 'memory'] });
   });
 
   it('recalls by exact key', () => {
-    const result = scribe.recall({ key: 'k1' });
+    const result = klogd.recall({ key: 'k1' });
     expect(result.count).toBe(1);
     expect(result.results[0]?.value).toBe('The quick brown fox');
   });
 
   it('recalls by tag', () => {
-    const result = scribe.recall({ tag: 'engine' });
+    const result = klogd.recall({ tag: 'engine' });
     expect(result.count).toBe(2);
     expect(result.results.map(r => r.key)).toContain('k2');
     expect(result.results.map(r => r.key)).toContain('k3');
   });
 
   it('recalls by text query', () => {
-    const result = scribe.recall({ query: 'quick' });
+    const result = klogd.recall({ query: 'quick' });
     expect(result.count).toBe(1);
     expect(result.results[0]?.key).toBe('k1');
   });
 
   it('returns all entries when no filter given', () => {
-    const result = scribe.recall({});
+    const result = klogd.recall({});
     expect(result.count).toBe(3);
   });
 
   it('respects limit', () => {
-    const result = scribe.recall({ limit: 1 });
+    const result = klogd.recall({ limit: 1 });
     expect(result.results).toHaveLength(1);
   });
 
   it('does not evict entries with no TTL (permanent)', () => {
-    scribe.remember({ key: 'permanent', value: 'forever', ttl: undefined });
-    const result = scribe.recall({ key: 'permanent' });
+    klogd.remember({ key: 'permanent', value: 'forever', ttl: undefined });
+    const result = klogd.recall({ key: 'permanent' });
     expect(result.count).toBe(1);
     expect(result.results[0]?.key).toBe('permanent');
   });
@@ -243,8 +243,8 @@ describe('scribe.recall', () => {
     const now = Date.now();
     const pastTimestamp = new Date(now - 5000).toISOString(); // 5s ago
     // Directly call remember and verify non-expired entries pass through
-    scribe.remember({ key: 'recent', value: 'alive', ttl: 60 }); // 60s TTL, not expired
-    const result = scribe.recall({ key: 'recent' });
+    klogd.remember({ key: 'recent', value: 'alive', ttl: 60 }); // 60s TTL, not expired
+    const result = klogd.recall({ key: 'recent' });
     expect(result.count).toBe(1); // still alive
 
     // Verify the eviction logic: any entry with ttl where (now - created) >= ttl * 1000 is evicted
@@ -256,9 +256,9 @@ describe('scribe.recall', () => {
   });
 });
 
-describe('scribe.context', () => {
+describe('klogd.context', () => {
   it('returns an empty context page when store is empty', () => {
-    const ctx = scribe.context({});
+    const ctx = klogd.context({});
     expect(ctx.entries).toHaveLength(0);
     expect(ctx.totalPages).toBe(0);
     expect(ctx.tokenEstimate).toBe(0);
@@ -266,60 +266,60 @@ describe('scribe.context', () => {
 
   it('paginates entries correctly', () => {
     for (let i = 0; i < 25; i++) {
-      scribe.remember({ value: `entry-${i}` });
+      klogd.remember({ value: `entry-${i}` });
     }
-    const page0 = scribe.context({ page: 0, pageSize: 10 });
+    const page0 = klogd.context({ page: 0, pageSize: 10 });
     expect(page0.entries).toHaveLength(10);
     expect(page0.totalPages).toBe(3);
 
-    const page2 = scribe.context({ page: 2, pageSize: 10 });
+    const page2 = klogd.context({ page: 2, pageSize: 10 });
     expect(page2.entries).toHaveLength(5);
   });
 
   it('estimates tokens from content length', () => {
     const value = 'a'.repeat(400); // 400 chars / 4 = 100 tokens
-    scribe.remember({ value });
-    const ctx = scribe.context({});
+    klogd.remember({ value });
+    const ctx = klogd.context({});
     expect(ctx.tokenEstimate).toBe(100);
   });
 
   it('filters by sessionId', () => {
     const other = new ScribeStore('other-session');
-    // scribe has 2 entries, other has 1 — context filter works correctly
-    scribe.remember({ value: 'in this session' });
-    scribe.remember({ value: 'also in this session' });
+    // klogd has 2 entries, other has 1 — context filter works correctly
+    klogd.remember({ value: 'in this session' });
+    klogd.remember({ value: 'also in this session' });
     other.remember({ value: 'in other session' });
 
-    const ctx = scribe.context({ sessionFilter: scribe.sessionId });
+    const ctx = klogd.context({ sessionFilter: klogd.sessionId });
     expect(ctx.entries).toHaveLength(2);
   });
 });
 
-describe('scribe.forget', () => {
+describe('klogd.forget', () => {
   it('deletes an existing key and returns deleted=true', () => {
-    scribe.remember({ key: 'to-delete', value: 'bye' });
-    const result = scribe.forget('to-delete');
+    klogd.remember({ key: 'to-delete', value: 'bye' });
+    const result = klogd.forget('to-delete');
     expect(result.deleted).toBe(true);
     expect(result.remaining).toBe(0);
   });
 
   it('returns deleted=false when key does not exist', () => {
-    const result = scribe.forget('nonexistent-key');
+    const result = klogd.forget('nonexistent-key');
     expect(result.deleted).toBe(false);
   });
 
   it('reduces store size after deletion', () => {
-    scribe.remember({ key: 'a', value: 'alpha' });
-    scribe.remember({ key: 'b', value: 'beta' });
-    scribe.forget('a');
-    expect(scribe.size).toBe(1);
+    klogd.remember({ key: 'a', value: 'alpha' });
+    klogd.remember({ key: 'b', value: 'beta' });
+    klogd.forget('a');
+    expect(klogd.size).toBe(1);
   });
 });
 
-describe('scribe.handoff', () => {
+describe('klogd.handoff', () => {
   it('generates a HANDOFF.md string with session memories', () => {
-    scribe.remember({ key: 'h1', value: 'important context', tags: ['context'] });
-    const doc = scribe.handoff({ agentId: 'cle-W18', phase: 'SHIP', summary: 'Wave 18 complete' });
+    klogd.remember({ key: 'h1', value: 'important context', tags: ['context'] });
+    const doc = klogd.handoff({ agentId: 'cle-W18', phase: 'SHIP', summary: 'Wave 18 complete' });
     expect(doc).toContain('# HANDOFF: cle-W18 Session');
     expect(doc).toContain('**From:** cle-W18');
     expect(doc).toContain('**Phase:** SHIP');
@@ -329,20 +329,20 @@ describe('scribe.handoff', () => {
   });
 
   it('defaults phase to SHIP when not provided', () => {
-    const doc = scribe.handoff({ agentId: 'test', summary: 'done' });
+    const doc = klogd.handoff({ agentId: 'test', summary: 'done' });
     expect(doc).toContain('**Phase:** SHIP');
   });
 
   it('truncates long values in the memory table', () => {
     const longValue = 'x'.repeat(100);
-    scribe.remember({ key: 'long', value: longValue });
-    const doc = scribe.handoff({ agentId: 'test', summary: 's' });
+    klogd.remember({ key: 'long', value: longValue });
+    const doc = klogd.handoff({ agentId: 'test', summary: 's' });
     expect(doc).toContain('...');
   });
 
   it('only includes entries from the current session', () => {
-    scribe.remember({ key: 'mine', value: 'session entry' });
-    const doc = scribe.handoff({ agentId: 'test', summary: 's' });
+    klogd.remember({ key: 'mine', value: 'session entry' });
+    const doc = klogd.handoff({ agentId: 'test', summary: 's' });
     expect(doc).toContain('| mine |');
     expect(doc).toContain('**Memories:** 1');
   });

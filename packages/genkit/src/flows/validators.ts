@@ -1,5 +1,5 @@
 /**
- * Validator Hive — SENTINEL, ARCHON, PROOF, HARBOR, RAM_CREW
+ * Validator Hive — SENTINEL, ARCHON, PROOF, HARBOR, krecd
  * Role: Quality Gates (Constitutional Article VI)
  * Access: Studio | Mode: VALIDATE
  *
@@ -7,13 +7,13 @@
  * ARCHON:   Architecture compliance — separation of concerns, dependency direction
  * PROOF:    Behavioral correctness — does the code actually do what it says?
  * HARBOR:   Test coverage — ensures Article XIV (Testing Mandate) is met
- * RAM_CREW: QA/Integration — end-to-end quality check before ship
+ * krecd: QA/Integration — end-to-end quality check before ship
  */
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
-import { LEXFlow } from './lex-compass.js';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
+import { LEXFlow } from './kdocsd-compass.js';
 
 // ─── SHARED VALIDATE INFRASTRUCTURE ─────────────────────────────────────────
 
@@ -170,7 +170,7 @@ Minimum acceptable: 80% estimated coverage for PASS.`,
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
-// RAM_CREW — Complete VALIDATE Mode Orchestrator
+// krecd — Complete VALIDATE Mode Orchestrator
 // Runs all validators in parallel and produces a final ship decision
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -182,19 +182,19 @@ const RamCrewOutputSchema = z.object({
         archon: z.string(),
         proof: z.string(),
         harbor: z.string(),
-        lex: z.string(),
+        kdocsd: z.string(),
     }),
     blockers: z.array(z.string()).default([]),
-    ramSignature: z.literal('RAM_CREW').default('RAM_CREW'),
+    ramSignature: z.literal('krecd').default('krecd'),
 });
 
 export const RAMCREWFlow = ai.defineFlow(
-    { name: 'RAM_CREW', inputSchema: ValidatorInputSchema, outputSchema: RamCrewOutputSchema },
+    { name: 'krecd', inputSchema: ValidatorInputSchema, outputSchema: RamCrewOutputSchema },
     async (input): Promise<z.infer<typeof RamCrewOutputSchema>> => {
-        console.log(`[RAM_CREW] 🚀 Full VALIDATE mode — running all 5 gates in parallel`);
+        console.log(`[krecd] 🚀 Full VALIDATE mode — running all 5 gates in parallel`);
 
         // Run all validators in parallel — Constitutional Article VI
-        const [sentinel, archon, proof, harbor, lex] = await Promise.allSettled([
+        const [sentinel, archon, proof, harbor, kdocsd] = await Promise.allSettled([
             SENTINELFlow(input),
             ARCHONFlow(input),
             PROOFFlow(input),
@@ -206,14 +206,14 @@ export const RAMCREWFlow = ai.defineFlow(
         const a = archon.status === 'fulfilled' ? archon.value : null;
         const p = proof.status === 'fulfilled' ? proof.value : null;
         const h = harbor.status === 'fulfilled' ? harbor.value : null;
-        const l = lex.status === 'fulfilled' ? lex.value : null;
+        const l = kdocsd.status === 'fulfilled' ? kdocsd.value : null;
 
         const gatesResults = {
             sentinel: s?.verdict ?? 'ERROR',
             archon: a?.verdict ?? 'ERROR',
             proof: p?.verdict ?? 'ERROR',
             harbor: h?.verdict ?? 'ERROR',
-            lex: l?.verdict ?? 'ERROR',
+            kdocsd: l?.verdict ?? 'ERROR',
         };
 
         const blockers: string[] = [];
@@ -221,15 +221,15 @@ export const RAMCREWFlow = ai.defineFlow(
         if (a?.verdict === 'FAIL') blockers.push(`ARCHON: Architecture violations`);
         if (p?.verdict === 'FAIL') blockers.push(`PROOF: Behavioral correctness failed`);
         if (h?.verdict === 'FAIL') blockers.push(`HARBOR: Test coverage below 80%`);
-        if (l?.verdict === 'HALT') blockers.push(`LEX: Constitutional HALT`);
+        if (l?.verdict === 'HALT') blockers.push(`kdocsd: Constitutional HALT`);
 
         const passCount = Object.values(gatesResults).filter(v => v === 'PASS').length;
         const overallScore = Math.round((passCount / 5) * 100);
         const shipDecision = blockers.length === 0 ? 'SHIP' : blockers.length <= 2 ? 'HOLD' : 'REJECT';
 
-        console.log(`[RAM_CREW] ${shipDecision} | Score: ${overallScore}% | Blockers: ${blockers.length}`);
+        console.log(`[krecd] ${shipDecision} | Score: ${overallScore}% | Blockers: ${blockers.length}`);
 
-        return { shipDecision, overallScore, gatesResults, blockers, ramSignature: 'RAM_CREW' };
+        return { shipDecision, overallScore, gatesResults, blockers, ramSignature: 'krecd' };
     }
 );
 

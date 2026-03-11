@@ -9,7 +9,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 
 // ─── SHARED BROADCAST AGENT FACTORY ─────────────────────────────────────────
 

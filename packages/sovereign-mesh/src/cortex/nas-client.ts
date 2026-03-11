@@ -1,6 +1,6 @@
 import type { ContainerEntity, VolumeEntity } from '../schema/index.js';
 
-// â”€â”€â”€ CORTEX NAS Client â€” Synology/Docker State Reader â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€â”€ CORE NAS Client â€” Synology/Docker State Reader â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Reads NAS state via the Dispatch Server HTTP API (already running on NAS at :5050).
 // Also directly queries Docker socket and Synology DSM API if available.
 // No SSH required â€” pure HTTP on local network.
@@ -32,11 +32,11 @@ export async function collectNASContainers(): Promise<ContainerEntity[]> {
 
     // Represent known NAS Docker services as container entities
     const knownServices = [
-        { id: 'dispatch-server', image: 'inception/dispatch-server', port: '5050' },
-        { id: 'genkit-engine', image: 'inception/genkit', port: '4100' },
+        { id: 'dispatch-server', image: 'cle/dispatch-server', port: '5050' },
+        { id: 'genkit-engine', image: 'cle/genkit', port: '4100' },
         { id: 'redis', image: 'redis:7', port: '6379' },
         { id: 'forgejo', image: 'codeberg.org/forgejo/forgejo', port: '3000' },
-        { id: 'scribe-mcp', image: 'inception/scribe-mcp', port: '3100' },
+        { id: 'klogd-mcp', image: 'cle/klogd-mcp', port: '3100' },
     ];
 
     for (const svc of knownServices) {

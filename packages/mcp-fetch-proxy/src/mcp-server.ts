@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * mcp-server.ts â€” MCP Fetch Proxy stdio server
- * @inception/mcp-fetch-proxy
+ * @cle/mcp-fetch-proxy
  *
  * Exposes the fetch proxy as an MCP stdio server so Creative Liberation Engine and COMET
  * can call HTTP endpoints on the sovereign mesh without browser restrictions.
@@ -59,7 +59,7 @@ function checkRateLimit(caller: string): boolean {
 // â”€â”€â”€ MCP Server â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const server = new Server(
-  { name: 'inception-fetch-proxy', version: '1.0.0' },
+  { name: 'cle-fetch-proxy', version: '1.0.0' },
   { capabilities: { tools: {} } }
 );
 
@@ -85,7 +85,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     {
       name: 'dispatch.call',
       description:
-        'Call the Inception Dispatch Server REST API (http://127.0.0.1:5050). ' +
+        'Call the cle Dispatch Server REST API (http://127.0.0.1:5050). ' +
         'Use for task management, agent registration, heartbeats, and mesh coordination.',
       inputSchema: {
         type: 'object',
@@ -100,7 +100,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
     {
       name: 'genkit.call',
       description:
-        'Call the Inception Genkit API server (http://127.0.0.1:4100). ' +
+        'Call the cle Genkit API server (http://127.0.0.1:4100). ' +
         'Use to invoke AVERI flows: /generate, /averi/ideate, /a2a/orchestrate, /averi/creative-dna/embed, etc.',
       inputSchema: {
         type: 'object',
@@ -221,7 +221,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request: any) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('[FETCH-PROXY-MCP] âœ… Inception Fetch Proxy MCP server online');
+  console.error('[FETCH-PROXY-MCP] âœ… cle Fetch Proxy MCP server online');
   console.error(`[FETCH-PROXY-MCP] Dispatch: ${DISPATCH_URL} | Genkit: ${GENKIT_URL}`);
 }
 

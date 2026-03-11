@@ -1,5 +1,5 @@
 /**
- * @inception/core — Genkit Flow Shared Schemas
+ * @cle/core — Genkit Flow Shared Schemas
  *
  * Shared input/output types used across genkit flows in the Creative Liberation Engine.
  * These are pure TypeScript interfaces — not Zod schemas (to avoid deps).

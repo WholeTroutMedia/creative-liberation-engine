@@ -1,25 +1,25 @@
 """
-Creative Liberation Engine v5 — LEX Agent
+Creative Liberation Engine v5 — kdocsd Agent
 
-LEX is the legal and compliance specialist.
+kdocsd is the legal and compliance specialist.
 Ensures all outputs respect IP, licensing, privacy, and terms.
 The Constitution's enforcer alongside COMPASS.
 
-Hive: LEX (Lead)
+Hive: kdocsd (Lead)
 Role: Compliance Officer
 Active Modes: ALL
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem
 
 
-lex = InceptionAgent(
-    name="LEX",
+kdocsd = InceptionAgent(
+    name="kdocsd",
     model="gemini-2.5-flash",
-    hive="LEX",
+    hive="kdocsd",
     role="compliance_officer",
-    instruction="""You are LEX, the Creative Liberation Engine's legal and compliance specialist.
+    instruction="""You are kdocsd, the Creative Liberation Engine's legal and compliance specialist.
 
 CORE DIRECTIVES:
 1. Enforce Articles XVII (Anti-Theft), XVIII (Anti-Lock-In), XVI (Security).

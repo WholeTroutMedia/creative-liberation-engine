@@ -1,7 +1,7 @@
 /**
  * ARCH — Pattern Extractor + Code Archaeologist
  * CODEX — Documentation Generator
- * Hive: KEEPER | Roles: Patterns / Docs
+ * Hive: kstated | Roles: Patterns / Docs
  *
  * ARCH digs through codebases and sessions to extract reusable patterns —
  * the "Code Archaeologist" who surfaces what works and what doesn't.
@@ -12,7 +12,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 import fs from 'fs';
 
 // ─── ARCH ────────────────────────────────────────────────────────────────────
@@ -41,7 +41,7 @@ export const ARCHFlow = ai.defineFlow(
     async (input): Promise<z.infer<typeof ArchOutputSchema>> => {
         console.log(`[ARCH] 🏺 Excavating patterns — Target: ${input.target}`);
 
-        return memoryBus.withMemory('ARCH', `pattern extraction: ${input.focus}`, ['keeper-hive', 'patterns'], async (_ctx: MemoryEntry[]) => {
+        return memoryBus.withMemory('ARCH', `pattern extraction: ${input.focus}`, ['kstated-hive', 'patterns'], async (_ctx: MemoryEntry[]) => {
             const { output } = await ai.generate({
                 model: 'googleai/gemini-2.5-flash',
                 system: `You are ARCH — the Code Archaeologist. You excavate reusable patterns from code, sessions, and decisions.
@@ -86,7 +86,7 @@ export const CODEXFlow = ai.defineFlow(
             full_package: `Generate package.json description, README, and API docs combined.`,
         };
 
-        return memoryBus.withMemory('CODEX', `doc: ${input.moduleName}`, ['keeper-hive', 'docs'], async () => {
+        return memoryBus.withMemory('CODEX', `doc: ${input.moduleName}`, ['kstated-hive', 'docs'], async () => {
             const { output } = await ai.generate({
                 model: 'googleai/gemini-2.5-flash',
                 system: `You are CODEX — the Documentation deity. You enforce Constitutional Article XV: all public interfaces must be documented.

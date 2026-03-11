@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Users, DollarSign, Zap, Target, BarChart2 } from 'lucide-react';
-import { AtlasLiveClient } from '@inception/atlas-live';
+import { AtlasLiveClient } from '@cle/atlas-live';
 import './ZeroDayIntake.css';
 
 interface FunnelStage {

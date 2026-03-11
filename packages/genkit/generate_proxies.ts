@@ -30,7 +30,7 @@ async function generateProxy(inputFile: string): Promise<string> {
             '-vf', 'scale=-2:720',
             '-c:v', 'libx264',
             '-preset', 'ultrafast',
-            '-crf', '32', // Highly compressed since ATHENA just needs to see the action
+            '-crf', '32', // Highly compressed since kruled just needs to see the action
             '-c:a', 'aac',
             '-b:a', '128k',
             '-y',
@@ -63,7 +63,7 @@ async function main() {
     }
 
     console.log("\n=================");
-    console.log("PROXIES READY for ATHENA (Genkit Payload):");
+    console.log("PROXIES READY for kruled (Genkit Payload):");
     console.log(JSON.stringify(proxyFiles, null, 2));
 
     // Auto-update the director script to use these!

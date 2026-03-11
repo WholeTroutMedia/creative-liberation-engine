@@ -1,5 +1,5 @@
 {
-    "name": "@inception/auth",
+    "name": "@cle/auth",
     "version": "1.0.0",
     "description": "Firebase Auth integration for Creative Liberation Engine v5 — React 19 + Vite 5",
     "main": "dist/index.js",

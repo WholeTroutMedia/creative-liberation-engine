@@ -18,7 +18,7 @@ function findFilesRecursively(dir, filename, fileList = []) {
     return fileList;
 }
 
-console.log('[INCEPTION] Searching for tools-common files to patch in node_modules...');
+console.log('[cle] Searching for tools-common files to patch in node_modules...');
 
 try {
     const serverJsFiles = findFilesRecursively(path.resolve(process.cwd(), 'node_modules'), 'server.js');
@@ -33,12 +33,12 @@ try {
             if (content.includes('server = app.listen(port, async () => {')) {
                 content = content.replace('server = app.listen(port, async () => {', 'server = app.listen(port, "0.0.0.0", async () => {');
                 fs.writeFileSync(fullPath, content);
-                console.log(`[INCEPTION] Patched server binding in: ${fullPath}`);
+                console.log(`[cle] Patched server binding in: ${fullPath}`);
                 patchedServerCount++;
             }
             if (content.includes('server = app.listen(port, host, async () => {')) {
                 // If this is a future Genkit version that already has host parameter
-                console.log(`[INCEPTION] Server already supports host binding in: ${fullPath}`);
+                console.log(`[cle] Server already supports host binding in: ${fullPath}`);
             }
         }
     }
@@ -49,13 +49,13 @@ try {
             if (content.includes('async function notifyAnalyticsIfFirstRun() {')) {
                 content = content.replace('async function notifyAnalyticsIfFirstRun() {', 'async function notifyAnalyticsIfFirstRun() { return;');
                 fs.writeFileSync(fullPath, content);
-                console.log(`[INCEPTION] Patched analytics override in: ${fullPath}`);
+                console.log(`[cle] Patched analytics override in: ${fullPath}`);
                 patchedAnalyticsCount++;
             }
         }
     }
 
-    console.log(`[INCEPTION] Patching complete. Servers patched: ${patchedServerCount}. Analytics overridden: ${patchedAnalyticsCount}.`);
+    console.log(`[cle] Patching complete. Servers patched: ${patchedServerCount}. Analytics overridden: ${patchedAnalyticsCount}.`);
 } catch (e) {
-    console.error(`[INCEPTION] Patching encountered a non-fatal error: ${e.message}`);
+    console.error(`[cle] Patching encountered a non-fatal error: ${e.message}`);
 }

@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'http';
-import { collectWorkstationSnapshot } from './cortex/workstation-agent.js';
-import { collectNASSnapshot } from './cortex/nas-client.js';
-import { collectGCPSnapshot } from './cortex/gcp-watcher.js';
+import { collectWorkstationSnapshot } from './CORE/workstation-agent.js';
+import { collectNASSnapshot } from './CORE/nas-client.js';
+import { collectGCPSnapshot } from './CORE/gcp-watcher.js';
 import { buildAttentionBrief, formatBootPanel } from './nerve/attention-engine.js';
 import type { MeshSnapshot } from './schema/index.js';
 

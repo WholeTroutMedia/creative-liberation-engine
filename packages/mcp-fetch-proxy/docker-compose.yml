@@ -14,7 +14,7 @@ services:
       - DISPATCH_URL=http://localhost
       - GENKIT_URL=http://localhost
     networks:
-      - inception-net
+      - cle-net
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7070/health"]
       interval: 30s
@@ -23,5 +23,5 @@ services:
       start_period: 10s
 
 networks:
-  inception-net:
+  cle-net:
     external: true

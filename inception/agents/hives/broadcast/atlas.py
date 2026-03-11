@@ -11,8 +11,8 @@ Active Modes: PLAN, SHIP
 Key Client: NBC Sports Bay Area (NBC Nexus)
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, web
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, web
 
 
 atlas = InceptionAgent(

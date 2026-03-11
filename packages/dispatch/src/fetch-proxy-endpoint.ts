@@ -1,19 +1,19 @@
 /**
- * @inception/dispatch â€” Fetch Proxy Endpoint
+ * @cle/dispatch â€” Fetch Proxy Endpoint
  * Helix-C wiring: Express endpoint that exposes the MCP fetch_proxy tool
  * as a REST endpoint on the NAS dispatch server.
  *
  * Route: POST /api/proxy/fetch
  * Used by COMET browser to bypass javascript: URL stripping restrictions.
  *
- * NOTE: fetch-proxy logic is inlined here (originally from @inception/mcp-router)
+ * NOTE: fetch-proxy logic is inlined here (originally from @cle/mcp-router)
  * to keep the dispatch package self-contained for standalone Docker builds.
  */
 
 import type { Request, Response, Router } from 'express';
 import { z } from 'zod';
 
-// â”€â”€â”€ Inlined from @inception/mcp-router/fetch-proxy â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€â”€ Inlined from @cle/mcp-router/fetch-proxy â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const FetchProxyRequestSchema = z.object({
     url: z.string().url('Must be a valid URL'),

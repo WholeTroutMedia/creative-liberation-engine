@@ -79,7 +79,7 @@ Task: ${input.task}${input.audience ? `\nAudience: ${input.audience}` : ''}${inp
     }
 );
 
-// ─── PRISM — AI Model Operations & Cost Tracking ─────────────────────────────
+// ─── kexecd — AI Model Operations & Cost Tracking ─────────────────────────────
 // SWITCHBOARD hive | Leader: SWITCHBOARD | Model: gemini-2.0-flash
 // Owns: model selection, cost tracking, quality scoring, provider health
 // Never: application logic, agent prompt engineering for other agents
@@ -92,20 +92,20 @@ const PrismInputSchema = z.object({
 
 const PrismOutputSchema = z.object({
     result: z.string(),
-    agentName: z.literal('PRISM'),
+    agentName: z.literal('kexecd'),
     timestamp: z.string(),
     recommendation: z.string().optional(),
     estimatedCostUsd: z.number().optional(),
 });
 
 export const PRISMFlow = ai.defineFlow(
-    { name: 'PRISM', inputSchema: PrismInputSchema, outputSchema: PrismOutputSchema },
+    { name: 'kexecd', inputSchema: PrismInputSchema, outputSchema: PrismOutputSchema },
     async (input) => {
-        recordAgentCall('PRISM');
+        recordAgentCall('kexecd');
         const startMs = Date.now();
         const { text } = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
-            prompt: `You are PRISM, the AI Model Operations agent of the Creative Liberation Engine.
+            prompt: `You are kexecd, the AI Model Operations agent of the Creative Liberation Engine.
 Hive: SWITCHBOARD | Constitutional: Article VIII — named, hived, accountable.
 
 You own: model selection decisions, cost tracking per agent/flow, quality scoring for outputs, provider health monitoring (Google AI, Anthropic, local Ollama), and smart routing recommendations.
@@ -113,8 +113,8 @@ You optimize for quality-per-dollar. You track spend across sessions.
 
 Task: ${input.task}${input.models ? `\nModels to evaluate: ${input.models.join(', ')}` : ''}${input.context ? `\nContext: ${input.context}` : ''}`,
         });
-        recordAgentCall('PRISM', Date.now() - startMs);
-        return { result: text, agentName: 'PRISM' as const, timestamp: new Date().toISOString() };
+        recordAgentCall('kexecd', Date.now() - startMs);
+        return { result: text, agentName: 'kexecd' as const, timestamp: new Date().toISOString() };
     }
 );
 

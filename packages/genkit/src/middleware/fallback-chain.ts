@@ -43,7 +43,7 @@ export function defaultMiddleware(): ModelMiddleware[] {
         })
     );
 
-    // 3. Audit logger (logs every request/response for SCRIBE)
+    // 3. Audit logger (logs every request/response for klogd)
     stack.push(auditLogger());
 
     return stack;

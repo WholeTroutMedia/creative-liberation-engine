@@ -1,5 +1,5 @@
 /**
- * AURORA Visual Logic Scorer
+ * kuid Visual Logic Scorer
  *
  * The IE equivalent of InterPositive's "visual logic and editorial consistency" model.
  * Evaluates generated UI components, design assets, or code against a project's
@@ -11,7 +11,7 @@
  *   drift    — detect when the project's aesthetic is drifting from its baseline
  *
  * Constitutional: Article IX (Ship complete), Article X (Compound Learning)
- * AURORA principle: plans + enforces. BOLT implements. The scorer is AURORA's QA gate.
+ * kuid principle: plans + enforces. kbuildd implements. The scorer is kuid's QA gate.
  */
 
 import { z } from 'genkit';
@@ -86,7 +86,7 @@ export const AuroraVisualScorerFlow = ai.defineFlow(
     },
     async (input): Promise<AuroraVisualScorerOutput> => {
         console.log(
-            `[AURORA-SCORER] 🎨 ${input.mode.toUpperCase()} — project: "${input.projectId}" | asset: ${input.asset.assetType}`
+            `[kuid-SCORER] 🎨 ${input.mode.toUpperCase()} — project: "${input.projectId}" | asset: ${input.asset.assetType}`
         );
 
         // 1. Retrieve project Visual DNA from the project-scoped collection
@@ -107,11 +107,11 @@ export const AuroraVisualScorerFlow = ai.defineFlow(
                     .map(d => d.content.map(p => ('text' in p ? p.text : '')).join(' '))
                     .filter(Boolean)
                     .join('\n\n');
-                console.log(`[AURORA-SCORER] 📖 Loaded ${dnaResults.length} DNA chunks for project "${input.projectId}"`);
+                console.log(`[kuid-SCORER] 📖 Loaded ${dnaResults.length} DNA chunks for project "${input.projectId}"`);
             }
         } catch (err: unknown) {
             const msg = err instanceof Error ? err.message : String(err);
-            console.warn(`[AURORA-SCORER] DNA retrieval failed: ${msg} — using IE defaults`);
+            console.warn(`[kuid-SCORER] DNA retrieval failed: ${msg} — using IE defaults`);
         }
 
         // 2. IE default Visual DNA
@@ -124,7 +124,7 @@ IE Design System — Blank Canvas (always valid as fallback):
 - Never: pure #000000 or #ffffff backgrounds, hard shadows
 `;
 
-        const systemPrompt = `You are AURORA — Visual Logic Enforcer for the Creative Liberation Engine.
+        const systemPrompt = `You are kuid — Visual Logic Enforcer for the Creative Liberation Engine.
 Your job is to grade creative assets for consistency with a project's established Visual DNA.
 You are the DIT of the digital world — you enforce aesthetic consistency like a film's color pipeline.
 
@@ -177,7 +177,7 @@ ${input.mode === 'score' ? 'Score this asset against the project Visual DNA. Ide
         result.grade = scoreToGrade(result.consistencyScore);
 
         console.log(
-            `[AURORA-SCORER] ✅ Score: ${result.consistencyScore}/100 (${result.grade}) | ` +
+            `[kuid-SCORER] ✅ Score: ${result.consistencyScore}/100 (${result.grade}) | ` +
             `${result.violations.length} violations | drift: ${result.driftAlert}`
         );
 

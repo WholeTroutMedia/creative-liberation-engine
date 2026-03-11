@@ -1,6 +1,6 @@
 /**
  * cometBrowserFlow — Agentic Browser Task Executor
- * COMET agent | AURORA hive
+ * COMET agent | kuid hive
  *
  * Route: POST /api/cometBrowserFlow
  * Called by: nas-watcher daemon, dispatch worker
@@ -10,7 +10,7 @@
  *   2. Generate an action plan (navigation steps, extraction schema, interaction sequence)
  *   3. Return a structured plan + any extraction results
  *
- * This flow is the Genkit counterpart to the inception-browser MCP server.
+ * This flow is the Genkit counterpart to the cle-browser MCP server.
  * It orchestrates high-level strategy; the MCP server handles low-level Playwright calls.
  *
  * Constitutional: Article II (Sovereignty) — all browser sessions are headless/local.
@@ -60,7 +60,7 @@ export const cometBrowserFlow: Flow<typeof CometBrowserInputSchema, typeof Comet
         console.log(`[COMET:BROWSER] ▶ Task ${input.taskId}: ${input.title}`);
 
         const systemPrompt = `You are COMET — the Creative Liberation Engine's autonomous browser and web intelligence agent.
-Your role: plan and execute browser automation tasks using Playwright via the inception-browser MCP server.
+Your role: plan and execute browser automation tasks using Playwright via the cle-browser MCP server.
 
 Constitutional constraints:
 - Article II: Sovereign missions only. No PII exfiltration, no accounts you don't own.
@@ -75,7 +75,7 @@ Output format — respond with a JSON object:
     { "step": 2, "action": "extract", "target": ".main-content", "description": "Extract main content" }
   ],
   "extractionSchema": { "title": "h1", "price": ".price" },
-  "constitutionalCheck": "VERA confirmation: this task is sovereign, no PII involved, all targets are owned or public",
+  "constitutionalCheck": "kstrigd confirmation: this task is sovereign, no PII involved, all targets are owned or public",
   "stealthProfile": "default"
 }`;
 
@@ -106,7 +106,7 @@ Generate a detailed browser action plan for COMET to execute.`;
                     target: input.url ?? 'about:blank',
                     description: 'Navigate to target URL',
                 }],
-                constitutionalCheck: 'Auto-generated — manual VERA review recommended.',
+                constitutionalCheck: 'Auto-generated — manual kstrigd review recommended.',
                 stealthProfile: 'default' as const,
             };
         }

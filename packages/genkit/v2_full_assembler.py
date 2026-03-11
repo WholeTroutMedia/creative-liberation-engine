@@ -4,7 +4,7 @@ v2_full_assembler.py — OmniMedia V2 Multi-Track Resolve Assembler
 Consumes the edl_output_v2.json payload from OmniMediaOrchestrator and
 builds a 4-track DaVinci Resolve timeline:
 
-  Track 1 (Primary): Raw footage cuts from ATHENA's EDL
+  Track 1 (Primary): Raw footage cuts from kruled's EDL
   Track 2 (B-Roll):  AI-generated video clips (Veo/Wan) at AI-selected timestamps
   Track 3 (VFX):     TouchDesigner audio-reactive overlay (Screen blend mode)
   Track 4 (Title):   MotionVFX title via GenkitFusionBridge OR Blender title card
@@ -119,11 +119,11 @@ if not timeline:
     sys.exit(1)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TRACK 1: RAW FOOTAGE CUTS (ATHENA EDL)
+# TRACK 1: RAW FOOTAGE CUTS (kruled EDL)
 # ─────────────────────────────────────────────────────────────────────────────
 
 print("\n" + "─" * 50)
-print("🎬 TRACK 1: Importing raw footage from ATHENA EDL...")
+print("🎬 TRACK 1: Importing raw footage from kruled EDL...")
 
 unique_files = list(set([cut.get("filePath", "") for cut in edl if cut.get("filePath")]))
 media_items = media_pool.ImportMedia(unique_files) if unique_files else []
@@ -271,7 +271,7 @@ if not title_placed and title_text:
         traceback.print_exc()
 
 if not title_placed:
-    print("ℹ️  Track 4: No title placed (no Blender card, no titleText from ATHENA).")
+    print("ℹ️  Track 4: No title placed (no Blender card, no titleText from kruled).")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # RENDER QUEUE
@@ -311,7 +311,7 @@ else:
 print("\n" + "=" * 60)
 print("🎬 V2 FULL ASSEMBLER COMPLETE")
 print("=" * 60)
-print(f"✅ Track 1: {len(track1_clips)} raw cuts (ATHENA EDL)")
+print(f"✅ Track 1: {len(track1_clips)} raw cuts (kruled EDL)")
 print(f"   Track 2: AI B-roll  ({len(generated_broll)} clips)")
 print(f"   Track 3: VFX overlay ({'placed' if vfx_overlay else 'skipped'})")
 print(f"   Track 4: Title       ({'placed' if title_placed else 'skipped'})")

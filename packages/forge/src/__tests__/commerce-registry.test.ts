@@ -1,5 +1,5 @@
 /**
- * @inception/forge — CommerceRegistry Tests
+ * @cle/forge — CommerceRegistry Tests
  */
 
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';

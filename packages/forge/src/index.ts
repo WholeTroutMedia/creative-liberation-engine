@@ -1,7 +1,7 @@
 ﻿/**
- * @inception/forge — Public API
+ * @cle/forge — Public API
  *
- * Main entry point. Import from '@inception/forge'.
+ * Main entry point. Import from '@cle/forge'.
  */
 
 // ─── Core Engine ──────────────────────────────────────────────────────────────

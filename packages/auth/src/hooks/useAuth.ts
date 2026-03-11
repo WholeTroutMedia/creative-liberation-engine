@@ -1,6 +1,6 @@
 /**
  * useAuth.ts — Typed Auth Hook
- * @inception/auth — Creative Liberation Engine v5 GENESIS
+ * @cle/auth — Creative Liberation Engine v5 GENESIS
  *
  * Convenience hook wrapping AuthContext. Use in any component.
  * Provides tenant-aware auth state with X-Tenant-ID header helper.

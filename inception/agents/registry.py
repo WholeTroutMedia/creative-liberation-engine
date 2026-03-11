@@ -10,7 +10,7 @@ Lineage: v4 orchestrator/skills_registry.py → v5 (simplified, tier-aware)
 import logging
 from typing import Optional
 
-from inception.agents.base import InceptionAgent
+from cle.agents.base import InceptionAgent
 
 logger = logging.getLogger(__name__)
 
@@ -21,11 +21,11 @@ class AgentRegistry:
 
     Usage:
         registry = AgentRegistry()
-        registry.register(bolt)
-        registry.register(aurora)
+        registry.register(kbuildd)
+        registry.register(kuid)
 
-        agent = registry.get("BOLT")
-        aurora_agents = registry.by_hive("AURORA")
+        agent = registry.get("kbuildd")
+        aurora_agents = registry.by_hive("kuid")
     """
 
     def __init__(self):
@@ -63,7 +63,7 @@ class AgentRegistry:
 
     def by_tier(self, tier: str) -> list[InceptionAgent]:
         """Get agents accessible to a specific tier."""
-        from inception.config.tiers import AccessTier, check_agent_access
+        from cle.config.tiers import AccessTier, check_agent_access
         access_tier = AccessTier(tier)
         return [
             a for a in self._agents.values()

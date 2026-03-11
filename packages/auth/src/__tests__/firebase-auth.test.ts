@@ -1,6 +1,6 @@
 /**
  * firebase-auth-contract.test.ts — Firebase Auth Contract Specification
- * @inception/auth — P0 Test Coverage
+ * @cle/auth — P0 Test Coverage
  *
  * Firebase SDK v12 uses browser-specific internals incompatible with Node.
  * This test suite validates the AUTH CONTRACT (logic, types, header formats)
@@ -56,8 +56,8 @@ function isValidFirebaseConfig(config: unknown): config is FirebaseConfig {
 // ─── Test Fixtures ────────────────────────────────────────────────────────────
 
 const MOCK_USER: any = {
-  uid: 'user-uid-inception-42',
-  email: 'justin@inceptionengine.systems',
+  uid: 'user-uid-cle-42',
+  email: 'justin@CreativeLiberationEngine.systems',
   displayName: 'The Operator',
   getIdToken: vi.fn().mockResolvedValue('eyJhbGciOiJSUzI1NiJ9.payload.sig'),
 };
@@ -66,7 +66,7 @@ const MOCK_USER: any = {
 
 describe('getTenantId()', () => {
   it('maps Firebase UID directly to tenant ID', () => {
-    expect(getTenantId(MOCK_USER)).toBe('user-uid-inception-42');
+    expect(getTenantId(MOCK_USER)).toBe('user-uid-cle-42');
   });
 
   it('tenant ID is a non-empty string', () => {
@@ -105,8 +105,8 @@ describe('FirebaseConfig validation', () => {
     const config = {
       apiKey: 'AIzaTest123',
       authDomain: 'app.firebaseapp.com',
-      projectId: 'my-inception-project',
-      storageBucket: 'my-inception-project.appspot.com',
+      projectId: 'my-cle-project',
+      storageBucket: 'my-cle-project.appspot.com',
       messagingSenderId: '99887766',
       appId: '1:99887766:web:abc123',
     };

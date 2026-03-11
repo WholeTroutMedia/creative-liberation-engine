@@ -1,8 +1,8 @@
-# CONTEXT â€” @inception/dispatch
+# CONTEXT â€” @cle/dispatch
 
 The Creative Liberation Engine Universal Agent Dispatch Server.
 
-Any agentic tool â€” Creative Liberation Engine, Cursor, Claude Desktop, scripts â€” connects here to pick up tasks across the entire WholeTrout org. No workspace config needed.
+Any agentic tool â€” Creative Liberation Engine, Cursor, Claude Desktop, scripts â€” connects here to pick up tasks across the entire CLE org. No workspace config needed.
 
 ## Endpoints
 
@@ -21,7 +21,7 @@ Health:     http://127.0.0.1:5050/health
 - `add_task` â€” queue new work
 - `handoff_task` â€” release with note
 - `get_status` â€” full dispatch board
-- `list_projects` â€” all WholeTrout org repos
+- `list_projects` â€” all CLE org repos
 
 **Agent-to-Agent**
 - `delegate_task` â€” assign directly to agent/capability
@@ -46,5 +46,5 @@ npm run dev --prefix packages/dispatch
 
 # Production (NAS Docker)
 npm run build --prefix packages/dispatch
-docker build -t inception-dispatch packages/dispatch
+docker build -t cle-dispatch packages/dispatch
 ```

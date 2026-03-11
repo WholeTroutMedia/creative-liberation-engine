@@ -1,5 +1,5 @@
 {
-    "name": "@inception/core",
+    "name": "@cle/core",
     "version": "5.0.0",
     "description": "Creative Liberation Engine v5 — shared types, constants, and constitutional primitives",
     "type": "module",

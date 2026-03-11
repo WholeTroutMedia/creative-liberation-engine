@@ -243,7 +243,7 @@ export default function FinanceDashboard() {
                         const isBlock = s.riskAssessment && !s.riskAssessment.allowed;
                         return {
                             id: `audit-${i}`,
-                            rule: isBlock ? 'Risk Engine Checks' : 'VERA Review',
+                            rule: isBlock ? 'Risk Engine Checks' : 'kstrigd Review',
                             result: isBlock ? 'block' : (s.veraDecision?.approved ? 'pass' : 'block'),
                             detail: isBlock ? s.riskAssessment!.reasons.join(', ') : s.veraDecision?.reasoning || 'No details',
                             timestamp: s.timestamp
@@ -326,7 +326,7 @@ export default function FinanceDashboard() {
                     <div className="fd-card-desc">Mempool Monitoring Active</div>
                 </div>
                 <div className="fd-card">
-                    <div className="fd-card-header vera">VERA Truth Guard</div>
+                    <div className="fd-card-header kstrigd">kstrigd Truth Guard</div>
                     <div className="fd-card-value">{data.veraGuardianHits} Checks Passed</div>
                     <div className="fd-card-desc">{data.veraBlocked} Trade{data.veraBlocked !== 1 ? 's' : ''} Blocked · 0 Violations</div>
                 </div>
@@ -341,7 +341,7 @@ export default function FinanceDashboard() {
                         onClick={() => setActiveTab(tab)}
                         type="button"
                     >
-                        {tab === 'strategies' ? '⚡ Strategies' : tab === 'trades' ? '📋 Trade History' : '🛡 VERA Audit'}
+                        {tab === 'strategies' ? '⚡ Strategies' : tab === 'trades' ? '📋 Trade History' : '🛡 kstrigd Audit'}
                     </button>
                 ))}
             </div>
@@ -406,7 +406,7 @@ export default function FinanceDashboard() {
                 </div>
             )}
 
-            {/* VERA Audit Log */}
+            {/* kstrigd Audit Log */}
             {activeTab === 'audit' && (
                 <div className="fd-audit-list">
                     {data.auditLog.map(entry => (

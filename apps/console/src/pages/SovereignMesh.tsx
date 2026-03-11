@@ -101,7 +101,7 @@ export default function SovereignMesh() {
       setLastUpdated(new Date())
       setError(null)
     } catch {
-      setError(`SAR offline — start with: npm run start --workspace=@inception/sovereign-mesh`)
+      setError(`SAR offline — start with: npm run start --workspace=@cle/sovereign-mesh`)
     } finally {
       setLoading(false)
     }

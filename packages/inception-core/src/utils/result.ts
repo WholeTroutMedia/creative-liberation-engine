@@ -1,5 +1,5 @@
 /**
- * @inception/core — Result<T, E> Monad
+ * @cle/core — Result<T, E> Monad
  *
  * A lightweight, zero-dependency Result type for explicit error handling
  * without exceptions. Used throughout the Creative Liberation Engine for deterministic

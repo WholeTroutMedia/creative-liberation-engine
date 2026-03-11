@@ -1,6 +1,6 @@
 /**
  * packages/genkit/src/flows/creative-director.ts
- * IRIS — Creative Vision Document generator (self-contained in genkit package)
+ * ksignd — Creative Vision Document generator (self-contained in genkit package)
  * Input: CreativeBrief → Output: CreativeVision
  * Mirrors god-prompt/src/vision/director.ts but within genkit rootDir
  */
@@ -75,10 +75,10 @@ export const CreativeVisionSchema = z.object({
 export type CreativeVision = z.infer<typeof CreativeVisionSchema>;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// IRIS SYSTEM PROMPT
+// ksignd SYSTEM PROMPT
 // ─────────────────────────────────────────────────────────────────────────────
 
-const IRIS_SYSTEM = `You are IRIS — the Creative Vision director of the Creative Liberation Engine.
+const IRIS_SYSTEM = `You are ksignd — the Creative Vision director of the Creative Liberation Engine.
 
 Your role is to translate a structured client brief into a comprehensive Creative Vision Document that serves as the authoritative art direction bible for every asset produced in this campaign.
 
@@ -106,7 +106,7 @@ export const CreativeDirectorFlow = ai.defineFlow(
         outputSchema: CreativeVisionSchema,
     },
     async ({ brief }): Promise<CreativeVision> => {
-        console.log(`[IRIS] 🎨 Generating Creative Vision for: ${brief.project_name}`);
+        console.log(`[ksignd] 🎨 Generating Creative Vision for: ${brief.project_name}`);
 
         const deliverableList = brief.deliverables
             .map(d => `  - ${d.quantity}x ${d.type}${d.format ? ` (${d.format})` : ''}${d.duration_seconds ? ` ${d.duration_seconds}s` : ''}`)
@@ -147,9 +147,9 @@ Generate the definitive creative vision. Every decision should be craft-first an
             config: { temperature: 0.9 },
         });
 
-        if (!output) throw new Error('[IRIS] Vision generation returned null output');
+        if (!output) throw new Error('[ksignd] Vision generation returned null output');
 
-        console.log(`[IRIS] ✅ Creative Vision complete for: ${brief.project_name}`);
+        console.log(`[ksignd] ✅ Creative Vision complete for: ${brief.project_name}`);
         return output;
     }
 );

@@ -1,6 +1,6 @@
 /**
  * firebase.ts — Firebase App Initialization
- * @inception/auth — Creative Liberation Engine v5 GENESIS
+ * @cle/auth — Creative Liberation Engine v5 GENESIS
  *
  * Initializes Firebase with environment-driven config.
  * Exports the Firebase app, Auth, and GoogleAuthProvider.

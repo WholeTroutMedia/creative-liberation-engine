@@ -1,20 +1,20 @@
 #!/usr/bin/env node
 /**
- * inception-scribe MCP Server
+ * cle-klogd MCP Server
  *
- * Exposes SCRIBE v2 memory and context-paging as MCP tools consumable
+ * Exposes klogd v2 memory and context-paging as MCP tools consumable
  * by Claude Cowork or any MCP-compatible client.
  *
  * Tools:
- *   scribe.remember    — Store a memory entry (key, value, tags, ttl)
- *   scribe.recall      — Retrieve memories by key, tag, or semantic query
- *   scribe.context     — Get paged context window for current session
- *   scribe.forget      — Remove a memory entry by key
- *   scribe.handoff     — Generate HANDOFF.md from current session state
+ *   klogd.remember    — Store a memory entry (key, value, tags, ttl)
+ *   klogd.recall      — Retrieve memories by key, tag, or semantic query
+ *   klogd.context     — Get paged context window for current session
+ *   klogd.forget      — Remove a memory entry by key
+ *   klogd.handoff     — Generate HANDOFF.md from current session state
  *
- * @package scribe-mcp
+ * @package klogd-mcp
  * @issue #30 — Phase A
- * @agent COMET (AURORA hive)
+ * @agent COMET (kuid hive)
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -50,7 +50,7 @@ import * as path from 'path';
 
 // —— In-Memory Store (Phase A — upgrades to AlloyDB/Redis in Phase B) ———
 
-const BUFFER_PATH = path.resolve(process.cwd(), '.agents/scribe-buffer.json');
+const BUFFER_PATH = path.resolve(process.cwd(), '.agents/klogd-buffer.json');
 let memoryStore: Map<string, MemoryEntry> = new Map();
 
 // Load initial state
@@ -60,7 +60,7 @@ try {
     memoryStore = new Map(Object.entries(data));
   }
 } catch (e) {
-  console.warn('[SCRIBE-MCP] Failed to load buffer:', e);
+  console.warn('[klogd-MCP] Failed to load buffer:', e);
 }
 
 function persistStore() {
@@ -68,7 +68,7 @@ function persistStore() {
     fs.mkdirSync(path.dirname(BUFFER_PATH), { recursive: true });
     fs.writeFileSync(BUFFER_PATH, JSON.stringify(Object.fromEntries(memoryStore), null, 2), 'utf-8');
   } catch (e) {
-    console.error('[SCRIBE-MCP] Failed to flush to disk', e);
+    console.error('[klogd-MCP] Failed to flush to disk', e);
   }
 }
 
@@ -86,7 +86,7 @@ function estimateTokens(text: string): number {
 // —— MCP Server Setup ————————————————————————
 
 const server = new Server(
-  { name: 'inception-scribe', version: '1.0.0' },
+  { name: 'cle-klogd', version: '1.0.0' },
   { capabilities: { tools: {}, resources: {} } }
 );
 
@@ -95,8 +95,8 @@ const server = new Server(
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
     {
-      name: 'scribe.remember',
-      description: 'Store a memory entry in SCRIBE. Supports key-value pairs with optional tags and TTL.',
+      name: 'klogd.remember',
+      description: 'Store a memory entry in klogd. Supports key-value pairs with optional tags and TTL.',
       inputSchema: {
         type: 'object',
         properties: {
@@ -110,7 +110,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'scribe.recall',
+      name: 'klogd.recall',
       description: 'Retrieve memories by key, tag filter, or text search.',
       inputSchema: {
         type: 'object',
@@ -123,7 +123,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'scribe.context',
+      name: 'klogd.context',
       description: 'Get paged context window for current session. Returns entries with token estimates for context management.',
       inputSchema: {
         type: 'object',
@@ -135,7 +135,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'scribe.forget',
+      name: 'klogd.forget',
       description: 'Remove a memory entry by key.',
       inputSchema: {
         type: 'object',
@@ -146,7 +146,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
       },
     },
     {
-      name: 'scribe.handoff',
+      name: 'klogd.handoff',
       description: 'Generate a HANDOFF.md document from current session state, including all memories tagged with the session.',
       inputSchema: {
         type: 'object',
@@ -166,8 +166,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
 server.setRequestHandler(ListResourcesRequestSchema, async () => ({
   resources: [
     {
-      uri: `scribe://session/${sessionId}`,
-      name: 'Current SCRIBE Session',
+      uri: `klogd://session/${sessionId}`,
+      name: 'Current klogd Session',
       description: `Active memory session with ${memoryStore.size} entries`,
       mimeType: 'application/json',
     },
@@ -180,7 +180,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
   switch (name) {
-    case 'scribe.remember': {
+    case 'klogd.remember': {
       const key = (args?.key as string) || generateKey();
       const entry: MemoryEntry = {
         key,
@@ -201,7 +201,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
-    case 'scribe.recall': {
+    case 'klogd.recall': {
       let results: MemoryEntry[] = [];
       const limit = (args?.limit as number) || 10;
 
@@ -238,7 +238,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
-    case 'scribe.context': {
+    case 'klogd.context': {
       const page = (args?.page as number) || 0;
       const size = (args?.pageSize as number) || PAGE_SIZE;
       let entries = Array.from(memoryStore.values());
@@ -267,7 +267,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
-    case 'scribe.forget': {
+    case 'klogd.forget': {
       const deleted = memoryStore.delete(args?.key as string);
       if (deleted) persistStore();
       return {
@@ -278,7 +278,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       };
     }
 
-    case 'scribe.handoff': {
+    case 'klogd.handoff': {
       const sessionEntries = Array.from(memoryStore.values())
         .filter(e => e.session === sessionId)
         .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
@@ -322,7 +322,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('[SCRIBE-MCP] Server started — SCRIBE v2 memory layer online');
+  console.error('[klogd-MCP] Server started — klogd v2 memory layer online');
 }
 
 main().catch(console.error);

@@ -23,7 +23,7 @@ export const TaskClassificationSchema = z.object({
     modeSuggestion: z.enum(['IDEATE', 'PLAN', 'SHIP', 'VALIDATE']).describe('Recommended operational mode'),
     requiresBrowser: z.boolean().describe('Whether browser automation is needed'),
     estimatedCredits: z.number().describe('Estimated API credit cost'),
-    suggestedAgents: z.array(z.string()).describe('Recommended agent names: BOLT, AURORA, KEEPER, etc.'),
+    suggestedAgents: z.array(z.string()).describe('Recommended agent names: kbuildd, kuid, kstated, etc.'),
     reasoning: z.string().describe('Transparent reasoning for classification'),
 });
 
@@ -52,7 +52,7 @@ ${input.userRequest}
 
 Consider the full spectrum of capabilities: code generation, strategic planning, creative design, web search, memory operations, browser automation, and media generation.
 
-Suggest agents from: BOLT (builder), AURORA (architect), KEEPER (knowledge), ARCH (patterns), CODEX (docs), LEX (compliance), COMPASS (constitution), RELAY (routing), SIGNAL (integration), COMET (automator).`,
+Suggest agents from: kbuildd (builder), kuid (architect), kstated (knowledge), ARCH (patterns), CODEX (docs), kdocsd (compliance), COMPASS (constitution), RELAY (routing), SIGNAL (integration), COMET (automator).`,
             output: { schema: TaskClassificationSchema },
             use: defaultMiddleware(),
         });
@@ -66,7 +66,7 @@ Suggest agents from: BOLT (builder), AURORA (architect), KEEPER (knowledge), ARC
                 modeSuggestion: 'SHIP' as const,
                 requiresBrowser: false,
                 estimatedCredits: 1,
-                suggestedAgents: ['BOLT'],
+                suggestedAgents: ['kbuildd'],
                 reasoning: 'Fallback classification — LLM classification unavailable',
             };
         }

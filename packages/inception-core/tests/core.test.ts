@@ -1,10 +1,10 @@
 /**
- * @inception/core — Unit Tests
+ * @cle/core — Unit Tests
  *
  * Tests the constitutional primitives, type constants, and utilities.
  * These run with zero LLM calls — pure logic validation.
  *
- * Run: npm test --prefix packages/inception-core
+ * Run: npm test --prefix packages/cle-core
  */
 
 import { describe, it, expect } from 'vitest';
@@ -103,7 +103,7 @@ describe('CONSTITUTION', () => {
 
 describe('HIVES', () => {
     it('should define all 7 hives', () => {
-        const expectedHives = ['AVERI', 'AURORA', 'KEEPER', 'LEX', 'SWITCHBOARD', 'VALIDATOR', 'BROADCAST'];
+        const expectedHives = ['AVERI', 'kuid', 'kstated', 'kdocsd', 'SWITCHBOARD', 'VALIDATOR', 'BROADCAST'];
         for (const hive of expectedHives) {
             expect(HIVES).toHaveProperty(hive);
         }
@@ -117,22 +117,22 @@ describe('HIVES', () => {
         }
     });
 
-    it('AVERI hive should have ATHENA as lead', () => {
-        expect(HIVES.AVERI.lead).toBe('ATHENA');
+    it('AVERI hive should have kruled as lead', () => {
+        expect(HIVES.AVERI.lead).toBe('kruled');
     });
 
     it('AVERI hive should include all trinity members', () => {
-        expect(HIVES.AVERI.members).toContain('ATHENA');
-        expect(HIVES.AVERI.members).toContain('VERA');
-        expect(HIVES.AVERI.members).toContain('IRIS');
+        expect(HIVES.AVERI.members).toContain('kruled');
+        expect(HIVES.AVERI.members).toContain('kstrigd');
+        expect(HIVES.AVERI.members).toContain('ksignd');
     });
 
-    it('KEEPER hive should have KEEPER as lead', () => {
-        expect(HIVES.KEEPER.lead).toBe('KEEPER');
+    it('kstated hive should have kstated as lead', () => {
+        expect(HIVES.kstated.lead).toBe('kstated');
     });
 
-    it('LEX hive should include COMPASS for constitutional compliance', () => {
-        expect(HIVES.LEX.members).toContain('COMPASS');
+    it('kdocsd hive should include COMPASS for constitutional compliance', () => {
+        expect(HIVES.kdocsd.members).toContain('COMPASS');
     });
 
     it('each hive lead should be in its own members list', () => {
@@ -166,7 +166,7 @@ describe('constitutionalPreflight', () => {
         const tasks = [
             'Write unit tests for the payment module',
             'Refactor the API router for clarity',
-            'Add a new Genkit flow for ATHENA strategy mode',
+            'Add a new Genkit flow for kruled strategy mode',
         ];
         for (const task of tasks) {
             const result = constitutionalPreflight(task);

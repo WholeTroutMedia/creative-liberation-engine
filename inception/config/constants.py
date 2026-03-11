@@ -14,9 +14,9 @@ MODE_EXPRESS_SKIP = ("ideate", "plan")  # Modes that can be skipped in Express
 
 # Hive definitions
 HIVES = {
-    "AURORA": "Creative Architecture & Design",
-    "LEX": "Legal, Compliance & Constitutional Guard",
-    "KEEPER": "Knowledge Organization & Documentation",
+    "kuid": "Creative Architecture & Design",
+    "kdocsd": "Legal, Compliance & Constitutional Guard",
+    "kstated": "Knowledge Organization & Documentation",
     "BROADCAST": "Communication & Content Distribution",
     "SWITCHBOARD": "Task Routing & Agent Coordination",
     "AVERI": "Constitutional Alignment & Leadership",

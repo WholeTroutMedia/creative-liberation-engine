@@ -4,13 +4,13 @@ const CURSOR_COLORS = ['#e8794a', '#a78bfa', '#34d399', '#60a5fa', '#f59e0b']
 
 const DEMO_PARTICIPANTS = [
     { handle: 'The Custodian', role: 'host', cursorColor: CURSOR_COLORS[0], active: true },
-    { handle: 'ATHENA', role: 'collaborator', cursorColor: CURSOR_COLORS[1], active: true },
-    { handle: 'VERA', role: 'observer', cursorColor: CURSOR_COLORS[2], active: false },
+    { handle: 'kruled', role: 'collaborator', cursorColor: CURSOR_COLORS[1], active: true },
+    { handle: 'kstrigd', role: 'observer', cursorColor: CURSOR_COLORS[2], active: false },
 ]
 
 const DEMO_ACTIVITY = [
     { handle: 'The Custodian', action: 'Updated color grade on brand-film-v2', time: '2m ago', engine: 'VIDEO' },
-    { handle: 'IRIS', action: 'Generated new vector assets for hero area', time: '5m ago', engine: 'ASSETS' },
+    { handle: 'ksignd', action: 'Generated new vector assets for hero area', time: '5m ago', engine: 'ASSETS' },
     { handle: 'The Custodian', action: 'Approved 3D logo camera angle #3', time: '12m ago', engine: '3D' },
 ]
 

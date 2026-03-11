@@ -20,10 +20,10 @@ export const AGENT_CAPABILITIES = [
     'execute:genkit',        // Invoke Genkit flows
     'call:external-apis',    // Make outbound API calls (Perplexity, Kling, etc.)
     'read:constitution',     // Read constitutional articles
-    'modify:constitution',   // Add/modify constitutional articles (ATHENA + LEX only)
-    'deploy:production',     // Trigger CI/CD or Cloud Run deployments (FORGE + IRIS only)
-    'manage:agents',         // Create/modify agent configurations (ATHENA only)
-    'approve:financial',     // Approve financial transactions (ATHENA + COMPASS only)
+    'modify:constitution',   // Add/modify constitutional articles (kruled + kdocsd only)
+    'deploy:production',     // Trigger CI/CD or Cloud Run deployments (FORGE + ksignd only)
+    'manage:agents',         // Create/modify agent configurations (kruled only)
+    'approve:financial',     // Approve financial transactions (kruled + COMPASS only)
     'clinical:access',       // Access clinical decision support flows (HIPAA-scoped)
 ] as const;
 
@@ -40,7 +40,7 @@ export type AgentTier =
 // ─── Agent Identity Schema ────────────────────────────────────────────────────
 
 export const AgentIdentitySchema = z.object({
-    agentId: z.string().describe('Agent name from the catalog, e.g. VERA, BOLT'),
+    agentId: z.string().describe('Agent name from the catalog, e.g. kstrigd, kbuildd'),
     agentType: z.enum(['leadership', 'hive', 'validator', 'lora', 'service']),
     tier: z.enum(['system', 'operator', 'builder', 'restricted']),
     hive: z.string().optional().describe('Which hive this agent belongs to'),
@@ -58,7 +58,7 @@ export type AgentIdentity = z.infer<typeof AgentIdentitySchema>;
 export const AGENT_ROSTER: AgentIdentity[] = [
     // ── AVERI Trinity (system tier) ──────────────────────────────────────────
     {
-        agentId: 'ATHENA',
+        agentId: 'kruled',
         agentType: 'leadership',
         tier: 'system',
         hive: 'AVERI',
@@ -70,7 +70,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         restrictions: [],
     },
     {
-        agentId: 'VERA',
+        agentId: 'kstrigd',
         agentType: 'leadership',
         tier: 'system',
         hive: 'AVERI',
@@ -81,7 +81,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         restrictions: ['modify:constitution', 'deploy:production'],
     },
     {
-        agentId: 'IRIS',
+        agentId: 'ksignd',
         agentType: 'leadership',
         tier: 'system',
         hive: 'AVERI',
@@ -92,12 +92,12 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         restrictions: ['modify:constitution', 'manage:agents'],
     },
 
-    // ── AURORA Hive (operator tier) ──────────────────────────────────────────
+    // ── kuid Hive (operator tier) ──────────────────────────────────────────
     {
-        agentId: 'AURORA',
+        agentId: 'kuid',
         agentType: 'hive',
         tier: 'operator',
-        hive: 'AURORA',
+        hive: 'kuid',
         capabilities: [
             'read:memory', 'write:memory', 'read:files', 'write:files',
             'execute:genkit', 'call:external-apis', 'read:constitution',
@@ -105,10 +105,10 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         restrictions: ['deploy:production', 'modify:constitution'],
     },
     {
-        agentId: 'BOLT',
+        agentId: 'kbuildd',
         agentType: 'hive',
         tier: 'builder',
-        hive: 'AURORA',
+        hive: 'kuid',
         capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit'],
         restrictions: [],
     },
@@ -116,17 +116,17 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         agentId: 'COMMERCE',
         agentType: 'hive',
         tier: 'builder',
-        hive: 'AURORA',
+        hive: 'kuid',
         capabilities: ['read:memory', 'read:files', 'execute:genkit', 'call:external-apis'],
         restrictions: ['write:files'],
     },
 
-    // ── KEEPER Hive (operator tier) ──────────────────────────────────────────
+    // ── kstated Hive (operator tier) ──────────────────────────────────────────
     {
-        agentId: 'KEEPER',
+        agentId: 'kstated',
         agentType: 'hive',
         tier: 'operator',
-        hive: 'KEEPER',
+        hive: 'kstated',
         capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'read:constitution'],
         restrictions: ['deploy:production'],
     },
@@ -134,7 +134,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         agentId: 'ARCH',
         agentType: 'hive',
         tier: 'builder',
-        hive: 'KEEPER',
+        hive: 'kstated',
         capabilities: ['read:memory', 'write:memory', 'read:files'],
         restrictions: [],
     },
@@ -142,17 +142,17 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         agentId: 'CODEX',
         agentType: 'hive',
         tier: 'builder',
-        hive: 'KEEPER',
+        hive: 'kstated',
         capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files'],
         restrictions: [],
     },
 
-    // ── LEX + COMPASS (validator tier — full read, restricted write) ─────────
+    // ── kdocsd + COMPASS (validator tier — full read, restricted write) ─────────
     {
-        agentId: 'LEX',
+        agentId: 'kdocsd',
         agentType: 'validator',
         tier: 'operator',
-        hive: 'LEX',
+        hive: 'kdocsd',
         capabilities: [
             'read:memory', 'write:memory', 'read:files',
             'read:constitution', 'modify:constitution',
@@ -163,7 +163,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         agentId: 'COMPASS',
         agentType: 'validator',
         tier: 'operator',
-        hive: 'LEX',
+        hive: 'kdocsd',
         capabilities: ['read:memory', 'read:files', 'read:constitution', 'approve:financial'],
         restrictions: ['write:files', 'deploy:production'],
     },
@@ -171,7 +171,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         agentId: 'SENTINEL',
         agentType: 'validator',
         tier: 'operator',
-        hive: 'LEX',
+        hive: 'kdocsd',
         capabilities: ['read:memory', 'read:files', 'read:constitution'],
         restrictions: ['write:files', 'write:memory'],
     },
@@ -197,7 +197,7 @@ export const AGENT_ROSTER: AgentIdentity[] = [
         restrictions: [],
     },
     {
-        agentId: 'PRISM',
+        agentId: 'kexecd',
         agentType: 'hive',
         tier: 'builder',
         hive: 'SWITCHBOARD',

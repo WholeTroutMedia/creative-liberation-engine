@@ -1,5 +1,5 @@
 /**
- * @inception/core — LLM Provider Types
+ * @cle/core — LLM Provider Types
  *
  * Type definitions for LLM providers, model config, and provider
  * health monitoring. Zero runtime dependencies.

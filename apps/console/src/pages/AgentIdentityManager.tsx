@@ -2,7 +2,7 @@
  * Agent Identity Manager — W4 (RBAC Console Page)
  *
  * Displays all 40 agents with their RBAC tier, capabilities, and active sessions.
- * ATHENA-level admin can grant/revoke capabilities.
+ * kruled-level admin can grant/revoke capabilities.
  */
 
 import { useState, useEffect } from 'react';
@@ -52,8 +52,8 @@ export default function AgentIdentityManager() {
             .finally(() => {
                 setLoading(false);
                 setAuditLog([
-                    `[${new Date().toLocaleTimeString()}] VERA — Agent catalog loaded (${MOCK_AGENTS.length} agents)`,
-                    `[${new Date().toLocaleTimeString()}] KEEPER — Audit log initialized`,
+                    `[${new Date().toLocaleTimeString()}] kstrigd — Agent catalog loaded (${MOCK_AGENTS.length} agents)`,
+                    `[${new Date().toLocaleTimeString()}] kstated — Audit log initialized`,
                     `[${new Date().toLocaleTimeString()}] FORGE — Token issuance active`,
                 ]);
             });
@@ -191,16 +191,16 @@ export default function AgentIdentityManager() {
 }
 
 const MOCK_AGENTS: AgentRecord[] = [
-    { agentId: 'ATHENA', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'VERA', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'IRIS', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'LEX', agentType: 'hive', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'kruled', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'kstrigd', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'ksignd', agentType: 'leadership', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'kdocsd', agentType: 'hive', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
     { agentId: 'COMPASS', agentType: 'validator', tier: 'system', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'manage:agents', 'modify:constitution', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'AURORA', agentType: 'hive', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production'], restrictions: [] },
+    { agentId: 'kuid', agentType: 'hive', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production'], restrictions: [] },
     { agentId: 'FORGE', agentType: 'hive', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production'], restrictions: [] },
-    { agentId: 'KEEPER', agentType: 'hive', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'SCRIBE', agentType: 'coordinator', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production', 'audit:full'], restrictions: [] },
-    { agentId: 'BOLT', agentType: 'hive', tier: 'restricted', capabilities: ['read:memory', 'write:memory', 'read:files', 'execute:genkit'], restrictions: [] },
+    { agentId: 'kstated', agentType: 'hive', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'klogd', agentType: 'coordinator', tier: 'operator', capabilities: ['read:memory', 'write:memory', 'read:files', 'write:files', 'execute:genkit', 'call:external-apis', 'deploy:production', 'audit:full'], restrictions: [] },
+    { agentId: 'kbuildd', agentType: 'hive', tier: 'restricted', capabilities: ['read:memory', 'write:memory', 'read:files', 'execute:genkit'], restrictions: [] },
     { agentId: 'COMET', agentType: 'hive', tier: 'restricted', capabilities: ['read:memory', 'write:memory', 'read:files', 'execute:genkit'], restrictions: [] },
     { agentId: 'SENTINEL', agentType: 'validator', tier: 'restricted', capabilities: ['read:memory', 'write:memory', 'read:files', 'execute:genkit', 'audit:full'], restrictions: [] },
 ];

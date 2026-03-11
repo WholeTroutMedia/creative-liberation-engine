@@ -16,8 +16,8 @@ import logging
 import uuid
 from typing import Any, Optional
 
-from inception.config.tiers import AccessTier, TierConfig, TIER_CONFIGS, check_agent_access
-from inception.auth.types import User, Session, CreditTransaction
+from cle.config.tiers import AccessTier, TierConfig, TIER_CONFIGS, check_agent_access
+from cle.auth.types import User, Session, CreditTransaction
 
 logger = logging.getLogger(__name__)
 
@@ -31,7 +31,7 @@ class TierEnforcer:
         session = enforcer.create_session(user)
 
         # Before agent execution:
-        allowed, reason = enforcer.check_access(session, agent_hive="AURORA")
+        allowed, reason = enforcer.check_access(session, agent_hive="kuid")
 
         # After agent execution (Merch tier):
         enforcer.deduct_credits(session, amount=1, reason="task execution")

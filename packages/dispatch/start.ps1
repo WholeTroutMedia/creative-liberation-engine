@@ -7,7 +7,7 @@ $DISPATCH = Join-Path $ROOT "packages\dispatch"
 $DISPATCH_URL = "http://localhost:5050"
 
 Write-Host "`nâ•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—" -ForegroundColor Cyan
-Write-Host "â•‘  INCEPTION DISPATCH â€” ACTIVATION         â•‘" -ForegroundColor Cyan
+Write-Host "â•‘  cle DISPATCH â€” ACTIVATION         â•‘" -ForegroundColor Cyan
 Write-Host "â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•`n" -ForegroundColor Cyan
 
 # Step 1: Install deps

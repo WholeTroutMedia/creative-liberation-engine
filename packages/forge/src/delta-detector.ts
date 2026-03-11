@@ -1,5 +1,5 @@
 /**
- * @inception/forge — DeltaDetector
+ * @cle/forge — DeltaDetector
  *
  * The stop-measure brain. Decides when a live session snapshot is "different
  * enough" to warrant creating a new checkpoint — and enforces cost budgets.

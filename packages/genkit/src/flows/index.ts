@@ -1,5 +1,5 @@
 /**
- * @inception/genkit — Master Flows Index
+ * @cle/genkit — Master Flows Index
  * Exports all Genkit flows for the Creative Liberation Engine
  *
  * This is the authoritative registry of all 52 active Genkit flows.
@@ -10,28 +10,28 @@
  */
 
 // ─── AVERI TRINITY ───────────────────────────────────────────────────────────
-export { ATHENAFlow, AthenaInputSchema, AthenaOutputSchema } from './athena.js';
+export { ATHENAFlow, AthenaInputSchema, AthenaOutputSchema } from './kruled.js';
 export { classifyTaskFlow } from './classify-task.js';
-export { VERAFlow } from './vera.js';
-export { IRISFlow } from './iris.js';
+export { VERAFlow } from './kstrigd.js';
+export { IRISFlow } from './ksignd.js';
 export { conversationalAveriFlow } from './conversationalAveri.js';
 
-// ─── AURORA HIVE ─────────────────────────────────────────────────────────────
-export { AURORAFlow } from './aurora.js';
-export { AuroraVisualScorerFlow, AuroraVisualScorerInputSchema, AuroraVisualScorerOutputSchema } from './aurora-visual-scorer.js';
-export { BOLTFlow } from './bolt.js';
+// ─── kuid HIVE ─────────────────────────────────────────────────────────────
+export { AURORAFlow } from './kuid.js';
+export { AuroraVisualScorerFlow, AuroraVisualScorerInputSchema, AuroraVisualScorerOutputSchema } from './kuid-visual-scorer.js';
+export { BOLTFlow } from './kbuildd.js';
 export { COMETFlow } from './comet.js';
 
 // ─── CONTINUITY ENGINE ───────────────────────────────────────────────────────
 export { ContinuityEngineFlow, ContinuityIngestInputSchema, ContinuityIngestOutputSchema, ingestDirectory } from '../tools/continuity-engine.js';
 
-// ─── KEEPER HIVE ─────────────────────────────────────────────────────────────
-export { KEEPERFlow } from './keeper.js';
+// ─── kstated HIVE ─────────────────────────────────────────────────────────────
+export { KEEPERFlow } from './kstated.js';
 export { ARCHFlow, CODEXFlow } from './arch-codex.js';
-export { KeeperBootFlow, keeperBootRecall, type KeeperBootResult } from '../memory/keeper-boot.js';
+export { KeeperBootFlow, keeperBootRecall, type KeeperBootResult } from '../memory/kstated-boot.js';
 
-// ─── LEX HIVE ────────────────────────────────────────────────────────────────
-export { LEXFlow, COMPASSFlow } from './lex-compass.js';
+// ─── kdocsd HIVE ────────────────────────────────────────────────────────────────
+export { LEXFlow, COMPASSFlow } from './kdocsd-compass.js';
 
 // ─── SWITCHBOARD HIVE ────────────────────────────────────────────────────────
 export { RELAYFlow, SIGNALFlow, SWITCHBOARDFlow } from './relay-signal-switchboard.js';
@@ -111,40 +111,40 @@ export type AgentStatus = 'active' | 'standby' | 'planned';
 
 export const AGENT_ROSTER = [
     // ── AVERI Trinity ──────────────────────────────────────────────────────────
-    { name: 'ATHENA', hive: 'AVERI', role: 'Strategist', flow: 'ATHENA', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'VERA', hive: 'AVERI', role: 'Scribe & Memory', flow: 'VERA', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'IRIS', hive: 'AVERI', role: 'Executor', flow: 'IRIS', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'kruled', hive: 'AVERI', role: 'Strategist', flow: 'kruled', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'kstrigd', hive: 'AVERI', role: 'klogd & Memory', flow: 'kstrigd', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'ksignd', hive: 'AVERI', role: 'Executor', flow: 'ksignd', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
 
-    // ── AURORA Hive ────────────────────────────────────────────────────────────
-    { name: 'AURORA', hive: 'AURORA', role: 'UX Architect', flow: 'AURORA', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'BOLT', hive: 'AURORA', role: 'Frontend Builder', flow: 'BOLT', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'COMET', hive: 'AURORA', role: 'Backend & APIs', flow: 'COMET', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'COMMERCE', hive: 'AURORA', role: 'ACO & Monetization', flow: null, model: 'gemini-2.5-pro', status: 'planned' as AgentStatus },
-    { name: 'BROWSER', hive: 'AURORA', role: 'Computer Use Automation', flow: null, model: 'gemini-2.0-flash', status: 'planned' as AgentStatus },
-    { name: 'AURORA_VISUAL_SCORER', hive: 'AURORA', role: 'Visual Logic Enforcer', flow: 'AuroraVisualScorer', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'CONTINUITY_ENGINE', hive: 'AURORA', role: 'Context Ingestion', flow: 'ContinuityEngine', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'DESIGN_INGEST', hive: 'AURORA', role: 'Design Pipeline Engine', flow: null, model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    // ── kuid Hive ────────────────────────────────────────────────────────────
+    { name: 'kuid', hive: 'kuid', role: 'UX Architect', flow: 'kuid', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'kbuildd', hive: 'kuid', role: 'Frontend Builder', flow: 'kbuildd', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'COMET', hive: 'kuid', role: 'Backend & APIs', flow: 'COMET', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'COMMERCE', hive: 'kuid', role: 'ACO & Monetization', flow: null, model: 'gemini-2.5-pro', status: 'planned' as AgentStatus },
+    { name: 'BROWSER', hive: 'kuid', role: 'Computer Use Automation', flow: null, model: 'gemini-2.0-flash', status: 'planned' as AgentStatus },
+    { name: 'AURORA_VISUAL_SCORER', hive: 'kuid', role: 'Visual Logic Enforcer', flow: 'AuroraVisualScorer', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'CONTINUITY_ENGINE', hive: 'kuid', role: 'Context Ingestion', flow: 'ContinuityEngine', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'DESIGN_INGEST', hive: 'kuid', role: 'Design Pipeline Engine', flow: null, model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
 
-    // ── KEEPER Hive ────────────────────────────────────────────────────────────
-    { name: 'KEEPER', hive: 'KEEPER', role: 'Knowledge Architect', flow: 'KEEPER', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'ARCH', hive: 'KEEPER', role: 'Pattern Extraction', flow: 'ARCH', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'CODEX', hive: 'KEEPER', role: 'Documentation', flow: 'CODEX', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
-    { name: 'ECHO', hive: 'KEEPER', role: 'Trajectory Prediction', flow: null, model: 'gemini-2.5-pro', status: 'planned' as AgentStatus },
+    // ── kstated Hive ────────────────────────────────────────────────────────────
+    { name: 'kstated', hive: 'kstated', role: 'Knowledge Architect', flow: 'kstated', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'ARCH', hive: 'kstated', role: 'Pattern Extraction', flow: 'ARCH', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'CODEX', hive: 'kstated', role: 'Documentation', flow: 'CODEX', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'ECHO', hive: 'kstated', role: 'Trajectory Prediction', flow: null, model: 'gemini-2.5-pro', status: 'planned' as AgentStatus },
 
-    // ── LEX Hive ───────────────────────────────────────────────────────────────
-    { name: 'LEX', hive: 'LEX', role: 'Constitutional Compliance', flow: 'LEX', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'COMPASS', hive: 'LEX', role: 'Ethical North Star', flow: 'COMPASS', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    // ── kdocsd Hive ───────────────────────────────────────────────────────────────
+    { name: 'kdocsd', hive: 'kdocsd', role: 'Constitutional Compliance', flow: 'kdocsd', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'COMPASS', hive: 'kdocsd', role: 'Ethical North Star', flow: 'COMPASS', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
 
     // ── SWITCHBOARD Hive ───────────────────────────────────────────────────────
     { name: 'RELAY', hive: 'SWITCHBOARD', role: 'Inter-agent Router', flow: 'RELAY', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
     { name: 'SIGNAL', hive: 'SWITCHBOARD', role: 'Integration', flow: 'SIGNAL', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
     { name: 'SWITCHBOARD', hive: 'SWITCHBOARD', role: 'Ops Coordinator', flow: 'SWITCHBOARD', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'RAM_CREW', hive: 'SWITCHBOARD', role: 'Data Integrity & QA', flow: 'RAM_CREW', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
+    { name: 'krecd', hive: 'SWITCHBOARD', role: 'Data Integrity & QA', flow: 'krecd', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
     { name: 'FORGE', hive: 'SWITCHBOARD', role: 'Infrastructure & Docker Ops', flow: 'FORGE', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
     { name: 'BEACON', hive: 'SWITCHBOARD', role: 'Community & Open Source', flow: 'BEACON', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'PRISM', hive: 'SWITCHBOARD', role: 'AI Model Ops & Cost Tracking', flow: 'PRISM', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'kexecd', hive: 'SWITCHBOARD', role: 'AI Model Ops & Cost Tracking', flow: 'kexecd', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
     { name: 'FLUX', hive: 'SWITCHBOARD', role: 'Data Engineering & ETL', flow: 'FLUX', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
-    { name: 'ARCHAEON', hive: 'SWITCHBOARD', role: 'Local LoRA Fine-Tuning Orchestrator', flow: 'ARCHAEON', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'klorad', hive: 'SWITCHBOARD', role: 'Local LoRA Fine-Tuning Orchestrator', flow: 'klorad', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
     { name: 'GHOST', hive: 'COMPASS', role: 'Silent QA Shadow', flow: 'GHOST', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
 
     // ── VALIDATOR Hive ─────────────────────────────────────────────────────────
@@ -172,7 +172,7 @@ export const AGENT_ROSTER = [
     { name: 'VFX', hive: 'GENMEDIA', role: 'VFX Renderer', flow: 'VfxRenderer', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
 
     // ── Finance Agent ──────────────────────────────────────────────────────────
-    { name: 'FINANCE_AGENT', hive: 'FINANCE', role: 'Solana Vault & Trading', flow: null, model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    { name: 'FINANCE_AGENT', hive: 'FINANCE', role: 'Solana kstored & Trading', flow: null, model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
 
     // ── Advisory Personas ──────────────────────────────────────────────────────
     { name: 'ORACLE_COUNCIL', hive: 'ADVISORY', role: 'Ensemble Validator', flow: 'OracleCouncil', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
@@ -186,8 +186,8 @@ export const AGENT_ROSTER = [
     { name: 'AUDIO', hive: 'LORA', role: 'Acoustic Intelligence Enhancement', flow: 'AUDIO', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
     { name: 'SPATIAL', hive: 'LORA', role: '3D/XR/Volumetric Enhancement', flow: 'SPATIAL', model: 'gemini-2.5-pro', status: 'active' as AgentStatus },
 
-    // ── AURORA Hive Additions ─────────────────────────────────────────────────
-    { name: 'ALFRED', hive: 'AURORA', role: 'Portfolio Butler', flow: 'ALFRED', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
+    // ── kuid Hive Additions ─────────────────────────────────────────────────
+    { name: 'ALFRED', hive: 'kuid', role: 'Portfolio Butler', flow: 'ALFRED', model: 'gemini-2.0-flash', status: 'active' as AgentStatus },
 ] as const;
 
 export type AgentName = typeof AGENT_ROSTER[number]['name'];

@@ -2,7 +2,7 @@
  * CommandMembrane — persistent AVERI natural-language prompt bar
  *
  * Always-active prompt bar at the bottom of the SIGNAL Dashboard.
- * Sends the user's intent to the Genkit /generate endpoint (ATHENA flow)
+ * Sends the user's intent to the Genkit /generate endpoint (kruled flow)
  * and streams the response.
  */
 
@@ -25,7 +25,7 @@ export interface CommandMembraneProps {
 
 export const CommandMembrane: React.FC<CommandMembraneProps> = ({
   genkitUrl = 'http://localhost:4100',
-  placeholder = 'Tell ATHENA what to do...',
+  placeholder = 'Tell kruled what to do...',
   onResponse,
 }) => {
   const [prompt, setPrompt] = useState('');
@@ -101,7 +101,7 @@ export const CommandMembrane: React.FC<CommandMembraneProps> = ({
         onResponse?.(text);
       }
     } catch (err) {
-      setResponse(`⚠️  ATHENA unreachable: ${String(err)}`);
+      setResponse(`⚠️  kruled unreachable: ${String(err)}`);
     } finally {
       setIsStreaming(false);
       setStreamDone(true);
@@ -116,16 +116,16 @@ export const CommandMembrane: React.FC<CommandMembraneProps> = ({
   };
 
   return (
-    <div className={styles.commandMembrane} role="region" aria-label="ATHENA Command Membrane">
+    <div className={styles.commandMembrane} role="region" aria-label="kruled Command Membrane">
       {/* Streaming response display */}
       {(response || isStreaming) && (
         <div
           ref={responseRef}
           className={`${styles.membraneResponse} ${streamDone ? styles.responseDone : ''}`}
           aria-live="polite"
-          aria-label="ATHENA response"
+          aria-label="kruled response"
         >
-          <span className={styles.athenaLabel}>ATHENA</span>
+          <span className={styles.athenaLabel}>kruled</span>
           <span className={styles.responseText}>{response}</span>
           {isStreaming && <span className={styles.streamCursor} aria-hidden="true">▌</span>}
         </div>
@@ -152,7 +152,7 @@ export const CommandMembrane: React.FC<CommandMembraneProps> = ({
           type="submit"
           className={`${styles.membraneSubmit} ${isStreaming ? styles.streaming : ''}`}
           disabled={isStreaming || !prompt.trim()}
-          aria-label="Send command to ATHENA"
+          aria-label="Send command to kruled"
           id="command-membrane-submit"
         >
           {isStreaming ? '◌' : '↵'}

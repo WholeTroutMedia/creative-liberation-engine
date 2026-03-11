@@ -11,12 +11,12 @@ let omnipresenceCacheName: string | null = null;
 let initializationPromise: Promise<string | null> | null = null;
 
 /**
- * Initializes the Long-Context Cache (SCRIBE Omnipresence).
+ * Initializes the Long-Context Cache (klogd Omnipresence).
  * Compresses the engine's core instructions and memory into a persistent Gemini KV cache.
  */
 export async function initializeOmnipresenceCache(): Promise<string | null> {
     if (!apiKey) {
-        console.warn('[CONTEXT-CACHE] ⚠️ No Gemini API key found. SCRIBE Omnipresence cache disabled.');
+        console.warn('[CONTEXT-CACHE] ⚠️ No Gemini API key found. klogd Omnipresence cache disabled.');
         return null;
     }
     
@@ -30,7 +30,7 @@ export async function initializeOmnipresenceCache(): Promise<string | null> {
 
     initializationPromise = (async () => {
         try {
-            console.log('[CONTEXT-CACHE] 🚀 Initializing SCRIBE Omnipresence KV Cache...');
+            console.log('[CONTEXT-CACHE] 🚀 Initializing klogd Omnipresence KV Cache...');
             
             const __dirname = path.dirname(fileURLToPath(import.meta.url));
             const projectRoot = path.resolve(__dirname, '../../../../');
@@ -42,7 +42,7 @@ export async function initializeOmnipresenceCache(): Promise<string | null> {
             let combinedContext = '';
             
             if (fs.existsSync(constitutionPath)) {
-                combinedContext += '# INCEPTION ENGINE CONSTITUTION\n' + fs.readFileSync(constitutionPath, 'utf8') + '\n\n';
+                combinedContext += '# Creative Liberation Engine CONSTITUTION\n' + fs.readFileSync(constitutionPath, 'utf8') + '\n\n';
             }
             if (fs.existsSync(agentsPath)) {
                 combinedContext += '# OPERATIONAL DOCTRINE (AGENTS.md)\n' + fs.readFileSync(agentsPath, 'utf8') + '\n\n';
@@ -67,7 +67,7 @@ export async function initializeOmnipresenceCache(): Promise<string | null> {
             });
 
             omnipresenceCacheName = cacheResult.name || 'OMNIPRESENCE_BETA';
-            console.log(`[CONTEXT-CACHE] ✅ SCRIBE Omnipresence active. Cache Name: ${omnipresenceCacheName}`);
+            console.log(`[CONTEXT-CACHE] ✅ klogd Omnipresence active. Cache Name: ${omnipresenceCacheName}`);
             
             const expStr = cacheResult.expireTime ? new Date(cacheResult.expireTime).toLocaleString() : 'Unknown';
             console.log(`[CONTEXT-CACHE] 📉 Ephemeral Context compacted. Expiration: ${expStr}`);
@@ -101,7 +101,7 @@ export function applyOmnipresenceCache<T>(options: T): T {
     return {
         ...options,
         model: 'googleai/gemini-1.5-pro', // Required for 002 cache support
-        system: `[SCRIBE OMNIPRESENCE KV CACHE ACTIVE]\n` + ((options as any).system || ''),
+        system: `[klogd OMNIPRESENCE KV CACHE ACTIVE]\n` + ((options as any).system || ''),
         config: {
             ...((options as any).config || {}),
             version: 'gemini-1.5-pro-002',

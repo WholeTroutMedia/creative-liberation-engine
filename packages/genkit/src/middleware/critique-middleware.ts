@@ -1,8 +1,8 @@
 /**
- * Critique Middleware — Helix A: VERA Inner Critic Loop
+ * Critique Middleware — Helix A: kstrigd Inner Critic Loop
  *
  * Wraps any Genkit generate call with a post-generation self-evaluation loop.
- * VERA scores the output before it surfaces. If it fails, one silent retry
+ * kstrigd scores the output before it surfaces. If it fails, one silent retry
  * with a revision directive. Zero user visibility.
  *
  * Usage:
@@ -23,7 +23,7 @@ import { scoreIntentFidelity, ifsPasses, IFSResult, IFS_DEFAULT_THRESHOLD } from
 export interface CritiqueConfig {
     /** IFS threshold 0–100. Below this → silent retry. Default: 65 */
     threshold?: number;
-    /** Session ID for VERA memory context. */
+    /** Session ID for kstrigd memory context. */
     sessionId?: string;
     /** Disable the critique loop entirely. Useful in tests or high-throughput paths. */
     disabled?: boolean;

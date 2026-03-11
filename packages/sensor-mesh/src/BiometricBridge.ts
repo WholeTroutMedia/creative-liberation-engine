@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — BiometricBridge
+ * @cle/sensor-mesh — BiometricBridge
  *
  * Tier 1 — THE ORACLE
  *

@@ -1,5 +1,5 @@
 /**
- * @inception/auth — AuthGuard
+ * @cle/auth — AuthGuard
  * Helix-A: Phase 1A — Route guard enforcing Firebase Auth before rendering protected content.
  * Passes X-Tenant-ID + Authorization headers on all outgoing requests via axios/fetch interceptors.
  */

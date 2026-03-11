@@ -251,7 +251,7 @@ export default function ClientDashboard() {
 
                                 <h3 className="cd-finalized-title">Network Finalized</h3>
                                 <p className="cd-finalized-text">
-                                    Your secure sovereign intelligence network is now online. The LEX master service agreement has been drafted and requires your signature.
+                                    Your secure sovereign intelligence network is now online. The kdocsd master service agreement has been drafted and requires your signature.
                                 </p>
                                 <div className="cd-finalized-actions">
                                     {data.contractDraftUrl && (

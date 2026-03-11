@@ -125,7 +125,7 @@ export default function InceptionVfx() {
                     <div>
                         <h1 className="text-2xl font-bold font-sans text-cream uppercase tracking-widest flex items-center gap-2">
                             <Video className="text-copper" />
-                            INCEPTION VFX
+                            cle VFX
                         </h1>
                         <p className="text-sm font-mono mt-1">AI-to-3D Production Studio</p>
                     </div>
@@ -168,7 +168,7 @@ export default function InceptionVfx() {
                             <h3 className="text-lg font-bold text-cream mb-2">
                                 {isUploading ? 'Uploading & Processing...' : 'Upload Source Video'}
                             </h3>
-                            <p className="text-sm max-w-md mx-auto mb-6">Drag and drop MP4, MOV, or AVI files to begin processing. The Inception VFX pipeline will analyze the video for motion capture, depth estimation, and 3D scene reconstruction.</p>
+                            <p className="text-sm max-w-md mx-auto mb-6">Drag and drop MP4, MOV, or AVI files to begin processing. The cle VFX pipeline will analyze the video for motion capture, depth estimation, and 3D scene reconstruction.</p>
 
                             <input
                                 type="file"

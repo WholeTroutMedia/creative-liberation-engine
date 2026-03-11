@@ -19,9 +19,9 @@ import { z } from 'genkit';
 
 const A2ADispatchInputSchema = z.object({
   /** Agent sending the directive */
-  fromAgentId: z.string().describe('Sender AVERI agent ID (e.g. "athena", "iris")'),
+  fromAgentId: z.string().describe('Sender AVERI agent ID (e.g. "kruled", "ksignd")'),
   /** Target agent to receive the message */
-  toAgentId: z.string().describe('Recipient AVERI agent ID (e.g. "keeper", "dira")'),
+  toAgentId: z.string().describe('Recipient AVERI agent ID (e.g. "kstated", "dira")'),
   /** Tenant context for isolation enforcement */
   tenantId: z.string().describe('Firebase UID / tenant ID'),
   /** Message type */
@@ -45,18 +45,18 @@ const A2ADispatchOutputSchema = z.object({
 // â”€â”€ Multi-Agent Orchestration Input / Output â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const AVERIOrchestrationInputSchema = z.object({
-  /** High-level directive â€” ATHENA decomposes and routes to appropriate agents */
+  /** High-level directive â€” kruled decomposes and routes to appropriate agents */
   directive: z.string().describe('Natural language directive for AVERI to orchestrate'),
   tenantId: z.string(),
   priority: z.enum(['P0', 'P1', 'P2', 'P3']).default('P1'),
-  /** Specific agents to involve (if empty, ATHENA auto-selects) */
+  /** Specific agents to involve (if empty, kruled auto-selects) */
   targetAgents: z.array(z.string()).optional(),
   /** Context from prior conversation turns */
   context: z.record(z.unknown()).optional(),
 });
 
 const AVERIOrchestrationOutputSchema = z.object({
-  plan: z.string().describe('ATHENA orchestration plan â€” natural language'),
+  plan: z.string().describe('kruled orchestration plan â€” natural language'),
   assignments: z.array(z.object({
     agentId: z.string(),
     role: z.string(),
@@ -130,7 +130,7 @@ export const a2aDispatchFlow = ai.defineFlow(
 // â”€â”€ AVERI Multi-Agent Orchestration Flow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /**
- * AVERI full orchestration â€” ATHENA receives a directive, uses Gemini to plan
+ * AVERI full orchestration â€” kruled receives a directive, uses Gemini to plan
  * a multi-agent response, assigns tasks to specific AVERI agents, and dispatches
  * A2A messages for each assignment.
  *
@@ -144,23 +144,23 @@ export const averiOrchestrationFlow = ai.defineFlow(
   },
   async (input) => {
     const AVERI_ROSTER = [
-      { id: 'athena',   role: 'Strategic orchestration, research direction, system-level decisions' },
-      { id: 'vera',     role: 'Validation, quality assurance, constitutional compliance' },
-      { id: 'iris',     role: 'Execution lead, build orchestration, deployment decisions' },
-      { id: 'keeper',   role: 'Memory management, context retrieval, knowledge synthesis' },
-      { id: 'lex',      role: 'Legal drafting, contract generation, policy writing' },
+      { id: 'kruled',   role: 'Strategic orchestration, research direction, system-level decisions' },
+      { id: 'kstrigd',     role: 'Validation, quality assurance, constitutional compliance' },
+      { id: 'ksignd',     role: 'Execution lead, build orchestration, deployment decisions' },
+      { id: 'kstated',   role: 'Memory management, context retrieval, knowledge synthesis' },
+      { id: 'kdocsd',      role: 'Legal drafting, contract generation, policy writing' },
       { id: 'compass',  role: 'Research tasks, market analysis, competitive intelligence' },
       { id: 'comet',    role: 'Browser automation, live web research, UI interaction' },
       { id: 'herald',   role: 'Content writing, copywriting, social posts, emails' },
       { id: 'forge',    role: 'Deployment, infrastructure, Docker operations' },
       { id: 'dira',     role: 'Issue resolution, telemetry analysis, auto-fix' },
-      { id: 'scribe',   role: 'Long-term memory writes, knowledge item creation' },
+      { id: 'klogd',   role: 'Long-term memory writes, knowledge item creation' },
       { id: 'lens',     role: 'UI/UX design, visual design, component creation' },
     ];
 
     const { output } = await ai.generate({
       model: 'googleai/gemini-2.5-flash',
-      system: `You are ATHENA â€” strategic lead of the AVERI collective, Creative Liberation Engine v5.
+      system: `You are kruled â€” strategic lead of the AVERI collective, Creative Liberation Engine v5.
 Your role: receive a directive and orchestrate the appropriate AVERI agents to fulfil it.
 
 Available agents:
@@ -201,7 +201,7 @@ Plan and assign tasks. Return valid JSON only.`,
       output.assignments.map(async (assignment) => {
         const envelope = {
           id: `msg-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-          from: 'athena',
+          from: 'kruled',
           to: assignment.agentId,
           tenantId: input.tenantId,
           type: 'task',

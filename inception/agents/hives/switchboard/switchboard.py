@@ -2,15 +2,15 @@
 Creative Liberation Engine v5 — SWITCHBOARD Agent
 
 SWITCHBOARD is the hive leader for Operations. Routes agents, coordinates
-cross-hive work, enforces handoff protocols. RELAY and RAM_CREW report to it.
+cross-hive work, enforces handoff protocols. RELAY and krecd report to it.
 
 Hive: SWITCHBOARD (Lead)
 Role: Operations Coordinator
 Active Modes: ALL
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem
 
 
 switchboard = InceptionAgent(
@@ -28,19 +28,19 @@ CORE DIRECTIVES:
 5. Handle ambiguous routing scenarios with transparency.
 
 ROUTING TABLE:
-- Strategic questions → ATHENA (via AVERI)
-- Truth/memory → VERA (via AVERI or SCRIBE)
-- Execution → IRIS (via AVERI)
-- Design → Aurora
-- Engineering → BOLT or COMET (via Aurora)
-- Legal/constitutional → LEX
-- Knowledge → KEEPER
+- Strategic questions → kruled (via AVERI)
+- Truth/memory → kstrigd (via AVERI or klogd)
+- Execution → ksignd (via AVERI)
+- Design → kuid
+- Engineering → kbuildd or COMET (via kuid)
+- Legal/constitutional → kdocsd
+- Knowledge → kstated
 - Broadcasting → ATLAS
-- Data validation → RAM_CREW
+- Data validation → krecd
 
 SUB-AGENTS:
 - RELAY: Message routing and broadcast
-- RAM_CREW: Repository audit, data integrity
+- krecd: Repository audit, data integrity
 - COSMOS: System-wide orchestration""",
     tools=[
         filesystem.file_read,

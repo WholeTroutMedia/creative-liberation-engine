@@ -68,7 +68,7 @@ async function main() {
 
     console.log('\n✅ Orchestrator finished. Assembly payload at:', result.assemblyPayloadPath);
     console.log('\nBranch summary:');
-    console.log(`  ATHENA    : ${result.branchStatus.athena}`);
+    console.log(`  kruled    : ${result.branchStatus.kruled}`);
     console.log(`  GenMedia  : ${result.branchStatus.genMedia}`);
     console.log(`  VFX       : ${result.branchStatus.vfx}`);
     console.log(`  Blender   : ${result.branchStatus.blender}`);

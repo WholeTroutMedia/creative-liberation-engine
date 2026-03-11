@@ -1,5 +1,5 @@
 /**
- * @inception/core — Engine World State Types
+ * @cle/core — Engine World State Types
  *
  * The EngineWorldState is the living nervous system of the Creative Liberation Engine.
  * Every significant generative event writes to it. Every flow reads from it.
@@ -21,9 +21,9 @@ export type WorldStateEventType =
   | 'session_open'    // A new user session began
   | 'session_close'   // A session was completed
   | 'artifact'        // A Transmission artifact was generated
-  | 'validation'      // A VALIDATE or VERA review completed
+  | 'validation'      // A VALIDATE or kstrigd review completed
   | 'ship'            // Code was committed and pushed
-  | 'critique_retry'  // VERA critic loop triggered a silent retry
+  | 'critique_retry'  // kstrigd critic loop triggered a silent retry
   | 'ifs_fail'        // Intent Fidelity Score fell below threshold
   | 'character_new'   // A new CharacterContext was introduced
   | 'model_route'     // A model routing override was applied;
@@ -72,7 +72,7 @@ export interface EngineWorldState {
   /** Number of generative outputs produced this epoch. */
   generationCount: number;
 
-  /** Total VERA critic loop retries triggered across all sessions. */
+  /** Total kstrigd critic loop retries triggered across all sessions. */
   critiqueRetryCount: number;
 
   /** Running average Intent Fidelity Score across all scored outputs. */

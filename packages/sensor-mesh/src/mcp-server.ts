@@ -15,7 +15,7 @@ import {
 import { createMirror, ZigSimBridge } from './index.js';
 
 const server = new Server(
-  { name: 'inception-sensor-mesh', version: '1.0.0' },
+  { name: 'cle-sensor-mesh', version: '1.0.0' },
   { capabilities: { tools: {} } }
 );
 

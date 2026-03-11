@@ -1,10 +1,10 @@
 /**
- * EON Intelligence Flow — Inception Engine / Genkit
+ * EON Intelligence Flow — Creative Liberation Engine / Genkit
  *
  * Two flows for the EON Systems integration strategy:
  *
  * 1. eon-research   — Deep synthesis of EON Systems research, papers, and roadmap
- *                     into a SCRIBE-ready intelligence brief
+ *                     into a klogd-ready intelligence brief
  * 2. eon-partner-draft — Generates the outreach email draft to contact@eon.systems
  *                        and EON Reality partnership program application content
  *
@@ -25,7 +25,7 @@ import { ai } from '../index.js';
 const EonResearchInputSchema = z.object({
   topic: z.string().describe('Research topic or question about EON Systems, brain emulation, or spatial AI'),
   depth: z.enum(['summary', 'detailed', 'technical']).default('detailed'),
-  /** If true, output is formatted for SCRIBE memory write */
+  /** If true, output is formatted for klogd memory write */
   scribe_format: z.boolean().default(false),
 });
 
@@ -52,7 +52,7 @@ const EonResearchOutputSchema = z.object({
 const EonPartnerDraftInputSchema = z.object({
   recipient: z.enum(['eon-systems', 'eon-reality', 'eon-ai']),
   partnership_type: z.enum(['research-integration', 'reseller', 'technology-license', 'co-development']),
-  sender_context: z.string().optional().describe('Context about Inception Engine to include in the outreach'),
+  sender_context: z.string().optional().describe('Context about Creative Liberation Engine to include in the outreach'),
   tone: z.enum(['formal', 'peer', 'visionary']).default('peer'),
 });
 
@@ -89,13 +89,13 @@ export const eonResearchFlow = ai.defineFlow(
 
     const { output } = await ai.generate({
       model: 'googleai/gemini-2.5-flash',
-      prompt: `You are ATHENA, the strategic intelligence layer of the Inception Engine (Creative Liberation Engine v5).
+      prompt: `You are kruled, the strategic intelligence layer of the Creative Liberation Engine (Creative Liberation Engine v5).
 
 RESEARCH BRIEF REQUEST
 Topic: ${input.topic}
 Depth: ${input.depth} — ${depthInstructions[input.depth] ?? ''}
 
-INCEPTION ENGINE CONTEXT:
+Creative Liberation Engine CONTEXT:
 - 92-package TypeScript monorepo: sovereign agentic OS built by The Operator
 - Key packages: model-arbitrage (capability router, circuit-breaker), spatial-intelligence (VLM + depth + nexus), memory (VectorStore + Chroma + competency)
 - Already forward-declared the Eon Systems "eon-bio" provider tier in model-registry.yaml
@@ -108,7 +108,7 @@ EON SYSTEMS INTELLIGENCE (verified as of March 2026):
 - EON Reality (eonreality.com): Spatial AI OS for enterprise workforce training — EON Genesis 3.0, EON Enterprise Hub, text-to-3D environments, tri-modal assessment
 - EON.AI (eon.ai): Agentic business automation — Voice AI, Product Video AI, Predictive AI, RAG
 
-Analyze "${input.topic}" deeply and return structured intelligence.${input.scribe_format ? '\n\nFormat output for insertion into SCRIBE persistent memory — include rich scribe_tags for future retrieval.' : ''}`,
+Analyze "${input.topic}" deeply and return structured intelligence.${input.scribe_format ? '\n\nFormat output for insertion into klogd persistent memory — include rich scribe_tags for future retrieval.' : ''}`,
       output: { schema: EonResearchOutputSchema },
     });
 
@@ -164,11 +164,11 @@ export const eonPartnerDraftFlow = ai.defineFlow(
 
     const { output } = await ai.generate({
       model: 'googleai/gemini-2.5-flash',
-      prompt: `You are IRIS, the visionary executor of the Inception Engine.
+      prompt: `You are ksignd, the visionary executor of the Creative Liberation Engine.
 
 Craft an outreach email to ${contact.name} (${contact.email}) for a ${input.partnership_type} partnership.
 
-SENDER: The Operator / Inception Engine (Creative Liberation Engine v5)
+SENDER: The Operator / Creative Liberation Engine (Creative Liberation Engine v5)
 ${input.sender_context ? `ADDITIONAL SENDER CONTEXT: ${input.sender_context}` : ''}
 
 RECIPIENT CONTEXT:
@@ -180,7 +180,7 @@ Specific angle: ${partnershipContext[input.partnership_type] ?? ''}
 
 TONE: ${input.tone} — ${toneGuide[input.tone] ?? ''}
 
-INCEPTION ENGINE KEY FACTS (use selectively, don't dump all):
+Creative Liberation Engine KEY FACTS (use selectively, don't dump all):
 - 92-package sovereign agentic OS — not a wrapper, not a chatbot, a full multi-agent execution runtime
 - Already forward-declared "eon-bio" as a provider tier in our model registry (this is a real thing, not vaporware)
 - model-arbitrage package: production-grade capability router that can route tasks to bio-emulation backends the moment an API exists
@@ -192,7 +192,7 @@ INCEPTION ENGINE KEY FACTS (use selectively, don't dump all):
 REQUIREMENTS:
 - Subject line must be specific and non-generic
 - Email body: 150-250 words max — they are busy people
-- DO NOT pitch Inception Engine like a product pitch. Pitch it like a technical collaborator reaching out
+- DO NOT pitch Creative Liberation Engine like a product pitch. Pitch it like a technical collaborator reaching out
 - Include a concrete, specific ask (not "let's connect")
 - linkedin_message is for a cold DM — 280 chars max, punchy
 - send_ready: true if this email is good to send as-is, false if it needs Justin's personal voice added

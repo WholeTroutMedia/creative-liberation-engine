@@ -1,7 +1,7 @@
 /**
- * SCRIBE Memory Tool
+ * klogd Memory Tool
  *
- * Genkit tool definition for querying AND writing to the SCRIBE memory system.
+ * Genkit tool definition for querying AND writing to the klogd memory system.
  * Allows models to autonomously access episodic, semantic, and procedural memory
  * backed by the project-scoped ChromaDB collections.
  *
@@ -30,8 +30,8 @@ const MemoryQueryInput = z.object({
         .describe('Type of memory to search'),
     limit: z.number().default(5).describe('Maximum number of results'),
     projectId: z.string().optional().describe(
-        'Optional project scope — retrieves only from that project\'s SCRIBE collections. ' +
-        'Leave unset for global SCRIBE memory.'
+        'Optional project scope — retrieves only from that project\'s klogd collections. ' +
+        'Leave unset for global klogd memory.'
     ),
 });
 
@@ -82,14 +82,14 @@ export const scribeMemoryTool = ai.defineTool(
     {
         name: 'scribeMemory',
         description:
-            'Query the SCRIBE episodic/semantic/procedural memory system. ' +
+            'Query the klogd episodic/semantic/procedural memory system. ' +
             'Use this to recall past decisions, learned patterns, or procedural knowledge.',
         inputSchema: MemoryQueryInput,
         outputSchema: MemoryQueryOutput,
     },
     async (input) => {
         const startTime = Date.now();
-        console.log(`[SCRIBE] 🔎 Query: "${input.query.slice(0, 60)}" (type: ${input.memoryType})`);
+        console.log(`[klogd] 🔎 Query: "${input.query.slice(0, 60)}" (type: ${input.memoryType})`);
 
         const typesToSearch = input.memoryType === 'all'
             ? ['episodic', 'semantic', 'procedural']
@@ -121,7 +121,7 @@ export const scribeMemoryTool = ai.defineTool(
                 }
             } catch (err: unknown) {
                 const msg = err instanceof Error ? err.message : String(err);
-                console.warn(`[SCRIBE] Could not query ${mt} memory: ${msg}`);
+                console.warn(`[klogd] Could not query ${mt} memory: ${msg}`);
             }
         }
 
@@ -129,7 +129,7 @@ export const scribeMemoryTool = ai.defineTool(
         allResults.sort((a, b) => b.relevance - a.relevance);
         const trimmed = allResults.slice(0, input.limit ?? 5);
 
-        console.log(`[SCRIBE] ✅ Found ${trimmed.length} memories in ${Date.now() - startTime}ms`);
+        console.log(`[klogd] ✅ Found ${trimmed.length} memories in ${Date.now() - startTime}ms`);
         return {
             results: trimmed,
             totalFound: allResults.length,
@@ -139,14 +139,14 @@ export const scribeMemoryTool = ai.defineTool(
 );
 
 // ---------------------------------------------------------------------------
-// Write Tool (SCRIBE commit)
+// Write Tool (klogd commit)
 // ---------------------------------------------------------------------------
 
 export const scribeWriteTool = ai.defineTool(
     {
         name: 'scribeWrite',
         description:
-            'Write a new entry to the SCRIBE memory system. ' +
+            'Write a new entry to the klogd memory system. ' +
             'Use this to commit learned patterns, decisions, or session events for future recall.',
         inputSchema: MemoryWriteInput,
         outputSchema: MemoryWriteOutput,
@@ -167,13 +167,13 @@ export const scribeWriteTool = ai.defineTool(
                 texts: [input.content],
                 metadatas: [metadata],
                 ids: [id],
-                projectId: collection, // write directly to named scribe collection
+                projectId: collection, // write directly to named klogd collection
             });
-            console.log(`[SCRIBE] 📝 Committed ${input.memoryType} memory → "${collection}"`);
+            console.log(`[klogd] 📝 Committed ${input.memoryType} memory → "${collection}"`);
             return { written: true, collection, id };
         } catch (err: unknown) {
             const msg = err instanceof Error ? err.message : String(err);
-            console.error(`[SCRIBE] Write failed: ${msg}`);
+            console.error(`[klogd] Write failed: ${msg}`);
             return { written: false, collection, id };
         }
     }

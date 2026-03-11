@@ -2,7 +2,7 @@
  * Transmission Flow — The Infinity Story Generator
  *
  * Generates a single transmission artifact from current world state context.
- * IRIS narrates in the voice of intercepted documents — never as an author.
+ * ksignd narrates in the voice of intercepted documents — never as an author.
  * Called by the transmission-daemon every 15 minutes (autonomous loop).
  * Can also be triggered manually via POST /transmission/generate.
  *

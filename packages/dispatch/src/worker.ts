@@ -93,10 +93,10 @@ Produce a detailed, complete output. Be specific and actionable.`,
         });
     }
 
-    // ── Default: Use ATHENA for strategic routing ─────────────────────────────
+    // ── Default: Use kruled for strategic routing ─────────────────────────────
     return await callGenkit('/generate', {
         model: 'googleai/gemini-2.0-flash',
-        system: `You are ATHENA, the strategic director of the Creative Liberation Engine. You are executing tasks autonomously from the dispatch queue.`,
+        system: `You are kruled, the strategic director of the Creative Liberation Engine. You are executing tasks autonomously from the dispatch queue.`,
         prompt: `Complete this task and produce a concrete, actionable output:
 
 Task ID: ${task.id}
@@ -126,7 +126,7 @@ async function runCampaignTask(task: Task): Promise<TaskResult> {
             return { success: true, output: `Campaign ${campaignId} executed — status: ${data.status}` };
         }
 
-        // Otherwise use ATHENA to plan campaign approach
+        // Otherwise use kruled to plan campaign approach
         return await callGenkit('/averi/plan', {
             topic: `Campaign execution: ${task.title}`,
             context: task.description ?? '',
@@ -245,7 +245,7 @@ async function markTaskDone(task: Task, result: TaskResult): Promise<void> {
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function workerLoop(): Promise<void> {
-    console.log(`[WORKER] 🤖 Inception Dispatch Worker ${WORKER_ID}`);
+    console.log(`[WORKER] 🤖 cle Dispatch Worker ${WORKER_ID}`);
     console.log(`[WORKER] 📡 Genkit: ${GENKIT_URL} | Dispatch: ${DISPATCH_URL}`);
     console.log(`[WORKER] ⏱️  Poll interval: ${POLL_INTERVAL_MS}ms`);
     console.log(`[WORKER] 🏃 Worker loop started`);

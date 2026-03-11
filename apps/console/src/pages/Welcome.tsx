@@ -10,7 +10,7 @@
  *   §4  YOUR KEYS      — Provider pills, sovereignty statement
  *   §5  ENTER DEEPER   — Explore grid
  *
- * ATHENA BAR — always pinned to viewport bottom
+ * kruled BAR — always pinned to viewport bottom
  */
 
 import { useEffect, useRef, useState, useCallback } from 'react'
@@ -34,7 +34,7 @@ const T = {
 
 /* ── HIVE COLOURS ────────────────────────────────────────── */
 const HIVE_COLOR: Record<string, string> = {
-    AURORA: T.amber, KEEPER: T.blue, LEX: T.green,
+    kuid: T.amber, kstated: T.blue, kdocsd: T.green,
     SWITCHBOARD: T.violet, BROADCAST: T.orange,
     AVERI: T.amber, SPECIALIST: '#20B2AA',
     VALIDATOR: '#ef4444', ENHANCEMENT: '#C17D4A',
@@ -42,20 +42,20 @@ const HIVE_COLOR: Record<string, string> = {
 
 /* ── AGENTS ─────────────────────────────────────────────── */
 const AGENTS = [
-    { name: 'BOLT', hive: 'AURORA', role: 'Full-stack code execution' },
-    { name: 'COMET', hive: 'AURORA', role: 'Autonomous browser control' },
-    { name: 'AURORA', hive: 'AURORA', role: 'Creative architecture & vibe lead' },
-    { name: 'KEEPER', hive: 'KEEPER', role: 'Long-term knowledge graph' },
-    { name: 'ARCH', hive: 'KEEPER', role: 'Architecture & pattern enforcement' },
-    { name: 'CODEX', hive: 'KEEPER', role: 'Documentation & API contracts' },
-    { name: 'SCRIBE', hive: 'KEEPER', role: 'Session transcription' },
-    { name: 'ECHO', hive: 'KEEPER', role: 'Memory consolidation' },
-    { name: 'LEX', hive: 'LEX', role: 'Legal compliance & contracts' },
-    { name: 'COMPASS', hive: 'LEX', role: 'Constitutional navigation' },
+    { name: 'kbuildd', hive: 'kuid', role: 'Full-stack code execution' },
+    { name: 'COMET', hive: 'kuid', role: 'Autonomous browser control' },
+    { name: 'kuid', hive: 'kuid', role: 'Creative architecture & vibe lead' },
+    { name: 'kstated', hive: 'kstated', role: 'Long-term knowledge graph' },
+    { name: 'ARCH', hive: 'kstated', role: 'Architecture & pattern enforcement' },
+    { name: 'CODEX', hive: 'kstated', role: 'Documentation & API contracts' },
+    { name: 'klogd', hive: 'kstated', role: 'Session transcription' },
+    { name: 'ECHO', hive: 'kstated', role: 'Memory consolidation' },
+    { name: 'kdocsd', hive: 'kdocsd', role: 'Legal compliance & contracts' },
+    { name: 'COMPASS', hive: 'kdocsd', role: 'Constitutional navigation' },
     { name: 'SWITCHBOARD', hive: 'SWITCHBOARD', role: 'Task routing hub' },
     { name: 'RELAY', hive: 'SWITCHBOARD', role: 'Inter-agent message relay' },
     { name: 'COSMOS', hive: 'SWITCHBOARD', role: 'Multi-model orchestration' },
-    { name: 'RAM_CREW', hive: 'SWITCHBOARD', role: 'Resource allocation' },
+    { name: 'krecd', hive: 'SWITCHBOARD', role: 'Resource allocation' },
     { name: 'ATLAS', hive: 'BROADCAST', role: 'Content distribution' },
     { name: 'SIGNAL', hive: 'BROADCAST', role: 'External API integration' },
     { name: 'CONTROL_ROOM', hive: 'BROADCAST', role: 'Live broadcast control' },
@@ -63,9 +63,9 @@ const AGENTS = [
     { name: 'GRAPHICS', hive: 'BROADCAST', role: 'Visual asset generation' },
     { name: 'STUDIO', hive: 'BROADCAST', role: 'A/V production' },
     { name: 'SYSTEMS', hive: 'BROADCAST', role: 'Infrastructure operations' },
-    { name: 'ATHENA', hive: 'AVERI', role: 'Strategic analysis & command' },
-    { name: 'VERA', hive: 'AVERI', role: 'Verification & quality assurance' },
-    { name: 'IRIS', hive: 'AVERI', role: 'Data visualization' },
+    { name: 'kruled', hive: 'AVERI', role: 'Strategic analysis & command' },
+    { name: 'kstrigd', hive: 'AVERI', role: 'Verification & quality assurance' },
+    { name: 'ksignd', hive: 'AVERI', role: 'Data visualization' },
     { name: 'THREE_WISE_MEN', hive: 'AVERI', role: 'Multi-perspective council' },
     { name: 'LEONARDO', hive: 'AVERI', role: 'Renaissance integration' },
     { name: 'SAGE', hive: 'AVERI', role: 'Pattern & systems recognition' },
@@ -85,12 +85,12 @@ const AGENTS = [
 
 /* ── GALLERY ITEMS ────────────────────────────────────────── */
 const GALLERY = [
-    { img: '/gallery_portrait.png', label: 'Cinematic Portrait', caption: 'Text-to-image via GRAPHICS + AURORA', col: 2, row: 2 },
-    { img: '/gallery_brand.png', label: 'Brand Identity System', caption: 'Design system generation via AURORA', col: 1, row: 1 },
-    { img: '/gallery_architecture.png', label: 'Spatial Architecture', caption: '3D render pipeline via IRIS + STUDIO', col: 1, row: 2 },
+    { img: '/gallery_portrait.png', label: 'Cinematic Portrait', caption: 'Text-to-image via GRAPHICS + kuid', col: 2, row: 2 },
+    { img: '/gallery_brand.png', label: 'Brand Identity System', caption: 'Design system generation via kuid', col: 1, row: 1 },
+    { img: '/gallery_architecture.png', label: 'Spatial Architecture', caption: '3D render pipeline via ksignd + STUDIO', col: 1, row: 2 },
     { img: '/gallery_music.png', label: 'Electronic Album Art', caption: 'Generative audio viz via STUDIO', col: 2, row: 1 },
     { img: '/gallery_campaign.png', label: 'Campaign Visual', caption: 'Brand campaign via ATLAS + GRAPHICS', col: 1, row: 1 },
-    { img: '/gallery_code.png', label: 'System Architecture', caption: 'Code dependency graph via BOLT + ARCH', col: 1, row: 1 },
+    { img: '/gallery_code.png', label: 'System Architecture', caption: 'Code dependency graph via kbuildd + ARCH', col: 1, row: 1 },
 ]
 
 /* ── CONSTITUTION PULL-QUOTES ─────────────────────────────── */
@@ -112,17 +112,17 @@ const PROVIDERS = [
     { id: 'OLLAMA_LOCAL', name: 'Ollama', sub: 'Llama 3.3 · Mistral · Phi-4', color: T.green, url: 'https://ollama.ai', free: true },
 ]
 
-/* ── ATHENA ROUTING ───────────────────────────────────────── */
+/* ── kruled ROUTING ───────────────────────────────────────── */
 const ROUTES: [string[], string, string[]][] = [
-    [['image', 'portrait', 'photo', 'picture', 'generate', 'draw'], '/nexus', ['GRAPHICS', 'AURORA', 'IRIS']],
+    [['image', 'portrait', 'photo', 'picture', 'generate', 'draw'], '/nexus', ['GRAPHICS', 'kuid', 'ksignd']],
     [['video', 'film', 'animate', 'motion'], '/nexus', ['STUDIO', 'SHOWRUNNER', 'ATLAS']],
     [['music', 'audio', 'sound', 'beat'], '/nexus', ['STUDIO', 'SIGNAL']],
-    [['code', 'build', 'ship', 'deploy', 'function'], '/flows', ['BOLT', 'ARCH', 'CODEX']],
-    [['research', 'find', 'search', 'analyse', 'analyze'], '/flows', ['VERA', 'ECHO', 'KEEPER']],
+    [['code', 'build', 'ship', 'deploy', 'function'], '/flows', ['kbuildd', 'ARCH', 'CODEX']],
+    [['research', 'find', 'search', 'analyse', 'analyze'], '/flows', ['kstrigd', 'ECHO', 'kstated']],
     [['browse', 'web', 'scrape', 'fetch'], '/scout', ['COMET', 'BROWSER']],
-    [['legal', 'contract', 'compliance'], '/flows', ['LEX', 'COMPASS']],
-    [['constitution', 'article', 'governance', 'govern'], '/constitution', ['COMPASS', 'VERA']],
-    [['agents', 'collective', 'who'], '/agents', ['ATHENA', 'VERA', 'IRIS']],
+    [['legal', 'contract', 'compliance'], '/flows', ['kdocsd', 'COMPASS']],
+    [['constitution', 'article', 'governance', 'govern'], '/constitution', ['COMPASS', 'kstrigd']],
+    [['agents', 'collective', 'who'], '/agents', ['kruled', 'kstrigd', 'ksignd']],
     [['key', 'provider', 'api', 'setup'], '/keys', ['RELAY', 'SWITCHBOARD']],
 ]
 
@@ -131,7 +131,7 @@ function athenaRoute(input: string) {
     for (const [keywords, route, agts] of ROUTES) {
         if (keywords.some(k => low.includes(k))) return { route, agents: agts }
     }
-    return { route: '/start', agents: ['ATHENA', 'VERA', 'IRIS'] }
+    return { route: '/start', agents: ['kruled', 'kstrigd', 'ksignd'] }
 }
 
 /* ── PARTICLE CANVAS ──────────────────────────────────────── */
@@ -346,7 +346,7 @@ export default function Welcome() {
                     </div>
                     {/* main type */}
                     <h1 style={{ fontSize: 'clamp(64px, 13vw, 148px)', fontWeight: 900, lineHeight: 0.88, letterSpacing: '-4px', margin: '0 0 36px' }}>
-                        <span style={{ display: 'block', background: `linear-gradient(170deg, ${T.chalk} 0%, rgba(245,240,232,0.55) 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>INCEPTION</span>
+                        <span style={{ display: 'block', background: `linear-gradient(170deg, ${T.chalk} 0%, rgba(245,240,232,0.55) 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>cle</span>
                         <span style={{ display: 'block', background: `linear-gradient(170deg, ${T.amber} 0%, rgba(245,165,36,0.45) 100%)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>ENGINE</span>
                     </h1>
                     <p style={{ fontSize: 18, color: T.muted, maxWidth: 500, margin: '0 auto 44px', lineHeight: 1.7, fontWeight: 400 }}>
@@ -563,7 +563,7 @@ export default function Welcome() {
                 <div style={{ fontSize: 11, color: 'rgba(245,240,232,0.18)', letterSpacing: 0.8 }}>FSL-1.1-ALv2 · Constitutional AI · GENESIS V5.0.0</div>
                 <div style={{ display: 'flex', gap: 22 }}>
                     {[
-                        { l: 'Source (Forgejo)', h: `${FORGEJO_SOURCE_URL}/Creative Liberation Engine Community/brainchild-v5`, ext: true },
+                        { l: 'Source (Forgejo)', h: `${FORGEJO_SOURCE_URL}/Creative-Liberation-Engine/brainchild-v5`, ext: true },
                         { l: 'CONSTITUTION.md', h: '/constitution', ext: false },
                         { l: 'Agent Catalog', h: '/agents', ext: false },
                     ].map(lnk => (
@@ -577,7 +577,7 @@ export default function Welcome() {
             </footer>
 
             {/* ══════════════════════════════════
-                ATHENA BAR — fixed to viewport
+                kruled BAR — fixed to viewport
              ══════════════════════════════════ */}
             <div style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100, pointerEvents: 'none' }}>
                 {/* fade scrim */}
@@ -590,7 +590,7 @@ export default function Welcome() {
                         background: 'rgba(18,15,24,0.97)', border: '1px solid rgba(245,165,36,0.22)',
                         borderRadius: 12, padding: '12px 18px', backdropFilter: 'blur(24px)',
                     }}>
-                        <div style={{ fontSize: 9, letterSpacing: 3, color: T.amber, fontWeight: 800, marginBottom: 7 }}>ATHENA ROUTING</div>
+                        <div style={{ fontSize: 9, letterSpacing: 3, color: T.amber, fontWeight: 800, marginBottom: 7 }}>kruled ROUTING</div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
                             {hint.agents.map(a => <span key={a} style={{ fontSize: 10, background: 'rgba(245,165,36,0.12)', color: T.amber, borderRadius: 4, padding: '2px 8px', fontWeight: 800, letterSpacing: 0.5 }}>{a}</span>)}
                             <span style={{ fontSize: 11, color: T.muted, marginLeft: 4 }}>→ {hint.route}</span>
@@ -609,7 +609,7 @@ export default function Welcome() {
                         transition: 'border-color 0.2s, box-shadow 0.2s',
                     }}>
                         <div style={{ display: 'flex', alignItems: 'center', padding: '8px 8px 8px 18px', gap: 10 }}>
-                            <span style={{ fontSize: 10, color: 'rgba(245,165,36,0.6)', fontWeight: 800, letterSpacing: 1.5, flexShrink: 0 }}>ATHENA</span>
+                            <span style={{ fontSize: 10, color: 'rgba(245,165,36,0.6)', fontWeight: 800, letterSpacing: 1.5, flexShrink: 0 }}>kruled</span>
                             <input
                                 value={cmd} onChange={e => onCmdChange(e.target.value)}
                                 onFocus={() => setFocused(true)} onBlur={() => setTimeout(() => setFocused(false), 200)}

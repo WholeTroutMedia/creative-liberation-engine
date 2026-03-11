@@ -6,7 +6,7 @@ import {
     type DisplayEntity,
 } from '../schema/index.js';
 
-// ─── CORTEX Workstation Agent — Windows Collector ─────────────────────────────
+// ─── CORE Workstation Agent — Windows Collector ─────────────────────────────
 // Gathers device, storage, process, and display state from the local Windows machine.
 // Designed to run on a schedule (cron) or on demand.
 // Uses PowerShell for WMI/PnP queries — no admin elevation required for read ops.

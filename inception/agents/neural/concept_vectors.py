@@ -61,12 +61,12 @@ class ConceptVectorEngine:
 
     Usage:
         engine = ConceptVectorEngine()
-        bolt_vector = engine.generate_agent_vector("BOLT", {
+        bolt_vector = engine.generate_agent_vector("kbuildd", {
             "expertise": ["engineering", "architecture"],
             "capabilities": ["technical", "analytical", "creative"],
             "output_types": ["code", "documentation"],
         })
-        similar = engine.find_similar_agents("BOLT", top_k=3)
+        similar = engine.find_similar_agents("kbuildd", top_k=3)
     """
 
     def __init__(self, storage_path: Optional[str] = None):

@@ -9,7 +9,7 @@
  */
 
 import 'dotenv/config';
-import { memoryBus } from '@inception/memory';
+import { memoryBus } from '@cle/memory';
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 import { anthropic } from '@genkit-ai/anthropic';
@@ -151,7 +151,7 @@ export const ai = genkit({
 
 console.log(`[GENKIT] 🚀 Creative Liberation Engine provider runtime initialized (${plugins.length} plugins)`);
 
-// ── VERA: log boot event to inception-memory ──────────────────────────────
+// ── kstrigd: log boot event to cle-memory ──────────────────────────────
 try {
     memoryBus.logBoot(
         'creative-liberation-engine-v5',

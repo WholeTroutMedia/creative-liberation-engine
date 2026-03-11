@@ -1,5 +1,5 @@
 /**
- * DIRA-03: VERA Auto-Resolve Flow
+ * DIRA-03: kstrigd Auto-Resolve Flow
  * packages/genkit/src/dira/auto-resolve.ts
  *
  * When a new ProductionCase arrives:
@@ -14,7 +14,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { scribeRecall, scribeRemember } from '../memory/scribe.js';
+import { scribeRecall, scribeRemember } from '../memory/klogd.js';
 import { productionCaseToScribeInput } from './types.js';
 import {
   createProductionCase,

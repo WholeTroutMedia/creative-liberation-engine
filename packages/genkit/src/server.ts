@@ -20,27 +20,27 @@ import { perplexityModel } from './plugins/perplexity.js';
 import { localGenerate, localStream, checkOllamaHealth } from './local-providers.js';
 
 import { defaultMiddleware } from './middleware/fallback-chain.js';
-import { mcpAutoloadMiddleware } from '@inception/mcp-router';
+import { mcpAutoloadMiddleware } from '@cle/mcp-router';
 import {
     urlSlugify,
     base64Encode,
     passwordStrength,
     paletteGenerator,
     contrastRatio,
-} from '@inception/toolbox';
+} from '@cle/toolbox';
 import { getAuditLog, getAuditStats } from './middleware/audit-logger.js';
 import { classifyTaskFlow } from './flows/classify-task.js';
-import { ATHENAFlow } from './flows/athena.js';
-import { VERAFlow } from './flows/vera.js';
+import { ATHENAFlow } from './flows/kruled.js';
+import { VERAFlow } from './flows/kstrigd.js';
 import { conversationalAveriFlow } from './flows/conversationalAveri.js';
 import { averiChatFlow } from './flows/averi-chat-flow.js';
-import { KEEPERFlow } from './flows/keeper.js';
-import { scribeMemoryTool } from './tools/scribe-memory.js';
+import { KEEPERFlow } from './flows/kstated.js';
+import { scribeMemoryTool } from './tools/klogd-memory.js';
 import { chromaRetriever } from './tools/chromadb-retriever.js';
 import { HypeReelDirectorFlow } from './flows/hype-reel-director.js';
 import { CreativeDirectorFlow } from './flows/creative-director.js';
 import { AGENT_ROSTER, getAgentActivity, recordAgentCall } from './flows/index.js';
-import { agentOAuth } from '@inception/auth/dist/agent-oauth.js';
+import { agentOAuth } from '@cle/auth/dist/agent-oauth.js';
 // @ts-ignore
 import { InceptionGuard } from './core/constitutional-guard.js';
 import { guestIntelligenceFlow } from './flows/guestIntelligence.js';
@@ -143,7 +143,7 @@ if (SOVEREIGN_MODE) {
 // Server Setup
 // ---------------------------------------------------------------------------
 
-// Initialize the SCRIBE Omnipresence Context Cache asynchronously
+// Initialize the klogd Omnipresence Context Cache asynchronously
 initializeOmnipresenceCache().catch(console.error);
 
 // Provision internal tokens for all agents in the roster at boot time
@@ -185,7 +185,7 @@ app.get('/health', async (_req, res) => {
     const ollamaStatus = await checkOllamaHealth();
     res.json({
         status: 'operational',
-        service: 'inception-genkit',
+        service: 'cle-genkit',
         version: '5.0.0',
         providers: activeProviders,
         sovereign: {
@@ -425,7 +425,7 @@ app.post('/generate', async (req, res) => {
 
 // ---------------------------------------------------------------------------
 // POST /api/mesh/execute â€” Cloud Mesh Execution Endpoint
-// Receives payloads routed by the @inception/cloud-mesh and delegates
+// Receives payloads routed by the @cle/cloud-mesh and delegates
 // to the appropriate capability flow.
 // ---------------------------------------------------------------------------
 
@@ -811,7 +811,7 @@ app.post('/zeroDayBriefPipeline', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// POST /director â€” Project Omnimedia ATHENA Director flow
+// POST /director â€” Project Omnimedia kruled Director flow
 // ---------------------------------------------------------------------------
 
 app.post('/director', async (req, res) => {
@@ -831,7 +831,7 @@ app.post('/director', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// POST /flow/CreativeDirector â€” IRIS creative vision for a campaign brief
+// POST /flow/CreativeDirector â€” ksignd creative vision for a campaign brief
 // Called by packages/campaign/src/server.ts during campaign execution
 // ---------------------------------------------------------------------------
 
@@ -841,11 +841,11 @@ app.post('/flow/CreativeDirector', async (req, res) => {
         if (!brief) {
             return res.status(400).json({ error: '"brief" is required' });
         }
-        console.log(`[IRIS] ðŸŽ¨ CreativeDirector called for: ${brief.project_name ?? 'unknown'}`);
+        console.log(`[ksignd] ðŸŽ¨ CreativeDirector called for: ${brief.project_name ?? 'unknown'}`);
         const vision = await CreativeDirectorFlow({ brief });
         res.json({ result: vision });
     } catch (error: any) {
-        console.error('[IRIS] CreativeDirector error:', error.message);
+        console.error('[ksignd] CreativeDirector error:', error.message);
         res.status(500).json({ error: error.message });
     }
 });
@@ -1016,7 +1016,7 @@ app.get('/averiChat/health', (_req, res) => {
 
 
 // ---------------------------------------------------------------------------
-// POST /averi/ideate  â€” IDEATE mode: KEEPER recall â†’ ATHENA strategy
+// POST /averi/ideate  â€” IDEATE mode: kstated recall â†’ kruled strategy
 // ---------------------------------------------------------------------------
 
 app.post('/averi/ideate', async (req, res) => {
@@ -1029,16 +1029,16 @@ app.post('/averi/ideate', async (req, res) => {
 
         console.log(`[AVERI:IDEATE] ðŸ”µ Topic: ${topic.slice(0, 80)}`);
 
-        // Step 1 â€” KEEPER: surface relevant knowledge context
+        // Step 1 â€” kstated: surface relevant knowledge context
         const keeperResult = await KEEPERFlow({
             task: 'search',
             query: topic,
             tags: ['ideate', 'averi'],
             sessionId,
         });
-        console.log(`[AVERI:IDEATE] KEEPER found ${keeperResult.relevantKIs.length} KIs`);
+        console.log(`[AVERI:IDEATE] kstated found ${keeperResult.relevantKIs.length} KIs`);
 
-        // Step 2 â€” ATHENA: strategy mode with KEEPER context injected
+        // Step 2 â€” kruled: strategy mode with kstated context injected
         const athenaResult = await ATHENAFlow({
             mode: 'strategy',
             topic,
@@ -1047,17 +1047,17 @@ app.post('/averi/ideate', async (req, res) => {
             depth,
             sessionId,
         });
-        console.log(`[AVERI:IDEATE] ATHENA directive: ${athenaResult.directive.slice(0, 80)}...`);
+        console.log(`[AVERI:IDEATE] kruled directive: ${athenaResult.directive.slice(0, 80)}...`);
 
         res.json({
             mode: 'IDEATE',
             topic,
-            keeper: {
+            kstated: {
                 findings: keeperResult.findings,
                 relevantKIs: keeperResult.relevantKIs,
                 isDuplicate: keeperResult.isDuplicate,
             },
-            athena: {
+            kruled: {
                 directive: athenaResult.directive,
                 rationale: athenaResult.rationale,
                 options: athenaResult.options,
@@ -1065,7 +1065,7 @@ app.post('/averi/ideate', async (req, res) => {
                 nextMode: athenaResult.nextMode,
                 constitutionalFlags: athenaResult.constitutionalFlags,
             },
-            signatures: ['KEEPER', 'ATHENA'],
+            signatures: ['kstated', 'kruled'],
             timestamp: new Date().toISOString(),
         });
     } catch (error: any) {
@@ -1075,7 +1075,7 @@ app.post('/averi/ideate', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// POST /averi/plan  â€” PLAN mode: KEEPER recall â†’ ATHENA spec â†’ VERA truth-check
+// POST /averi/plan  â€” PLAN mode: kstated recall â†’ kruled spec â†’ kstrigd truth-check
 // ---------------------------------------------------------------------------
 
 app.post('/averi/plan', async (req, res) => {
@@ -1088,16 +1088,16 @@ app.post('/averi/plan', async (req, res) => {
 
         console.log(`[AVERI:PLAN] ðŸ”µ Topic: ${topic.slice(0, 80)}`);
 
-        // Step 1 â€” KEEPER: synthesize knowledge for planning context
+        // Step 1 â€” kstated: synthesize knowledge for planning context
         const keeperResult = await KEEPERFlow({
             task: 'synthesize',
             query: topic,
             tags: ['plan', 'averi', 'architecture'],
             sessionId,
         });
-        console.log(`[AVERI:PLAN] KEEPER synthesis complete`);
+        console.log(`[AVERI:PLAN] kstated synthesis complete`);
 
-        // Step 2 â€” ATHENA: spec mode (precise, not exploratory)
+        // Step 2 â€” kruled: spec mode (precise, not exploratory)
         const athenaResult = await ATHENAFlow({
             mode: 'spec',
             topic,
@@ -1106,25 +1106,25 @@ app.post('/averi/plan', async (req, res) => {
             depth,
             sessionId,
         });
-        console.log(`[AVERI:PLAN] ATHENA spec: ${athenaResult.directive.slice(0, 80)}...`);
+        console.log(`[AVERI:PLAN] kruled spec: ${athenaResult.directive.slice(0, 80)}...`);
 
-        // Step 3 â€” VERA: truth-check ATHENA's specification
+        // Step 3 â€” kstrigd: truth-check kruled's specification
         const veraResult = await VERAFlow({
             mode: 'truth',
-            content: `ATHENA DIRECTIVE:\n${athenaResult.directive}\n\nRATIONALE:\n${athenaResult.rationale}`,
+            content: `kruled DIRECTIVE:\n${athenaResult.directive}\n\nRATIONALE:\n${athenaResult.rationale}`,
             context: topic,
             sessionId,
         });
-        console.log(`[AVERI:PLAN] VERA confidence: ${veraResult.confidence}`);
+        console.log(`[AVERI:PLAN] kstrigd confidence: ${veraResult.confidence}`);
 
         res.json({
             mode: 'PLAN',
             topic,
-            keeper: {
+            kstated: {
                 synthesis: keeperResult.synthesis ?? keeperResult.findings,
                 relevantKIs: keeperResult.relevantKIs,
             },
-            athena: {
+            kruled: {
                 directive: athenaResult.directive,
                 rationale: athenaResult.rationale,
                 options: athenaResult.options,
@@ -1132,14 +1132,14 @@ app.post('/averi/plan', async (req, res) => {
                 nextMode: athenaResult.nextMode,
                 constitutionalFlags: athenaResult.constitutionalFlags,
             },
-            vera: {
+            kstrigd: {
                 verdict: veraResult.verdict,
                 confidence: veraResult.confidence,
                 contradictions: veraResult.contradictions,
                 pattern: veraResult.pattern,
             },
             planApproved: veraResult.confidence >= 0.7 && veraResult.contradictions.length === 0,
-            signatures: ['KEEPER', 'ATHENA', 'VERA'],
+            signatures: ['kstated', 'kruled', 'kstrigd'],
             timestamp: new Date().toISOString(),
         });
     } catch (error: any) {
@@ -1207,7 +1207,7 @@ app.post('/a2a/dispatch', async (req, res) => {
 
 // ---------------------------------------------------------------------------
 // POST /a2a/orchestrate â€” Full AVERI multi-agent orchestration (T20260308-506)
-// ATHENA receives a directive, plans, assigns tasks to AVERI agents, dispatches
+// kruled receives a directive, plans, assigns tasks to AVERI agents, dispatches
 // A2A messages to each. Primary pipeline for Chat Console â†’ AVERI.
 // ---------------------------------------------------------------------------
 
@@ -1218,7 +1218,7 @@ app.post('/a2a/orchestrate', async (req, res) => {
             return res.status(400).json({ error: '"directive" and "tenantId" are required' });
         }
 
-        console.log(`[A2A:ORCHESTRATE] ðŸ§  ATHENA orchestrating | tenant: ${tenantId} | priority: ${priority ?? 'P1'}`);
+        console.log(`[A2A:ORCHESTRATE] ðŸ§  kruled orchestrating | tenant: ${tenantId} | priority: ${priority ?? 'P1'}`);
         const { averiOrchestrationFlow } = await import('./flows/a2a-orchestration.js');
         const result = await averiOrchestrationFlow({ directive, tenantId, priority: priority ?? 'P1', targetAgents, context });
 
@@ -1344,7 +1344,7 @@ app.post('/api/genkitFlowBuilder', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// POST /api/genUiFlow â€” IRIS Generative UI Component Builder
+// POST /api/genUiFlow â€” ksignd Generative UI Component Builder
 // ---------------------------------------------------------------------------
 
 app.post('/api/genUiFlow', async (req, res) => {
@@ -1353,7 +1353,7 @@ app.post('/api/genUiFlow', async (req, res) => {
         const result = await genUiFlow(req.body);
         res.json(result);
     } catch (error: any) {
-        console.error('[IRIS:GEN_UI] Route error:', error.message);
+        console.error('[ksignd:GEN_UI] Route error:', error.message);
         res.status(500).json({ error: error.message });
     }
 });
@@ -1470,14 +1470,14 @@ app.post('/api/engines/:engine', async (req, res) => {
 
 const FLOW_ENDPOINTS = [
     { id: 'classify', method: 'POST', path: '/classify', agent: 'RELAY', description: 'Classify a user request to the right agent/flow.' },
-    { id: 'averi-ideate', method: 'POST', path: '/averi/ideate', agent: 'ATHENA', description: 'IDEATE mode: KEEPER recall â†’ ATHENA strategic vision.' },
-    { id: 'averi-plan', method: 'POST', path: '/averi/plan', agent: 'ATHENA', description: 'PLAN mode: KEEPER recall â†’ ATHENA spec â†’ VERA truth-check.' },
-    { id: 'creative-director', method: 'POST', path: '/flow/CreativeDirector', agent: 'IRIS', description: 'IRIS creative vision document generation from a campaign brief.' },
+    { id: 'averi-ideate', method: 'POST', path: '/averi/ideate', agent: 'kruled', description: 'IDEATE mode: kstated recall â†’ kruled strategic vision.' },
+    { id: 'averi-plan', method: 'POST', path: '/averi/plan', agent: 'kruled', description: 'PLAN mode: kstated recall â†’ kruled spec â†’ kstrigd truth-check.' },
+    { id: 'creative-director', method: 'POST', path: '/flow/CreativeDirector', agent: 'ksignd', description: 'ksignd creative vision document generation from a campaign brief.' },
     { id: 'generate-media', method: 'POST', path: '/generate-media', agent: 'GEN-1', description: 'Route asset generation (image/video/text) to optimal pipeline.' },
     { id: 'score', method: 'POST', path: '/score', agent: 'SENTINEL', description: 'Vision LoRA scoring of creative assets (0-100) with critique.' },
-    { id: 'director', method: 'POST', path: '/director', agent: 'ATLAS', description: 'ATHENA Video EDL Engine â€” hype reel director for campaign video.' },
-    { id: 'search', method: 'POST', path: '/search', agent: 'VERA', description: 'Deep research via Perplexity Sonar + memory-augmented retrieval.' },
-    { id: 'retrieve', method: 'POST', path: '/retrieve', agent: 'KEEPER', description: 'ChromaDB semantic vector search across the knowledge base.' },
+    { id: 'director', method: 'POST', path: '/director', agent: 'ATLAS', description: 'kruled Video EDL Engine â€” hype reel director for campaign video.' },
+    { id: 'search', method: 'POST', path: '/search', agent: 'kstrigd', description: 'Deep research via Perplexity Sonar + memory-augmented retrieval.' },
+    { id: 'retrieve', method: 'POST', path: '/retrieve', agent: 'kstated', description: 'ChromaDB semantic vector search across the knowledge base.' },
     { id: 'generate', method: 'POST', path: '/generate', agent: 'RELAY', description: 'Unified multi-provider AI completion (Gemini, GPT-4, Sonar, Ollama).' },
     { id: 'stream', method: 'POST', path: '/stream', agent: 'RELAY', description: 'SSE streaming completion endpoint â€” low-latency outputs.' },
     // â”€â”€ Dispatch-facing task executors â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -1486,22 +1486,22 @@ const FLOW_ENDPOINTS = [
     { id: 'generic-task', method: 'POST', path: '/api/genericTaskFlow', agent: 'RELAY', description: 'RELAY: universal fallback task executor for any workstream.' },
     { id: 'genkit-flow-builder', method: 'POST', path: '/api/genkitFlowBuilder', agent: 'ARCH', description: 'ARCH+CODEX: meta-flow that generates new Genkit flow files.' },
     // â”€â”€ Generative UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    { id: 'gen-ui', method: 'POST', path: '/api/genUiFlow', agent: 'IRIS', description: 'IRIS: generate production-quality React components from a design spec.' },
+    { id: 'gen-ui', method: 'POST', path: '/api/genUiFlow', agent: 'ksignd', description: 'ksignd: generate production-quality React components from a design spec.' },
     // â”€â”€ IECR Director + Engine Flows â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    { id: 'iecr-decompose', method: 'POST', path: '/api/iecr/decompose', agent: 'IRIS', description: 'IECR Director: decompose a creative brief into a parallel TaskGraph.' },
-    { id: 'iecr-execute', method: 'POST', path: '/api/iecr/execute', agent: 'IRIS', description: 'IECR Director: execute a TaskGraph across all six engine flows.' },
+    { id: 'iecr-decompose', method: 'POST', path: '/api/iecr/decompose', agent: 'ksignd', description: 'IECR Director: decompose a creative brief into a parallel TaskGraph.' },
+    { id: 'iecr-execute', method: 'POST', path: '/api/iecr/execute', agent: 'ksignd', description: 'IECR Director: execute a TaskGraph across all six engine flows.' },
     { id: 'engine-video', method: 'POST', path: '/api/engines/video', agent: 'GEN-1', description: 'IE VIDEO: non-linear editing, compositing, color grading, and timeline assembly.' },
     { id: 'engine-audio', method: 'POST', path: '/api/engines/audio', agent: 'ATLAS', description: 'IE AUDIO: synthesis, recording, mixing, mastering, and DAW operations.' },
     { id: 'engine-3d', method: 'POST', path: '/api/engines/3d', agent: 'GEN-1', description: 'IE 3D: real-time PBR rendering, USD/glTF assembly, and world building.' },
-    { id: 'engine-design', method: 'POST', path: '/api/engines/design', agent: 'IRIS', description: 'IE DESIGN: vector/raster canvas, typography, brand identity, and layout.' },
+    { id: 'engine-design', method: 'POST', path: '/api/engines/design', agent: 'ksignd', description: 'IE DESIGN: vector/raster canvas, typography, brand identity, and layout.' },
     { id: 'engine-code', method: 'POST', path: '/api/engines/code', agent: 'CODEX', description: 'IE CODE: GPU shader generation, TypeScript scripting, and runtime tool creation.' },
-    { id: 'engine-assets', method: 'POST', path: '/api/engines/assets', agent: 'KEEPER', description: 'IE ASSETS: semantic search, NAS integration, format conversion, and tagging.' },
+    { id: 'engine-assets', method: 'POST', path: '/api/engines/assets', agent: 'kstated', description: 'IE ASSETS: semantic search, NAS integration, format conversion, and tagging.' },
 ];
 
 app.get('/api/flows', (_req, res) => {
     const hiveColors: Record<string, string> = {
-        AVERI: '#F5A524', AURORA: '#C17D4A', KEEPER: '#9B72CF',
-        SWITCHBOARD: '#22c55e', LEX: '#4285F4', BROADCAST: '#FF6B35',
+        AVERI: '#F5A524', kuid: '#C17D4A', kstated: '#9B72CF',
+        SWITCHBOARD: '#22c55e', kdocsd: '#4285F4', BROADCAST: '#FF6B35',
         VALIDATOR: '#ef4444', SPECIALIST: '#20B2AA', ENHANCEMENT: '#8B5CF6',
     };
     res.json({
@@ -1528,7 +1528,7 @@ setImmediate(() => {
     app.listen(Number(PORT), '0.0.0.0', () => {
         // Minimal log in dev mode so the Genkit CLI can parse stdout cleanly
         if (process.env.GENKIT_ENV === 'dev') {
-            console.log(`[INCEPTION] Genkit Provider Runtime v5.0.0 listening on :${PORT}`);
+            console.log(`[cle] Genkit Provider Runtime v5.0.0 listening on :${PORT}`);
         } else {
             console.log(`
 â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—
@@ -1539,18 +1539,18 @@ setImmediate(() => {
 â•‘     POST /generate       â€” Unified completion        â•‘
 â•‘     POST /stream         â€” SSE streaming             â•‘
 â•‘     POST /classify       â€” Task classification       â•‘
-â•‘     POST /director       â€” ATHENA Video EDL Engine   â•‘
+â•‘     POST /director       â€” kruled Video EDL Engine   â•‘
 â•‘     POST /search         â€” Perplexity search         â•‘
 â•‘     POST /retrieve       â€” ChromaDB vector search    â•‘
-â•‘     POST /averi/ideate   â€” IDEATE mode (ATHENA+KEEPER) â•‘
-â•‘     POST /averi/plan     â€” PLAN mode (ATHENA+VERA+KEEPER) â•‘
-â•‘     POST /flow/CreativeDirector â€” IRIS vision doc    â•‘
+â•‘     POST /averi/ideate   â€” IDEATE mode (kruled+kstated) â•‘
+â•‘     POST /averi/plan     â€” PLAN mode (kruled+kstrigd+kstated) â•‘
+â•‘     POST /flow/CreativeDirector â€” ksignd vision doc    â•‘
 â•‘     POST /generate-media â€” Campaign asset generator  â•‘
 â•‘     POST /score          â€” Vision LoRA scoring       â•‘
 â•‘     POST /api/iecr/decompose â€” IECR brief â†’ TaskGraph   â•‘
 â•‘     POST /api/iecr/execute   â€” IECR TaskGraph execute   â•‘
 â•‘     POST /api/engines/:e â€” IE engine flows (6)       â•‘
-â•‘     POST /api/toolbox/*  â€” @inception/toolbox utils  â•‘
+â•‘     POST /api/toolbox/*  â€” @cle/toolbox utils  â•‘
 â•‘     GET  /health         â€” Health check              â•‘
 â•‘     GET  /stats          â€” Audit statistics          â•‘
 â•‘     GET  /audit          â€” Audit log                 â•‘
@@ -1561,8 +1561,8 @@ setImmediate(() => {
 });
 
 // ---------------------------------------------------------------------------
-// TOOL-03/04: @inception/toolbox REST endpoints
-// These use static imports from @inception/toolbox (imported at top of file).
+// TOOL-03/04: @cle/toolbox REST endpoints
+// These use static imports from @cle/toolbox (imported at top of file).
 // ---------------------------------------------------------------------------
 
 app.post('/api/toolbox/palette', (req, res) => {
@@ -1601,8 +1601,8 @@ app.post('/api/toolbox/password-strength', (req, res) => {
 // ---------------------------------------------------------------------------
 // Sovereign Home Mesh â€” Physical Intelligence Flows
 // POST /home/bird-watch    â€” Gemini Vision bird ID / security classification
-// POST /home/intel         â€” NLQ presence query (ATHENA)
-// POST /home/stranger-scan â€” VERA anomaly detection scan
+// POST /home/intel         â€” NLQ presence query (kruled)
+// POST /home/stranger-scan â€” kstrigd anomaly detection scan
 // ---------------------------------------------------------------------------
 
 app.post('/home/bird-watch', async (req, res) => {

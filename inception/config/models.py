@@ -67,7 +67,7 @@ MODELS: dict[str, ModelConfig] = {
         supports_vision=True,
         cost_per_1m_input=3.0,
         cost_per_1m_output=15.0,
-        description="Strong reasoning. For VAULT, LENS.",
+        description="Strong reasoning. For kstored, LENS.",
     ),
     "claude-3-haiku-20240307": ModelConfig(
         id="claude-3-haiku-20240307",

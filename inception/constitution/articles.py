@@ -10,7 +10,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Any, Callable, Optional
 
-from inception.constitution.types import Violation, ViolationSeverity
+from cle.constitution.types import Violation, ViolationSeverity
 
 
 @dataclass

@@ -5,7 +5,7 @@
  * for all routes using agent identity tokens.
  *
  * Usage in Express:
- *   import { requireAgentCapability } from '@inception/auth';
+ *   import { requireAgentCapability } from '@cle/auth';
  *   router.post('/generate', requireAgentCapability('execute:genkit'), handler);
  */
 import type { Request, Response, NextFunction } from 'express';

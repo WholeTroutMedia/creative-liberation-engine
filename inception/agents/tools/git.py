@@ -1,7 +1,7 @@
 """
 Creative Liberation Engine v5 — Git Tools
 
-Tools for git operations. Used by builder and keeper agents
+Tools for git operations. Used by builder and kstated agents
 to manage source code and version control.
 """
 
@@ -10,7 +10,7 @@ import logging
 import os
 from typing import Any, Optional
 
-from inception.agents.base import AgentTool
+from cle.agents.base import AgentTool
 
 logger = logging.getLogger(__name__)
 

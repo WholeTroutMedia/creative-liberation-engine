@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — InstrumentRouter
+ * @cle/sensor-mesh — InstrumentRouter
  *
  * Tier 4 — THE INSTRUMENT
  *

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ShieldCheck, UserCheck, Loader2, AlertCircle } from "lucide-react";
-import type { IDVResult } from "@inception/idv-engine";
+import type { IDVResult } from "@cle/idv-engine";
 
 export default function IntakeForm() {
   const [formData, setFormData] = useState({

@@ -24,7 +24,7 @@ function db() {
 const SCHEMA = `
     CREATE TABLE IF NOT EXISTS tasks (
         id                    TEXT PRIMARY KEY,
-        org                   TEXT NOT NULL DEFAULT 'Creative Liberation Engine Community',
+        org                   TEXT NOT NULL DEFAULT 'Creative-Liberation-Engine',
         project               TEXT NOT NULL,
         workstream            TEXT NOT NULL,
         title                 TEXT NOT NULL,
@@ -77,7 +77,7 @@ const SCHEMA = `
         data        TEXT NOT NULL   -- full SessionLog as JSON
     );
 
-    CREATE TABLE IF NOT EXISTS vault (
+    CREATE TABLE IF NOT EXISTS kstored (
         title   TEXT PRIMARY KEY,
         value   TEXT NOT NULL   -- encrypted value
     );
@@ -155,7 +155,7 @@ async function migrateJsonIfExists() {
 // â”€â”€ Row serializers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function taskToRow(t) {
     return {
-        id: t.id, org: t.org ?? 'Creative Liberation Engine Community',
+        id: t.id, org: t.org ?? 'Creative-Liberation-Engine',
         project: t.project, workstream: t.workstream,
         title: t.title, description: t.description ?? null,
         acceptance_criteria: t.acceptance_criteria ? JSON.stringify(t.acceptance_criteria) : null,
@@ -330,28 +330,28 @@ async function seedProjectsIfEmpty() {
     const now = new Date().toISOString();
     const DEFAULT_PROJECTS = [
         {
-            id: 'brainchild-v5', org: 'Creative Liberation Engine Community', name: 'Creative Liberation Engine v5 (GENESIS)',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/brainchild-v5',
-            workstreams: ['genkit-flows', 'console-ui', 'inception-core', 'synology-mcp',
+            id: 'brainchild-v5', org: 'Creative-Liberation-Engine', name: 'Creative Liberation Engine v5 (GENESIS)',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/brainchild-v5',
+            workstreams: ['genkit-flows', 'console-ui', 'cle-core', 'synology-mcp',
                 'zero-day', 'infra-docker', 'comet-browser', 'spatial-visionos',
                 'genkit-server', 'dispatch'],
             registered_at: now, active: true,
         },
         {
-            id: 'brainchild-v4', org: 'Creative Liberation Engine Community', name: 'Creative Liberation Engine v4',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/brainchild-v4',
+            id: 'brainchild-v4', org: 'Creative-Liberation-Engine', name: 'Creative Liberation Engine v4',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/brainchild-v4',
             workstreams: ['python-engine', 'legacy-memory', 'agent-catalog'],
             registered_at: now, active: true,
         },
         {
-            id: 'andgather', org: 'Creative Liberation Engine Community', name: '&Gather Social Intelligence',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/andgather',
+            id: 'andgather', org: 'Creative-Liberation-Engine', name: '&Gather Social Intelligence',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/andgather',
             workstreams: ['social-graph', 'event-engine', 'mobile-app'],
             registered_at: now, active: true,
         },
         {
-            id: 'nbc-nexus', org: 'Creative Liberation Engine Community', name: 'NBC Nexus Broadcast Platform',
-            repo_url: 'http://127.0.0.1:3000/Creative Liberation Engine Community/nbc-nexus',
+            id: 'nbc-nexus', org: 'Creative-Liberation-Engine', name: 'NBC Nexus Broadcast Platform',
+            repo_url: 'http://127.0.0.1:3000/Creative-Liberation-Engine/nbc-nexus',
             workstreams: ['broadcast-ui', 'content-pipeline', 'atlas-agent'],
             registered_at: now, active: true,
         },
@@ -376,9 +376,9 @@ export async function saveSession(session) {
         ON CONFLICT(session_id) DO UPDATE SET data=excluded.data
     `).run(session.session_id, JSON.stringify(session));
 }
-// â”€â”€ Vault Operations (Encrypted) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€ kstored Operations (Encrypted) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 export async function getSecret(title) {
-    const row = db().prepare('SELECT value FROM vault WHERE title = ?').get(title);
+    const row = db().prepare('SELECT value FROM kstored WHERE title = ?').get(title);
     if (!row)
         return undefined;
     try {
@@ -390,14 +390,14 @@ export async function getSecret(title) {
 }
 export async function setSecret(title, plainText) {
     db().prepare(`
-        INSERT INTO vault (title, value) VALUES (?, ?)
+        INSERT INTO kstored (title, value) VALUES (?, ?)
         ON CONFLICT(title) DO UPDATE SET value=excluded.value
     `).run(title, encrypt(plainText));
 }
 export async function listSecrets() {
-    return db().prepare('SELECT title FROM vault').all().map(r => r.title);
+    return db().prepare('SELECT title FROM kstored').all().map(r => r.title);
 }
 export async function deleteSecret(title) {
-    const result = db().prepare('DELETE FROM vault WHERE title = ?').run(title);
+    const result = db().prepare('DELETE FROM kstored WHERE title = ?').run(title);
     return result.changes > 0;
 }

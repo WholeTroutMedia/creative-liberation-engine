@@ -39,8 +39,8 @@ services:
       timeout: 5s
       retries: 3
     labels:
-      com.inception.service: forge-api
-      com.inception.version: "1.0.0"
+      com.cle.service: forge-api
+      com.cle.version: "1.0.0"
 
   # ── Redis (Forge Ledger Backend) ─────────────────────────────────────────────
   forge-redis:
@@ -58,7 +58,7 @@ services:
       timeout: 3s
       retries: 5
     labels:
-      com.inception.service: forge-redis
+      com.cle.service: forge-redis
 
 volumes:
   forge-storage:
@@ -68,5 +68,5 @@ volumes:
 
 networks:
   default:
-    name: inception-net
+    name: cle-net
     external: true

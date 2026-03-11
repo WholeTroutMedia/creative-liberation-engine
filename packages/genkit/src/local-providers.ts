@@ -1,5 +1,5 @@
 /**
- * @inception/genkit — Local Provider Extensions
+ * @cle/genkit — Local Provider Extensions
  * Wires Ollama as a local LLM fallback and exposes a local model registry.
  *
  * This is the sovereignty layer — the Creative Liberation Engine never goes dark.

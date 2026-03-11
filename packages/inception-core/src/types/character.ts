@@ -1,5 +1,5 @@
 /**
- * @inception/core — Character Context Types
+ * @cle/core — Character Context Types
  *
  * The CharacterContext is the identity primitive for any persistent entity
  * across generative flows. Introduced for The Transmission but designed as

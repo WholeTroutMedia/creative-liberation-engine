@@ -1,5 +1,5 @@
 /**
- * @inception/forge — SessionWatcher Tests
+ * @cle/forge — SessionWatcher Tests
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';

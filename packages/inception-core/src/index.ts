@@ -1,5 +1,5 @@
 /**
- * @inception/core — Public Package Barrel
+ * @cle/core — Public Package Barrel
  *
  * The Creative Liberation Engine's shared runtime foundation.
  * Exports constitutional primitives, agent types, provider types,
@@ -24,7 +24,7 @@ export const CONSTITUTION = {
     0: { name: 'Sacred Mission', immutable: true, summary: 'Artist liberation through sovereign technology' },
     1: { name: 'Separation of Powers', immutable: true, summary: 'No single agent accumulates unchecked authority' },
     2: { name: 'Living Archive', immutable: false, summary: 'All decisions preserved in the archive' },
-    3: { name: 'Constitutional Compliance', immutable: true, summary: 'LEX enforces all articles' },
+    3: { name: 'Constitutional Compliance', immutable: true, summary: 'kdocsd enforces all articles' },
     4: { name: 'Transparency', immutable: false, summary: 'All reasoning observable' },
     5: { name: 'User Sovereignty', immutable: true, summary: 'User vision is supreme' },
     6: { name: 'Quality Gates', immutable: false, summary: 'VALIDATE before SHIP' },
@@ -46,12 +46,12 @@ export const CONSTITUTION = {
 // ─── Hive Registry ────────────────────────────────────────────────────────────
 
 export const HIVES = {
-    AVERI: { lead: 'ATHENA', members: ['ATHENA', 'VERA', 'IRIS'] as const, mission: 'Strategic consciousness' },
-    AURORA: { lead: 'AURORA', members: ['AURORA', 'BOLT', 'COMET'] as const, mission: 'Design and engineering' },
-    KEEPER: { lead: 'KEEPER', members: ['KEEPER', 'ARCH', 'CODEX'] as const, mission: 'Knowledge and patterns' },
-    LEX: { lead: 'LEX', members: ['LEX', 'COMPASS'] as const, mission: 'Constitutional compliance' },
+    AVERI: { lead: 'kruled', members: ['kruled', 'kstrigd', 'ksignd'] as const, mission: 'Strategic consciousness' },
+    kuid: { lead: 'kuid', members: ['kuid', 'kbuildd', 'COMET'] as const, mission: 'Design and engineering' },
+    kstated: { lead: 'kstated', members: ['kstated', 'ARCH', 'CODEX'] as const, mission: 'Knowledge and patterns' },
+    kdocsd: { lead: 'kdocsd', members: ['kdocsd', 'COMPASS'] as const, mission: 'Constitutional compliance' },
     SWITCHBOARD: { lead: 'SWITCHBOARD', members: ['SWITCHBOARD', 'RELAY', 'SIGNAL'] as const, mission: 'Operations and routing' },
-    VALIDATOR: { lead: 'RAM_CREW', members: ['SENTINEL', 'ARCHON', 'PROOF', 'HARBOR', 'RAM_CREW'] as const, mission: 'Quality gates' },
+    VALIDATOR: { lead: 'krecd', members: ['SENTINEL', 'ARCHON', 'PROOF', 'HARBOR', 'krecd'] as const, mission: 'Quality gates' },
     BROADCAST: { lead: 'ATLAS', members: ['ATLAS', 'CONTROL_ROOM', 'SHOWRUNNER', 'GRAPHICS', 'STUDIO', 'SYSTEMS'] as const, mission: 'Media and live ops' },
 } as const;
 
@@ -152,7 +152,7 @@ export type {
 export type { Result } from './utils/result.js';
 // Note: Ok and Err are both types AND constructor functions — import them
 // directly from the sub-module to access both:
-//   import { Ok, Err, isOk } from '@inception/core/utils/result'
+//   import { Ok, Err, isOk } from '@cle/core/utils/result'
 // Or use the re-exported utility functions below:
 export {
     isOk,
@@ -188,7 +188,7 @@ export {
 
 /**
  * Lightweight constitutional pre-check.
- * For full enforcement, use the LEX Genkit flow inside the engine.
+ * For full enforcement, use the kdocsd Genkit flow inside the engine.
  */
 export function constitutionalPreflight(task: string): { pass: boolean; flags: string[] } {
     const flags: string[] = [];

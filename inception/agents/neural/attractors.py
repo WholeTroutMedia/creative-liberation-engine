@@ -11,7 +11,7 @@ Uses Hopfield-style energy functions and Hebbian learning for:
 Lineage: v3 attractor-networks/coordination_dynamics.py (429 lines) → v5
 
 Research Foundation:
-- BioRxiv: Mechanistic theory of planning in prefrontal cortex (2025)
+- BioRxiv: Mechanistic theory of planning in prefrontal CORE (2025)
 
 Performance Target: +7% on ambiguous problems, +12% solution diversity
 """
@@ -65,7 +65,7 @@ class AttractorNetwork:
     - Learning: ΔW = η * s * s^T (Hebbian)
 
     Usage:
-        agents = [AttractorAgent(name="BOLT", concept_vector=bolt_vec)]
+        agents = [AttractorAgent(name="kbuildd", concept_vector=bolt_vec)]
         network = AttractorNetwork(agents)
         solution = network.pattern_completion(problem)
     """

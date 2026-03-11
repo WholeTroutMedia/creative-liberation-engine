@@ -8,12 +8,12 @@
  *   2. Write completed case to ChromaDB 'production_cases' collection
  *      via scribeRemember()
  *
- * This closes the feedback loop for VERA to learn from.
+ * This closes the feedback loop for kstrigd to learn from.
  * Source: IECR Google Doc Tab 8
  */
 
 import { createProductionCase, ProductionCaseType, encodeForEmbedding, toChromaMetadata, PRODUCTION_CASES_COLLECTION } from './types.js';
-import { scribeRemember } from '../memory/scribe.js';
+import { scribeRemember } from '../memory/klogd.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // INSTRUMENTATION WRAPPER

@@ -1,5 +1,5 @@
 /**
- * @inception/core — System Event Types
+ * @cle/core — System Event Types
  *
  * Event types for the Creative Liberation Engine event bus, boot/shutdown
  * lifecycle, session tracking, and memory writes.
@@ -65,7 +65,7 @@ export interface AgentEpisodeEvent {
     success: boolean;
     sessionId: string;
     durationMs?: number;
-    /** Reusable principle extracted by VERA's SCRIBE mode */
+    /** Reusable principle extracted by kstrigd's klogd mode */
     pattern?: string;
     tags?: string[];
     ts: string;
@@ -88,7 +88,7 @@ export interface MemoryWrite {
 export interface MemoryEntry extends MemoryWrite {
     id: string;
     timestamp: string;
-    /** Reusable principle extracted by SCRIBE */
+    /** Reusable principle extracted by klogd */
     pattern?: string;
 }
 

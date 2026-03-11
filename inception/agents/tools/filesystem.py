@@ -10,7 +10,7 @@ import os
 import pathlib
 from typing import Any, Optional
 
-from inception.agents.base import AgentTool
+from cle.agents.base import AgentTool
 
 logger = logging.getLogger(__name__)
 

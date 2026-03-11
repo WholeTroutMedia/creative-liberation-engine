@@ -1,5 +1,5 @@
 /**
- * Engine Registry â€” inception-core
+ * Engine Registry â€” cle-core
  * Maps each EngineModule to its Genkit flow endpoint and metadata.
  * T-IECR-009
  */

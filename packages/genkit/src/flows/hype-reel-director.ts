@@ -12,7 +12,7 @@ export const HypeReelDirectorFlow = ai.defineFlow(
         outputSchema: z.any(),
     },
     async (input) => {
-        console.log("🎬 ATHENA Director initialized with", input.videoFiles.length, "media assets.");
+        console.log("🎬 kruled Director initialized with", input.videoFiles.length, "media assets.");
 
         // Map local absolute paths into Genkit part media format with injected filenames
         const mediaParts = input.videoFiles.flatMap((path, i) => {
@@ -28,7 +28,7 @@ export const HypeReelDirectorFlow = ai.defineFlow(
         });
 
         const promptText = {
-            text: `You are ATHENA, the lead Masterclass video director. 
+            text: `You are kruled, the lead Masterclass video director. 
       You have been provided with exactly ${input.videoFiles.length} raw video proxies representing the ENTIRE event.
       Your objective is to craft an Edit Decision List (EDL) for a hype reel and recommend the perfect audio track for the editor.
       Target Duration: ${input.targetDuration} seconds.
@@ -64,10 +64,10 @@ export const HypeReelDirectorFlow = ai.defineFlow(
         });
 
         try {
-            console.log(`✅ ATHENA cut completed. JSON OUTPUT:`, response.text);
+            console.log(`✅ kruled cut completed. JSON OUTPUT:`, response.text);
             return JSON.parse(response.text);
         } catch (e) {
-            console.error("ATHENA Director Failed:", e);
+            console.error("kruled Director Failed:", e);
             throw e;
         }
     }

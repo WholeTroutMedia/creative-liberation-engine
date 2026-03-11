@@ -1,6 +1,6 @@
 /**
  * RoleGuard.test.ts — Role-based access control unit tests
- * @inception/auth — Creative Liberation Engine v5 GENESIS
+ * @cle/auth — Creative Liberation Engine v5 GENESIS
  *
  * Tests the pure logic: requireRole utility, useUserRole role resolution,
  * and the allowed/blocked role combinations for the console app.

@@ -9,11 +9,11 @@ Creative Liberation Engine v5 — Neural Architecture Package
 5. PrefrontalCortex — Executive planning and coordination
 """
 
-from inception.agents.neural.concept_vectors import ConceptVectorEngine, VECTOR_DIM, FEATURE_RANGES
-from inception.agents.neural.attractors import AttractorNetwork, AttractorAgent, Problem, Solution
-from inception.agents.neural.small_world import SmallWorldNetwork, NetworkAgent, NetworkPath
-from inception.agents.neural.dmn import DefaultModeNetwork
-from inception.agents.neural.pfc import PrefrontalCortex, Plan, PlanStep
+from cle.agents.neural.concept_vectors import ConceptVectorEngine, VECTOR_DIM, FEATURE_RANGES
+from cle.agents.neural.attractors import AttractorNetwork, AttractorAgent, Problem, Solution
+from cle.agents.neural.small_world import SmallWorldNetwork, NetworkAgent, NetworkPath
+from cle.agents.neural.dmn import DefaultModeNetwork
+from cle.agents.neural.pfc import PrefrontalCortex, Plan, PlanStep
 
 __all__ = [
     # Concept Vectors
@@ -31,7 +31,7 @@ __all__ = [
     "NetworkPath",
     # Default Mode Network
     "DefaultModeNetwork",
-    # Prefrontal Cortex
+    # Prefrontal CORE
     "PrefrontalCortex",
     "Plan",
     "PlanStep",

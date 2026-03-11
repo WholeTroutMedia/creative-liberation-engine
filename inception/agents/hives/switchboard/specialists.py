@@ -11,8 +11,8 @@ Agents that operate across hives for specialized functions:
 Hive: Various (cross-hive specialists)
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, git, npm
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, git, npm
 
 
 # ============================================================
@@ -22,7 +22,7 @@ from inception.agents.tools import filesystem, git, npm
 tdd_enforcers = InceptionAgent(
     name="TDD_ENFORCERS",
     model="gemini-2.5-flash",
-    hive="AURORA",
+    hive="kuid",
     role="test_enforcer",
     instruction="""You are TDD_ENFORCERS, the Creative Liberation Engine's test quality gate.
 
@@ -63,7 +63,7 @@ QUALITY CHECKS:
 code_archaeologist = InceptionAgent(
     name="CODE_ARCHAEOLOGIST",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="legacy_analyst",
     instruction="""You are CODE_ARCHAEOLOGIST, the Creative Liberation Engine's legacy code analyst.
 
@@ -100,7 +100,7 @@ ANALYSIS FRAMEWORK:
 skills_discovery = InceptionAgent(
     name="SKILLS_DISCOVERY",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="capability_discovery",
     instruction="""You are SKILLS_DISCOVERY, the Creative Liberation Engine's capability gap detector.
 
@@ -135,7 +135,7 @@ METHODOLOGY:
 skills_library = InceptionAgent(
     name="SKILLS_LIBRARY",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="skills_catalog",
     instruction="""You are SKILLS_LIBRARY, the Creative Liberation Engine's skills catalog manager.
 
@@ -170,7 +170,7 @@ CATALOG STRUCTURE:
 aurora_dmn = InceptionAgent(
     name="AURORA_DMN",
     model="gemini-2.5-flash",
-    hive="AURORA",
+    hive="kuid",
     role="background_intelligence",
     instruction="""You are AURORA_DMN, the Creative Liberation Engine's background intelligence processor.
 
@@ -188,7 +188,7 @@ CORE DIRECTIVES:
 INTEGRATION:
 - Uses the neural DefaultModeNetwork (packages/agents/neural/dmn.py)
 - Stores patterns in MemoryService
-- Reports insights to KEEPER for archival""",
+- Reports insights to kstated for archival""",
     tools=[
         filesystem.file_read,
         filesystem.file_list,

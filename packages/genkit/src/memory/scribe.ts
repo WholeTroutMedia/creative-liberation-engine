@@ -1,9 +1,9 @@
 /**
- * SCRIBE v2 — Persistent Memory Tools
+ * klogd v2 — Persistent Memory Tools
  * SC-01: scribeRemember + scribeRecall Genkit tools
  *
- * Routes all writes through the VERA Memory Quality Gate before
- * committing to ChromaDB via the @inception/memory bus.
+ * Routes all writes through the kstrigd Memory Quality Gate before
+ * committing to ChromaDB via the @cle/memory bus.
  * Provides structured recall with category and tag filtering.
  *
  * FIX (Issue #5 F1/F2): Category and importance are now stored as
@@ -13,7 +13,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus } from '@inception/memory';
+import { memoryBus } from '@cle/memory';
 
 // ───
 // SCHEMAS
@@ -37,9 +37,9 @@ export const ScribeRememberInputSchema = z.object({
   category: MemoryCategory.describe('Type of memory: decision, pattern, preference, fact, bug-fix, or session'),
   tags: z.array(z.string()).default([]).describe('Searchable tags for this memory'),
   importance: MemoryImportance.default('medium').describe('Importance level \u2014 low/medium/high/critical'),
-  agentName: z.string().default('SCRIBE').describe('Agent committing this memory'),
+  agentName: z.string().default('klogd').describe('Agent committing this memory'),
   sessionId: z.string().optional(),
-  skipGate: z.boolean().default(false).describe('Skip VERA quality gate (only for system-critical writes)'),
+  skipGate: z.boolean().default(false).describe('Skip kstrigd quality gate (only for system-critical writes)'),
 });
 
 export const ScribeRememberOutputSchema = z.object({
@@ -77,33 +77,33 @@ export const ScribeRecallOutputSchema = z.object({
 });
 
 // ───
-// SCRIBE REMEMBER FLOW (SC-01)
+// klogd REMEMBER FLOW (SC-01)
 // ───
 
 export const scribeRemember = ai.defineTool(
   {
     name: 'scribeRemember',
-    description: 'Store a memory in the Creative Liberation Engine Living Archive. Routes through VERA quality gate. Use for decisions, patterns, preferences, facts, bug-fixes, and session summaries.',
+    description: 'Store a memory in the Creative Liberation Engine Living Archive. Routes through kstrigd quality gate. Use for decisions, patterns, preferences, facts, bug-fixes, and session summaries.',
     inputSchema: ScribeRememberInputSchema,
     outputSchema: ScribeRememberOutputSchema,
   },
   async (input): Promise<z.infer<typeof ScribeRememberOutputSchema>> => {
-    console.log(`[SCRIBE] \ud83d\udcdd Remember \u2014 category:${input.category} importance:${input.importance} \u2014 ${input.content.slice(0, 60)}`);
+    console.log(`[klogd] \ud83d\udcdd Remember \u2014 category:${input.category} importance:${input.importance} \u2014 ${input.content.slice(0, 60)}`);
 
-    // Route through VERA gate unless explicitly skipped
+    // Route through kstrigd gate unless explicitly skipped
     if (!input.skipGate) {
-      const { veraMemoryGateFlow } = await import('./vera-gate.js');
-      const gateResult = await veraMemoryGateFlow({ content: input.content, category: input.category, importance: input.importance, proposedBy: input.agentName ?? 'SCRIBE' });
+      const { veraMemoryGateFlow } = await import('./kstrigd-gate.js');
+      const gateResult = await veraMemoryGateFlow({ content: input.content, category: input.category, importance: input.importance, proposedBy: input.agentName ?? 'klogd' });
 
       if (!gateResult.approved) {
-        console.log(`[SCRIBE] \u274c VERA gate rejected: ${gateResult.reason}`);
+        console.log(`[klogd] \u274c kstrigd gate rejected: ${gateResult.reason}`);
         return {
           committed: false,
           gateVerdict: { approved: false, reason: gateResult.reason },
           summary: `Memory rejected: ${gateResult.reason}`,
         };
       }
-      console.log(`[SCRIBE] \u2705 VERA gate approved: ${gateResult.reason}`);
+      console.log(`[klogd] \u2705 kstrigd gate approved: ${gateResult.reason}`);
     }
 
     // Fix F2: Store category and importance as structured metadata,
@@ -124,14 +124,14 @@ export const scribeRemember = ai.defineTool(
     return {
       committed: true,
       memoryId: entry.id,
-      gateVerdict: { approved: true, reason: 'Passed VERA quality gate' },
+      gateVerdict: { approved: true, reason: 'Passed kstrigd quality gate' },
       summary: `Stored ${input.category} memory: "${input.content.slice(0, 60)}..."`,
     };
   }
 );
 
 // ───
-// SCRIBE RECALL FLOW (SC-01)
+// klogd RECALL FLOW (SC-01)
 // ───
 
 export const scribeRecall = ai.defineTool(
@@ -142,7 +142,7 @@ export const scribeRecall = ai.defineTool(
     outputSchema: ScribeRecallOutputSchema,
   },
   async (input): Promise<z.infer<typeof ScribeRecallOutputSchema>> => {
-    console.log(`[SCRIBE] \ud83d\udd0d Recall \u2014 query:"${input.query.slice(0, 60)}" limit:${input.limit}`);
+    console.log(`[klogd] \ud83d\udd0d Recall \u2014 query:"${input.query.slice(0, 60)}" limit:${input.limit}`);
 
     // Fix F1: Build where clause for server-side filtering via ChromaDB metadata
     const where: Record<string, unknown> = {};
@@ -177,7 +177,7 @@ export const scribeRecall = ai.defineTool(
           category: (meta.category ?? (entry.tags ?? []).find((t: string) => ['decision', 'pattern', 'preference', 'fact', 'bug-fix', 'session'].includes(t)) ?? 'session') as MemoryCategory,
           tags: entry.tags ?? [],
           importance: (meta.importance ?? (entry.tags ?? []).find((t: string) => ['low', 'medium', 'high', 'critical'].includes(t)) ?? 'medium') as MemoryImportance,
-          agentName: entry.agentName ?? 'SCRIBE',
+          agentName: entry.agentName ?? 'klogd',
           createdAt: entry.timestamp,
         };
       }),

@@ -1,5 +1,5 @@
 /**
- * @inception/auth — AuthContext
+ * @cle/auth — AuthContext
  * Helix-A: Phase 1A — React 19 context for Firebase Auth state
  */
 

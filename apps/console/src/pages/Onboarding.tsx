@@ -90,7 +90,7 @@ export default function Onboarding() {
                             </FadeIn>
                             <FadeIn delay={0.3}>
                                 <h1 className="onboarding-title">
-                                    <span className="text-gradient-chalk">INCEPTION</span><br />
+                                    <span className="text-gradient-chalk">cle</span><br />
                                     <span className="text-gradient-amber">ENGINE</span>
                                 </h1>
                             </FadeIn>
@@ -179,7 +179,7 @@ export default function Onboarding() {
                     )}
 
                     {/* ══════════════════════════════════
-              PHASE 4: SETUP WIZARD / VAULT
+              PHASE 4: SETUP WIZARD / kstored
              ══════════════════════════════════ */}
                     {step === 3 && (
                         <motion.div key="step3" className="onboarding-step" exit={{ opacity: 0, y: -40 }} initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }}>

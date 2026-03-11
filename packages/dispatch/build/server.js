@@ -116,7 +116,7 @@ const TOOLS = [
     },
     {
         name: 'list_projects',
-        description: 'List all WholeTrout org projects registered in the dispatch server.',
+        description: 'List all CLE org projects registered in the dispatch server.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -176,10 +176,10 @@ const TOOLS = [
             required: ['parent_task_id', 'title', 'workstream', 'spawned_by'],
         },
     },
-    // Vault Operations
+    // kstored Operations
     {
         name: 'get_secret',
-        description: 'Securely retrieve a decrypted secret/credential from the Vault by its title.',
+        description: 'Securely retrieve a decrypted secret/credential from the kstored by its title.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -190,7 +190,7 @@ const TOOLS = [
     },
     {
         name: 'set_secret',
-        description: 'Securely encrypt and store a new secret/credential in the Vault.',
+        description: 'Securely encrypt and store a new secret/credential in the kstored.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -202,7 +202,7 @@ const TOOLS = [
     },
     {
         name: 'list_secrets',
-        description: 'List all available secret titles stored in the Vault. Does not reveal their values.',
+        description: 'List all available secret titles stored in the kstored. Does not reveal their values.',
         inputSchema: { type: 'object', properties: {} }
     }
 ];
@@ -318,7 +318,7 @@ async function handleTool(name, args) {
         case 'add_task': {
             const newTask = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: args.project,
                 workstream: args.workstream,
                 title: args.title,
@@ -378,7 +378,7 @@ async function handleTool(name, args) {
         case 'delegate_task': {
             const delegated = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: args.project,
                 workstream: args.workstream,
                 title: args.title,
@@ -484,7 +484,7 @@ async function handleTool(name, args) {
 }
 // â”€â”€ MCP Server Factory â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function createMcpServer() {
-    const server = new Server({ name: 'inception-dispatch', version: '1.0.0' }, { capabilities: { tools: {} } });
+    const server = new Server({ name: 'cle-dispatch', version: '1.0.0' }, { capabilities: { tools: {} } });
     server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOLS }));
     server.setRequestHandler(CallToolRequestSchema, async (req) => {
         const result = await handleTool(req.params.name, (req.params.arguments ?? {}));
@@ -521,10 +521,10 @@ app.get('/api/status', async (_, res) => { res.json(JSON.parse(await handleTool(
 app.get('/api/tasks', async (req, res) => { res.json(JSON.parse(await handleTool('list_tasks', req.query))); });
 app.get('/api/projects', async (_, res) => { res.json(JSON.parse(await handleTool('list_projects', {}))); });
 // NOTE: POST /api/tasks is defined below with SSE broadcast
-// REST API â€” Vault
-app.get('/api/vault', async (_, res) => { res.json(JSON.parse(await handleTool('list_secrets', {}))); });
-app.post('/api/vault', async (req, res) => { res.json(JSON.parse(await handleTool('set_secret', req.body))); });
-app.delete('/api/vault/:id', async (req, res) => {
+// REST API â€” kstored
+app.get('/api/kstored', async (_, res) => { res.json(JSON.parse(await handleTool('list_secrets', {}))); });
+app.post('/api/kstored', async (req, res) => { res.json(JSON.parse(await handleTool('set_secret', req.body))); });
+app.delete('/api/kstored/:id', async (req, res) => {
     const success = await deleteSecret(req.params.id);
     if (!success) {
         res.status(404).json({ error: `Secret ${req.params.id} not found` });
@@ -599,7 +599,7 @@ async function broadcastingHandleTool(name, args) {
 }
 // Override MCP handler to use broadcasting version
 function createBroadcastingMcpServer() {
-    const server = new Server({ name: 'inception-dispatch', version: '1.0.0' }, { capabilities: { tools: {} } });
+    const server = new Server({ name: 'cle-dispatch', version: '1.0.0' }, { capabilities: { tools: {} } });
     server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOLS }));
     server.setRequestHandler(CallToolRequestSchema, async (req) => {
         const result = await broadcastingHandleTool(req.params.name, (req.params.arguments ?? {}));
@@ -684,7 +684,7 @@ app.post('/api/tasks/:id/resolve', async (req, res) => {
     catch { }
 });
 // Health check
-app.get('/health', (_, res) => res.json({ status: 'ok', service: 'inception-dispatch', version: '1.0.0', sse_clients: sseClients.size }));
+app.get('/health', (_, res) => res.json({ status: 'ok', service: 'cle-dispatch', version: '1.0.0', sse_clients: sseClients.size }));
 // Redis proxy health check (since Redis has no native HTTP port for dashboard polling)
 app.get('/health/redis', (req, res) => {
     const client = net.createConnection({
@@ -827,7 +827,7 @@ async function main() {
     await migrateFromMarkdown();
     app.listen(PORT, '0.0.0.0', () => {
         console.log(`\nâ•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—`);
-        console.log(`â•‘  INCEPTION DISPATCH SERVER â€” ONLINE         â•‘`);
+        console.log(`â•‘  cle DISPATCH SERVER â€” ONLINE         â•‘`);
         console.log(`â•‘  http://127.0.0.1:${PORT}                â•‘`);
         console.log(`â•‘  MCP: GET /sse  |  REST: GET /api/status    â•‘`);
         console.log(`â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•\n`);

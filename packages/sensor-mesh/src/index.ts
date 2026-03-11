@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — ANTITRUST Living Sensor Mesh
+ * @cle/sensor-mesh — ANTITRUST Living Sensor Mesh
  *
  * Sovereign biometric, vision, and motion data ingestion.
  * The Mirror — your face IS the brief.
@@ -7,7 +7,7 @@
  * Pipeline:
  *   iPhone ZigSim Pro → UDP :5010 → ZigSimBridge → OSC :5005 → SomaticBridge → UE5
  *
- * @package @inception/sensor-mesh
+ * @package @cle/sensor-mesh
  * @version 1.0.0
  */
 
@@ -23,7 +23,7 @@ export {
 // ─── Re-export ZIGSIM_TO_ARKIT if needed by consumers ────────────────────────
 
 // Named map is exported from ZigSimBridge directly as a const.
-// Consumers can do:  import { ZigSimBridge, ZIGSIM_TO_ARKIT } from '@inception/sensor-mesh'
+// Consumers can do:  import { ZigSimBridge, ZIGSIM_TO_ARKIT } from '@cle/sensor-mesh'
 
 // ─── Convenience factory ──────────────────────────────────────────────────────
 

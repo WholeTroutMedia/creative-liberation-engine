@@ -16,7 +16,7 @@ interface Message {
 const AVERI_BOOT_MSG: Message = {
   id: 'boot-0',
   role: 'system',
-  content: '⚡ **AVERI GENESIS v5** online. ATHENA + VERA + IRIS operational. Dispatch connected. How can we help you today?',
+  content: '⚡ **AVERI GENESIS v5** online. kruled + kstrigd + ksignd operational. Dispatch connected. How can we help you today?',
   timestamp: new Date(),
   agent: 'AVERI',
 };

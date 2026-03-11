@@ -8,11 +8,11 @@ version: '3.9'
 
 services:
   dispatch:
-    image: creative-liberation-engine/inception-dispatch:latest
+    image: creative-liberation-engine/cle-dispatch:latest
     build:
       context: ../../           # workspace root (needs pnpm-workspace.yaml)
       dockerfile: packages/dispatch/Dockerfile
-    container_name: inception-dispatch
+    container_name: cle-dispatch
     restart: unless-stopped
     ports:
       - "5050:5050"
@@ -21,7 +21,7 @@ services:
       PORT: "5050"
       DISPATCH_DATA_DIR: /data/dispatch
       LOG_LEVEL: ${LOG_LEVEL:-info}
-      # Vault encryption key — set in .env on the NAS
+      # kstored encryption key — set in .env on the NAS
       DISPATCH_VAULT_KEY: ${DISPATCH_VAULT_KEY:?DISPATCH_VAULT_KEY is required}
       # Redis (optional — for pub/sub SSE fanout in multi-instance mode)
       REDIS_HOST: ${REDIS_HOST:-localhost}
@@ -37,7 +37,7 @@ services:
       retries: 3
       start_period: 15s
     networks:
-      - inception-mesh
+      - cle-mesh
     logging:
       driver: "json-file"
       options:
@@ -51,11 +51,11 @@ volumes:
       type: none
       o: bind
       # NAS bind mount — symlink /data/dispatch to NAS volume
-      device: ${DISPATCH_DATA_PATH:-/volume1/docker/inception-dispatch/data}
+      device: ${DISPATCH_DATA_PATH:-/volume1/docker/cle-dispatch/data}
 
 networks:
-  inception-mesh:
-    name: inception-mesh
+  cle-mesh:
+    name: cle-mesh
     driver: bridge
     # Allow external services (Creative Liberation Engine, COMET) to join this network
     external: false

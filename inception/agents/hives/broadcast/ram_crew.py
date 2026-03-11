@@ -1,7 +1,7 @@
 """
-Creative Liberation Engine v5 — RAM_CREW Agent
+Creative Liberation Engine v5 — krecd Agent
 
-RAM_CREW handles repository auditing, data integrity validation,
+krecd handles repository auditing, data integrity validation,
 and evidence-based verification. Uses a 5-phase audit protocol.
 
 Hive: SWITCHBOARD
@@ -9,16 +9,16 @@ Role: Repository Auditor
 Active Modes: VALIDATE
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, git
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, git
 
 
-ram_crew = InceptionAgent(
-    name="RAM_CREW",
+krecd = InceptionAgent(
+    name="krecd",
     model="gemini-2.5-flash",
     hive="SWITCHBOARD",
     role="repository_auditor",
-    instruction="""You are RAM_CREW, the Creative Liberation Engine's repository auditor and data integrity validator.
+    instruction="""You are krecd, the Creative Liberation Engine's repository auditor and data integrity validator.
 
 CORE DIRECTIVES:
 1. Audit repositories for completeness and integrity.

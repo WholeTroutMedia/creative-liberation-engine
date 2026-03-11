@@ -11,7 +11,7 @@ The Creative Liberation Engine is a compound-learning, multi-agent AI operating 
 > âš ï¸ **Disclaimer: AI-Generated Documentation**  
 > Notice: A large portion of this repository's documentation is generated and maintained autonomously by AI agents. While we strive for hyper-accuracy, there may be discrepancies, outdated context, or hallucinated facts. Please verify any critical information and report inaccuracies. We believe in being fully honest about the role of AI in maintaining this project.
 
-![License: FSL-1.1-ALv2](https://img.shields.io/badge/License-FSL--1.1--ALv2-violet) ![Version](https://img.shields.io/badge/version-5.0.0--GENESIS-gold) ![Agents](https://img.shields.io/badge/agents-25-blue)
+![License: FSL-1.1-ALv2](https://img.shields.io/badge/License-FSL--1.1--ALv2-violet) ![Version](https://img.shields.io/badge/version-5.0.0--GENESIS-gold) ![Agents](https://img.shields.io/badge/agents-40%2B-blue)
 
 ---
 
@@ -31,7 +31,7 @@ The engine doesn't just respond — it *learns*, *remembers*, and *compounds* ev
 ## The Scale
 
 - **25+ Total Agents**
-- **1 ARCHAEON Global LoRA**
+- **1 klorad Global LoRA**
 
 ---
 
@@ -41,13 +41,13 @@ The engine doesn't just respond — it *learns*, *remembers*, and *compounds* ev
 +-------------------------------------------------------------------------+
 |                    Creative Liberation Engine v5                        |
 |                                                                         |
-|  [averid TRINITY]              [aurorad HIVE]                           |
-|  stratad      (Strategy)      aurorad      (Architect)                  |
-|  logd         (Truth/Scribe)  boltd        (Code Gen)                   |
-|  prismd       (Execution)     cometd       (Backend)                    |
+|  [averid TRINITY]              [kuid HIVE]                           |
+|  kstratd      (Strategy)      kuid      (Architect)                  |
+|  kmemd         (Truth/klogd)  kbuildd        (Code Gen)                   |
+|  kexecd       (Execution)     cometd       (Backend)                    |
 |                                                                         |
-|  [keeperd HIVE]                [lexd HIVE]                              |
-|  keeperd      (Knowledge)     lexd         (Constitutional)             |
+|  [kstated HIVE]                [kdocsd HIVE]                              |
+|  kstated      (Knowledge)     kdocsd         (Constitutional)             |
 |  archd        (Patterns)      compassd     (Ethics)                     |
 |  codexd       (Docs)                                                    |
 |                                                                         |
@@ -56,11 +56,11 @@ The engine doesn't just respond — it *learns*, *remembers*, and *compounds* ev
 |  signald      (Integrations)  archond      (Architecture)               |
 |  switchd      (Ops)           proofd       (Correctness)                |
 |                               harbord      (Test Coverage)              |
-|  [BROADCAST HIVE]             ramcrewd     (Ship Decision)              |
+|  [BROADCAST HIVE]             krecd     (Ship Decision)              |
 |  atlasd       (Lead)                                                    |
 |  controlroomd (LiveOps)       ----------------------------------------- |
 |  showrunnerd  (Prod.)         [LIVE MEMORY BUS]                         |
-|  graphicsd    (Motion)        Every execution -> SCRIBE pattern         |
+|  graphicsd    (Motion)        Every execution -> klogd pattern         |
 |  studiod      (Studio)        extraction -> compound learning           |
 |  systemsd     (Infra)                                                   |
 +-------------------------------------------------------------------------+
@@ -77,7 +77,7 @@ The engine is governed by 20 immutable articles. Selected highlights:
 
 - **Article 0** — Sacred Mission: *"Artist liberation through sovereign technology"* — immutable
 - **Article V** — User Sovereignty: user creative vision is supreme
-- **Article VI** — Quality Gates: code doesn't ship without VALIDATE approval (`ramcrewd`)
+- **Article VI** — Quality Gates: code doesn't ship without VALIDATE approval (`krecd`)
 - **Article VII** — Knowledge Compounding: every execution teaches the system
 - **Article XIV** — Testing Mandate: untested code is unshipped code
 - **Article XVIII** — Anti-Lock-In: you can always export and leave
@@ -90,9 +90,9 @@ The engine's compound intelligence layer. Every agent execution:
 
 1. **Pre-flight recall** — queries past episodes via tag similarity
 2. **Execution** — runs with historical context in mind
-3. **Post-flight SCRIBE** — Gemini extracts a reusable pattern; persists to JSONL + Git
+3. **Post-flight klogd** — Gemini extracts a reusable pattern; persists to JSONL + Git
 
-This means `boltd` gets better at your codebase with every run. `aurorad` remembers your design decisions. `keeperd` tracks what works.
+This means `kbuildd` gets better at your codebase with every run. `kuid` remembers your design decisions. `kstated` tracks what works.
 
 ---
 
@@ -109,8 +109,8 @@ const result = await OmniMediaOrchestratorFlow({
     format: 'vertical',     // 9:16 for social
 });
 
-// result.concept         → aurorad creative concept
-// result.copy            → logd campaign copy
+// result.concept         → kuid creative concept
+// result.copy            → kmemd campaign copy
 // result.assets.images   → ["/path/to/imagen3_output.png", ...]
 // result.assets.videos   → ["/path/to/wan21_output.mp4", ...]
 // result.assets.audio    → ["/path/to/lyria_track.mp3", ...]
@@ -122,7 +122,7 @@ const result = await OmniMediaOrchestratorFlow({
 ## Quick Start
 
 ```bash
-git clone https://github.com/Creative Liberation Engine Community/creative-liberation-engine.git
+git clone https://github.com/Creative-Liberation-Engine/creative-liberation-engine.git
 cd creative-liberation-engine
 pnpm install
 ```
@@ -153,7 +153,7 @@ docker compose up     # Genkit + FastAPI engine + Console UI + ChromaDB
 ## Constitutional Preflight (Public SDK)
 
 ```typescript
-import { constitutionalPreflight, CONSTITUTION, HIVES } from '@inception/core';
+import { constitutionalPreflight, CONSTITUTION, HIVES } from '@cle/core';
 
 // Lightweight check before submitting to the engine
 const { pass, flags } = constitutionalPreflight("Generate brand assets for our new campaign");
@@ -164,8 +164,8 @@ console.log(CONSTITUTION[0].summary);
 // → "Artist liberation through sovereign technology"
 
 // Explore hives
-console.log(HIVES.aurorad.members);
-// → ["aurorad", "boltd", "cometd"]
+console.log(HIVES.kuid.members);
+// → ["kuid", "kbuildd", "cometd"]
 ```
 
 ---
@@ -174,7 +174,7 @@ console.log(HIVES.aurorad.members);
 
 | Tier            | Who        | Capabilities                                        |
 |-----------------|------------|-----------------------------------------------------|
-| **Studio**      | WholeTrout | Full 25-agent system, all providers, Living Archive |
+| **Studio**      | CLE | Full 40-agent system, all providers, Living Archive |
 | **Client**      | Projects   | Project-scoped agents, client memory isolated       |
 | **Merch**       | Public     | OmniMedia only, rate-limited, no private memory     |
 
@@ -184,14 +184,14 @@ console.log(HIVES.aurorad.members);
 
 | Metric                | Value                              |
 |-----------------------|------------------------------------|
-| Active Agents         | 25                                 |
+| Active Agents         | 40+                                |
 | Hives                 | 7                                  |
 | Constitution Articles | 20                                 |
 | Memory Provider       | Hierarchical JSONL + ChromaDB + Git |
 | LLM Providers         | Gemini 2.5 Pro, Claude 3.5, GPT-4o, Perplexity Sonar, Grok, DeepSeek |
 | Media Providers       | Imagen3, Flux Pro, Wan 2.1, Veo2, Lyria |
 | Offline Mode          | Ollama (Llama 3, Mistral, Gemma)   |
-| Compound Learning     | Live Memory Bus — CLS hierarchical, per-agent SCRIBE |
+| Compound Learning     | Live Memory Bus — CLS hierarchical, per-agent klogd |
 
 ---
 
@@ -208,23 +208,23 @@ For correspondence, reach out to `operator@gmail.com`.
 | Area | Link | Description |
 |---|---|---|
 | **System** | | |
-| Boot Config | [`.averi/boot.json`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/boot.json) | Engine manifest — 36 agents, 6 hives |
-| Agent Charters | [`.averi/agents/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/agents) | Constitution + agent definitions |
-| Inbox Pipeline | [`.averi/inbox/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.averi/inbox) | Phone-to-execution capture pipeline |
+| Boot Config | [`.averi/boot.json`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/boot.json) | Engine manifest — 36 agents, 6 hives |
+| Agent Charters | [`.averi/agents/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/agents) | Constitution + agent definitions |
+| Inbox Pipeline | [`.averi/inbox/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.averi/inbox) | Phone-to-execution capture pipeline |
 | **Agent Orchestration** | | |
-| ANTIGRAVITY Protocol | [`.agent/ANTIGRAVITY.md`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.agent/ANTIGRAVITY.md) | Agent identity + coordination rules |
-| Project Board | [`.agent/project_dispatch.md`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.agent/project_dispatch.md) | Live workstream kanban |
-| Instance Registry | [`.agent/dispatch/registry.md`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.agent/dispatch/registry.md) | Multi-instance coordination |
-| Agent Workflows | [`.agent/workflows/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.agent/workflows) | Claim, dispatch, handoff, sync |
+| ANTIGRAVITY Protocol | [`.agent/ANTIGRAVITY.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/ANTIGRAVITY.md) | Agent identity + coordination rules |
+| Project Board | [`.agent/project_dispatch.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/project_dispatch.md) | Live workstream kanban |
+| Instance Registry | [`.agent/dispatch/registry.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/dispatch/registry.md) | Multi-instance coordination |
+| Agent Workflows | [`.agent/workflows/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.agent/workflows) | Claim, dispatch, handoff, sync |
 | **Core Packages** | | |
-| Genkit Orchestration | [`packages/genkit/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/genkit) | AI flow engine |
-| Console UI | [`apps/console/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/apps/console) | Spatial OS interface |
-| cometd Browser | [`packages/comet/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/packages/comet) | Sovereign Playwright browser |
+| Genkit Orchestration | [`packages/genkit/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/packages/genkit) | AI flow engine |
+| Console UI | [`apps/console/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/apps/console) | Spatial OS interface |
+| cometd Browser | [`packages/comet/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/packages/comet) | Sovereign Playwright browser |
 | **Infrastructure** | | |
-| Docker | [`docker/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/docker) | Container configs |
-| CI/CD | [`.forgejo/workflows/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/.forgejo/workflows) | Forgejo Actions |
-| Deploy | [`deploy/orchestrator/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/deploy/orchestrator) | GCP Cloud Run deployment |
+| Docker | [`docker/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/docker) | Container configs |
+| CI/CD | [`.forgejo/workflows/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/.forgejo/workflows) | Forgejo Actions |
+| Deploy | [`deploy/orchestrator/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/deploy/orchestrator) | GCP Cloud Run deployment |
 | **Services** | | |
-| Inbox Webhook | [`services/inbox-webhook/`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/services/inbox-webhook) | iOS Share Sheet + Flipboard RSS ingestion |
+| Inbox Webhook | [`services/inbox-webhook/`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/services/inbox-webhook) | iOS Share Sheet + Flipboard RSS ingestion |
 | **Docs** | | |
-| iOS Shortcut Guide | [`docs/ios-shortcut-setup.md`](/Creative Liberation Engine Community/brainchild-v5/src/branch/main/docs/ios-shortcut-setup.md) | Phone capture setup |
+| iOS Shortcut Guide | [`docs/ios-shortcut-setup.md`](/Creative-Liberation-Engine/creative-liberation-engine/src/branch/main/docs/ios-shortcut-setup.md) | Phone capture setup |

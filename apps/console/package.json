@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@inception/atlas-live": "workspace:*",
-    "@inception/auth": "workspace:*",
-    "@inception/design-sandbox": "workspace:*",
-    "@inception/genkit": "workspace:*",
-    "@inception/theme-engine": "workspace:*",
-    "@inception/ui": "workspace:*",
+    "@cle/atlas-live": "workspace:*",
+    "@cle/auth": "workspace:*",
+    "@cle/design-sandbox": "workspace:*",
+    "@cle/genkit": "workspace:*",
+    "@cle/theme-engine": "workspace:*",
+    "@cle/ui": "workspace:*",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@tsparticles/react": "^3.0.0",

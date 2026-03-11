@@ -1,1 +1,1 @@
-"""Creative Liberation Engine v5 — Lex Hive."""
+"""Creative Liberation Engine v5 — kdocsd Hive."""

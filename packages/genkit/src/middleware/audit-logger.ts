@@ -1,7 +1,7 @@
 /**
  * Audit Logger Middleware
  *
- * Logs every Genkit generate() call for the SCRIBE compound learning system.
+ * Logs every Genkit generate() call for the klogd compound learning system.
  * Records: model, intent, latency, token usage, and success/failure.
  *
  * Constitutional: Article X (Compound Learning), Article V (Transparency)
@@ -10,7 +10,7 @@
 import type { ModelMiddleware } from 'genkit/model';
 
 // ---------------------------------------------------------------------------
-// Audit Store (in-memory for now, SCRIBE bridge later)
+// Audit Store (in-memory for now, klogd bridge later)
 // ---------------------------------------------------------------------------
 
 interface AuditEntry {
@@ -74,7 +74,7 @@ export function auditLogger(): ModelMiddleware {
 }
 
 // ---------------------------------------------------------------------------
-// Audit Access (for SCRIBE integration)
+// Audit Access (for klogd integration)
 // ---------------------------------------------------------------------------
 
 export function getAuditLog(): AuditEntry[] {

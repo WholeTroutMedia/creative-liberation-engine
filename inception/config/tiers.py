@@ -37,7 +37,7 @@ TIER_CONFIGS: dict[AccessTier, TierConfig] = {
     AccessTier.STUDIO: TierConfig(
         name="Studio",
         description="Full engine access for internal projects",
-        allowed_hives=["AURORA", "AVERI", "ALCHEMY", "HERALD", "LEXICON", "NEXUS"],
+        allowed_hives=["kuid", "AVERI", "ALCHEMY", "HERALD", "LEXICON", "NEXUS"],
         max_agents=-1,
         max_parallel=8,
         credits_required=False,
@@ -46,7 +46,7 @@ TIER_CONFIGS: dict[AccessTier, TierConfig] = {
     AccessTier.CLIENT: TierConfig(
         name="Client",
         description="Scoped access for client projects",
-        allowed_hives=["AURORA", "HERALD", "LEXICON"],
+        allowed_hives=["kuid", "HERALD", "LEXICON"],
         max_agents=20,
         max_parallel=4,
         credits_required=False,
@@ -55,7 +55,7 @@ TIER_CONFIGS: dict[AccessTier, TierConfig] = {
     AccessTier.MERCH: TierConfig(
         name="Merch",
         description="Credit-based access for demo arena",
-        allowed_hives=["AURORA"],
+        allowed_hives=["kuid"],
         max_agents=5,
         max_parallel=2,
         credits_required=True,

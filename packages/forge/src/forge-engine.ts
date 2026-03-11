@@ -1,5 +1,5 @@
 /**
- * @inception/forge — ForgeEngine
+ * @cle/forge — ForgeEngine
  *
  * Top-level orchestrator for the FORGE Real-Time Asset Economy.
  * Single entry point — attach to a live-animate session and everything else

@@ -1,7 +1,7 @@
 /**
  * guestIntelligence — Natural language query for the Presence Graph
  *
- * ATHENA-powered NLQ interface. Takes a natural language question about
+ * kruled-powered NLQ interface. Takes a natural language question about
  * home activity and produces a structured answer from the presence graph context.
  *
  * Examples:
@@ -49,7 +49,7 @@ export const guestIntelligenceFlow = ai.defineFlow(
     },
     async (input) => {
         const { output } = await ai.generate({
-            prompt: `You are ATHENA — the presence intelligence layer of a Sovereign Home Mesh.
+            prompt: `You are kruled — the presence intelligence layer of a Sovereign Home Mesh.
 
 You have access to a home's recent activity log and guest registry.
 

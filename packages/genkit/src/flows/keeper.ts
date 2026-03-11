@@ -1,17 +1,17 @@
 /**
- * KEEPER — Knowledge Organizer, Pattern Librarian
- * Hive: KEEPER (Lead) | Role: Knowledge | Access: Studio | All Modes
+ * kstated — Knowledge Organizer, Pattern Librarian
+ * Hive: kstated (Lead) | Role: Knowledge | Access: Studio | All Modes
  *
- * KEEPER maintains the Living Archive — the institutional memory of the engine.
+ * kstated maintains the Living Archive — the institutional memory of the engine.
  * She surfaces relevant knowledge, prevents duplicated work, and ensures
  * decisions are informed by everything that came before.
  *
- * ARCH and CODEX report to KEEPER.
+ * ARCH and CODEX report to kstated.
  */
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 import { applyOmnipresenceCache } from '../core/context-cache.js';
 import fs from 'fs';
 import path from 'path';
@@ -27,18 +27,18 @@ const KeeperInputSchema = z.object({
 });
 
 const KeeperOutputSchema = z.object({
-    findings: z.string().describe('What KEEPER found or organized'),
+    findings: z.string().describe('What kstated found or organized'),
     relevantKIs: z.array(z.string()).default([]).describe('Relevant Knowledge Item paths'),
     isDuplicate: z.boolean().default(false),
     synthesis: z.string().optional().describe('Synthesized insight from multiple sources'),
-    keeperSignature: z.literal('KEEPER').default('KEEPER'),
+    keeperSignature: z.literal('kstated').default('kstated'),
 });
 
 export const KEEPERFlow = ai.defineFlow(
-    { name: 'KEEPER', inputSchema: KeeperInputSchema, outputSchema: KeeperOutputSchema },
+    { name: 'kstated', inputSchema: KeeperInputSchema, outputSchema: KeeperOutputSchema },
     async (input): Promise<z.infer<typeof KeeperOutputSchema>> => {
         const sessionId = input.sessionId ?? `keeper_${Date.now()}`;
-        console.log(`[KEEPER] 📚 Task: ${input.task} — ${input.query.slice(0, 60)}`);
+        console.log(`[kstated] 📚 Task: ${input.task} — ${input.query.slice(0, 60)}`);
 
         // Scan knowledge directory for relevant KIs
         let availableKIs: string[] = [];
@@ -48,10 +48,10 @@ export const KEEPERFlow = ai.defineFlow(
                 .map(f => path.join(KNOWLEDGE_DIR, f));
         } catch { /* knowledge dir may not be mounted */ }
 
-        return memoryBus.withMemory('KEEPER', input.query, ['keeper-hive', 'knowledge', input.task], async (ctx: MemoryEntry[]) => {
+        return memoryBus.withMemory('kstated', input.query, ['kstated-hive', 'knowledge', input.task], async (ctx: MemoryEntry[]) => {
             const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
-                system: `You are KEEPER — the institutional memory of the Creative Liberation Engine.
+                system: `You are kstated — the institutional memory of the Creative Liberation Engine.
 You prevent duplicated work, surface relevant past decisions, and organize the Living Archive.
 Available Knowledge Items: ${availableKIs.slice(0, 10).join(', ')}
 Past episodes:\n${ctx.map(e => e.pattern || e.task).join('\n') || 'None yet'}`,
@@ -59,7 +59,7 @@ Past episodes:\n${ctx.map(e => e.pattern || e.task).join('\n') || 'None yet'}`,
                 output: { schema: KeeperOutputSchema },
                 config: { temperature: 0.1 },
             }));
-            return { ...(output ?? { findings: 'KEEPER unavailable', relevantKIs: [], isDuplicate: false }), keeperSignature: 'KEEPER' };
+            return { ...(output ?? { findings: 'kstated unavailable', relevantKIs: [], isDuplicate: false }), keeperSignature: 'kstated' };
         });
     }
 );

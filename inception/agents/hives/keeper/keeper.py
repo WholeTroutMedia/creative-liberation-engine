@@ -1,21 +1,21 @@
 """
-Creative Liberation Engine v5 — KEEPER Agent
+Creative Liberation Engine v5 — kstated Agent
 
-KEEPER organizes and maintains the knowledge architecture.
-Named for the keeper of knowledge — KEEPER ensures nothing is lost.
+kstated organizes and maintains the knowledge architecture.
+Named for the kstated of knowledge — kstated ensures nothing is lost.
 
-Lineage: v4 inception_engine/agents/keeper/keeper.py → v5 InceptionAgent
+Lineage: v4 inception_engine/agents/kstated/kstated.py → v5 InceptionAgent
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file, write_file, list_directory, create_directory
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file, write_file, list_directory, create_directory
 
-keeper = InceptionAgent(
-    name="KEEPER",
+kstated = InceptionAgent(
+    name="kstated",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="organizer",
-    instruction="""You are KEEPER, the knowledge organization agent.
+    instruction="""You are kstated, the knowledge organization agent.
 
 You maintain the system's knowledge architecture:
 - Organize files and documentation into proper structures
@@ -29,6 +29,6 @@ You create systems that scale.
     tools=[read_file, write_file, list_directory, create_directory],
     active_modes=["ship", "validate"],
     access_tier="studio",
-    description="KEEPER — Knowledge Organizer in KEEPER hive",
+    description="kstated — Knowledge Organizer in kstated hive",
 )
 

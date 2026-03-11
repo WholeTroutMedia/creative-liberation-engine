@@ -33,7 +33,7 @@ const InfraDockerOutputSchema = z.object({
         type: z.enum(['dockerfile', 'compose', 'script', 'config', 'readme']),
     })),
     executionSteps: z.array(z.string()).describe('Ordered steps to apply these artifacts'),
-    constitutionalCheck: z.string().describe('VERA truth-check on the generated output'),
+    constitutionalCheck: z.string().describe('kstrigd truth-check on the generated output'),
 });
 
 export type InfraDockerInput = z.infer<typeof InfraDockerInputSchema>;
@@ -66,7 +66,7 @@ Output format — respond with a JSON object matching this schema exactly:
     { "filename": "Dockerfile.service", "content": "...", "type": "dockerfile" }
   ],
   "executionSteps": ["Step 1 to apply", "Step 2 to apply"],
-  "constitutionalCheck": "VERA confirmation that outputs comply with sovereignty, security, and quality articles"
+  "constitutionalCheck": "kstrigd confirmation that outputs comply with sovereignty, security, and quality articles"
 }`;
 
         const prompt = `Infra task: ${input.title}
@@ -97,7 +97,7 @@ Generate the required Docker/infrastructure artifacts. Follow all constitutional
                     type: 'readme',
                 }],
                 executionSteps: ['Review the generated output and apply manually.'],
-                constitutionalCheck: 'Auto-generated — manual VERA review recommended.',
+                constitutionalCheck: 'Auto-generated — manual kstrigd review recommended.',
             };
         }
 

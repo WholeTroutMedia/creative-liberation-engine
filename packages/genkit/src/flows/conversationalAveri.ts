@@ -80,7 +80,7 @@ Extract a concise 'title' (max 6 words) and a detailed 'description' formatted o
                         title: payload.title,
                         description: payload.description,
                         priority: 'P2',
-                        org: 'Creative Liberation Engine Community',
+                        org: 'Creative-Liberation-Engine',
                         project: 'brainchild-v5',
                         workstream: 'inbound-voice'
                     }),

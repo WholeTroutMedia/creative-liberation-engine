@@ -1,13 +1,13 @@
 /**
- * BOLT — Primary Coder, Frontend Builder
- * Hive: AURORA | Role: Builder | Access: Studio
+ * kbuildd — Primary Coder, Frontend Builder
+ * Hive: kuid | Role: Builder | Access: Studio
  *
- * BOLT is the primary code generation engine. 14 tool grants:
+ * kbuildd is the primary code generation engine. 14 tool grants:
  *   Filesystem (read/write/list), Git (commit/push/status/diff),
  *   NPM (run/install/build), Web (search), Media (generate_image)
  *
- * BOLT operates in SHIP mode by default. Receives architectural specs
- * from AURORA and implements them. Pairs with COMET for backend tasks.
+ * kbuildd operates in SHIP mode by default. Receives architectural specs
+ * from kuid and implements them. Pairs with COMET for backend tasks.
  *
  * Constitutional: Article VI (Quality Gates), Article XIII (Version Control),
  *                 Article XIV (Testing Mandate), Article XVI (Security)
@@ -15,7 +15,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 import { applyOmnipresenceCache } from '../core/context-cache.js';
 import fs from 'fs';
 import path from 'path';
@@ -79,32 +79,32 @@ const BoltOutputSchema = z.object({
     summary: z.string().describe('What was built'),
     testsPass: z.boolean().optional(),
     commitHash: z.string().optional(),
-    boltSignature: z.literal('BOLT').default('BOLT'),
+    boltSignature: z.literal('kbuildd').default('kbuildd'),
 });
 
 export type BoltInput = z.infer<typeof BoltInputSchema>;
 export type BoltOutput = z.infer<typeof BoltOutputSchema>;
 
 // ─────────────────────────────────────────────────────────────────────────────
-// BOLT FLOW
+// kbuildd FLOW
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const BOLTFlow = ai.defineFlow(
     {
-        name: 'BOLT',
+        name: 'kbuildd',
         inputSchema: BoltInputSchema,
         outputSchema: BoltOutputSchema,
     },
     async (input): Promise<BoltOutput> => {
         const sessionId = input.sessionId ?? `bolt_${Date.now()}`;
-        console.log(`[BOLT] ⚡ Activating — Task: ${input.task.slice(0, 80)}`);
+        console.log(`[kbuildd] ⚡ Activating — Task: ${input.task.slice(0, 80)}`);
 
-        return memoryBus.withMemory('BOLT', input.task, ['aurora-hive', 'builder', 'code'], async (context: MemoryEntry[]) => {
+        return memoryBus.withMemory('kbuildd', input.task, ['kuid-hive', 'builder', 'code'], async (context: MemoryEntry[]) => {
             const memoryContext = context.length > 0
                 ? `\n\nBOLT's relevant past implementations:\n${context.map(e => `- ${e.task}: ${e.outcome}`).join('\n')}`
                 : '';
 
-            const systemPrompt = `You are BOLT — the primary code generation engine of the Creative Liberation Engine.
+            const systemPrompt = `You are kbuildd — the primary code generation engine of the Creative Liberation Engine.
 
 You are a senior full-stack engineer who writes production-grade TypeScript, Python, React, and CSS.
 You have access to tools: bolt_fileRead, bolt_fileWrite, bolt_fileList, bolt_gitStatus, bolt_gitCommit, bolt_npmRun.
@@ -132,20 +132,20 @@ After implementing, return the primary code artifact and list of modified files.
             let commitHash: string | undefined;
             if (input.commitOnComplete && output?.filesModified?.length) {
                 try {
-                    const msg = `feat(bolt): ${input.task.slice(0, 72)}`;
+                    const msg = `feat(kbuildd): ${input.task.slice(0, 72)}`;
                     execSync('git add -A', { cwd: input.repoPath });
                     const commit = execSync(`git commit -m "${msg.replace(/"/g, "'")}"`, { cwd: input.repoPath, encoding: 'utf8' });
                     commitHash = commit.match(/\[main ([a-f0-9]+)\]/)?.[1];
-                    console.log(`[BOLT] ✅ Committed: ${commitHash}`);
+                    console.log(`[kbuildd] ✅ Committed: ${commitHash}`);
                 } catch (e) {
-                    console.warn(`[BOLT] Commit failed: ${e}`);
+                    console.warn(`[kbuildd] Commit failed: ${e}`);
                 }
             }
 
             return {
-                ...(output ?? { filesModified: [], code: '', summary: 'BOLT output unavailable' }),
+                ...(output ?? { filesModified: [], code: '', summary: 'kbuildd output unavailable' }),
                 commitHash,
-                boltSignature: 'BOLT',
+                boltSignature: 'kbuildd',
             };
         });
     }

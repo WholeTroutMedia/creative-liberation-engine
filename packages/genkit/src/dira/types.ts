@@ -20,7 +20,7 @@ export type ProductionCaseType =
     | 'coordination';   // Agent routing conflict
 
 export type ProductionCaseOutcome =
-    | 'auto-resolved'   // VERA matched corpus (>0.85 similarity) and applied resolution
+    | 'auto-resolved'   // kstrigd matched corpus (>0.85 similarity) and applied resolution
     | 'escalated'       // Required human decision
     | 'skipped'         // Non-critical, deferred
     | 'partial';        // Partially resolved — follow-up needed
@@ -42,7 +42,7 @@ export interface ProductionCase {
     humanDecision?: string;
     /** Final outcome */
     outcome: ProductionCaseOutcome;
-    /** Whether auto-resolved by VERA (vs human) */
+    /** Whether auto-resolved by kstrigd (vs human) */
     autoResolved: boolean;
     /** Similarity score of the corpus match (if auto-resolved) */
     matchSimilarity?: number;
@@ -80,7 +80,7 @@ export const PRODUCTION_CASES_COLLECTION = 'production_cases' as const;
 
 /**
  * Fields to embed in ChromaDB for semantic similarity search.
- * We embed trigger + resolution so VERA can match new triggers against
+ * We embed trigger + resolution so kstrigd can match new triggers against
  * previously solved ones.
  */
 export function encodeForEmbedding(c: ProductionCase): string {
@@ -114,14 +114,14 @@ export function toChromaMetadata(c: ProductionCase): Record<string, string | num
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// DIRA → SCRIBE CONTRACT
+// DIRA → klogd CONTRACT
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Scribe MemoryCategory type (mirrors scribe.ts enum) */
+/** klogd MemoryCategory type (mirrors klogd.ts enum) */
 type ScribeCategory = 'decision' | 'pattern' | 'preference' | 'fact' | 'bug-fix' | 'session';
 type ScribeImportance = 'low' | 'medium' | 'high' | 'critical';
 
-/** Maps DIRA ProductionCaseType to the appropriate Scribe MemoryCategory */
+/** Maps DIRA ProductionCaseType to the appropriate klogd MemoryCategory */
 const DIRA_TYPE_TO_SCRIBE_CATEGORY: Record<ProductionCaseType, ScribeCategory> = {
   exception: 'bug-fix',
   quality: 'pattern',
@@ -131,7 +131,7 @@ const DIRA_TYPE_TO_SCRIBE_CATEGORY: Record<ProductionCaseType, ScribeCategory> =
   coordination: 'decision',
 };
 
-/** Maps DIRA outcome to Scribe importance level */
+/** Maps DIRA outcome to klogd importance level */
 function outcomeToImportance(outcome: ProductionCaseOutcome, autoResolved: boolean): ScribeImportance {
   if (outcome === 'escalated') return 'high';
   if (outcome === 'partial') return 'medium';
@@ -141,7 +141,7 @@ function outcomeToImportance(outcome: ProductionCaseOutcome, autoResolved: boole
 
 /**
  * Unified mapper: ProductionCase → scribeRemember input.
- * This is the single source of truth for how DIRA cases are stored in VERA memory.
+ * This is the single source of truth for how DIRA cases are stored in kstrigd memory.
  * Use this in auto-resolve.ts instead of inline tag/category construction.
  */
 export interface ScribeRememberInput {
@@ -175,7 +175,7 @@ export function productionCaseToScribeInput(
       c.autoResolved ? 'auto-resolved' : 'human-required',
       ...c.tags,
     ],
-    agentName: opts?.agentName ?? 'VERA-DIRA',
+    agentName: opts?.agentName ?? 'kstrigd-DIRA',
     skipGate: opts?.skipGate ?? true,
   };
 }

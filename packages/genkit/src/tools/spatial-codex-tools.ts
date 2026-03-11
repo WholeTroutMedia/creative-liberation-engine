@@ -1,6 +1,6 @@
 import { ai, z } from '../index.js';
 import axios from 'axios';
-import { ingestHardwareSpec, searchHardwareCodex } from '@inception/spatial-codex';
+import { ingestHardwareSpec, searchHardwareCodex } from '@cle/spatial-codex';
 
 export const ingestHardwareSpecTool = ai.defineTool(
     {
@@ -25,7 +25,7 @@ export const ingestHardwareSpecTool = ai.defineTool(
 export const searchHardwareCodexTool = ai.defineTool(
     {
         name: 'searchHardwareCodex',
-        description: 'Searches the offline Spatial Hardware Codex (Inception Engine) for highly detailed JSON models of physical robotics and appliances.',
+        description: 'Searches the offline Spatial Hardware Codex (Creative Liberation Engine) for highly detailed JSON models of physical robotics and appliances.',
         inputSchema: z.object({
             query: z.string().describe('The name or type of hardware (e.g., lawnmower, espresso machine, drone)'),
         }),

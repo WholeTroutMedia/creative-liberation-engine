@@ -1,5 +1,5 @@
 """
-INCEPTION VFX Pipeline
+cle VFX Pipeline
 
 Core backend module for the AI-to-3D production tool.
 Handles video decoding, motion capture extraction, 3D scene reconstruction,

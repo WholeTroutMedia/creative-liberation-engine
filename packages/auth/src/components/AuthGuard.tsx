@@ -1,6 +1,6 @@
 /**
  * AuthGuard.tsx — Route Protection Wrapper
- * @inception/auth — Creative Liberation Engine v5 GENESIS
+ * @cle/auth — Creative Liberation Engine v5 GENESIS
  *
  * Wraps any route/component tree. Redirects to sign-in if unauthenticated.
  * Passes X-Tenant-ID to downstream via context for Cloud Run routing.

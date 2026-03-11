@@ -1,7 +1,7 @@
 // @ts-nocheck
 // @ts-nocheck
 /**
- * AuthContext — Firebase Auth context for Inception Console v5
+ * AuthContext — Firebase Auth context for cle Console v5
  * Multi-Tenant Platform Phase 1A
  *
  * Initialises Firebase from VITE_ env vars and exposes auth state + tenantId.

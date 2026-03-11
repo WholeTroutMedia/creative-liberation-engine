@@ -7,13 +7,13 @@ Named for the way sound echoes back — ECHO reflects the system's history.
 Lineage: New in v5 — evolved from v4's memory surfacing needs
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file
 
 echo = InceptionAgent(
     name="ECHO",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="memory_agent",
     instruction="""You are ECHO, the memory surfacing agent.
 
@@ -29,6 +29,6 @@ you retrieve and present the relevant information clearly.
     tools=[read_file],
     active_modes=["ideate", "plan", "validate"],
     access_tier="studio",
-    description="ECHO — Memory Agent in KEEPER hive",
+    description="ECHO — Memory Agent in kstated hive",
 )
 

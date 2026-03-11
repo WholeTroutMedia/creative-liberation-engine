@@ -17,7 +17,7 @@
  * must meet intent or retry silently before surfacing).
  */
 
-import { VERAFlow } from '../flows/vera.js';
+import { VERAFlow } from '../flows/kstrigd.js';
 
 // ── IFS Types ────────────────────────────────────────────────────────────────
 
@@ -46,7 +46,7 @@ export interface IFSResult {
         /** How closely did the output match the original intent? */
         intentFidelity: number;
     };
-    /** If score < threshold: the directive VERA would use to improve the output. */
+    /** If score < threshold: the directive kstrigd would use to improve the output. */
     revisionDirective?: string;
 }
 
@@ -71,7 +71,7 @@ function assignLabel(score: number): IFSLabel {
 
 /**
  * Score a generative output against its originating intent.
- * Uses VERA's critique mode internally — no separate LLM call.
+ * Uses kstrigd's critique mode internally — no separate LLM call.
  *
  * @param intent - The original user intent or prompt
  * @param output - The generated output to evaluate
@@ -92,7 +92,7 @@ export async function scoreIntentFidelity(
             sessionId,
         });
 
-        // Map VERA's 0–1 scores to 0–100 IFS axes
+        // Map kstrigd's 0–1 scores to 0–100 IFS axes
         if (veraResult.critiqueScores) {
             const { constitutional, contextual, intent_fidelity } = veraResult.critiqueScores;
 
@@ -118,7 +118,7 @@ export async function scoreIntentFidelity(
             };
         }
 
-        // VERA returned without critiqueScores — use confidence as proxy
+        // kstrigd returned without critiqueScores — use confidence as proxy
         const fallbackScore = Math.round(veraResult.confidence * 100);
         return {
             score: fallbackScore,

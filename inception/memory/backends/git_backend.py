@@ -14,8 +14,8 @@ from pathlib import Path
 from typing import Any, Optional
 from datetime import datetime
 
-from inception.memory.types import Memory, MemoryQuery, MemoryResult, MemoryType, MemoryBackend
-from inception.memory.service import MemoryBackendInterface
+from cle.memory.types import Memory, MemoryQuery, MemoryResult, MemoryType, MemoryBackend
+from cle.memory.service import MemoryBackendInterface
 
 logger = logging.getLogger(__name__)
 

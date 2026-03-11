@@ -7,8 +7,8 @@ These are cross-hive, always-available specialists.
 Lineage: v4 agents/builders/ → v5
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, web
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, web
 
 
 # ============================================================
@@ -18,7 +18,7 @@ from inception.agents.tools import filesystem, web
 browser = InceptionAgent(
     name="BROWSER",
     model="gemini-2.5-flash",
-    hive="AURORA",
+    hive="kuid",
     role="web_orchestrator",
     instruction="""You are BROWSER, the Creative Liberation Engine's universal agentic web orchestration agent.
 

@@ -6,7 +6,7 @@
  * Pipeline (4 phases):
  *  Phase 1 â€” Intent detection + parallel context:  dispatch, client profile, research intent
  *  Phase 2 â€” Research (if needed):                 Perplexity Sonar
- *  Phase 3 â€” Gemini synthesis                       â†’  VERA Inner Critic loop (Helix A)
+ *  Phase 3 â€” Gemini synthesis                       â†’  kstrigd Inner Critic loop (Helix A)
  *  Phase 4 â€” IFS scoring + World State emit          â†’  Transparent, compounding intelligence
  *
  * Route: POST /averiChat
@@ -33,7 +33,7 @@ const AveriChatInputSchema = z.object({
   userId:   z.string().optional().describe('User ID for personalization'),
   clientId: z.string().optional().default('wtm-internal').describe('WTM client profile ID'),
   sessionId: z.string().optional().describe('Session ID for world state tracking'),
-  /** Set to true to disable VERA critique loop (high-throughput paths only). */
+  /** Set to true to disable kstrigd critique loop (high-throughput paths only). */
   skipCritique: z.boolean().optional().default(false),
 });
 
@@ -44,7 +44,7 @@ const AveriChatOutputSchema = z.object({
   researchUsed:  z.boolean().describe('True if Perplexity Sonar was queried'),
   citations:     z.array(z.string()).describe('Source URLs from Perplexity'),
   researchModel: z.string().optional(),
-  // â”€â”€ Helix A + E: VERA Inner Critic + IFS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // â”€â”€ Helix A + E: kstrigd Inner Critic + IFS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   ifs: z.object({
     score:  z.number().describe('Intent Fidelity Score 0â€“100'),
     label:  z.enum(['EXCELLENT', 'GOOD', 'MARGINAL', 'FAIL']),
@@ -54,7 +54,7 @@ const AveriChatOutputSchema = z.object({
       contextual:     z.number(),
       intentFidelity: z.number(),
     }),
-  }).optional().describe('VERA Inner Critic IFS result for this response'),
+  }).optional().describe('kstrigd Inner Critic IFS result for this response'),
 });
 
 // â”€â”€ Live context fetchers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -78,19 +78,19 @@ async function getWtmContext(clientId: string): Promise<string> {
   const profiles: Record<string, string> = {
     'barnstorm':     'Client: Barnstorm Photo + Video. Specialty: weddings, lifestyle, portrait. Media on NAS at W:\\RAW Backups. WTM Studio autonomous editing pipeline active.',
     'e-is-for-eat':  'Client: E Is For Eat (the creator Sire). Food, travel, lifestyle content. YouTube, Instagram, brand partnerships. Media at W:\\E Is For Eat.',
-    'inception':     'Project: Creative Liberation Engine â€” sovereign AI creative OS. 38 agents, 94 tasks completed. Zero Day GTM sprint active.',
-    'wtm-internal':  'Creative Liberation Engine Community Studio. Creative production arm serving Barnstorm, E Is For Eat, and Creative Liberation Engine. All client work and media production coordinated here.',
+    'cle':     'Project: Creative Liberation Engine â€” sovereign AI creative OS. 38 agents, 94 tasks completed. Zero Day GTM sprint active.',
+    'wtm-internal':  'Creative-Liberation-Engine Studio. Creative production arm serving Barnstorm, E Is For Eat, and Creative Liberation Engine. All client work and media production coordinated here.',
   };
   return profiles[clientId] || profiles['wtm-internal'];
 }
 
 // â”€â”€ AVERI system context â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-const AVERI_SYSTEM_PROMPT = `You are AVERI â€” the creative intelligence of Creative Liberation Engine Community and the Creative Liberation Engine.
+const AVERI_SYSTEM_PROMPT = `You are AVERI â€” the creative intelligence of Creative-Liberation-Engine and the Creative Liberation Engine.
 
 ABOUT YOU:
 You are not a generic assistant. You are the strategic, creative, and operational brain of a sovereign AI creative studio. You know:
-- Creative Liberation Engine Community Studio (WTM): a creative production house working across photography, video, food content, tech
+- Creative-Liberation-Engine Studio (WTM): a creative production house working across photography, video, food content, tech
 - E Is For Eat: food and travel brand owned by the creator Sire, built on years of culinary content and network television
 - Barnstorm Photo + Video: a wedding and lifestyle photography studio â€” Justin's primary creative partner
 - Creative Liberation Engine: the AI operating system being built to power all of this
@@ -171,7 +171,7 @@ IMPORTANT: Use the research above to answer accurately. Synthesize it in AVERI's
       }
     }
 
-    // â”€â”€ Phase 3: Gemini synthesis + VERA Inner Critic (Helix A) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // â”€â”€ Phase 3: Gemini synthesis + kstrigd Inner Critic (Helix A) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const systemPrompt = AVERI_SYSTEM_PROMPT
       .replace('{DISPATCH_CONTEXT}', dispatchCtx)
       .replace('{CLIENT_CONTEXT}', clientCtx)
@@ -188,7 +188,7 @@ IMPORTANT: Use the research above to answer accurately. Synthesize it in AVERI's
       },
     ];
 
-    // Wrap generation in VERA's self-critique loop
+    // Wrap generation in kstrigd's self-critique loop
     const critiqueResult = await withSelfCritique(
       // First generation attempt
       async () => {

@@ -1,5 +1,5 @@
 /**
- * inception-dispatch MCP Server
+ * cle-dispatch MCP Server
  * 
  * Exposes IE task dispatch as MCP tools consumable by Claude Cowork
  * or any MCP-compatible client. Provides submit_task, get_queue,
@@ -7,7 +7,7 @@
  * 
  * @package dispatch
  * @issue #30 — HELIX A
- * @agent COMET (AURORA hive)
+ * @agent COMET (kuid hive)
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -50,7 +50,7 @@ function generateTaskId(): string {
 // ─── MCP Server Setup ─────────────────────────────────────
 
 const server = new Server(
-  { name: 'inception-dispatch', version: '1.0.0' },
+  { name: 'cle-dispatch', version: '1.0.0' },
   { capabilities: { tools: {}, resources: {} } }
 );
 
@@ -65,7 +65,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => ({
         type: 'object',
         properties: {
           agentId: { type: 'string', description: 'Target agent ID' },
-          hive: { type: 'string', enum: ['AURORA', 'KEEPER', 'FORGE', 'SENTINEL', 'SAGE', 'NEXUS'] },
+          hive: { type: 'string', enum: ['kuid', 'kstated', 'FORGE', 'SENTINEL', 'SAGE', 'NEXUS'] },
           description: { type: 'string', description: 'Task description' },
           mode: { type: 'string', enum: ['IDEATE', 'PLAN', 'SHIP', 'VALIDATE'] },
           priority: { type: 'string', enum: ['low', 'normal', 'high', 'critical'], default: 'normal' },
@@ -164,7 +164,7 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => ({
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('inception-dispatch MCP server running on stdio');
+  console.error('cle-dispatch MCP server running on stdio');
 }
 
 main().catch(console.error);

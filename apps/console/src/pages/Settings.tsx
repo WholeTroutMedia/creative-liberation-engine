@@ -71,7 +71,7 @@ export default function Settings() {
             rows: [
                 { id: 'telemetry', label: 'Console Telemetry', type: 'select', desc: 'Log agent calls to browser console', options: ['on', 'off'], value: drafts.telemetry },
                 { id: 'clearCache', label: 'Clear Vite Cache', type: 'action', desc: 'Forces a full module reload on next launch', action: () => { sessionStorage.clear(); flash('clearCache') } },
-                { id: 'keyVault', label: 'Manage API Keys', type: 'action', desc: 'Open the full Key Vault', action: () => navigate('/keys') },
+                { id: 'keyVault', label: 'Manage API Keys', type: 'action', desc: 'Open the full Key kstored', action: () => navigate('/keys') },
             ],
         },
         {

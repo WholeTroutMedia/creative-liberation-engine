@@ -127,7 +127,7 @@ export default function ClientPortal() {
             <h3 className="section-title">Zero-Day Services</h3>
             <div className="service-info" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <p className="dim-text" style={{ fontSize: '14px', lineHeight: '1.5', color: 'rgba(255,255,255,0.7)' }}>
-                Your sovereign intelligence network is currently active. Access the live provisioning dashboard to monitor agent topography and view the LEX master service agreement.
+                Your sovereign intelligence network is currently active. Access the live provisioning dashboard to monitor agent topography and view the kdocsd master service agreement.
               </p>
               <button 
                 className="portal-btn" 

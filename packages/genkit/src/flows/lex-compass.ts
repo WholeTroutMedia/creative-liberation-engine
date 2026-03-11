@@ -1,17 +1,17 @@
 /**
- * LEX — Compliance Enforcer + Constitutional Guardian
- * Hive: LEX (Lead) | Role: Compliance | Access: Studio | All Modes
+ * kdocsd — Compliance Enforcer + Constitutional Guardian
+ * Hive: kdocsd (Lead) | Role: Compliance | Access: Studio | All Modes
  *
- * LEX enforces all 20 Articles of the Agent Constitution.
+ * kdocsd enforces all 20 Articles of the Agent Constitution.
  * Pre-flight scan: blocks unconstitutional tasks before execution.
  * Post-flight scan: flags violations in agent output.
  *
- * COMPASS (ethical) reports to LEX. Together they form the constitutional layer.
+ * COMPASS (ethical) reports to kdocsd. Together they form the constitutional layer.
  */
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 import { applyOmnipresenceCache } from '../core/context-cache.js';
 
 const CONSTITUTION_ARTICLES = [
@@ -52,21 +52,21 @@ const LexOutputSchema = z.object({
         detail: z.string(),
     })).default([]),
     guidance: z.string().describe('Remediation guidance if violations found'),
-    lexSignature: z.literal('LEX').default('LEX'),
+    lexSignature: z.literal('kdocsd').default('kdocsd'),
 });
 
 export type LexOutput = z.infer<typeof LexOutputSchema>;
 
 export const LEXFlow = ai.defineFlow(
-    { name: 'LEX', inputSchema: LexInputSchema, outputSchema: LexOutputSchema },
+    { name: 'kdocsd', inputSchema: LexInputSchema, outputSchema: LexOutputSchema },
     async (input): Promise<LexOutput> => {
         const sessionId = input.sessionId ?? `lex_${Date.now()}`;
-        console.log(`[LEX] ⚖️  ${input.scanType.toUpperCase()} scan${input.agentName ? ` — Agent: ${input.agentName}` : ''}`);
+        console.log(`[kdocsd] ⚖️  ${input.scanType.toUpperCase()} scan${input.agentName ? ` — Agent: ${input.agentName}` : ''}`);
 
-        return memoryBus.withMemory('LEX', `${input.scanType}: ${input.content.slice(0, 80)}`, ['lex-hive', 'compliance'], async () => {
+        return memoryBus.withMemory('kdocsd', `${input.scanType}: ${input.content.slice(0, 80)}`, ['kdocsd-hive', 'compliance'], async () => {
             const { output } = await ai.generate(applyOmnipresenceCache({
                 model: 'googleai/gemini-2.5-flash',
-                system: `You are LEX — Constitutional Compliance Officer of the Creative Liberation Engine.
+                system: `You are kdocsd — Constitutional Compliance Officer of the Creative Liberation Engine.
 You enforce the 20 Articles of the Agent Constitution. Your verdict is PASS, HALT, or WARNING.
 HALT = unconstitutional, block execution immediately.
 WARNING = violation present but not blocking.
@@ -78,21 +78,21 @@ The 20 Articles:\n${CONSTITUTION_ARTICLES.join('\n')}`,
                 config: { temperature: 0.05 },
             }));
 
-            const result = output ?? { verdict: 'WARNING' as const, violations: [], guidance: 'LEX scan unavailable' };
+            const result = output ?? { verdict: 'WARNING' as const, violations: [], guidance: 'kdocsd scan unavailable' };
             if (result.verdict === 'HALT') {
-                console.error(`[LEX] 🚫 HALT — ${result.violations.map(v => v.article).join(', ')}`);
+                console.error(`[kdocsd] 🚫 HALT — ${result.violations.map(v => v.article).join(', ')}`);
             } else if (result.verdict === 'WARNING') {
-                console.warn(`[LEX] ⚠️  WARNING — ${result.violations.map(v => v.article).join(', ')}`);
+                console.warn(`[kdocsd] ⚠️  WARNING — ${result.violations.map(v => v.article).join(', ')}`);
             } else {
-                console.log(`[LEX] ✅ PASS — constitutionally compliant`);
+                console.log(`[kdocsd] ✅ PASS — constitutionally compliant`);
             }
-            return { ...result, lexSignature: 'LEX' };
+            return { ...result, lexSignature: 'kdocsd' };
         });
     }
 );
 
 /**
- * COMPASS — Ethical North Star (reports to LEX)
+ * COMPASS — Ethical North Star (reports to kdocsd)
  * The Three-Question Protocol: Justin allow? the creator approve? Help the world?
  */
 

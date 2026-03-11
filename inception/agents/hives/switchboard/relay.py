@@ -9,8 +9,8 @@ Role: Task Router
 Active Modes: ALL
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem
 
 
 relay = InceptionAgent(

@@ -20,7 +20,7 @@ import time
 import uuid
 from typing import Any, Optional
 
-from inception.memory.types import Memory, MemoryQuery, MemoryResult, MemoryType, MemoryBackend
+from cle.memory.types import Memory, MemoryQuery, MemoryResult, MemoryType, MemoryBackend
 
 logger = logging.getLogger(__name__)
 
@@ -66,7 +66,7 @@ class MemoryService:
         memory_id = await service.store(Memory(
             content="User prefers dark mode",
             memory_type=MemoryType.SEMANTIC,
-            source="KEEPER",
+            source="kstated",
             importance=0.7,
         ))
 

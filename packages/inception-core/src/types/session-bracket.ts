@@ -1,5 +1,5 @@
 /**
- * @inception/core — Session Bracket Types
+ * @cle/core — Session Bracket Types
  *
  * A SessionBracket defines the start state and desired end state of an AVERI
  * session. The AI fills the middle. This is constraint-driven generation applied

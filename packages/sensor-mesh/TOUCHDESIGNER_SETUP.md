@@ -72,8 +72,8 @@ npx ts-node packages/sensor-mesh/src/InstrumentRouter.ts
 Or in your integration code:
 
 ```typescript
-import { InstrumentRouter, DEFAULT_MAPPINGS } from '@inception/sensor-mesh';
-import { ZigSimBridge } from '@inception/sensor-mesh';
+import { InstrumentRouter, DEFAULT_MAPPINGS } from '@cle/sensor-mesh';
+import { ZigSimBridge } from '@cle/sensor-mesh';
 
 const router = new InstrumentRouter(DEFAULT_MAPPINGS);
 router.start();

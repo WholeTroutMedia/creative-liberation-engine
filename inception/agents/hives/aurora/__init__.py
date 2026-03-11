@@ -1,1 +1,1 @@
-"""Creative Liberation Engine v5 — Aurora Hive."""
+"""Creative Liberation Engine v5 — kuid Hive."""

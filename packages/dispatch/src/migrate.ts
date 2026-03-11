@@ -52,7 +52,7 @@ export async function migrateFromMarkdown(): Promise<void> {
 
         const task: Task = {
             id,
-            org: 'Creative Liberation Engine Community',
+            org: 'Creative-Liberation-Engine',
             project: 'brainchild-v5',
             workstream: workstream?.replace(/`/g, '') ?? 'free',
             title,

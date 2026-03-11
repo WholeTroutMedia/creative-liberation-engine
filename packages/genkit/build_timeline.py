@@ -116,7 +116,7 @@ else:
 
 # ─────────────────────────────────────────────────────────────────────────────
 # STEP 3: MotionVFX Title Injection (Track 2) via GenkitFusionBridge
-# Triggered when ATHENA's EDL payload includes a `titleText` field.
+# Triggered when kruled's EDL payload includes a `titleText` field.
 # ─────────────────────────────────────────────────────────────────────────────
 title_text = payload.get("titleText", "").strip()
 

@@ -7,8 +7,8 @@ Named for signal processing — SIGNAL is the engine's external communication an
 Lineage: v4 inception_engine/agents/broadcast/signal_agent.py → v5 InceptionAgent
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.web import web_fetch, web_search
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.web import web_fetch, web_search
 
 signal = InceptionAgent(
     name="SIGNAL",

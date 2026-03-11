@@ -15,7 +15,7 @@ export const Celebration: React.FC<{ score: number }> = ({ score }) => {
 
     return (
         <div className="celebration-overlay">
-            🎉 VERA-DESIGN Compliant: {score}/100
+            🎉 kstrigd-DESIGN Compliant: {score}/100
         </div>
     );
 };

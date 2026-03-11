@@ -1,6 +1,6 @@
 /**
  * server.test.ts â€” MCP Fetch Proxy Integration Tests
- * @inception/mcp-fetch-proxy
+ * @cle/mcp-fetch-proxy
  *
  * Tests the full Express server behavior including:
  * - /health endpoint
@@ -167,14 +167,14 @@ describe('CORS Configuration', () => {
     'http://127.0.0.1:3000',
     'http://127.0.0.1:4100',
     'http://127.0.0.1:5050',
-    'https://inceptionengine.systems',
-    'https://www.inceptionengine.systems',
-    'https://app.inceptionengine.systems',
-    'https://api.inceptionengine.systems',
+    'https://CreativeLiberationEngine.systems',
+    'https://www.CreativeLiberationEngine.systems',
+    'https://app.CreativeLiberationEngine.systems',
+    'https://api.CreativeLiberationEngine.systems',
   ];
 
   function isAllowedCORSOrigin(origin: string): boolean {
-    return CORS_ORIGINS.includes(origin) || origin.endsWith('.inceptionengine.systems');
+    return CORS_ORIGINS.includes(origin) || origin.endsWith('.CreativeLiberationEngine.systems');
   }
 
   it('allows localhost dev origin', () => {
@@ -182,11 +182,11 @@ describe('CORS Configuration', () => {
   });
 
   it('allows production API origin', () => {
-    expect(isAllowedCORSOrigin('https://api.inceptionengine.systems')).toBe(true);
+    expect(isAllowedCORSOrigin('https://api.CreativeLiberationEngine.systems')).toBe(true);
   });
 
   it('allows subdomain wildcard', () => {
-    expect(isAllowedCORSOrigin('https://custom.inceptionengine.systems')).toBe(true);
+    expect(isAllowedCORSOrigin('https://custom.CreativeLiberationEngine.systems')).toBe(true);
   });
 
   it('blocks unregistered origin', () => {

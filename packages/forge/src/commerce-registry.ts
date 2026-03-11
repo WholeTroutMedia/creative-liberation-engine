@@ -1,9 +1,9 @@
 /**
- * @inception/forge — CommerceRegistry
+ * @cle/forge — CommerceRegistry
  *
  * Asset ledger for listing, pricing, and tracking sales.
  * Sovereign-first: JSON store on NAS, with injectable royalty calculator.
- * At runtime, wire in @inception/blockchain royalty-engine for ERC-2981 splits.
+ * At runtime, wire in @cle/blockchain royalty-engine for ERC-2981 splits.
  * No blockchain writes in Phase 1 — pure business logic.
  *
  * Default IE royalty splits: Creator 80% / Platform 10% / Pool 5% / Collabs 5%
@@ -23,8 +23,8 @@ import type {
 import { AssetArchiver } from './asset-archiver.js';
 
 // ─── Royalty Engine Interface (injectable) ────────────────────────────────────
-// Decouples commerce-registry from @inception/blockchain at test time.
-// At runtime, wire in the real royalty-engine from @inception/blockchain.
+// Decouples commerce-registry from @cle/blockchain at test time.
+// At runtime, wire in the real royalty-engine from @cle/blockchain.
 
 export interface RoyaltyCalculator {
   calculate(params: {

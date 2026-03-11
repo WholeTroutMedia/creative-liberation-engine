@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-// Extends ImportMeta.env for @inception/auth package.
+// Extends ImportMeta.env for @cle/auth package.
 // Vite consumer apps will inject these at build time.
 // This file is included automatically via tsconfig include: ["src/**/*"]
 

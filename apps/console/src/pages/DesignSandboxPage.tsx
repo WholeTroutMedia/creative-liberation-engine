@@ -135,7 +135,7 @@ function TypographySpecimen() {
     );
 }
 
-// ─── IRIS-GEN Panel ──────────────────────────────────────────────────────────
+// ─── ksignd-GEN Panel ──────────────────────────────────────────────────────────
 
 function IrisGenPanel() {
     const [prompt, setPrompt] = useState('');
@@ -192,23 +192,23 @@ function IrisGenPanel() {
     }, [prompt]);
 
     return (
-        <div className="ds-iris-panel">
-            <div className="ds-iris-header">
-                <span className="ds-iris-badge">✦ IRIS-GEN</span>
-                <span className="ds-iris-desc">Natural language → constitutional UI tokens</span>
+        <div className="ds-ksignd-panel">
+            <div className="ds-ksignd-header">
+                <span className="ds-ksignd-badge">✦ ksignd-GEN</span>
+                <span className="ds-ksignd-desc">Natural language → constitutional UI tokens</span>
             </div>
-            <div className="ds-iris-input-row">
+            <div className="ds-ksignd-input-row">
                 <input
-                    className="ds-iris-input"
+                    className="ds-ksignd-input"
                     type="text"
                     value={prompt}
                     onChange={e => setPrompt(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && void handleGenerate()}
                     placeholder='Try: "dark mode warm amber, minimal spacing, sharp corners"'
-                    aria-label="IRIS-GEN prompt"
+                    aria-label="ksignd-GEN prompt"
                 />
                 <button
-                    className="ds-iris-btn"
+                    className="ds-ksignd-btn"
                     onClick={() => void handleGenerate()}
                     disabled={loading || !prompt.trim()}
                     type="button"
@@ -217,26 +217,26 @@ function IrisGenPanel() {
                 </button>
             </div>
             {result && (
-                <div className="ds-iris-result">
-                    <div className={`ds-iris-grade ${result.promoted ? 'promoted' : 'rejected'}`}>
-                        {result.promoted ? '✅ VERA-DESIGN Approved' : '⚠️ Quality Gate Failed'}
-                        <span className="ds-iris-score">Score: {result.score} ({result.grade})</span>
+                <div className="ds-ksignd-result">
+                    <div className={`ds-ksignd-grade ${result.promoted ? 'promoted' : 'rejected'}`}>
+                        {result.promoted ? '✅ kstrigd-DESIGN Approved' : '⚠️ Quality Gate Failed'}
+                        <span className="ds-ksignd-score">Score: {result.score} ({result.grade})</span>
                     </div>
-                    <div className="ds-iris-tokens">
+                    <div className="ds-ksignd-tokens">
                         {Object.entries(result.tokens).map(([k, v]) => (
-                            <div key={k} className="ds-iris-token-row">
+                            <div key={k} className="ds-ksignd-token-row">
                                 <code>{k}</code>
                                 <span>{v}</span>
                                 {String(v).match(/^#|^hsl|^rgb/) && (
-                                    <div className="ds-iris-mini-swatch" style={{ ['--iris-swatch-bg' as string]: v }} />
+                                    <div className="ds-ksignd-mini-swatch" style={{ ['--ksignd-swatch-bg' as string]: v }} />
                                 )}
                             </div>
                         ))}
                     </div>
                     {result.issues.length > 0 && (
-                        <div className="ds-iris-issues">
+                        <div className="ds-ksignd-issues">
                             {result.issues.map((issue, i) => (
-                                <div key={i} className="ds-iris-issue">⚠ {issue}</div>
+                                <div key={i} className="ds-ksignd-issue">⚠ {issue}</div>
                             ))}
                         </div>
                     )}
@@ -282,10 +282,10 @@ function IngestPanel() {
     };
 
     return (
-        <div className="ds-iris-panel">
-            <div className="ds-iris-header">
-                <span className="ds-iris-badge">📥 DESIGN INGEST</span>
-                <span className="ds-iris-desc">Design RAG - Extract structural UI patterns and tokens</span>
+        <div className="ds-ksignd-panel">
+            <div className="ds-ksignd-header">
+                <span className="ds-ksignd-badge">📥 DESIGN INGEST</span>
+                <span className="ds-ksignd-desc">Design RAG - Extract structural UI patterns and tokens</span>
             </div>
             
             <div className="ds-tab-bar" style={{ marginBottom: '16px', borderBottom: 'none' }}>
@@ -294,9 +294,9 @@ function IngestPanel() {
                 <button className={`ds-tab ${source === 'vision' ? 'active' : ''}`} onClick={() => setSource('vision')} type="button">Vision Extract</button>
             </div>
 
-            <div className="ds-iris-input-row">
+            <div className="ds-ksignd-input-row">
                 <input
-                    className="ds-iris-input"
+                    className="ds-ksignd-input"
                     type="text"
                     value={url}
                     onChange={e => setUrl(e.target.value)}
@@ -304,7 +304,7 @@ function IngestPanel() {
                     aria-label="Ingest target"
                 />
                 <button
-                    className="ds-iris-btn"
+                    className="ds-ksignd-btn"
                     onClick={() => void handleIngest()}
                     disabled={loading || !url.trim()}
                     type="button"
@@ -312,7 +312,7 @@ function IngestPanel() {
                     {loading ? '⟳ Ingesting…' : '📥 Extract Pattern'}
                 </button>
             </div>
-            {status && <div className="ds-iris-desc" style={{marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px'}}>{status}</div>}
+            {status && <div className="ds-ksignd-desc" style={{marginTop: '16px', borderTop: '1px solid var(--border-subtle)', paddingTop: '16px'}}>{status}</div>}
         </div>
     );
 }
@@ -327,13 +327,13 @@ function PreviewPanel() {
                 </p>
 
                 <div className="ds-preview-form">
-                    <input className="ds-iris-input ds-preview-input" placeholder="Operator ID" defaultValue="AVERI-INT-001" />
-                    <input className="ds-iris-input ds-preview-input ds-preview-input--mt" type="password" placeholder="Passcode" defaultValue="••••••••" />
+                    <input className="ds-ksignd-input ds-preview-input" placeholder="Operator ID" defaultValue="AVERI-INT-001" />
+                    <input className="ds-ksignd-input ds-preview-input ds-preview-input--mt" type="password" placeholder="Passcode" defaultValue="••••••••" />
                 </div>
 
                 <div className="ds-preview-actions">
                     <button className="ds-cat-btn ds-preview-btn" type="button">Cancel</button>
-                    <button className="ds-iris-btn ds-preview-btn" type="button">Authenticate</button>
+                    <button className="ds-ksignd-btn ds-preview-btn" type="button">Authenticate</button>
                 </div>
             </div>
 
@@ -355,7 +355,7 @@ function PreviewPanel() {
 
 export default function DesignSandboxPage() {
     const [activeCategory, setActiveCategory] = useState<typeof CATEGORIES[number]>('color');
-    const [activeTab, setActiveTab] = useState<'tokens' | 'typography' | 'iris-gen' | 'ingest' | 'preview'>('preview');
+    const [activeTab, setActiveTab] = useState<'tokens' | 'typography' | 'ksignd-gen' | 'ingest' | 'preview'>('preview');
 
     const filtered = DESIGN_TOKENS.filter(t => t.category === activeCategory);
 
@@ -364,9 +364,9 @@ export default function DesignSandboxPage() {
             {/* Header */}
             <div className="ds-header">
                 <div>
-                    <div className="ds-supertitle">VERA-DESIGN COMPLIANCE ENGINE</div>
+                    <div className="ds-supertitle">kstrigd-DESIGN COMPLIANCE ENGINE</div>
                     <h1 className="ds-title">Design Sandbox</h1>
-                    <div className="ds-subtitle">Live token preview · Typography specimens · IRIS-GEN UI generator</div>
+                    <div className="ds-subtitle">Live token preview · Typography specimens · ksignd-GEN UI generator</div>
                 </div>
                 <div className="ds-header-right">
                     <span className="ds-pill">✅ GENESIS v5</span>
@@ -375,14 +375,14 @@ export default function DesignSandboxPage() {
 
             {/* Tab Nav */}
             <div className="ds-tab-bar">
-                {(['preview', 'tokens', 'typography', 'iris-gen', 'ingest'] as const).map(tab => (
+                {(['preview', 'tokens', 'typography', 'ksignd-gen', 'ingest'] as const).map(tab => (
                     <button
                         key={tab}
                         className={`ds-tab ${activeTab === tab ? 'active' : ''}`}
                         onClick={() => setActiveTab(tab)}
                         type="button"
                     >
-                        {tab === 'tokens' ? '🎨 Token Explorer' : tab === 'typography' ? '🔤 Typography' : tab === 'preview' ? '🖥️ Component Preview' : tab === 'iris-gen' ? '✦ IRIS-GEN' : '📥 Ingestion'}
+                        {tab === 'tokens' ? '🎨 Token Explorer' : tab === 'typography' ? '🔤 Typography' : tab === 'preview' ? '🖥️ Component Preview' : tab === 'ksignd-gen' ? '✦ ksignd-GEN' : '📥 Ingestion'}
                     </button>
                 ))}
             </div>
@@ -413,8 +413,8 @@ export default function DesignSandboxPage() {
             {/* Typography */}
             {activeTab === 'typography' && <TypographySpecimen />}
 
-            {/* IRIS-GEN */}
-            {activeTab === 'iris-gen' && <IrisGenPanel />}
+            {/* ksignd-GEN */}
+            {activeTab === 'ksignd-gen' && <IrisGenPanel />}
 
             {/* Ingestion */}
             {activeTab === 'ingest' && <IngestPanel />}

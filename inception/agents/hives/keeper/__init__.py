@@ -1,1 +1,1 @@
-"""Creative Liberation Engine v5 — Keeper Hive."""
+"""Creative Liberation Engine v5 — kstated Hive."""

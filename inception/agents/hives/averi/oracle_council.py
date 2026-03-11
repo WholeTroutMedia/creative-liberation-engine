@@ -2,15 +2,15 @@
 Creative Liberation Engine v5 — Oracle Council Agents
 
 The Oracle Council: LEONARDO, SAGE, and COSMOS (cosmos.py in switchboard).
-These are wisdom-keeper agents that provide historical context and deep insight.
+These are wisdom-kstated agents that provide historical context and deep insight.
 
 Note: COSMOS is in switchboard/ (task routing), but is conceptually part of the Oracle Council.
 
 Lineage: New in v5 — emergent from need for historical wisdom preservation
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file
 
 # LEONARDO: Pattern Historian
 leonardo = InceptionAgent(

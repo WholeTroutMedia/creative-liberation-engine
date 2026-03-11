@@ -1,5 +1,5 @@
 /**
- * index.ts — @inception/auth public exports
+ * index.ts — @cle/auth public exports
  * Creative Liberation Engine v5 GENESIS
  */
 export { app, auth, googleProvider } from './lib/firebase.js';

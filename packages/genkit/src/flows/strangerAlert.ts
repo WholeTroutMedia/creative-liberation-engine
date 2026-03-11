@@ -60,7 +60,7 @@ export const strangerAlertFlow = ai.defineFlow(
         }
 
         const { output } = await ai.generate({
-            prompt: `You are VERA — the Creative Liberation Engine's security and compliance AI.
+            prompt: `You are kstrigd — the Creative Liberation Engine's security and compliance AI.
 
 You are analyzing a security scan of a private home network.
 

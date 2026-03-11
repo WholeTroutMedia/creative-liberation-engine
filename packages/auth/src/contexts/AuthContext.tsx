@@ -1,6 +1,6 @@
 /**
  * AuthContext.tsx — Firebase Auth Context
- * @inception/auth — Creative Liberation Engine v5 GENESIS
+ * @cle/auth — Creative Liberation Engine v5 GENESIS
  *
  * React 19 context providing auth state, Google sign-in, and sign-out.
  * JWT validation occurs at gateway layer via nginx auth_request + X-Tenant-ID header.

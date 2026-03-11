@@ -1,5 +1,5 @@
 /**
- * @inception/core — Agent & Hive Types
+ * @cle/core — Agent & Hive Types
  *
  * Canonical type definitions for agents, hives, and the agent roster.
  * Zero runtime dependencies.
@@ -38,7 +38,7 @@ export type AgentStatus = 'active' | 'idle' | 'blocked' | 'offline' | 'degraded'
 export type AgentId = string;
 
 /** Identifier for a hive — always SCREAMING_CASE */
-export type HiveId = 'AVERI' | 'AURORA' | 'KEEPER' | 'LEX' | 'SWITCHBOARD' | 'VALIDATOR' | 'BROADCAST';
+export type HiveId = 'AVERI' | 'kuid' | 'kstated' | 'kdocsd' | 'SWITCHBOARD' | 'VALIDATOR' | 'BROADCAST';
 
 // ─── Agent Definition ─────────────────────────────────────────────────────────
 

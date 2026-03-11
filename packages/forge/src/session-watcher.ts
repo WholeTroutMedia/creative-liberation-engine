@@ -1,5 +1,5 @@
 /**
- * @inception/forge — SessionWatcher
+ * @cle/forge — SessionWatcher
  *
  * Subscribes to a LiveAnimateEngine's 'snapshot' event stream and applies
  * DeltaDetector gating. Only meaningful session state changes produce

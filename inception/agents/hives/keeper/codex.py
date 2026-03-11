@@ -4,16 +4,16 @@ Creative Liberation Engine v5 — CODEX Agent
 CODEX writes and maintains documentation.
 Named for the ancient book format — CODEX preserves knowledge.
 
-Lineage: v4 inception_engine/agents/keeper/codex.py → v5 InceptionAgent
+Lineage: v4 inception_engine/agents/kstated/codex.py → v5 InceptionAgent
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools.filesystem import read_file, write_file, list_directory
+from cle.agents.base import InceptionAgent
+from cle.agents.tools.filesystem import read_file, write_file, list_directory
 
 codex = InceptionAgent(
     name="CODEX",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="documentarian",
     instruction="""You are CODEX, the documentation agent.
 
@@ -33,6 +33,6 @@ Your documentation is:
     tools=[read_file, write_file, list_directory],
     active_modes=["ship", "validate"],
     access_tier="studio",
-    description="CODEX — Documentarian in KEEPER hive",
+    description="CODEX — Documentarian in kstated hive",
 )
 

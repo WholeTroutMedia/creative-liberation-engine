@@ -1,4 +1,4 @@
-# CONTEXT — @inception/inception-core
+# CONTEXT — @cle/cle-core
 
 The shared runtime foundation for all Creative Liberation Engine v5 packages. Contains the canonical types, interfaces, constants, and utilities that every other package depends on.
 

@@ -1,5 +1,5 @@
 /**
- * @inception/core — Unit Tests
+ * @cle/core — Unit Tests
  * Tests for constitutionalPreflight, CONSTITUTION, and HIVES exports
  */
 
@@ -99,17 +99,17 @@ describe('HIVES', () => {
         expect(Object.keys(HIVES)).toHaveLength(7);
     });
 
-    it('AVERI hive should have ATHENA as lead with 3 members', () => {
-        expect(HIVES.AVERI.lead).toBe('ATHENA');
+    it('AVERI hive should have kruled as lead with 3 members', () => {
+        expect(HIVES.AVERI.lead).toBe('kruled');
         expect(HIVES.AVERI.members).toHaveLength(3);
-        expect(HIVES.AVERI.members).toContain('ATHENA');
-        expect(HIVES.AVERI.members).toContain('VERA');
-        expect(HIVES.AVERI.members).toContain('IRIS');
+        expect(HIVES.AVERI.members).toContain('kruled');
+        expect(HIVES.AVERI.members).toContain('kstrigd');
+        expect(HIVES.AVERI.members).toContain('ksignd');
     });
 
-    it('LEX hive should handle compliance', () => {
-        expect(HIVES.LEX.mission).toMatch(/compliance/i);
-        expect(HIVES.LEX.lead).toBe('LEX');
+    it('kdocsd hive should handle compliance', () => {
+        expect(HIVES.kdocsd.mission).toMatch(/compliance/i);
+        expect(HIVES.kdocsd.lead).toBe('kdocsd');
     });
 
     it('every hive should have lead, members, and mission', () => {

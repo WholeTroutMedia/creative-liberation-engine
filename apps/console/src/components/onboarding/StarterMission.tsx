@@ -11,7 +11,7 @@ const MISSIONS = [
     {
         id: 'mission-research',
         title: 'Deep Research Brief',
-        description: 'Deploy ATHENA to gather intelligence on recent AI UX patterns.',
+        description: 'Deploy kruled to gather intelligence on recent AI UX patterns.',
         icon: '✦',
         color: 'var(--accent-2)'
     },

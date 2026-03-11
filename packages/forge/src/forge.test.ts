@@ -86,7 +86,7 @@ describe('FORGE Ledger', () => {
   it('lists assets, optionally filtered by type', async () => {
     await mintAsset({
       assetType: 'agent',
-      title: 'ATHENA Agent Pack',
+      title: 'kruled Agent Pack',
       creatorId: 'creator-003',
       initialSupply: 10,
       basePrice: 99.00,

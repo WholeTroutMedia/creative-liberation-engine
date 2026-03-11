@@ -2,7 +2,7 @@
  * CloudMeshPage — Sovereignty Dashboard
  * Wave 38 · Helix C
  *
- * Live view of all active cloud nodes in the @inception/cloud-mesh.
+ * Live view of all active cloud nodes in the @cle/cloud-mesh.
  * Shows per-cloud cost, latency, agent count, and one-click failover controls.
  * Polls /api/federation/peers for federated IE dispatch nodes.
  */

@@ -1,11 +1,11 @@
 /**
- * SCRIBE v2 Integration Tests (SC-06)
+ * klogd v2 Integration Tests (SC-06)
  *
  * Tests:
  * 1. scribeRemember writes to ChromaDB episodic/semantic correctly
- * 2. VERA gate correctly rejects low-value/PII memories
+ * 2. kstrigd gate correctly rejects low-value/PII memories
  * 3. Context pager triggers at 80% token budget
- * 4. KEEPER v2 boot recall returns relevant items
+ * 4. kstated v2 boot recall returns relevant items
  *
  * These are integration tests — they require ChromaDB to be running.
  * Set CHROMADB_URL env var (default: http://localhost:8000)
@@ -25,7 +25,7 @@ const itIntegration = SKIP ? it.skip : it;
 // MOCKS — Mock memoryBus for unit test paths
 // ─────────────────────────────────────────────────────────────────────────────
 
-vi.mock('@inception/memory', () => ({
+vi.mock('@cle/memory', () => ({
     memoryBus: {
         commit: vi.fn().mockResolvedValue({ id: 'mock-mem-001', agentName: 'TEST', task: 'mock', outcome: 'mock', tags: [], sessionId: 'test', success: true }),
         recall: vi.fn().mockResolvedValue([]),
@@ -33,17 +33,17 @@ vi.mock('@inception/memory', () => ({
 }));
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SCRIBE v2 — SC-01: scribeRemember + scribeRecall (Unit)
+// klogd v2 — SC-01: scribeRemember + scribeRecall (Unit)
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('SCRIBE v2 — scribeRemember (unit)', () => {
-    it('returns committed=false when VERA gate rejects low-value memory', async () => {
-        // Mock the VERA gate to reject
-        vi.doMock('../src/memory/vera-gate.js', () => ({
+describe('klogd v2 — scribeRemember (unit)', () => {
+    it('returns committed=false when kstrigd gate rejects low-value memory', async () => {
+        // Mock the kstrigd gate to reject
+        vi.doMock('../src/memory/kstrigd-gate.js', () => ({
             VERAMemoryGate: vi.fn().mockResolvedValue({ approved: false, reason: 'Low value — too ephemeral' }),
         }));
 
-        const { scribeRemember } = await import('../src/memory/scribe.js');
+        const { scribeRemember } = await import('../src/memory/klogd.js');
         const result = await scribeRemember({
             content: 'ok',
             category: 'session',
@@ -57,14 +57,14 @@ describe('SCRIBE v2 — scribeRemember (unit)', () => {
         expect(result.gateVerdict.reason).toBeTruthy();
     });
 
-    it('skips VERA gate when skipGate=true', async () => {
-        const { scribeRemember } = await import('../src/memory/scribe.js');
+    it('skips kstrigd gate when skipGate=true', async () => {
+        const { scribeRemember } = await import('../src/memory/klogd.js');
         const result = await scribeRemember({
             content: 'Architecture decision: use Genkit for all AI flows in v5.',
             category: 'decision',
             importance: 'high',
             tags: ['architecture', 'genkit'],
-            agentName: 'ATHENA',
+            agentName: 'kruled',
             skipGate: true,
         });
 
@@ -74,7 +74,7 @@ describe('SCRIBE v2 — scribeRemember (unit)', () => {
     });
 
     it('returns correct output schema shape', async () => {
-        const { scribeRemember } = await import('../src/memory/scribe.js');
+        const { scribeRemember } = await import('../src/memory/klogd.js');
         const result = await scribeRemember({
             content: 'Test memory entry',
             category: 'fact',
@@ -92,9 +92,9 @@ describe('SCRIBE v2 — scribeRemember (unit)', () => {
     });
 });
 
-describe('SCRIBE v2 — scribeRecall (unit)', () => {
+describe('klogd v2 — scribeRecall (unit)', () => {
     it('returns correct output schema shape with empty results on no matches', async () => {
-        const { scribeRecall } = await import('../src/memory/scribe.js');
+        const { scribeRecall } = await import('../src/memory/klogd.js');
         const result = await scribeRecall({
             query: 'nonexistent query xyz123',
             limit: 5,
@@ -110,13 +110,13 @@ describe('SCRIBE v2 — scribeRecall (unit)', () => {
 
     it('applies category filter to results', async () => {
         // Mock memoryBus.recall to return mixed results
-        const { memoryBus } = await import('@inception/memory');
+        const { memoryBus } = await import('@cle/memory');
         (memoryBus.recall as ReturnType<typeof vi.fn>).mockResolvedValueOnce([
-            { id: '1', task: '[DECISION] Genkit architecture', outcome: 'Use Genkit for v5', tags: ['decision', 'high'], agentName: 'ATHENA', success: true },
-            { id: '2', task: '[SESSION] Boot sequence', outcome: 'Session started', tags: ['session', 'low'], agentName: 'VERA', success: true },
+            { id: '1', task: '[DECISION] Genkit architecture', outcome: 'Use Genkit for v5', tags: ['decision', 'high'], agentName: 'kruled', success: true },
+            { id: '2', task: '[SESSION] Boot sequence', outcome: 'Session started', tags: ['session', 'low'], agentName: 'kstrigd', success: true },
         ]);
 
-        const { scribeRecall } = await import('../src/memory/scribe.js');
+        const { scribeRecall } = await import('../src/memory/klogd.js');
         const result = await scribeRecall({
             query: 'architecture decision',
             category: 'decision',
@@ -131,10 +131,10 @@ describe('SCRIBE v2 — scribeRecall (unit)', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SC-02: VERA Memory Quality Gate (Unit)
+// SC-02: kstrigd Memory Quality Gate (Unit)
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('VERA Memory Quality Gate — unit', () => {
+describe('kstrigd Memory Quality Gate — unit', () => {
     it('rejects PII content', async () => {
         // Mock ai.generate to return a rejection
         vi.doMock('../src/index.js', () => ({
@@ -147,7 +147,7 @@ describe('VERA Memory Quality Gate — unit', () => {
             },
         }));
 
-        const { VERAMemoryGate } = await import('../src/memory/vera-gate.js');
+        const { VERAMemoryGate } = await import('../src/memory/kstrigd-gate.js');
         const result = await VERAMemoryGate({
             content: 'User email: john.doe@example.com',
             category: 'fact',
@@ -170,7 +170,7 @@ describe('VERA Memory Quality Gate — unit', () => {
             },
         }));
 
-        const { VERAMemoryGate } = await import('../src/memory/vera-gate.js');
+        const { VERAMemoryGate } = await import('../src/memory/kstrigd-gate.js');
         const result = await VERAMemoryGate({
             content: 'Use SQLite-backed dispatch server for task persistence across NAS restarts.',
             category: 'decision',
@@ -224,12 +224,12 @@ describe('Context Pager — token budget tracker', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SC-04: KEEPER v2 Boot Recall (Unit)
+// SC-04: kstated v2 Boot Recall (Unit)
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('KEEPER v2 Boot Recall', () => {
+describe('kstated v2 Boot Recall', () => {
     it('returns empty brief when no relevant memories found', async () => {
-        const { runKeeperBoot } = await import('../src/memory/keeper-boot.js');
+        const { runKeeperBoot } = await import('../src/memory/kstated-boot.js');
 
         const result = await runKeeperBoot({
             taskContext: 'completely-unrelated-xyz-topic',
@@ -242,19 +242,19 @@ describe('KEEPER v2 Boot Recall', () => {
     });
 
     it('surfaces critical-importance items as boot alerts', async () => {
-        const { memoryBus } = await import('@inception/memory');
+        const { memoryBus } = await import('@cle/memory');
         (memoryBus.recall as ReturnType<typeof vi.fn>).mockResolvedValueOnce([
             {
                 id: 'critical-1',
                 task: '[decision] NAS-first sovereignty',
                 outcome: 'CRITICAL: All services must run on NAS first',
                 tags: ['critical', 'decision', 'sovereignty'],
-                agentName: 'ATHENA',
+                agentName: 'kruled',
                 success: true,
             },
         ]);
 
-        const { runKeeperBoot } = await import('../src/memory/keeper-boot.js');
+        const { runKeeperBoot } = await import('../src/memory/kstated-boot.js');
         const result = await runKeeperBoot({
             taskContext: 'sovereignty infrastructure deployment',
             workstream: 'infra-docker',
@@ -268,9 +268,9 @@ describe('KEEPER v2 Boot Recall', () => {
 // SC-01 INTEGRATION — Real ChromaDB writes (skipped without CHROMADB_URL)
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('SCRIBE v2 — ChromaDB integration', () => {
+describe('klogd v2 — ChromaDB integration', () => {
     itIntegration('writes and retrieves a memory from ChromaDB', async () => {
-        const { scribeRemember, scribeRecall } = await import('../src/memory/scribe.js');
+        const { scribeRemember, scribeRecall } = await import('../src/memory/klogd.js');
         const testContent = `Integration test memory — ${Date.now()}`;
 
         const writeResult = await scribeRemember({

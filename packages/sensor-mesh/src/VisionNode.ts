@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — VisionNode
+ * @cle/sensor-mesh — VisionNode
  *
  * Tier 2 — THE CINEMATOGRAPHER
  *

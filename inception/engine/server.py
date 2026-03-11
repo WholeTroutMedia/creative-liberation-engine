@@ -17,16 +17,16 @@ from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from inception.config.env import load_config, get_config
-from inception.config.constants import ENGINE_NAME, ENGINE_VERSION
-from inception.config.tiers import AccessTier, get_tier_config, check_agent_access
-from inception.constitution.guard import ConstitutionalGuard
-from inception.engine.modes import ModeType, ModeManager
-from inception.engine.gates import GateValidator
-from inception.engine.router import TaskRouter
-from inception.engine.types import TaskResult, EngineStatus
-from inception.agents.registry import AgentRegistry
-from inception.agents.base import AgentResult
+from cle.config.env import load_config, get_config
+from cle.config.constants import ENGINE_NAME, ENGINE_VERSION
+from cle.config.tiers import AccessTier, get_tier_config, check_agent_access
+from cle.constitution.guard import ConstitutionalGuard
+from cle.engine.modes import ModeType, ModeManager
+from cle.engine.gates import GateValidator
+from cle.engine.router import TaskRouter
+from cle.engine.types import TaskResult, EngineStatus
+from cle.agents.registry import AgentRegistry
+from cle.agents.base import AgentResult
 
 logger = logging.getLogger(__name__)
 
@@ -89,109 +89,109 @@ def _load_agents() -> None:
     # Agent definitions are imported and registered
     # This will grow as agents are added in Phase 2
     try:
-        from inception.agents.hives.aurora.bolt import bolt
-        _registry.register(bolt)
+        from cle.agents.hives.kuid.kbuildd import kbuildd
+        _registry.register(kbuildd)
     except ImportError:
-        logger.debug("BOLT agent not yet available")
+        logger.debug("kbuildd agent not yet available")
 
     try:
-        from inception.agents.hives.aurora.comet import comet
+        from cle.agents.hives.kuid.comet import comet
         _registry.register(comet)
     except ImportError:
         logger.debug("COMET agent not yet available")
 
     try:
-        from inception.agents.hives.aurora.aurora_agent import aurora
-        _registry.register(aurora)
+        from cle.agents.hives.kuid.aurora_agent import kuid
+        _registry.register(kuid)
     except ImportError:
-        logger.debug("Aurora agent not yet available")
+        logger.debug("kuid agent not yet available")
 
     try:
-        from inception.agents.hives.keeper.keeper import keeper
-        _registry.register(keeper)
+        from cle.agents.hives.kstated.kstated import kstated
+        _registry.register(kstated)
     except ImportError:
-        logger.debug("KEEPER agent not yet available")
+        logger.debug("kstated agent not yet available")
 
     try:
-        from inception.agents.hives.keeper.arch import arch
+        from cle.agents.hives.kstated.arch import arch
         _registry.register(arch)
     except ImportError:
         logger.debug("ARCH agent not yet available")
 
     try:
-        from inception.agents.hives.keeper.codex import codex
+        from cle.agents.hives.kstated.codex import codex
         _registry.register(codex)
     except ImportError:
         logger.debug("CODEX agent not yet available")
 
     try:
-        from inception.agents.hives.lex.lex_agent import lex
-        _registry.register(lex)
+        from cle.agents.hives.kdocsd.lex_agent import kdocsd
+        _registry.register(kdocsd)
     except ImportError:
-        logger.debug("LEX agent not yet available")
+        logger.debug("kdocsd agent not yet available")
 
     try:
-        from inception.agents.hives.lex.compass import compass
+        from cle.agents.hives.kdocsd.compass import compass
         _registry.register(compass)
     except ImportError:
         logger.debug("COMPASS agent not yet available")
 
     try:
-        from inception.agents.hives.switchboard.relay import relay
+        from cle.agents.hives.switchboard.relay import relay
         _registry.register(relay)
     except ImportError:
         logger.debug("RELAY agent not yet available")
 
     try:
-        from inception.agents.hives.broadcast.signal_agent import signal
+        from cle.agents.hives.broadcast.signal_agent import signal
         _registry.register(signal)
     except ImportError:
         logger.debug("SIGNAL agent not yet available")
 
     try:
-        from inception.agents.hives.averi.averi_trinity import averi
+        from cle.agents.hives.averi.averi_trinity import averi
         _registry.register(averi)
     except ImportError:
         logger.debug("AVERI Trinity agent not yet available")
 
     try:
-        from inception.agents.hives.averi.oracle_council import oracle_council
+        from cle.agents.hives.averi.oracle_council import oracle_council
         _registry.register(oracle_council)
     except ImportError:
         logger.debug("Oracle Council agent not yet available")
 
     try:
-        from inception.agents.hives.broadcast.broadcast_crew import broadcast_crew
+        from cle.agents.hives.broadcast.broadcast_crew import broadcast_crew
         _registry.register(broadcast_crew)
     except ImportError:
         logger.debug("Broadcast Crew agent not yet available")
 
     try:
-        from inception.agents.hives.broadcast.echo import echo
+        from cle.agents.hives.broadcast.echo import echo
         _registry.register(echo)
     except ImportError:
         logger.debug("ECHO agent not yet available")
 
     try:
-        from inception.agents.hives.broadcast.atlas import atlas
+        from cle.agents.hives.broadcast.atlas import atlas
         _registry.register(atlas)
     except ImportError:
         logger.debug("ATLAS agent not yet available")
 
     try:
-        from inception.agents.hives.broadcast.ram_crew import ram_crew
-        _registry.register(ram_crew)
+        from cle.agents.hives.broadcast.krecd import krecd
+        _registry.register(krecd)
     except ImportError:
-        logger.debug("RAM Crew agent not yet available")
+        logger.debug("krecd agent not yet available")
 
     try:
-        from inception.agents.hives.keeper.scribe import scribe
-        _registry.register(scribe)
+        from cle.agents.hives.kstated.klogd import klogd
+        _registry.register(klogd)
     except ImportError:
-        logger.debug("SCRIBE agent not yet available")
+        logger.debug("klogd agent not yet available")
 
     try:
-        from inception.agents.hives.keeper.cosmos import cosmos
+        from cle.agents.hives.kstated.cosmos import cosmos
         _registry.register(cosmos)
     except ImportError:
         logger.debug("COSMOS agent not yet available")
@@ -248,7 +248,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from inception.engine.vfx_routes import vfx_router
+from cle.engine.vfx_routes import vfx_router
 app.include_router(vfx_router, prefix="/api/v1/vfx", tags=["vfx"])
 
 
@@ -411,7 +411,7 @@ async def mode_history():
 @app.get("/constitution")
 async def constitution():
     """Get all constitutional articles."""
-    from inception.constitution.articles import ARTICLES
+    from cle.constitution.articles import ARTICLES
     return {
         "total_articles": len(ARTICLES),
         "articles": [
@@ -461,12 +461,12 @@ async def websocket_endpoint(ws: WebSocket):
 # ============================================================
 
 def run_server():
-    """Run the engine server. For CLI: `inception boot`"""
+    """Run the engine server. For CLI: `cle boot`"""
     import uvicorn
 
     config = load_config()
     uvicorn.run(
-        "inception.engine.server:app",
+        "cle.engine.server:app",
         host=config.host,
         port=config.port,
         reload=config.debug,

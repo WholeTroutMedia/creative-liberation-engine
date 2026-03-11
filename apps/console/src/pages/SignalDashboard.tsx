@@ -3,7 +3,7 @@
  *
  * The vibe-coding surface for the Creative Liberation Engine console.
  * Four live signal feed panels + ORIGIN Loop autonomous task runner +
- * CommandMembrane persistent ATHENA prompt bar.
+ * CommandMembrane persistent kruled prompt bar.
  *
  * Route: /signal
  */
@@ -197,9 +197,9 @@ export default function SignalDashboard() {
       </section>
 
       {/* Command Membrane — persistent at bottom */}
-      <section className={styles.membraneSection} aria-label="ATHENA Command Membrane">
+      <section className={styles.membraneSection} aria-label="kruled Command Membrane">
         <CommandMembrane
-          placeholder="Tell ATHENA what to do across the signals..."
+          placeholder="Tell kruled what to do across the signals..."
         />
       </section>
     </div>

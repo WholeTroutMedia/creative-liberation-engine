@@ -7,7 +7,7 @@
  * applies per-agent rate limiting, and forwards to sovereign dispatch.
  *
  * Deploy: `wrangler deploy`
- * Endpoint: https://inception-mcp-gateway.<your-subdomain>.workers.dev
+ * Endpoint: https://cle-mcp-gateway.<your-subdomain>.workers.dev
  *
  * @package mcp-fetch-proxy
  */
@@ -167,7 +167,7 @@ export default {
     if (url.pathname === '/health') {
       return Response.json({
         status: 'ok',
-        service: 'inception-mcp-gateway',
+        service: 'cle-mcp-gateway',
         timestamp: new Date().toISOString(),
         edge: 'cloudflare',
       });

@@ -1,8 +1,8 @@
 /**
- * KEEPER v2 Boot Protocol — Task-Aware Memory Recall on Session Start (SC-04)
- * packages/genkit/src/memory/keeper.ts
+ * kstated v2 Boot Protocol — Task-Aware Memory Recall on Session Start (SC-04)
+ * packages/genkit/src/memory/kstated.ts
  *
- * On every session boot, KEEPER:
+ * On every session boot, kstated:
  *   1. Parses current task/workstream context from HANDOFF.md or boot context
  *   2. Runs scribeRecall(taskContext, both, limit=10) against ChromaDB
  *   3. Returns a compressed memory brief for injection at top of system prompt
@@ -11,26 +11,26 @@
  * Usage in flows (inject at top of system prompt):
  *   const brief = await keeperBoot({ workstream: 'mcp-router' });
  *   systemPrompt += brief.memoryBrief;
- *   if (brief.alerts.length) console.warn('[KEEPER] Alerts:', brief.alerts);
+ *   if (brief.alerts.length) console.warn('[kstated] Alerts:', brief.alerts);
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { scribeRecall } from './scribe.js';
+import { scribeRecall } from './klogd.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface KeeperBootContext {
-    /** Active workstream (e.g. 'mcp-router', 'scribe-v2'). Auto-detected if omitted. */
+    /** Active workstream (e.g. 'mcp-router', 'klogd-v2'). Auto-detected if omitted. */
     workstream?: string;
     /** Explicit task description to recall against. Auto-detected from HANDOFF.md if omitted. */
     taskHint?: string;
     /** Number of memory results to recall. Default: 10 */
     limit?: number;
-    /** Agent calling KEEPER boot (used for agent-scoped recall). Default: 'AVERI' */
+    /** Agent calling kstated boot (used for agent-scoped recall). Default: 'AVERI' */
     agentName?: string;
 }
 
@@ -92,11 +92,11 @@ function parseHandoffMd(): { taskHint: string; workstream: string } | null {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// KEEPER BOOT
+// kstated BOOT
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Run KEEPER's boot recall protocol.
+ * Run kstated's boot recall protocol.
  * Surfaces relevant episodic + semantic memories for the current task.
  * Returns a formatted brief ready for injection into any AVERI system prompt.
  */
@@ -133,7 +133,7 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
         };
     }
 
-    // Step 2: Run SCRIBE recall against the task context
+    // Step 2: Run klogd recall against the task context
     let recalledItems: Array<{ content: string; importance?: string; source?: string; similarity?: number }> = [];
 
     try {
@@ -146,7 +146,7 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
         });
         recalledItems = recallResult.results ?? [];
     } catch (err) {
-        console.warn('[KEEPER] ⚠️ scribeRecall failed during boot:', (err as Error).message);
+        console.warn('[kstated] ⚠️ scribeRecall failed during boot:', (err as Error).message);
         // Return gracefully with empty brief — don't block session start
         return {
             memoryBrief: '',
@@ -176,7 +176,7 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
         if (!text) continue;
 
         if (item.importance === 'critical' || item.importance === 'high') {
-            alerts.push(`⚠️ [${item.source ?? 'SCRIBE'}] ${text}`);
+            alerts.push(`⚠️ [${item.source ?? 'klogd'}] ${text}`);
         } else {
             const sim = item.similarity != null ? ` (${(item.similarity * 100).toFixed(0)}% match)` : '';
             contextItems.push(`• ${text}${sim}`);
@@ -187,12 +187,12 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
     const sections: string[] = [];
 
     if (alerts.length > 0) {
-        sections.push(`**⚠️ KEEPER BOOT ALERTS (${alerts.length}):**\n${alerts.join('\n')}`);
+        sections.push(`**⚠️ kstated BOOT ALERTS (${alerts.length}):**\n${alerts.join('\n')}`);
     }
 
     if (contextItems.length > 0) {
         sections.push(
-            `**📚 KEEPER MEMORY BRIEF — ${detectedWorkstream} [${taskHint.slice(0, 60)}]:**\n${contextItems.join('\n')}`
+            `**📚 kstated MEMORY BRIEF — ${detectedWorkstream} [${taskHint.slice(0, 60)}]:**\n${contextItems.join('\n')}`
         );
     }
 
@@ -202,7 +202,7 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
             : '';
 
     console.log(
-        `[KEEPER] 🧠 Boot recall: ${recalledItems.length} memories | ${alerts.length} alerts | workstream=${detectedWorkstream}`
+        `[kstated] 🧠 Boot recall: ${recalledItems.length} memories | ${alerts.length} alerts | workstream=${detectedWorkstream}`
     );
 
     return {
@@ -219,25 +219,25 @@ export async function keeperBoot(ctx: KeeperBootContext = {}): Promise<KeeperBoo
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * Run KEEPER boot for ATHENA — uses topic-focused recall.
+ * Run kstated boot for kruled — uses topic-focused recall.
  */
 export async function keeperBootForATHENA(topic: string): Promise<string> {
-    const result = await keeperBoot({ taskHint: topic, agentName: 'ATHENA', limit: 5 });
+    const result = await keeperBoot({ taskHint: topic, agentName: 'kruled', limit: 5 });
     return result.memoryBrief;
 }
 
 /**
- * Run KEEPER boot for VERA — uses validation-focused recall.
+ * Run kstated boot for kstrigd — uses validation-focused recall.
  */
 export async function keeperBootForVERA(content: string): Promise<string> {
-    const result = await keeperBoot({ taskHint: content, agentName: 'VERA', limit: 5 });
+    const result = await keeperBoot({ taskHint: content, agentName: 'kstrigd', limit: 5 });
     return result.memoryBrief;
 }
 
 /**
- * Run KEEPER boot for IRIS — uses blocker/resolution recall.
+ * Run kstated boot for ksignd — uses blocker/resolution recall.
  */
 export async function keeperBootForIRIS(blocker: string): Promise<string> {
-    const result = await keeperBoot({ taskHint: blocker, agentName: 'IRIS', limit: 5 });
+    const result = await keeperBoot({ taskHint: blocker, agentName: 'ksignd', limit: 5 });
     return result.memoryBrief;
 }

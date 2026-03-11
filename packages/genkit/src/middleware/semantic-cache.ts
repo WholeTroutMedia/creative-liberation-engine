@@ -1,6 +1,6 @@
 import { Genkit } from 'genkit';
 import { GenerateResponseData } from 'genkit';
-import { chromaMemory } from '@inception/memory';
+import { chromaMemory } from '@cle/memory';
 
 /**
  * Options for Semantic Caching
@@ -30,7 +30,7 @@ export async function generateWithCache(
 ) {
     const threshold = options.similarityThreshold ?? 0.95;
     const verbose = options.verbose ?? false;
-    // Note: Inception memory architecture namespaces collections by 'agent'. 
+    // Note: cle memory architecture namespaces collections by 'agent'. 
     // We'll use a dedicated 'system_cache' agent namespace for these exact prompt matches.
     const collectionName = options.collectionName ?? 'system_cache';
 

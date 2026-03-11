@@ -1,7 +1,7 @@
 """
 Creative Liberation Engine v5 — Constitutional Guard
 
-Enforces the Inception Constitution on all agent actions.
+Enforces the cle Constitution on all agent actions.
 Every agent output passes through this guard before execution.
 
 Lineage: v4 constitution_guard.py → v5 (simplified, faster, cleaner)
@@ -11,8 +11,8 @@ import logging
 import re
 from typing import Any
 
-from inception.constitution.articles import ARTICLES
-from inception.constitution.types import ConstitutionResult, Violation, ViolationSeverity
+from cle.constitution.articles import ARTICLES
+from cle.constitution.types import ConstitutionResult, Violation, ViolationSeverity
 
 logger = logging.getLogger(__name__)
 

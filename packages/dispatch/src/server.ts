@@ -152,7 +152,7 @@ const TOOLS = [
     },
     {
         name: 'list_projects',
-        description: 'List all WholeTrout org projects registered in the dispatch server.',
+        description: 'List all CLE org projects registered in the dispatch server.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -212,10 +212,10 @@ const TOOLS = [
             required: ['parent_task_id', 'title', 'workstream', 'spawned_by'],
         },
     },
-    // Vault Operations
+    // kstored Operations
     {
         name: 'get_secret',
-        description: 'Securely retrieve a decrypted secret/credential from the Vault by its title.',
+        description: 'Securely retrieve a decrypted secret/credential from the kstored by its title.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -226,7 +226,7 @@ const TOOLS = [
     },
     {
         name: 'set_secret',
-        description: 'Securely encrypt and store a new secret/credential in the Vault.',
+        description: 'Securely encrypt and store a new secret/credential in the kstored.',
         inputSchema: {
             type: 'object',
             properties: {
@@ -238,7 +238,7 @@ const TOOLS = [
     },
     {
         name: 'list_secrets',
-        description: 'List all available secret titles stored in the Vault. Does not reveal their values.',
+        description: 'List all available secret titles stored in the kstored. Does not reveal their values.',
         inputSchema: { type: 'object', properties: {} }
     }
 ];
@@ -307,9 +307,9 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
             if (args.note) task.handoff_note = args.note as string;
             await saveTask(task);
 
-            // ARCHAEON: Asynchronously capture this resolution as a training triple
+            // klorad: Asynchronously capture this resolution as a training triple
             // Note: We don't await this because we don't want to block the dispatch response
-            logArchaeonTrainingSample(task, true, 0).catch(err => console.error('[archaeon]', err));
+            logArchaeonTrainingSample(task, true, 0).catch(err => console.error('[klorad]', err));
 
             // Update agent
             const agent = await getAgent(args.agent_id as string);
@@ -338,8 +338,8 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
             if (args.artifacts) task.artifacts = args.artifacts as string[];
             await saveTask(task);
 
-            // ARCHAEON: Asynchronously capture this resolution as a training triple
-            logArchaeonTrainingSample(task, true, 0).catch(err => console.error('[archaeon]', err));
+            // klorad: Asynchronously capture this resolution as a training triple
+            logArchaeonTrainingSample(task, true, 0).catch(err => console.error('[klorad]', err));
 
             // Clear agent's active task if they had it
             const fcAgent = await getAgent(args.agent_id as string);
@@ -356,7 +356,7 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
             const workstream = (args.workstream ?? args.helix ?? 'general') as string;
             const newTask: Task = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: (args.project as string) ?? 'brainchild-v5',
                 workstream,
                 title: args.title as string,
@@ -415,7 +415,7 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
         case 'delegate_task': {
             const delegated: Task = {
                 id: `T${new Date().toISOString().slice(0, 10).replace(/-/g, '')}-${String(Math.floor(Math.random() * 900) + 100)}`,
-                org: 'Creative Liberation Engine Community',
+                org: 'Creative-Liberation-Engine',
                 project: args.project as string,
                 workstream: args.workstream as string,
                 title: args.title as string,
@@ -525,7 +525,7 @@ async function handleTool(name: string, args: Record<string, unknown>): Promise<
 
 function createMcpServer(): Server {
     const server = new Server(
-        { name: 'inception-dispatch', version: '1.0.0' },
+        { name: 'cle-dispatch', version: '1.0.0' },
         { capabilities: { tools: {} } }
     );
 
@@ -578,10 +578,10 @@ app.all('/api/a2a/dispatch', async (req, res) => {
     res.json({ success: true, message: 'A2A dispatch stub reached' });
 });
 
-// REST API â€” Vault
-app.get('/api/vault', async (_, res) => { res.json(JSON.parse(await handleTool('list_secrets', {}))) });
-app.post('/api/vault', async (req, res) => { res.json(JSON.parse(await handleTool('set_secret', req.body))) });
-app.delete('/api/vault/:id', async (req, res) => {
+// REST API â€” kstored
+app.get('/api/kstored', async (_, res) => { res.json(JSON.parse(await handleTool('list_secrets', {}))) });
+app.post('/api/kstored', async (req, res) => { res.json(JSON.parse(await handleTool('set_secret', req.body))) });
+app.delete('/api/kstored/:id', async (req, res) => {
     const success = await deleteSecret(req.params.id);
     if (!success) { res.status(404).json({ error: `Secret ${req.params.id} not found` }); return; }
     res.json({ success: true });
@@ -778,7 +778,7 @@ async function broadcastingHandleTool(name: string, args: Record<string, unknown
 // Override MCP handler to use broadcasting version
 function createBroadcastingMcpServer(): Server {
     const server = new Server(
-        { name: 'inception-dispatch', version: '1.0.0' },
+        { name: 'cle-dispatch', version: '1.0.0' },
         { capabilities: { tools: {} } }
     );
     server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: TOOLS }));
@@ -882,7 +882,7 @@ app.post('/api/tasks/:id/complete', async (req, res) => {
 });
 
 // Health check
-app.get('/health', (_, res) => res.json({ status: 'ok', service: 'inception-dispatch', version: '1.0.0', sse_clients: sseClients.size }));
+app.get('/health', (_, res) => res.json({ status: 'ok', service: 'cle-dispatch', version: '1.0.0', sse_clients: sseClients.size }));
 
 // â”€â”€ Capability Hot-Reload Endpoints â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // POST /api/capabilities/broadcast â€” announce a capability change to all SSE clients.
@@ -1299,7 +1299,7 @@ async function main() {
 
     app.listen(PORT, '0.0.0.0', () => {
         console.log(`\nâ•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—`);
-        console.log(`â•‘  INCEPTION DISPATCH SERVER â€” ONLINE         â•‘`);
+        console.log(`â•‘  cle DISPATCH SERVER â€” ONLINE         â•‘`);
         console.log(`â•‘  http://127.0.0.1:${PORT}                â•‘`);
         console.log(`â•‘  MCP: GET /sse  |  REST: GET /api/status    â•‘`);
         console.log(`â•‘  Federation: POST /api/federation/peer      â•‘`);

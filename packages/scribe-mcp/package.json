@@ -1,11 +1,11 @@
 {
-    "name": "@creative-liberation-engine/scribe-mcp",
+    "name": "@creative-liberation-engine/klogd-mcp",
     "version": "1.0.0",
-    "description": "SCRIBE v2 memory layer exposed as MCP server",
+    "description": "klogd v2 memory layer exposed as MCP server",
     "type": "module",
     "main": "dist/mcp-server.js",
     "bin": {
-        "inception-scribe": "dist/mcp-server.js"
+        "cle-klogd": "dist/mcp-server.js"
     },
     "scripts": {
         "build": "tsc",
@@ -26,7 +26,7 @@
     "keywords": [
         "creative-liberation-engine",
         "mcp",
-        "scribe",
+        "klogd",
         "memory",
         "context"
     ],

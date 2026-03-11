@@ -2,7 +2,7 @@
  * TOOL-03: Toolbox Genkit Tool Registration
  * packages/genkit/src/tools/toolbox-tools.ts
  *
- * Registers @inception/toolbox utility functions as Genkit tools
+ * Registers @cle/toolbox utility functions as Genkit tools
  * so agents can invoke them directly during AI generation.
  *
  * Domain: utilities (convert, format, optimize, encode, generate, utility, tool)
@@ -36,7 +36,7 @@ export const videoFormatInfoTool = ai.defineTool(
         }).partial(),
     },
     async (input) => {
-        const { getVideoFormatInfo } = await import('@inception/toolbox');
+        const { getVideoFormatInfo } = await import('@cle/toolbox');
         return getVideoFormatInfo(input.extension) ?? { error: `Unknown format: ${input.extension}` };
     },
 );
@@ -60,7 +60,7 @@ export const imageCompressTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { estimateImageCompression } = await import('@inception/toolbox');
+        const { estimateImageCompression } = await import('@cle/toolbox');
         return estimateImageCompression(input.originalBytes, input.targetFormat, input.quality);
     },
 );
@@ -74,7 +74,7 @@ export const svgOptimizeTool = ai.defineTool(
         outputSchema: z.object({ optimized: z.string(), originalLength: z.number() }),
     },
     async (input) => {
-        const { optimizeSVG } = await import('@inception/toolbox');
+        const { optimizeSVG } = await import('@cle/toolbox');
         return { optimized: optimizeSVG(input.svg), originalLength: input.svg.length };
     },
 );
@@ -92,7 +92,7 @@ export const audioDurationTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { parseAudioDuration, formatDuration } = await import('@inception/toolbox');
+        const { parseAudioDuration, formatDuration } = await import('@cle/toolbox');
         const seconds = parseAudioDuration(input.input);
         return seconds !== null
             ? { seconds, formatted: formatDuration(seconds), valid: true }
@@ -114,7 +114,7 @@ export const jsonPrettyTool = ai.defineTool(
         outputSchema: z.object({ formatted: z.string(), error: z.string().optional() }),
     },
     async (input) => {
-        const { jsonPretty } = await import('@inception/toolbox');
+        const { jsonPretty } = await import('@cle/toolbox');
         const result = jsonPretty(input.json, input.indent);
         // jsonPretty may return a string or { formatted, error } — normalize
         if (typeof result === 'string') return { formatted: result };
@@ -138,7 +138,7 @@ export const csvParseTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { csvParse } = await import('@inception/toolbox');
+        const { csvParse } = await import('@cle/toolbox');
         const result = csvParse(input.csv, input.delimiter) as {
             headers: string[];
             rows: Record<string, string>[];
@@ -157,7 +157,7 @@ export const markdownToHtmlTool = ai.defineTool(
         outputSchema: z.object({ html: z.string() }),
     },
     async (input) => {
-        const { markdownToHtml } = await import('@inception/toolbox');
+        const { markdownToHtml } = await import('@cle/toolbox');
         return { html: markdownToHtml(input.markdown) as string };
     },
 );
@@ -173,7 +173,7 @@ export const uuidTool = ai.defineTool(
         outputSchema: z.object({ uuid: z.string() }),
     },
     async () => {
-        const { generateUUID } = await import('@inception/toolbox');
+        const { generateUUID } = await import('@cle/toolbox');
         return { uuid: generateUUID() as string };
     },
 );
@@ -187,7 +187,7 @@ export const hashFnvTool = ai.defineTool(
         outputSchema: z.object({ hash: z.number(), hex: z.string() }),
     },
     async (input) => {
-        const { hashFNV32 } = await import('@inception/toolbox');
+        const { hashFNV32 } = await import('@cle/toolbox');
         const hash = hashFNV32(input.input) as number;
         return { hash, hex: hash.toString(16) };
     },
@@ -206,7 +206,7 @@ export const jwtDecodeTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { jwtDecode } = await import('@inception/toolbox');
+        const { jwtDecode } = await import('@cle/toolbox');
         const result = jwtDecode(input.token) as Record<string, unknown> | null;
         if (!result) return { error: 'Invalid JWT format' };
         return result as { header?: Record<string, unknown>; payload?: Record<string, unknown> };
@@ -224,7 +224,7 @@ export const hexToHslTool = ai.defineTool(
         outputSchema: z.object({ h: z.number(), s: z.number(), l: z.number(), css: z.string() }),
     },
     async (input) => {
-        const { colorHexToHsl } = await import('@inception/toolbox');
+        const { colorHexToHsl } = await import('@cle/toolbox');
         return colorHexToHsl(input.hex) as { h: number; s: number; l: number; css: string };
     },
 );
@@ -248,7 +248,7 @@ export const contrastRatioTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { contrastRatio } = await import('@inception/toolbox');
+        const { contrastRatio } = await import('@cle/toolbox');
         return contrastRatio(input.hex1, input.hex2) as {
             ratio: number; ratioFormatted: string; wcagAA: boolean;
             wcagAAA: boolean; wcagAALarge: boolean; recommendation: string;
@@ -271,7 +271,7 @@ export const paletteTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { paletteGenerator } = await import('@inception/toolbox');
+        const { paletteGenerator } = await import('@cle/toolbox');
         return paletteGenerator(input.hex) as {
             base: string; shades: Record<string, string>; tints: Record<string, string>;
             complementary: string; analogous: [string, string];
@@ -302,7 +302,7 @@ export const urlParseTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { urlParse } = await import('@inception/toolbox');
+        const { urlParse } = await import('@cle/toolbox');
         return urlParse(input.url) as unknown as {
             href: string; protocol: string; host: string; hostname: string;
             port: string; pathname: string; search: string; hash: string;
@@ -327,7 +327,7 @@ export const base64EncodeTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { base64Encode } = await import('@inception/toolbox');
+        const { base64Encode } = await import('@cle/toolbox');
         return base64Encode(input.input, input.urlSafe);
     },
 );
@@ -345,7 +345,7 @@ export const slugifyTool = ai.defineTool(
         outputSchema: z.object({ slug: z.string() }),
     },
     async (input) => {
-        const { urlSlugify } = await import('@inception/toolbox');
+        const { urlSlugify } = await import('@cle/toolbox');
         const slug = urlSlugify(input.input, { separator: input.separator, maxLength: input.maxLength }) as string;
         return { slug };
     },
@@ -368,7 +368,7 @@ export const passwordStrengthTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { passwordStrength } = await import('@inception/toolbox');
+        const { passwordStrength } = await import('@cle/toolbox');
         return passwordStrength(input.password) as {
             score: number; label: string; entropy: number; feedback: string[]; passed: boolean;
         };
@@ -392,7 +392,7 @@ export const generateSecretTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { generateSecret } = await import('@inception/toolbox');
+        const { generateSecret } = await import('@cle/toolbox');
         return generateSecret(input.length, input.charset) as {
             secret: string; bits: number; hex: string; base64: string;
         };
@@ -412,7 +412,7 @@ export const sanitizeHtmlTool = ai.defineTool(
         }),
     },
     async (input) => {
-        const { sanitizeHtml } = await import('@inception/toolbox');
+        const { sanitizeHtml } = await import('@cle/toolbox');
         return sanitizeHtml(input.input) as {
             output: string; removedTags: string[]; removedAttributes: string[];
         };

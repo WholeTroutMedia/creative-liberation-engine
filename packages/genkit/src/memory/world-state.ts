@@ -5,7 +5,7 @@
  * Every significant generative event writes to it. Every flow reads from it.
  * The compounding creative intelligence that makes each generation smarter.
  *
- * Storage: @inception/memory bus (ChromaDB + memoryBus) for semantic recall,
+ * Storage: @cle/memory bus (ChromaDB + memoryBus) for semantic recall,
  * plus a lightweight in-process cache for fast synchronous reads.
  *
  * Constitutional: Article VII (Knowledge Compounding) — every execution
@@ -16,8 +16,8 @@ import type {
     EngineWorldState,
     WorldStateEvent,
     WorldStateEventType,
-} from '@inception/core';
-import { memoryBus } from '@inception/memory';
+} from '@cle/core';
+import { memoryBus } from '@cle/memory';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 

@@ -36,7 +36,7 @@ const MISSION_TEMPLATES: MissionTemplate[] = [
     {
         id: 'zero-day-intake',
         title: 'Launch a Zero-Day Intake Session',
-        description: 'Start an AI-powered client onboarding session — extract project intent, generate a creative brief, and auto-draft a LEX contract.',
+        description: 'Start an AI-powered client onboarding session — extract project intent, generate a creative brief, and auto-draft a kdocsd contract.',
         icon: '⚡',
         flow: '/zero-day',
         estimatedTime: '8 min',
@@ -66,7 +66,7 @@ const MISSION_TEMPLATES: MissionTemplate[] = [
     {
         id: 'design-sandbox',
         title: 'Open the Design Sandbox',
-        description: 'Start a guided or freeform design session — live token editing, VERA-DESIGN scoring, and variant comparison.',
+        description: 'Start a guided or freeform design session — live token editing, kstrigd-DESIGN scoring, and variant comparison.',
         icon: '🎨',
         flow: '/design-sandbox',
         estimatedTime: '5 min',
@@ -178,11 +178,11 @@ export function FirstMission({ onComplete, onBack }: FirstMissionProps) {
                 <div className="ambient-live-feed">
                     <div className="ambient-feed-title">Live Activity</div>
                     {[
-                        { time: 'just now', msg: 'ATHENA completed design token audit — score 91/100' },
-                        { time: '12s ago', msg: 'Campaign pipeline triggered for client WholeTrout' },
-                        { time: '1m ago', msg: 'VERA flagged 2 contrast failures in theme override' },
+                        { time: 'just now', msg: 'kruled completed design token audit — score 91/100' },
+                        { time: '12s ago', msg: 'Campaign pipeline triggered for client CLE' },
+                        { time: '1m ago', msg: 'kstrigd flagged 2 contrast failures in theme override' },
                         { time: '3m ago', msg: 'nas-watcher daemon polled 14 tasks from dispatch queue' },
-                        { time: '7m ago', msg: 'Zero-Day intake session completed — LEX draft generated' },
+                        { time: '7m ago', msg: 'Zero-Day intake session completed — kdocsd draft generated' },
                     ].map((entry, i) => (
                         <div key={i} className="ambient-feed-entry" ref={el => { if (el) el.style.opacity = String(1 - (i * 0.15)); }}>
                             <span className="ambient-feed-time">{entry.time}</span>

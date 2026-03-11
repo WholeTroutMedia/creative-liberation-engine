@@ -4,14 +4,14 @@
  * Executes multi-hop, multi-provider media generation with compound memory.
  *
  * Given a single creative brief, OMNI can produce:
- * - Visual concept (AURORA)
+ * - Visual concept (kuid)
  * - Image generation (GenMedia → Imagen3/Flux)
  * - Video generation (GenMedia → Veo2/Wan)
  * - Audio/music (GenMedia → Lyria)
- * - Copy/script (VERA)
+ * - Copy/script (kstrigd)
  * - Agent handoff (RELAY)
- * - Archive to Living Archive (KEEPER)
- * - Constitutional validation (LEX)
+ * - Archive to Living Archive (kstated)
+ * - Constitutional validation (kdocsd)
  *
  * This is what v4 imnimedia was building toward.
  * v5 delivers it as a native Genkit orchestration.
@@ -19,11 +19,11 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus } from '@inception/memory';
-import { VERAFlow } from './vera.js';
-import { AURORAFlow } from './aurora.js';
-import { LEXFlow } from './lex-compass.js';
-// NOTE: @inception/genmedia is dynamically imported to break the genkit ↔ genmedia circular dependency.
+import { memoryBus } from '@cle/memory';
+import { VERAFlow } from './kstrigd.js';
+import { AURORAFlow } from './kuid.js';
+import { LEXFlow } from './kdocsd-compass.js';
+// NOTE: @cle/genmedia is dynamically imported to break the genkit ↔ genmedia circular dependency.
 // At runtime this is fine — both packages resolve correctly in the ESM module graph.
 // DO NOT convert this back to a static import.
 
@@ -40,8 +40,8 @@ const OmniInputSchema = z.object({
 });
 
 const OmniOutputSchema = z.object({
-    concept: z.string().describe('AURORA-generated creative concept'),
-    copy: z.string().describe('VERA-generated copy/script'),
+    concept: z.string().describe('kuid-generated creative concept'),
+    copy: z.string().describe('kstrigd-generated copy/script'),
     assets: z.object({
         images: z.array(z.string()).default([]),
         videos: z.array(z.string()).default([]),
@@ -75,10 +75,10 @@ export const OmniMediaOrchestratorFlow = ai.defineFlow(
                 content: input.brief,
                 agentName: 'OMNIMEDIA',
                 sessionId,
-            }).catch(() => ({ verdict: 'WARNING' as const, violations: [], guidance: '', lexSignature: 'LEX' as const }));
+            }).catch(() => ({ verdict: 'WARNING' as const, violations: [], guidance: '', lexSignature: 'kdocsd' as const }));
 
             if (lexResult.verdict === 'HALT') {
-                console.error('[OMNIMEDIA] ❌ LEX HALT — brief failed constitutional preflight');
+                console.error('[OMNIMEDIA] ❌ kdocsd HALT — brief failed constitutional preflight');
                 return {
                     concept: '', copy: '', assets: { images: [], videos: [], audio: [] },
                     lexApproval: 'HALT' as const, sessionId, durationMs: Date.now() - startMs, omniSignature: 'OMNIMEDIA' as const,
@@ -89,7 +89,7 @@ export const OmniMediaOrchestratorFlow = ai.defineFlow(
             const [conceptResult, copyResult] = await Promise.allSettled([
                 AURORAFlow({ mode: 'ideate', prompt: input.brief, outputFormat: 'markdown', context: input.brand, sessionId }),
                 want.includes('copy') ? VERAFlow({
-                    mode: 'scribe',
+                    mode: 'klogd',
                     content: `Write compelling copy/script for: ${input.brief}${input.brand ? `\nBrand: ${input.brand}` : ''}`,
                     sessionId,
                 }) : Promise.resolve(null),
@@ -119,7 +119,7 @@ export const OmniMediaOrchestratorFlow = ai.defineFlow(
 
             if (mediaRequests.length > 0) {
                 // Hide import from TS static analysis to allow genkit to definitively build before genmedia
-                const moduleName = '@inception/' + 'genmedia';
+                const moduleName = '@cle/' + 'genmedia';
                 const { GenMediaBatchFlow } = await import(moduleName);
                 const batchResult = await GenMediaBatchFlow({ requests: mediaRequests });
                 images = batchResult.filter((r: any) => r.mediaType === 'image').map((r: any) => r.localPath);

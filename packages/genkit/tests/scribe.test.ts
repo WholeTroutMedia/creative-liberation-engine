@@ -1,28 +1,28 @@
 /**
- * SCRIBE v2 — Integration Tests (SC-06)
- * packages/genkit/tests/scribe.test.ts
+ * klogd v2 — Integration Tests (SC-06)
+ * packages/genkit/tests/klogd.test.ts
  *
  * Tests:
  *   (1) scribeRemember writes to ChromaDB episodic/semantic correctly
- *   (2) VERA gate correctly rejects low-value/PII memories
+ *   (2) kstrigd gate correctly rejects low-value/PII memories
  *   (3) Context pager triggers at 80% token budget and compresses
- *   (4) KEEPER v2 boot recall returns relevant items
+ *   (4) kstated v2 boot recall returns relevant items
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { evaluateMemoryWrite as VERAMemoryGate } from '../src/memory/vera-gate.js';
+import { evaluateMemoryWrite as VERAMemoryGate } from '../src/memory/kstrigd-gate.js';
 import { estimateTokens, estimateTurnTokens, pageContext } from '../src/memory/context-pager.js';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// MOCK: @inception/memory bus
+// MOCK: @cle/memory bus
 // ─────────────────────────────────────────────────────────────────────────────
 
-vi.mock('@inception/memory', () => ({
+vi.mock('@cle/memory', () => ({
     memoryBus: {
-        commit: vi.fn().mockResolvedValue({ id: 'test-memory-id-42', agentName: 'SCRIBE', task: 'test', outcome: '', tags: [] }),
+        commit: vi.fn().mockResolvedValue({ id: 'test-memory-id-42', agentName: 'klogd', task: 'test', outcome: '', tags: [] }),
         recall: vi.fn().mockResolvedValue([
-            { id: 'recalled-1', agentName: 'ATHENA', task: '[DECISION] Use SQLite for dispatch', outcome: 'Chose SQLite for persistence due to NAS constraints', tags: ['decision', 'high', 'dispatch'] },
-            { id: 'recalled-2', agentName: 'VERA', task: '[PATTERN] Always gate memory writes', outcome: 'When writing to Living Archive, always route through VERA gate because low-quality memories pollute recall', tags: ['pattern', 'high', 'scribe'] },
+            { id: 'recalled-1', agentName: 'kruled', task: '[DECISION] Use SQLite for dispatch', outcome: 'Chose SQLite for persistence due to NAS constraints', tags: ['decision', 'high', 'dispatch'] },
+            { id: 'recalled-2', agentName: 'kstrigd', task: '[PATTERN] Always gate memory writes', outcome: 'When writing to Living Archive, always route through kstrigd gate because low-quality memories pollute recall', tags: ['pattern', 'high', 'klogd'] },
         ]),
         setPatternExtractor: vi.fn(),
         withMemory: vi.fn(),
@@ -30,10 +30,10 @@ vi.mock('@inception/memory', () => ({
 }));
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 1. VERA GATE — Rejection Tests
+// 1. kstrigd GATE — Rejection Tests
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('VERA Memory Quality Gate (SC-02)', () => {
+describe('kstrigd Memory Quality Gate (SC-02)', () => {
     it('rejects content containing an email address (PII)', async () => {
         const result = await VERAMemoryGate({
             content: 'User email is test@example.com for follow up',

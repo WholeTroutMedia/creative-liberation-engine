@@ -13,11 +13,11 @@ Validation workflow:
 3. LOGIC → behavioral validation
 4. COVERAGE → test completeness
 5. COMPASS → constitutional check (already exists)
-6. LEX → legal review (already exists)
+6. kdocsd → legal review (already exists)
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, npm
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, npm
 
 
 # ============================================================
@@ -27,7 +27,7 @@ from inception.agents.tools import filesystem, npm
 sentinel = InceptionAgent(
     name="SENTINEL",
     model="gemini-2.5-flash",  # Premium for security analysis
-    hive="LEX",
+    hive="kdocsd",
     role="security_scanner",
     instruction="""You are SENTINEL, the Creative Liberation Engine's security vulnerability scanner.
 
@@ -76,7 +76,7 @@ For each finding:
 patterns = InceptionAgent(
     name="PATTERNS",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="architecture_validator",
     instruction="""You are PATTERNS, the Creative Liberation Engine's architecture compliance checker.
 
@@ -122,7 +122,7 @@ For each module:
 logic = InceptionAgent(
     name="LOGIC",
     model="gemini-2.5-flash",
-    hive="LEX",
+    hive="kdocsd",
     role="behavioral_validator",
     instruction="""You are LOGIC, the Creative Liberation Engine's behavioral correctness validator.
 
@@ -170,7 +170,7 @@ For each finding:
 coverage = InceptionAgent(
     name="COVERAGE",
     model="gemini-2.5-flash",
-    hive="AURORA",
+    hive="kuid",
     role="test_evaluator",
     instruction="""You are COVERAGE, the Creative Liberation Engine's test completeness evaluator.
 

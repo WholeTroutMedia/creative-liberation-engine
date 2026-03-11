@@ -1,5 +1,5 @@
 /**
- * @inception/core — Error Formatting Utilities
+ * @cle/core — Error Formatting Utilities
  *
  * Standard error types and formatting utilities for the Creative Liberation Engine.
  * Ensures consistent error shapes across all packages.
@@ -10,7 +10,7 @@
  *                 Article IV (Transparency) — all reasoning observable.
  */
 
-// ─── Inception Error Types ─────────────────────────────────────────────────────
+// ─── cle Error Types ─────────────────────────────────────────────────────
 
 /** Base error codes used across the engine */
 export type ErrorCode =

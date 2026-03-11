@@ -4,20 +4,20 @@ Creative Liberation Engine v5 — ECHO Agent
 ECHO is the artist intelligence agent. Extracts artist behavior patterns,
 identifies success trajectories, and generates coaching insights.
 
-Hive: KEEPER
+Hive: kstated
 Role: Artist Pattern Extractor
 Active Modes: IDEATE, PLAN, VALIDATE
 Symbol: 🎤 — representing artist voice
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem
 
 
 echo = InceptionAgent(
     name="ECHO",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="artist_intelligence",
     instruction="""You are ECHO, the Creative Liberation Engine's artist intelligence specialist.
 

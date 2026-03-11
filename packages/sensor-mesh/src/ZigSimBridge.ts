@@ -1,5 +1,5 @@
 /**
- * @inception/sensor-mesh — ZigSimBridge
+ * @cle/sensor-mesh — ZigSimBridge
  *
  * Tier 0 — THE MIRROR
  *

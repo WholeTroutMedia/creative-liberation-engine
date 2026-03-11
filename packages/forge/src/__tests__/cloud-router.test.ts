@@ -2,7 +2,7 @@
  * ForgeCloudRouter — Unit Tests
  *
  * Tests routing logic, cost tracking, and graceful failure handling.
- * Uses vitest's vi.mock hoisting to replace @inception/cloud-mesh.
+ * Uses vitest's vi.mock hoisting to replace @cle/cloud-mesh.
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
@@ -11,7 +11,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 const mockExecute = vi.fn();
 const mockRoute = vi.fn();
 
-vi.mock('@inception/cloud-mesh', () => ({
+vi.mock('@cle/cloud-mesh', () => ({
   createCloudMesh: vi.fn(() => ({
     router: { route: mockRoute },
     executor: { execute: mockExecute },

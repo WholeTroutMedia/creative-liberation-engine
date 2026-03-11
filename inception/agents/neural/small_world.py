@@ -52,7 +52,7 @@ class SmallWorldNetwork:
     Small-world topology overlay on the hive hierarchy.
 
     Usage:
-        agents = [NetworkAgent(id=0, name="BOLT", hive="AURORA", concept_vector=vec)]
+        agents = [NetworkAgent(id=0, name="kbuildd", hive="kuid", concept_vector=vec)]
         network = SmallWorldNetwork(agents, shortcut_probability=0.1)
         path = network.find_shortest_path(0, 5)
     """

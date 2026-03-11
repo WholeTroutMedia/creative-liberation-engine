@@ -1,14 +1,14 @@
 /**
- * @inception/forge — ThemeBundler
+ * @cle/forge — ThemeBundler
  *
  * Composes visual LoRAs + Foley audio profiles + spatial audio into ThemeBundles.
  * The NBA Jam example: era='1993', context='basketball', style_preset='retro-arcade',
  * audio_mood='energetic' → produces a full ThemeBundle ready for living-canvas.
  *
  * Integration points:
- *   - @inception/foley-engine: FoleyEngine generates audio layer
- *   - @inception/theme-engine: style preset tokens
- *   - @inception/living-canvas: applies bundle to WebGL stream
+ *   - @cle/foley-engine: FoleyEngine generates audio layer
+ *   - @cle/theme-engine: style preset tokens
+ *   - @cle/living-canvas: applies bundle to WebGL stream
  */
 
 import { randomUUID } from 'crypto';

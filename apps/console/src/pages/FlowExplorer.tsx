@@ -38,17 +38,17 @@ interface FlowRegistry {
 
 /* ── Static fallback ──────────────────────────────────────────── */
 const STATIC_AGENTS: LiveAgent[] = [
-    { name: 'ATHENA', hive: 'AVERI', role: 'Strategist', flow: 'ATHENA', model: 'gemini-2.5-pro', color: '#F5A524', endpoint: { id: 'averi-ideate', method: 'POST', path: '/averi/ideate', agent: 'ATHENA', description: 'IDEATE mode: KEEPER recall → ATHENA strategic vision.' } },
-    { name: 'VERA', hive: 'AVERI', role: 'Scribe', flow: 'VERA', model: 'gemini-2.5-pro', color: '#F5A524', endpoint: { id: 'search', method: 'POST', path: '/search', agent: 'VERA', description: 'Deep research via Perplexity Sonar.' } },
-    { name: 'IRIS', hive: 'AVERI', role: 'Executor', flow: 'IRIS', model: 'gemini-2.0-flash', color: '#F5A524', endpoint: { id: 'creative-director', method: 'POST', path: '/flow/CreativeDirector', agent: 'IRIS', description: 'Creative vision document generation.' } },
-    { name: 'AURORA', hive: 'AURORA', role: 'Architect', flow: 'AURORA', model: 'gemini-2.5-pro', color: '#C17D4A' },
-    { name: 'BOLT', hive: 'AURORA', role: 'Builder', flow: 'BOLT', model: 'gemini-2.5-pro', color: '#C17D4A' },
-    { name: 'COMET', hive: 'AURORA', role: 'Automator', flow: 'COMET', model: 'gemini-2.5-pro', color: '#C17D4A' },
-    { name: 'KEEPER', hive: 'KEEPER', role: 'Knowledge', flow: 'KEEPER', model: 'gemini-2.0-flash', color: '#9B72CF', endpoint: { id: 'retrieve', method: 'POST', path: '/retrieve', agent: 'KEEPER', description: 'ChromaDB semantic search.' } },
+    { name: 'kruled', hive: 'AVERI', role: 'Strategist', flow: 'kruled', model: 'gemini-2.5-pro', color: '#F5A524', endpoint: { id: 'averi-ideate', method: 'POST', path: '/averi/ideate', agent: 'kruled', description: 'IDEATE mode: kstated recall → kruled strategic vision.' } },
+    { name: 'kstrigd', hive: 'AVERI', role: 'klogd', flow: 'kstrigd', model: 'gemini-2.5-pro', color: '#F5A524', endpoint: { id: 'search', method: 'POST', path: '/search', agent: 'kstrigd', description: 'Deep research via Perplexity Sonar.' } },
+    { name: 'ksignd', hive: 'AVERI', role: 'Executor', flow: 'ksignd', model: 'gemini-2.0-flash', color: '#F5A524', endpoint: { id: 'creative-director', method: 'POST', path: '/flow/CreativeDirector', agent: 'ksignd', description: 'Creative vision document generation.' } },
+    { name: 'kuid', hive: 'kuid', role: 'Architect', flow: 'kuid', model: 'gemini-2.5-pro', color: '#C17D4A' },
+    { name: 'kbuildd', hive: 'kuid', role: 'Builder', flow: 'kbuildd', model: 'gemini-2.5-pro', color: '#C17D4A' },
+    { name: 'COMET', hive: 'kuid', role: 'Automator', flow: 'COMET', model: 'gemini-2.5-pro', color: '#C17D4A' },
+    { name: 'kstated', hive: 'kstated', role: 'Knowledge', flow: 'kstated', model: 'gemini-2.0-flash', color: '#9B72CF', endpoint: { id: 'retrieve', method: 'POST', path: '/retrieve', agent: 'kstated', description: 'ChromaDB semantic search.' } },
     { name: 'RELAY', hive: 'SWITCHBOARD', role: 'Router', flow: 'RELAY', model: 'gemini-2.0-flash', color: '#22c55e', endpoint: { id: 'generate', method: 'POST', path: '/generate', agent: 'RELAY', description: 'Unified multi-provider completion.' } },
-    { name: 'LEX', hive: 'LEX', role: 'Compliance', flow: 'LEX', model: 'gemini-2.0-flash', color: '#4285F4' },
+    { name: 'kdocsd', hive: 'kdocsd', role: 'Compliance', flow: 'kdocsd', model: 'gemini-2.0-flash', color: '#4285F4' },
     { name: 'SENTINEL', hive: 'VALIDATOR', role: 'Security', flow: 'SENTINEL', model: 'gemini-2.5-pro', color: '#ef4444', endpoint: { id: 'score', method: 'POST', path: '/score', agent: 'SENTINEL', description: 'Vision LoRA scoring (0-100).' } },
-    { name: 'ATLAS', hive: 'BROADCAST', role: 'Lead', flow: 'ATLAS', model: 'gemini-2.5-pro', color: '#FF6B35', endpoint: { id: 'director', method: 'POST', path: '/director', agent: 'ATLAS', description: 'ATHENA Video EDL hype reel engine.' } },
+    { name: 'ATLAS', hive: 'BROADCAST', role: 'Lead', flow: 'ATLAS', model: 'gemini-2.5-pro', color: '#FF6B35', endpoint: { id: 'director', method: 'POST', path: '/director', agent: 'ATLAS', description: 'kruled Video EDL hype reel engine.' } },
 ]
 
 const SAMPLE_INPUTS: Record<string, string> = {
@@ -64,16 +64,16 @@ const SAMPLE_INPUTS: Record<string, string> = {
     'director': '{\n  "videoFiles": ["clip_01.mp4", "clip_02.mp4"],\n  "targetDuration": 60,\n  "mood": "cinematic, dark, premium"\n}',
     'stream': '{\n  "prompt": "Describe the Creative Liberation Engine in 3 sentences",\n  "model": "googleai/gemini-2.0-flash"\n}',
     // ── Dispatch flow samples ────────────────────────────────────
-    'infra-docker': '{\n  "taskId": "test-001",\n  "title": "Add Dockerfile for inception-mcp service",\n  "workstream": "infra-docker",\n  "description": "Multi-stage Dockerfile for the inception-mcp Node 20 service"\n}',
+    'infra-docker': '{\n  "taskId": "test-001",\n  "title": "Add Dockerfile for cle-mcp service",\n  "workstream": "infra-docker",\n  "description": "Multi-stage Dockerfile for the cle-mcp Node 20 service"\n}',
     'comet-browser': '{\n  "taskId": "test-002",\n  "title": "Extract pricing from competitor page",\n  "workstream": "comet-browser",\n  "url": "https://example.com",\n  "objective": "Extract all pricing plans and feature lists"\n}',
-    'generic-task': '{\n  "taskId": "test-003",\n  "title": "Document the nas-watcher daemon API",\n  "workstream": "inception-core",\n  "priority": "P1"\n}',
+    'generic-task': '{\n  "taskId": "test-003",\n  "title": "Document the nas-watcher daemon API",\n  "workstream": "cle-core",\n  "priority": "P1"\n}',
     'genkit-flow-builder': '{\n  "taskId": "test-004",\n  "title": "Create AnalyticsFlow for usage tracking",\n  "workstream": "genkit-flows",\n  "flowName": "analyticsFlow",\n  "agentName": "SENTINEL",\n  "hive": "VALIDATOR",\n  "purpose": "Track API usage, latency, and token cost per agent call"\n}',
     'gen-ui': '{\n  "componentName": "MetricCard",\n  "description": "A compact card showing a live metric with sparkline, title, trend indicator, and timestamp",\n  "variant": "card",\n  "darkMode": true,\n  "withStories": false,\n  "props": [\n    { "name": "title", "type": "string", "required": true, "description": "Metric label" },\n    { "name": "value", "type": "string | number", "required": true },\n    { "name": "trend", "type": "\\"up\\" | \\"down\\" | \\"flat\\"", "required": false },\n    { "name": "sparklineData", "type": "number[]", "required": false }\n  ]\n}',
 }
 
 const DEFAULT_INPUT = '{\n  "prompt": "Hello from Creative Liberation Engine"\n}'
 
-const HIVE_ORDER = ['AVERI', 'AURORA', 'KEEPER', 'SWITCHBOARD', 'LEX', 'VALIDATOR', 'BROADCAST', 'SPECIALIST', 'ENHANCEMENT']
+const HIVE_ORDER = ['AVERI', 'kuid', 'kstated', 'SWITCHBOARD', 'kdocsd', 'VALIDATOR', 'BROADCAST', 'SPECIALIST', 'ENHANCEMENT']
 
 const MODEL_BADGE: Record<string, string> = {
     'gemini-2.5-pro': '2.5 PRO',

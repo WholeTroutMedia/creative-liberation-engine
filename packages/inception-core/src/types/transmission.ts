@@ -1,5 +1,5 @@
 /**
- * @inception/core — Transmission Types
+ * @cle/core — Transmission Types
  *
  * Shared types for The Transmission: an autonomous, living infinity story.
  * A world that already exists, broadcasting whether or not anyone is listening.

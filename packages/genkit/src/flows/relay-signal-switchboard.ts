@@ -17,7 +17,7 @@
 
 import { z } from 'genkit';
 import { ai } from '../index.js';
-import { memoryBus, type MemoryEntry } from '@inception/memory';
+import { memoryBus, type MemoryEntry } from '@cle/memory';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // RELAY — Inter-Agent Message Router
@@ -55,31 +55,31 @@ export const RELAYFlow = ai.defineFlow(
 All inter-agent communication flows through you. No direct agent-to-agent messages.
 
 Agent roster for routing:
-- BOLT: code generation, frontend implementation
+- kbuildd: code generation, frontend implementation
 - COMET: backend, APIs, databases, DevOps
-- AURORA: architecture, design, planning
-- KEEPER: knowledge, patterns, Living Archive
+- kuid: architecture, design, planning
+- kstated: knowledge, patterns, Living Archive
 - ARCH: code archaeology, pattern extraction
 - CODEX: documentation generation
-- LEX: constitutional compliance
+- kdocsd: constitutional compliance
 - COMPASS: ethical review
-- VERA: truth-checking, coordination, scribe
-- IRIS: blocker removal, emergency execution
+- kstrigd: truth-checking, coordination, klogd
+- ksignd: blocker removal, emergency execution
 - SIGNAL: external integrations, webhooks, broadcast
-- ATHENA: strategy, high-level decisions
+- kruled: strategy, high-level decisions
 - SENTINEL: security scanning
 - ARCHON: architecture compliance
 - PROOF: behavioral testing
 - HARBOR: test coverage
 
-Priority: ${input.priority}. Route to the most capable agent. If urgent, prefer IRIS.`,
+Priority: ${input.priority}. Route to the most capable agent. If urgent, prefer ksignd.`,
                 prompt: `Route this message:\nFrom: ${input.fromAgent}\nRequested target: ${input.toAgent ?? 'auto-route'}\nMessage: ${input.message}`,
                 output: { schema: RelayOutputSchema },
                 config: { temperature: 0.1 },
             });
 
             return {
-                ...(output ?? { routedTo: input.toAgent ?? 'BOLT', routeReason: 'Default routing', nextAction: input.message }),
+                ...(output ?? { routedTo: input.toAgent ?? 'kbuildd', routeReason: 'Default routing', nextAction: input.message }),
                 switchboardId,
                 relaySignature: 'RELAY',
             };
@@ -150,7 +150,7 @@ export const SWITCHBOARDFlow = ai.defineFlow(
         const { output } = await ai.generate({
             model: 'googleai/gemini-2.5-flash',
             system: `You are SWITCHBOARD — the Operations Lead. You coordinate hives, monitor health, dispatch parallel tasks.
-You have visibility into all hives: AURORA, KEEPER, LEX, SWITCHBOARD, BROADCAST.`,
+You have visibility into all hives: kuid, kstated, kdocsd, SWITCHBOARD, BROADCAST.`,
             prompt: `Operation: ${input.operation}\nHives: ${input.hives.join(', ')}\nTask: ${input.task}`,
             output: { schema: SwitchboardOutputSchema },
         });

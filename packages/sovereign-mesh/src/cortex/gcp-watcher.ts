@@ -1,8 +1,8 @@
 import type { GCPServiceEntity } from '../schema/index.js';
 
-// ─── CORTEX GCP Watcher — Cloud Resource Poller ───────────────────────────────
+// ─── CORE GCP Watcher — Cloud Resource Poller ───────────────────────────────
 // Polls GCP Asset API + Cloud Run + Firebase endpoints to build a live picture
-// of all cloud resources under the Creative Liberation Engine Community Google account.
+// of all cloud resources under the Creative-Liberation-Engine Google account.
 // Uses GOOGLE_APPLICATION_CREDENTIALS or gcloud CLI (no SDK required).
 
 const GCP_PROJECT = 'wholtroutmedia';  // Update if project ID differs

@@ -31,7 +31,7 @@ class EngineConfig:
     chroma_host: str = "localhost"
     chroma_port: int = 8000
     github_token: str = ""
-    github_memory_repo: str = "Creative Liberation Engine Community/inception-memory"
+    github_memory_repo: str = "Creative-Liberation-Engine/cle-memory"
 
     # Firebase (optional)
     firebase_project_id: str = ""
@@ -76,7 +76,7 @@ def load_config(env_file: Optional[str] = None) -> EngineConfig:
         chroma_host=os.getenv("CHROMA_HOST", "localhost"),
         chroma_port=int(os.getenv("CHROMA_PORT", "8000")),
         github_token=os.getenv("GITHUB_TOKEN", ""),
-        github_memory_repo=os.getenv("GITHUB_MEMORY_REPO", "Creative Liberation Engine Community/inception-memory"),
+        github_memory_repo=os.getenv("GITHUB_MEMORY_REPO", "Creative-Liberation-Engine/cle-memory"),
         firebase_project_id=os.getenv("FIREBASE_PROJECT_ID", ""),
         firebase_service_account_path=os.getenv("FIREBASE_SERVICE_ACCOUNT_PATH", ""),
         access_tier=os.getenv("INCEPTION_ACCESS_TIER", "studio"),

@@ -1,7 +1,7 @@
 /**
  * Blueprints Console Page — W3
  *
- * Browse and execute Inception Blueprints (Finance, Healthcare, Media).
+ * Browse and execute cle Blueprints (Finance, Healthcare, Media).
  * Shows a card grid, run panel with live reasoning trace, and simulation results.
  */
 
@@ -95,7 +95,7 @@ export default function Blueprints() {
         <div className="bp-container">
             <div className="bp-header">
                 <h1 className="bp-title">
-                    <span className="bp-accent">⊡</span> Inception Blueprints
+                    <span className="bp-accent">⊡</span> cle Blueprints
                 </h1>
                 <p className="bp-subtitle">Domain-optimized agent configurations for regulated industries</p>
             </div>
@@ -194,7 +194,7 @@ export default function Blueprints() {
 }
 
 const MOCK_BLUEPRINTS: Blueprint[] = [
-    { id: 'finance-v1', name: 'Financial Analysis Suite', vertical: 'finance', description: 'Institutional research, risk assessment, and compliance-aware recommendations.', version: '1.0.0', tags: ['sox', 'mifid'], agentTeam: ['ATHENA', 'VERA', 'LEX', 'COMPASS', 'PRISM'] },
-    { id: 'healthcare-v1', name: 'Clinical Decision Support', vertical: 'healthcare', description: 'HIPAA-aware differential diagnosis and treatment recommendation engine.', version: '1.0.0', tags: ['hipaa'], agentTeam: ['ATHENA', 'VERA', 'LEX', 'SENTINEL', 'HARBOR'] },
-    { id: 'media-v1', name: 'Broadcast Production Suite', vertical: 'media', description: 'Real-time creative concept to rights-cleared production breakdown.', version: '1.0.0', tags: ['broadcast'], agentTeam: ['IRIS', 'AURORA', 'ATLAS', 'BOLT', 'GRAPHICS'] },
+    { id: 'finance-v1', name: 'Financial Analysis Suite', vertical: 'finance', description: 'Institutional research, risk assessment, and compliance-aware recommendations.', version: '1.0.0', tags: ['sox', 'mifid'], agentTeam: ['kruled', 'kstrigd', 'kdocsd', 'COMPASS', 'kexecd'] },
+    { id: 'healthcare-v1', name: 'Clinical Decision Support', vertical: 'healthcare', description: 'HIPAA-aware differential diagnosis and treatment recommendation engine.', version: '1.0.0', tags: ['hipaa'], agentTeam: ['kruled', 'kstrigd', 'kdocsd', 'SENTINEL', 'HARBOR'] },
+    { id: 'media-v1', name: 'Broadcast Production Suite', vertical: 'media', description: 'Real-time creative concept to rights-cleared production breakdown.', version: '1.0.0', tags: ['broadcast'], agentTeam: ['ksignd', 'kuid', 'ATLAS', 'kbuildd', 'GRAPHICS'] },
 ];

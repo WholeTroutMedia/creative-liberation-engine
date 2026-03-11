@@ -1,6 +1,6 @@
 /**
  * genkitFlowBuilder — Meta Flow: Generate New Genkit Flows
- * ARCH + CODEX agents | KEEPER hive
+ * ARCH + CODEX agents | kstated hive
  *
  * Route: POST /api/genkitFlowBuilder
  * Called by: nas-watcher daemon for genkit-flows workstream tasks

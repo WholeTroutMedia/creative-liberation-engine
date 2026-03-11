@@ -1,5 +1,5 @@
 {
-    "name": "@inception/sensor-mesh",
+    "name": "@cle/sensor-mesh",
     "version": "1.0.0",
     "description": "ANTITRUST — Living Sensor Mesh. Sovereign biometric, vision, and motion data ingestion for the Creative Liberation Engine.",
     "main": "dist/index.js",
@@ -11,7 +11,7 @@
         "test": "vitest run",
         "type-check": "tsc --noEmit"
     },
-    "author": "WholeTrout Media",
+    "author": "CLE Media",
     "license": "ISC",
     "dependencies": {
         "@modelcontextprotocol/sdk": "^1.27.1",

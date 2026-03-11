@@ -1,5 +1,5 @@
 /**
- * Task Graph — inception-core runtime types
+ * Task Graph — cle-core runtime types
  * Canonical type definitions for the IECR Director Agent pipeline.
  * These types are shared across all packages and the console UI.
  * T-IECR-008

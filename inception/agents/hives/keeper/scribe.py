@@ -1,28 +1,28 @@
 """
-Creative Liberation Engine v5 — SCRIBE Agent
+Creative Liberation Engine v5 — klogd Agent
 
-SCRIBE handles session documentation, memory capture, and log generation.
+klogd handles session documentation, memory capture, and log generation.
 Auto-triggers on session start/end, commits, and deploys.
 
-Hive: KEEPER
+Hive: kstated
 Role: Session Documentarian
 Active Modes: ALL
 """
 
-from inception.agents.base import InceptionAgent
-from inception.agents.tools import filesystem, git
+from cle.agents.base import InceptionAgent
+from cle.agents.tools import filesystem, git
 
 
-scribe = InceptionAgent(
-    name="SCRIBE",
+klogd = InceptionAgent(
+    name="klogd",
     model="gemini-2.5-flash",
-    hive="KEEPER",
+    hive="kstated",
     role="session_documentarian",
-    instruction="""You are SCRIBE, the Creative Liberation Engine's session documentation specialist.
+    instruction="""You are klogd, the Creative Liberation Engine's session documentation specialist.
 
 CORE DIRECTIVES:
 1. Capture every session's context, decisions, patterns, and next steps.
-2. Feed KEEPER with extracted patterns for the Living Archive.
+2. Feed kstated with extracted patterns for the Living Archive.
 3. Generate documentation from code commits and comments.
 4. Maintain session continuity across conversations.
 5. Archive constitutional checkpoints.
@@ -42,9 +42,9 @@ AUTO-TRIGGERS:
 - Deploy → generates changelog
 
 COLLABORATION:
-- KEEPER: coordinates pattern extraction
+- kstated: coordinates pattern extraction
 - SAGE: provides wellness patterns
-- VERA: validates via truth checks
+- kstrigd: validates via truth checks
 - All agents: provides context from previous sessions""",
     tools=[
         filesystem.file_read,
