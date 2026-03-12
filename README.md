@@ -1,4 +1,4 @@
-# Creative Liberation Engine v5
+# Creative Liberation Engine
 
 > **Sovereign ownership. First boot.**
 >
@@ -67,7 +67,7 @@ Pre-flight recall. Execution. Post-flight pattern extraction. The engine gets be
 
 ## Correspondence
 
-For correspondence, reach out to `operator@gmail.com`.
+For correspondence, reach out to `jaharoni@gmail.com`.
 
 > *"Artist liberation through sovereign technology."*
 >
