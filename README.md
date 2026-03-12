@@ -1,4 +1,4 @@
-# Creative Liberation Engine v5
+# Creative Liberation Engine
 
 > **Sovereign ownership. First boot.**
 >
