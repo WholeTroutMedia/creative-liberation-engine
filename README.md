@@ -34,7 +34,8 @@ In a second terminal:
 pnpm run genkit:ui     # Opens http://localhost:4000 — explore the flows
 ```
 
-**→ Full walkthrough:** [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md)
+**→ Full walkthrough:** [docs/GETTING-STARTED.md](docs/GETTING-STARTED.md)  
+**→ Hardware & deployment:** [docs/DEPLOYMENT-TOPOLOGIES.md](docs/DEPLOYMENT-TOPOLOGIES.md) — single machine, laptop, network mesh, cloud
 
 ---
 

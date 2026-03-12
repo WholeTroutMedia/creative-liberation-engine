@@ -81,4 +81,5 @@ Open **http://localhost:4000**. Run flows. Inspect prompts and responses. Find w
 
 ## Next steps
 
-Explore the flows. Read the Constitution. The rest you discover.
+- **Hardware & deployment** — Single machine, laptop, network mesh, cloud: [DEPLOYMENT-TOPOLOGIES.md](DEPLOYMENT-TOPOLOGIES.md)
+- Explore the flows. Read the Constitution. The rest you discover.
