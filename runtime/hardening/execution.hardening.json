@@ -1,0 +1,90 @@
+{
+  "helixId": "helix-a-execution",
+  "status": "validated",
+  "statusReason": "All 5 controls successfully validated with active integration test evidence.",
+  "lastValidated": "2026-05-27T13:56:00Z",
+  "validatedBy": "Antigravity Agent",
+  "controls": {
+    "dispatchContract": {
+      "declared": true,
+      "validated": true,
+      "lastTestedAt": "2026-05-27T13:46:00Z",
+      "testCommand": "node tests/e2e-validation.test.mjs",
+      "notes": "Route-to-Composition consistency and upstream mapping verified successfully."
+    },
+    "idempotency": {
+      "declared": true,
+      "validated": true,
+      "lastTestedAt": "2026-05-27T13:56:00Z",
+      "testCommand": "node tests/integration-hardening.test.mjs",
+      "notes": "Duplicate execution caching verified."
+    },
+    "retryPolicy": {
+      "declared": true,
+      "validated": true,
+      "lastTestedAt": "2026-05-27T13:56:00Z",
+      "testCommand": "node tests/integration-hardening.test.mjs",
+      "notes": "Transient error recovery retries validated."
+    },
+    "backpressure": {
+      "declared": true,
+      "validated": true,
+      "lastTestedAt": "2026-05-27T13:56:00Z",
+      "testCommand": "node tests/integration-hardening.test.mjs",
+      "notes": "Fast-failing under queue saturation validated."
+    },
+    "resumeRecovery": {
+      "declared": true,
+      "validated": true,
+      "lastTestedAt": "2026-05-27T13:56:00Z",
+      "testCommand": "node tests/integration-hardening.test.mjs",
+      "notes": "State recovery from checkpoints verified."
+    }
+  },
+  "evidence": [
+    {
+      "controlId": "dispatchContract",
+      "evidenceId": "ev_dispatchcontract_01",
+      "timestamp": "2026-05-27T13:46:00Z",
+      "description": "PASSED - Verified route manifest services match composite dependencies and upstream configs exactly."
+    },
+    {
+      "controlId": "idempotency",
+      "evidenceId": "ev_idem_01",
+      "timestamp": "2026-05-27T13:56:00Z",
+      "description": "PASSED - Verified duplicate taskId caching in memory store."
+    },
+    {
+      "controlId": "retryPolicy",
+      "evidenceId": "ev_retry_01",
+      "timestamp": "2026-05-27T13:56:00Z",
+      "description": "PASSED - Verified sequential retries on flakey executions."
+    },
+    {
+      "controlId": "backpressure",
+      "evidenceId": "ev_backpressure_01",
+      "timestamp": "2026-05-27T13:56:00Z",
+      "description": "PASSED - Verified HTTP 429 backpressure triggering under heavy queues."
+    },
+    {
+      "controlId": "resumeRecovery",
+      "evidenceId": "ev_resume_01",
+      "timestamp": "2026-05-27T13:56:00Z",
+      "description": "PASSED - Verified state resumption from checkpoint parameters."
+    }
+  ],
+  "validationHistory": [
+    {
+      "status": "implementing",
+      "timestamp": "2026-05-27T13:46:00Z",
+      "justification": "Validated the dispatchContract control using the e2e-validation test suite.",
+      "operator": "Antigravity Agent"
+    },
+    {
+      "status": "validated",
+      "timestamp": "2026-05-27T13:56:00Z",
+      "justification": "Fully validated remaining 4 execution controls using the integration-hardening test suite.",
+      "operator": "Antigravity Agent"
+    }
+  ]
+}

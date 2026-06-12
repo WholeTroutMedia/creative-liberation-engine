@@ -1,0 +1,732 @@
+{
+    "version": "5.0.0",
+    "updatedAt": "2026-03-07T07:35:00.000Z",
+    "domains": {
+        "memory": [
+            {
+                "id": "chromadb-mcp",
+                "name": "ChromaDB MCP",
+                "domain": "memory",
+                "description": "Semantic vector search and storage â€” the Living Archive backend",
+                "keywords": [
+                    "remember",
+                    "recall",
+                    "memory",
+                    "knowledge",
+                    "archive",
+                    "search",
+                    "vector",
+                    "embed",
+                    "chroma",
+                    "store",
+                    "retrieve",
+                    "past",
+                    "history",
+                    "pattern"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": false
+            },
+            {
+                "id": "github-memory-mcp",
+                "name": "GitHub Memory MCP",
+                "domain": "memory",
+                "description": "Persistent memory stored as GitHub issues/gists for multi-session recall",
+                "keywords": [
+                    "github memory",
+                    "persistent",
+                    "cross-session",
+                    "gist",
+                    "issue memory",
+                    "long-term"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": false
+            },
+            {
+                "id": "shard-v2-mcp",
+                "name": "SHARD v2 MCP",
+                "domain": "memory",
+                "description": "Memory consolidation, dream cycles, and KV compaction",
+                "keywords": [
+                    "shard",
+                    "memory",
+                    "compaction",
+                    "dream cycle",
+                    "consolidate",
+                    "compress",
+                    "kv",
+                    "redis"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": false,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/shard-v2/dist/mcp-server.js"
+                ]
+            }
+        ],
+        "browser": [
+            {
+                "id": "cle-browser-mcp",
+                "name": "CLE Browser MCP",
+                "domain": "browser",
+                "description": "Sovereign Playwright-native browser â€” navigate, interact, extract, screenshot",
+                "keywords": [
+                    "browse",
+                    "browser",
+                    "navigate",
+                    "click",
+                    "scrape",
+                    "screenshot",
+                    "page",
+                    "web",
+                    "url",
+                    "search",
+                    "playwright",
+                    "comet",
+                    "extract",
+                    "html",
+                    "dom"
+                ],
+                "alwaysOn": false,
+                "priority": 1,
+                "enabled": true
+            },
+            {
+                "id": "firecrawl-mcp",
+                "name": "Firecrawl MCP",
+                "domain": "browser",
+                "description": "Standardized web layer for scraping, crawling, and extracting markdown from web pages",
+                "keywords": [
+                    "firecrawl",
+                    "scrape",
+                    "crawl",
+                    "markdown",
+                    "extract",
+                    "web",
+                    "spider"
+                ],
+                "alwaysOn": true,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@mendable/firecrawl-mcp-server"
+                ]
+            },
+            {
+                "id": "perplexity-mcp",
+                "name": "Perplexity MCP",
+                "domain": "browser",
+                "description": "Live web research via Perplexity Sonar â€” cited answers, real-time data",
+                "keywords": [
+                    "research",
+                    "perplexity",
+                    "sonar",
+                    "live web",
+                    "current",
+                    "news",
+                    "latest",
+                    "fact-check",
+                    "cite",
+                    "sources",
+                    "2025",
+                    "2026"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true
+            },
+            {
+                "id": "playwright-mcp",
+                "name": "Playwright MCP",
+                "domain": "browser",
+                "description": "Official Playwright MCP Server for dynamic, agentic browser automation",
+                "keywords": [
+                    "browser",
+                    "browse",
+                    "playwright",
+                    "navigate",
+                    "click",
+                    "screenshot",
+                    "scrape",
+                    "interact"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-playwright"
+                ]
+            }
+        ],
+        "cloud": [
+            {
+                "id": "cloud-run-mcp",
+                "name": "Cloud Run MCP",
+                "domain": "cloud",
+                "description": "Deploy and manage Cloud Run services â€” build, push, deploy, rollback",
+                "keywords": [
+                    "cloud run",
+                    "deploy",
+                    "container",
+                    "docker",
+                    "gcr",
+                    "artifact registry",
+                    "service",
+                    "production",
+                    "rollback",
+                    "scale",
+                    "gcp",
+                    "google cloud"
+                ],
+                "alwaysOn": false,
+                "priority": 1,
+                "enabled": true
+            },
+            {
+                "id": "aws-mcp",
+                "name": "AWS MCP Server",
+                "domain": "cloud",
+                "description": "Official AWS MCP Server for authenticated provisioning and management of cloud infrastructure",
+                "keywords": [
+                    "aws",
+                    "amazon",
+                    "cloud",
+                    "infrastructure",
+                    "ec2",
+                    "s3",
+                    "lambda",
+                    "provision"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@aws/mcp-server-aws"
+                ]
+            },
+            {
+                "id": "firebase-mcp",
+                "name": "Firebase MCP",
+                "domain": "cloud",
+                "description": "Firebase project management â€” Firestore, Auth, Storage, Hosting",
+                "keywords": [
+                    "firebase",
+                    "firestore",
+                    "auth",
+                    "storage",
+                    "hosting",
+                    "functions",
+                    "firebase app"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true
+            },
+            {
+                "id": "bigquery-mcp",
+                "name": "BigQuery MCP",
+                "domain": "cloud",
+                "description": "Execute SQL queries on BigQuery â€” analytics, data pipelines, reporting",
+                "keywords": [
+                    "bigquery",
+                    "sql",
+                    "query",
+                    "analytics",
+                    "data warehouse",
+                    "dataset",
+                    "table",
+                    "report",
+                    "aggregate"
+                ],
+                "alwaysOn": false,
+                "priority": 3,
+                "enabled": true
+            },
+            {
+                "id": "cloud-logging-mcp",
+                "name": "Cloud Logging MCP",
+                "domain": "cloud",
+                "description": "Read and filter Google Cloud logs â€” debug production, trace errors",
+                "keywords": [
+                    "logs",
+                    "logging",
+                    "cloud logging",
+                    "stackdriver",
+                    "error logs",
+                    "trace",
+                    "debug production",
+                    "gcp logs"
+                ],
+                "alwaysOn": false,
+                "priority": 4,
+                "enabled": true
+            },
+            {
+                "id": "compute-mcp",
+                "name": "Compute MCP",
+                "domain": "cloud",
+                "description": "Manage Compute Engine VMs â€” create, start, stop, resize instances",
+                "keywords": [
+                    "compute engine",
+                    "vm",
+                    "virtual machine",
+                    "instance",
+                    "gce",
+                    "machine type",
+                    "disk",
+                    "zone"
+                ],
+                "alwaysOn": false,
+                "priority": 5,
+                "enabled": true
+            }
+        ],
+        "design": [
+            {
+                "id": "pencil-mcp",
+                "name": "Pencil MCP",
+                "domain": "design",
+                "description": "Sovereign generative UI and local design-to-canvas orchestration via OpenPencil",
+                "keywords": [
+                    "pencil",
+                    "design",
+                    "canvas",
+                    "ui",
+                    "generative",
+                    "mockup"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "sse",
+                "url": "http://122.0.3.1:5057/mcp"
+            },
+            {
+                "id": "penpot-mcp",
+                "name": "Penpot Design MCP",
+                "domain": "design",
+                "description": "Read and extract elements from Penpot design files",
+                "keywords": [
+                    "penpot",
+                    "design",
+                    "vector",
+                    "layer",
+                    "mockup",
+                    "shape",
+                    "export",
+                    "svg"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "sse",
+                "url": "http://122.0.3.1:4401/sse"
+            },
+            {
+                "id": "figma-mcp",
+                "name": "Figma Dev Mode MCP",
+                "domain": "design",
+                "description": "Pull live Figma specs â€” tokens, components, layouts, assets, dev mode data",
+                "keywords": [
+                    "figma",
+                    "design",
+                    "component",
+                    "token",
+                    "frame",
+                    "layout",
+                    "prototype",
+                    "figma file",
+                    "design system",
+                    "spec"
+                ],
+                "alwaysOn": false,
+                "priority": 1,
+                "enabled": true
+            },
+            {
+                "id": "stitch-mcp",
+                "name": "Stitch MCP (Google Stitch)",
+                "domain": "design",
+                "description": "Official Google Stitch MCP for UI/code from prompts — https://stitch.withgoogle.com/docs/mcp/setup. Complements in-repo Genkit POST /stitch.",
+                "keywords": [
+                    "stitch",
+                    "google stitch",
+                    "generate ui",
+                    "screen",
+                    "mockup",
+                    "wireframe",
+                    "ui generation",
+                    "design prompt",
+                    "generate screen"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true
+            },
+            {
+                "id": "cle-design-ingest",
+                "name": "Design Ingest MCP",
+                "domain": "design",
+                "description": "Multi-Source Pattern Extraction Pipeline (Framer, Mobbin, Vision).",
+                "keywords": [
+                    "design",
+                    "extract",
+                    "framer",
+                    "mobbin",
+                    "vision",
+                    "reconstruct",
+                    "ingest",
+                    "rag",
+                    "react"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "pnpm",
+                "args": [
+                    "--filter",
+                    "@wholetrout/design-ingest",
+                    "exec",
+                    "node",
+                    "dist/mcp-server.js"
+                ]
+            }
+        ],
+        "data": [
+            {
+                "id": "firestore-mcp",
+                "name": "Firestore MCP",
+                "domain": "data",
+                "description": "Read/write Firestore documents â€” CRUD operations on any collection",
+                "keywords": [
+                    "firestore",
+                    "document",
+                    "collection",
+                    "nosql",
+                    "database",
+                    "read document",
+                    "write document",
+                    "query"
+                ],
+                "alwaysOn": false,
+                "priority": 1,
+                "enabled": true
+            },
+            {
+                "id": "postgres-mcp",
+                "name": "Postgres MCP Server",
+                "domain": "data",
+                "description": "Official PostgreSQL MCP Server for querying and managing databases",
+                "keywords": [
+                    "postgres",
+                    "postgresql",
+                    "sql",
+                    "query",
+                    "database",
+                    "table",
+                    "schema"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-postgres",
+                    "--connection-string",
+                    "postgresql://cle_user:cle_secure_pass@122.0.3.1:5432/cle_db"
+                ]
+            }
+        ],
+        "media": [
+            {
+                "id": "cle-spatial-visionos",
+                "name": "NEXUS Spatial Workspace MCP",
+                "domain": "media",
+                "description": "Spatial awareness, coordinate synchronization, and environmental boundaries.",
+                "keywords": [
+                    "spatial",
+                    "visionos",
+                    "coordinates",
+                    "headPosition",
+                    "eyeVector",
+                    "boundaries",
+                    "workspace",
+                    "layout",
+                    "physical",
+                    "sync",
+                    "nexus"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": false,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/spatial-visionos/dist/mcp-server.js"
+                ]
+            }
+        ],
+        "infra": [],
+        "utilities": [
+            {
+                "id": "toolbox-mcp",
+                "name": "CLE Toolbox MCP",
+                "domain": "utilities",
+                "description": "Pure TS utility functions â€” media, data, design, dev, web, security helpers",
+                "keywords": [
+                    "convert",
+                    "format",
+                    "optimize",
+                    "encode",
+                    "generate",
+                    "utility",
+                    "tool",
+                    "transform",
+                    "parse",
+                    "hash",
+                    "slug",
+                    "color",
+                    "palette",
+                    "contrast",
+                    "mime",
+                    "base64",
+                    "password",
+                    "mask",
+                    "svg"
+                ],
+                "alwaysOn": false,
+                "priority": 1,
+                "enabled": true
+            },
+            {
+                "id": "n8n-bridge-mcp",
+                "name": "n8n Bridge MCP",
+                "domain": "utilities",
+                "description": "Integration layer for n8n workflow automation â€” trigger workflows remotely from the Creative Liberation Engine",
+                "keywords": [
+                    "n8n",
+                    "workflow",
+                    "automation",
+                    "trigger",
+                    "webhook",
+                    "bridge",
+                    "orchestration",
+                    "execute"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": false,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/n8n-bridge/dist/mcp-server.js"
+                ]
+            },
+            {
+                "id": "skills-mcp",
+                "name": "Skills Library MCP",
+                "domain": "utilities",
+                "description": "Agent Skills-as-a-Service integration â€” dynamically load, search, and manage capabilities",
+                "keywords": [
+                    "skill",
+                    "capabilities",
+                    "cowork",
+                    "registry",
+                    "load",
+                    "search",
+                    "agent"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/skills/dist/mcp-server.js"
+                ]
+            },
+            {
+                "id": "home-assistant-mcp",
+                "name": "Home Assistant MCP",
+                "domain": "utilities",
+                "description": "Official Home Assistant MCP Server for smart home device discovery, status queries, and commands",
+                "keywords": [
+                    "home assistant",
+                    "home",
+                    "assistant",
+                    "hass",
+                    "device",
+                    "switch",
+                    "light",
+                    "sensor",
+                    "climate",
+                    "smart home",
+                    "automation",
+                    "trigger",
+                    "command"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-homeassistant"
+                ],
+                "env": {
+                    "HOMEASSISTANT_URL": "${HASS_URL}",
+                    "HOMEASSISTANT_API_TOKEN": "${HASS_TOKEN}"
+                }
+            }
+        ],
+        "general": [
+            {
+                "id": "cle-sensor-mesh",
+                "name": "ANTITRUST Sensor Mesh MCP",
+                "domain": "utilities",
+                "description": "Biometric, vision, and motion data ingestion from the physical environment.",
+                "keywords": [
+                    "sensor",
+                    "mesh",
+                    "biometric",
+                    "zigsim",
+                    "vision",
+                    "motion",
+                    "udp",
+                    "read_biometrics",
+                    "start_mirror",
+                    "face",
+                    "blendshapes"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/sensor-mesh/dist/mcp-server.js"
+                ]
+            },
+            {
+                "id": "cle-orchestrator",
+                "name": "CLE Orchestrator MCP",
+                "domain": "general",
+                "description": "Access the internal Event Bus and Agent Discovery Cards.",
+                "keywords": [
+                    "event_bus",
+                    "publish",
+                    "agent",
+                    "discovery",
+                    "card",
+                    "orchestrator",
+                    "routing"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/orchestrator/dist/mcp-server.js"
+                ]
+            },
+            {
+                "id": "workspace-mcp",
+                "name": "Google Workspace MCP",
+                "domain": "general",
+                "description": "Google Takeover implementation â€” read/write Calendar, Gmail, Drive, Docs directly",
+                "keywords": [
+                    "google",
+                    "workspace",
+                    "gmail",
+                    "drive",
+                    "docs",
+                    "sheets",
+                    "calendar",
+                    "email",
+                    "calendar",
+                    "event",
+                    "document",
+                    "file",
+                    "gsuite"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "uv",
+                "args": [
+                    "run",
+                    "main.py"
+                ]
+            },
+            {
+                "id": "agent-spawner-mcp",
+                "name": "Agent Spawner MCP",
+                "domain": "general",
+                "description": "Self-replication and horizontal scaling layer â€” dynamically deploy new agents",
+                "keywords": [
+                    "spawn",
+                    "create",
+                    "deploy",
+                    "new agent",
+                    "self-replication",
+                    "scale",
+                    "manifest"
+                ],
+                "alwaysOn": true,
+                "priority": 1,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "node",
+                "args": [
+                    "/app/packages/agent-spawner/dist/mcp-server.js"
+                ]
+            },
+            {
+                "id": "github-mcp",
+                "name": "GitHub MCP Server",
+                "domain": "general",
+                "description": "Official GitHub MCP Server for repository operations, pull requests, issues, and gists",
+                "keywords": [
+                    "github",
+                    "git",
+                    "repo",
+                    "pull request",
+                    "pr",
+                    "issue",
+                    "gist",
+                    "commit"
+                ],
+                "alwaysOn": false,
+                "priority": 2,
+                "enabled": true,
+                "transport": "stdio",
+                "command": "npx",
+                "args": [
+                    "-y",
+                    "@modelcontextprotocol/server-github"
+                ]
+            }
+        ]
+    }
+}

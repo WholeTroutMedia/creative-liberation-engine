@@ -1,0 +1,19 @@
+{
+  "name": "@cle/deviced",
+  "version": "2.0.3",
+  "description": "Aegis-Sense Native Discovery Daemon Interface",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "mcp:start": "node dist/mcp_server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}

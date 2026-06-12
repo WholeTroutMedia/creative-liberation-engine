@@ -1,0 +1,4 @@
+# Flipboard Sentinel
+.env
+node_modules/
+dist/

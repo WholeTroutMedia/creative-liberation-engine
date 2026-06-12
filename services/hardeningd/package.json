@@ -1,0 +1,22 @@
+{
+  "name": "@cle/hardeningd",
+  "version": "2.0.3",
+  "type": "module",
+  "description": "Sovereign Hardening Audit and Controls Validation Daemon",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pino": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}

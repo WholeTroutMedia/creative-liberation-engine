@@ -1,0 +1,432 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>AI</title>
+    <link>https://flipboard.com/@jaharoni/ai-hk2mtjn0z</link>
+    <atom:link href="https://flipboard.com/@jaharoni/ai-hk2mtjn0z.rss" rel="self" type="application/rss+xml"/>
+    <description/>
+    <generator>Flipboard</generator>
+    <item>
+      <title>Claude Just Gained an "Infinite" Context Window : Here is What It Means for Your Workflows</title>
+      <link>https://www.geeky-gadgets.com/claude-s-new-infinite-context-window-model/?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-emE9Rbp8TCK3T0SAiEylPw:a:4243649-1778154239</guid>
+      <pubDate>Thu, 07 May 2026 11:43:59 GMT</pubDate>
+      <description>Anthropic has introduced significant updates to Claude, expanding its capabilities to better support complex workflows and decision-making processes. …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/claudeai">Claude AI</category>
+      <category domain="https://flipboard.com/topic/claudecode">Claude Code</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/software">Software</category>
+      <author>Julian Horsey</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/geeky-gadgets.com/0b3d72f35ab63b7024a02038926eed129996ea68/_xlarge.jpeg" medium="image" type="image/jpeg" width="1280" height="720"/>
+    </item>
+    <item>
+      <title>Google is not building a consultancy. It is writing a licensing agreement. That may be the smarter play.</title>
+      <link>https://thenextweb.com/news/google-blackstone-kkr-omnibus-ai-licensing-private-equity?utm_source=flipboard&amp;utm_content=user/thenextweb</link>
+      <guid isPermaLink="false">flipboard-nXvltiurSu6th4x_4HUnIA:a:4243649-1778110342</guid>
+      <pubDate>Wed, 06 May 2026 23:32:22 GMT</pubDate>
+      <description>OpenAI built a ten billion dollar consulting company. Anthropic built a 1.5 billion dollar consulting company. Google is writing a licensing agreement. The difference in approach may determine which AI lab captures the largest new enterprise distribution channel to emerge since the birth of cloud …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/licensing">Licensing</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/privateequity">Private Equity</category>
+      <author>Alina Maria Stan</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/thenextweb.com/f9fef20e647252b32ccaa5e59f8663a6b654a89a/_large.jpeg" medium="image" type="image/jpeg" width="868" height="488"/>
+    </item>
+    <item>
+      <title>The AWS MCP Server is now generally available</title>
+      <link>https://aws.amazon.com/blogs/aws/the-aws-mcp-server-is-now-generally-available/?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-XQOpmyG1QsaMKuaBqFIDPg:a:4243649-1778109880</guid>
+      <pubDate>Wed, 06 May 2026 23:24:40 GMT</pubDate>
+      <description>I have been building with AI agents and MCP tools for a while now, and one question kept coming up: how do you give an agent real, authenticated …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/claudecode">Claude Code</category>
+      <category domain="https://flipboard.com/topic/claudeai">Claude AI</category>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/cloudcomputing">Cloud Computing</category>
+      <author>Sébastien Stormacq</author>
+      <response/>
+      <media:content url="https://d2908q01vomqb2.cloudfront.net/da4b9237bacccdf19c0760cab7aec4a8359010b0/2026/05/06/agent-toolkit-4-1-1260x625.png" medium="image" type="image/png" width="1260" height="625"/>
+    </item>
+    <item>
+      <title>Apple may have just made one of the most important new Siri announcements</title>
+      <link>https://9to5mac.com/2026/05/06/apple-may-have-just-made-one-of-the-most-important-new-siri-announcements/?utm_source=flipboard&amp;utm_content=user/9to5mac</link>
+      <guid isPermaLink="false">flipboard-7XWPjA-vSlSFHRbxl1nNBw:a:4243649-1778098049</guid>
+      <pubDate>Wed, 06 May 2026 20:07:29 GMT</pubDate>
+      <description>Apple’s painfully slow launch of the new Siri has become such a long-running saga, it seems to have all the makings of a movie – though probably not one we will see launch on Apple TV. The announcement at the start of this year that it will be powered by Google’s Gemini models finally gave us reason …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/appleintelligence">Apple Intelligence</category>
+      <category domain="https://flipboard.com/topic/googleworkspace">Google Workspace</category>
+      <category domain="https://flipboard.com/topic/googleflights">Google Flights</category>
+      <category domain="https://flipboard.com/topic/googlephotos">Google Photos</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <author>Ben Lovejoy</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/wp.com/e12fbf86b6ec004c4c2a32797be5be2c255b5d78/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="628"/>
+    </item>
+    <item>
+      <title>The promise and panic of Unity AI’s open beta rollout explained</title>
+      <link>https://www.creativebloq.com/3d/video-game-design/the-promise-and-panic-of-unity-ais-open-beta-rollout-explained?utm_source=flipboard&amp;utm_content=topic/books</link>
+      <guid isPermaLink="false">flipboard-_o72FbvYQj6RRy-zR2uf_A:a:4243649-1778097962</guid>
+      <pubDate>Wed, 06 May 2026 20:06:02 GMT</pubDate>
+      <description>A powerful tool or pipeline to 'AI slop' games? Unity AI, for use in Unity 6, launched in beta yesterday, and I’ve been mulling over what it all …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/entertainment">Entertainment</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/gamedevelopment">Game Development</category>
+      <category domain="https://flipboard.com/topic/unitygameengine">Unity (Game Engine)</category>
+      <author>Ian Dean</author>
+      <response/>
+      <media:content url="https://cdn.mos.cms.futurecdn.net/AdDt45pbXtab7GmkH4TmYD-1600-80.jpg" medium="image" type="image/jpeg" width="1600" height="900"/>
+    </item>
+    <item>
+      <title>AI evaluation startup Braintrust confirms breach, tells every customer to rotate sensitive keys</title>
+      <link>https://techcrunch.com/2026/05/06/ai-evaluation-startup-braintrust-confirms-breach-tells-every-customer-to-rotate-sensitive-keys/?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-8MBcjrFPQAqRSFt2fqvhaA:a:4243649-1778097853</guid>
+      <pubDate>Wed, 06 May 2026 20:04:13 GMT</pubDate>
+      <description>AI evaluation startup Braintrust has urged customers to revoke and replace their API keys after an earlier breach of customer secrets. According to an email sent to customers Monday and seen by TechCrunch, the startup confirmed “unauthorized access” in one of its Amazon Web Services (AWS) cloud …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/security">Security</category>
+      <category domain="https://flipboard.com/topic/amazonwebservices">Amazon Web Services</category>
+      <category domain="https://flipboard.com/topic/cloudcomputing">Cloud Computing</category>
+      <author>Lorenzo Franceschi-Bicchierai</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/techcrunch.com/a1f7df219d1f54db25be2b1bbf801e8193c85eca/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="900"/>
+    </item>
+    <item>
+      <title>Jensen Huang on why ‘agentic’ will rewire a $50 trillion economy: ‘operated by robots, managed by more robots, and the entire factory is a robot’</title>
+      <link>https://fortune.com/2026/05/06/jensen-huang-servicenow-bill-mcdermott-agentic-ai-robos/?utm_source=flipboard&amp;utm_content=topic/innovation</link>
+      <guid isPermaLink="false">flipboard-98mRsK1LTNyUMk7QW00Gog:a:4243649-1778097620</guid>
+      <pubDate>Wed, 06 May 2026 20:00:20 GMT</pubDate>
+      <description>Jensen Huang didn’t have to be in Las Vegas on Tuesday. He runs the most valuable publicly traded company in the world. His chips power virtually …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/agenticai">Agentic AI</category>
+      <category domain="https://flipboard.com/topic/jensenhuang">Jensen Huang</category>
+      <category domain="https://flipboard.com/topic/businesstechnology">Business Technology</category>
+      <category domain="https://flipboard.com/topic/enterprisetechnology">Enterprise Tech</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <author>Nick Lichtenberg</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/fortune.com/5a91781bd7ba1abc3a626953cb668edf97d1546c/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="600"/>
+    </item>
+    <item>
+      <title>Riverside: HD Podcast &amp; Video Software | Free Recording &amp; Editing</title>
+      <link>https://riverside.com/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-7uvOO1bwQayNqfp1jdsd4g:a:4243649-1778090440</guid>
+      <pubDate>Wed, 06 May 2026 18:00:40 GMT</pubDate>
+      <description>Create your best content yet. Riverside is the AI-powered platform that lets you record, edit, repurpose, and distribute studio-quality content as …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/website-files.com/54bd08c5de27efb09bd0418718960c16403fbcc6/_xlarge.png" medium="image" type="image/png" width="3840" height="2160"/>
+    </item>
+    <item>
+      <title>Magic Studio – Once UI</title>
+      <link>https://once-ui.com/magic-studio?ref=producthunt</link>
+      <guid isPermaLink="false">flipboard-VK1sfdeOSnK4T46D50LWqg:a:4243649-1778090017</guid>
+      <pubDate>Wed, 06 May 2026 17:53:37 GMT</pubDate>
+      <description>Magic Studio is a new-wave productized service based on Once UI: start your design and frontend studio today!</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/once-ui.com/edc4801e9935cfd1795fb39a9d9a610d038c69f3/_xlarge.jpeg" medium="image" type="image/jpeg" width="1920" height="1080"/>
+    </item>
+    <item>
+      <title>'Forward deployed AI accelerator' is the latest job title of the AI era. It pays up to $198k a year.</title>
+      <link>https://www.businessinsider.com/stripe-forward-deployed-ai-accelerator-2026-5?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-enFWD4mTQ9WBgZkx4tyGtw:a:4243649-1778062290</guid>
+      <pubDate>Wed, 06 May 2026 10:11:30 GMT</pubDate>
+      <description>Stripe just coined a new job title for the AI age. Loading audio narration... The payments processing company is now hiring for a "Forward Deployed AI Accelerator" on its marketing team. The individual will embed within the workforce, teaching marketers to make "AI the default mode." "Marketers are …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author>Henry Chandonnet</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/insider.com/68751bff9e762986bc15d603d46445a85594d206/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="600"/>
+    </item>
+    <item>
+      <title>Maket | AI-Powered Floor Plan Creation</title>
+      <link>https://www.maket.ai/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-Iy8voNVnROOyNW-1lZpubA:a:4243649-1778061929</guid>
+      <pubDate>Wed, 06 May 2026 10:05:29 GMT</pubDate>
+      <description>Maket uses generative AI so homeowners, architects, and builders can quickly design, plan, and visualize residential projects in just a few simple …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/framerusercontent.com/4c791d0190e8f38b7d005ad4b2ad15690c50e8d7/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="630"/>
+    </item>
+    <item>
+      <title/>
+      <link>https://x.com/antpalkin/status/2046654122892403188?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-UdxqyyUsRtuy6YYl82ATPQ:a:4243649-1778061627</guid>
+      <pubDate>Wed, 06 May 2026 10:00:27 GMT</pubDate>
+      <description/>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+    </item>
+    <item>
+      <title>Open Design - Open Source Claude Design! Fully Free AI Design System!</title>
+      <link>https://www.youtube.com/watch?v=8XcbyliBwc4</link>
+      <guid isPermaLink="false">flipboard-4AsmWDyuQSWKUaUgfjEaig:a:4243649-1778061407</guid>
+      <pubDate>Wed, 06 May 2026 09:56:47 GMT</pubDate>
+      <description>Open Design is the open-source alternative to Claude Design — and it completely changes how developers and designers build UI, prototypes, and full design systems using AI. 🔗 My Links: Sponsor a Video or Do a Demo of Your Product, Contact me: intheworldzofai@gmail.com 🔥 Become a Patron (Private Discord): https://patreon.com/WorldofAi 🧠 Follow me on Twitter: https://twitter.com/intheworldofai 🚨 Subscribe To The SECOND Channel: https://www.youtube.com/@UCYwLV1gDwzGbg7jXQ52bVnQ 👩🏻‍🏫 Learn to code with Scrimba – from fullstack to AI https://scrimba.com/?via=worldofai (20% OFF) 🚨 Subscribe To The FREE AI Newsletter For Regular AI Updates: https://intheworldofai.com/ 👾 Join the World of AI Discord! : https://discord.gg/NPf8FCn4cD Something coming soon :) https://www.skool.com/worldofai-automation [Must Watch]: Claude Code + Ollama = FULLY FREE AI Coding FOREVER! (Tutorial): https://youtu.be/mN2VUw5Fb3E?si=w8U-WHkeyobCIT0c Claude Code + OpenRouter = Free UNLIMITED AI Coding (No Local Setup): https://youtu.be/cq6GGKKZRJE Gemma 4 Is INCREDIBLE! Google's Open Model IS POWERFUL! (Fully Tested): https://youtu.be/KW5SFt3rgKo 📌 LINKS &amp; RESOURCES Website: https://open-design.ai/ Github Repo: https://github.com/nexu-io/open-design Node.js: https://nodejs.org/en/download In this video, I break down how Open Design works, why it’s blowing up, and how you can use it to generate stunning landing pages, pitch decks, mobile apps, and more… all without being locked into a single model or expensive subscription. Unlike Anthropic’s Claude Design, Open Design is local-first, BYOK (bring your own key), and fully extensible — meaning you can plug in tools like Claude Code, Codex, DeepSeek, and more as your design engine. We’ll also walk through: How Open Design uses skills + design systems to generate production-level UI Why the agent-based workflow feels like a real designer Real examples of landing pages, animated decks, and UI prototypes And how you can install and run it locally in minutes This is one of the most powerful open-source AI design tools right now… and it’s completely free. 🚀 ⏱️ Timestamps 0:00 - Introduction 0:39 - Claude Design Limitations 1:09 - Solution 2:12 - Output Quality 3:26 - How To Setup 5:00 - How To Use 8:00 - Demo 9:29 - Output 💡 Key Takeaways Open-source alternative to Claude Design Works with multiple AI models (not locked in) Generates real UI, decks, and design systems Local-first + deployable workflows Completely free to use 🚀 Subscribe for more AI tools, agents, and workflows! #AI #OpenDesign #ClaudeDesign #AItools #NoCode #WebDesign #AIDesign #Developers #Tech #ArtificialIntelligence</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+      <media:content url="https://i.ytimg.com/vi/8XcbyliBwc4/hqdefault.jpg" medium="image" type="image/jpeg" width="480" height="360"/>
+    </item>
+    <item>
+      <title>Zo Computer | Your Personal AI Cloud Computer</title>
+      <link>https://zo.computer/</link>
+      <guid isPermaLink="false">flipboard-qSj_RMTVSLGvQzk0Jb_QPg:a:4243649-1778061254</guid>
+      <pubDate>Wed, 06 May 2026 09:54:14 GMT</pubDate>
+      <description>Zo Computer Zo Computer Zo Computer Web, macOS, Windows, Linux A personal cloud server with AI. Text it instructions, schedule agents, host sites. Free …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author>Pieter Levels</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/zo.computer/ce01e63df0d7dcfc6fac5dc60dc910a7a7b6028e/_medium.jpeg" medium="image" type="image/jpeg" width="400" height="400"/>
+    </item>
+    <item>
+      <title>Hyperagent</title>
+      <link>https://www.hyperagent.com/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-VLmaOEozSp-bVEYn2IEpow:a:4243649-1778061133</guid>
+      <pubDate>Wed, 06 May 2026 09:52:13 GMT</pubDate>
+      <description>Hyperagent is the system of agents that does real work, learns how your organization operates, and deploys across your entire team.</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+      <media:content url="https://www.hyperagent.com/og-default.png" medium="image" type="image/png" width="2400" height="1260"/>
+    </item>
+    <item>
+      <title/>
+      <link>https://x.com/meta_alchemist/status/2051264391908344283?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-5JGkLOE1QcijYkZiaThlHA:a:4243649-1778061017</guid>
+      <pubDate>Wed, 06 May 2026 09:50:17 GMT</pubDate>
+      <description/>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author/>
+      <response/>
+    </item>
+    <item>
+      <title>Miami startup Subquadratic claims 1,000x AI efficiency gain with SubQ model; researchers demand independent proof.</title>
+      <link>https://venturebeat.com/technology/miami-startup-subquadratic-claims-1-000x-ai-efficiency-gain-with-subq-model-researchers-demand-independent-proof?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-OxMAZGmFTLSGjonp7IXOOQ:a:4243649-1778058329</guid>
+      <pubDate>Wed, 06 May 2026 09:05:29 GMT</pubDate>
+      <description>A little-known Miami-based startup called Subquadratic emerged from stealth on Tuesday with a sweeping claim: that it has built the first large language model to fully escape the mathematical constraint that has defined — and limited — every major AI system since 2017. The company claims its first …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/learning">Learning</category>
+      <category domain="https://flipboard.com/topic/startup">Startups</category>
+      <category domain="https://flipboard.com/topic/entrepreneurship">Entrepreneurship</category>
+      <author>Michael Nuñez</author>
+      <response/>
+      <media:content url="https://images.ctfassets.net/jdtwqhzvc2n1/1JuwghDCzBw4tsnuqJOGID/1f81154d6b90a8c9db9f43f807eac066/introducing-subq.jpg?w=800&amp;q=75" medium="image" width="800" height="451"/>
+    </item>
+    <item>
+      <title>We don't need more agents. We need a better system. So we built one.</title>
+      <link>https://www.augmentcode.com/blog/cosmos-now-in-public-preview?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-Fwajdf7hTSOoNa5PoqePdg:a:4243649-1778025008</guid>
+      <pubDate>Tue, 05 May 2026 23:50:08 GMT</pubDate>
+      <description>Today we're putting Augment Cosmos into public preview. Cosmos is the operating system for agentic software development: agents that run anywhere …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/software">Software</category>
+      <category domain="https://flipboard.com/topic/operatingsystems">Operating Systems</category>
+      <category domain="https://flipboard.com/topic/computerarchitecture">Computer Architecture</category>
+      <category domain="https://flipboard.com/topic/softwaredevelopment">Software Development</category>
+      <author>Vinay Perneti</author>
+      <response/>
+      <media:content url="https://cdn.sanity.io/images/oraw2u2c/production/dfcfd6effb2048f58e1ae4cf379506e7a6b04c24-1920x1280.png?w=1200&amp;h=630&amp;fit=crop&amp;auto=format" medium="image" width="1200" height="630"/>
+    </item>
+    <item>
+      <title>Cisco Releases Open Source Tool for AI Model Provenance</title>
+      <link>https://www.securityweek.com/cisco-releases-open-source-tool-for-ai-model-provenance/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-AE4tINUOSuyZQEJGKJ7ncQ:a:4243649-1778024930</guid>
+      <pubDate>Tue, 05 May 2026 23:48:50 GMT</pubDate>
+      <description>The new kit aims to address risks related to poisoned models, regulatory issues, supply chain integrity, and incident response.The post Cisco …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category/>
+      <author>Eduard Kovacs</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/securityweek.com/5fe5126075ebebc9ae793b5673ec2cf772469dc0/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="675"/>
+    </item>
+    <item>
+      <title>Anthropic is working on Orbit, its upcoming proactive assistant</title>
+      <link>https://www.testingcatalog.com/anthropic-is-working-on-orbit-its-upcoming-proactive-assistant/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-ZF0Aj_wVR2mjUaiUrN2tUw:a:4243649-1778024585</guid>
+      <pubDate>Tue, 05 May 2026 23:43:05 GMT</pubDate>
+      <description>Anthropic appears to be lining up a new proactive assistant called Orbit, with evidence pointing to an upcoming release. Across recent web and mobile …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/github">GitHub</category>
+      <category domain="https://flipboard.com/topic/claudecowork">Claude Cowork</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <author>Alexey Shabanov</author>
+      <response/>
+      <media:content url="https://storage.ghost.io/c/2a/1b/2a1b1782-8506-4d7d-bf53-ad3fb52e2a0f/content/images/2026/05/Claude-05-05-2026_01_42_AM--1-.jpg" medium="image" type="image/jpeg" width="2000" height="1028"/>
+    </item>
+    <item>
+      <title>The context window has been shattered: Subquadratic debuts a 12-million-token window</title>
+      <link>https://thenewstack.io/subquadratic-12-million-context-window/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-ZPTNqUDmQ_2nNVEsFpeO3w:a:4243649-1778024479</guid>
+      <pubDate>Tue, 05 May 2026 23:41:19 GMT</pubDate>
+      <description>Every frontier model in 2026 advertises a context window of at least a million tokens, but almost none of them are actually great at making use of …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/devops">DevOps</category>
+      <category domain="https://flipboard.com/topic/infrastructureascode">Infrastructure as Code</category>
+      <category domain="https://flipboard.com/topic/operationsmanagement">Operations Management</category>
+      <author>Frederic Lardinois</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/thenewstack.io/b71b9333c8d4d32da447aba02006ab2b62a9ead9/_large.png" medium="image" type="image/png" width="1024" height="567"/>
+    </item>
+    <item>
+      <title>n8n's MCP server can now build workflows!</title>
+      <link>https://blog.n8n.io/n8n-mcp-server/?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-EH1OaWlBRsyPr7mOB3S0ZA:a:4243649-1778024339</guid>
+      <pubDate>Tue, 05 May 2026 23:38:59 GMT</pubDate>
+      <description>Describe what you want from Claude, ChatGPT, or your IDE, and get a ready-to-run workflow in a few minutes, built directly in n8n. No more …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/claudecode">Claude Code</category>
+      <category domain="https://flipboard.com/topic/claudeai">Claude AI</category>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <author>Ophir Prusak</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/storage.ghost.io/ea0dcf96a68d6f2bceaeee1c9915673511a497ba/_xlarge.png" medium="image" type="image/png" width="1200" height="900"/>
+    </item>
+    <item>
+      <title>Alibaba's Metis agent cuts redundant AI tool calls from 98% to 2% — and gets more accurate doing it</title>
+      <link>https://venturebeat.com/orchestration/alibabas-metis-agent-cuts-redundant-ai-tool-calls-from-98-to-2-and-gets-more-accurate-doing-it?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-VE2eH_bDTB6Q9f26o-T3NQ:a:4243649-1778024252</guid>
+      <pubDate>Tue, 05 May 2026 23:37:32 GMT</pubDate>
+      <description>One of the key challenges of building effective AI agents is teaching them to choose between using external tools or relying on their internal knowledge. But large language models are often trained to blindly invoke tools, which causes latency bottlenecks, unnecessary API costs, and degraded …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <category domain="https://flipboard.com/topic/learning">Learning</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/aboriginalcanadians">Indigenous Canadians</category>
+      <category domain="https://flipboard.com/topic/consciousness">Consciousness</category>
+      <author>Ben Dickson</author>
+      <response/>
+      <media:content url="https://images.ctfassets.net/jdtwqhzvc2n1/5adrVJG12DsZYPv3bAT3Kk/786e22dcb26f295b11a3de9d91a97ac3/LLM_tool-use_abstention.jpg?w=800&amp;q=75" medium="image" width="800" height="500"/>
+    </item>
+    <item>
+      <title>Firecrawl is becoming AI’s default web layer.</title>
+      <link>https://thenextweb.com/news/firecrawl-ai-web-layer-agents?utm_source=flipboard&amp;utm_content=other</link>
+      <guid isPermaLink="false">flipboard-1S1FzXNJR9uudSjbr66dYw:a:4243649-1778021576</guid>
+      <pubDate>Tue, 05 May 2026 22:52:56 GMT</pubDate>
+      <description>Open source is a hard place to fake traction. You either solve a real problem developers keep hitting, or you don’t, and the GitHub graph tells the truth either way. Firecrawl’s tells a clear story. The project has more than 100,000 GitHub stars, the largest open source repo in its category. More …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <category domain="https://flipboard.com/topic/github">GitHub</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/software">Software</category>
+      <author>Will Jones</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/thenextweb.com/d82324a0e9219998c44b7e74f16584f2cc614fbf/_large.jpeg" medium="image" type="image/jpeg" width="868" height="488"/>
+    </item>
+    <item>
+      <title>CopilotKit raises $27M to help devs deploy app-native AI agents</title>
+      <link>https://techcrunch.com/2026/05/05/copilotkit-raises-27m-to-help-devs-deploy-app-native-ai-agents/?utm_source=flipboard&amp;utm_content=Techcrunch/magazine/Artificial+Intelligence+in+2023:+News+and+Updates</link>
+      <guid isPermaLink="false">flipboard-k2h1IiIHRSaP3NK_Ts2BvA:a:4243649-1778021503</guid>
+      <pubDate>Tue, 05 May 2026 22:51:43 GMT</pubDate>
+      <description>Many companies today provide AI simply as a chatbot inside their apps: You type in (or dictate) what you want it to do, and the AI bot goes and tries to do it. Still, the experience tends to feel clunky. A text-based UI doesn’t always translate to a smooth experience; for example, if you want to …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/startup">Startups</category>
+      <category domain="https://flipboard.com/topic/entrepreneurship">Entrepreneurship</category>
+      <category domain="https://flipboard.com/topic/techindustry">Tech Industry</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <author>Ram Iyer</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/techcrunch.com/08f60c6c1a53b2b18804076428b771dd32c8cf05/_xlarge.png" medium="image" type="image/png" width="1200" height="900"/>
+    </item>
+    <item>
+      <title>Sequoia-backed Astrocade raises $56 million to let everyone build games</title>
+      <link>https://fortune.com/2026/05/05/astrocade-raises-56-million-series-b-sequoia-video-games-platform-ali-amir-sadeghian/?utm_source=flipboard&amp;utm_content=topic/technology</link>
+      <guid isPermaLink="false">flipboard-y8uYNeeaRI-ANrlLBLHxLA:a:4243649-1778021328</guid>
+      <pubDate>Tue, 05 May 2026 22:48:48 GMT</pubDate>
+      <description>I’ve been playing this online dinosaur game called Apex Predator. It works much as you’d expect: You start off as a small, feathery compsognathus, and …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/startup">Startups</category>
+      <category domain="https://flipboard.com/topic/entrepreneurship">Entrepreneurship</category>
+      <category domain="https://flipboard.com/topic/techindustry">Tech Industry</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <author>Allie Garfinkle</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/fortune.com/15c494a2d30bd31e449529caf59fffd0606d7706/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="600"/>
+    </item>
+    <item>
+      <title>Exclusive: Nova Intelligence raises $31.5 million to bring agentic AI to SAP’s $89 billion migration wave</title>
+      <link>https://fortune.com/2026/05/05/exclusive-nova-intelligence-ai-sap-chemistry-emma-qian/?utm_source=flipboard&amp;utm_content=fortune/magazine/Business</link>
+      <guid isPermaLink="false">flipboard-NojfEVlyTueeI5oSJJVNKQ:a:4243649-1778021123</guid>
+      <pubDate>Tue, 05 May 2026 22:45:23 GMT</pubDate>
+      <description>An estimated 77% of the world’s transactions touch an SAP system at some point. And most of that code is decades old, written in a proprietary …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/sapse">SAP SE</category>
+      <category domain="https://flipboard.com/topic/capitalraising">Capital Raising</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <author>Lily Mae Lazarus</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/fortune.com/5b35684f82d8c33f37f3ba77489d756e7727c6e9/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="600"/>
+    </item>
+    <item>
+      <title>Wall Street's $1.5 billion plan to build the 'McKinsey of AI'</title>
+      <link>https://www.businessinsider.com/blackstone-anthropic-hellman-goldman-sachs-ai-joint-venture-consulting-2026-5?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-XgBfqbeRSjGgUElJobhmhg:a:4243649-1777991482</guid>
+      <pubDate>Tue, 05 May 2026 14:31:22 GMT</pubDate>
+      <description>Wall Street and Silicon Valley are betting that generative AI will kick off an Industrial Revolution-sized paradigm shift. And who do business leaders call when they need to make a change? Loading audio narration... Anthropic is teaming up with some of Wall Street's biggest investors for a $1.5 …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/artificialintelligence">Artificial Intelligence</category>
+      <category domain="https://flipboard.com/topic/business">Business</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/finance">Finance</category>
+      <author>Alex Nicoll, Reed Alexander</author>
+      <response/>
+      <media:content url="https://ic-cdn.flipboard.com/insider.com/d1dc75a80bf6b2993a96d046af1d905263c74f12/_xlarge.jpeg" medium="image" type="image/jpeg" width="1200" height="600"/>
+    </item>
+    <item>
+      <title>GitHub - nexu-io/open-design: 🎨 Local-first, open-source alternative to Anthropic's Claude Design. ⚡ 19 Skills · ✨ 71 brand-grade Design Systems 🖼 Generate web · desktop · mobile prototypes · slides · images · videos · HyperFrames 📦 Sandboxed preview · HTML/PDF/PPTX/MP4 export 🤖 Runs on Claude Code / Codex / Cursor / Gemini / OpenCode / Qwen / Copilot / Hermes / Kimi CLI.</title>
+      <link>https://github.com/nexu-io/open-design?utm_source=flipboard&amp;utm_content=jaharoni%2Fmagazine%2FAI</link>
+      <guid isPermaLink="false">flipboard-8yoEwBaqQJaI126wIJZ2BA:a:4243649-1777961387</guid>
+      <pubDate>Tue, 05 May 2026 06:09:47 GMT</pubDate>
+      <description>Open Design The open-source alternative to Claude Design. Local-first, web-deployable, BYOK at every layer — 16 coding-agent CLIs auto-detected on your …</description>
+      <source url="https://flipboard.com/@jaharoni/ai-hk2mtjn0z">AI</source>
+      <category domain="https://flipboard.com/topic/prototypes">Prototypes</category>
+      <category domain="https://flipboard.com/topic/technology">Technology</category>
+      <category domain="https://flipboard.com/topic/anthropic">Anthropic</category>
+      <category domain="https://flipboard.com/topic/databases">Databases</category>
+      <category domain="https://flipboard.com/topic/apps">Apps</category>
+      <author>nexu-io</author>
+      <response/>
+      <media:content url="https://repository-images.githubusercontent.com/1223170290/5eec4959-c821-4927-83fb-e904b5cbc396" medium="image" width="1280" height="640"/>
+    </item>
+  </channel>
+</rss>
