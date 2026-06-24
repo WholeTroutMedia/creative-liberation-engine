@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
+  },
+  "include": ["src/**/*"],
+  "references": [
+    { "path": "../packages/ouroboros" },
+    { "path": "../packages/model-arbitrage" },
+    { "path": "../packages/cle-core" }
+  ]
+}

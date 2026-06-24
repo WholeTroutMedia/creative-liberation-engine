@@ -1,0 +1,79 @@
+{
+  "version": "v6.0",
+  "service": "voice-fabric",
+  "routes": [
+    {
+      "routeId": "route_voice_transcribe",
+      "path": "/api/v1/voice/transcribe",
+      "method": "POST",
+      "owner": "IRIS",
+      "upstreamService": "voice-fabric",
+      "upstreamPath": "/api/v1/voice/transcribe",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 60000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "sessionId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_voice_command",
+      "path": "/api/v1/voice/command",
+      "method": "POST",
+      "owner": "IRIS",
+      "upstreamService": "voice-fabric",
+      "upstreamPath": "/api/v1/voice/command",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 30000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "intent", "routedAgent"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_voice_synthesize",
+      "path": "/api/v1/voice/synthesize",
+      "method": "POST",
+      "owner": "IRIS",
+      "upstreamService": "voice-fabric",
+      "upstreamPath": "/api/v1/voice/synthesize",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 30000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "latencyMs"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_voice_session",
+      "path": "/api/v1/voice/session/:sessionId",
+      "method": "GET",
+      "owner": "IRIS",
+      "upstreamService": "voice-fabric",
+      "upstreamPath": "/api/v1/voice/session/:sessionId",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_voice_health",
+      "path": "/api/v1/voice/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "voice-fabric",
+      "upstreamPath": "/api/v1/voice/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    }
+  ]
+}

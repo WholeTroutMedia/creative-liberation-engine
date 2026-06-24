@@ -1,0 +1,60 @@
+{
+  "source": "refero",
+  "displayName": "Refero Styles",
+  "description": "AI-native design reference library — 130K+ real product screens with structured metadata for agent-driven UI generation",
+  "url": "https://refero.design",
+  "mcpEndpoint": "refero-mcp",
+  "ideationId": "IE-IDX-0107",
+  "capabilities": {
+    "webScreens": 67000,
+    "iosScreens": 63000,
+    "userFlows": 10000,
+    "weeklyUpdates": true,
+    "figmaPlugin": true
+  },
+  "categories": [
+    "onboarding",
+    "paywalls",
+    "empty-states",
+    "settings",
+    "profiles",
+    "dashboards",
+    "navigation",
+    "search",
+    "notifications",
+    "authentication",
+    "checkout",
+    "landing-pages"
+  ],
+  "metadataPerScreen": [
+    "description",
+    "ux_patterns",
+    "ui_patterns",
+    "layout_structure",
+    "craft_rules",
+    "typography",
+    "color",
+    "spacing",
+    "motion"
+  ],
+  "agentIntegration": {
+    "skill": "npx skills add https://github.com/referodesign/refero_skill",
+    "supportedTools": [
+      "Claude Code",
+      "Cursor",
+      "Antigravity",
+      "Lovable",
+      "Codex",
+      "Manus"
+    ],
+    "authFlow": "browser-oauth",
+    "requiresPro": true
+  },
+  "pricing": {
+    "monthly": 17,
+    "annual": 10,
+    "lifetime": 250,
+    "currency": "USD"
+  },
+  "addedAt": "2026-05-02T17:57:00Z"
+}

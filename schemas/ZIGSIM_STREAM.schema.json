@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.ai/schemas/ZIGSIM_STREAM.schema.json",
+  "title": "ZIG SIM Stream Contract",
+  "description": "JSON schema for real-time UDP/TCP/WebSocket telemetry streams emitted by ZIG SIM client devices (smartphones, edge sensors). Tracks quaternions, touches, acceleration, gyroscopes, gravity, and battery metrics.",
+  "type": "object",
+  "required": [
+    "deviceId",
+    "timestamp",
+    "sensorData"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "pattern": "^zig_[a-zA-Z0-9_-]{3,64}$",
+      "description": "Unique identifier of the streaming sensor device."
+    },
+    "timestamp": {
+      "type": "number",
+      "description": "High-resolution epoch timestamp (in seconds or milliseconds) of the telemetry payload generation."
+    },
+    "sensorData": {
+      "type": "object",
+      "required": [
+        "quaternion",
+        "accel",
+        "gyro"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "quaternion": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z",
+            "w"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "description": "Imaginary X component of the device's rotation quaternion (attitude)."
+            },
+            "y": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "description": "Imaginary Y component of the device's rotation quaternion (attitude)."
+            },
+            "z": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "description": "Imaginary Z component of the device's rotation quaternion (attitude)."
+            },
+            "w": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "description": "Real W component of the device's rotation quaternion (attitude)."
+            }
+          }
+        },
+        "accel": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "description": "Linear acceleration along the device's local X-axis (in units of g)."
+            },
+            "y": {
+              "type": "number",
+              "description": "Linear acceleration along the device's local Y-axis (in units of g)."
+            },
+            "z": {
+              "type": "number",
+              "description": "Linear acceleration along the device's local Z-axis (in units of g)."
+            }
+          }
+        },
+        "gyro": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "description": "Angular velocity around the device's local X-axis (in radians per second)."
+            },
+            "y": {
+              "type": "number",
+              "description": "Angular velocity around the device's local Y-axis (in radians per second)."
+            },
+            "z": {
+              "type": "number",
+              "description": "Angular velocity around the device's local Z-axis (in radians per second)."
+            }
+          }
+        },
+        "gravity": {
+          "type": "object",
+          "required": [
+            "x",
+            "y",
+            "z"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "x": {
+              "type": "number",
+              "description": "Gravity vector component on the X-axis."
+            },
+            "y": {
+              "type": "number",
+              "description": "Gravity vector component on the Y-axis."
+            },
+            "z": {
+              "type": "number",
+              "description": "Gravity vector component on the Z-axis."
+            }
+          }
+        },
+        "compass": {
+          "type": "object",
+          "required": [
+            "compassHeading",
+            "magneticHeading"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "compassHeading": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 360.0,
+              "description": "Heading relative to geographic North in degrees."
+            },
+            "magneticHeading": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 360.0,
+              "description": "Heading relative to magnetic North in degrees."
+            }
+          }
+        },
+        "touches": {
+          "type": "array",
+          "description": "Active capacitive touches on the device's capacitive touch screen surface.",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "x",
+              "y",
+              "phase"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer",
+                "description": "Unique touch finger identifier assigned by the mobile OS."
+              },
+              "x": {
+                "type": "number",
+                "minimum": -1.0,
+                "maximum": 1.0,
+                "description": "Normalized X coordinate on the screen coordinate space (ranging from -1.0 left to 1.0 right)."
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1.0,
+                "maximum": 1.0,
+                "description": "Normalized Y coordinate on the screen coordinate space (ranging from -1.0 bottom to 1.0 top)."
+              },
+              "phase": {
+                "type": "string",
+                "enum": [
+                  "began",
+                  "moved",
+                  "stationary",
+                  "ended",
+                  "cancelled"
+                ],
+                "description": "The dynamic phase cycle of the touch gesture input."
+              },
+              "force": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "Amount of pressure applied to the screen (where supported by hardware)."
+              }
+            }
+          }
+        },
+        "micLevel": {
+          "type": "number",
+          "minimum": -160.0,
+          "maximum": 0.0,
+          "description": "Peak ambient microphone level recorded in decibels relative to full scale (dBFS)."
+        },
+        "gps": {
+          "type": "object",
+          "required": [
+            "latitude",
+            "longitude",
+            "altitude"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "latitude": {
+              "type": "number",
+              "minimum": -90.0,
+              "maximum": 90.0
+            },
+            "longitude": {
+              "type": "number",
+              "minimum": -180.0,
+              "maximum": 180.0
+            },
+            "altitude": {
+              "type": "number",
+              "description": "Altitude measured in meters relative to sea level."
+            }
+          }
+        },
+        "battery": {
+          "type": "object",
+          "required": [
+            "level",
+            "state"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "level": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "description": "Normalized remaining battery level (0.0 to 1.0)."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "unknown",
+                "unplugged",
+                "charging",
+                "full"
+              ],
+              "description": "Device battery charging state."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+name: Reset Admin Password
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.gitea/workflows/reset-admin.yml'
+  workflow_dispatch:
+    inputs:
+      new_password:
+        description: 'New admin password'
+        required: true
+        default: 'WholeTroutMedia!2026'
+
+jobs:
+  reset:
+    runs-on: [self-hosted, nas]
+    steps:
+      - name: Reset Forgejo admin password
+        run: |
+          docker exec -u git forgejo forgejo admin user change-password \
+            --username jaharoni \
+            --password "WholeTroutMedia!2026"
+
+      - name: Generate fresh API token
+        run: |
+          echo "=== FRESH TOKEN ==="
+          docker exec -u git forgejo forgejo admin user generate-access-token \
+            --username jaharoni \
+            --token-name "admin-$(date +%Y%m%d-%H%M)" \
+            --raw
+          echo "=== END TOKEN ==="

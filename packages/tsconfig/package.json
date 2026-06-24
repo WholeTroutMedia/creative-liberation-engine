@@ -1,0 +1,11 @@
+{
+  "name": "@cle/tsconfig",
+  "version": "2.0.3",
+  "private": true,
+  "description": "Shared TypeScript compiler configurations for Creative Liberation Engine V6 monorepo.",
+  "type": "module",
+  "files": [
+    "*.json"
+  ],
+  "capabilityId": "cap_tsconfig_shared"
+}

@@ -314,7 +314,7 @@
                 "priority": 1,
                 "enabled": true,
                 "transport": "sse",
-                "url": "http://122.0.3.1:5057/mcp"
+                "url": "http://127.0.0.1:5057/mcp"
             },
             {
                 "id": "penpot-mcp",
@@ -335,7 +335,7 @@
                 "priority": 1,
                 "enabled": true,
                 "transport": "sse",
-                "url": "http://122.0.3.1:4401/sse"
+                "url": "http://127.0.0.1:4401/sse"
             },
             {
                 "id": "figma-mcp",
@@ -451,7 +451,7 @@
                     "-y",
                     "@modelcontextprotocol/server-postgres",
                     "--connection-string",
-                    "postgresql://cle_user:cle_secure_pass@122.0.3.1:5432/cle_db"
+                    "postgresql://cle:cle_secure_pass@127.0.0.1:5432/cle"
                 ]
             }
         ],

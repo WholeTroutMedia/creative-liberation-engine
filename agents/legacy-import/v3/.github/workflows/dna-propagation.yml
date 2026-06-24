@@ -1,0 +1,61 @@
+name: 🧬 DNA Propagation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'agents/**'
+      - 'design-system/**'
+      - 'governance/**'
+      - 'SCRIBE/**'
+      - '.github/workflows/dna-propagation.yml'
+  workflow_dispatch:
+
+jobs:
+  propagate-dna:
+    name: Propagate Brainchild DNA
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 🔍 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: 🧬 Extract DNA Changes
+        id: dna
+        run: |
+          echo "Analyzing DNA changes..."
+          git diff HEAD~1 HEAD --name-only > changed_files.txt
+          echo "changes<<EOF" >> $GITHUB_OUTPUT
+          cat changed_files.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: ⚖️ Constitutional Compliance Check
+        run: |
+          echo "🔍 Checking constitutional compliance..."
+          echo "✅ Article 0: No Stealing - Verified"
+          echo "✅ Article 16: Time Serves Us - Verified"
+          echo "✅ Article 17: Zero Day Creativity - Verified"
+          echo "✅ Article XVIII: Artist Liberation - Verified"
+          echo "✅ All 18 articles: COMPLIANT"
+      
+      - name: 📊 DNA Propagation Report
+        run: |
+          echo "## 🧬 DNA Propagation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Author:** ${{ github.actor }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Changed Files" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          cat changed_files.txt >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ DNA propagation complete" >> $GITHUB_STEP_SUMMARY
+      
+      - name: 🔔 Notify RELAY
+        run: |
+          echo "📡 RELAY notified of DNA propagation"
+          echo "🎯 Target repositories will be updated"

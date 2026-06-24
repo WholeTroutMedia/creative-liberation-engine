@@ -1,0 +1,8 @@
+{
+  "id": "2328-3106",
+  "pid": 2328,
+  "reflectionServerUrl": "http://localhost:3106",
+  "timestamp": "2026-04-24T22:26:42.755Z",
+  "genkitVersion": "nodejs/1.29.0",
+  "reflectionApiSpecVersion": 1
+}

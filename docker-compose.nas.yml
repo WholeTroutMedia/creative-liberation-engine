@@ -1,0 +1,700 @@
+version: "3.9"
+
+networks:
+  cle-mesh:
+    external: true
+  penpot-net:
+    external: true
+
+services:
+
+  # ─── FORGE — Real-Time Asset Economy API ────────────────────────────────────
+  forge-api:
+    image: 127.0.0.1:5000/forge-api:latest
+    container_name: forge-api
+    build:
+      context: ./packages/forge
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4300:4300"
+    environment:
+      - PORT=4300
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+    networks:
+      - cle-mesh
+    healthcheck:
+      test: ["CMD", "true"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    labels:
+      - cle.service=forge-api
+      - cle.wave=33
+      - cle.helix=A
+
+  # ─── WIRE INGESTION MCP ─────────────────────────────────────────────────────
+  wire-ingestion-mcp:
+    image: 127.0.0.1:5000/wire-ingestion-mcp:latest
+    container_name: wire-ingestion-mcp
+    build:
+      context: ./packages/wire-ingestion-mcp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "4200:4200"
+    environment:
+      - NODE_ENV=production
+      - REDIS_URL=redis://redis:6379
+      - PORT=4200
+    networks:
+      - cle-mesh
+    healthcheck:
+      test: ["CMD", "true"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+    labels:
+      - cle.service=wire-ingestion-mcp
+      - cle.wave=33
+      - cle.helix=B
+
+  # ─── NEXUS BRIDGE — Rooms.xyz Spatial Workspace ─────────────────────────────
+  nexus-bridge:
+    image: 127.0.0.1:5000/nexus-bridge:latest
+    container_name: nexus-bridge
+    build:
+      context: ./services/nexus-bridge
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160/api/status
+      - DISPATCH_TASKS_URL=http://127.0.0.1:5160/api/tasks?status=queued
+      - FORGE_URL=http://forge-api:4300
+      - WIRE_URL=http://wire-ingestion-mcp:4200
+      - ROOMS_URL=https://rooms.xyz/
+    networks:
+      - cle-mesh
+    depends_on:
+      forge-api:
+        condition: service_healthy
+      wire-ingestion-mcp:
+        condition: service_started
+    labels:
+      - cle.service=nexus-bridge
+      - cle.wave=33
+      - cle.helix=C
+
+  # ─── PENPOT ─ Design tool + collaborative canvas ─────────────────────────────
+  penpot-frontend:
+    image: penpotapp/frontend:latest
+    container_name: penpot-frontend
+    restart: unless-stopped
+    ports:
+      - "9001:8080"
+    environment:
+      PENPOT_FLAGS: "enable-registration enable-login-with-password enable-smtp enable-prepl-server disable-email-verification"
+      PENPOT_SMTP_DEFAULT_FROM: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_DEFAULT_REPLY_TO: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_HOST: "smtp.gmail.com"
+      PENPOT_SMTP_PORT: 587
+      PENPOT_SMTP_USERNAME: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_PASSWORD: "${GMAIL_APP_PASSWORD}"
+      PENPOT_SMTP_TLS: "true"
+      PENPOT_SMTP_SSL: "false"
+    networks:
+      - cle-mesh
+    depends_on:
+      - penpot-backend
+      - penpot-exporter
+    labels:
+      - "com.cle.service=design-tool"
+      - "com.cle.component=penpot"
+
+  penpot-backend:
+    image: penpotapp/backend:latest
+    container_name: penpot-backend
+    restart: unless-stopped
+    volumes:
+      - penpot-data:/app/data
+    environment:
+      PENPOT_FLAGS: "enable-registration enable-login-with-password enable-smtp enable-prepl-server disable-email-verification"
+      PENPOT_SMTP_DEFAULT_FROM: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_DEFAULT_REPLY_TO: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_HOST: "smtp.gmail.com"
+      PENPOT_SMTP_PORT: 587
+      PENPOT_SMTP_USERNAME: "inquiries@creativeliberationengine.org"
+      PENPOT_SMTP_PASSWORD: "${GMAIL_APP_PASSWORD}"
+      PENPOT_SMTP_TLS: "true"
+      PENPOT_SMTP_SSL: "false"
+      PENPOT_DATABASE_URI: "postgresql://penpot-postgres/penpot"
+      PENPOT_DATABASE_USERNAME: penpot
+      PENPOT_DATABASE_PASSWORD: "${PENPOT_DB_PASSWORD:-penpot_secret}"
+      PENPOT_REDIS_URI: "redis://penpot-redis/0"
+      PENPOT_PUBLIC_URI: "http://127.0.0.1:9001"
+      PENPOT_STORAGE_BACKEND: fs
+      PENPOT_STORAGE_FS_DIRECTORY: /app/data/assets
+      PENPOT_TELEMETRY_ENABLED: "false"
+      PENPOT_SECRET_KEY: "cle-engine-penpot-secret-key-that-is-long-enough-for-now-change-in-prod"
+    networks:
+      - cle-mesh
+    depends_on:
+      - penpot-postgres
+      - penpot-redis
+
+  penpot-exporter:
+    image: penpotapp/exporter:latest
+    container_name: penpot-exporter
+    restart: unless-stopped
+    environment:
+      PENPOT_PUBLIC_URI: "http://penpot-frontend:8080"
+      PENPOT_REDIS_URI: "redis://penpot-redis/0"
+      PENPOT_SECRET_KEY: "cle-engine-penpot-secret-key-that-is-long-enough-for-now-change-in-prod"
+      BROWSER_VERBOSE: "false"
+    networks:
+      - penpot-net
+      - cle-mesh
+
+  penpot-postgres:
+    image: postgres:15-alpine
+    container_name: penpot-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: penpot
+      POSTGRES_USER: penpot
+      POSTGRES_PASSWORD: "${PENPOT_DB_PASSWORD:-penpot_secret}"
+    volumes:
+      - penpot-postgres-data:/var/lib/postgresql/data
+    networks:
+      - cle-mesh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U penpot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  penpot-redis:
+    image: redis:7-alpine
+    container_name: penpot-redis
+    restart: unless-stopped
+    networks:
+      - cle-mesh
+
+  # ─── OPEN DESIGN — AST to UI Generative Bridge ──────────────────────────────
+  open-design:
+    image: 127.0.0.1:5000/open-design:latest
+    container_name: open-design
+    build:
+      context: ./services/packages/gen-ui/open-design
+      dockerfile: deploy/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3060:3000"
+    environment:
+      - NODE_ENV=production
+      - OD_API_TOKEN=3fb68a1f8194cf21d9600aefc3e80f2d
+    networks:
+      - cle-mesh
+    depends_on:
+      - penpot-frontend
+    labels:
+      - cle.service=open-design
+      - cle.tier=design
+
+  # ─── MOTION GALLERY — ZigSim OSC + Photo Kinetic Display ────────────────────
+  motion-gallery:
+    image: 127.0.0.1:5000/motion-gallery:latest
+    container_name: motion-gallery
+    build:
+      context: ./services/motion-gallery
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3033:3000"
+      - "9000:9000/udp"
+    volumes:
+      - '/app/vault/Photos/NorthFork Sun:/photos:ro'
+    environment:
+      - NODE_ENV=production
+      - PHOTO_DIR=/photos
+      - HTTP_PORT=3000
+      - OSC_PORT=9000
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=motion-gallery
+      - cle.tier=app
+
+  # ─── ISAAC vLLM — High-Throughput Agentic Inference (WS-06) ───────────────────
+  isaac-vllm:
+    image: vllm/vllm-openai:latest
+    container_name: isaac-vllm
+    profiles: [ gpu ]
+    runtime: nvidia
+    restart: unless-stopped
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-} 
+    ports:
+      - "8000:8000"
+    volumes:
+      - /app/creative-liberation-engine/runtime/models/huggingface:/root/.cache/huggingface
+    command: --model Qwen/Qwen2.5-Coder-32B-Instruct --trust-remote-code --max-model-len 4096
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=isaac-vllm
+      - cle.role=agent-inference
+      - cle.tier=bios
+
+  # ─── OLLAMA — Always-On NAS Inference (BIOS Layer) ────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-nas
+    profiles: [ duplicate ]
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - creative-liberation-engine_ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_ORIGINS=*
+      - OLLAMA_KEEP_ALIVE=-1
+      - OLLAMA_MAX_LOADED_MODELS=3
+      - OLLAMA_NUM_PARALLEL=2
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=ollama-nas
+      - cle.role=routing-layer
+      - cle.tier=bios
+
+  # ─── OLLAMA INIT — Pull models on first boot ──────────────────────────────────
+  ollama-init:
+    image: ollama/ollama:latest
+    container_name: ollama-init
+    profiles: [ duplicate ]
+    restart: "no"
+    volumes:
+      - creative-liberation-engine_ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=ollama:11434
+    networks:
+      - cle-mesh
+    depends_on:
+      - ollama
+    entrypoint: >
+      /bin/sh -c "
+        sleep 5 &&
+        echo '=== NAS BIOS LAYER — Routing + Embedding + Fast Inference ===' &&
+        ollama pull qwen2.5-coder:7b &&
+        ollama pull llama3.2:3b &&
+        ollama pull bge-large-en-v1.5 &&
+        echo '=== NAS BIOS LAYER READY ==='
+      "
+    labels:
+      - cle.service=ollama-init
+      - cle.role=bootstrap
+
+  # ─── DOCKER CLEANUP — Prevent IPv4 pool exhaustion ────────────────────────────
+  docker-cleanup:
+    image: docker:cli
+    container_name: docker-cleanup
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: /bin/sh
+    command: >
+      -c "
+        echo 'Docker cleanup daemon started';
+        while true; do
+          docker network prune -f;
+          docker container prune -f;
+          docker image prune -f --filter 'until=72h';
+          sleep 21600;
+        done
+      "
+    labels:
+      - cle.service=docker-cleanup
+
+  # ─── SONY FTP — Camera ingest endpoint ────────────────────────────────────────
+  sony-ftp:
+    image: delfer/alpine-ftp-server:latest
+    container_name: sony-ftp
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - '/app/vault/RAW Backups/2026/Barnstorm/live-ingest/incoming:/ftp/sony-ingest'
+    environment:
+      - USERS=sony-ingest|${SONY_INGEST_FTP_PASS:-test}|/ftp/sony-ingest
+      - ADDRESS=127.0.0.1
+      - MIN_PORT=21000
+      - MAX_PORT=21010
+    labels:
+      - cle.service=sony-ftp
+      - cle.role=camera-ingest
+      - cle.tier=capture
+
+  # ─── SONY INGEST WATCHER — Proxy triage pipeline ─────────────────────────────
+  sony-ingest-watcher:
+    image: 127.0.0.1:5000/sony-ingest:latest
+    container_name: sony-ingest-watcher
+    build:
+      context: ./packages/sony-ingest
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - '/app/vault/RAW Backups/2026/Barnstorm/live-ingest:/ingest'
+    environment:
+      - NODE_ENV=production
+      - SONY_INGEST_INCOMING_DIR=/ingest/incoming
+      - SONY_INGEST_TRIAGE_DIR=/ingest/triage
+      - SONY_INGEST_UNLABELED_DIR=/ingest/unlabeled
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=sony-ingest-watcher
+      - cle.role=triage-pipeline
+      - cle.tier=capture
+
+  tailscale:
+    image: tailscale/tailscale:latest
+    container_name: tailscale
+    hostname: cle-nas
+    volumes:
+      - tailscale-state:/var/lib/tailscale
+    environment:
+      - TS_AUTHKEY=${TS_AUTHKEY}
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_HOSTNAME=cle-nas
+      - TS_USERSPACE=true
+      - TS_SOCKS5_SERVER=0.0.0.0:1055
+      - TS_ACCEPT_DNS=false
+      - TS_EXTRA_ARGS=
+    restart: unless-stopped
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=tailscale
+      - cle.role=vpn-mesh
+      - cle.tier=infra
+
+  # ─── CAPABILITY WATCHER — Instruction-layer hot-reload daemon ─────────────────
+  capability-watcher:
+    image: 127.0.0.1:5000/capability-watcher:latest
+    container_name: capability-watcher
+    build:
+      context: ./packages/capability-watcher
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - /app/creative-liberation-engine:/workspace:ro
+    environment:
+      - NODE_ENV=production
+      - WORKSPACE_ROOT=/workspace
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - DEBOUNCE_MS=800
+      - VERBOSE=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=capability-watcher
+      - cle.role=instruction-layer-watcher
+      - cle.tier=infra
+
+  # ─── NAS WATCHER — File ingestion event proxy ──────────────────────────────────
+  nas-watcher:
+    image: 127.0.0.1:5000/nas-watcher:latest
+    container_name: nas-watcher
+    build:
+      context: ./services/nas-watcher
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - '/app/vault/RAW Backups:/app/vault/RAW Backups:ro'
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=nas-watcher
+      - cle.role=ingest-watcher
+      - cle.tier=capture
+
+  # ─── INGESTION MESH — Automated photo/video triage & Look Engine ──────────────
+  ingestion-mesh:
+    image: 127.0.0.1:5000/ingestion-mesh:latest
+    container_name: ingestion-mesh
+    user: "1026:100"
+    build:
+      context: ./services/ingestion-mesh
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - '/app/creative-liberation-engine/runtime/ingestion/dropzone:/app/dropzone'
+      - '/app/vault/Photos:/app/vault/Photos'
+      - '/app/vault/Videos:/app/vault/Videos'
+      - '/app/vault/RAW Backups:/app/vault/RAW Backups'
+      - '/app/vault/Creative Liberation Collective/Phone Uploads/DNG Telemetry:/app/presets:ro'
+      - '/app/creative-liberation-engine/runtime/registry:/app/registry'
+    environment:
+      - NODE_ENV=production
+      - DROPZONE_DIR=/app/dropzone
+      - PHOTOS_VAULT=/app/vault/Photos
+      - VIDEOS_VAULT=/app/vault/Videos
+      - RAW_VAULT=/app/vault/RAW Backups
+      - LUT_PATH=/app/presets/Lightroom_To_Resolve_Complete.cube
+      - LEDGER_DB=/app/registry/media_ledger.sqlite
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - USE_POLLING=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=ingestion-mesh
+      - cle.role=ingest-triage
+      - cle.tier=capture
+
+  # ─── SENSOR MESH — External webhook receiver ───────────────────────────────────
+  sensor-mesh:
+    image: 127.0.0.1:5000/sensor-mesh:latest
+    container_name: sensor-mesh
+    build:
+      context: .
+      dockerfile: packages/sensor-mesh/Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=5080
+      - DISPATCH_URL=http://127.0.0.1:5160
+    ports:
+      - "5080:5080"
+    volumes:
+      - /app/creative-liberation-engine/runtime:/app/runtime
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=sensor-mesh
+      - cle.role=event-mesh
+      - cle.tier=infra
+
+  # ─── CORTEX OMNI WATCHER — Google Ecosystem Poller ───────────────────────────
+  cortex-omni-watcher:
+    image: 127.0.0.1:5000/cortex-omni-watcher:latest
+    container_name: cortex-omni-watcher
+    build:
+      context: ./services/cortex-omni-watcher
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - /app/creative-liberation-engine/surfaces/spatial-os/public:/app/creative-liberation-engine/surfaces/spatial-os/public
+      - /app/creative-liberation-engine/playwright-profile:/app/creative-liberation-engine/playwright-profile
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=cortex-omni-watcher
+      - cle.role=ecosystem-watcher
+      - cle.tier=infra
+
+  # ─── BARNSTORM INTELLIGENCE ─────────────────────────────────────────────────
+  barnstorm-intelligence:
+    image: 127.0.0.1:5000/barnstorm-intelligence:latest
+    container_name: barnstorm-intelligence
+    build:
+      context: ./apps/barnstorm-intelligence
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3050:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=barnstorm-intelligence
+      - cle.tier=frontend
+
+  # ─── AUTONOMOUS TRADING ARCHITECTURE ────────────────────────────────────────
+  trading-architecture:
+    image: 127.0.0.1:5000/trading-architecture:latest
+    container_name: trading-architecture
+    build:
+      context: ./agents/trading
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      # BYOK Integration (Add keys here to override local models)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=trading-architecture
+      - cle.tier=agents
+
+  # ─── UI/UX VISUAL FEEDBACK LOOP ─────────────────────────────────────────────
+  visual-qa-feedback:
+    image: 127.0.0.1:5000/visual-qa-feedback:latest
+    container_name: visual-qa-feedback
+    build:
+      context: ./agents/visual_qa
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      # BYOK Integration
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=visual-qa-feedback
+      - cle.tier=agents
+
+  # ─── GOOGLE WORKSPACE MESH BRIDGE ───────────────────────────────────────────
+  google-workspace-mesh-bridge:
+    image: 127.0.0.1:5000/google-workspace-mesh-bridge:latest
+    container_name: google-workspace-mesh-bridge
+    build:
+      context: ./services/google-workspace-mesh-bridge
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3090:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOST_MCP_URL=http://192.168.2.25:8000
+      - GMAIL_CLIENT_ID=${GMAIL_CLIENT_ID}
+      - GMAIL_CLIENT_SECRET=${GMAIL_CLIENT_SECRET}
+      - GMAIL_REFRESH_TOKEN=${GMAIL_REFRESH_TOKEN}
+      - GOOGLE_OAUTH_CLIENT_ID=${GOOGLE_OAUTH_CLIENT_ID}
+      - GOOGLE_OAUTH_CLIENT_SECRET=${GOOGLE_OAUTH_CLIENT_SECRET}
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=google-workspace-mesh-bridge
+      - cle.tier=infra
+
+  # ─── MASTER HELICES ─────────────────────────────────────────────────────────
+  helix-1-infrastructure:
+    image: 127.0.0.1:5000/helix-1-infrastructure:latest
+    container_name: helix-1-infrastructure
+    build:
+      context: ./services/helix-1-infrastructure
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6001:3000"
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - TS_NODE_COMPILER_OPTIONS={"module":"commonjs","moduleResolution":"node","ignoreDeprecations":"6.0"}
+      - TS_NODE_TRANSPILE_ONLY=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=helix-1-infrastructure
+      - cle.tier=helix
+
+  helix-2-agent-control-plane:
+    image: 127.0.0.1:5000/helix-2-agent-control-plane:latest
+    container_name: helix-2-agent-control-plane
+    build:
+      context: ./services/helix-2-agent-control-plane
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6002:3000"
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - TS_NODE_COMPILER_OPTIONS={"module":"commonjs","moduleResolution":"node","ignoreDeprecations":"6.0"}
+      - TS_NODE_TRANSPILE_ONLY=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=helix-2-agent-control-plane
+      - cle.tier=helix
+
+  helix-3-creative-intelligence:
+    image: 127.0.0.1:5000/helix-3-creative-intelligence:latest
+    container_name: helix-3-creative-intelligence
+    build:
+      context: ./services/helix-3-creative-intelligence
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6003:3000"
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - TS_NODE_COMPILER_OPTIONS={"module":"commonjs","moduleResolution":"node","ignoreDeprecations":"6.0"}
+      - TS_NODE_TRANSPILE_ONLY=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=helix-3-creative-intelligence
+      - cle.tier=helix
+
+  helix-4-video-pipeline:
+    image: 127.0.0.1:5000/helix-4-video-pipeline:latest
+    container_name: helix-4-video-pipeline
+    build:
+      context: ./services/helix-4-video-pipeline
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6004:3000"
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - TS_NODE_COMPILER_OPTIONS={"module":"commonjs","moduleResolution":"node","ignoreDeprecations":"6.0"}
+      - TS_NODE_TRANSPILE_ONLY=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=helix-4-video-pipeline
+      - cle.tier=helix
+
+  helix-5-security-edge:
+    image: 127.0.0.1:5000/helix-5-security-edge:latest
+    container_name: helix-5-security-edge
+    build:
+      context: ./services/helix-5-security-edge
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "6005:3000"
+    environment:
+      - NODE_ENV=production
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - TS_NODE_COMPILER_OPTIONS={"module":"commonjs","moduleResolution":"node","ignoreDeprecations":"6.0"}
+      - TS_NODE_TRANSPILE_ONLY=true
+    networks:
+      - cle-mesh
+    labels:
+      - cle.service=helix-5-security-edge
+      - cle.tier=helix
+
+volumes:
+  creative-liberation-engine_ollama_data:
+    external: true
+  penpot-data:
+  penpot-postgres-data:
+  tailscale-state:
+

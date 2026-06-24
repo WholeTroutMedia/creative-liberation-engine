@@ -1,0 +1,55 @@
+# Dependencies
+**/node_modules/
+**/.pnpm-store/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+**/dist/
+**/build/
+*.tsbuildinfo
+
+# OS artifacts
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.kilocode/
+
+# Docker volumes (local)
+v6_postgres_data/
+v6_redis_data/
+v6_chromadb_data/
+v6_dispatch_data/
+
+# Logs
+*.log
+logs/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Agent execution outputs & temp files
+*.png
+*.html
+*.tar
+*.tar.gz
+*.zip
+*.db-shm
+*.db-wal
+test_*.py
+check_*.py
+v6_codebase_report_source.txt
+search_results.txt
+temp.txt
+weavy_token.txt
+{}

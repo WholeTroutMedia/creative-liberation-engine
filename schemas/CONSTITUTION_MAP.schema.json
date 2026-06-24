@@ -1,0 +1,178 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/constitution-map.schema.json",
+    "title":  "V6 Constitution Carryover Map",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "generatedAt",
+                     "coverage",
+                     "principles",
+                     "stories"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string"
+                                   },
+                       "generatedAt":  {
+                                           "type":  "string",
+                                           "format":  "date-time"
+                                       },
+                       "coverage":  {
+                                        "type":  "object",
+                                        "additionalProperties":  false,
+                                        "required":  [
+                                                         "v1",
+                                                         "v2",
+                                                         "v3",
+                                                         "v4",
+                                                         "v5"
+                                                     ],
+                                        "properties":  {
+                                                           "v1":  {
+                                                                      "type":  "integer",
+                                                                      "minimum":  1
+                                                                  },
+                                                           "v2":  {
+                                                                      "type":  "integer",
+                                                                      "minimum":  1
+                                                                  },
+                                                           "v3":  {
+                                                                      "type":  "integer",
+                                                                      "minimum":  1
+                                                                  },
+                                                           "v4":  {
+                                                                      "type":  "integer",
+                                                                      "minimum":  1
+                                                                  },
+                                                           "v5":  {
+                                                                      "type":  "integer",
+                                                                      "minimum":  1
+                                                                  }
+                                                       }
+                                    },
+                       "principles":  {
+                                          "type":  "array",
+                                          "minItems":  10,
+                                          "items":  {
+                                                        "type":  "object",
+                                                        "additionalProperties":  false,
+                                                        "required":  [
+                                                                         "principleId",
+                                                                         "title",
+                                                                         "statement",
+                                                                         "derivedFrom",
+                                                                         "enforcedBy"
+                                                                     ],
+                                                        "properties":  {
+                                                                           "principleId":  {
+                                                                                               "type":  "string",
+                                                                                               "pattern":  "^p-[a-z0-9-]{3,80}$"
+                                                                                           },
+                                                                           "title":  {
+                                                                                         "type":  "string",
+                                                                                         "minLength":  3
+                                                                                     },
+                                                                           "statement":  {
+                                                                                             "type":  "string",
+                                                                                             "minLength":  10
+                                                                                         },
+                                                                           "derivedFrom":  {
+                                                                                               "type":  "array",
+                                                                                               "minItems":  1,
+                                                                                               "items":  {
+                                                                                                             "type":  "object",
+                                                                                                             "additionalProperties":  false,
+                                                                                                             "required":  [
+                                                                                                                              "version",
+                                                                                                                              "path"
+                                                                                                                          ],
+                                                                                                             "properties":  {
+                                                                                                                                "version":  {
+                                                                                                                                                "type":  "string",
+                                                                                                                                                "enum":  [
+                                                                                                                                                             "v1",
+                                                                                                                                                             "v2",
+                                                                                                                                                             "v3",
+                                                                                                                                                             "v4",
+                                                                                                                                                             "v5"
+                                                                                                                                                         ]
+                                                                                                                                            },
+                                                                                                                                "path":  {
+                                                                                                                                             "type":  "string",
+                                                                                                                                             "minLength":  5
+                                                                                                                                         }
+                                                                                                                            }
+                                                                                                         }
+                                                                                           },
+                                                                           "enforcedBy":  {
+                                                                                              "type":  "array",
+                                                                                              "minItems":  1,
+                                                                                              "items":  {
+                                                                                                            "type":  "string",
+                                                                                                            "minLength":  3
+                                                                                                        }
+                                                                                          }
+                                                                       }
+                                                    }
+                                      },
+                       "stories":  {
+                                       "type":  "array",
+                                       "minItems":  5,
+                                       "items":  {
+                                                     "type":  "object",
+                                                     "additionalProperties":  false,
+                                                     "required":  [
+                                                                      "storyId",
+                                                                      "title",
+                                                                      "summary",
+                                                                      "derivedFrom"
+                                                                  ],
+                                                     "properties":  {
+                                                                        "storyId":  {
+                                                                                        "type":  "string",
+                                                                                        "pattern":  "^s-[a-z0-9-]{3,80}$"
+                                                                                    },
+                                                                        "title":  {
+                                                                                      "type":  "string",
+                                                                                      "minLength":  3
+                                                                                  },
+                                                                        "summary":  {
+                                                                                        "type":  "string",
+                                                                                        "minLength":  12
+                                                                                    },
+                                                                        "derivedFrom":  {
+                                                                                            "type":  "array",
+                                                                                            "minItems":  1,
+                                                                                            "items":  {
+                                                                                                          "type":  "object",
+                                                                                                          "additionalProperties":  false,
+                                                                                                          "required":  [
+                                                                                                                           "version",
+                                                                                                                           "path"
+                                                                                                                       ],
+                                                                                                          "properties":  {
+                                                                                                                             "version":  {
+                                                                                                                                             "type":  "string",
+                                                                                                                                             "enum":  [
+                                                                                                                                                          "v1",
+                                                                                                                                                          "v2",
+                                                                                                                                                          "v3",
+                                                                                                                                                          "v4",
+                                                                                                                                                          "v5"
+                                                                                                                                                      ]
+                                                                                                                                         },
+                                                                                                                             "path":  {
+                                                                                                                                          "type":  "string",
+                                                                                                                                          "minLength":  5
+                                                                                                                                      }
+                                                                                                                         }
+                                                                                                      }
+                                                                                        }
+                                                                    }
+                                                 }
+                                   }
+                   },
+    "description":  "Constitutional principle registry mapping V1-V5 DNA to V6 enforcement targets."
+}

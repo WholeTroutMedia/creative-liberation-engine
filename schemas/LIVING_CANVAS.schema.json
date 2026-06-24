@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/living-canvas.schema.json",
+  "title": "LIVING_CANVAS",
+  "description": "Living canvas runtime configuration envelope.",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    }
+  }
+}

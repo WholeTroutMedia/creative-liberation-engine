@@ -1,0 +1,40 @@
+name: Restart Runner (Host Mode)
+
+# This workflow runs directly on the NAS host (no Docker container) so it
+# can restart the forgejo-runner container even when Docker socket passthrough
+# is broken in containerized jobs.
+on:
+  workflow_dispatch:
+
+jobs:
+  restart-runner:
+    name: Restart forgejo-runner on host
+    runs-on: host
+
+    steps:
+      - name: Restart forgejo-runner container
+        run: |
+          echo "=== Restarting forgejo-runner ==="
+          docker restart forgejo-runner
+          sleep 8
+          docker ps --filter "name=forgejo-runner" --format "{{.Names}} | {{.Status}}"
+          echo "✅ Runner restarted with new docker_host: automount config"
+
+      - name: Restart cle-dispatch container
+        run: |
+          echo "=== Restarting cle-dispatch ==="
+          if docker ps -a --format '{{.Names}}' | grep -q cle-dispatch; then
+            docker restart cle-dispatch
+            sleep 5
+            docker ps --filter "name=cle-dispatch" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+            echo "✅ cle-dispatch restarted"
+          else
+            echo "⚠️  cle-dispatch not found — trying compose"
+            cd /volume1/docker/creative-liberation-engine-v5 2>/dev/null || true
+            docker compose -p creative-liberation-engine-v5 -f docker-compose.genesis.yml up -d dispatch 2>/dev/null || echo "compose not available, manual restart needed"
+          fi
+
+      - name: Verify dispatch health
+        run: |
+          sleep 10
+          curl -sf http://localhost:5050/health && echo "✅ Dispatch ONLINE" || echo "❌ Dispatch still offline"

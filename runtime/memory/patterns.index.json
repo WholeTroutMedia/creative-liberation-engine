@@ -1,0 +1,124 @@
+{
+  "version": "v6.0",
+  "collection": "patterns",
+  "items": [
+    {
+      "memoryId": "mem_v6_schema_validation_pattern",
+      "kind": "pattern",
+      "title": "Schema-first contract validation pattern",
+      "summary": "Every data structure in V6 must have a JSON Schema, and all data files must validate against their schema before being considered canonical. This pattern is enforced by the contract-validation test suite in tests/contract-validation.test.mjs.",
+      "bodyRef": "../../wiki/examples/mem_v6_schema_validation_pattern.md",
+      "source": "SCRIBE",
+      "provenance": {
+        "recordedBy": "STRATA",
+        "recordedAt": "2026-04-21T12:00:00Z",
+        "artifactRefs": [
+          "../schemas/README.md",
+          "../../tests/contract-validation.test.mjs"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "canonical",
+      "tags": [
+        "v6",
+        "schema",
+        "validation",
+        "pattern",
+        "contract-first"
+      ],
+      "relations": [
+        {
+          "type": "relates_to",
+          "targetId": "mem_v6_single_canon_decision"
+        }
+      ],
+      "createdAt": "2026-04-21T12:00:00Z",
+      "updatedAt": "2026-04-21T12:00:00Z",
+      "lifecycleState": "active"
+    },
+    {
+      "memoryId": "mem_google_workspace_studio_ref",
+      "kind": "pattern",
+      "title": "Google Workspace Studio (Flows) Developer Reference & Integration Schema",
+      "summary": "Technical guide and API/manifest structure for extending Google Workspace Studio using Apps Script custom steps, Webhooks, and Creative Liberation Engine gateway bridges.",
+      "bodyRef": "../../wiki/google_workspace_studio_reference.md",
+      "source": "KI",
+      "provenance": {
+        "recordedBy": "CORTEX",
+        "recordedAt": "2026-06-11T12:25:00Z",
+        "conversationId": "5d5473dd-4e77-41d4-bf52-8e504105f485",
+        "artifactRefs": [
+          "https://developers.google.com/workspace/add-ons/studio"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "durable",
+      "tags": [
+        "google-workspace-studio",
+        "apps-script",
+        "custom-steps",
+        "api-reference"
+      ],
+      "relations": [],
+      "createdAt": "2026-06-11T12:25:00Z",
+      "updatedAt": "2026-06-11T12:25:00Z",
+      "lifecycleState": "active"
+    },
+    {
+      "memoryId": "mem_google_hosted_mcp_servers",
+      "kind": "pattern",
+      "title": "Google Native Hosted Model Context Protocol (MCP) Services Reference",
+      "summary": "Technical guide on using Google's hosted, native Workspace MCP servers (Drive, Calendar, Gmail) to streamline Creative Liberation Engine routing by eliminating intermediate bridge services.",
+      "bodyRef": "../../wiki/google_hosted_mcp_servers_reference.md",
+      "source": "KI",
+      "provenance": {
+        "recordedBy": "CORTEX",
+        "recordedAt": "2026-06-11T12:30:00Z",
+        "conversationId": "5d5473dd-4e77-41d4-bf52-8e504105f485",
+        "artifactRefs": [
+          "https://developers.google.com/workspace/guides/configure-mcp-servers"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "durable",
+      "tags": [
+        "google-workspace",
+        "model-context-protocol",
+        "hosted-mcp",
+        "api-reference"
+      ],
+      "relations": [],
+      "createdAt": "2026-06-11T12:30:00Z",
+      "updatedAt": "2026-06-11T12:30:00Z",
+      "lifecycleState": "active"
+    },
+    {
+      "memoryId": "mem_google_developers_master_dir",
+      "kind": "pattern",
+      "title": "Google Developers API & Agentic Ecosystem Master Directory",
+      "summary": "An authoritative directory of the Google Developer platform (developers.google.com) mapping Workspace, Cloud, GenAI, Media/VFX, WebGPU, and Client APIs to the Creative Liberation Engine.",
+      "bodyRef": "../../wiki/google_developers_master_directory.md",
+      "source": "KI",
+      "provenance": {
+        "recordedBy": "CORTEX",
+        "recordedAt": "2026-06-11T12:35:00Z",
+        "conversationId": "5d5473dd-4e77-41d4-bf52-8e504105f485",
+        "artifactRefs": [
+          "https://developers.google.com/workspace/guides/configure-mcp-servers"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "durable",
+      "tags": [
+        "google-developers",
+        "api-directory",
+        "agentic-ai",
+        "media-production"
+      ],
+      "relations": [],
+      "createdAt": "2026-06-11T12:35:00Z",
+      "updatedAt": "2026-06-11T12:35:00Z",
+      "lifecycleState": "active"
+    }
+  ]
+}

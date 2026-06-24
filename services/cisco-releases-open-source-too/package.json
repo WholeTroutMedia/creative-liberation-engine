@@ -1,0 +1,10 @@
+{
+  "name": "@cle/cisco-releases-open-source-too",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0139_cisco-releases-open-source-tool-for-ai-m",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

@@ -1,0 +1,64 @@
+name: Upload Video to Releases
+
+on:
+  workflow_run:
+    workflows: ["Render Video"]
+    types:
+      - completed
+
+jobs:
+  upload-to-releases:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+    - name: Download artifacts from workflow run
+      uses: actions/download-artifact@v4
+      with:
+        name: rendered-video
+        path: ./videos
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        run-id: ${{ github.event.workflow_run.id }}
+
+    - name: List downloaded files
+      run: |
+        echo "Downloaded files:"
+        find ./videos -type f -name "*.mp4" -exec ls -la {} \;
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./videos/*.mp4
+        tag_name: video-${{ github.event.workflow_run.run_number }}
+        name: "Video Render ${{ github.event.workflow_run.run_number }}"
+        body: |
+          🎬 Video rendered automatically via GitHub Actions
+          
+          **Render Details:**
+          - Workflow Run: #${{ github.event.workflow_run.run_number }}
+          - Triggered by: ${{ github.event.workflow_run.event }}
+          - Completed at: ${{ github.event.workflow_run.updated_at }}
+          
+          **Video Files:**
+          - Format: MP4 (H.264)
+          - Resolution: 1920x1080
+          - Duration: 8 seconds
+          
+          Download the video files above for use in your projects.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Comment on workflow run
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const workflowRun = context.payload.workflow_run;
+          console.log(`✅ Video successfully uploaded to releases!`);
+          console.log(`📦 Release: Video Render ${workflowRun.run_number}`);
+          console.log(`🎬 Download: https://github.com/${context.repo.owner}/${context.repo.repo}/releases/tag/video-${workflowRun.run_number}`);
+          console.log(`📁 Files: All MP4 files are now permanently stored in GitHub releases`); 

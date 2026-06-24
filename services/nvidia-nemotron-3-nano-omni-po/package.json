@@ -1,0 +1,10 @@
+{
+  "name": "@cle/nvidia-nemotron-3-nano-omni-po",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0112",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

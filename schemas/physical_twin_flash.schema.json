@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/physical-twin-flash.schema.json",
+  "title": "Physical Twin Firmware Flashing Schema",
+  "description": "Schema validating firmware compiling, flashing, and verification requests/responses for microcontrollers.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "flashRequest",
+    "flashResponse",
+    "verifyRequest",
+    "verifyResponse"
+  ],
+  "properties": {
+    "flashRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["devicePort", "baudRate", "firmwareBinaryPath", "chipType"],
+      "properties": {
+        "devicePort": {
+          "type": "string",
+          "description": "Serial port of target microcontroller (e.g. COM3 or /dev/ttyUSB0)."
+        },
+        "baudRate": {
+          "type": "integer",
+          "enum": [9600, 115200, 230400, 460800, 921600]
+        },
+        "firmwareBinaryPath": {
+          "type": "string",
+          "description": "Path to compile target binary."
+        },
+        "chipType": {
+          "type": "string",
+          "enum": ["esp32", "esp32s3", "esp8266", "stm32", "arduino_nano"]
+        }
+      }
+    },
+    "flashResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flashId", "status", "outputLogs"],
+      "properties": {
+        "flashId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["success", "failed"]
+        },
+        "outputLogs": {
+          "type": "string",
+          "description": "Build output and esptool flash logs."
+        }
+      }
+    },
+    "verifyRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["flashId", "expectedFeedbackPattern"],
+      "properties": {
+        "flashId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "expectedFeedbackPattern": {
+          "type": "string",
+          "description": "Regex or string pattern expected from device boot serial output (e.g. Booting Creative Liberation Engine)."
+        }
+      }
+    },
+    "verifyResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "matchedLogs"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["verified", "mismatch", "error"]
+        },
+        "matchedLogs": {
+          "type": "string",
+          "description": "Captured feedback logs showing boot sequence or pattern match."
+        }
+      }
+    }
+  }
+}

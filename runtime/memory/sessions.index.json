@@ -1,0 +1,42 @@
+{
+  "version": "v6.0",
+  "collection": "sessions",
+  "items": [
+    {
+      "memoryId": "mem_v6_heritage_census_session",
+      "kind": "session",
+      "title": "Heritage Census completion session",
+      "summary": "Completed the full V1-V5 heritage census for V6 migration. Expanded CAPABILITY_MATRIX.json from 5 seed entries to 55 classified capabilities across 10 categories. All entries validated against HERITAGE_CAPABILITY.schema.json. Classifications: 35 PROMOTE, 7 MERGE, 12 PARK, 1 RETIRE. Updated HERITAGE_BASELINE.md with collection strategy and SALVAGE_BACKLOG.md with capability ID references.",
+      "bodyRef": "../../wiki/examples/mem_v6_heritage_census_session.md",
+      "source": "SCRIBE",
+      "provenance": {
+        "recordedBy": "ATHENA",
+        "recordedAt": "2026-04-21T13:03:00Z",
+        "conversationId": "11d367ee-6bc8-4b48-b083-401382607119",
+        "artifactRefs": [
+          "../../inventory/CAPABILITY_MATRIX.json",
+          "../../inventory/HERITAGE_BASELINE.md",
+          "../../inventory/SALVAGE_BACKLOG.md"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "durable",
+      "tags": [
+        "v6",
+        "heritage",
+        "census",
+        "phase-2",
+        "migration"
+      ],
+      "relations": [
+        {
+          "type": "derived_from",
+          "targetId": "mem_v6_single_canon_decision"
+        }
+      ],
+      "createdAt": "2026-04-21T13:03:00Z",
+      "updatedAt": "2026-04-21T13:03:00Z",
+      "lifecycleState": "active"
+    }
+  ]
+}

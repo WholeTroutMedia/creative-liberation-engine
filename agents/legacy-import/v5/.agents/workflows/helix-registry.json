@@ -1,0 +1,120 @@
+{
+  "$schema": "https://cle-engine.local/schemas/helix-registry.v1.json",
+  "version": "1.0.0",
+  "created": "2026-03-27",
+  "spine": ".agents/workflows/IPSV-SPINE.md",
+  "helices": [
+    {
+      "id": "helix-engineering",
+      "label": "Engineering & Code",
+      "file": ".agents/workflows/helix-engineering.md",
+      "status": "active",
+      "triggers": [
+        "build", "implement", "code", "fix", "refactor", "deploy", "debug",
+        "api", "service", "package", "typescript", "script"
+      ],
+      "deliverables": {
+        "IDEATE": "Technical approach options, architecture diagram, risk flags",
+        "PLAN": "Spec doc, checklist, dependency map, branch name",
+        "SHIP": "Working code, passing types, committed + deployed",
+        "VALIDATE": "Test results, constitutional compliance score, SCRIBE episode"
+      },
+      "routing_hint": "No visual required — route directly to PLAN unless UI is involved"
+    },
+    {
+      "id": "helix-stitch",
+      "label": "UI Design via Stitch",
+      "file": ".agents/workflows/helix-stitch.md",
+      "status": "active",
+      "triggers": [
+        "stitch", "ui", "interface", "screen", "design", "dashboard",
+        "installer", "wizard", "landing page", "onboarding", "app"
+      ],
+      "deliverables": {
+        "IDEATE": "Design directions (2-5 options), visual references, design contract draft",
+        "PLAN": "DESIGN_CONTRACT.md locked, Stitch prompt authored, component map",
+        "SHIP": "Stitch-generated HTML exported, JS wired, deployed",
+        "VALIDATE": "Visual QA pass, responsiveness check, Zero Day readiness"
+      },
+      "routing_hint": "Requires DESIGN gate before PLAN — surface visual choices to user first"
+    },
+    {
+      "id": "helix-content",
+      "label": "Content Creation",
+      "file": ".agents/workflows/helix-content.md",
+      "status": "active",
+      "triggers": [
+        "write", "content", "article", "blog", "post", "copy", "script",
+        "newsletter", "announcement", "documentation", "readme"
+      ],
+      "deliverables": {
+        "IDEATE": "Content angle options, audience definition, tone direction",
+        "PLAN": "Outline, word count target, SEO brief, deadline",
+        "SHIP": "Final draft, edited, formatted, published/committed",
+        "VALIDATE": "Readability score, brand voice check, distribution confirmed"
+      },
+      "routing_hint": "Surface categorization: does a user READ this? If yes → this helix"
+    },
+    {
+      "id": "helix-marketing",
+      "label": "Marketing & Campaigns",
+      "file": ".agents/workflows/helix-marketing.md",
+      "status": "active",
+      "triggers": [
+        "marketing", "campaign", "launch", "announce", "promo", "email",
+        "social", "ad", "funnel", "conversion", "growth"
+      ],
+      "deliverables": {
+        "IDEATE": "Campaign concept, audience segment, channel mix",
+        "PLAN": "Campaign brief, asset list, timeline, success metrics",
+        "SHIP": "Assets created, scheduled/published, tracking live",
+        "VALIDATE": "Impressions, CTR, conversion vs. targets, retrospective"
+      },
+      "routing_hint": "Often spawns parallel helix-content + helix-stitch tracks — designate lead"
+    },
+    {
+      "id": "helix-photo",
+      "label": "Photography & Visual",
+      "file": ".agents/workflows/helix-photo.md",
+      "status": "active",
+      "triggers": [
+        "photo", "photography", "shoot", "edit", "gallery", "image",
+        "lightroom", "capture", "portfolio", "visual", "color grade"
+      ],
+      "deliverables": {
+        "IDEATE": "Shot list, mood board, location/lighting plan",
+        "PLAN": "Equipment list, call sheet, ingest pipeline setup",
+        "SHIP": "Selects culled, edited, exported, delivered",
+        "VALIDATE": "Client review complete, archive confirmed, BARNSTORM synced"
+      },
+      "routing_hint": "Field-triggered — often initiated via COMET mobile from gig location"
+    },
+    {
+      "id": "helix-creative-direction",
+      "label": "Creative Direction",
+      "file": ".agents/workflows/helix-creative-direction.md",
+      "status": "active",
+      "triggers": [
+        "creative direction", "brand", "identity", "vision", "concept",
+        "aesthetic", "direction", "mood", "positioning", "strategy"
+      ],
+      "deliverables": {
+        "IDEATE": "3-5 creative territories with visual language descriptors",
+        "PLAN": "Direction deck, brand rules, asset production brief",
+        "SHIP": "Direction locked, assets seeded, team briefed",
+        "VALIDATE": "Consistency check across surfaces, stakeholder sign-off"
+      },
+      "routing_hint": "Usually spawns child helices — this helix sets direction, others execute"
+    }
+  ],
+  "ad_hoc_protocol": {
+    "description": "When INTAKE cannot match an existing helix, create an ad-hoc helix",
+    "steps": [
+      "Identify nearest neighbor helix",
+      "Draft minimal frame: what does IDEATE/PLAN/SHIP/VALIDATE produce for this task?",
+      "Ask 2-3 meta-questions if ambiguous",
+      "Run the task using the temporary frame",
+      "VALIDATE: promote to permanent helix if it worked, log deltas if not"
+    ]
+  }
+}

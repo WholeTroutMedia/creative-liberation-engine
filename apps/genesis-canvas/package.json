@@ -1,0 +1,24 @@
+{
+  "name": "@creative-liberation-engine/genesis-canvas",
+  "version": "2.0.3",
+  "description": "Sovereign infinite multi-agent co-creation canvas frontend component",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "cle",
+    "canvas",
+    "framer",
+    "ui"
+  ],
+  "author": "Creative Liberation Engine V6",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "react": "^18.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

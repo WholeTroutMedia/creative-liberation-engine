@@ -1,0 +1,28 @@
+{
+  "name": "@cle/compose-hardener",
+  "version": "2.0.3",
+  "description": "Autonomous DevOps engine that reads insecure docker-compose files and injects best-practice healthchecks and resource limits via AI analysis.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@google/genai": "^1.50.1",
+    "dotenv": "^17.3.1",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}

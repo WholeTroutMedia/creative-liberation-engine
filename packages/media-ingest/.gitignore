@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.local
+.env
+.DS_Store
+*.tsbuildinfo
+test/*.mkv
+test/*.mp4
+test/*.mov
+test/*.mxf

@@ -1,0 +1,309 @@
+services:
+  # ── Aegis Pentest (Helix α) ──
+  aegis-pentest:
+    build:
+      context: ./services/aegis-pentest
+      dockerfile: Dockerfile
+    ports:
+      - "5080:5080"
+    environment:
+      - AEGIS_PORT=5080
+      - DISPATCH_URL=http://dispatch:5050
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5080/api/v1/aegis/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Autonomous Animator (Helix β) ──
+  autonomous-animator:
+    build:
+      context: ./services/autonomous-animator
+      dockerfile: Dockerfile
+    ports:
+      - "5085:5085"
+    environment:
+      - ANIMATOR_PORT=5085
+      - COMFYUI_URL=http://host.docker.internal:8188
+      - NODE_ENV=production
+    volumes:
+      - animation_output:/app/creative-liberation-engine/runtime/animations
+    networks:
+      - cle
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5085/api/v1/animation/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Voice Fabric (Helix δ) ──
+  voice-fabric:
+    build:
+      context: ./services/voice-fabric
+      dockerfile: Dockerfile
+    ports:
+      - "5092:5092"
+    environment:
+      - VOICE_PORT=5092
+      - WHISPER_MODEL=large-v3
+      - PIPER_MODEL=/models/en_US-amy-medium.onnx
+      - DISPATCH_URL=http://dispatch:5050
+      - NODE_ENV=production
+    volumes:
+      - whisper_models:/models
+      - voice_tmp:/tmp/voice-fabric
+    networks:
+      - cle
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5092/api/v1/voice/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Render Daemon (Helix ε) ──
+  render-daemon:
+    build:
+      context: ./services/render-daemon
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /app/creative-liberation-engine/runtime/render:/app/creative-liberation-engine/runtime/render
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── HMR Mesh (Helix ζ) ──
+  hmr-mesh:
+    build:
+      context: ./services/hmr-mesh
+      dockerfile: Dockerfile
+    ports:
+      - "3999:3902"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /app/creative-liberation-engine/runtime/injections:/app/creative-liberation-engine/runtime/injections
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── MDX GitOps (Helix η) ──
+  mdx-gitops:
+    build:
+      context: ./services/mdx-gitops
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /app/creative-liberation-engine/runtime/mdx-gitops:/app/creative-liberation-engine/runtime/mdx-gitops
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── Ingestion Mesh (Helix θ) ──
+  ingestion-mesh:
+    build:
+      context: ./services/ingestion-mesh
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /app/creative-liberation-engine/runtime/ingestion:/app/creative-liberation-engine/runtime/ingestion
+      - /app/creative-liberation-engine/runtime/registry:/app/creative-liberation-engine/runtime/registry
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── Cortex Theater (Cinematic Presentation Layer) ──
+  cortex-theater:
+    build:
+      context: ./apps/cortex-theater
+      dockerfile: Dockerfile
+    ports:
+      - "5100:5100"
+    environment:
+      - THEATER_PORT=5100
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── Agent Observability (Helix α) ──
+  agent-observability:
+    build:
+      context: ./services/agent-observability
+      dockerfile: Dockerfile
+    ports:
+      - "5101:5101"
+    environment:
+      - PORT=5101
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5101/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Technical Debt Tracker (Helix α) ──
+  technical-debt-tracker:
+    build:
+      context: ./services/technical-debt-tracker
+      dockerfile: Dockerfile
+    ports:
+      - "5102:5102"
+    environment:
+      - PORT=5102
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5102/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Video Agency (Helix β) ──
+  video-agency:
+    build:
+      context: ./services/video-agency
+      dockerfile: Dockerfile
+    ports:
+      - "5103:5103"
+    environment:
+      - PORT=5103
+      - NODE_ENV=production
+      - RESOLVE_BRIDGE_URL=http://192.168.2.25:5105
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5103/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Sovereign Coder (Helix γ) ──
+  sovereign-coder:
+    build:
+      context: ./services/sovereign-coder
+      dockerfile: Dockerfile
+    ports:
+      - "5104:5104"
+    environment:
+      - PORT=5104
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5104/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Token Optimizer (Helix γ) ──
+  token-optimizer:
+    build:
+      context: ./services/token-optimizer
+      dockerfile: Dockerfile
+    ports:
+      - "5105:5105"
+    environment:
+      - PORT=5105
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5105/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Spatial Surface (Helix δ) ──
+  spatial-surface:
+    build:
+      context: ./services/spatial-surface
+      dockerfile: Dockerfile
+    ports:
+      - "5106:5106"
+    environment:
+      - PORT=5106
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5106/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # ── Physical Twin (Helix Gamma) ──
+  physical-twin:
+    build:
+      context: ./services/physical-twin
+      dockerfile: Dockerfile
+    ports:
+      - "3012:3012"
+    environment:
+      - PORT=3012
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+  # ── Auth MD Hub (Helix Epsilon) ──
+  auth-md-hub:
+    build:
+      context: ./services/auth-md-hub
+      dockerfile: Dockerfile
+    ports:
+      - "3013:3013"
+    environment:
+      - PORT=3013
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+volumes:
+  animation_output:
+  whisper_models:
+  voice_tmp:
+
+networks:
+  cle:
+    name: cle-mesh
+    external: true

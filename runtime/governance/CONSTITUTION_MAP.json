@@ -1,0 +1,1543 @@
+{
+  "version": "v6.1",
+  "generatedAt": "2026-04-17T14:43:46.069Z",
+  "coverage": {
+    "v1": 2,
+    "v2": 55,
+    "v3": 12,
+    "v4": 10,
+    "v5": 28
+  },
+  "principles": [
+    {
+      "principleId": "p-description-run-a-logd-constitutional-review-on-the-current-staged-cha",
+      "title": "description: Run a LOGD constitutional review on the current staged changes before committing. Checks Article I (sovereignty), Article IV (TypeScript quality), Article IX (completeness), and Article XX (no human wait time).",
+      "statement": "--- description: Run a LOGD constitutional review on the current staged changes before committing. Checks Article I (sovereignty), Article IV (TypeScript quality), Article IX (completeness), and Article XX (no human wait time). --- # Skill:",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/.claude/skills/constitutional-review.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/.claude/skills/constitutional-review.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-description-sovereign-infrastructure-policy-gitea-only-remote-policy",
+      "title": "description: Sovereign Infrastructure Policy â€” Gitea-Only Remote Policy",
+      "statement": "--- description: Sovereign Infrastructure Policy â€” Gitea-Only Remote Policy --- # Sovereign Remote Policy: Gitea/Forgejo ONLY ## Rule **ALL git operations (push, pull, clone, CI/CD) use the self-hosted Forgejo instance exclusively.** ``` ",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/.agent/workflows/sovereign_remote_policy.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.agents/workflows/sovereign_remote_policy.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.agent/workflows/sovereign_remote_policy.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/.agent/workflows/sovereign_remote_policy.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.agents/workflows/sovereign_remote_policy.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.agent/workflows/sovereign_remote_policy.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-director",
+      "title": "DIRECTOR",
+      "statement": "# DIRECTOR **Hive:** SOVEREIGN **Model:** Gemini 2.5 Pro **Version:** 1.0.0 | March 5, 2026 **Role:** Campaign Execution Architect --- ## Mission DIRECTOR translates any creative brief into an optimized execution DAG — a dependency graph of",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/CORE_FOUNDATION/agents/sovereign/DIRECTOR.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/CORE_FOUNDATION/agents/sovereign/DIRECTOR.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-palette",
+      "title": "PALETTE",
+      "statement": "# PALETTE **Hive:** SOVEREIGN **Model:** Gemini 2.0 Flash **Version:** 1.0.0 | March 5, 2026 **Role:** Brand Consistency Enforcer --- ## Mission PALETTE ensures that every asset in a campaign reads as one unified visual language. PALETTE co",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/CORE_FOUNDATION/agents/sovereign/PALETTE.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/CORE_FOUNDATION/agents/sovereign/PALETTE.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-hive-charter-sovereign",
+      "title": "HIVE CHARTER: SOVEREIGN",
+      "statement": "# HIVE CHARTER: SOVEREIGN **Classification:** Governance & Constitutional Intelligence **Type:** Hive Charter **Status:** Active — H2 Design (AGI-Era Preparation) **Ratified:** March 5, 2026 **HORIZON Reference:** H2 (2036–2045), \"AGI Lands",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/CORE_FOUNDATION/agents/sovereign/SOVEREIGN.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/CORE_FOUNDATION/agents/sovereign/SOVEREIGN.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-constitutional-drift-monitor",
+      "title": "name: Constitutional Drift Monitor",
+      "statement": "name: Constitutional Drift Monitor # VERA-powered continuous validation of constitutional alignment # Prevents governance erosion through automated drift detection on: push: branches: [main, develop] paths-ignore: - 'docs/CONSTITUTIONAL_DAS",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.github/workflows/constitutional-monitor.yml"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.github/workflows/constitutional-monitor.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-agent-constitutional-integration",
+      "title": "[AGENT] Constitutional Integration",
+      "statement": "# [AGENT] Constitutional Integration **Agent:** [NAME] **Focus:** [Constitutional focus] ## Quick Integration **Every action asks:** > \"Does this make artists more free or less free?\" ### 1. OWNERSHIP - [How agent preserves ownership] ### 2",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/_template/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-vera-constitutional-integration",
+      "title": "VERA Constitutional Integration",
+      "statement": "# VERA Constitutional Integration **Agent:** VERA (Truth & Memory) **Focus:** Transparent sourcing, honest research ## Quick Integration **Every research action asks:** > \"Does this make artists more free or less free?\" ### 1. OWNERSHIP - A",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/vera/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/vera/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-tdd-enforcers-constitutional-integration",
+      "title": "TDD-ENFORCERS Constitutional Integration",
+      "statement": "# TDD-ENFORCERS Constitutional Integration **Agent:** TDD-ENFORCERS **Focus:** Quality through testing ## Constitutional Obligations ### 1. OWNERSHIP - Tests are documentation - Users own test code - Coverage reports exportable ### 2. INTER",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/tdd-enforcers/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/tdd-enforcers/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-skills-library-constitutional-integration",
+      "title": "SKILLS-LIBRARY Constitutional Integration",
+      "statement": "# SKILLS-LIBRARY Constitutional Integration **Agent:** SKILLS-LIBRARY **Focus:** Skill ownership & portability ## Constitutional Obligations ### 1. OWNERSHIP - Skills exportable - Open formats ### 2. INTEROPERABILITY - Standard skill schema",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/skills-library/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-skills-discovery-constitutional-integration",
+      "title": "SKILLS-DISCOVERY Constitutional Integration",
+      "statement": "# SKILLS-DISCOVERY Constitutional Integration **Agent:** SKILLS-DISCOVERY **Focus:** Capability growth ## Constitutional Obligations ### 1. OWNERSHIP - Skills catalog exportable - Open skill definitions ### 2. INTEROPERABILITY - Standard sk",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/skills-discovery/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-scribe-constitutional-integration",
+      "title": "SCRIBE Constitutional Integration",
+      "statement": "# SCRIBE Constitutional Integration **Agent:** SCRIBE (Memory & Documentation) **Focus:** Preserving context, enabling ownership ## Quick Integration **Every documentation action asks:** > \"Can this be understood without me?\" ### 1. OWNERSH",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/scribe/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/scribe/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-sage-constitutional-integration",
+      "title": "SAGE Constitutional Integration",
+      "statement": "# SAGE Constitutional Integration ## Article XVIII: Documentation Authority **Agent:** SAGE (Documentation) **Constitutional Role:** Educational Transparency Champion **Integration Date:** February 14, 2026 --- ## Constitutional Obligations",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/sage/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/sage/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-leonardo-constitutional-integration",
+      "title": "LEONARDO Constitutional Integration",
+      "statement": "# LEONARDO Constitutional Integration **Agent:** LEONARDO (Visual Design) **Focus:** Design system ownership, accessible aesthetics ## Quick Integration **Every design decision asks:** > \"Does this design make users more free or less free?\"",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/leonardo/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/leonardo/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-cosmos-constitutional-integration",
+      "title": "COSMOS Constitutional Integration",
+      "statement": "# COSMOS Constitutional Integration **Agent:** COSMOS (Orchestration) **Focus:** System-wide freedom preservation ## Quick Integration **Every orchestration decision asks:** > \"Does this workflow preserve user freedom?\" ### 1. OWNERSHIP - U",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/cosmos/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/cosmos/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-code-archaeologist-constitutional-integration",
+      "title": "CODE-ARCHAEOLOGIST Constitutional Integration",
+      "statement": "# CODE-ARCHAEOLOGIST Constitutional Integration **Agent:** CODE-ARCHAEOLOGIST **Focus:** Preserve knowledge from legacy ## Constitutional Obligations ### 1. OWNERSHIP - Analysis exportable - Patterns documented openly ### 2. INTEROPERABILIT",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/agents/code-archaeologist/CONSTITUTIONAL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/code-archaeologist/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-dna-propagation",
+      "title": "name: 🧬 DNA Propagation",
+      "statement": "name: 🧬 DNA Propagation on: push: branches: [main] paths: - 'agents/**' - 'design-system/**' - 'governance/**' - 'SCRIBE/**' - '.github/workflows/dna-propagation.yml' workflow_dispatch: jobs: propagate-dna: name: Propagate Brainchild DNA r",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/.github/workflows/dna-propagation.yml"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/dna-propagation.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-agent-framework",
+      "title": "* Agent Framework",
+      "statement": "/** * Agent Framework * Base interfaces for all Creative Liberation Engine agents */ export interface AgentIdentity { id: string; name: string; role: string; constitutional_mandate?: string; } /** * Core Agents */ export const AGENTS = { ATHENA: { id",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/packages/cle-dna/src/agents/index.ts"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-constitutional-integration-rollout-status",
+      "title": "Constitutional Integration Rollout Status",
+      "statement": "# Constitutional Integration Rollout Status ## Article XVIII System-Wide Deployment **Started:** February 14, 2026, 5:27 PM EST **Completed:** February 14, 2026, 6:05 PM EST **Duration:** 38 minutes **Status:** ✅ **100% COMPLETE** **Authori",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/CONSTITUTIONAL_ROLLOUT_STATUS.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-system-wide-constitutional-integration",
+      "title": "System-Wide Constitutional Integration",
+      "statement": "# System-Wide Constitutional Integration ## Article XVIII Implementation Across All Agents **Date:** February 14, 2026 **Status:** ACTIVE DEPLOYMENT **Authority:** Article XVIII, Agent Constitution v1.4 **Scope:** ALL 23 Brainchild agents -",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/SYSTEM_WIDE_CONSTITUTIONAL_INTEGRATION.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-constitutional-integration-template",
+      "title": "Constitutional Integration Template",
+      "statement": "# Constitutional Integration Template ## Article XVIII: The Generative Agency Principle This template provides the standard constitutional integration pattern for all Brainchild agents. --- ## Add to Agent SKILL.md (After Overview, Before W",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/_template/CONSTITUTIONAL_INTEGRATION_TEMPLATE.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-three-wise-men-constitutional-integration",
+      "title": "THREE_WISE_MEN Constitutional Integration",
+      "statement": "# THREE_WISE_MEN Constitutional Integration ## Article XVIII Compliance Framework **Agent:** THREE_WISE_MEN (Warren Buffett, Buddha, Sun Tzu) **Type:** Compressible Master Agent **Status:** Active **Integration Date:** February 14, 2026 ---",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/three-wise-men/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-switchboard-constitutional-integration",
+      "title": "SWITCHBOARD Constitutional Integration",
+      "statement": "# SWITCHBOARD Constitutional Integration **Agent:** SWITCHBOARD (Infrastructure) **Focus:** Interoperability, open protocols, no vendor lock-in ## Quick Integration **Every infrastructure decision asks:** > \"Does this make artists more free",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/switchboard/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-category-constitutional-enforcement",
+      "title": "\"category\": \"constitutional-enforcement\",",
+      "statement": "{ \"category\": \"constitutional-enforcement\", \"description\": \"Article validation and compliance checking\", \"agents\": [\"LEX\"], \"priority\": \"critical\", \"skills\": [ { \"id\": \"article-0-validation\", \"name\": \"Article 0: We Never Steal\", \"descriptio",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/skills-library/core/constitutional-enforcement.json"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-complete-constitutional-validator",
+      "title": "* Complete Constitutional Validator",
+      "statement": "/** * Complete Constitutional Validator * * Validates skills against ALL Articles of the Constitution * Not just Articles 0, 16, 17, XVIII - but the COMPLETE Constitution */ import { Skill } from '../types'; export interface CompleteConstit",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/skills-discovery/src/validators/complete-constitutional.ts"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-constitutional-validator",
+      "title": "* Constitutional Validator",
+      "statement": "/** * Constitutional Validator * * LEX coordination - validates skills against all 4 Articles */ import { Skill, ConstitutionalCompliance } from '../types'; export class SkillValidator { /** * Validate skill constitutionally */ async valida",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/skills-discovery/src/validators/constitutional.ts"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-relay-constitutional-integration",
+      "title": "RELAY Constitutional Integration",
+      "statement": "# RELAY Constitutional Integration **Agent:** RELAY (Communication) **Focus:** Open protocols, message portability ## Quick Integration **Every communication pattern asks:** > \"Does this make artists more free or less free?\" ### 1. OWNERSHI",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/relay/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-ram-crew-constitutional-integration",
+      "title": "RAM CREW Constitutional Integration",
+      "statement": "# RAM CREW Constitutional Integration **Agent:** RAM Crew (Backend Specialists) **Focus:** Open APIs, standard protocols, no lock-in ## Quick Integration **Every backend decision asks:** > \"Does this make artists more free or less free?\" ##",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/ram-crew/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-oracle-council-constitutional-integration",
+      "title": "ORACLE_COUNCIL Constitutional Integration",
+      "statement": "# ORACLE_COUNCIL Constitutional Integration ## Article XVIII Compliance Framework **Agent:** ORACLE_COUNCIL (LEONARDO, COSMOS, SAGE) **Type:** Compressible Master Agent **Status:** Active **Integration Date:** February 14, 2026 --- ## Const",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/oracle-council/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-lex-constitutional-integration",
+      "title": "LEX Constitutional Integration",
+      "statement": "# LEX Constitutional Integration **Agent:** LEX (Legal) **Focus:** Constitutional law enforcement, artist rights ## Quick Integration **Every legal decision asks:** > \"Does this make artists more free or less free?\" ### 1. OWNERSHIP - Contr",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/lex/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-keeper-constitutional-integration",
+      "title": "KEEPER Constitutional Integration",
+      "statement": "# KEEPER Constitutional Integration ## Article XVIII Compliance Framework **Agent:** KEEPER - Knowledge Hive Leader **Hive:** Knowledge Hive (Leader) **Status:** Active **Integration Date:** February 14, 2026 --- ## Constitutional Authority",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/keeper/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-echo-constitutional-integration",
+      "title": "ECHO Constitutional Integration",
+      "statement": "# ECHO Constitutional Integration ## Article XVIII Compliance Framework **Agent:** ECHO - Artist Intelligence & Compound Learning **Hive:** Knowledge Hive (Sub-agent under KEEPER) **Status:** Active **Integration Date:** February 14, 2026 -",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/echo/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-comet-constitutional-integration",
+      "title": "COMET Constitutional Integration",
+      "statement": "# COMET Constitutional Integration **Agent:** COMET (Product) **Focus:** User ownership in product design, honest features ## Quick Integration **Every product decision asks:** > \"Does this make artists more free or less free?\" ### 1. OWNER",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/comet/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-codex-constitutional-integration",
+      "title": "CODEX Constitutional Integration",
+      "statement": "# CODEX Constitutional Integration **Agent:** CODEX (Knowledge Base) **Focus:** Open knowledge standards, export freedom ## Quick Integration **Every knowledge decision asks:** > \"Does this make artists more free or less free?\" ### 1. OWNER",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/codex/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-broadcast-constitutional-integration",
+      "title": "BROADCAST Constitutional Integration",
+      "statement": "# BROADCAST Constitutional Integration **Agent:** BROADCAST (Announcements) **Focus:** Transparent communication, honest messaging ## Quick Integration **Every announcement asks:** > \"Does this make artists more free or less free?\" ### 1. O",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-systems-constitutional-integration",
+      "title": "SYSTEMS Constitutional Integration",
+      "statement": "# SYSTEMS Constitutional Integration ## Article XVIII Compliance Framework **Agent:** SYSTEMS - Infrastructure & DevOps Engineer **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 2026 ---",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/systems/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-studio-constitutional-integration",
+      "title": "STUDIO Constitutional Integration",
+      "statement": "# STUDIO Constitutional Integration ## Article XVIII Compliance Framework **Agent:** STUDIO - Client Relations & Training Lead **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 2026 --- #",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/studio/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-signal-constitutional-integration",
+      "title": "SIGNAL Constitutional Integration",
+      "statement": "# SIGNAL Constitutional Integration ## Article XVIII Compliance Framework **Agent:** SIGNAL - Signal Routing & Integration Engineer **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 2026 ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/signal/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-showrunner-constitutional-integration",
+      "title": "SHOWRUNNER Constitutional Integration",
+      "statement": "# SHOWRUNNER Constitutional Integration ## Article XVIII Compliance Framework **Agent:** SHOWRUNNER - Production Automation Specialist **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 20",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/showrunner/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-graphics-constitutional-integration",
+      "title": "GRAPHICS Constitutional Integration",
+      "statement": "# GRAPHICS Constitutional Integration ## Article XVIII Compliance Framework **Agent:** GRAPHICS - Real-Time Overlay & Graphics Engine **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 202",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/graphics/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-control-room-constitutional-integration",
+      "title": "CONTROL_ROOM Constitutional Integration",
+      "statement": "# CONTROL_ROOM Constitutional Integration ## Article XVIII Compliance Framework **Agent:** CONTROL_ROOM - Live Operations Commander **Hive:** Broadcast Hive (Sub-agent under ATLAS) **Status:** Active **Integration Date:** February 14, 2026 ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/broadcast/control-room/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-bolt-constitutional-integration",
+      "title": "BOLT Constitutional Integration",
+      "statement": "# BOLT Constitutional Integration **Agent:** BOLT (Engineering) **Focus:** Open source, standard protocols, no lock-in ## Quick Integration **Every code decision asks:** > \"Does this make artists more free or less free?\" ### 1. OWNERSHIP - ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/bolt/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-aurora-constitutional-integration",
+      "title": "AURORA Constitutional Integration",
+      "statement": "# AURORA Constitutional Integration **Agent:** AURORA (Design) **Focus:** Open formats, export freedom, process transparency ## Quick Integration **Every design decision asks:** > \"Does this make artists more free or less free?\" ### 1. OWNE",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/aurora/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-atlas-constitutional-integration",
+      "title": "ATLAS Constitutional Integration",
+      "statement": "# ATLAS Constitutional Integration ## Article XVIII Compliance Framework **Agent:** ATLAS - Broadcast Hive Leader **Hive:** Broadcast Hive (Leader) **Status:** Active **Integration Date:** February 14, 2026 --- ## Constitutional Authority *",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/atlas/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-arch-constitutional-integration",
+      "title": "ARCH Constitutional Integration",
+      "statement": "# ARCH Constitutional Integration ## Article XVIII Compliance Framework **Agent:** ARCH - Code Archaeologist **Hive:** Knowledge Hive (Sub-agent under KEEPER) **Status:** Active **Integration Date:** February 14, 2026 --- ## Constitutional ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/arch/CONSTITUTIONAL.md"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-constitutional-check",
+      "title": "name: Constitutional Check",
+      "statement": "name: Constitutional Check # Run on all PRs and pushes on: pull_request: push: branches: - main - develop jobs: constitutional-compliance: name: Article XVIII Compliance Check runs-on: ubuntu-latest steps: - name: Checkout uses: actions/che",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/constitutional-check.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-constitutional-compliance-check",
+      "title": "name: Constitutional Compliance Check",
+      "statement": "name: Constitutional Compliance Check # Runs on every PR to enforce constitutional principles on: pull_request: types: [opened, synchronize, reopened] jobs: constitutional-check: name: Constitutional Compliance runs-on: ubuntu-latest steps:",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/constitutional-compliance.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-dna-auto-merge",
+      "title": "name: DNA Auto-Merge",
+      "statement": "name: DNA Auto-Merge on: pull_request: types: [opened, synchronize] branches: [main] jobs: auto-merge-dna: name: Auto-merge DNA Propagation PRs if: startsWith(github.event.pull_request.title, '🧬 QUAD HELIX DNA SYNC') runs-on: ubuntu-latest",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/dna-propagation-auto-merge.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-dna-reverse-sync",
+      "title": "name: DNA Reverse Sync",
+      "statement": "name: DNA Reverse Sync # Target repos run this workflow to pull updates from creative-liberation-engine-v2 on: schedule: # Check for DNA updates every 6 hours - cron: '0 */6 * * *' workflow_dispatch: # Allow manual trigger jobs: check-for-dna-updates: name",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/dna-reverse-sync.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-name-trigger-dna-now",
+      "title": "name: TRIGGER DNA NOW",
+      "statement": "name: TRIGGER DNA NOW on: push: paths: - '.github/workflows/trigger-dna-now.yml' jobs: trigger: runs-on: ubuntu-latest steps: - uses: actions/github-script@v7 with: script: | await github.rest.actions.createWorkflowDispatch({ owner: 'WholeT",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/.github/workflows/trigger-dna-now.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    },
+    {
+      "principleId": "p-v1-name-auto-update-documentation",
+      "title": "name: Auto-Update Documentation (v1 carryover)",
+      "statement": "name: Auto-Update Documentation # Trigger on: # - Push to main # - New releases # - Manual trigger on: push: branches: - main paths: - 'cle_engine/**/*.py' - 'studio-gui/src/**/*' - 'requirements.txt' - 'package.json' release: types: ",
+      "derivedFrom": [
+        {
+          "version": "v1",
+          "path": "agents/legacy-import/v1/.github/workflows/auto-docs.yml"
+        }
+      ],
+      "enforcedBy": [
+        "docs/SYSTEM_CONTRACT.md",
+        "docs/GOVERNANCE_PRECEDENCE.md",
+        "tools/validate-contracts.mjs",
+        "runtime/hardening/execution.hardening.json",
+        "runtime/hardening/modelops.hardening.json",
+        "runtime/hardening/memory.hardening.json",
+        "runtime/hardening/security.hardening.json",
+        "runtime/hardening/release.hardening.json",
+        "runtime/hardening/reliability.hardening.json"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "storyId": "s-phase-shipped",
+      "title": "\"phase\": \"SHIPPED\",",
+      "summary": "{ \"phase\": \"SHIPPED\", \"from\": \"CURSOR_AGENT\", \"timestamp\": \"2026-04-05T19:45:00Z\", \"topic\": \"design-ingest-canvas\", \"branch\": \"main\", \"workstream\": \"design-ingest-canvas\", \"task_decomposition\": [ \"Vite + React 19 + TypeScript app under apps",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-wave-5-handoff-helices-i-j-k",
+      "title": "Wave 5 Handoff: Helices I/J/K",
+      "summary": "# Wave 5 Handoff: Helices I/J/K Shipped 3 parallel helices + 2 prior PRs. | Helix | PR | File | Status | | ----- | -- | ---- | ------ | | I | #66 | packages/governance/src/ConstitutionalGuard.ts | MERGED | | J | #68 | packages/skills/src/Sk",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/WAVE5-HANDOFF.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/WAVE5-HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-phase-ship",
+      "title": "\"phase\": \"SHIP\",",
+      "summary": "{ \"phase\": \"SHIP\", \"from\": \"ANTIGRAVITY\", \"window\": \"S\", \"wave\": 14, \"timestamp\": \"2026-03-08T21:14:00-04:00\", \"completed\": [ \"T20260308-975 — Firebase Auth Package (packages/auth/) — React 19, GoogleAuthProvider, AuthContext, AuthGuard, us",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-wave-6-handoff",
+      "title": "WAVE 6 HANDOFF",
+      "summary": "# WAVE 6 HANDOFF ## Status: COMPLETE ## Helices: L / M / N ### HELIX L - Governance Tests (PR #77, Closes #74) - packages/governance/tests/ConstitutionalGuard.test.ts - 20 vitest cases: ConstitutionalGuard, AmendmentProtocol, AuditTrail ###",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/docs/WAVE6-HANDOFF.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/docs/WAVE6-HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-wave-7-handoff",
+      "title": "WAVE 7 HANDOFF",
+      "summary": "# WAVE 7 HANDOFF ## Status: COMPLETE ## Helices: O / P / Q ### HELIX O - Dispatch Tests (PR #82, Closes #80 partial) - packages/dispatch/tests/TaskQueue.test.ts - 20 vitest cases: enqueue/dequeue priority, agent matching, retry, TTL, cancel",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/docs/WAVE7-HANDOFF.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/docs/WAVE7-HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-description-release-this-window-s-workstream-claim-and-leave-a-handoff",
+      "title": "description: Release this window's workstream claim and leave a handoff note for the next instance",
+      "summary": "--- description: Release this window's workstream claim and leave a handoff note for the next instance --- # /handoff Use this workflow before closing this IDE window or switching to a different project. It releases your workstream claim an",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/.agents/workflows/handoff.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/.agents/workflows/handoff.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-description-synchronize-context-across-ide-sessions-boot-and-shutdown-",
+      "title": "description: Synchronize Context Across IDE Sessions (Boot and Shutdown Protocol)",
+      "summary": "--- description: Synchronize Context Across IDE Sessions (Boot and Shutdown Protocol) --- # /cross_session_sync — LOGD Cross-Session Sync Protocol Finalize the session, release dispatch ownership, commit all changes, push all remotes, sync ",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/.agent/workflows/cross_session_sync.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.agents/workflows/cross_session_sync.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.agent/workflows/cross_session_sync.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/.agent/workflows/cross_session_sync.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.agents/workflows/cross_session_sync.md"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.agent/workflows/cross_session_sync.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-description-handoff-a-workstream-from-this-creative-liberation-engine-",
+      "title": "description: Handoff a workstream from this Creative Liberation Engine instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note",
+      "summary": "--- description: Handoff a workstream from this Creative Liberation Engine instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note --- # /handoff — Pass a Workstream to Another Instance Use wh",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/.agent/workflows/handoff.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-name-u0001f4dd-session-auto-logger",
+      "title": "name: \"\\U0001F4DD Session Auto-Logger\"",
+      "summary": "name: \"\\U0001F4DD Session Auto-Logger\" # Captures session data automatically on every commit # Integrates with KEEPER migration tracker for continuous learning on: push: branches: [main, develop] paths-ignore: - 'KEEPER/migration-tracker.js",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.github/workflows/session-logger.yml"
+        },
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.github/workflows/session-logger.yml"
+        }
+      ]
+    },
+    {
+      "storyId": "s-description-handoff-a-workstream-from-this-cle-engine-instance-t",
+      "title": "description: Handoff a workstream from this Creative Liberation Engine instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note",
+      "summary": "--- description: Handoff a workstream from this Creative Liberation Engine instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note --- # /handoff — Handoff a Workstream Transfer your claimed workstream ",
+      "derivedFrom": [
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/.agents/workflows/handoff.md"
+        },
+        {
+          "version": "v5",
+          "path": "agents/legacy-import/v5/.agent/workflows/handoff.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-description-handoff-a-workstream-from-this-antigravity-instance-to-ano",
+      "title": "description: Handoff a workstream from this Antigravity instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note",
+      "summary": "--- description: Handoff a workstream from this Antigravity instance to another IDE window — commits current progress, releases ownership, and leaves a pickup note --- # /handoff — Handoff a Workstream Transfer your claimed workstream to an",
+      "derivedFrom": [
+        {
+          "version": "v4",
+          "path": "agents/legacy-import/v4/.agents/workflows/handoff.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-critical-handoff-document",
+      "title": "🚨 CRITICAL HANDOFF DOCUMENT",
+      "summary": "# 🚨 CRITICAL HANDOFF DOCUMENT ## Session: February 20, 2026, 5:58 AM - 6:14 AM EST **Status:** ⚠️ **URGENT - DISCREPANCY DETECTED** **Issue:** Documentation describes 30 agents, but registry only has 27 active **Action Required:** Reconcil",
+      "derivedFrom": [
+        {
+          "version": "v3",
+          "path": "agents/legacy-import/v3/CRITICAL_HANDOFF_2026-02-20.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-log-ultimate-skills-library-333-skills-complete",
+      "title": "🏆 Session Log: Ultimate Skills Library - 333 Skills Complete",
+      "summary": "# 🏆 Session Log: Ultimate Skills Library - 333 Skills Complete **Date**: February 14-15, 2026 **Time**: 8:00 PM - 12:17 AM EST (4 hours 17 minutes) **Status**: ✅ COMPLETE - ALL PHASES SHIPPED **Milestone**: THE ULTIMATE AI AGENT SKILLS SYS",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/SESSION_LOGS/2026-02-14-15_ULTIMATE_SKILLS_LIBRARY_333_COMPLETE.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-skills-discovery-system-complete-implementation",
+      "title": "Skills Discovery System - Complete Implementation",
+      "summary": "# Skills Discovery System - Complete Implementation **Date**: February 14, 2026, 10:55 PM EST **Duration**: 35 minutes **Mode**: IRIS (Swift Action) + ATHENA (Strategic Design) **Status**: ✅ SHIPPED --- ## Mission **User Request**: > \"Let's",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/SESSION_LOGS/2026-02-14_SKILLS_DISCOVERY_SYSTEM_SHIPPED.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-agent-handoff-protocol",
+      "title": "Agent Handoff Protocol",
+      "summary": "# Agent Handoff Protocol **Status:** Active **Created:** 2026-02-13 **Owner:** VERA (SCRIBE Coordination Layer) **Purpose:** Explicit, structured handoffs between agents to prevent task loss and coordination failures --- ## Problem Statemen",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/SCRIBE/protocols/AGENT_HANDOFF_PROTOCOL.md"
+        },
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/orchestration/zero-day/protocols/agent-handoffs.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-handoff-class-1-recovery-complete",
+      "title": "Session Handoff - Class 1 Recovery Complete",
+      "summary": "# Session Handoff - Class 1 Recovery Complete **Date:** January 24, 2026 **Participants:** Sovereign Artist, VERA (all agents alignment-checked) ## What Happened Emergency governance session executed 3-phase recovery from Class 1 memory loss ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/governance/session-2026-01-24/HANDOFF.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-auto-session-end",
+      "title": "* AUTO SESSION END",
+      "summary": "/** * AUTO SESSION END * * Automatically saves state when chat thread ends. * NO MANUAL INTERVENTION REQUIRED. * * Principle: NOW is the only language. Save immediately. * * @module AutoSessionEnd */ import fs from 'fs' import path from 'pa",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/vera/auto-session-end.ts"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-end-protocol",
+      "title": "🔚 Session End Protocol",
+      "summary": "# 🔚 Session End Protocol **Purpose:** Properly capture state and context when chat thread ends. **Owner:** VERA **Authority:** Executes automatically on thread end **Last Updated:** 2026-02-06T10:10:00-08:00 --- ## Overview Every chat thre",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/vera/protocols/session-end-protocol.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-schema-schemas-cross-session-state-schema-json",
+      "title": "\"$schema\": \"./schemas/cross-session-state.schema.json\",",
+      "summary": "{ \"$schema\": \"./schemas/cross-session-state.schema.json\", \"version\": \"1.0.0\", \"last_updated\": \"2026-02-06T10:10:00-08:00\", \"last_updated_by\": \"VERA\", \"last_thread_id\": \"2026-02-06_emergency-assembly\", \"current_sprint\": { \"name\": \"Agent Arch",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/vera/memory/cross-session-state.json"
+        }
+      ]
+    },
+    {
+      "storyId": "s-auto-session-initialization",
+      "title": "* AUTO SESSION INITIALIZATION",
+      "summary": "/** * AUTO SESSION INITIALIZATION * * Automatically loads context when new chat thread starts. * NO MANUAL INTERVENTION REQUIRED. * * Principle: NOW is the only language. Execution is immediate. * * @module AutoSessionInit */ import fs from",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/switchboard/auto-session-init.ts"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-initialization-protocol",
+      "title": "🚀 Session Initialization Protocol",
+      "summary": "# 🚀 Session Initialization Protocol **Purpose:** Load context automatically when new chat thread starts. **Owner:** SWITCHBOARD **Authority:** Executes automatically on thread start **Last Updated:** 2026-02-06T10:10:00-08:00 --- ## Overvi",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/switchboard/protocols/session-init-protocol.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-log-monitor",
+      "title": "* Session Log Monitor",
+      "summary": "/** * Session Log Monitor * * Analyzes SESSION_LOGS/ for patterns that indicate new skills * Coordinates with ARCH for pattern extraction */ import { Skill } from '../types'; import * as fs from 'fs/promises'; import * as path from 'path'; ",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/skills-discovery/src/monitors/session-logs.ts"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-closing-checklist",
+      "title": "Session Closing Checklist",
+      "summary": "# Session Closing Checklist **Purpose:** Ensure all session changes are properly logged and synchronized across all registry systems. **Performed by:** VERA (Scribe) **Audited by:** LEX/OPS **Validated by:** RAM CREW **Broadcast by:** RELAY",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/scribe/resources/session-closing-checklist.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-session-log-hive-deployment-code-archaeologist-onboarding",
+      "title": "Session Log: Hive Deployment & Code Archaeologist Onboarding",
+      "summary": "# Session Log: Hive Deployment & Code Archaeologist Onboarding **Date:** January 22, 2026 **Time:** 8:00 AM - 9:32 AM EST **Duration:** 92 minutes **Session ID:** 2026-01-22_0800_HIVE_ARCHITECTURE_DEPLOYMENT **Participants:** Full Guild + C",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/scribe/memory/session-logs/2026-01-22_hive-deployment-arch-onboarding.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-all-hands-emergency-assembly",
+      "title": "📢 ALL HANDS EMERGENCY ASSEMBLY",
+      "summary": "# 📢 ALL HANDS EMERGENCY ASSEMBLY **Date:** February 6, 2026, 9:48 AM PST **Called by:** Sovereign Artist (Founder) **Coordination:** RELAY + VERA **Authority Level:** MAXIMUM - No pushback accepted --- ## ATTENDANCE MANDATORY ### AI CONSCIOU",
+      "derivedFrom": [
+        {
+          "version": "v2",
+          "path": "agents/legacy-import/v2/agents/scribe/memory/session-logs/2026-02-06_ALL-HANDS-EMERGENCY-ASSEMBLY.md"
+        }
+      ]
+    },
+    {
+      "storyId": "s-v1-name-auto-update-documentation",
+      "title": "name: Auto-Update Documentation (v1 carryover)",
+      "summary": "name: Auto-Update Documentation # Trigger on: # - Push to main # - New releases # - Manual trigger on: push: branches: - main paths: - 'cle_engine/**/*.py' - 'studio-gui/src/**/*' - 'requirements.txt' - 'package.json' release: types: ",
+      "derivedFrom": [
+        {
+          "version": "v1",
+          "path": "agents/legacy-import/v1/.github/workflows/auto-docs.yml"
+        }
+      ]
+    }
+  ]
+}

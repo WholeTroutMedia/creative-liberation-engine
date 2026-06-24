@@ -1,0 +1,10 @@
+{
+  "name": "@cle/implementing-hybrid-semantic-l",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0261_implementing-hybrid-semantic-lexical-sea",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

@@ -1,0 +1,234 @@
+# ============================================================
+# Deploy Creative Liberation Engine v5 Orchestrator to GCP Cloud Run
+# ============================================================
+# Triggers: push to main (deploy/orchestrator/** or packages/**)
+#           manual workflow_dispatch
+#
+# Prerequisites (one-time GCP setup):
+#   1. Run deploy/orchestrator/gcp-bootstrap.sh
+#   2. Add Gitea secret: GCP_SA_KEY (service account JSON)
+#   3. Secrets in GCP Secret Manager:
+#      - stripe-api-key, github-app-creds, slack-bot-token
+# ============================================================
+
+name: Deploy Cloud Run Orchestrator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "deploy/orchestrator/**"
+      - "packages/genkit/**"
+      - "packages/mcp-router/**"
+      - "packages/engine/**"
+      - "packages/dispatch/**"
+      - "packages/memory/**"
+      - "packages/data/**"
+  workflow_dispatch:
+    inputs:
+      region:
+        description: "GCP region for Cloud Run deployment"
+        required: false
+        default: "us-central1"
+      skip_build:
+        description: "Skip build and deploy latest image"
+        required: false
+        type: boolean
+        default: false
+
+env:
+  PROJECT_ID: creative-liberation-engine-v5
+  SERVICE_NAME: cle-orchestrator
+  REGION: us-central1
+  REGISTRY: gcr.io
+  VPC_CONNECTOR: cle-vpc-connector
+  SA_NAME: cle-orchestrator-sa
+  ALLOYDB_INSTANCE: cle-alloydb
+  ALLOYDB_CLUSTER: cle-cluster
+
+jobs:
+  # -----------------------------------------------------------
+  # Job 1: Lint + type-check orchestrator packages
+  # -----------------------------------------------------------
+  preflight:
+    name: Preflight checks
+    runs-on: host
+    steps:
+      - name: Checkout
+        run: |
+          git init .
+          git config --local credential.helper '!f() { echo "username=wtm-admin"; echo "password=${FORGEJO_TOKEN}"; }; f'
+          git remote add origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git || true
+          git remote set-url origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git
+          git fetch origin ${{ github.sha }}
+          git reset --hard FETCH_HEAD
+        env:
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+
+      - name: Setup Node 22
+        run: |
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+          nvm install 22 || true
+          nvm use 22 || true
+          node --version || echo "WARNING: node not in PATH via nvm"
+
+      - name: Enable pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install
+      - name: Type-check orchestrator packages
+        run: |
+          pnpm -r --filter @cle/genkit build
+          pnpm -r --filter @cle/mcp-router build
+          pnpm -r --filter @cle/dispatch build
+          pnpm -r --filter @cle/engine build
+          echo "Preflight OK: all orchestrator packages compile"
+
+  # -----------------------------------------------------------
+  # Job 2: Build container + push to GCR + deploy Cloud Run
+  # -----------------------------------------------------------
+  deploy:
+    name: Build & Deploy to Cloud Run
+    needs: preflight
+    runs-on: host
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        run: |
+          git init .
+          git config --local credential.helper '!f() { echo "username=wtm-admin"; echo "password=${FORGEJO_TOKEN}"; }; f'
+          git remote add origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git || true
+          git remote set-url origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git
+          git fetch origin ${{ github.sha }}
+          git reset --hard FETCH_HEAD
+        env:
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+
+      - name: Install Google Cloud SDK + Authenticate
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          # Install gcloud SDK inline (Google actions not bundled in act)
+          curl -sSL https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir=/opt
+          export PATH="/opt/google-cloud-sdk/bin:$PATH"
+          echo "PATH=/opt/google-cloud-sdk/bin:$PATH" >> $GITHUB_ENV
+          # Authenticate via service account JSON
+          echo "${GCP_SA_KEY}" > /tmp/sa-key.json
+          gcloud auth activate-service-account --key-file=/tmp/sa-key.json
+          gcloud config set project ${{ env.PROJECT_ID }}
+          rm -f /tmp/sa-key.json
+          gcloud auth configure-docker --quiet
+          echo "? gcloud authenticated"
+
+      - name: Build & push container image
+        if: ${{ !inputs.skip_build }}
+        run: |
+          IMAGE="$REGISTRY/$PROJECT_ID/$SERVICE_NAME"
+          docker build \
+            -t "$IMAGE:${{ github.sha }}" \
+            -t "$IMAGE:latest" \
+            -f deploy/orchestrator/Dockerfile \
+            .
+          docker push "$IMAGE:${{ github.sha }}"
+          docker push "$IMAGE:latest"
+          echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
+          echo "Container pushed: $IMAGE:${{ github.sha }}"
+
+      - name: Use latest image (skip_build)
+        if: ${{ inputs.skip_build }}
+        run: echo "IMAGE_TAG=latest" >> $GITHUB_ENV
+
+      - name: Deploy to Cloud Run
+        run: |
+          DEPLOY_REGION="${{ inputs.region || env.REGION }}"
+          gcloud run deploy $SERVICE_NAME \
+            --image=$REGISTRY/$PROJECT_ID/$SERVICE_NAME:$IMAGE_TAG \
+            --region=$DEPLOY_REGION \
+            --platform=managed \
+            --service-account=$SA_NAME@$PROJECT_ID.iam.gserviceaccount.com \
+            --vpc-connector=$VPC_CONNECTOR \
+            --vpc-egress=private-ranges-only \
+            --concurrency=40 \
+            --min-instances=1 \
+            --max-instances=10 \
+            --timeout=300s \
+            --memory=1Gi \
+            --cpu=2 \
+            --port=8080 \
+            --set-env-vars="NODE_ENV=production,ALLOYDB_INSTANCE=$ALLOYDB_INSTANCE,ALLOYDB_CLUSTER=$ALLOYDB_CLUSTER" \
+            --set-secrets="STRIPE_API_KEY=stripe-api-key:latest,GITHUB_APP_CREDS=github-app-creds:latest,SLACK_BOT_TOKEN=slack-bot-token:latest" \
+            --allow-unauthenticated
+          echo "Deployed $SERVICE_NAME to $DEPLOY_REGION"
+
+      - name: Get service URL
+        run: |
+          URL=$(gcloud run services describe $SERVICE_NAME \
+            --region=${{ inputs.region || env.REGION }} \
+            --format='value(status.url)')
+          echo "Cloud Run URL: $URL"
+          echo "SERVICE_URL=$URL" >> $GITHUB_ENV
+
+      - name: Smoke test
+        run: |
+          echo "Smoke testing $SERVICE_URL/healthz ..."
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' "$SERVICE_URL/healthz" || true)
+          if [ "$STATUS" = "200" ]; then
+            echo "Health check PASSED (HTTP 200)"
+          else
+            echo "WARNING: Health check returned HTTP $STATUS (service may still be starting)"
+          fi
+
+  # -----------------------------------------------------------
+  # Job 3: Verify AlloyDB connectivity from Cloud Run
+  # -----------------------------------------------------------
+  verify-alloydb:
+    name: Verify AlloyDB + pgvector
+    needs: deploy
+    runs-on: host
+    steps:
+      - name: Install Google Cloud SDK + Authenticate
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          curl -sSL https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir=/opt
+          export PATH="/opt/google-cloud-sdk/bin:$PATH"
+          echo "PATH=/opt/google-cloud-sdk/bin:$PATH" >> $GITHUB_ENV
+          echo "${GCP_SA_KEY}" > /tmp/sa-key.json
+          gcloud auth activate-service-account --key-file=/tmp/sa-key.json
+          gcloud config set project ${{ env.PROJECT_ID }}
+          rm -f /tmp/sa-key.json
+          echo "? gcloud authenticated"
+
+      - name: Verify AlloyDB connection via Cloud Run
+        run: |
+          URL=$(gcloud run services describe ${{ env.SERVICE_NAME }} \
+            --region=${{ env.REGION }} \
+            --format='value(status.url)')
+          echo "Testing AlloyDB pgvector connectivity..."
+          RESULT=$(curl -s "$URL/api/v1/memory/health" || echo '{"status":"unreachable"}')
+          echo "AlloyDB health: $RESULT"
+
+  # -----------------------------------------------------------
+  # Job 4: Update HANDOFF.md with deployment status
+  # -----------------------------------------------------------
+  update-handoff:
+    name: Update deployment ledger
+    needs: [deploy, verify-alloydb]
+    if: always()
+    runs-on: host
+    steps:
+      - name: Log deployment event
+        run: |
+          echo "===================================="
+          echo "CLOUD LAYER DEPLOYMENT COMPLETE"
+          echo "===================================="
+          echo "Service: ${{ env.SERVICE_NAME }}"
+          echo "Region:  ${{ env.REGION }}"
+          echo "Image:   ${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}"
+          echo "Time:    $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "Status:  ${{ needs.deploy.result }}"
+          echo "AlloyDB: ${{ needs.verify-alloydb.result }}"
+          echo "===================================="

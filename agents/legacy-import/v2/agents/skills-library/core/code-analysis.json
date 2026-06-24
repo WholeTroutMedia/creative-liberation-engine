@@ -1,0 +1,79 @@
+{
+  "category": "code-analysis",
+  "description": "Analyzing, reviewing, scanning, and inspecting code",
+  "agents": ["ARCH", "RAM_CREW", "LEX"],
+  "skills": [
+    {
+      "id": "constitutional-code-scan",
+      "name": "Constitutional Code Scan",
+      "description": "Scan code for violations of all 20 Constitutional Articles",
+      "complexity": "expert",
+      "input": "Codebase path or file",
+      "output": "Compliance report with violations and scores",
+      "example": "Scan PR for Article 0 (stealing) violations"
+    },
+    {
+      "id": "dependency-analysis",
+      "name": "Dependency Analysis",
+      "description": "Analyze dependency trees for conflicts, vulnerabilities",
+      "complexity": "moderate",
+      "input": "package.json or requirements.txt",
+      "output": "Dependency graph with risk assessment",
+      "example": "Check for circular dependencies in monorepo"
+    },
+    {
+      "id": "code-smell-detection",
+      "name": "Code Smell Detection",
+      "description": "Identify anti-patterns, code smells, technical debt",
+      "complexity": "moderate",
+      "input": "Source code files",
+      "output": "List of smells with refactoring suggestions",
+      "example": "Find long functions, duplicated code"
+    },
+    {
+      "id": "security-vulnerability-scan",
+      "name": "Security Vulnerability Scan",
+      "description": "Detect security issues, injection points, auth flaws",
+      "complexity": "expert",
+      "input": "Codebase or specific files",
+      "output": "Security report with severity levels",
+      "example": "Scan for SQL injection, XSS vulnerabilities"
+    },
+    {
+      "id": "performance-bottleneck-analysis",
+      "name": "Performance Bottleneck Analysis",
+      "description": "Identify slow code paths, memory leaks, inefficiencies",
+      "complexity": "expert",
+      "input": "Code + profiling data",
+      "output": "Performance report with optimization suggestions",
+      "example": "Find slow database queries, N+1 problems"
+    },
+    {
+      "id": "type-safety-analysis",
+      "name": "Type Safety Analysis",
+      "description": "Check TypeScript types, find any/unknown usage",
+      "complexity": "moderate",
+      "input": "TypeScript codebase",
+      "output": "Type safety score + improvement suggestions",
+      "example": "Find all 'any' types and suggest proper typing"
+    },
+    {
+      "id": "architecture-validation",
+      "name": "Architecture Validation",
+      "description": "Validate code follows architectural patterns and rules",
+      "complexity": "expert",
+      "input": "Codebase + architecture rules",
+      "output": "Compliance report with violations",
+      "example": "Ensure clean architecture boundaries"
+    },
+    {
+      "id": "dead-code-detection",
+      "name": "Dead Code Detection",
+      "description": "Find unused functions, imports, variables",
+      "complexity": "simple",
+      "input": "Source code files",
+      "output": "List of dead code with removal suggestions",
+      "example": "Find unused React components"
+    }
+  ]
+}

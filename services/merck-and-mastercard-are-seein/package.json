@@ -1,0 +1,10 @@
+{
+  "name": "@cle/merck-and-mastercard-are-seein",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0274_merck-and-mastercard-are-seeing-real-age",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

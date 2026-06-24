@@ -1,4 +1,23 @@
 packages:
   - 'packages/*'
-  - 'services/*'
   - 'apps/*'
+  - 'surfaces/*'
+  - 'genkit'
+  - 'packages/flipboard-sentinel'
+  - 'services/*'
+allowBuilds:
+  - '@firebase/util'
+  - '@google/genai'
+  - '@tsparticles/engine'
+  - 'better-sqlite3'
+  - 'core-js'
+  - 'edgedriver'
+  - 'esbuild'
+  - 'geckodriver'
+  - 'protobufjs'
+  - 'puppeteer'
+  - 'sharp'
+  - 'sqlite3'
+  - 'workerd'
+
+dangerouslyAllowAllBuilds: true

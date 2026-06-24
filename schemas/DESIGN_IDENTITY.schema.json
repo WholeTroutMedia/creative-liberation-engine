@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "DESIGN_IDENTITY.schema.json",
+  "title": "Creative Liberation Engine Design Identity",
+  "description": "Validates the YAML front matter of DESIGN.md for the Creative Liberation Engine visual identity system.",
+  "type": "object",
+  "required": ["design_system", "colors", "typography", "spacing", "radii", "effects", "animation"],
+  "properties": {
+    "design_system": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "description": { "type": "string" }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "required": ["primary", "accent", "surface-base", "surface-elevated", "surface-glass", "text-primary", "text-secondary", "success", "warning", "error"],
+      "properties": {
+        "primary": { "$ref": "#/definitions/colorValue" },
+        "primary-dark": { "$ref": "#/definitions/colorValue" },
+        "primary-light": { "$ref": "#/definitions/colorValue" },
+        "primary-subtle": { "$ref": "#/definitions/colorValue" },
+        "accent": { "$ref": "#/definitions/colorValue" },
+        "accent-dark": { "$ref": "#/definitions/colorValue" },
+        "accent-light": { "$ref": "#/definitions/colorValue" },
+        "accent-subtle": { "$ref": "#/definitions/colorValue" },
+        "surface-base": { "$ref": "#/definitions/colorValue" },
+        "surface-elevated": { "$ref": "#/definitions/colorValue" },
+        "surface-overlay": { "$ref": "#/definitions/colorValue" },
+        "surface-glass": { "$ref": "#/definitions/colorValue" },
+        "surface-glass-border": { "$ref": "#/definitions/colorValue" },
+        "text-primary": { "$ref": "#/definitions/colorValue" },
+        "text-secondary": { "$ref": "#/definitions/colorValue" },
+        "text-tertiary": { "$ref": "#/definitions/colorValue" },
+        "text-disabled": { "$ref": "#/definitions/colorValue" },
+        "success": { "$ref": "#/definitions/colorValue" },
+        "success-subtle": { "$ref": "#/definitions/colorValue" },
+        "warning": { "$ref": "#/definitions/colorValue" },
+        "warning-subtle": { "$ref": "#/definitions/colorValue" },
+        "error": { "$ref": "#/definitions/colorValue" },
+        "error-subtle": { "$ref": "#/definitions/colorValue" },
+        "info": { "$ref": "#/definitions/colorValue" },
+        "info-subtle": { "$ref": "#/definitions/colorValue" }
+      },
+      "additionalProperties": { "$ref": "#/definitions/colorValue" }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["heading", "body", "mono", "scale"],
+      "properties": {
+        "heading": { "type": "string" },
+        "body": { "type": "string" },
+        "mono": { "type": "string" },
+        "scale": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 1 }
+        },
+        "weights": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 100, "maximum": 900 }
+        },
+        "line-heights": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0.5, "maximum": 3 }
+        }
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "required": ["unit", "scale"],
+      "properties": {
+        "unit": { "type": "number", "minimum": 1 },
+        "scale": {
+          "type": "object",
+          "additionalProperties": { "type": "number", "minimum": 0 }
+        }
+      }
+    },
+    "radii": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "effects": {
+      "type": "object",
+      "properties": {
+        "glass": {
+          "type": "object",
+          "properties": {
+            "blur": { "type": "string" },
+            "border": { "type": "string" },
+            "background": { "type": "string" }
+          }
+        },
+        "shadows": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "animation": {
+      "type": "object",
+      "properties": {
+        "duration": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "easing": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "breakpoints": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 1 }
+    },
+    "z-index": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    }
+  },
+  "definitions": {
+    "colorValue": {
+      "type": "string",
+      "description": "A color value — hex (#RRGGBB), rgba(), or CSS gradient string."
+    }
+  }
+}

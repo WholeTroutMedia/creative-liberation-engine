@@ -1,0 +1,32 @@
+{
+  "version": "v6.0",
+  "service": "orchestration",
+  "routes": [
+    {
+      "routeId": "route_llm_route",
+      "path": "/api/v1/llm/route",
+      "method": "POST",
+      "owner": "IRIS",
+      "upstreamService": "orchestration",
+      "upstreamPath": "/api/v1/llm/route",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 5000,
+      "criticality": "tier1",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "selectedModel", "taskType"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_llm_endpoints",
+      "path": "/api/v1/llm/endpoints",
+      "method": "GET",
+      "owner": "IRIS",
+      "upstreamService": "orchestration",
+      "upstreamPath": "/api/v1/llm/endpoints",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    }
+  ]
+}

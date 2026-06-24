@@ -1,0 +1,41 @@
+{
+  "name": "@cle/wire-ingestion-mcp",
+  "version": "2.0.3",
+  "description": "Universal live wire ingestion \u2014 news, sports, financial, science, literary, tech, government, entertainment, health, business. Real-time feeds for AVERI.",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "cle-wire": "dist/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts",
+    "ingest": "tsx src/ingester.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "fast-xml-parser": "^4.3.6",
+    "node-cron": "^3.0.3",
+    "ioredis": "^5.3.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/node-cron": "^3.0.11",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0"
+  },
+  "keywords": [
+    "cle-engine",
+    "mcp",
+    "wire",
+    "news",
+    "rss",
+    "realtime",
+    "feeds"
+  ],
+  "author": "Creative Liberation Engine Team",
+  "license": "UNLICENSED",
+  "private": true
+}

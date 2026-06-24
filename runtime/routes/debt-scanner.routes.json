@@ -1,0 +1,32 @@
+{
+  "version": "v6.0",
+  "service": "ouroboros-daemon",
+  "routes": [
+    {
+      "routeId": "route_debt_scan",
+      "path": "/api/v1/debt/scan",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "ouroboros-daemon",
+      "upstreamPath": "/api/v1/debt/scan",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 60000,
+      "criticality": "tier1",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "latencyMs", "debtScore"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_debt_history",
+      "path": "/api/v1/debt/history",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "ouroboros-daemon",
+      "upstreamPath": "/api/v1/debt/history",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    }
+  ]
+}

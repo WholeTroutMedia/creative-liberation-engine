@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/reliability-hardening.schema.json",
+  "title": "V6 Reliability Hardening Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "helixId",
+    "status",
+    "controls"
+  ],
+  "properties": {
+    "helixId": {
+      "const": "helix-f-reliability"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["declared", "implementing", "validated", "hardened"]
+    },
+    "statusReason": {
+      "type": ["string", "null"]
+    },
+    "lastValidated": {
+      "type": ["string", "null"]
+    },
+    "validatedBy": {
+      "type": ["string", "null"]
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "circuitBreaker",
+        "healthChecks",
+        "gracefulShutdown",
+        "retryWithBackoff",
+        "deadLetterQueue"
+      ],
+      "properties": {
+        "circuitBreaker": { "$ref": "#/$defs/control" },
+        "healthChecks": { "$ref": "#/$defs/control" },
+        "gracefulShutdown": { "$ref": "#/$defs/control" },
+        "retryWithBackoff": { "$ref": "#/$defs/control" },
+        "deadLetterQueue": { "$ref": "#/$defs/control" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "controlId": { "type": "string" },
+          "evidenceId": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["controlId", "evidenceId", "timestamp"]
+      }
+    },
+    "validationHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "justification": { "type": "string" },
+          "operator": { "type": "string" }
+        },
+        "required": ["status", "timestamp"]
+      }
+    }
+  },
+  "description": "Reliability and observability hardening manifest - circuit breaker, health checks, graceful shutdown, retry with backoff, dead letter queue.",
+  "$defs": {
+    "control": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "const": true
+        },
+        {
+          "type": "object",
+          "properties": {
+            "declared": { "type": "boolean" },
+            "validated": { "type": "boolean" },
+            "lastTestedAt": { "type": ["string", "null"] },
+            "testCommand": { "type": ["string", "null"] },
+            "notes": { "type": "string" }
+          },
+          "required": ["declared", "validated"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
-# Active System Constraints (Institutional Memory)
+# V6 Active System Constraints (Institutional Memory)
 
-This document contains the canonical list of active system constraints, lessons learned, and failure modes identified during the operation of Creative Liberation Engine.
+This document contains the canonical list of active system constraints, lessons learned, and failure modes identified during the operation of Creative Liberation Engine V6.
 
 **Every agent booting into this workspace MUST read this document and adhere strictly to these constraints.**
 
@@ -12,9 +12,9 @@ This document contains the canonical list of active system constraints, lessons 
 Daemons or watchers (e.g., `cortex-omni-watcher`, `capability-watcher`) configured to connect to `DISPATCH_URL` using container name resolution (e.g., `http://dispatch:5160` or `http://dispatch:5050`) fail to connect and time out.
 
 ### Constraint
-* **Cross-Network Bridge Communication:** The core CLE infrastructure (dispatch, genkit, postgres, redis) runs on the docker network `creative-liberation-engine_genesis-net`. External watchers and UIs run on the external network `inception-mesh`. 
+* **Cross-Network Bridge Communication:** The core V6 infrastructure (dispatch, genkit, postgres, redis) runs on the docker network `creative-liberation-engine_genesis-net`. External watchers and UIs run on the external network `cle-mesh`. 
 * Container name resolution does **not** cross these networks. 
-* All external services, watchers, and UIs must route their dispatch traffic through the host-exposed gateway: **`http://122.0.3.1:5160`**.
+* All external services, watchers, and UIs must route their dispatch traffic through the host-exposed gateway: **`http://127.0.0.1:5160`**.
 * Internal services (within genesis-net) must use the internal port: **`http://dispatch:5150`**.
 
 ---
@@ -25,9 +25,9 @@ Daemons or watchers (e.g., `cortex-omni-watcher`, `capability-watcher`) configur
 Agents attempt to write files, deploy packages, or read configurations from old V5 paths, resulting in file scatter and logical regressions.
 
 ### Constraint
-* **NAS Volume Purge:** The `genesis-deploy` (V5 bridge) and `brainchild-v5` folders have been physically purged from the Synology NAS. 
-* The CLE NAS root is strictly: **`\\122.0.3.1\docker\creative-liberation-engine`**.
-* Do not write or reference `genesis-deploy` or `brainchild-v5` in any active V6 files.
+* **NAS Volume Purge:** The `genesis-deploy` (V5 bridge) and `creative-liberation-engine-v5` folders have been physically purged from the Synology NAS. 
+* The V6 NAS root is strictly: **`\\127.0.0.1\docker\creative-liberation-engine`**.
+* Do not write or reference `genesis-deploy` or `creative-liberation-engine-v5` in any active V6 files.
 
 ---
 
@@ -75,4 +75,18 @@ Agents jump straight into writing custom, hand-coded adapter scripts, local tool
 * **Proactive Native Audit:** Before writing code, setting up custom integrations, or executing any major implementation task, agents must perform a proactive verification check to determine if a native, official, or standard implementation exists for the target service, model, design system, or protocol.
 * **Adopt Over Build:** If an official or native equivalent exists (e.g. official AWS MCP, GitHub MCP, updated Google APIs, official token schemas) and is not yet configured, the agent must prioritize codifying and integrating this official capability immediately, rather than building a custom local adapter.
 * **Information & Configuration Check:** Before starting execution, agents must actively search for and ingest the latest documentation, developer references, configurations, and version schemas relevant to the task (e.g., checking developers.google.com for Google Workspace changes or official design specs) to ensure the implementation is fully state-of-the-art and doesn't rely on stale knowledge.
+
+---
+
+## 7. Network Drive Scan Avoidance (Performance & Stability)
+
+### Failure Mode
+Calling native search/indexing tools (like `grep_search` or `list_dir`) on mapped network drives (e.g., `y:\` or UNC paths `\\127.0.0.1\docker\...`) triggers thousands of sequential metadata lookups and read requests across SMB/network. This is extremely slow, times out, wastes tokens, and kills agent tasks/processes.
+
+### Constraint
+* **No Local Mapped-Drive Searches:** Do NOT use the native `grep_search` or recursive `list_dir` tools on mapped network drives or network paths for large directory scans.
+* **On-NAS Search Execution:** Execute all search operations directly on the NAS itself using the `run_command` tool routed via SSH:
+  `ssh -p 2000 jaharoni@127.0.0.1 "grep -rn 'query' /app/creative-liberation-engine/src"` or using Synology/Linux native search utilities (`find`, `grep`, `rg` if available).
+* **Direct File Views Permitted:** Reading a single, specific file via `view_file` using the UNC or mapped path is permitted, as it is a single, low-overhead operation. Only recursive walks/broad searches must be offloaded to NAS SSH.
+
 

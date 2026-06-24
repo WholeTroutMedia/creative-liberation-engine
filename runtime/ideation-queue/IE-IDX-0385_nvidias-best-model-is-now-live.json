@@ -1,0 +1,86 @@
+{
+  "jobId": "IE-IDX-0385",
+  "jobNumber": 385,
+  "slug": "nvidias-best-model-is-now-live",
+  "filename": "IE-IDX-0385_nvidias-best-model-is-now-live",
+  "status": "PLANNED",
+  "sourceArticle": {
+    "guid": "flipboard-8GUyRXrdRSaq3WtTpuYhjQ:a:4243649-1781030803",
+    "title": "Nvidia’s best model is now live",
+    "url": "https://thenewstack.io/nvidias-best-model-is-now-live/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Frederic Lardinois",
+    "pubDate": "Tue, 09 Jun 2026 18:46:43 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Nvidia",
+        "$": {
+          "domain": "https://flipboard.com/topic/nvidia"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "DevOps",
+        "$": {
+          "domain": "https://flipboard.com/topic/devops"
+        }
+      },
+      {
+        "_": "Infrastructure as Code",
+        "$": {
+          "domain": "https://flipboard.com/topic/infrastructureascode"
+        }
+      },
+      {
+        "_": "Operations Management",
+        "$": {
+          "domain": "https://flipboard.com/topic/operationsmanagement"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "infrastructure",
+    "sovereignty",
+    "creative-tools",
+    "business",
+    "learning",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "Obtain the actual article content for 'Nvidia’s best model is now live' from the provided URL.",
+    "rationale": "The 'Article Text' provided in the context is a newsletter subscription form from The New Stack, not the content of the article about Nvidia's model. A definitive implementation specification cannot be created without the relevant article content.",
+    "options": [],
+    "suggestedAgents": [
+      "COMET",
+      "VERA"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": []
+  },
+  "relatedJobs": [
+    "IE-IDX-0222",
+    "IE-IDX-0389"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0385_nvidias-best-model-is-now-live.md",
+  "comments": [],
+  "createdAt": "2026-06-09T18:58:22.925Z",
+  "ideatedAt": null,
+  "activatedAt": "2026-06-09T19:44:38.101Z",
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "veraOutput": {
+    "verdict": "The content is internally consistent. The RATIONALE logically supports the ATHENA DIRECTIVE. The claim that the 'Article Text' provided in the context was a newsletter subscription form, not the actual article content, serves as the foundational premise for the directive. There are no internal contradictions within the provided text.",
+    "confidence": 0.9,
+    "contradictions": [],
+    "pattern": ""
+  },
+  "emailedAt": "2026-06-09T23:05:10.626Z"
+}

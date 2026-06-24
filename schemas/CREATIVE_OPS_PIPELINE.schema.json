@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.ai/schemas/CREATIVE_OPS_PIPELINE.schema.json",
+  "title": "Creative Operations Pipeline Contract",
+  "description": "Node-based generative pipeline configuration for the Creative Intelligence Core.",
+  "type": "object",
+  "required": [
+    "pipelineId",
+    "name",
+    "nodes",
+    "edges"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "pipelineId": {
+      "type": "string",
+      "pattern": "^crop_[a-z0-9_-]{3,64}$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "position", "data"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["asset_input", "bolt_generator", "keeper_output"]
+          },
+          "position": {
+            "type": "object",
+            "required": ["x", "y"],
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" }
+            }
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "source", "target"],
+        "properties": {
+          "id": { "type": "string" },
+          "source": { "type": "string" },
+          "target": { "type": "string" }
+        }
+      }
+    }
+  }
+}

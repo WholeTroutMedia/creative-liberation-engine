@@ -1,0 +1,54 @@
+name: Chromatic Visual Regression
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/ui/src/**"
+      - ".storybook/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "packages/ui/src/**"
+      - ".storybook/**"
+
+jobs:
+  chromatic:
+    name: Chromatic Snapshot Test
+    runs-on: ubuntu-latest
+    env:
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for Chromatic to compare across commits
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build design tokens
+        run: pnpm --filter @cle/design-tokens tokens:build
+
+      - name: Build UI package
+        run: pnpm --filter @cle/ui build
+
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
+          buildScriptName: build-storybook
+          workingDir: .
+          exitZeroOnChanges: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          autoAcceptChanges: ${{ github.ref == 'refs/heads/main' }}
+          onlyChanged: true
+          traceChanged: expanded

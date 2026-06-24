@@ -1,0 +1,35 @@
+{
+  "deviceClass": "Consumer Drone",
+  "manufacturer": "DJI",
+  "modelName": "Mini 4 Pro",
+  "primaryComponents": [
+    "Lightweight Foldable Airframe (Chassis, Four Folding Arms)",
+    "Four Brushless DC Motors",
+    "Four Quick-Release Propellers (2 CW, 2 CCW)",
+    "Intelligent Flight Battery (LiPo)",
+    "Flight Controller Unit (integrated with IMU, barometer, magnetometers)",
+    "GPS/GLONASS/Galileo Satellite Positioning Module",
+    "3-Axis Mechanical Gimbal System (pitch, roll, yaw motors)",
+    "Camera Module (1/1.3-inch CMOS sensor, lens, image processor)",
+    "Omnidirectional Vision Sensing System (Front, Rear, Upward, Downward, Lateral stereo vision sensors)",
+    "Downward Vision System with Time-of-Flight (ToF) Sensor",
+    "Electronic Speed Controllers (ESCs) (integrated with flight controller or arms)",
+    "O4 Video Transmission Antennas",
+    "Integrated Landing Gear (small feet on chassis/arms)",
+    "Cooling Vents/System",
+    "Status Indicator LEDs",
+    "USB-C Port"
+  ],
+  "operationalLogic": "The drone receives control commands from a remote controller via a wireless link. The Flight Controller unit processes these commands along with real-time data from its integrated sensors (IMU for attitude, GPS for position, barometer for altitude, vision sensors for obstacle avoidance and precision hovering). It then calculates and sends signals to the Electronic Speed Controllers (ESCs), which regulate the speed of the four brushless motors. The motors spin the propellers, generating thrust and controlling pitch, roll, yaw, and altitude. The 3-axis mechanical gimbal continuously stabilizes the camera module, counteracting drone movements to maintain a steady horizon and desired camera angle for stable video recording and photography. The Intelligent Flight Battery powers all onboard systems.",
+  "maintenanceNodes": [
+    "Propellers (replacement due to wear or damage)",
+    "Intelligent Flight Battery (limited charge cycles, capacity degradation over time)",
+    "Gimbal and Camera Unit (susceptible to impact damage, dust accumulation)",
+    "Foldable Arms and Airframe (potential for cracks or breaks from crashes)",
+    "Motors (wear and tear, damage from impacts)",
+    "Landing Gear (potential for breakage)",
+    "Vision Sensors (require cleaning, susceptible to damage)",
+    "USB-C Port (wear from frequent charging/data transfer)",
+    "Gimbal Protector / Propeller Holders (accessories that can be lost or broken)"
+  ]
+}

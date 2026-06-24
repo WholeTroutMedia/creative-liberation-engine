@@ -1,0 +1,53 @@
+index,arkit,metahuman,description,multiplier
+0,eyeBlinkLeft,CTRL_L_eye_blink,"Left eye blink",1
+1,eyeLookDownLeft,CTRL_L_eye_lookDown,"Left eye look down",1
+2,eyeLookInLeft,CTRL_L_eye_lookIn,"Left eye look in (right)",1
+3,eyeLookOutLeft,CTRL_L_eye_lookOut,"Left eye look out (left)",1
+4,eyeLookUpLeft,CTRL_L_eye_lookUp,"Left eye look up",1
+5,eyeSquintLeft,CTRL_L_eye_squint,"Left eye squint",0.8
+6,eyeWideLeft,CTRL_L_eye_wide,"Left eye wide",1
+7,eyeBlinkRight,CTRL_R_eye_blink,"Right eye blink",1
+8,eyeLookDownRight,CTRL_R_eye_lookDown,"Right eye look down",1
+9,eyeLookInRight,CTRL_R_eye_lookIn,"Right eye look in (left)",1
+10,eyeLookOutRight,CTRL_R_eye_lookOut,"Right eye look out (right)",1
+11,eyeLookUpRight,CTRL_R_eye_lookUp,"Right eye look up",1
+12,eyeSquintRight,CTRL_R_eye_squint,"Right eye squint",0.8
+13,eyeWideRight,CTRL_R_eye_wide,"Right eye wide",1
+14,jawForward,CTRL_jaw_fwd,"Jaw forward",0.6
+15,jawLeft,CTRL_jaw_L,"Jaw left",0.7
+16,jawRight,CTRL_jaw_R,"Jaw right",0.7
+17,jawOpen,CTRL_jaw_open,"Jaw open",1
+18,mouthClose,CTRL_mouth_close,"Mouth close",1
+19,mouthFunnel,CTRL_mouth_funnel,"Mouth funnel (O shape)",1
+20,mouthPucker,CTRL_mouth_pucker,"Mouth pucker",1
+21,mouthLeft,CTRL_mouth_L,"Mouth left",0.8
+22,mouthRight,CTRL_mouth_R,"Mouth right",0.8
+23,mouthSmileLeft,CTRL_L_mouth_smile,"Left smile",1
+24,mouthSmileRight,CTRL_R_mouth_smile,"Right smile",1
+25,mouthFrownLeft,CTRL_L_mouth_frown,"Left frown",1
+26,mouthFrownRight,CTRL_R_mouth_frown,"Right frown",1
+27,mouthDimpleLeft,CTRL_L_mouth_dimple,"Left dimple",0.7
+28,mouthDimpleRight,CTRL_R_mouth_dimple,"Right dimple",0.7
+29,mouthStretchLeft,CTRL_L_mouth_stretch,"Left stretch",0.9
+30,mouthStretchRight,CTRL_R_mouth_stretch,"Right stretch",0.9
+31,mouthRollLower,CTRL_mouth_rollIn_lower,"Lower lip roll in",1
+32,mouthRollUpper,CTRL_mouth_rollIn_upper,"Upper lip roll in",1
+33,mouthShrugLower,CTRL_mouth_shrug_lower,"Lower lip shrug",0.8
+34,mouthShrugUpper,CTRL_mouth_shrug_upper,"Upper lip shrug",0.8
+35,mouthPressLeft,CTRL_L_mouth_press,"Left lip press",0.7
+36,mouthPressRight,CTRL_R_mouth_press,"Right lip press",0.7
+37,mouthLowerDownLeft,CTRL_L_mouth_lipsDown_lower,"Lower-left lip down",1
+38,mouthLowerDownRight,CTRL_R_mouth_lipsDown_lower,"Lower-right lip down",1
+39,mouthUpperUpLeft,CTRL_L_mouth_lipsUp_upper,"Upper-left lip up",1
+40,mouthUpperUpRight,CTRL_R_mouth_lipsUp_upper,"Upper-right lip up",1
+41,cheekPuff,CTRL_mouth_puff_L,"Cheek puff",0.5
+42,cheekSquintLeft,CTRL_L_eye_cheekRaise,"Left cheek squint",0.9
+43,cheekSquintRight,CTRL_R_eye_cheekRaise,"Right cheek squint",0.9
+44,noseSneerLeft,CTRL_L_nose_sneer,"Left nose sneer",1
+45,noseSneerRight,CTRL_R_nose_sneer,"Right nose sneer",1
+46,browDownLeft,CTRL_L_brow_down,"Left brow down",1
+47,browDownRight,CTRL_R_brow_down,"Right brow down",1
+48,browInnerUp,CTRL_brow_inner_up,"Inner brow raise",1
+49,browOuterUpLeft,CTRL_L_brow_outer_up,"Left outer brow raise",1
+50,browOuterUpRight,CTRL_R_brow_outer_up,"Right outer brow raise",1
+51,tongueOut,CTRL_mouth_tongueOut,"Tongue out",1

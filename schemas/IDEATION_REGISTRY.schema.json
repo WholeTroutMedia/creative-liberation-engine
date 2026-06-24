@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/IDEATION_REGISTRY.schema.json",
+  "title": "Ideation Registry",
+  "description": "Central index of all ideations in the Creative Liberation Engine. This is the single source of truth for querying, filtering, and lifecycle management. Individual ideation files remain on disk; this registry provides the searchable index layer.",
+  "type": "object",
+  "required": ["version", "generatedAt", "stats", "ideations"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Registry format version."
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this registry was last regenerated."
+    },
+    "lastJobNumber": {
+      "type": "integer",
+      "description": "Current counter for ID generation."
+    },
+    "stats": {
+      "$ref": "#/definitions/RegistryStats"
+    },
+    "ideations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/IdeationIndexEntry" },
+      "description": "Lightweight index entries for every ideation."
+    },
+    "sources": {
+      "$ref": "#/definitions/SourceIndex",
+      "description": "Aggregated source statistics."
+    },
+    "reviewSchedule": {
+      "$ref": "#/definitions/ReviewSchedule",
+      "description": "Upcoming review cycle information."
+    }
+  },
+  "additionalProperties": false,
+
+  "definitions": {
+    "RegistryStats": {
+      "type": "object",
+      "properties": {
+        "total": { "type": "integer" },
+        "byStatus": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" },
+          "description": "Count per status (e.g., { 'IDEATED': 87, 'ACTIVATED': 5 })."
+        },
+        "byDomain": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "bySource": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "avgRelevance": { "type": "number" },
+        "activationRate": {
+          "type": "number",
+          "description": "Percentage of ideations that reached ACTIVATED or beyond."
+        },
+        "completionRate": {
+          "type": "number",
+          "description": "Percentage of activated ideations that reached COMPLETED."
+        },
+        "oldestUnreviewed": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "nextReviewDue": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "IdeationIndexEntry": {
+      "type": "object",
+      "required": ["id", "slug", "status", "title", "sourceType", "createdAt", "relevance"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^IE-IDX-[0-9]{4,}$"
+        },
+        "slug": { "type": "string" },
+        "status": { "type": "string" },
+        "title": {
+          "type": "string",
+          "description": "Source article title for display."
+        },
+        "directive": {
+          "type": ["string", "null"],
+          "description": "ATHENA directive summary (first 200 chars)."
+        },
+        "sourceType": { "type": "string" },
+        "sourceUrl": { "type": "string" },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "domain": { "type": ["string", "null"] },
+        "relevance": { "type": "integer" },
+        "urgency": { "type": ["string", "null"] },
+        "priority": { "type": ["integer", "null"] },
+        "owner": { "type": ["string", "null"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "ideatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "lastModifiedAt": { "type": "string", "format": "date-time" },
+        "nextReviewDue": { "type": ["string", "null"], "format": "date-time" },
+        "crossRefCount": { "type": "integer", "default": 0 },
+        "deliverableCount": { "type": "integer", "default": 0 },
+        "filePath": {
+          "type": "string",
+          "description": "Relative path to the full ideation JSON."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Lightweight projection of an ideation for index queries. Full data lives in the individual file."
+    },
+
+    "SourceIndex": {
+      "type": "object",
+      "properties": {
+        "feeds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "feedId": { "type": "string" },
+              "name": { "type": "string" },
+              "url": { "type": "string" },
+              "totalIngested": { "type": "integer" },
+              "lastIngestedAt": { "type": ["string", "null"], "format": "date-time" },
+              "avgRelevance": { "type": "number" }
+            }
+          },
+          "description": "Per-feed statistics."
+        },
+        "seenGuids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Deduplication set (moved from sentinel-seen.json)."
+        },
+        "lastPollAt": { "type": ["string", "null"], "format": "date-time" },
+        "totalPolls": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+
+    "ReviewSchedule": {
+      "type": "object",
+      "properties": {
+        "nextMonthlyReview": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When the next monthly review cycle should run."
+        },
+        "lastMonthlyReview": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "overdueReviews": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of ideations past their review due date."
+        },
+        "upcomingReviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "dueAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

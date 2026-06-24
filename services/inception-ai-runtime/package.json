@@ -1,0 +1,25 @@
+{
+  "name": "@cle/cle-ai-runtime",
+  "version": "2.0.3",
+  "description": "Sovereign AI runtime manager orchestrating local models",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "zod": "^3.23.0",
+    "pino": "^9.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0",
+    "@types/express": "^4.17.21"
+  }
+}

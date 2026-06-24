@@ -1,0 +1,158 @@
+{
+  "category": "specialized-frameworks",
+  "description": "Framework-specific and specialized domain skills",
+  "source": "Community",
+  "agents": ["IRIS", "ARCH", "AURORA"],
+  "skills": [
+    {
+      "id": "makepad-skills",
+      "name": "Makepad UI Framework for Rust",
+      "description": "Build native UIs with Makepad and Rust",
+      "complexity": "expert",
+      "input": "UI requirements",
+      "output": "Makepad UI components in Rust",
+      "example": "Build cross-platform app with native performance",
+      "attribution": "Makepad Community"
+    },
+    {
+      "id": "skill-rails-upgrade",
+      "name": "Rails Version Assessment",
+      "description": "Assess Rails app for version upgrades",
+      "complexity": "expert",
+      "input": "Current Rails version, app code",
+      "output": "Upgrade assessment with breaking changes",
+      "example": "Assess upgrade path from Rails 6 to 7",
+      "attribution": "alinaqi (Community)"
+    },
+    {
+      "id": "dify-frontend-tester",
+      "name": "Dify Frontend Testing",
+      "description": "Test Dify AI application frontends",
+      "complexity": "moderate",
+      "input": "Dify app",
+      "output": "Test suite for Dify frontend",
+      "example": "Test chatbot UI interactions",
+      "attribution": "Community"
+    },
+    {
+      "id": "ralph-autonomous-coding",
+      "name": "Ralph Autonomous Coding Loop",
+      "description": "Self-directed coding with planning and execution",
+      "complexity": "expert",
+      "input": "High-level goal",
+      "output": "Autonomous implementation with iterations",
+      "example": "Build feature autonomously with self-correction",
+      "attribution": "ralph-the-coder (Community)"
+    },
+    {
+      "id": "google-labs-design-md",
+      "name": "DESIGN.md File Generation",
+      "description": "Generate comprehensive DESIGN.md documentation",
+      "complexity": "moderate",
+      "input": "Project architecture",
+      "output": "DESIGN.md with full technical design",
+      "example": "Document microservices architecture",
+      "attribution": "Google Labs"
+    },
+    {
+      "id": "google-labs-react-components",
+      "name": "Stitch to React Component Conversion",
+      "description": "Convert Stitch designs to React components",
+      "complexity": "expert",
+      "input": "Stitch design files",
+      "output": "React components with TypeScript",
+      "example": "Convert design system to component library",
+      "attribution": "Google Labs"
+    },
+    {
+      "id": "skill-writer",
+      "name": "Skill Authoring Framework",
+      "description": "Write new agent skills with best practices",
+      "complexity": "expert",
+      "input": "Capability to encode as skill",
+      "output": "Complete skill definition with examples",
+      "example": "Document custom integration as reusable skill",
+      "attribution": "Community"
+    },
+    {
+      "id": "prompt-lookup",
+      "name": "Prompt Discovery and Search",
+      "description": "Find and retrieve optimal prompts for tasks",
+      "complexity": "moderate",
+      "input": "Task description",
+      "output": "Relevant prompts with effectiveness ratings",
+      "example": "Find best prompt for code review",
+      "attribution": "Community"
+    },
+    {
+      "id": "skill-installer-lookup",
+      "name": "Skill Installation Discovery",
+      "description": "Find and install agent skills from repositories",
+      "complexity": "moderate",
+      "input": "Skill name or capability",
+      "output": "Installed skill with dependencies",
+      "example": "Install community skill from GitHub",
+      "attribution": "Community"
+    },
+    {
+      "id": "skill-seekers",
+      "name": "Documentation to Skills Converter",
+      "description": "Convert documentation into executable skills",
+      "complexity": "expert",
+      "input": "Documentation, API specs",
+      "output": "Skill definitions from docs",
+      "example": "Convert API docs to agent skills",
+      "attribution": "Community"
+    },
+    {
+      "id": "materials-simulation",
+      "name": "Computational Materials Science",
+      "description": "Simulate material properties and behaviors",
+      "complexity": "expert",
+      "input": "Material composition, conditions",
+      "output": "Simulation results and analysis",
+      "example": "Simulate polymer stress-strain behavior",
+      "attribution": "Scientific Computing Community"
+    },
+    {
+      "id": "skill-rails-patterns",
+      "name": "Rails Best Practices",
+      "description": "Apply Rails conventions and patterns",
+      "complexity": "expert",
+      "input": "Rails application code",
+      "output": "Refactored code with best practices",
+      "example": "Apply service objects and concerns pattern",
+      "attribution": "Rails Community"
+    },
+    {
+      "id": "meta-skill-generation",
+      "name": "Meta: Generate New Skills",
+      "description": "Generate new skills from patterns and examples",
+      "complexity": "expert",
+      "input": "Capability pattern, examples",
+      "output": "New skill definition ready to use",
+      "example": "Generate skill for new API integration",
+      "attribution": "creative-liberation-engine Meta-Learning"
+    },
+    {
+      "id": "skill-composition",
+      "name": "Skill Composition Patterns",
+      "description": "Combine multiple skills into workflows",
+      "complexity": "expert",
+      "input": "Skills to combine, workflow goal",
+      "output": "Composed skill workflow",
+      "example": "Chain test generation + execution + reporting",
+      "attribution": "creative-liberation-engine Meta-Learning"
+    },
+    {
+      "id": "skill-optimization",
+      "name": "Skill Performance Optimization",
+      "description": "Optimize existing skills for better performance",
+      "complexity": "expert",
+      "input": "Skill definition, performance metrics",
+      "output": "Optimized skill with improvements",
+      "example": "Reduce skill execution time by 50%",
+      "attribution": "creative-liberation-engine Meta-Learning"
+    }
+  ]
+}

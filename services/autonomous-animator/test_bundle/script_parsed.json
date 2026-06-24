@@ -1,0 +1,27 @@
+{
+  "scenes": [
+    {
+      "scene_id": "scene_1",
+      "background_ref": null,
+      "shots": [
+        {
+          "shot_id": "shot_1",
+          "duration_seconds": 2.0,
+          "camera": {
+            "type": "static",
+            "start_pos": [
+              0.0,
+              0.0
+            ],
+            "end_pos": [
+              0.0,
+              0.0
+            ]
+          },
+          "characters_present": [],
+          "dialogue": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+name: Redeploy Dispatch Only
+
+on:
+  workflow_dispatch:
+
+jobs:
+  redeploy-dispatch:
+    name: Rebuild & restart genesis dispatch service
+    runs-on: self-hosted
+    steps:
+      - name: Checkout latest main
+        run: |
+          git clone http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git .
+          git checkout main
+          echo "✓ Checked out $(git log -1 --oneline)"
+
+      - name: Load pre-built image from /tmp (if present)
+        run: |
+          if [ -f /tmp/dispatch-genesis.tar ]; then
+            docker load -i /tmp/dispatch-genesis.tar
+            echo "✓ Loaded dispatch image from /tmp/dispatch-genesis.tar"
+            rm -f /tmp/dispatch-genesis.tar
+          else
+            echo "No pre-built tar found — will build from source"
+          fi
+
+      - name: Write .env (minimal — dispatch needs no secrets)
+        run: |
+          touch .env
+          echo "DISPATCH_STORE_DIR=/data" >> .env
+          echo "PORT=5050" >> .env
+          echo "✓ .env written"
+
+      - name: Ensure dispatch data volume exists
+        run: |
+          docker volume create genesis-dispatch-data 2>/dev/null || true
+          echo "✓ Volume genesis-dispatch-data ready"
+
+      - name: Rebuild & restart dispatch service
+        run: |
+          docker compose -f docker-compose.genesis.yml up -d --no-deps --build dispatch
+          echo "✓ Dispatch service rebuilt and restarted"
+
+      - name: Wait for dispatch to warm up
+        run: sleep 15
+
+      - name: Verify dispatch health + new PATCH endpoint
+        run: |
+          curl -sf http://localhost:5050/health | jq .
+          echo ""
+          # Test the new PATCH endpoint from source
+          RESP=$(curl -s -o /dev/null -w "%{http_code}" -X PATCH http://localhost:5050/api/tasks/NONEXISTENT \
+            -H "Content-Type: application/json" \
+            -d '{"status":"done"}')
+          if [ "$RESP" = "404" ]; then
+            echo "✓ PATCH /api/tasks/:id is live (returned 404 for unknown task — endpoint exists)"
+          else
+            echo "✗ Unexpected PATCH response: $RESP"
+            exit 1
+          fi
+
+      - name: Show dispatch container status
+        run: docker ps --filter "name=dispatch" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

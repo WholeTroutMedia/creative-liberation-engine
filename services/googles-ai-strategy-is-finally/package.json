@@ -1,0 +1,10 @@
+{
+  "name": "@cle/googles-ai-strategy-is-finally",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0212",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

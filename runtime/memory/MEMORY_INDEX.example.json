@@ -1,0 +1,63 @@
+{
+  "version": "v6.0",
+  "collection": "decisions",
+  "items": [
+    {
+      "memoryId": "mem_v6_single_canon_decision",
+      "kind": "decision",
+      "title": "V6 uses one canonical memory model",
+      "summary": "All durable memory in V6 must normalize into the memory contract, and wiki or graph tools act only as projections.",
+      "bodyRef": "../wiki/examples/mem_v6_single_canon_decision.md",
+      "source": "MANUAL",
+      "provenance": {
+        "recordedBy": "STRATA",
+        "recordedAt": "2026-04-16T12:00:00Z",
+        "artifactRefs": [
+          "../docs/MEMORY_SPINE.md",
+          "../wiki/WIKI_ARCHITECTURE.md"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "canonical",
+      "tags": ["v6", "memory", "wiki", "canon"],
+      "relations": [
+        {
+          "type": "relates_to",
+          "targetId": "mem_v6_route_manifest_decision"
+        }
+      ],
+      "createdAt": "2026-04-16T12:00:00Z",
+      "updatedAt": "2026-04-16T12:00:00Z",
+      "lifecycleState": "active"
+    },
+    {
+      "memoryId": "mem_v6_route_manifest_decision",
+      "kind": "decision",
+      "title": "V6 routes are manifest-first",
+      "summary": "Every V6 route must be declared in a route manifest before code or gateway configuration can treat it as canonical.",
+      "bodyRef": "../docs/ROUTING_CONTRACT.md",
+      "source": "MANUAL",
+      "provenance": {
+        "recordedBy": "ATHENA",
+        "recordedAt": "2026-04-16T12:00:00Z",
+        "artifactRefs": [
+          "../schemas/ROUTE_CONTRACT.schema.json",
+          "../schemas/ROUTE_MANIFEST.schema.json",
+          "../runtime/routes/ROUTE_MANIFEST.example.json"
+        ]
+      },
+      "confidence": 1,
+      "retentionClass": "canonical",
+      "tags": ["v6", "routing", "manifest", "canon"],
+      "relations": [
+        {
+          "type": "relates_to",
+          "targetId": "mem_v6_single_canon_decision"
+        }
+      ],
+      "createdAt": "2026-04-16T12:00:00Z",
+      "updatedAt": "2026-04-16T12:00:00Z",
+      "lifecycleState": "active"
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "category": "trail-of-bits-security",
+  "description": "Trail of Bits security tools and methodologies",
+  "source": "Trail of Bits (Security Experts)",
+  "agents": ["LEX", "ARCH", "RAM_CREW"],
+  "priority": "critical",
+  "skills": [
+    {
+      "id": "tob-building-secure-contracts",
+      "name": "Building Secure Smart Contracts",
+      "description": "Comprehensive smart contract security toolkit",
+      "complexity": "expert",
+      "input": "Smart contract code (Solidity/Vyper)",
+      "output": "Security analysis report with vulnerabilities",
+      "example": "Audit DeFi protocol for reentrancy and overflow",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-semgrep-rule-creator",
+      "name": "Semgrep Rule Creator",
+      "description": "Create custom Semgrep static analysis rules",
+      "complexity": "expert",
+      "input": "Vulnerability pattern to detect",
+      "output": "Semgrep YAML rule with test cases",
+      "example": "Create rule to detect SQL injection patterns",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-static-analysis",
+      "name": "Static Analysis (CodeQL, Semgrep, SARIF)",
+      "description": "Run multiple static analysis tools and parse SARIF",
+      "complexity": "expert",
+      "input": "Codebase path",
+      "output": "Consolidated security findings",
+      "example": "Scan entire repo with CodeQL + Semgrep",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-variant-analysis",
+      "name": "Variant Analysis",
+      "description": "Find similar vulnerabilities across codebase",
+      "complexity": "expert",
+      "input": "Known vulnerability instance",
+      "output": "List of similar vulnerable code locations",
+      "example": "Find all variants of a XSS vulnerability",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-differential-review",
+      "name": "Security-Focused Differential Review",
+      "description": "Review code changes for security implications",
+      "complexity": "expert",
+      "input": "Git diff or pull request",
+      "output": "Security review with risk assessment",
+      "example": "Review auth changes for security regressions",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-audit-context-building",
+      "name": "Audit Context Building",
+      "description": "Deep architectural analysis for security audits",
+      "complexity": "expert",
+      "input": "Codebase, architecture docs",
+      "output": "Comprehensive security context document",
+      "example": "Map attack surface for blockchain protocol",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-property-based-testing",
+      "name": "Property-Based Testing",
+      "description": "Generate property-based tests for invariants",
+      "complexity": "expert",
+      "input": "System invariants, properties",
+      "output": "Hypothesis/QuickCheck test suite",
+      "example": "Test token transfer properties with fuzzing",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-constant-time-analysis",
+      "name": "Constant-Time Analysis",
+      "description": "Detect timing side-channel vulnerabilities",
+      "complexity": "expert",
+      "input": "Cryptographic code",
+      "output": "Timing vulnerability report",
+      "example": "Verify password comparison is constant-time",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-entry-point-analyzer",
+      "name": "Smart Contract Entry Point Analyzer",
+      "description": "Analyze all entry points in smart contracts",
+      "complexity": "expert",
+      "input": "Smart contract bytecode or source",
+      "output": "Entry point map with access controls",
+      "example": "Map all public functions and modifiers",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-fix-review",
+      "name": "Fix Verification Review",
+      "description": "Verify that fix commits actually resolve issues",
+      "complexity": "expert",
+      "input": "Original issue, fix commit",
+      "output": "Verification report with test coverage",
+      "example": "Verify CVE fix doesn't introduce new issues",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-insecure-defaults",
+      "name": "Insecure Defaults Detection",
+      "description": "Detect insecure default configurations",
+      "complexity": "moderate",
+      "input": "Configuration files, code",
+      "output": "List of insecure defaults with remediations",
+      "example": "Find debug mode enabled in production config",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-sharp-edges",
+      "name": "Sharp Edges (Error-Prone APIs)",
+      "description": "Identify error-prone APIs and patterns",
+      "complexity": "moderate",
+      "input": "Codebase, API usage",
+      "output": "List of risky API uses with safer alternatives",
+      "example": "Find unsafe C functions like strcpy",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-spec-to-code-compliance",
+      "name": "Specification to Code Compliance",
+      "description": "Verify implementation matches specification",
+      "complexity": "expert",
+      "input": "Specification document, implementation",
+      "output": "Compliance report with deviations",
+      "example": "Verify ERC-20 implementation matches spec",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-firebase-apk-scanner",
+      "name": "Firebase APK Security Scanner",
+      "description": "Scan Android APKs for Firebase misconfigurations",
+      "complexity": "moderate",
+      "input": "Android APK file",
+      "output": "Security report with exposed keys/configs",
+      "example": "Find hardcoded API keys in production APK",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-burpsuite-parser",
+      "name": "Burp Suite Project Parser",
+      "description": "Extract and analyze data from Burp Suite projects",
+      "complexity": "moderate",
+      "input": "Burp Suite project file",
+      "output": "Parsed findings with prioritization",
+      "example": "Extract all XSS findings from Burp scan",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-modern-python",
+      "name": "Modern Python Tooling",
+      "description": "Use modern Python tools (ruff, mypy, pyright)",
+      "complexity": "moderate",
+      "input": "Python codebase",
+      "output": "Linted, type-checked Python code",
+      "example": "Apply ruff + mypy with strict settings",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-dwarf-expert",
+      "name": "DWARF Debugging Format Expert",
+      "description": "Parse and analyze DWARF debugging information",
+      "complexity": "expert",
+      "input": "Binary with DWARF debug info",
+      "output": "Detailed debug info analysis",
+      "example": "Extract function signatures from binary",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-testing-handbook",
+      "name": "Testing Handbook (Fuzzers, Static Analysis)",
+      "description": "Apply comprehensive testing methodologies",
+      "complexity": "expert",
+      "input": "System to test",
+      "output": "Complete testing strategy with tools",
+      "example": "Set up AFL fuzzing + static analysis pipeline",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-ask-questions",
+      "name": "Ask Questions If Underspecified",
+      "description": "Prompt for clarification on ambiguous requirements",
+      "complexity": "simple",
+      "input": "Unclear requirement or task",
+      "output": "Clarifying questions",
+      "example": "Ask about authentication requirements",
+      "attribution": "Trail of Bits"
+    },
+    {
+      "id": "tob-claude-chrome-troubleshooting",
+      "name": "Claude-in-Chrome MCP Troubleshooting",
+      "description": "Debug MCP extension issues in Chrome",
+      "complexity": "moderate",
+      "input": "Error symptoms, logs",
+      "output": "Troubleshooting steps and fixes",
+      "example": "Fix MCP server connection issues",
+      "attribution": "Trail of Bits"
+    }
+  ]
+}

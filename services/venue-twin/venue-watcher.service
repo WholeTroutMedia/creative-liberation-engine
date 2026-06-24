@@ -1,0 +1,15 @@
+[Unit]
+Description=Creative Liberation Engine Venue Drop Zone Watcher
+After=network.target
+
+[Service]
+Type=simple
+User=jaharoni
+WorkingDirectory=/app/vault/Creative Liberation Engine/Venues/_pipeline
+ExecStart=/usr/bin/python3 watch.py
+Restart=always
+RestartSec=10
+Environment=WATCH_DEBOUNCE=10
+
+[Install]
+WantedBy=multi-user.target

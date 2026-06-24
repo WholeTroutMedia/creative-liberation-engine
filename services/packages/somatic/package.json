@@ -1,0 +1,26 @@
+{
+  "name": "@cle/somatic",
+  "version": "2.0.3",
+  "description": "Bridge translating AI generation to physical manifestation (OSC to Unreal Engine)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "test": "vitest run --testTimeout=30000",
+    "type-check": "tsc --noEmit"
+  },
+  "author": "WholeTrout Media",
+  "license": "ISC",
+  "dependencies": {
+    "osc": "^2.4.4",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  }
+}

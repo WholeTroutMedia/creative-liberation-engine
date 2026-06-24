@@ -1,0 +1,10 @@
+{
+  "docId": "test-doc-123",
+  "collection": "test-collection",
+  "action": "create",
+  "timestamp": "2026-05-27T00:05:00.495Z",
+  "state": {
+    "key": "value",
+    "count": 42
+  }
+}

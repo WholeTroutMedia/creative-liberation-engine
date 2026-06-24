@@ -1,0 +1,36 @@
+/* Solaris Station (Retro-Futurism) */
+.theme-dark {
+  --background-primary: #0a0500 !important;
+  --background-secondary: #140a00 !important;
+  --background-modifier-border: #ffb000 !important;
+  
+  --interactive-accent: #ffb000;
+  --interactive-accent-hover: #ffd000;
+  --text-accent: #33ff00; /* Phosphor Green accents */
+  
+  --text-normal: #ffb000;
+  --text-muted: #8a6000;
+  
+  --font-interface: 'Courier New', 'Consolas', monospace !important;
+  --font-text: 'Courier New', 'Consolas', monospace !important;
+  
+  --border-width: 2px !important;
+}
+
+.workspace-leaf {
+  border: 2px solid var(--background-modifier-border) !important;
+  background-color: var(--background-primary) !important;
+  border-radius: 0px !important; /* Blocky retro feel */
+  margin: 4px !important;
+  box-shadow: 0 0 10px rgba(255, 176, 0, 0.1) !important;
+}
+
+/* CRT Glow on text */
+.markdown-source-view, .workspace-leaf-header-title {
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.5);
+}
+
+.workspace-leaf-header-title {
+  color: var(--text-accent);
+  text-shadow: 0 0 4px rgba(51, 255, 0, 0.5);
+}

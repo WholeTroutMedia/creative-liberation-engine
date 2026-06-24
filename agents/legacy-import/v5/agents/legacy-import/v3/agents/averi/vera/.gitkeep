@@ -1,0 +1,10 @@
+# VERA Workspace
+
+Truth verification, memory, coordination.
+
+**Note:** VERA also operates the SCRIBE coordination layer at root level.
+
+## Structure
+
+- `memory/` - Truth verifications, immutable principles
+- `resources/` - Truth protocols, verification templates

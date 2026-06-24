@@ -1,0 +1,97 @@
+{
+  "jobId": "IE-IDX-0168",
+  "jobNumber": 168,
+  "slug": "the-hidden-google-ai-tools-you-probably",
+  "filename": "IE-IDX-0168_the-hidden-google-ai-tools-you-probably",
+  "status": "DISCARDED",
+  "sourceArticle": {
+    "guid": "flipboard-GlrSUtjyRluhWOEo1GgIFw:a:4243649-1778501374",
+    "title": "The Hidden Google AI Tools You Probably Aren't Using Yet",
+    "url": "https://www.geeky-gadgets.com/every-google-ai-tool-explained/?utm_source=flipboard&utm_content=topic/technology",
+    "author": "Julian Horsey",
+    "pubDate": "Mon, 11 May 2026 12:09:34 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Google AI Studio",
+        "$": {
+          "domain": "https://flipboard.com/topic/googleaistudio"
+        }
+      },
+      {
+        "_": "Google Workspace",
+        "$": {
+          "domain": "https://flipboard.com/topic/googleworkspace"
+        }
+      },
+      {
+        "_": "Google Docs",
+        "$": {
+          "domain": "https://flipboard.com/topic/googledocs"
+        }
+      },
+      {
+        "_": "Google Search",
+        "$": {
+          "domain": "https://flipboard.com/topic/googlesearch"
+        }
+      },
+      {
+        "_": "Google Maps",
+        "$": {
+          "domain": "https://flipboard.com/topic/googlemaps"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "sovereignty",
+    "edge-ai",
+    "agent",
+    "creative-tools",
+    "research",
+    "business",
+    "learning",
+    "competitive-intel",
+    "cinematography",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "The Creative Liberation Engine will prioritize the development of sovereign, self-hosted AI solutions, aligning with its constitutional mandate to build and own its core capabilities.",
+    "rationale": "The topic, 'The Hidden Google AI Tools You Probably Aren't Using Yet,' inherently suggests a strategy of leveraging or adopting external, proprietary Google AI tools. This directly conflicts with Article I: Sovereignty, which mandates a preference for self-hosted, owned solutions within the Creative Liberation Engine. Our mission is to create and implement complete, high-quality AI systems (Article IV, Article IX), not to integrate or rely upon third-party services as primary components. While competitive analysis is valuable for strategic planning, the directive implied by the topic itself is fundamentally redundant to the Creative Liberation Engine's core purpose as a builder of AI, rather than a consumer of external AI services.",
+    "options": [],
+    "suggestedAgents": [],
+    "nextMode": "DISCARD",
+    "constitutionalFlags": [
+      "Article I: Sovereignty",
+      "Article IV: Quality Standards",
+      "Article IX: Ship Complete or Don't Ship"
+    ]
+  },
+  "relatedJobs": [
+    "IE-IDX-0126",
+    "IE-IDX-0095",
+    "IE-IDX-0170",
+    "IE-IDX-0182",
+    "IE-IDX-0183",
+    "IE-IDX-0384",
+    "IE-IDX-0387",
+    "IE-IDX-0391",
+    "IE-IDX-0396",
+    "IE-IDX-0405",
+    "IE-IDX-0451",
+    "IE-IDX-0454"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0168_the-hidden-google-ai-tools-you-probably.md",
+  "comments": [],
+  "createdAt": "2026-05-11T12:15:03.266Z",
+  "ideatedAt": "2026-05-11T12:15:29.954Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "lifecycle": {
+    "status": "VERIFIED"
+  }
+}

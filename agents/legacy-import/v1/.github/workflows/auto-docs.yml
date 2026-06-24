@@ -1,0 +1,122 @@
+name: Auto-Update Documentation
+
+# Trigger on:
+# - Push to main
+# - New releases
+# - Manual trigger
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'cle_engine/**/*.py'
+      - 'studio-gui/src/**/*'
+      - 'requirements.txt'
+      - 'package.json'
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pdoc3 # For auto-generating Python docs
+          
+      - name: Install Node dependencies
+        run: |
+          cd studio-gui
+          npm ci
+          
+      - name: Generate API Documentation
+        run: |
+          # Generate Python API docs
+          pdoc --html --output-dir docs/api/backend cle_engine --force
+          
+          # Generate TypeScript/React docs (if using TypeDoc)
+          # cd studio-gui
+          # npx typedoc --out ../docs/api/frontend src
+          
+      - name: Update README badges
+        run: |
+          # Get Python version from requirements
+          PYTHON_VERSION=$(python --version | cut -d' ' -f2)
+          
+          # Get Node version
+          NODE_VERSION=$(node --version | cut -d'v' -f2)
+          
+          # Update badges in README
+          sed -i "s/python-%3E%3D[0-9.]*/python-%3E%3D${PYTHON_VERSION}/" README.md
+          sed -i "s/node-%3E%3D[0-9.]*/node-%3E%3D${NODE_VERSION}/" README.md
+          
+      - name: Update PROGRESS.md with latest commit
+        run: |
+          # Get latest commit info
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          COMMIT_AUTHOR=$(git log -1 --pretty=%an)
+          COMMIT_DATE=$(git log -1 --pretty=%cd --date=format:'%B %d, %Y, %I:%M %p EST')
+          
+          # Append to PROGRESS.md if docs were changed
+          if [[ "$COMMIT_MSG" == *"doc"* ]] || [[ "$COMMIT_MSG" == *"Doc"* ]]; then
+            echo "" >> PROGRESS.md
+            echo "### Documentation Update - $COMMIT_DATE" >> PROGRESS.md
+            echo "- Updated by: $COMMIT_AUTHOR" >> PROGRESS.md
+            echo "- Change: $COMMIT_MSG" >> PROGRESS.md
+          fi
+          
+      - name: Check for doc changes
+        id: check_docs
+        run: |
+          if git diff --quiet docs/ PROGRESS.md README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit documentation changes
+        if: steps.check_docs.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/ PROGRESS.md README.md
+          git commit -m "docs: auto-update documentation [skip ci]" || echo "No changes to commit"
+          
+      - name: Push changes
+        if: steps.check_docs.outputs.changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          
+  notify:
+    needs: update-docs
+    runs-on: ubuntu-latest
+    if: success()
+    
+    steps:
+      - name: Notify success
+        run: |
+          echo "✅ Documentation updated successfully!"
+          echo "Docs are now in sync with code changes."

@@ -1,0 +1,25 @@
+{
+  "name": "@cle/auth",
+  "version": "2.0.3",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    },
+    "./dist/*": "./src/*"
+  },
+  "dependencies": {
+    "zod": "^3.23.8",
+    "firebase": "^10.11.0",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1"
+  },
+  "scripts": {
+    "build": "echo 'no build required'"
+  }
+}

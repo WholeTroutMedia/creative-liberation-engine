@@ -1,0 +1,10 @@
+{
+  "name": "@cle/the-promise-and-panic-of-unity",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0151",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

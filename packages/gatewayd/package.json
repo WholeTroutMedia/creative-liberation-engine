@@ -1,0 +1,18 @@
+{
+  "name": "@cle/gatewayd",
+  "version": "2.0.3",
+  "description": "Sovereign Gateway Daemon exposing secure WebSockets/gRPC/STDIO MCP server",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "ws": "^8.16.0"
+  }
+}

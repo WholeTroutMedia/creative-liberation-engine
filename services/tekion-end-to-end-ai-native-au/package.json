@@ -1,0 +1,10 @@
+{
+  "name": "@cle/tekion-end-to-end-ai-native-au",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0220",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

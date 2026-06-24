@@ -1,0 +1,128 @@
+{
+  "category": "productivity-tools",
+  "description": "Productivity utilities and specialized tools",
+  "source": "Community",
+  "agents": ["KEEPER", "IRIS", "AURORA"],
+  "skills": [
+    {
+      "id": "todo-tracker",
+      "name": "Persistent TODO Tracker",
+      "description": "Track tasks and TODOs across sessions",
+      "complexity": "simple",
+      "input": "TODO operations",
+      "output": "Updated TODO list",
+      "example": "Track sprint tasks with priorities",
+      "attribution": "aihubgg (Community)"
+    },
+    {
+      "id": "skill-sync",
+      "name": "Skill Synchronization",
+      "description": "Sync skills across agents and systems",
+      "complexity": "moderate",
+      "input": "Skills to sync",
+      "output": "Synchronized skill library",
+      "example": "Sync custom skills to all agents",
+      "attribution": "joshuami (Community)"
+    },
+    {
+      "id": "rootly-incident-responder",
+      "name": "Incident Response Automation",
+      "description": "Automate incident response workflows",
+      "complexity": "expert",
+      "input": "Incident details",
+      "output": "Executed incident response",
+      "example": "Auto-create war room and notify on-call",
+      "attribution": "Rootly (Community)"
+    },
+    {
+      "id": "ui-skills",
+      "name": "UI Design Constraints",
+      "description": "Apply UI design principles and constraints",
+      "complexity": "moderate",
+      "input": "UI component",
+      "output": "Improved UI with design principles",
+      "example": "Apply spacing system to component",
+      "attribution": "jrcribb (Community)"
+    },
+    {
+      "id": "ui-ux-pro",
+      "name": "UX Pattern Library",
+      "description": "Apply proven UX patterns and best practices",
+      "complexity": "expert",
+      "input": "UX problem",
+      "output": "Solution with UX patterns",
+      "example": "Design optimal onboarding flow",
+      "attribution": "Community"
+    },
+    {
+      "id": "react-native-best-practices",
+      "name": "React Native Optimization",
+      "description": "Optimize React Native apps for performance",
+      "complexity": "expert",
+      "input": "React Native code",
+      "output": "Optimized RN implementation",
+      "example": "Optimize list rendering with FlashList",
+      "attribution": "Community"
+    },
+    {
+      "id": "swiftui-expert",
+      "name": "SwiftUI + iOS 18 Expert",
+      "description": "Build iOS apps with latest SwiftUI",
+      "complexity": "expert",
+      "input": "iOS app requirements",
+      "output": "SwiftUI implementation",
+      "example": "Build app with new iOS 18 APIs",
+      "attribution": "Community"
+    },
+    {
+      "id": "threejs-skills",
+      "name": "Three.js 3D Experiences",
+      "description": "Create 3D graphics and experiences with Three.js",
+      "complexity": "expert",
+      "input": "3D visualization requirements",
+      "output": "Three.js scene with interactions",
+      "example": "Build interactive 3D product viewer",
+      "attribution": "Community"
+    },
+    {
+      "id": "nextjs-cache-optimizer",
+      "name": "Next.js Cache Optimization",
+      "description": "Optimize Next.js caching strategies",
+      "complexity": "expert",
+      "input": "Next.js app",
+      "output": "Optimized caching configuration",
+      "example": "Configure ISR and edge caching",
+      "attribution": "Community"
+    },
+    {
+      "id": "electron-upgrade-advisor",
+      "name": "Electron Version Upgrades",
+      "description": "Upgrade Electron apps to latest versions",
+      "complexity": "moderate",
+      "input": "Current Electron version",
+      "output": "Upgrade plan with breaking changes",
+      "example": "Upgrade from Electron 25 to 28",
+      "attribution": "Community"
+    },
+    {
+      "id": "calendar-integration",
+      "name": "Calendar Operations",
+      "description": "Integrate with calendar systems",
+      "complexity": "moderate",
+      "input": "Calendar operation",
+      "output": "Executed calendar action",
+      "example": "Schedule meeting with availability check",
+      "attribution": "Community"
+    },
+    {
+      "id": "email-integration",
+      "name": "Email Operations",
+      "description": "Send, receive, and manage email",
+      "complexity": "moderate",
+      "input": "Email operation",
+      "output": "Executed email action",
+      "example": "Send templated email with attachments",
+      "attribution": "Community"
+    }
+  ]
+}

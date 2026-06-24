@@ -1,0 +1,29 @@
+name: Restart Runner — Apply Config
+
+# Restarts the forgejo-runner container so the new capacity: 5 config takes effect.
+# Run this after any change to infra/forgejo-runner/config.yml
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "infra/forgejo-runner/config.yml"
+
+# ISOLATED concurrency group — never cancelled by deploy-genesis
+concurrency:
+  group: runner-restart
+  cancel-in-progress: false
+
+jobs:
+  restart-runner:
+    name: Restart runner container
+    runs-on: host
+
+    steps:
+      - name: Restart forgejo-runner container
+        run: |
+          docker restart forgejo-runner
+          sleep 5
+          docker ps --filter "name=forgejo-runner" --format "{{.Names}} | {{.Status}}"
+          echo "Runner restarted — capacity: 5 now active"

@@ -1,0 +1,27 @@
+{
+  "name": "@cle/media-ingest",
+  "version": "2.0.3",
+  "description": "Camera \u2192 NAS ingest watcher, triage pipeline, and automated reel post-processor",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "scheduler": "tsx src/scheduler.ts",
+    "process": "tsx src/post-processor.ts",
+    "process:dry": "tsx src/post-processor.ts --dry-run"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@types/nodemailer": "^7.0.11",
+    "chokidar": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^8.0.3",
+    "resend": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  }
+}

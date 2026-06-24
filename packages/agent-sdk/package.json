@@ -1,0 +1,23 @@
+{
+  "name": "@cle/agent-sdk",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Agent SDK for Creative Liberation Engine V6 \u2014 agent lifecycle, browser automation, and security.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./browser": "./src/browser.mjs",
+    "./security": "./src/security.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*",
+    "@cle/inference": "workspace:*",
+    "@cle/dispatch": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_cle_agent_sdk",
+    "cap_cle_browser",
+    "cap_spectre_security"
+  ]
+}

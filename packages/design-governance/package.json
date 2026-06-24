@@ -1,0 +1,24 @@
+{
+  "name": "@cle/design-governance",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine Design System \u2014 Drift prevention, token analytics, component census, and deprecation pipeline",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "clean": "rm -rf dist",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.18"
+  }
+}

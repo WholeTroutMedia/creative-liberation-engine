@@ -1,0 +1,29 @@
+{
+  "name": "@cle/agent-mail",
+  "version": "2.0.3",
+  "private": true,
+  "description": "Sovereign agent email service \u2014 Cloudflare Worker with MCP + REST API",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:migrate": "wrangler d1 migrations apply agent-mail-db",
+    "db:migrate:local": "wrangler d1 migrations apply agent-mail-db --local",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "hono": "^4.7.0",
+    "postal-mime": "^2.4.0",
+    "agents": "^0.0.60",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@react-email/components": "0.0.32",
+    "@react-email/render": "1.0.4"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260310.1",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.0.0"
+  }
+}

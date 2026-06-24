@@ -1,0 +1,55 @@
+{
+  "scheduler": {
+    "enabled": false,
+    "interval_hours": 72,
+    "current_profile": "nyc_flyover",
+    "last_run_timestamp": 1782176286.2544231
+  },
+  "profiles": {
+    "nyc_flyover": {
+      "source_dir": "//127.0.0.1/The Vault/Photos/2020/06/NYC Flyover with Vinny 06152020",
+      "tags": [
+        "Latent Space Drop",
+        "Archival",
+        "NYC Flyover"
+      ],
+      "title_prefix": "Latent Space Drop: ",
+      "description_template": "<strong>Latent Space Studios \u2014 Limited Streetwear & Fine Art Drop</strong><br/>High-end archival release operated dynamically by Creative Liberation Collective.<br/>Camera: {camera}<br/>Exposure: {exposure}<br/>ISO: {iso}",
+      "pricing": {
+        "print_24x36": "120.00",
+        "tee": "38.00",
+        "hoodie": "75.00"
+      }
+    },
+    "streetwear_fleece": {
+      "source_dir": "//127.0.0.1/The Vault/Photos/2026/Streetwear_Graphics",
+      "tags": [
+        "Special Drop",
+        "Streetwear",
+        "Summer 26"
+      ],
+      "title_prefix": "Collection '26: ",
+      "description_template": "<strong>Latent Space Studios \u2014 Summer 2026 Collection</strong><br/>Limited edition drop of 100% sovereign garments.",
+      "pricing": {
+        "print_24x36": "150.00",
+        "tee": "45.00",
+        "hoodie": "85.00"
+      }
+    },
+    "special_drops": {
+      "source_dir": "//127.0.0.1/The Vault/Photos/2026/Special_Drops",
+      "tags": [
+        "Special Drop",
+        "Exclusive",
+        "Sovereign Art"
+      ],
+      "title_prefix": "Special Release: ",
+      "description_template": "<strong>Latent Space Studios \u2014 Exclusive Special Release</strong><br/>Ultra-limited collector's edition garment and archival print.",
+      "pricing": {
+        "print_24x36": "200.00",
+        "tee": "60.00",
+        "hoodie": "110.00"
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Runtime Hardening Manifests
 
-These manifests are the machine-validated hardening state for six CLE parallel helices:
+These manifests are the machine-validated hardening state for six V6 parallel helices:
 
 - `execution.hardening.json`
 - `modelops.hardening.json`
@@ -11,7 +11,7 @@ These manifests are the machine-validated hardening state for six CLE parallel h
 
 Generate board and graph:
 
-- `npm run cle:hardening:board`
+- `npm run v6:hardening:board`
 
 Validation is enforced by:
 

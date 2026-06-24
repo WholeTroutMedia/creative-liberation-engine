@@ -1,0 +1,22 @@
+version: "1.0"
+name: demo_builder
+description: "Generate interactive demo for existing application"
+
+stages:
+  - name: analyze_app
+    agent_type: reasoning
+    requires_approval: false
+    critical: false
+    timeout: 60000
+
+  - name: demo_scenarios
+    agent_type: architect
+    requires_approval: false
+    critical: false
+    timeout: 90000
+
+  - name: demo_implementation
+    agent_type: coder
+    requires_approval: false
+    critical: false
+    timeout: 180000

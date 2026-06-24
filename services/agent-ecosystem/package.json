@@ -1,0 +1,24 @@
+{
+  "name": "@creative-liberation-engine/agent-ecosystem",
+  "version": "2.0.3",
+  "description": "Sovereign Agent Ecosystem Platform (IAEP) sandboxed execution layer",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "cle",
+    "sandbox",
+    "agent",
+    "execution"
+  ],
+  "author": "Creative Liberation Engine V6",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

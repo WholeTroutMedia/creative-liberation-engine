@@ -1,0 +1,210 @@
+{
+  "version": "v6.5",
+  "generatedAt": "2026-05-27T13:53:00.000Z",
+  "generatedFrom": [
+    "creative-liberation-engine/runtime/registry/models.canonical.json (v6.3)",
+    "Ollama library corrections — nemotron3, deepseek-r1, deepseek-v4-flash:cloud",
+    "Model storage: OLLAMA_MODELS on workstation bridge (no committed absolute paths)",
+    "v6-model-accuracy-sweep-2026-05-06",
+    "v6-gemini-3.5-catch-up-sweep-2026-05-27"
+  ],
+  "modelStorage": {
+    "workstation": {
+      "path": "[OLLAMA_MODELS — workstation bridge only; not committed]",
+      "type": "nvme",
+      "notes": "Set OLLAMA_MODELS locally. NVMe primary when present. SATA SSD upgrade pending (UGREEN enclosure)."
+    },
+    "nas": {
+      "path": "/app/creative-liberation-engine/models",
+      "type": "hdd",
+      "notes": "NAS mirror for backup/cold-load. Synology spinning disks — ~6x slower cold-load vs NVMe."
+    }
+  },
+  "counts": {
+    "modelTiers": 21,
+    "fleetServices": 13
+  },
+  "modelTiers": [
+    {
+      "tier": "cloud:cheap",
+      "fallbackModel": "gemini-3.5-flash",
+      "locality": "cloud"
+    },
+    {
+      "tier": "cloud:code",
+      "fallbackModel": "gemini-3.5-flash",
+      "locality": "cloud"
+    },
+    {
+      "tier": "cloud:fast",
+      "fallbackModel": "gemini-3.5-flash",
+      "locality": "cloud"
+    },
+    {
+      "tier": "cloud:max",
+      "fallbackModel": "gemini-3.5-pro",
+      "locality": "cloud"
+    },
+    {
+      "tier": "cloud:vision",
+      "fallbackModel": "gemini-3.5-flash",
+      "locality": "cloud"
+    },
+    {
+      "tier": "cloud:research",
+      "fallbackModel": "gemini-3.5-deep-research",
+      "locality": "cloud",
+      "notes": "Gemini 3.5 Pro Deep Research — fast interactive mode. Multimodal input, MCP bridge for private data."
+    },
+    {
+      "tier": "cloud:research:max",
+      "fallbackModel": "gemini-3.5-deep-research-max",
+      "locality": "cloud",
+      "notes": "Gemini 3.5 Deep Research Max — extended async background research. High-stakes exhaustive intelligence gathering."
+    },
+    {
+      "tier": "cloud:reasoning",
+      "fallbackModel": "deepseek-v4-flash:cloud",
+      "locality": "cloud-relay",
+      "contextWindow": 1048576,
+      "notes": "DeepSeek V4 Flash via Ollama cloud relay — 284B MoE, 13B active. 1M context. Runs on DeepSeek infra, not local. Sovereignty tradeoff for peak reasoning."
+    },
+    {
+      "tier": "cloud:media",
+      "fallbackModel": "fal-ai/flux/schnell",
+      "locality": "cloud-relay",
+      "notes": "Fal AI media generation edge compute. Leverage hosted Flux.1, Stable Diffusion 3, and CogVideo. Sovereignty tradeoff for high-fidelity media rendering without local VRAM saturation."
+    },
+    {
+      "tier": "local:code",
+      "fallbackModel": "qwen2.5-coder:32b",
+      "locality": "local",
+      "notes": "Primary code-specialist tier. Qwen 2.5 Coder 32B — agentic coding, Apache 2.0."
+    },
+    {
+      "tier": "local:code:fast",
+      "fallbackModel": "qwen3:14b",
+      "locality": "local",
+      "contextWindow": 131072,
+      "notes": "Fast code tier — Qwen3 14B for rapid iteration."
+    },
+    {
+      "tier": "local:embed",
+      "fallbackModel": "nomic-embed-text:latest",
+      "locality": "local"
+    },
+    {
+      "tier": "local:fast",
+      "fallbackModel": "gemma4:e2b",
+      "locality": "local"
+    },
+    {
+      "tier": "local:large",
+      "fallbackModel": "gemma4:26b",
+      "locality": "local"
+    },
+    {
+      "tier": "local:vision",
+      "fallbackModel": "llava:34b",
+      "locality": "local"
+    },
+    {
+      "tier": "local:world",
+      "fallbackModel": "lewm:15m",
+      "locality": "local"
+    },
+    {
+      "tier": "local:media",
+      "fallbackModel": "flux:schnell",
+      "locality": "local",
+      "fallbackTier": "cloud:media",
+      "notes": "Local media generation tier utilizing flux:schnell or sd-xl. Enforces local execution when local VRAM and GPU utilization are within safe operational limits. Falls back to cloud:media (Fal AI) when GPU compute is saturated."
+    },
+    {
+      "tier": "local:multimodal",
+      "fallbackModel": "nemotron3:33b",
+      "locality": "local",
+      "contextWindow": 131072,
+      "notes": "NVIDIA Nemotron 3 33B MoE — text+vision+audio multimodal. Apache 2.0. Requires Ollama ≥0.23.1. IE-IDX-0112."
+    },
+    {
+      "tier": "local:multimodal:agent",
+      "fallbackModel": "nemotron3:33b",
+      "locality": "local",
+      "contextWindow": 131072,
+      "notes": "Agent-optimized multimodal tier — tool calling + structured output + vision."
+    },
+    {
+      "tier": "local:reasoning",
+      "fallbackModel": "deepseek-r1:32b",
+      "locality": "local",
+      "contextWindow": 131072,
+      "notes": "DeepSeek R1 32B distilled — top-tier local reasoning, approaches O3/Gemini 2.5 Pro. Qwen-32B backbone, MIT license. 20GB fits RTX 4090. IE-IDX-0116."
+    },
+    {
+      "tier": "local:reasoning:fast",
+      "fallbackModel": "deepseek-r1:8b",
+      "locality": "local",
+      "contextWindow": 131072,
+      "notes": "DeepSeek R1 8B (R1-0528-Qwen3-8B) — fast reasoning for real-time agentic loops. 5.2GB fits entirely in VRAM."
+    },
+    {
+      "tier": "web:research",
+      "fallbackModel": "sonar-pro",
+      "locality": "web"
+    },
+    {
+      "tier": "web:research:deep",
+      "fallbackModel": "sonar-deep-research",
+      "locality": "web"
+    }
+  ],
+  "fleetServices": [
+    "nas_cpu",
+    "genesis",
+    "cle_engine",
+    "sam3_api",
+    "vision_forge",
+    "spatial_intelligence",
+    "triposr_api",
+    "foley_engine",
+    "triton_server",
+    "vllm",
+    "lewm_inference",
+    "knowledge_fabric",
+    "spatial_pipeline"
+  ],
+  "lastSweep": "2026-05-06T11:20:00.000Z",
+  "installedModels": [
+    { "name": "nomic-embed-text:latest", "endpoint": "workstation", "size_gb": 0.27, "modified": "2026-04-29" },
+    { "name": "qwen3:1.7b", "endpoint": "workstation", "size_gb": 1.4, "modified": "2026-04-29" },
+    { "name": "qwen3:14b", "endpoint": "workstation", "size_gb": 9.3, "modified": "2026-04-29" },
+    { "name": "gemma4:e2b", "endpoint": "workstation", "size_gb": 7.2, "modified": "2026-04-08" },
+    { "name": "gemma4:e4b", "endpoint": "workstation", "size_gb": 9.6, "modified": "2026-04-08" },
+    { "name": "gemma4:26b", "endpoint": "workstation", "size_gb": 17.0, "modified": "2026-04-08" },
+    { "name": "gemma3:12b", "endpoint": "workstation", "size_gb": 8.1, "modified": "2026-04-08" },
+    { "name": "trinity:mini", "endpoint": "workstation", "size_gb": 15.0, "modified": "2026-04-08" },
+    { "name": "llama3.2:3b", "endpoint": "workstation", "size_gb": 2.0, "modified": "2026-03-25" },
+    { "name": "phi4-mini:latest", "endpoint": "workstation", "size_gb": 2.5, "modified": "2026-03-25" },
+    { "name": "qwen2.5-coder:32b", "endpoint": "workstation", "size_gb": 19.0, "modified": "2026-03-25" },
+    { "name": "llava:latest", "endpoint": "workstation", "size_gb": 4.7, "modified": "2026-03-11" },
+    { "name": "llava:34b", "endpoint": "workstation", "size_gb": 20.0, "modified": "2026-03-04" },
+    { "name": "llama3.3:70b-instruct-q4_K_M", "endpoint": "workstation", "size_gb": 42.0, "modified": "2026-03-04" },
+    { "name": "deepseek-r1:8b", "endpoint": "workstation", "size_gb": 5.2, "modified": "2026-05-06" },
+    { "name": "deepseek-r1:32b", "endpoint": "workstation", "size_gb": 19.0, "modified": "2026-05-06" },
+    { "name": "nemotron3:33b", "endpoint": "workstation", "size_gb": 27.0, "modified": "2026-05-06" }
+  ],
+  "pendingInstalls": [
+    {
+      "name": "deepseek-v4-flash:cloud",
+      "source": "ollama-cloud",
+      "tier": "cloud:reasoning",
+      "estimatedSizeGB": 0,
+      "license": "MIT",
+      "priority": "LOW",
+      "reason": "Cloud relay for 284B MoE reasoning — not local, sovereignty tradeoff. Use only when local R1:32b isn't sufficient.",
+      "ideation": "IE-IDX-0116",
+      "installCommand": "ollama pull deepseek-v4-flash:cloud"
+    }
+  ]
+}

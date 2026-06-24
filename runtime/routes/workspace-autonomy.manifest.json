@@ -1,0 +1,84 @@
+{
+  "version": "v6.0",
+  "service": "workspace-autonomy",
+  "routes": [
+    {
+      "routeId": "route_workspace_autonomy_agentcore_execute",
+      "path": "/api/v1/workspace/agentcore/execute",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/agentcore/execute",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 20,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 60000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "agentName"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_artifact_render",
+      "path": "/api/v1/workspace/artifact/render",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/artifact/render",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 40,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 10000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "artifactId", "type"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_artifact_get",
+      "path": "/api/v1/workspace/artifact/:artifactId",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/artifact/:artifactId",
+      "authPolicy": "public",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "artifactId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

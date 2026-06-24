@@ -1,0 +1,11 @@
+{
+  "name": "@cle/zero-to-spec",
+  "version": "2.0.3",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "capabilityIds": [
+    "cap_zero_to_spec"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+    "manifest_version": 2,
+    "name": "CLE Agent",
+    "version": "1.0.0",
+    "description": "Sovereign browser mesh agent for the Creative Liberation Engine — connects to the Dispatch Server, surfaces tab context, and enables agentic control of this browser.",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "cle-agent@wholetroumedia.com",
+            "strict_min_version": "101.0"
+        }
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "storage",
+        "scripting",
+        "alarms",
+        "http://127.0.0.1/*",
+        "ws://127.0.0.1/*",
+        "<all_urls>"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "CLE Agent",
+        "default_icon": {
+            "16": "icon16.png",
+            "48": "icon48.png",
+            "128": "icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "web_accessible_resources": [
+        "alfred-panel.css"
+    ]
+}

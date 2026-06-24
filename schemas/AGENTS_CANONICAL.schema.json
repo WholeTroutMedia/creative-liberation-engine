@@ -1,0 +1,146 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/agents-canonical.schema.json",
+    "title":  "V6 Canonical Agents Registry",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "generatedAt",
+                     "generatedFrom",
+                     "counts",
+                     "agents"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string"
+                                   },
+                       "generatedAt":  {
+                                           "type":  "string",
+                                           "format":  "date-time"
+                                       },
+                       "generatedFrom":  {
+                                             "type":  "array",
+                                             "items":  {
+                                                           "type":  "string"
+                                                       }
+                                         },
+                       "counts":  {
+                                      "type":  "object",
+                                      "required":  [
+                                                       "total",
+                                                       "core_agent",
+                                                       "platform_agent",
+                                                       "lora_layer"
+                                                   ],
+                                      "additionalProperties":  false,
+                                      "properties":  {
+                                                         "total":  {
+                                                                       "type":  "integer",
+                                                                       "minimum":  1
+                                                                   },
+                                                         "core_agent":  {
+                                                                            "type":  "integer",
+                                                                            "minimum":  0
+                                                                        },
+                                                         "platform_agent":  {
+                                                                                "type":  "integer",
+                                                                                "minimum":  0
+                                                                            },
+                                                         "lora_layer":  {
+                                                                            "type":  "integer",
+                                                                            "minimum":  0
+                                                                        }
+                                                     }
+                                  },
+                       "agents":  {
+                                      "type":  "array",
+                                      "items":  {
+                                                    "type":  "object",
+                                                    "additionalProperties":  false,
+                                                    "required":  [
+                                                                     "agentId",
+                                                                     "name",
+                                                                     "kind",
+                                                                     "status",
+                                                                     "hive",
+                                                                     "sources",
+                                                                     "aliases"
+                                                                 ],
+                                                    "properties":  {
+                                                                       "agentId":  {
+                                                                                       "type":  "string",
+                                                                                       "pattern":  "^[a-z0-9\\-_]{2,80}$"
+                                                                                   },
+                                                                       "name":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  2
+                                                                                },
+                                                                       "kind":  {
+                                                                                    "type":  "string",
+                                                                                    "enum":  [
+                                                                                                 "core_agent",
+                                                                                                 "platform_agent",
+                                                                                                 "lora_layer"
+                                                                                             ]
+                                                                                },
+                                                                       "status":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  [
+                                                                                                   "active",
+                                                                                                   "legacy",
+                                                                                                   "planned"
+                                                                                               ]
+                                                                                  },
+                                                                       "hive":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  2
+                                                                                },
+                                                                       "sources":  {
+                                                                                       "type":  "array",
+                                                                                       "minItems":  1,
+                                                                                       "items":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                   },
+                                                                       "aliases":  {
+                                                                                       "type":  "array",
+                                                                                       "minItems":  1,
+                                                                                       "items":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                   },
+                                                                       "runtime":  {
+                                                                                       "type":  "object",
+                                                                                       "additionalProperties":  false,
+                                                                                       "required":  [
+                                                                                                        "container",
+                                                                                                        "image",
+                                                                                                        "network",
+                                                                                                        "dispatch_events"
+                                                                                                    ],
+                                                                                       "properties":  {
+                                                                                                          "container":  {
+                                                                                                                            "type":  "string"
+                                                                                                                        },
+                                                                                                          "image":  {
+                                                                                                                        "type":  "string"
+                                                                                                                    },
+                                                                                                          "network":  {
+                                                                                                                          "type":  "string"
+                                                                                                                      },
+                                                                                                          "dispatch_events":  {
+                                                                                                                                  "type":  "array",
+                                                                                                                                  "minItems":  1,
+                                                                                                                                  "items":  {
+                                                                                                                                                "type":  "string"
+                                                                                                                                            }
+                                                                                                                              }
+                                                                                                      }
+                                                                                   }
+                                                                   }
+                                                }
+                                  }
+                   },
+    "description":  "Blessed canonical agent definitions for V6 runtime registry."
+}

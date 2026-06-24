@@ -1,0 +1,57 @@
+{
+  "version": "v6.0",
+  "service": "intent-router",
+  "routes": [
+    {
+      "routeId": "route_intent_status",
+      "path": "/api/status",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "intent-router",
+      "upstreamPath": "/api/status",
+      "authPolicy": "internal_only",
+      "timeoutMs": 2000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_intent_resolve",
+      "path": "/api/intent/resolve",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "intent-router",
+      "upstreamPath": "/api/intent/resolve",
+      "authPolicy": "service_token",
+      "timeoutMs": 500,
+      "criticality": "tier0",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "intentCategory", "matchedSkillId", "matchScore"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_intent_refresh",
+      "path": "/api/intent/refresh",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "intent-router",
+      "upstreamPath": "/api/intent/refresh",
+      "authPolicy": "service_token",
+      "timeoutMs": 10000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "indexCount", "rebuildDurationMs"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "version": "v6.0",
+  "service": "genkit",
+  "routes": [
+    {
+      "routeId": "route_genkit_inference",
+      "path": "/api/inference",
+      "method": "POST",
+      "owner": "GENKI",
+      "upstreamService": "genkit",
+      "upstreamPath": "/api/inference",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 60,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 30000,
+      "criticality": "tier0",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "model", "tokenCount"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_genkit_models",
+      "path": "/api/models",
+      "method": "GET",
+      "owner": "GENKI",
+      "upstreamService": "genkit",
+      "upstreamPath": "/api/models",
+      "authPolicy": "internal_only",
+      "timeoutMs": 2000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_genkit_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "GENKI",
+      "upstreamService": "genkit",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

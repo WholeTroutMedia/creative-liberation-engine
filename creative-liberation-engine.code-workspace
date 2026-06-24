@@ -1,0 +1,34 @@
+{
+  "folders": [
+    {
+      "name": "V6 Core",
+      "path": "."
+    },
+    {
+      "name": "Atelier Assets",
+      "path": "ATELIER"
+    },
+    {
+      "name": "Ecosystem Apps",
+      "path": "apps"
+    },
+    {
+      "name": "Packages",
+      "path": "packages"
+    },
+    {
+      "name": "Services",
+      "path": "services"
+    },
+    {
+      "name": "Surfaces",
+      "path": "surfaces"
+    }
+  ],
+  "settings": {
+    "antigravity.projects.mode": "inherit",
+    "antigravity.projects.defaultRoot": "y:\\brainchild-v6",
+    "editor.formatOnSave": true,
+    "typescript.tsdk": "node_modules/typescript/lib"
+  }
+}

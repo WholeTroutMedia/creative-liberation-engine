@@ -1,0 +1,1 @@
+export function init() { console.log("Blockchain and Web3 initialized"); }

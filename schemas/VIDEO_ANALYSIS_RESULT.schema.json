@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/VIDEO_ANALYSIS_RESULT.schema.json",
+  "title": "Video Analysis Result",
+  "description": "Schema for standardizing video analysis payloads from Perceptron Mk1, Isaac, and Barnstorm Intelligence models.",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "model",
+    "video_reference",
+    "events",
+    "edl_export_ready"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the analysis was generated."
+    },
+    "model": {
+      "type": "string",
+      "description": "The identifier of the vision-language model used (e.g., 'perceptron-mk1', 'isaac-edge-v2')."
+    },
+    "video_reference": {
+      "type": "string",
+      "description": "URI or file path of the source video."
+    },
+    "overall_summary": {
+      "type": "string",
+      "description": "A high-level text summary of the video contents."
+    },
+    "edl_export_ready": {
+      "type": "boolean",
+      "description": "Flag indicating if the events array is formatted properly to be directly compiled into an Edit Decision List (EDL)."
+    },
+    "events": {
+      "type": "array",
+      "description": "List of temporally bounded events, actions, or physical dynamics identified in the video.",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "start_timecode",
+          "end_timecode",
+          "description",
+          "confidence"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "Unique identifier for the event."
+          },
+          "start_timecode": {
+            "type": "number",
+            "description": "Start time in seconds."
+          },
+          "end_timecode": {
+            "type": "number",
+            "description": "End time in seconds."
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed text description of the event or action."
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Model confidence score for the event."
+          },
+          "physical_properties": {
+            "type": "object",
+            "description": "Optional structured data about object dynamics, spatial positioning, or physical reasoning applied.",
+            "additionalProperties": true
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Categorical tags for the event (e.g., 'action', 'dialogue', 'highlight')."
+          }
+        }
+      }
+    }
+  }
+}

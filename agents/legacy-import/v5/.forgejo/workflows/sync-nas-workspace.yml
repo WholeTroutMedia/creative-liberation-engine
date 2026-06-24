@@ -1,0 +1,39 @@
+name: Sync NAS Workspace
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync to /app/genesis-deploy
+    runs-on: host
+    steps:
+      - name: Sync workspace from Forgejo
+        run: |
+          set -e
+          DEPLOY_DIR="/app/genesis-deploy"
+
+          # Init git repo if it doesn't exist yet
+          if [ ! -d "$DEPLOY_DIR/.git" ]; then
+            echo "→ Initialising git repo at $DEPLOY_DIR"
+            git init "$DEPLOY_DIR"
+          fi
+
+          cd "$DEPLOY_DIR"
+
+          # Point to Forgejo
+          git remote set-url origin "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git" \
+            2>/dev/null || git remote add origin "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git"
+
+          git config --global --add safe.directory "$DEPLOY_DIR"
+
+          echo "→ Fetching main..."
+          git fetch --depth=1 origin main
+
+          echo "→ Hard-resetting to origin/main..."
+          git reset --hard origin/main
+          git clean -fd
+
+          echo "✓ NAS workspace synced to commit: $(git log -1 --oneline)"

@@ -1,0 +1,40 @@
+{
+  "themes": [
+    {
+      "id": "Theme-1",
+      "name": "The \"Symphony\" Orchestration & Real-Time Agentic Layer",
+      "path": "docs/epics/Theme-1-Symphony-Orchestration.md",
+      "keywords": ["orchestration", "agentic", "real-time", "workflow", "scheduler", "collaboration", "failure-detection", "swarms", "meta-orchestration", "performance", "task"]
+    },
+    {
+      "id": "Theme-2",
+      "name": "Sovereign Data Pipelines & Streaming",
+      "path": "docs/epics/Theme-2-Sovereign-Data-Pipelines.md",
+      "keywords": ["data-pipelines", "streaming", "ingestion", "rag", "embedding", "pipeline", "db", "knowledge", "vector", "storage", "caching", "processing"]
+    },
+    {
+      "id": "Theme-3",
+      "name": "MCP Ecosystem & Claude Code Integration",
+      "path": "docs/epics/Theme-3-MCP-Ecosystem.md",
+      "keywords": ["mcp", "claude-code", "mcp-server", "integration", "tools", "mcp-hub", "openclaw", "claude", "ecosystem"]
+    },
+    {
+      "id": "Theme-4",
+      "name": "Live Artifacts & Dynamic Interfaces",
+      "path": "docs/epics/Theme-4-Live-Artifacts.md",
+      "keywords": ["live-artifacts", "dynamic-interfaces", "ui", "ux", "canvas", "glassmorphism", "design", "react", "components", "interface", "frontend", "visual"]
+    },
+    {
+      "id": "Theme-5",
+      "name": "Sovereign Edge Infrastructure & Self-Hosting",
+      "path": "docs/epics/Theme-5-Sovereign-Edge-Infrastructure.md",
+      "keywords": ["sovereignty", "edge", "local-llm", "ollama", "nas", "self-hosted", "jetson", "hardware", "infrastructure", "deployment", "synology"]
+    },
+    {
+      "id": "Theme-6",
+      "name": "Advanced Vision & Media Tooling",
+      "path": "docs/epics/Theme-6-Advanced-Vision-Media.md",
+      "keywords": ["vision", "media", "cinematography", "vfx", "3d", "gaussian-splatting", "video", "rendering", "foley", "camera", "splat", "image", "sound"]
+    }
+  ]
+}

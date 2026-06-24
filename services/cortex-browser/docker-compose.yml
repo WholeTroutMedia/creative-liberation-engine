@@ -1,0 +1,48 @@
+services:
+  # -- CORTEX Browser: Persistent Chromium for headless harvesting --
+  # Login once via web UI (port 3100), cookies persist in volume forever.
+  # Harvesters connect via CDP at ws://127.0.0.1:9222
+  cortex-browser:
+    image: selenium/standalone-chromium:4.27.0
+    container_name: cortex-browser
+    restart: unless-stopped
+    ports:
+      - "7901:7900"   # noVNC web UI -- one-time manual login
+      - "4444:4444"   # Selenium WebDriver
+      - "9224:9224"   # CDP Proxy
+    environment:
+      - SE_NODE_MAX_SESSIONS=1
+      - SE_VNC_NO_PASSWORD=1
+      - SE_SCREEN_WIDTH=1920
+      - SE_SCREEN_HEIGHT=1080
+      - SE_START_XVFB=true
+      - SE_START_VNC=true
+      - SE_START_NO_VNC=true
+      - SE_SESSION_REQUEST_TIMEOUT=600
+      - SE_NODE_SESSION_TIMEOUT=86400
+      - CORTEX_PROXY_SERVER=socks5://tailscale:1055
+    volumes:
+      - cortex-browser-data:/home/seluser
+      - ./start-cdp.sh:/opt/start-cdp.sh:ro
+      - ./cdp_proxy.py:/opt/cdp_proxy.py:ro
+    entrypoint: ["/bin/bash", "/opt/start-cdp.sh"]
+    shm_size: "2g"
+    networks:
+      - default
+      - cle-mesh
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+        reservations:
+          memory: 512m
+
+volumes:
+  cortex-browser-data:
+    driver: local
+
+networks:
+  default:
+  cle-mesh:
+    external: true
+    name: cle-mesh

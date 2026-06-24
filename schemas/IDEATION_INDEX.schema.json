@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/IDEATION_INDEX.schema.json",
+  "title": "Ideation Master Index",
+  "description": "Lightweight master index for the sharded ideation registry. Contains aggregate stats, shard manifest, dedup sets, and review schedules. Individual entries live in monthly shard files. This file is always regenerable from the source-of-truth individual queue files.",
+  "type": "object",
+  "required": ["version", "generatedAt", "lastJobNumber", "stats", "shards"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Index format version."
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this index was last rebuilt."
+    },
+    "lastJobNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Highest IE-IDX job number seen. Used to generate the next ID."
+    },
+    "stats": {
+      "$ref": "#/definitions/IndexStats"
+    },
+    "shards": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/ShardManifestEntry" },
+      "description": "Manifest of all monthly shard files."
+    },
+    "sources": {
+      "$ref": "#/definitions/SourceDedup",
+      "description": "Deduplication data for ingestion pipelines."
+    },
+    "reviewSchedule": {
+      "$ref": "#/definitions/ReviewSchedule",
+      "description": "Upcoming review cycle information."
+    }
+  },
+  "additionalProperties": false,
+
+  "definitions": {
+    "IndexStats": {
+      "type": "object",
+      "required": ["total", "byStatus"],
+      "properties": {
+        "total": { "type": "integer", "description": "Total unique ideations across all shards." },
+        "duplicatesQuarantined": { "type": "integer", "description": "Number of duplicate files quarantined." },
+        "uniqueEntries": { "type": "integer" },
+        "byStatus": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" },
+          "description": "Count per lifecycle status."
+        },
+        "byDomain": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" },
+          "description": "Count per domain classification."
+        },
+        "bySource": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" },
+          "description": "Count per source type."
+        },
+        "byHelix": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" },
+          "description": "Count per strategic helix."
+        },
+        "avgRelevance": { "type": "number" },
+        "activationRate": { "type": "number", "description": "Percentage that reached ACTIVATED or beyond." },
+        "completionRate": { "type": "number", "description": "Percentage of activated that reached COMPLETED." },
+        "oldestUnreviewed": { "type": ["string", "null"], "format": "date-time" },
+        "nextReviewDue": { "type": ["string", "null"], "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+
+    "ShardManifestEntry": {
+      "type": "object",
+      "required": ["month", "file", "count"],
+      "properties": {
+        "month": {
+          "type": "string",
+          "pattern": "^(\\d{4}-\\d{2}|_archived|unknown)$",
+          "description": "YYYY-MM month key, '_archived' for archived entries, or 'unknown'."
+        },
+        "file": {
+          "type": "string",
+          "description": "Filename of the shard relative to the ideations/ directory."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of entries in this shard."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "SourceDedup": {
+      "type": "object",
+      "properties": {
+        "seenGuids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Dedup set of source GUIDs and URL hashes. Check before ingesting new items."
+        },
+        "seenUrls": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Full URLs already ingested (for human inspection)."
+        },
+        "lastPollAt": { "type": ["string", "null"], "format": "date-time" },
+        "totalPolls": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+
+    "ReviewSchedule": {
+      "type": "object",
+      "properties": {
+        "nextMonthlyReview": { "type": ["string", "null"], "format": "date-time" },
+        "lastMonthlyReview": { "type": ["string", "null"], "format": "date-time" },
+        "overdueReviews": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "upcomingReviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "dueAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

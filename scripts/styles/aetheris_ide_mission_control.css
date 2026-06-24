@@ -1,0 +1,104 @@
+/* Aetheris IDE Mission Control */
+/* Blending high-performance IDE structure with organic, ethereal fluidity */
+
+.theme-dark {
+  /* Core Backgrounds - Deep Void */
+  --background-primary: #08080c !important;
+  --background-secondary: #0d0d14 !important;
+  --background-secondary-alt: #12121a !important;
+  --background-modifier-border: transparent !important;
+  
+  /* Remove hard borders */
+  --border-width: 0px !important;
+  --divider-color: transparent !important;
+  --tab-divider-color: transparent !important;
+
+  /* Pastel Bioluminescent Accents */
+  --interactive-accent: #b48ced;
+  --interactive-accent-hover: #c9a6ff;
+  --text-accent: #00ffff;
+  --text-accent-hover: #5ce6e6;
+  
+  /* Legible Modern Typography */
+  --font-interface: 'Inter', 'Space Grotesk', -apple-system, sans-serif !important;
+  --font-text: 'Inter', -apple-system, sans-serif !important;
+  --h1-color: #e0e0ff;
+  --h2-color: #d1d1f0;
+  --text-normal: #a9a9b3;
+  --text-muted: #6b6b7a;
+
+  /* Graph Colors */
+  --graph-node: #b48ced;
+  --graph-node-unresolved: #4d4d66;
+  --graph-line: rgba(180, 140, 237, 0.2);
+  --graph-node-focused: #00ffff;
+  --graph-line-highlight: rgba(0, 255, 255, 0.6);
+}
+
+/* Floating Panes Effect */
+.workspace-leaf {
+  border: none !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 16px !important;
+  margin: 6px !important;
+  box-shadow: 0 8px 32px rgba(138, 43, 226, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
+  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Subtly glow when active/focused */
+.workspace-leaf.mod-active {
+  box-shadow: 0 12px 48px rgba(138, 43, 226, 0.15), inset 0 0 0 1px rgba(180, 140, 237, 0.2) !important;
+}
+
+/* Pane Headers (IDE Style) */
+.workspace-leaf-header {
+  background-color: transparent !important;
+  border-bottom: none !important;
+  padding: 12px 16px !important;
+}
+
+.workspace-leaf-header-title {
+  font-family: var(--font-interface);
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  color: var(--text-accent);
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+/* Editor Specific */
+.markdown-source-view.mod-cm6 .cm-scroller {
+  padding: 40px !important;
+}
+
+/* Ribbons and Sidebars */
+.workspace-ribbon {
+  background-color: var(--background-primary) !important;
+  border-right: none !important;
+}
+
+.workspace-ribbon .clickable-icon {
+  color: var(--text-muted);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.workspace-ribbon .clickable-icon:hover {
+  color: var(--interactive-accent);
+  transform: scale(1.1);
+}
+
+/* Removing Scrollbars for clean UI */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 140, 237, 0.3);
+}

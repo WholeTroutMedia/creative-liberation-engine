@@ -1,0 +1,10 @@
+{
+  "name": "@cle/cognition-just-raised-1-billio",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0273_cognition-just-raised-1-billion-at-a-26",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

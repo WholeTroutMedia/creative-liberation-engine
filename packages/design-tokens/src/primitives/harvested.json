@@ -1,0 +1,112 @@
+{
+  "harvested": {
+    "canva": {
+      "template_0": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Templates Marketplace",
+          "url": "https://www.canva.com/templates/",
+          "category": "Design Blueprint"
+        }
+      }
+    },
+    "figma": {
+      "file_1": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Fortune Cookie!",
+          "url": "https://www.figma.com/community/file/1529932739396860076/fortune-cookie",
+          "type": "Community File"
+        }
+      },
+      "file_3": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Interactive Eye-Following Card",
+          "url": "https://www.figma.com/community/file/1530305855415503769/interactive-eye-following-card",
+          "type": "Community File"
+        }
+      },
+      "file_5": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Shader Reminder",
+          "url": "https://www.figma.com/community/file/1530578704157510341/shader-reminder",
+          "type": "Community File"
+        }
+      },
+      "file_7": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Button effect",
+          "url": "https://www.figma.com/community/file/1530623040881583111/button-effect",
+          "type": "Community File"
+        }
+      },
+      "file_9": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Minimalist sidebar component",
+          "url": "https://www.figma.com/community/file/1535102032697891772/minimalist-sidebar-component",
+          "type": "Community File"
+        }
+      },
+      "file_11": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "3D ASCII Model Viewer",
+          "url": "https://www.figma.com/community/file/1530223431472150953/3d-ascii-model-viewer",
+          "type": "Community File"
+        }
+      },
+      "file_13": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Free Icon Pack 1800+ icons",
+          "url": "https://www.figma.com/community/file/886554014393250663/free-icon-pack-1800-icons",
+          "type": "Community File"
+        }
+      },
+      "file_15": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "iOS 15 UI Kit for Figma",
+          "url": "https://www.figma.com/community/file/984106517828363349/ios-15-ui-kit-for-figma",
+          "type": "Community File"
+        }
+      },
+      "file_17": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "iOS 16 UI Kit for Figma",
+          "url": "https://www.figma.com/community/file/1121065701252736567/ios-16-ui-kit-for-figma",
+          "type": "Community File"
+        }
+      },
+      "file_19": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Material 2 Design Kit",
+          "url": "https://www.figma.com/community/file/778763161265841481/material-2-design-kit",
+          "type": "Community File"
+        }
+      },
+      "file_21": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Material UI for Figma (and MUI X)",
+          "url": "https://www.figma.com/community/file/912837788133317724/material-ui-for-figma-and-mui-x",
+          "type": "Community File"
+        }
+      },
+      "file_23": {
+        "$type": "design-blueprint",
+        "$value": {
+          "title": "Relume Figma Kit (v3.7)",
+          "url": "https://www.figma.com/community/file/1078092050664989246/relume-figma-kit-v3-7",
+          "type": "Community File"
+        }
+      }
+    }
+  }
+}

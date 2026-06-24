@@ -1,0 +1,101 @@
+
+[7m[1m[36m RUN [39m[22m[27m [36mv1.6.1[39m [90mC:/Creative-Liberation-Engine/packages/zero-day[39m
+
+[90mstdout[2m | src/delivery/__tests__/provisioning-worker.test.ts[2m > [22m[2mZero-Day Provisioning Worker[2m > [22m[2minitializes provisioning and tracks status[22m[39m
+[ZERO-DAY WORKER] [cli-123] Starting autonomous agent network deployment.
+
+[90mstdout[2m | src/delivery/__tests__/provisioning-worker.test.ts[2m > [22m[2mZero-Day Provisioning Worker[2m > [22m[2madvances through the background instantiation loop[22m[39m
+[ZERO-DAY WORKER] [cli-123] Booting VERA (Context & Memory) into operational state...
+
+[90mstdout[2m | src/delivery/__tests__/provisioning-worker.test.ts[2m > [22m[2mZero-Day Provisioning Worker[2m > [22m[2madvances through the background instantiation loop[22m[39m
+[ZERO-DAY WORKER] [cli-123] VERA initialized. SCRIBE memory bus connected.
+[ZERO-DAY WORKER] [cli-123] Booting ATHENA (Strategic Lead)... mapping blueprint to intent...
+
+ [33mΓ¥»[39m src/delivery/__tests__/provisioning-worker.test.ts [2m ([22m[2m2 tests[22m [2m|[22m [31m2 failed[39m[2m)[22m[90m 12[2mms[22m[39m
+[31m   [33mΓ¥»[31m src/delivery/__tests__/provisioning-worker.test.ts[2m > [22mZero-Day Provisioning Worker[2m > [22minitializes provisioning and tracks status[39m
+[31m     ΓåÆ expected 2 to be 1 // Object.is equality[39m
+[31m   [33mΓ¥»[31m src/delivery/__tests__/provisioning-worker.test.ts[2m > [22mZero-Day Provisioning Worker[2m > [22madvances through the background instantiation loop[39m
+[31m     ΓåÆ Cannot read properties of undefined (reading 'logs')[39m
+
+node.exe : [31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1m[7m 
+Failed Tests 2 [27m[22mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([31mΓ 
+   Ä»ΓÄ»ΓÄ»Γ...»ΓÄ»ΓÄ»ΓÄ»[39m:String) [], RemoteE  
+  xception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+[31m[1m[7m FAIL [27m[22m[39m src/delivery/__te
+sts__/provisioning-worker.test.ts[2m > 
+[22mZero-Day Provisioning Worker[2m > 
+[22minitializes provisioning and tracks status
+[31m[1mAssertionError[22m: expected 2 to be 1 // 
+Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 1[39m
+[31m+ 2[39m
+
+[36m [2mΓ¥»[22m src/delivery/__tests__/provisioni
+ng-worker.test.ts:[2m48:38[22m[39m
+    [90m 46| [39m        [34mexpect[39m(manifest
+[33m.[39mstatus)[33m.[39m[34mtoBe[39m([32m'pr
+ovisioning'[39m)[33m;[39m
+    [90m 47| [39m        [34mexpect[39m(manifest
+[33m.[39magentTeam[33m.[39mlength)[33m.[39m[3
+4mtoBe[39m([34m3[39m)[33m;[39m
+    [90m 48| [39m        [34mexpect[39m(manifest
+[33m.[39mlogs[33m.[39mlength)[33m.[39m[34mtoB
+e[39m([34m1[39m)[33m;[39m
+    [90m   | [39m                                 
+    [31m^[39m
+    [90m 49| [39m
+    [90m 50| [39m        [90m// Fetch it from 
+tracker[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»Γ
+Ä»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/2]ΓÄ»[22m[39m
+
+[31m[1m[7m FAIL [27m[22m[39m src/delivery/__te
+sts__/provisioning-worker.test.ts[2m > 
+[22mZero-Day Provisioning Worker[2m > 
+[22madvances through the background instantiation 
+loop
+[31m[1mTypeError[22m: Cannot read properties of 
+undefined (reading 'logs')[39m
+[36m [2mΓ¥»[22m src/delivery/__tests__/provisioni
+ng-worker.test.ts:[2m71:24[22m[39m
+    [90m 69| [39m        
+    [90m 70| [39m        [35mlet[39m tracked 
+[33m=[39m [34mgetProvisioningStatus[39m([32m'cl
+i-456'[39m)[33m![39m[33m;[39m
+    [90m 71| [39m        [34mexpect[39m(tracked
+[33m.[39mlogs[33m.[39m[34msome[39m(l 
+[33m=>[39m l[33m.[39mmessage[33m.[39m[34mincl
+udes[39m([32m'VERA initial[39mΓÇª
+    [90m   | [39m                       
+[31m^[39m
+    [90m 72| [39m        [34mexpect[39m(tracked
+[33m.[39magentTeam[33m.[39m[34mfind[39m(a 
+[33m=>[39m a[33m.[39magentId [33m===[39m 
+[32m'VERA'[39m)[33m?.[39mstatΓÇª
+    [90m 73| [39m        [34mexpect[39m(tracked
+[33m.[39magentTeam[33m.[39m[34mfind[39m(a 
+[33m=>[39m a[33m.[39magentId [33m===[39m 
+[32m'ATHENA'[39m)[33m?.[39mstΓÇª
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»Γ
+Ä»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[2/2]ΓÄ»[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[90m (2)[39m
+[2m   Start at [22m 04:34:14
+[2m   Duration [22m 548ms[2m (transform 58ms, setup 0ms, collect 66ms, tests 12ms, environment 0ms, prepare 144ms)[22m
+

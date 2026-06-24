@@ -1,0 +1,60 @@
+name: Sync Design Library from V2
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type SYNC to confirm'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync-design-library:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'SYNC'
+
+    steps:
+      - name: Checkout creative-liberation-engine-v4
+        uses: actions/checkout@v4
+        with:
+          path: target
+
+      - name: Checkout creative-liberation-engine-v2
+        uses: actions/checkout@v4
+        with:
+          repository: WholeTroutMedia/creative-liberation-engine-v2
+          token: ${{ secrets.PAT_TOKEN }}
+          path: source
+
+      - name: Sync design-library directories to ATELIER
+        run: |
+          # figma/ (ios-complete PNGs, design-tokens, untitled-ui)
+          cp -r source/design-library/figma/* target/ATELIER/design-library/figma/ 2>/dev/null || true
+
+          # framify/ (components, crawled data)
+          cp -r source/design-library/framify/* target/ATELIER/design-library/framify/ 2>/dev/null || true
+
+          # mobbin/ (UI pattern screenshots)
+          cp -r source/design-library/mobbin/* target/ATELIER/design-library/mobbin/ 2>/dev/null || true
+
+          # remotion/ (video templates, effects)
+          cp -r source/design-library/remotion/* target/ATELIER/design-library/remotion/ 2>/dev/null || true
+
+      - name: Sync V2 root design-library docs to ATELIER
+        run: |
+          cp source/design-library/EXAMPLES.md target/ATELIER/EXAMPLES.md 2>/dev/null || true
+          cp source/design-library/GLOSSARY.md target/ATELIER/GLOSSARY.md 2>/dev/null || true
+          cp source/design-library/QUALITY_STANDARDS.md target/ATELIER/QUALITY_STANDARDS.md 2>/dev/null || true
+          cp source/design-library/TEAM_ROSTER.md target/ATELIER/TEAM_ROSTER.md 2>/dev/null || true
+          cp source/design-library/pattern-index.md target/ATELIER/pattern-index.md 2>/dev/null || true
+
+      - name: Commit and push changes
+        run: |
+          cd target
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "feat(migration): sync design library files from creative-liberation-engine-v2"
+          git push

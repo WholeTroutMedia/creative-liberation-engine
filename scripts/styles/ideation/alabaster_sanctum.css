@@ -1,0 +1,37 @@
+/* Alabaster Sanctum (Premium Light Mode) */
+.theme-light, .theme-dark { /* Force light mode styles even if vault is dark mode */
+  --background-primary: #ffffff !important;
+  --background-secondary: #f8f9fa !important;
+  --background-modifier-border: #e9ecef !important;
+  
+  --interactive-accent: #d90429; /* Blood red */
+  --interactive-accent-hover: #ef233c;
+  --text-accent: #d90429;
+  
+  --text-normal: #111111 !important;
+  --text-muted: #6c757d !important;
+  
+  --font-interface: 'Helvetica Neue', 'Helvetica', sans-serif !important;
+  --font-text: 'Helvetica Neue', 'Helvetica', sans-serif !important;
+  
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: var(--background-primary) !important;
+  border-radius: 8px !important;
+  margin: 6px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+}
+
+.workspace-leaf-header-title {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  color: #111111;
+}
+
+h1, h2, h3 {
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+}

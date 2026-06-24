@@ -1,0 +1,68 @@
+{
+  "name": "cle-v6-services",
+  "version": "2.0.3",
+  "private": true,
+  "description": "Creative Liberation Engine v5 \u2014 Artist Liberation Through Sovereign AI",
+  "scripts": {
+    "build": "turbo run build",
+    "build:genkit": "turbo run build --filter=@cle/genkit^... --filter=@cle/genkit",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev",
+    "boot": "python -m cle boot",
+    "status": "python -m cle status",
+    "terminal-daemon": "tsx .agents/terminal-watcher.ts",
+    "ouroboros-daemon": "pnpm --filter @cle/ouroboros-daemon start",
+    "firebase:dev": "firebase emulators:start --only auth,firestore,hosting",
+    "genkit:dev": "pnpm --filter @cle/genkit dev",
+    "genkit:ui": "npm run genkit:ui --prefix packages/genkit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "design:ingest": "node scripts/design-ingest.mjs",
+    "tokens:penpot": "pnpm --filter @cle/design-tokens penpot:push",
+    "tokens:penpot:dry": "pnpm --filter @cle/design-tokens penpot:push:dry",
+    "ecosystem:sync": "powershell -ExecutionPolicy Bypass -File scripts/ecosystem-sync.ps1",
+    "smoke:cortex": "pnpm exec tsx scripts/smoke-cortex-intake.ts",
+    "setup": "node tools/cle-installer/setup.mjs",
+    "setup:wizard": "node tools/cle-installer/setup.mjs --wizard-only",
+    "prepare": "husky"
+  },
+  "keywords": [
+    "cle-engine",
+    "ai-agents",
+    "constitutional-ai"
+  ],
+  "author": "The Collective <inquiries@creativeliberationengine.org>",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "discord.js": "^14.25.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@storybook/addon-a11y": "^10.2.16",
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/addon-themes": "^10.2.16",
+    "@storybook/react": "^8.6.18",
+    "@storybook/react-vite": "^8.6.18",
+    "@types/node": "^25.8.0",
+    "husky": "^9.1.7",
+    "storybook": "^8.6.18",
+    "turbo": "^2.5.4"
+  },
+  "main": "fetch-tasks.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WholeTroutMedia/cle-engine.git"
+  },
+  "type": "commonjs"
+}

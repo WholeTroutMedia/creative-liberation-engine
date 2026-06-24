@@ -1,0 +1,108 @@
+{
+  "version": "v6.0",
+  "service": "physical-twin",
+  "routes": [
+    {
+      "routeId": "route_physical_twin_health",
+      "path": "/api/physical-twin/health",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/health",
+      "authPolicy": "public",
+      "timeoutMs": 2000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_physical_twin_ingest",
+      "path": "/api/physical-twin/ingest",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/ingest",
+      "authPolicy": "service_token",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_physical_twin_compare",
+      "path": "/api/physical-twin/compare",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/compare",
+      "authPolicy": "service_token",
+      "timeoutMs": 10000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_physical_twin_status",
+      "path": "/api/physical-twin/status",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/status",
+      "authPolicy": "session",
+      "timeoutMs": 5000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_physical_twin_flash",
+      "path": "/api/physical-twin/flash",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/flash",
+      "authPolicy": "service_token",
+      "timeoutMs": 15000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_physical_twin_verify_firmware",
+      "path": "/api/physical-twin/verify-firmware",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "physical-twin",
+      "upstreamPath": "/api/physical-twin/verify-firmware",
+      "authPolicy": "service_token",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

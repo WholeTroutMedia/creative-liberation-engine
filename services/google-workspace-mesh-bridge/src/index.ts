@@ -13,7 +13,7 @@ export interface ExecutionResult {
 
 // Robust root detection
 function getRootDir(): string {
-  if (fs.existsSync('/app')) return '/app';
+  if (fs.existsSync('/app/creative-liberation-engine')) return '/app/creative-liberation-engine';
   if (fs.existsSync('Y:/creative-liberation-engine')) return 'Y:/creative-liberation-engine';
   if (fs.existsSync('y:/creative-liberation-engine')) return 'y:/creative-liberation-engine';
   return path.resolve(__dirname, '../../..');

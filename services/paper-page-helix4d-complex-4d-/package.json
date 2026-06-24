@@ -1,0 +1,10 @@
+{
+  "name": "@cle/paper-page-helix4d-complex-4d-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0260_paper-page-helix4d-complex-4d-mesh-gener",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

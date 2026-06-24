@@ -1,0 +1,15 @@
+{
+  "oauthScopes": ["https://www.googleapis.com/auth/chat.bot"],
+  "addOns": {
+    "common": {
+      "name": "CORTEX",
+      "logoUrl": "https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/smart_toy/default/48px.svg",
+      "layoutProperties": {
+        "primaryColor": "#e94560"
+      }
+    },
+    "chat": {
+      "url": "https://us-east1-cle-engine-v5.cloudfunctions.net/cortex-chat"
+    }
+  }
+}

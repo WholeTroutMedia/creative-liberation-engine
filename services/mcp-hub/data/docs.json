@@ -1,0 +1,46 @@
+[
+  {
+    "id": "doc-seed-001",
+    "title": "ADR-001: Sovereign Atlassian Replacement",
+    "content": "# ADR-001: Sovereign Atlassian Replacement\n\n## Status\nAccepted\n\n## Context\nThe Creative Liberation Engine requires task tracking and knowledge management capabilities equivalent to Jira and Confluence. Rather than integrating with Atlassian SaaS (which violates air-gap sovereignty), we build native replacements.\n\n## Decision\n- **Sentinel Track** replaces Jira with a Kanban board, sprint planner, and MCP tool bindings.\n- **Scholar Hive** replaces Confluence with vectorized knowledge documents and semantic RAG.\n- Both are exposed via a unified **Sovereign MCP Hub** on port 5056.\n\n## Consequences\n- Full air-gap compliance: zero external API dependencies.\n- Agents can autonomously create, update, and transition issues via MCP protocol.\n- All knowledge is vectorized in Qdrant for semantic retrieval.\n- Sprint planning is automated with velocity tracking and agent auto-assignment.",
+    "document_type": "adr",
+    "author": "CORTEX-Architect",
+    "tags": ["architecture", "sovereignty", "atlassian"],
+    "vector_reference": null,
+    "created_at": "2026-05-04T10:00:00Z",
+    "updated_at": "2026-05-04T14:00:00Z"
+  },
+  {
+    "id": "doc-seed-002",
+    "title": "Runbook: MCP Hub Deployment",
+    "content": "# MCP Hub Deployment Runbook\n\n## Prerequisites\n- Node.js 20+\n- Qdrant running on 127.0.0.1:6333\n- Ollama running on 127.0.0.1:11434 with all-minilm model\n\n## Deploy Steps\n1. SSH to NAS: `ssh -p 2000 jaharoni@127.0.0.1`\n2. Navigate: `cd /app/genesis-deploy`\n3. Build: `docker compose -f docker-compose.genesis.yml build mcp-hub`\n4. Deploy: `docker compose -f docker-compose.genesis.yml up -d mcp-hub`\n5. Verify: `curl http://localhost:5056/health`\n\n## MCP Connection\nAgents connect via SSE: `http://127.0.0.1:5056/mcp/sse`\n\n## Troubleshooting\n- Check logs: `docker logs mcp-hub`\n- Data persistence: `/volume2/cle-engine/mcp-hub/data/`\n- Port conflict: Ensure 5056 is not in use (sovereign-home-mesh uses 5055)",
+    "document_type": "runbook",
+    "author": "CORTEX-Architect",
+    "tags": ["deployment", "ops", "mcp"],
+    "vector_reference": null,
+    "created_at": "2026-05-04T11:00:00Z",
+    "updated_at": "2026-05-04T14:00:00Z"
+  },
+  {
+    "id": "doc-seed-003",
+    "title": "Guide: MCP Tool Reference",
+    "content": "# MCP Tool Reference\n\n## Sentinel Track Tools\n| Tool | Description |\n|------|-------------|\n| track_list_issues | List issues with filters |\n| track_create_issue | Create task/story/epic/bug |\n| track_update_issue | Update issue fields |\n| track_transition_issue | Move through status pipeline |\n| track_delete_issue | Remove an issue |\n| track_get_board | Get Kanban board with stats |\n\n## Scholar Hive Tools\n| Tool | Description |\n|------|-------------|\n| hive_list_docs | List documents with filters |\n| hive_create_doc | Create ADR/runbook/guide |\n| hive_get_doc | Read full document content |\n| hive_update_doc | Edit document |\n| hive_delete_doc | Remove document |\n| hive_semantic_search | Vector similarity search |\n\n## System Tools\n| Tool | Description |\n|------|-------------|\n| system_stats | Get hub-wide statistics |",
+    "document_type": "reference",
+    "author": "CORTEX-Architect",
+    "tags": ["mcp", "tools", "api-reference"],
+    "vector_reference": null,
+    "created_at": "2026-05-04T12:00:00Z",
+    "updated_at": "2026-05-04T14:00:00Z"
+  },
+  {
+    "id": "doc-seed-004",
+    "title": "Guide: State Machine Transitions",
+    "content": "# Sentinel Track State Machine\n\nValid status transitions:\n\n```\nBACKLOG → IDEATION\nIDEATION → DESIGN | BACKLOG\nDESIGN → PLAN | IDEATION\nPLAN → SHIP | DESIGN\nSHIP → VALIDATION | PLAN\nVALIDATION → DONE | SHIP\nDONE → (terminal)\nBLOCKED → any status\n```\n\nTransitions are enforced both via the REST API and MCP tools. Invalid transitions return a 400 error with the list of allowed target states.\n\nAll transitions are recorded in the audit log with agent identity and timestamp.",
+    "document_type": "guide",
+    "author": "CORTEX-Architect",
+    "tags": ["workflow", "state-machine", "sentinel-track"],
+    "vector_reference": null,
+    "created_at": "2026-05-04T13:00:00Z",
+    "updated_at": "2026-05-04T14:00:00Z"
+  }
+]

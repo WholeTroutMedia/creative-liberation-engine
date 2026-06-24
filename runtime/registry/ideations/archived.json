@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "month": "_archived",
+  "generatedAt": "2026-06-07T16:01:53.497530+00:00",
+  "count": 1,
+  "ideations": [
+    {
+      "id": "IE-IDX-0102",
+      "slug": "nvidia-launches-nemotron-3-nano-omni-mod",
+      "status": "ARCHIVED",
+      "title": "",
+      "directive": null,
+      "sourceType": "flipboard_rss",
+      "sourceUrl": "",
+      "categories": [],
+      "tags": [],
+      "domain": "operations",
+      "helix": "UNASSIGNED",
+      "relevance": 0,
+      "urgency": null,
+      "priority": null,
+      "owner": null,
+      "createdAt": "",
+      "ideatedAt": null,
+      "lastModifiedAt": "",
+      "nextReviewDue": null,
+      "crossRefCount": 0,
+      "deliverableCount": 0,
+      "filePath": "runtime/ideation-queue/IE-IDX-0102_nvidia-launches-nemotron-3-nano-omni-mod.json"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@cle/workos-releases-authmd-an-open",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0250",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

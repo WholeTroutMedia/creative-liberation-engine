@@ -1,0 +1,72 @@
+{
+  "inputs": [
+    {
+      "tagName": "INPUT",
+      "name": "username_or_email",
+      "type": "text",
+      "placeholder": null,
+      "autocomplete": "username webauthn",
+      "id": "jf-input-username_or_email",
+      "visible": true
+    },
+    {
+      "tagName": "INPUT",
+      "name": "password",
+      "type": "password",
+      "placeholder": null,
+      "autocomplete": null,
+      "id": null,
+      "visible": true
+    },
+    {
+      "tagName": "INPUT",
+      "name": "username_or_email",
+      "type": "text",
+      "placeholder": null,
+      "autocomplete": "username webauthn",
+      "id": "jf-input-username_or_email",
+      "visible": true
+    },
+    {
+      "tagName": "INPUT",
+      "name": "password",
+      "type": "password",
+      "placeholder": null,
+      "autocomplete": null,
+      "id": null,
+      "visible": true
+    }
+  ],
+  "buttons": [
+    {
+      "text": "",
+      "role": null,
+      "type": "button",
+      "visible": true
+    },
+    {
+      "text": "Continue with AppleContinue with Apple",
+      "role": null,
+      "type": "button",
+      "visible": true
+    },
+    {
+      "text": "Continue with phoneContinue with phone",
+      "role": null,
+      "type": "button",
+      "visible": true
+    },
+    {
+      "text": "Continue with AppleContinue with Apple",
+      "role": null,
+      "type": "button",
+      "visible": true
+    },
+    {
+      "text": "Continue with phoneContinue with phone",
+      "role": null,
+      "type": "button",
+      "visible": true
+    }
+  ]
+}

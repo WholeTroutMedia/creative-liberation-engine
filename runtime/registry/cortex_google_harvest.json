@@ -1,0 +1,136 @@
+{
+  "google_skills": {
+    "learning_paths": [
+      {
+        "title": "Beginner: Introduction to Generative AI",
+        "description": "This learning path provides an overview of generative AI concepts, from the fundamentals of large language models to responsible AI principles.",
+        "url": "https://www.skills.google/paths/118",
+        "status": "Not started",
+        "courses": [
+          {
+            "title": "Introduction to Generative AI",
+            "description": "Introductory level microlearning course aimed at explaining what Generative AI is, how it is used, and how it differs from traditional machine learning methods.",
+            "duration": "45 minutes",
+            "status": "Not started"
+          },
+          {
+            "title": "Introduction to Large Language Models",
+            "description": "Introductory level micro-learning course that explores what large language models (LLM) are, the use cases where they can be utilized, and how you can use prompt tuning to enhance LLM performance.",
+            "duration": "1 hour",
+            "status": "Not started"
+          },
+          {
+            "title": "Introduction to Responsible AI",
+            "description": "Introductory-level microlearning course aimed at explaining what responsible AI is, why it's important, and how Google implements responsible AI in their products.",
+            "duration": "15 minutes",
+            "status": "Not started"
+          },
+          {
+            "title": "Prompt Design in Vertex AI",
+            "description": "Complete the introductory Prompt Design in Vertex AI skill badge to demonstrate skills in the following: prompt engineering, image analysis, and multimodal generative techniques, within Vertex AI.",
+            "duration": "1 hour 45 minutes",
+            "status": "Not started"
+          },
+          {
+            "title": "Responsible AI: Applying AI Principles with Google Cloud",
+            "description": "As the use of enterprise Artificial Intelligence and Machine Learning continues to grow, so too does the importance of building it responsibly.",
+            "duration": "2 hours",
+            "status": "Not started"
+          }
+        ]
+      },
+      {
+        "title": "Associate Google Workspace Administrator Certification",
+        "url": "https://www.skills.google/paths/24",
+        "status": "Not started"
+      },
+      {
+        "title": "Google Cloud Next 2026 AI Boost Bites",
+        "url": "https://www.skills.google/paths/3941",
+        "status": "Not started"
+      },
+      {
+        "title": "Deploy Production-Ready Agents",
+        "url": "https://www.skills.google/paths/3802",
+        "status": "Not started"
+      },
+      {
+        "title": "Scale Agents Across the Enterprise",
+        "url": "https://www.skills.google/paths/3980",
+        "status": "Not started"
+      }
+    ]
+  },
+  "google_developer_program": {
+    "learning_page_url": "https://me.developers.google.com/learning",
+    "codelabs": [
+      {
+        "title": "A Tour of Gemini Code Assist Standard and Enterprise for Developers in Google Cloud Shell Editor",
+        "duration": "57 minutes",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/codelabs/cloud-developer-duetai"
+      },
+      {
+        "title": "ADK Agentic Pattern with Memory & MCP",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/adkcourse/instructions"
+      },
+      {
+        "title": "ADK Crash Course - From Beginner To Expert",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/onramp/instructions"
+      },
+      {
+        "title": "ADK with Multimodal Tool Interaction : Part 1 ( Custom Tool with Model Callbacks )",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/adk-multimodal-tool-part-1"
+      },
+      {
+        "title": "ADK with Multimodal Tool Interaction : Part 2 ( MCP Toolset with Tool Callbacks )",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/adk-multimodal-tool-part-2"
+      },
+      {
+        "title": "ADK: From Basics to Multi-Tool Agents",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/multi-tool-ai-agent-adk"
+      },
+      {
+        "title": "AI Agent End to End - Workshop",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/sdlc/instructions"
+      },
+      {
+        "title": "AI Magic Wand with TensorFlow Lite for Microcontrollers and Arduino",
+        "duration": "60 minutes",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/magicwand"
+      },
+      {
+        "title": "AI Speech Recognition with TensorFlow Lite for Microcontrollers and SparkFun Edge",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/codelabs/sparkfun-tensorflow"
+      },
+      {
+        "title": "AI-Assisted Data Science with BigQuery",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/codelabs/bigquery-data-science-notebooks"
+      },
+      {
+        "title": "ARCore Augmented Images",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/codelabs/augimg-intro"
+      },
+      {
+        "title": "Add Firebase Phone Number Verification to your Android app",
+        "status": "Not started",
+        "url": "https://firebase.google.com/codelabs/firebase-pnv-android"
+      },
+      {
+        "title": "Agentic Workflows inside Google Workspace: Build a Google Docs Agent with ADK",
+        "status": "Not started",
+        "url": "https://codelabs.developers.google.com/google-docs-adk-agent"
+      }
+    ]
+  }
+}

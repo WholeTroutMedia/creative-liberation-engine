@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cle-engine.local/schemas/v6/nexus.telemetry-binding.schema.json",
+  "title": "NexusTelemetryBinding",
+  "description": "Schema governing telemetry to segmented splat property mappings in NEXUS",
+  "type": "object",
+  "required": [
+    "bindingId",
+    "source",
+    "target"
+  ],
+  "properties": {
+    "bindingId": {
+      "type": "string",
+      "pattern": "^bind_[a-f0-9]{8}$"
+    },
+    "friendlyName": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "type",
+        "clientId",
+        "channel"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "WEBSOCKET_TELEMETRY",
+            "OSC_STREAM",
+            "MIDI_CC",
+            "SYSTEM_METRIC",
+            "TRACKCRAFT3R_POINT"
+          ]
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string",
+          "description": "Sensor value key, e.g., 'sensors.pose.yaw', 'midi.cc_74', 'sys.cpu'"
+        },
+        "processing": {
+          "type": "object",
+          "properties": {
+            "multiplier": { "type": "number", "default": 1.0 },
+            "offset": { "type": "number", "default": 0.0 },
+            "smoothing": { "type": "number", "minimum": 0.0, "maximum": 1.0, "default": 0.1 }
+          }
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": [
+        "segmentId",
+        "parameter"
+      ],
+      "properties": {
+        "segmentId": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "parameter": {
+          "type": "string",
+          "enum": [
+            "transform.position.x",
+            "transform.position.y",
+            "transform.position.z",
+            "transform.rotation.x",
+            "transform.rotation.y",
+            "transform.rotation.z",
+            "transform.scale.x",
+            "transform.scale.y",
+            "transform.scale.z",
+            "visual.opacity",
+            "visual.colorOverride.r",
+            "visual.colorOverride.g",
+            "visual.colorOverride.b",
+            "physics.density"
+          ]
+        }
+      }
+    }
+  }
+}

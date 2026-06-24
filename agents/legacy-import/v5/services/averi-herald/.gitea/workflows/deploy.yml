@@ -1,0 +1,42 @@
+name: Deploy AVERI Herald
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'services/averi-herald/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, nas]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: services/averi-herald
+        run: npm install
+
+      - name: Type check
+        working-directory: services/averi-herald
+        run: npx tsc --noEmit
+
+      - name: Build
+        working-directory: services/averi-herald
+        run: npm run build
+
+      - name: Deploy to NAS (Docker)
+        run: |
+          docker build -t averi-herald:latest ./services/averi-herald
+          docker stop averi-herald || true
+          docker rm averi-herald || true
+          docker run -d \
+            --name averi-herald \
+            --restart unless-stopped \
+            --env-file /opt/cle/averi-herald.env \
+            averi-herald:latest

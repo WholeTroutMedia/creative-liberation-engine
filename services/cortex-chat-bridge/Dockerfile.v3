@@ -1,0 +1,25 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Install Playwright system deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libnss3 libnspr4 libdbus-1-3 libatk1.0-0 libatk-bridge2.0-0 \
+    libcups2 libdrm2 libxkbcommon0 libatspi2.0-0 libxcomposite1 \
+    libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 \
+    libcairo2 libasound2 && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY requirements_v2.txt .
+RUN pip install --no-cache-dir -r requirements_v2.txt && \
+    playwright install chromium
+
+COPY bridge_v3.py .
+
+ENV CDP_URL=http://cortex-browser:9223
+ENV DISPATCH_URL=http://genesis-deploy-dispatch-1:5050
+ENV POLL_INTERVAL=5
+ENV LOG_LEVEL=INFO
+ENV CORTEX_EMAIL=inquiries@creativeliberationengine.org
+
+CMD ["python", "-u", "bridge_v3.py"]

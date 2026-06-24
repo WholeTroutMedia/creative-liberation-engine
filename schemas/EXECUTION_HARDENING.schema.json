@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/execution-hardening.schema.json",
+  "title": "V6 Execution Hardening Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "helixId",
+    "status",
+    "controls"
+  ],
+  "properties": {
+    "helixId": {
+      "const": "helix-a-execution"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["declared", "implementing", "validated", "hardened"]
+    },
+    "statusReason": {
+      "type": ["string", "null"]
+    },
+    "lastValidated": {
+      "type": ["string", "null"]
+    },
+    "validatedBy": {
+      "type": ["string", "null"]
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dispatchContract",
+        "idempotency",
+        "retryPolicy",
+        "backpressure",
+        "resumeRecovery"
+      ],
+      "properties": {
+        "dispatchContract": { "$ref": "#/$defs/control" },
+        "idempotency": { "$ref": "#/$defs/control" },
+        "retryPolicy": { "$ref": "#/$defs/control" },
+        "backpressure": { "$ref": "#/$defs/control" },
+        "resumeRecovery": { "$ref": "#/$defs/control" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "controlId": { "type": "string" },
+          "evidenceId": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "description": { "type": "string" }
+        },
+        "required": ["controlId", "evidenceId", "timestamp"]
+      }
+    },
+    "validationHistory": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "justification": { "type": "string" },
+          "operator": { "type": "string" }
+        },
+        "required": ["status", "timestamp"]
+      }
+    }
+  },
+  "description": "Execution plane hardening manifest - dispatch integrity, idempotency, retry controls.",
+  "$defs": {
+    "control": {
+      "oneOf": [
+        {
+          "type": "boolean",
+          "const": true
+        },
+        {
+          "type": "object",
+          "properties": {
+            "declared": { "type": "boolean" },
+            "validated": { "type": "boolean" },
+            "lastTestedAt": { "type": ["string", "null"] },
+            "testCommand": { "type": ["string", "null"] },
+            "notes": { "type": "string" }
+          },
+          "required": ["declared", "validated"],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

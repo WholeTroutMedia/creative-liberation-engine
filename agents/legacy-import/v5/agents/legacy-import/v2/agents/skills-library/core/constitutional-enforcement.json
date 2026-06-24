@@ -1,0 +1,80 @@
+{
+  "category": "constitutional-enforcement",
+  "description": "Article validation and compliance checking",
+  "agents": ["LEX"],
+  "priority": "critical",
+  "skills": [
+    {
+      "id": "article-0-validation",
+      "name": "Article 0: We Never Steal",
+      "description": "Validate all code has proper attribution and original synthesis",
+      "complexity": "expert",
+      "input": "Code, comments, documentation",
+      "output": "Compliance report with sources verified",
+      "example": "Check PR for unattributed code"
+    },
+    {
+      "id": "article-16-validation",
+      "name": "Article 16: Time Serves Us",
+      "description": "Detect deadline language, time constraints in code/docs",
+      "complexity": "moderate",
+      "input": "Code, comments, docs, commit messages",
+      "output": "List of time-constraint violations",
+      "example": "Flag 'urgent', 'asap', 'deadline' in PR"
+    },
+    {
+      "id": "article-17-validation",
+      "name": "Article 17: Zero Day Creativity",
+      "description": "Detect MVP mentality, incomplete solutions",
+      "complexity": "moderate",
+      "input": "Code, PRs, documentation",
+      "output": "Completeness score + gaps identified",
+      "example": "Flag 'TODO', 'MVP', 'quick fix' in code"
+    },
+    {
+      "id": "article-18-validation",
+      "name": "Article XVIII: Artist Liberation",
+      "description": "Verify solutions serve artist dignity and break-even velocity",
+      "complexity": "expert",
+      "input": "Feature design, implementation",
+      "output": "Artist-alignment score + recommendations",
+      "example": "Check if new feature enables artist autonomy"
+    },
+    {
+      "id": "complete-constitutional-scan",
+      "name": "Complete Constitutional Scan",
+      "description": "Validate against ALL 20 Articles at once",
+      "complexity": "expert",
+      "input": "Full codebase or PR",
+      "output": "Complete compliance report (0-100 per Article)",
+      "example": "Full constitutional audit before merge"
+    },
+    {
+      "id": "constitutional-pre-commit",
+      "name": "Constitutional Pre-Commit Hook",
+      "description": "Block commits that violate critical articles",
+      "complexity": "expert",
+      "input": "Staged changes",
+      "output": "Allow/block decision + violation details",
+      "example": "Prevent commit with deadline language"
+    },
+    {
+      "id": "constitutional-education",
+      "name": "Constitutional Education",
+      "description": "Explain Article violations with learning resources",
+      "complexity": "moderate",
+      "input": "Violation instance",
+      "output": "Educational explanation + correction guide",
+      "example": "Explain why 'MVP' violates Article 17"
+    },
+    {
+      "id": "constitutional-metrics",
+      "name": "Constitutional Metrics",
+      "description": "Track constitutional compliance over time",
+      "complexity": "moderate",
+      "input": "Historical scans",
+      "output": "Trend analysis + improvement areas",
+      "example": "Show Article 16 compliance improving 85% -> 95%"
+    }
+  ]
+}

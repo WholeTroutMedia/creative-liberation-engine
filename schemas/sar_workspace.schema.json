@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/sar-workspace.schema.json",
+  "title": "Sovereign Artifact Runtime (SAR) Schema",
+  "description": "Schema validating dynamic self-hosted artifact workspaces (Claude Code style) compiled for browser rendering.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifactId",
+    "type",
+    "title",
+    "content"
+  ],
+  "properties": {
+    "artifactId": {
+      "type": "string",
+      "pattern": "^art-[a-z0-9_\\-]{3,64}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["ui_component", "code_snippet", "interactive_dashboard", "document"]
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "content": {
+      "type": "string",
+      "description": "The raw payload content (HTML, dynamic ArrowJS code, or markdown text) to mount inside the sandbox."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "External JS libraries or styling CDN files required (e.g. lucide, tailwind, d3)."
+    },
+    "designTokens": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Custom color palettes, font settings, or layouts to apply to the rendered artifact."
+    }
+  }
+}

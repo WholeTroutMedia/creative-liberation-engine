@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/META_ORCHESTRATOR.schema.json",
+  "title": "Meta-Orchestrator Schema",
+  "description": "Defines the autonomous, self-modifying orchestration layer that routes tasks, discovers capabilities, and dynamically generates skills (Voyager-style) across the Creative Liberation Engine.",
+  "type": "object",
+  "required": ["orchestration_id", "status", "goal", "skill_library", "active_swarms"],
+  "properties": {
+    "orchestration_id": { "type": "string", "format": "uuid" },
+    "status": {
+      "type": "string",
+      "enum": ["analyzing_intent", "routing", "generating_skill", "executing", "validating", "self_correcting", "completed", "failed"]
+    },
+    "goal": {
+      "type": "object",
+      "properties": {
+        "raw_prompt": { "type": "string" },
+        "inferred_domain": { "type": "string", "enum": ["creative_video", "ui_ux_design", "backend_infrastructure", "data_harvesting", "audio_foley", "omni_channel"] },
+        "success_criteria": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "skill_library": {
+      "type": "object",
+      "description": "Voyager-inspired dynamic skill management.",
+      "properties": {
+        "retrieved_skills": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "IDs of existing skills pulled from the vector DB for this task."
+        },
+        "generated_skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "skill_name": { "type": "string" },
+              "target_api": { "type": "string", "description": "e.g., 'Kling', 'Luma', 'Runway', 'ComfyUI'" },
+              "code_path": { "type": "string" },
+              "status": { "type": "string", "enum": ["drafting", "testing", "committed_to_library"] }
+            }
+          }
+        }
+      }
+    },
+    "active_swarms": {
+      "type": "array",
+      "description": "MetaGPT-inspired role-based collaboration swarms spun up for this goal.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "swarm_id": { "type": "string" },
+          "lead_agent_role": { "type": "string", "enum": ["Creative_Director", "Lead_Engineer", "VFX_Supervisor", "QA_Lead"] },
+          "sub_agents": { "type": "array", "items": { "type": "string" } },
+          "current_task": { "type": "string" }
+        }
+      }
+    },
+    "external_liberation_bridges": {
+      "type": "array",
+      "description": "Active API connections to external sovereign tools (Runway, Kling, etc.).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service": { "type": "string" },
+          "status": { "type": "string", "enum": ["connected", "generating", "polling", "downloading", "error"] },
+          "job_id": { "type": "string" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

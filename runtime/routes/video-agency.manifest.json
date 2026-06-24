@@ -1,0 +1,159 @@
+{
+  "version": "v6.0",
+  "service": "video-agency",
+  "routes": [
+    {
+      "routeId": "route_video_agency_transcribe",
+      "path": "/api/v1/video/transcribe",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/transcribe",
+      "authPolicy": "service_token",
+      "timeoutMs": 60000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_classify_audio",
+      "path": "/api/v1/video/classify-audio",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/classify-audio",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_deblur",
+      "path": "/api/v1/video/deblur",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/deblur",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_intellisearch",
+      "path": "/api/v1/video/intellisearch",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/intellisearch",
+      "authPolicy": "service_token",
+      "timeoutMs": 60000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_slate_sync",
+      "path": "/api/v1/video/slate-sync",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/slate-sync",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_generate_speech",
+      "path": "/api/v1/video/generate-speech",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/generate-speech",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_assemble_timeline",
+      "path": "/api/v1/video/assemble-timeline",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/assemble-timeline",
+      "authPolicy": "service_token",
+      "timeoutMs": 120000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_execute",
+      "path": "/api/v1/video/execute",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/api/v1/video/execute",
+      "authPolicy": "service_token",
+      "timeoutMs": 120000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_video_agency_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "video-agency",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 3000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

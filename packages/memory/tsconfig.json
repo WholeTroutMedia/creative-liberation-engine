@@ -1,0 +1,20 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "src",
+        "composite": false,
+        "incremental": false,
+        "sourceMap": false,
+        "declarationMap": false,
+        "strict": false,
+        "noImplicitAny": false,
+        "lib": ["ES2022", "DOM"],
+        "types": ["node"]
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

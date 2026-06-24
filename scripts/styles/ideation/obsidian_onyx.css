@@ -1,0 +1,30 @@
+/* Obsidian Onyx (Premium Monolithic) */
+.theme-dark {
+  --background-primary: #000000 !important;
+  --background-secondary: #050505 !important;
+  --background-modifier-border: #111111 !important;
+  
+  --interactive-accent: #bda3d9; /* Pale Lavender */
+  --interactive-accent-hover: #d1b8ed;
+  --text-accent: #bda3d9;
+  
+  --text-normal: #f0f0f0;
+  --text-muted: #666666;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: rgba(10, 10, 10, 0.4) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px !important;
+  margin: 4px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8) !important;
+}
+
+.workspace-leaf.mod-active {
+  border-color: rgba(189, 163, 217, 0.3) !important;
+}

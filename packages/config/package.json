@@ -1,0 +1,15 @@
+{
+  "name": "@cle/config",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Configuration management for Creative Liberation Engine V6. Environment-aware config loading with validation.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "scripts": {
+    "build": "echo 'no build required'"
+  },
+  "capabilityId": "cap_config_system"
+}

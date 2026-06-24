@@ -1,0 +1,35 @@
+{
+  "deviceClass": "Smart Laundry Center",
+  "manufacturer": "LG",
+  "modelName": "WashTower",
+  "primaryComponents": [
+    "Main outer chassis (structural steel frame, enclosure panels)",
+    "Washer unit assembly (outer tub, inner rotating drum, direct-drive motor, suspension system, water inlet valves, drain pump, detergent dispenser)",
+    "Dryer unit assembly (inner rotating drum, drive motor, heating element or gas burner assembly, blower fan, lint filter housing, exhaust vent, condenser unit if ventless model)",
+    "Integrated control board(s) (master PCB for unified operation, sub-boards for specific functions)",
+    "Unified user interface panel (display, touch controls, physical buttons)",
+    "Washer door assembly (outer frame, glass panel, latch mechanism, gasket seal)",
+    "Dryer door assembly (outer frame, glass panel, latch mechanism)",
+    "Water inlet hoses and internal plumbing",
+    "Drain hose and internal pump lines",
+    "Internal wiring harnesses and power supply components",
+    "Various sensors (water level, temperature, moisture, unbalance, door open/closed, vibration, AI DD fabric detection)",
+    "Vibration damping and leveling system",
+    "Wi-Fi communication module"
+  ],
+  "operationalLogic": "The LG WashTower integrates a front-load washing machine and a dryer into a single, vertically stacked unit, operated by a centralized control panel. The washer mechanically cleans clothes by filling with water, adding detergent, and rotating its inner drum to agitate items, followed by draining and high-speed spinning to extract water. The dryer then tumbles the wet clothes in its drum while a heating element or gas burner generates hot air, circulated by a blower fan, to evaporate moisture. Moist air is either exhausted externally or condensed internally. Integrated smart features utilize sensors to optimize wash and dry cycles based on load characteristics, enabling efficient and automated laundry processing.",
+  "maintenanceNodes": [
+    "Washer door gasket/boot seal (cleaning, inspection for mold/mildew)",
+    "Washer drain pump filter (periodic cleaning for lint and debris)",
+    "Detergent dispenser drawer (cleaning for residue buildup)",
+    "Washer tub (periodic self-clean cycle or manual cleaning for residue)",
+    "Water inlet hoses (inspection for leaks, cracks, or blockages)",
+    "Dryer lint filter (cleaning after every load)",
+    "Dryer exhaust vent/duct (periodic cleaning for lint buildup, especially critical for fire safety)",
+    "Dryer moisture sensor bars (cleaning for optimal performance)",
+    "Dryer drum rollers and belt (inspection for wear and tear)",
+    "Condenser unit (if applicable, periodic cleaning)",
+    "Leveling feet (adjustment for stability and reduced vibration)",
+    "Exterior surfaces (general cleaning)"
+  ]
+}

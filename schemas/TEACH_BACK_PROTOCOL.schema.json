@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle.engine/schemas/TEACH_BACK_PROTOCOL.schema.json",
+  "title": "Teach-Back Protocol Schema",
+  "description": "Defines the required output structure when CORTEX distills harvested knowledge. Forces the agent to teach or build the concept to prove understanding before it is committed to STRATA memory.",
+  "type": "object",
+  "required": ["concept_name", "source_material", "executive_summary", "teach_back_artifact", "strata_id"],
+  "properties": {
+    "concept_name": {
+      "type": "string",
+      "description": "The primary subject or technical concept learned."
+    },
+    "source_material": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "platform": { "type": "string" },
+        "duration_minutes": { "type": "number" }
+      }
+    },
+    "executive_summary": {
+      "type": "string",
+      "description": "A concise, high-signal summary of the core principles, discarding fluff."
+    },
+    "teach_back_artifact": {
+      "type": "object",
+      "description": "The active proof of learning. Must be one of the specified types.",
+      "properties": {
+        "artifact_type": {
+          "type": "string",
+          "enum": ["CODE_SNIPPET", "MCP_TOOL", "ARCHITECTURE_DIAGRAM", "TROUBLESHOOTING_GUIDE"]
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual functioning code, mermaid diagram, or JSON schema."
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["PENDING_REVIEW", "EXECUTED_SUCCESSFULLY", "FAILED_SYNTAX"],
+          "default": "PENDING_REVIEW"
+        }
+      },
+      "required": ["artifact_type", "content"]
+    },
+    "strata_id": {
+      "type": "string",
+      "description": "The UUID linking this distillation to the STRATA vector memory."
+    }
+  }
+}

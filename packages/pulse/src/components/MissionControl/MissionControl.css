@@ -1,0 +1,223 @@
+/* Mission Control — Styles */
+
+.mission-control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #080808;
+  color: #DCE4F5;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Status Bar ──────────────────────────────────────────────────────────── */
+.mc-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: #0A0C12;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+.mc-overall { font-weight: 700; letter-spacing: 0.12em; }
+.mc-overall.all-live  { color: #00E5FF; }
+.mc-overall.partial   { color: #FFB300; }
+.mc-overall.offline   { color: #FF2D2D; }
+.mc-overall.no-nodes  { color: #555; }
+
+.mc-divider { color: rgba(138, 148, 168, 0.3); }
+.mc-nodes   { color: rgba(220, 228, 245, 0.7); }
+.mc-timer   { color: rgba(220, 228, 245, 0.5); font-variant-numeric: tabular-nums; }
+
+.mc-ws { font-size: 10px; }
+.ws-connected    { color: #00E5FF; }
+.ws-disconnected { color: rgba(138, 148, 168, 0.4); }
+
+.mc-venue-select { margin-left: auto; }
+.venue-picker {
+  background: #111520;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  color: #DCE4F5;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  outline: none;
+}
+.venue-picker:focus { border-color: rgba(0, 229, 255, 0.5); }
+
+/* ── Body ────────────────────────────────────────────────────────────────── */
+.mc-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Canvas ──────────────────────────────────────────────────────────────── */
+.mc-canvas-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: #080808;
+}
+
+.mc-canvas-svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}
+
+/* ── Edge Node Indicators ────────────────────────────────────────────────── */
+.edge-node-indicator {
+  transition: opacity 0.2s;
+}
+.edge-node-indicator:hover text.node-label { opacity: 1; }
+.edge-node-indicator.selected circle:nth-child(2) { filter: drop-shadow(0 0 8px rgba(0,229,255,0.6)); }
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0%   { r: 18; opacity: 0.4; }
+  50%  { r: 30; opacity: 0.15; }
+  100% { r: 18; opacity: 0.4; }
+}
+.pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+
+.node-label { opacity: 0.7; transition: opacity 0.2s; }
+
+/* ── Empty State ────────────────────────────────────────────────────────── */
+.mc-empty {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgba(138, 148, 168, 0.4);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mc-empty-icon { font-size: 32px; opacity: 0.3; margin-bottom: 8px; }
+.mc-empty-sub  { font-size: 10px; opacity: 0.6; }
+
+/* ── Node Popover ────────────────────────────────────────────────────────── */
+.mc-popover-wrap {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  z-index: 10;
+}
+
+.node-popover {
+  background: rgba(10, 12, 18, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-width: 240px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+.popover-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.status-live    { background: #00E5FF; box-shadow: 0 0 6px #00E5FF; }
+.status-dot.status-idle    { background: #FFB300; }
+.status-dot.status-offline { background: #555; }
+.status-dot.status-error   { background: #FF2D2D; }
+
+.popover-title { font-size: 12px; font-weight: 600; flex: 1; letter-spacing: 0.04em; }
+.popover-close {
+  background: none; border: none; color: rgba(138,148,168,0.5);
+  cursor: pointer; font-size: 16px; line-height: 1; padding: 0;
+}
+.popover-close:hover { color: #DCE4F5; }
+
+.popover-body { display: flex; flex-direction: column; gap: 6px; }
+.popover-row, .popover-moment {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+}
+.popover-moment { flex-direction: column; gap: 2px; margin-top: 4px; }
+.popover-key { font-size: 10px; color: rgba(138,148,168,0.6); letter-spacing: 0.06em; white-space: nowrap; }
+.popover-val { font-size: 11px; color: #DCE4F5; font-family: 'JetBrains Mono', monospace; }
+.status-text-live    { color: #00E5FF !important; }
+.status-text-idle    { color: #FFB300 !important; }
+.status-text-offline { color: #555 !important; }
+.status-text-error   { color: #FF2D2D !important; }
+
+/* ── Event Feed Sidebar ──────────────────────────────────────────────────── */
+.event-feed {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: #0A0C12;
+  border-left: 1px solid rgba(0, 229, 255, 0.08);
+  overflow-y: auto;
+}
+.feed-header {
+  padding: 10px 14px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: rgba(0,229,255,0.6);
+  border-bottom: 1px solid rgba(0,229,255,0.08);
+  position: sticky;
+  top: 0;
+  background: #0A0C12;
+  z-index: 1;
+}
+.feed-empty {
+  padding: 20px 14px;
+  font-size: 10px;
+  color: rgba(138,148,168,0.3);
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+}
+
+.feed-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  animation: feed-slide-in 0.3s ease-out;
+}
+.feed-item--hot { border-left: 2px solid #00E5FF; }
+
+@keyframes feed-slide-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.feed-meta {
+  display: flex; justify-content: space-between;
+  font-size: 9px; color: rgba(138,148,168,0.5);
+  margin-bottom: 3px; letter-spacing: 0.06em;
+}
+.feed-node { color: rgba(0,229,255,0.5); }
+.feed-type { font-size: 11px; font-weight: 600; color: #DCE4F5; margin-bottom: 2px; }
+.feed-desc { font-size: 10px; color: rgba(138,148,168,0.7); line-height: 1.4; }
+
+.feed-energy {
+  display: flex; align-items: center; gap: 2px;
+  margin-top: 5px;
+}
+.energy-bar {
+  width: 4px; height: 10px; border-radius: 1px;
+  background: rgba(138,148,168,0.15);
+}
+.energy-bar--on { background: #00E5FF; }
+.energy-val { font-size: 9px; color: rgba(0,229,255,0.6); margin-left: 4px; font-family: 'JetBrains Mono', monospace; }

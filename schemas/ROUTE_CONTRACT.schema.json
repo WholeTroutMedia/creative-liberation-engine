@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/route-contract.schema.json",
+  "title": "V6 Route Contract",
+  "description": "Canonical route declaration for ingress, ownership, auth policy, and runtime behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "routeId",
+    "path",
+    "method",
+    "owner",
+    "upstreamService",
+    "authPolicy",
+    "timeoutMs",
+    "criticality",
+    "lifecycle"
+  ],
+  "properties": {
+    "routeId": {
+      "type": "string",
+      "pattern": "^route_[a-z0-9_\\-]{3,64}$"
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^/.*"
+    },
+    "method": {
+      "type": "string",
+      "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD", "ANY"]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 120
+    },
+    "upstreamService": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 200
+    },
+    "upstreamPath": {
+      "type": "string",
+      "pattern": "^/.*"
+    },
+    "authPolicy": {
+      "type": "string",
+      "enum": ["public", "api_key", "session", "service_token", "internal_only"]
+    },
+    "rateLimit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "requests": { "type": "integer", "minimum": 1 },
+        "windowSeconds": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "timeoutMs": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 300000
+    },
+    "idempotency": {
+      "type": "string",
+      "enum": ["required", "optional", "not_applicable"],
+      "default": "not_applicable"
+    },
+    "criticality": {
+      "type": "string",
+      "enum": ["tier0", "tier1", "tier2", "tier3", "tier4", "tier5"]
+    },
+    "observability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trace", "metrics"],
+      "properties": {
+        "trace": { "type": "boolean" },
+        "metrics": { "type": "boolean" },
+        "logFields": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 80 }
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": ["active", "legacy", "deprecated", "planned"]
+    },
+    "deprecation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plannedRemoval"],
+      "properties": {
+        "plannedRemoval": { "type": "string", "format": "date-time" },
+        "replacementRouteId": { "type": "string" },
+        "notes": { "type": "string", "maxLength": 1000 }
+      }
+    }
+  }
+}

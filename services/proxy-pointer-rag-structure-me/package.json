@@ -1,0 +1,10 @@
+{
+  "name": "@cle/proxy-pointer-rag-structure-me",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0027",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

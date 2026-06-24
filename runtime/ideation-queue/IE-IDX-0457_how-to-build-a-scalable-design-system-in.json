@@ -1,0 +1,92 @@
+{
+  "jobId": "IE-IDX-0457",
+  "jobNumber": 457,
+  "slug": "how-to-build-a-scalable-design-system-in",
+  "filename": "IE-IDX-0457_how-to-build-a-scalable-design-system-in",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-TaOuUIvPSxe6C4TQJQbjAg:a:4243649-1782264426",
+    "title": "How to Build a Scalable Design System in a Monorepo",
+    "url": "https://www.freecodecamp.org/news/how-to-build-a-scalable-design-system-in-a-monorepo/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Vineeth Pawar",
+    "pubDate": "Wed, 24 Jun 2026 01:27:06 GMT",
+    "imageUrl": null,
+    "categories": [
+      ""
+    ]
+  },
+  "categories": [
+    "infrastructure",
+    "edge-ai",
+    "creative-tools",
+    "learning",
+    "competitive-intel",
+    "cinematography",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "Establish a Sovereign Token-First Compiler Architecture within a Turborepo monorepo, decoupling visual intent from framework execution to ensure absolute multi-platform longevity and zero-dependency bloat.",
+    "rationale": "To scale a design system across diverse products without falling into the trap of framework lock-in or fragile dependency chains, we must treat design tokens as the absolute compile-time source of truth. By compiling tokens into framework-agnostic native Web Components and auto-generating lightweight adapters, we fulfill Article I (Sovereignty) and Article IV (Quality Standards) by providing a complete, high-performance, and self-hosted solution that outlasts any single frontend framework lifecycle.",
+    "options": [
+      {
+        "title": "Sovereign Token-First Compiler Architecture",
+        "description": "Centralize design tokens in JSON/YAML inside a core package, compiling them via Style Dictionary into native Web Components (using Lit) and auto-generating React/Vue adapters. Deployed via a self-hosted Turborepo pipeline.",
+        "tradeoffs": "Requires a higher upfront architectural investment and custom build configurations, but guarantees complete framework independence, absolute sovereignty, and zero runtime performance penalty.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Multi-Package Monolithic Component Library",
+        "description": "A classic Turborepo setup where components are built as individual React packages (@ds/button, @ds/card) styled with shared Tailwind CSS configurations.",
+        "tradeoffs": "Extremely high developer familiarity and rapid initial velocity, but tightly couples the entire monorepo to React and Tailwind, violating long-term sovereignty if framework migrations are needed.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Headless + Utility-First Federation",
+        "description": "Publish unstyled headless primitives (e.g., Radix UI, React Aria) alongside a shared Tailwind configuration. Individual applications consume primitives and style them locally using the shared tokens.",
+        "tradeoffs": "Maximum flexibility for application teams and small package sizes, but risks visual drift across apps and makes global design overhauls incredibly difficult to coordinate.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Zero-Runtime CSS-in-JS (Vanilla Extract) Architecture",
+        "description": "Write type-safe, compiled CSS-in-JS components using Vanilla Extract. Design tokens are mapped to TypeScript variables and compiled to static CSS files during build.",
+        "tradeoffs": "Excellent type safety and developer experience with zero runtime performance cost, but requires complex bundler configurations for every single consumer application in the monorepo.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Web Components Core with Automated Adapters",
+        "description": "Standardize entirely on native Web Components (using Lit) to ensure complete compatibility across any past, present, or future stack in the monorepo, bypassing framework-specific build toolchains.",
+        "tradeoffs": "Ultimate future-proofing, but introduces complex workarounds for Server-Side Rendering (SSR) environments like Next.js or Nuxt.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Agentic/AI-Driven Component Generator",
+        "description": "An experimental package that uses local LLMs to dynamically generate React/HTML components on demand based on design tokens and natural language prompts during the build step.",
+        "tradeoffs": "Highly flexible, but completely violates Article IV (Quality Standards) and Article IX (Ship Complete) due to non-deterministic rendering, visual bugs, and extreme build-time unpredictability.",
+        "recommendation": "avoid"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "BOLT",
+      "KEEPER"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty",
+      "Article IV: Quality Standards",
+      "Article IX: Ship Complete or Don't Ship",
+      "Article XX: Zero human wait time"
+    ]
+  },
+  "relatedJobs": [],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0457_how-to-build-a-scalable-design-system-in.md",
+  "comments": [],
+  "createdAt": "2026-06-24T01:31:28.643Z",
+  "ideatedAt": "2026-06-24T01:32:04.337Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "emailedAt": "2026-06-24T01:32:08.118Z"
+}

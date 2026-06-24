@@ -1,0 +1,32 @@
+{
+  "name": "@cle/spatial",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine spatial toolkit \u2014 Spline-powered interactive 3D for hero moments",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.0",
+    "react": "^19.2.0"
+  },
+  "devDependencies": {
+    "@cle/tsconfig": "workspace:*",
+    "@types/react": "^19.2.7",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}

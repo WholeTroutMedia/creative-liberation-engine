@@ -1,0 +1,10 @@
+{
+  "name": "@cle/paper-page-unividx-a-unified-m",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0117",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

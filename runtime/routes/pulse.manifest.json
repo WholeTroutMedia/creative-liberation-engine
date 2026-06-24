@@ -1,0 +1,57 @@
+{
+  "version": "v6.0",
+  "service": "pulse",
+  "routes": [
+    {
+      "routeId": "route_pulse_heartbeat",
+      "path": "/api/heartbeat",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "pulse",
+      "upstreamPath": "/api/heartbeat",
+      "authPolicy": "service_token",
+      "timeoutMs": 1000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "serviceId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_pulse_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "pulse",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_pulse_fleet_status",
+      "path": "/api/fleet",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "pulse",
+      "upstreamPath": "/api/fleet",
+      "authPolicy": "internal_only",
+      "timeoutMs": 3000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "fleetSize"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

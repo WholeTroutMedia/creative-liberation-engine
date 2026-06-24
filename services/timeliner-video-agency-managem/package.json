@@ -1,0 +1,10 @@
+{
+  "name": "@cle/timeliner-video-agency-managem",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0161",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

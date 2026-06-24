@@ -1,0 +1,389 @@
+{
+  "version": "v6.1",
+  "generatedAt": "2026-04-17T13:37:54.871Z",
+  "generatedFrom": [
+    "runtime/registry/loras.registry.json"
+  ],
+  "counts": {
+    "total": 33,
+    "enhancement_lora": 3,
+    "runtime_lora": 3,
+    "adapter": 20,
+    "legacy_artifact": 7
+  },
+  "loras": [
+    {
+      "loraId": "agent-adapter",
+      "name": "Agent Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/nbc-nexus/backend/src/integrations/agent-adapter.ts",
+      "aliases": [
+        "v2-agent-adapter",
+        "v5-agent-adapter"
+      ]
+    },
+    {
+      "loraId": "audio",
+      "name": "Audio",
+      "kind": "enhancement_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/packages/god-prompt/src/loras/audio.ts",
+      "aliases": [
+        "v5-audio"
+      ]
+    },
+    {
+      "loraId": "aurora-adapter",
+      "name": "Aurora Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/nbc-nexus/backend/src/integrations/aurora-adapter.ts",
+      "aliases": [
+        "v2-aurora-adapter",
+        "v5-aurora-adapter"
+      ]
+    },
+    {
+      "loraId": "aws",
+      "name": "Aws",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/cloud-mesh/src/adapters/aws.ts",
+      "aliases": [
+        "v5-aws"
+      ]
+    },
+    {
+      "loraId": "base-adapter",
+      "name": "Base Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/base_adapter.py",
+      "aliases": [
+        "v2-base-adapter"
+      ]
+    },
+    {
+      "loraId": "bolt-adapter",
+      "name": "Bolt Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/nbc-nexus/backend/src/integrations/bolt-adapter.ts",
+      "aliases": [
+        "v2-bolt-adapter",
+        "v5-bolt-adapter"
+      ]
+    },
+    {
+      "loraId": "catalog",
+      "name": "Catalog",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/tools/design-library/flora/catalog.json",
+      "aliases": [
+        "v5-catalog"
+      ]
+    },
+    {
+      "loraId": "claude-projects-adapter",
+      "name": "Claude Projects Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/claude_projects_adapter.py",
+      "aliases": [
+        "v2-claude-projects-adapter"
+      ]
+    },
+    {
+      "loraId": "cloudflare",
+      "name": "Cloudflare",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/cloud-mesh/src/adapters/cloudflare.ts",
+      "aliases": [
+        "v5-cloudflare"
+      ]
+    },
+    {
+      "loraId": "cursor-adapter",
+      "name": "Cursor Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/cursor_adapter.py",
+      "aliases": [
+        "v2-cursor-adapter"
+      ]
+    },
+    {
+      "loraId": "eon-bio-adapter",
+      "name": "Eon Bio Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/model-arbitrage/src/eon-bio-adapter.ts",
+      "aliases": [
+        "v5-eon-bio-adapter"
+      ]
+    },
+    {
+      "loraId": "firebase-adapter",
+      "name": "Firebase Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/firebase_adapter.py",
+      "aliases": [
+        "v2-firebase-adapter"
+      ]
+    },
+    {
+      "loraId": "flora-patterns",
+      "name": "FLORA PATTERNS",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/design-system/FLORA-PATTERNS.md",
+      "aliases": [
+        "v2-flora-patterns"
+      ]
+    },
+    {
+      "loraId": "fly",
+      "name": "Fly",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/cloud-mesh/src/adapters/fly.ts",
+      "aliases": [
+        "v5-fly"
+      ]
+    },
+    {
+      "loraId": "gcp",
+      "name": "Gcp",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/cloud-mesh/src/adapters/gcp.ts",
+      "aliases": [
+        "v5-gcp"
+      ]
+    },
+    {
+      "loraId": "gentle-exploration-guide",
+      "name": "GENTLE EXPLORATION GUIDE",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v1/GENTLE_EXPLORATION_GUIDE.md",
+      "aliases": [
+        "v1-gentle-exploration-guide",
+        "v2-gentle-exploration-guide"
+      ]
+    },
+    {
+      "loraId": "harvested-guids",
+      "name": ".Harvested Guids",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/data/lora-datasets/.harvested_guids.json",
+      "aliases": [
+        "v5-harvested-guids"
+      ]
+    },
+    {
+      "loraId": "init",
+      "name": "Init",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/__init__.py",
+      "aliases": [
+        "v2-init"
+      ]
+    },
+    {
+      "loraId": "lora-agents",
+      "name": "Lora Agents",
+      "kind": "runtime_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/genkit/src/flows/lora-agents.ts",
+      "aliases": [
+        "v5-lora-agents"
+      ]
+    },
+    {
+      "loraId": "lora-concept",
+      "name": "LORA CONCEPT",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v1/MATH/LORA_CONCEPT.md",
+      "aliases": [
+        "v1-lora-concept",
+        "v2-lora-concept"
+      ]
+    },
+    {
+      "loraId": "lora-injector",
+      "name": "Lora Injector",
+      "kind": "runtime_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/genkit/src/middleware/lora-injector.ts",
+      "aliases": [
+        "v5-lora-injector"
+      ]
+    },
+    {
+      "loraId": "ollama-adapter",
+      "name": "Ollama Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/ollama_adapter.py",
+      "aliases": [
+        "v2-ollama-adapter"
+      ]
+    },
+    {
+      "loraId": "platform-adapters",
+      "name": "Platform Adapters",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/cle_engine/integrations/platform_adapters.py",
+      "aliases": [
+        "v4-platform-adapters",
+        "v5-platform-adapters"
+      ]
+    },
+    {
+      "loraId": "playwright-adapter",
+      "name": "Playwright Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/cle_engine/browser/frameworks/playwright_adapter.py",
+      "aliases": [
+        "v4-playwright-adapter",
+        "v5-playwright-adapter"
+      ]
+    },
+    {
+      "loraId": "readme",
+      "name": "README",
+      "kind": "legacy_artifact",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/tools/design-library/flora/README.md",
+      "aliases": [
+        "v3-readme",
+        "v4-readme",
+        "v5-readme"
+      ]
+    },
+    {
+      "loraId": "registry",
+      "name": "Registry",
+      "kind": "runtime_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/genkit/src/loras/registry.ts",
+      "aliases": [
+        "v5-registry"
+      ]
+    },
+    {
+      "loraId": "replit-adapter",
+      "name": "Replit Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/replit_adapter.py",
+      "aliases": [
+        "v2-replit-adapter"
+      ]
+    },
+    {
+      "loraId": "selenium-adapter",
+      "name": "Selenium Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import+v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine-v4/cle_engine/browser/frameworks/selenium_adapter.py",
+      "aliases": [
+        "v4-selenium-adapter",
+        "v5-selenium-adapter"
+      ]
+    },
+    {
+      "loraId": "spatial",
+      "name": "Spatial",
+      "kind": "enhancement_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/packages/god-prompt/src/loras/spatial.ts",
+      "aliases": [
+        "v5-spatial"
+      ]
+    },
+    {
+      "loraId": "vertex-ai-adapter",
+      "name": "Vertex Ai Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/vertex_ai_adapter.py",
+      "aliases": [
+        "v2-vertex-ai-adapter"
+      ]
+    },
+    {
+      "loraId": "vision",
+      "name": "Vision",
+      "kind": "enhancement_lora",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/ecosystem/creative-liberation-engine/packages/god-prompt/src/loras/vision.ts",
+      "aliases": [
+        "v5-vision"
+      ]
+    },
+    {
+      "loraId": "vlm-adapter",
+      "name": "Vlm Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "v5-import",
+      "path": "agents/legacy-import/v5/packages/spatial-intelligence/src/vlm_adapter.py",
+      "aliases": [
+        "v5-vlm-adapter"
+      ]
+    },
+    {
+      "loraId": "windsurf-adapter",
+      "name": "Windsurf Adapter",
+      "kind": "adapter",
+      "status": "active",
+      "source": "legacy-import",
+      "path": "agents/legacy-import/v2/cle_engine/generators/platform_adapters/windsurf_adapter.py",
+      "aliases": [
+        "v2-windsurf-adapter"
+      ]
+    }
+  ]
+}

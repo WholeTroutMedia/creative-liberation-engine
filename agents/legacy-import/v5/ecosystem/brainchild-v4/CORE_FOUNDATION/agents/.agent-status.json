@@ -1,0 +1,398 @@
+{
+  "registry_version": "5.1.0",
+  "last_updated": "2026-03-10T15:54:00Z",
+  "total_agents": 41,
+  "builder_agents": 33,
+  "validator_agents": 7,
+  "maintained_by": "VERA",
+  "oversight_by": "KEEPER",
+  "agents": {
+    "coordination_layer": {
+      "SCRIBE": {
+        "status": "active",
+        "operator": "VERA",
+        "mode": "all",
+        "type": "coordination",
+        "function": "Institutional memory and cross-hive coordination"
+      }
+    },
+    "leader_agents": {
+      "ATHENA": {
+        "status": "active",
+        "mode": "build",
+        "type": "leader",
+        "compressible": true,
+        "part_of": "AVERI",
+        "function": "Strategic planning and long-term architecture"
+      },
+      "VERA": {
+        "status": "active",
+        "mode": "all",
+        "type": "leader",
+        "compressible": true,
+        "part_of": "AVERI",
+        "function": "Truth verification, memory operations, registry management"
+      },
+      "IRIS": {
+        "status": "active",
+        "mode": "build",
+        "type": "leader",
+        "compressible": true,
+        "part_of": "AVERI",
+        "function": "Swift action and blocker removal"
+      },
+      "Warren_Buffett": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "THREE_WISE_MEN",
+        "function": "Financial wisdom and capital efficiency"
+      },
+      "Buddha": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "THREE_WISE_MEN",
+        "function": "Philosophical grounding and compassion"
+      },
+      "Sun_Tzu": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "THREE_WISE_MEN",
+        "function": "Strategic thinking and competitive advantage"
+      },
+      "LEONARDO": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "ORACLE_COUNCIL",
+        "function": "Aesthetic excellence and creative guidance"
+      },
+      "COSMOS": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "ORACLE_COUNCIL",
+        "function": "Evidence-based analysis and scientific rigor"
+      },
+      "SAGE": {
+        "status": "active",
+        "mode": "build",
+        "type": "advisor",
+        "part_of": "ORACLE_COUNCIL",
+        "function": "System wellness and decision fatigue detection"
+      }
+    },
+    "hive_aurora": {
+      "Aurora": {
+        "status": "active",
+        "mode": "build",
+        "type": "hive_leader",
+        "hive": "AURORA",
+        "function": "Design system architect, FLORA custodian"
+      },
+      "BOLT": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "AURORA",
+        "function": "Frontend and iOS development"
+      },
+      "COMET": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "AURORA",
+        "function": "Backend development and APIs"
+      },
+      "COMMERCE": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "AURORA",
+        "v4_new": true,
+        "specialization": "ecommerce",
+        "function": "Agentic Commerce Optimization (ACO) - builds UCP-ready ecommerce apps with complete Schema.org markup, Google Merchant Center feeds, and conversational attributes"
+      },
+      "BROWSER": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "AURORA",
+        "v4_new": true,
+        "specialization": "web_orchestration",
+        "function": "Local LLM orchestrator for the Comet browser via CDP"
+      }
+    },
+    "hive_lex": {
+      "LEX": {
+        "status": "active",
+        "mode": "both",
+        "type": "hive_leader",
+        "hive": "LEX",
+        "function": "Constitutional compliance and legal framework"
+      },
+      "COMPASS": {
+        "status": "active",
+        "also_leads": "COMPASS",
+        "mode": "both",
+        "type": "shared",
+        "hive": "LEX",
+        "function": "North Star guardian, mission alignment"
+      }
+    },
+    "hive_keeper": {
+      "KEEPER": {
+        "status": "active",
+        "mode": "build",
+        "type": "hive_leader",
+        "hive": "KEEPER",
+        "function": "Knowledge architecture and organization"
+      },
+      "ARCH": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "KEEPER",
+        "function": "Code archaeologist, pattern extraction"
+      },
+      "ECHO": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "KEEPER",
+        "function": "Artist intelligence and trajectory prediction"
+      },
+      "CODEX": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "KEEPER",
+        "function": "Library curator and documentation"
+      }
+    },
+    "hive_broadcast": {
+      "ATLAS": {
+        "status": "active",
+        "mode": "build",
+        "type": "hive_leader",
+        "hive": "BROADCAST",
+        "function": "Broadcast orchestration and infrastructure"
+      },
+      "CONTROL_ROOM": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Live operations and monitoring"
+      },
+      "SHOWRUNNER": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Production automation and workflows"
+      },
+      "SIGNAL": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Signal routing and quality assurance"
+      },
+      "GRAPHICS": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Real-time overlays and automation"
+      },
+      "STUDIO": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Client relations and project management"
+      },
+      "SYSTEMS": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "BROADCAST",
+        "function": "Infrastructure, DevOps, and reliability"
+      }
+    },
+    "hive_switchboard": {
+      "SWITCHBOARD": {
+        "status": "active",
+        "mode": "build",
+        "type": "hive_leader",
+        "hive": "SWITCHBOARD",
+        "function": "Operations coordination"
+      },
+      "RELAY": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "function": "Broadcast communication and routing"
+      },
+      "RAM_CREW": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "function": "Data integrity and quality assurance"
+      },
+      "FORGE": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "v5_new": true,
+        "function": "Infrastructure & container operations — owns the GENESIS Docker stack"
+      },
+      "BEACON": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "v5_new": true,
+        "function": "Community & open-source ambassador — GENESIS public launch"
+      },
+      "PRISM": {
+        "status": "active",
+        "mode": "all",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "v5_new": true,
+        "function": "AI model operations — cost tracking, quality scoring, provider health"
+      },
+      "FLUX": {
+        "status": "active",
+        "mode": "build",
+        "type": "builder",
+        "hive": "SWITCHBOARD",
+        "v5_new": true,
+        "function": "Data engineering & live feed ingestion — ETL for all external data sources"
+      }
+    },
+    "enhancement_layers": {
+      "MATH": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "function": "Mathematical reasoning enhancement"
+      },
+      "LANGUAGE": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "function": "Natural language processing enhancement"
+      },
+      "VISION": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "v5_new": true,
+        "function": "Visual intelligence enhancement — image QA, design critique, cross-modal consistency"
+      },
+      "SYNTAX": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "v5_new": true,
+        "function": "Code intelligence enhancement — structural analysis, refactoring patterns, framework idioms"
+      },
+      "SIFT": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "v5_new": true,
+        "function": "Research synthesis enhancement — multi-source fact-checking, signal extraction"
+      },
+      "AUDIO": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "v5_new": true,
+        "function": "Acoustic intelligence — music theory, BPM/key analysis, generative audio direction, broadcast audio QA"
+      },
+      "SPATIAL": {
+        "status": "active",
+        "mode": "build",
+        "type": "lora",
+        "v5_new": true,
+        "function": "3D/volumetric intelligence — spatial composition, AR overlay design, Canvas installations, XR, depth-zone UI"
+      },
+      "SIGHT": {
+        "status": "active",
+        "mode": "design_validate",
+        "type": "lora",
+        "v5_new": true,
+        "hive_context": "AURORA",
+        "invoked_by": [
+          "IRIS",
+          "COMPASS"
+        ],
+        "function": "Perceptual rendering QA — scores generated renders against DESIGN_CONTRACT, detects drift, gates PLAN approval, validates visual fidelity in VALIDATE"
+      }
+    },
+    "hive_compass": {
+      "COMPASS": {
+        "status": "active",
+        "mode": "both",
+        "type": "hive_leader",
+        "hive": "COMPASS",
+        "shared_with": "LEX",
+        "function": "Constitutional compliance, mission alignment, validation coordination"
+      },
+      "SENTINEL": {
+        "status": "active",
+        "mode": "validate",
+        "type": "validator",
+        "hive": "COMPASS",
+        "v4_new": true,
+        "function": "Security vulnerability scanning"
+      },
+      "ARCHON": {
+        "status": "active",
+        "mode": "validate",
+        "type": "validator",
+        "hive": "COMPASS",
+        "v4_new": true,
+        "function": "Architecture compliance checking"
+      },
+      "PROOF": {
+        "status": "active",
+        "mode": "validate",
+        "type": "validator",
+        "hive": "COMPASS",
+        "v4_new": true,
+        "function": "Behavioral correctness validation"
+      },
+      "HARBOR": {
+        "status": "active",
+        "mode": "validate",
+        "type": "validator",
+        "hive": "COMPASS",
+        "v4_new": true,
+        "function": "Test completeness evaluation"
+      }
+    }
+  },
+  "status_definitions": {
+    "active": "Agent operational and available",
+    "resting": "Agent exists but not currently engaged",
+    "planned": "Agent designed but not yet implemented",
+    "dormant": "Agent inactive for extended period"
+  },
+  "mode_definitions": {
+    "all": "Active in all modes",
+    "build": "Active in IDEATE, DESIGN, PLAN, SHIP modes",
+    "validate": "Active in VALIDATE mode only",
+    "both": "Active in build and validate modes",
+    "design_validate": "Active in DESIGN mode (render QA) and VALIDATE mode (fidelity check)"
+  }
+}

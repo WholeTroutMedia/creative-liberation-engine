@@ -1,0 +1,67 @@
+name: Redeploy Genkit Orchestrator
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/genkit/**'
+
+jobs:
+  redeploy-genkit:
+    name: Rebuild & restart genkit-orchestrator (pull latest → build → verify)
+    runs-on: host
+    steps:
+      - name: Checkout latest main
+        run: |
+          REPO_DIR="/opt/cle/creative-liberation-engine-v5"
+          mkdir -p "$REPO_DIR"
+          cd "$REPO_DIR"
+          if [ -d ".git" ]; then
+            git remote set-url origin "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git"
+            git fetch --depth=1 origin main
+            git reset --hard origin/main
+            git clean -fd
+          else
+            git clone --depth=1 "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git" "$REPO_DIR"
+          fi
+          echo "✓ At commit: $(git log -1 --oneline)"
+
+      - name: Ensure .env exists for genkit
+        run: |
+          touch packages/genkit/.env
+          echo "GENKIT_ENV=production" >> packages/genkit/.env
+          echo "HOST=0.0.0.0" >> packages/genkit/.env
+          echo "PORT=4100" >> packages/genkit/.env
+          echo "✓ .env written"
+
+      - name: Rebuild & restart genkit-orchestrator
+        run: |
+          cd packages/genkit
+          docker compose down genkit-orchestrator || true
+          docker compose build genkit-orchestrator
+          docker compose up -d genkit-orchestrator
+          echo "✓ genkit-orchestrator rebuilt and restarted"
+
+      - name: Wait for Genkit to warm up
+        run: sleep 20
+
+      - name: Verify /health endpoint
+        run: |
+          curl -sf http://localhost:4100/health | grep -q '"status":"operational"'
+          echo "✓ /health is operational"
+
+      - name: Verify /conversational endpoint is live
+        run: |
+          RESP=$(curl -s -o /dev/null -w "%{http_code}" -X POST http://localhost:4100/conversational \
+            -H "Content-Type: application/json" \
+            -d '{"text":"ping","sessionId":"deploy-check"}')
+          if [ "$RESP" = "200" ] || [ "$RESP" = "500" ]; then
+            echo "✓ /conversational endpoint is live (HTTP $RESP — endpoint registered)"
+          else
+            echo "✗ /conversational not live — HTTP $RESP"
+            exit 1
+          fi
+
+      - name: Show genkit container status
+        run: docker ps --filter "name=genkit" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

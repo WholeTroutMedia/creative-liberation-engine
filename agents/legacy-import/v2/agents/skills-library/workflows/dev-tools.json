@@ -1,0 +1,78 @@
+{
+  "category": "dev-tools",
+  "description": "Additional development tools and utilities",
+  "source": "Community",
+  "agents": ["IRIS", "ARCH", "AURORA"],
+  "skills": [
+    {
+      "id": "dev-agent-skills",
+      "name": "Git/GitHub Workflow Skills",
+      "description": "Comprehensive Git and GitHub automation",
+      "complexity": "moderate",
+      "input": "Git operation needed",
+      "output": "Executed Git/GitHub operation",
+      "example": "Automate branch creation and PR workflow",
+      "attribution": "fvadicamo (Community)"
+    },
+    {
+      "id": "claude-bootstrap",
+      "name": "Opinionated Project Initialization",
+      "description": "Bootstrap new projects with best practices",
+      "complexity": "moderate",
+      "input": "Project type, tech stack",
+      "output": "Complete project scaffold",
+      "example": "Initialize Next.js project with TypeScript + tests",
+      "attribution": "alinaqi (Community)"
+    },
+    {
+      "id": "pypict-skill",
+      "name": "Pairwise Test Generation",
+      "description": "Generate pairwise combination tests",
+      "complexity": "expert",
+      "input": "Test parameters and values",
+      "output": "Minimal test case combinations",
+      "example": "Generate browser/OS test matrix",
+      "attribution": "omkamal (Community)"
+    },
+    {
+      "id": "vexor",
+      "name": "Vector-Powered Semantic File Search",
+      "description": "Search codebase using semantic similarity",
+      "complexity": "expert",
+      "input": "Natural language query",
+      "output": "Relevant files ranked by similarity",
+      "example": "Find all authentication-related files",
+      "attribution": "scarletkc (Community)"
+    },
+    {
+      "id": "modern-python",
+      "name": "Modern Python Tooling",
+      "description": "Use ruff, mypy, pyright for Python development",
+      "complexity": "moderate",
+      "input": "Python codebase",
+      "output": "Linted, type-checked Python code",
+      "example": "Apply ruff + mypy with strict configuration",
+      "attribution": "Trail of Bits + Community"
+    },
+    {
+      "id": "ios-simulator-skill",
+      "name": "iOS Simulator Control",
+      "description": "Control iOS Simulator for testing",
+      "complexity": "moderate",
+      "input": "Simulator commands",
+      "output": "Simulator state changes",
+      "example": "Launch app in simulator and take screenshots",
+      "attribution": "conorluddy (Community)"
+    },
+    {
+      "id": "playwright-skill",
+      "name": "Browser Automation with Playwright",
+      "description": "Automate browser testing and interactions",
+      "complexity": "expert",
+      "input": "Browser automation scenario",
+      "output": "Playwright script with assertions",
+      "example": "Test multi-step checkout flow",
+      "attribution": "lackeyjb (Community)"
+    }
+  ]
+}

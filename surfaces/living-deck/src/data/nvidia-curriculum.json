@@ -1,0 +1,35 @@
+{
+  "title": "Healthcare Knowledge Harvest",
+  "ragStatus": "LIVE",
+  "harvestedAt": "Just now",
+  "curriculum": [
+    {
+      "section": 1,
+      "title": "Foundation of Healthcare"
+    },
+    {
+      "section": 2,
+      "title": "Core concepts for Predictive Patient Triage"
+    },
+    {
+      "section": 3,
+      "title": "Data structuring"
+    },
+    {
+      "section": 4,
+      "title": "Operations & Logistics"
+    },
+    {
+      "section": 5,
+      "title": "Guardrails & Safety"
+    },
+    {
+      "section": 6,
+      "title": "Application in the field"
+    },
+    {
+      "section": 7,
+      "title": "Scaling Strategy"
+    }
+  ]
+}

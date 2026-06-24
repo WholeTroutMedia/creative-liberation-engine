@@ -1,0 +1,126 @@
+{
+  "version": "v6.0",
+  "service": "luminous-gallery-surface",
+  "routes": [
+    {
+      "routeId": "route_gallery_home",
+      "path": "/",
+      "method": "GET",
+      "owner": "LUMINOUS_GALLERY_OPS",
+      "upstreamService": "luminous-gallery-surface",
+      "upstreamPath": "/",
+      "authPolicy": "public",
+      "timeoutMs": 2000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_gallery_assets_css",
+      "path": "/index.css",
+      "method": "GET",
+      "owner": "LUMINOUS_GALLERY_OPS",
+      "upstreamService": "luminous-gallery-surface",
+      "upstreamPath": "/index.css",
+      "authPolicy": "public",
+      "timeoutMs": 1000,
+      "criticality": "tier4",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_gallery_orders_create",
+      "path": "/api/orders",
+      "method": "POST",
+      "owner": "LUMINOUS_GALLERY_FINANCE",
+      "upstreamService": "luminous-gallery-api",
+      "upstreamPath": "/api/orders",
+      "authPolicy": "public",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 10,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 5000,
+      "idempotency": "required",
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_gallery_orders_status",
+      "path": "/api/orders/status",
+      "method": "GET",
+      "owner": "LUMINOUS_GALLERY_FINANCE",
+      "upstreamService": "luminous-gallery-api",
+      "upstreamPath": "/api/orders/status",
+      "authPolicy": "public",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 30,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 3000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_gallery_nfc_verify",
+      "path": "/api/nfc/verify",
+      "method": "POST",
+      "owner": "LUMINOUS_GALLERY_SECURITY",
+      "upstreamService": "luminous-gallery-api",
+      "upstreamPath": "/api/nfc/verify",
+      "authPolicy": "public",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 20,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 4000,
+      "idempotency": "optional",
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_gallery_webhooks_stripe",
+      "path": "/api/webhooks/stripe",
+      "method": "POST",
+      "owner": "LUMINOUS_GALLERY_FINANCE",
+      "upstreamService": "luminous-gallery-api",
+      "upstreamPath": "/api/webhooks/stripe",
+      "authPolicy": "public",
+      "timeoutMs": 10000,
+      "idempotency": "optional",
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

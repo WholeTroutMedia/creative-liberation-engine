@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/DESIGN_MDX.schema.json",
+  "title": "MDX Design Infrastructure Contract",
+  "description": "Defines the accepted YAML frontmatter and structural parameters for MDX-driven static deployments.",
+  "type": "object",
+  "required": ["title", "theme"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the deployment / web application."
+    },
+    "theme": {
+      "type": "object",
+      "required": ["mode", "colors", "fonts"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["dark", "light", "system"],
+          "default": "dark"
+        },
+        "colors": {
+          "type": "object",
+          "required": ["primary", "background", "surface", "text"],
+          "properties": {
+            "primary": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" },
+            "background": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" },
+            "surface": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" },
+            "text": { "type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" }
+          }
+        },
+        "fonts": {
+          "type": "object",
+          "properties": {
+            "heading": { "type": "string" },
+            "body": { "type": "string" },
+            "mono": { "type": "string" }
+          }
+        }
+      }
+    },
+    "routing": {
+      "type": "array",
+      "description": "Optional explicit routing definitions, mapping URL paths to local MDX component references.",
+      "items": {
+        "type": "object",
+        "required": ["path", "component"],
+        "properties": {
+          "path": { "type": "string" },
+          "component": { "type": "string" }
+        }
+      }
+    },
+    "features": {
+      "type": "object",
+      "properties": {
+        "glassmorphism": { "type": "boolean", "default": true },
+        "page_transitions": { "type": "boolean", "default": true }
+      }
+    }
+  }
+}

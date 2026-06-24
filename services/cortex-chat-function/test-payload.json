@@ -1,0 +1,20 @@
+{
+  "type": "MESSAGE",
+  "eventTime": "2026-04-27T01:58:00Z",
+  "message": {
+    "text": "/status",
+    "sender": {
+      "displayName": "Artist",
+      "email": "inquiries@creativeliberationengine.org",
+      "type": "HUMAN"
+    },
+    "space": {
+      "name": "spaces/test",
+      "displayName": "Creative Liberation Engine",
+      "type": "ROOM"
+    },
+    "thread": {
+      "name": "spaces/test/threads/1"
+    }
+  }
+}

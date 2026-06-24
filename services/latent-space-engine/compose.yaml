@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  latent-space-engine:
+    build: .
+    container_name: latent-space-engine
+    restart: unless-stopped
+    ports:
+      - "5095:5095"
+    networks:
+      - creative-liberation-engine_genesis-net
+    env_file:
+      - .env
+    environment:
+      - MERCH_SOURCE_DIR=/app/vault/Photos/2020/06/NYC Flyover with Vinny 06152020
+    volumes:
+      - /app/vault:/app/vault
+
+networks:
+  creative-liberation-engine_genesis-net:
+    external: true

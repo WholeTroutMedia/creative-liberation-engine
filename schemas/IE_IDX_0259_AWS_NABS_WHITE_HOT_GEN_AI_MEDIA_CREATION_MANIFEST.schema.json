@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "",
+  "type": "object",
+  "description": "Capability scaffold for IE-IDX-0259_aws-nabs-white-hot-gen-ai-media-creation",
+  "properties": {
+    "helix": {
+      "type": "string",
+      "const": "UNASSIGNED"
+    },
+    "status": {
+      "type": "string",
+      "const": "VERIFIED"
+    }
+  }
+}

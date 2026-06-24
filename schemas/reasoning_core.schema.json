@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/reasoning_core.schema.json",
+  "title": "Reasoning Core API Schema",
+  "description": "Schema mapping the API interfaces for the services/reasoning-core service, including requests and responses for step-by-step reasoning orchestration and thought step evaluations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reasoningRequest",
+    "reasoningResponse",
+    "evaluationRequest",
+    "evaluationResponse"
+  ],
+  "properties": {
+    "reasoningRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt", "model", "strategy"],
+      "properties": {
+        "prompt": {
+          "type": "string",
+          "description": "The raw user prompt or query needing reasoning orchestration."
+        },
+        "systemInstruction": {
+          "type": "string",
+          "description": "Optional system prompt override for instructions to the model."
+        },
+        "model": {
+          "type": "string",
+          "description": "The target LLM model to execute the reasoning task."
+        },
+        "strategy": {
+          "type": "string",
+          "enum": ["chain_of_thought", "tree_of_thought", "mcts", "reflection", "self_correction"],
+          "description": "The reasoning traversal or search strategy to use."
+        },
+        "maxSteps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "The maximum reasoning steps or nodes to expand."
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 2.0,
+          "description": "Model sampling temperature."
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "description": "Orchestration timeout limit in milliseconds."
+        }
+      }
+    },
+    "reasoningResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reasoningId", "status", "output", "steps"],
+      "properties": {
+        "reasoningId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Globally unique identifier for the reasoning run."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["completed", "failed", "timeout", "processing"],
+          "description": "Status of the reasoning process."
+        },
+        "output": {
+          "type": "string",
+          "description": "The final consolidated solution or output response."
+        },
+        "steps": {
+          "type": "array",
+          "description": "The individual reasoning steps taken during execution.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["stepIndex", "type", "content", "durationMs"],
+            "properties": {
+              "stepIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Zero-indexed identifier of this reasoning step."
+              },
+              "type": {
+                "type": "string",
+                "enum": ["thought", "action", "observation", "reflection", "correction"],
+                "description": "The category of this step."
+              },
+              "content": {
+                "type": "string",
+                "description": "The text content or log of the step."
+              },
+              "durationMs": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Duration spent on this step in milliseconds."
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0,
+                "description": "An optional quality score assigned to this thought node."
+              }
+            }
+          }
+        },
+        "usage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["promptTokens", "completionTokens", "totalTokens"],
+          "properties": {
+            "promptTokens": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "completionTokens": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "totalTokens": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "evaluationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["context", "stepContent"],
+      "properties": {
+        "context": {
+          "type": "string",
+          "description": "The contextual background or problem context prior to the step."
+        },
+        "stepContent": {
+          "type": "string",
+          "description": "The content of the thought step being evaluated."
+        },
+        "evaluationCriteria": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "A set of guidelines or constraints to verify the step content against."
+        }
+      }
+    },
+    "evaluationResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "feedback", "passed"],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Computed verification score from 0.0 to 1.0."
+        },
+        "feedback": {
+          "type": "string",
+          "description": "Detailed explanation of the score or corrections needed."
+        },
+        "passed": {
+          "type": "boolean",
+          "description": "Boolean flag indicating if the step meets the minimum quality threshold."
+        }
+      }
+    }
+  }
+}

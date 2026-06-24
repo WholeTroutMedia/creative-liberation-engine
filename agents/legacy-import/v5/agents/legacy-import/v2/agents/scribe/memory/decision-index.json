@@ -1,0 +1,42 @@
+{
+  "decisions": [
+    {
+      "id": "DEC-2026-01-22-001",
+      "title": "Hive Architecture Adoption",
+      "date": "2026-01-22T08:33:00Z",
+      "source_hive": "all",
+      "location": "/agents/scribe/memory/session-logs/2026-01-22_hive-deployment-arch-onboarding.md",
+      "impact": "system-wide",
+      "summary": "Deployed physical directory structure for all agents with dedicated memory and resources. Solves context persistence (GAP-4, GAP-7, GAP-8).",
+      "status": "implemented"
+    },
+    {
+      "id": "DEC-2026-01-22-002",
+      "title": "LEX Compliance Mandate (Lightweight)",
+      "date": "2026-01-22T08:51:00Z",
+      "source_hive": "lex",
+      "location": "/agents/scribe/memory/session-logs/2026-01-22_hive-deployment-arch-onboarding.md",
+      "impact": "infrastructure-coordination",
+      "summary": "LEX/OPS absorbs protocol compliance via lightweight checklist. Team voted unanimously with conditions: ~3 productions/week, 30-day monitoring, exit to PROTOCOL hive if overwhelmed.",
+      "status": "accepted",
+      "conditions": [
+        "Maximum ~3 productions per week",
+        "Artist always asks team before projects",
+        "30-day capacity monitoring",
+        "PROTOCOL hive ready at 25+ agents",
+        "RELAY assists with automated reminders"
+      ]
+    },
+    {
+      "id": "DEC-2026-01-22-003",
+      "title": "Code Archaeologist Infrastructure Classification",
+      "date": "2026-01-22T09:22:00Z",
+      "source_hive": "code-archaeologist",
+      "location": "/agents/scribe/memory/session-logs/2026-01-22_hive-deployment-arch-onboarding.md",
+      "impact": "agent-taxonomy",
+      "summary": "ARCH positioned as Infrastructure agent (knowledge preservation). Pattern library is system-wide resource, Phase 0 in delivery pipeline. Team vote: 8-0 Infrastructure.",
+      "status": "implemented",
+      "rationale": "Primary value is infrastructure (enables compound learning). Analysis work is method, not identity. Peer group: SCRIBE, RAM CREW, RELAY, LEX."
+    }
+  ]
+}

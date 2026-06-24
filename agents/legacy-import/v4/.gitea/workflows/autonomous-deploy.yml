@@ -1,0 +1,81 @@
+name: Creative Liberation Engine — Autonomous Deploy
+
+on:
+  push:
+    branches: [main, production]
+
+jobs:
+  deploy-autonomous-stack:
+    name: Deploy Autonomous Services to NAS
+    runs-on: ubuntu-latest
+    # Mount docker socket so this job can call docker-compose
+    container:
+      image: ghcr.io/catthehacker/ubuntu:act-22.04
+      options: --volume /var/run/docker.sock:/var/run/docker.sock
+
+    steps:
+      - name: Verify Docker access
+        run: docker version
+
+      # IP-Anchor pattern: clone via NAS IP + token (runner can't resolve hostname)
+      - name: Checkout creative-liberation-engine-v4
+        run: |
+          git clone http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v4.git .
+          git checkout ${{ github.sha }}
+
+      # Inject secrets into .env at deploy time (never commit .env)
+      - name: Write .env
+        run: |
+          cat > .env <<EOF
+          GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }}
+          GITEA_WEBHOOK_SECRET=${{ secrets.GITEA_WEBHOOK_SECRET }}
+          GENKIT_URL=http://genkit:4000
+          AGENT_API_URL=http://agent-api:5001
+          LOG_LEVEL=INFO
+          EOF
+
+      # Install docker compose plugin if not present
+      - name: Ensure docker compose available
+        run: |
+          docker compose version 2>/dev/null || (
+            mkdir -p ~/.docker/cli-plugins
+            curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
+              -o ~/.docker/cli-plugins/docker-compose
+            chmod +x ~/.docker/cli-plugins/docker-compose
+          )
+          docker compose version
+
+      # Ensure the shared network exists
+      - name: Ensure cle-net exists
+        run: docker network create cle-net 2>/dev/null || true
+
+      # Build + start only the two new autonomous services
+      - name: Build autonomous images
+        run: |
+          docker compose -f docker-compose.autonomous.yml build \
+            --no-cache agent-api agent-triggers
+
+      - name: Start autonomous services
+        run: |
+          docker compose -f docker-compose.autonomous.yml up -d \
+            agent-api agent-triggers
+
+      # Wait and health-check
+      - name: Verify services healthy
+        run: |
+          echo "Waiting 30s for services to initialise..."
+          sleep 30
+          echo "=== Agent API ==="
+          curl -sf http://localhost:5001/health \
+            && echo "✅ agent-api healthy" \
+            || echo "⚠️  agent-api not yet healthy"
+          echo "=== Agent Triggers ==="
+          curl -sf http://localhost:5002/health \
+            && echo "✅ agent-triggers healthy" \
+            || echo "⚠️  agent-triggers not yet healthy"
+
+      - name: Show running containers
+        run: docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

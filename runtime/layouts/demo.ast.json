@@ -1,0 +1,37 @@
+{
+  "type": "div",
+  "props": {
+    "style": {
+      "padding": "20px",
+      "border": true,
+      "background": "panel"
+    },
+    "className": "brutalist-container"
+  },
+  "children": [
+    {
+      "type": "h1",
+      "props": {
+        "style": {
+          "color": "accent",
+          "fontFamily": "var(--mono)",
+          "fontSize": "24px",
+          "marginBottom": "16px"
+        }
+      },
+      "children": ["GENERATIVE MATRIX ONLINE"]
+    },
+    {
+      "type": "p",
+      "props": {
+        "style": {
+          "color": "var(--text)",
+          "lineHeight": "1.6"
+        }
+      },
+      "children": [
+        "This layout was rendered procedurally from a JSON AST. Agents can modify this AST to restructure the UI instantly."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@cle/integrations",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "External integrations for Creative Liberation Engine V6 \u2014 DaVinci Resolve MCP, mobile bridge, and sovereign home mesh.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_davinci_resolve_mcp",
+    "cap_mobile_bridge",
+    "cap_sovereign_home_mesh"
+  ]
+}

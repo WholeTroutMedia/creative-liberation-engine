@@ -1,0 +1,16 @@
+{
+  "name": "@cle/claude-agent",
+  "version": "2.0.3",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "build": "echo 'no build required'"
+  }
+}

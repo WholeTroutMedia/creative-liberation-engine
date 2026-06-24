@@ -1,0 +1,30 @@
+/* Hyper-Modern Ethereal (Linear-esque) */
+.theme-dark {
+  --background-primary: #141414 !important;
+  --background-secondary: #1c1c1c !important;
+  --background-modifier-border: rgba(255,255,255,0.08) !important;
+  
+  --interactive-accent: #7c7cff; /* Soft Pastel Purple/Blue */
+  --interactive-accent-hover: #9b9bff;
+  --text-accent: #7c7cff;
+  
+  --text-normal: #ededed;
+  --text-muted: #888888;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 8px !important;
+  margin: 4px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  transition: border-color 0.2s ease;
+}
+
+.workspace-leaf.mod-active {
+  border-color: var(--interactive-accent) !important;
+  box-shadow: 0 4px 20px rgba(124, 124, 255, 0.15) !important;
+}

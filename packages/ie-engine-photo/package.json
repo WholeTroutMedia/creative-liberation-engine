@@ -1,0 +1,27 @@
+{
+  "name": "@cle/ie-engine-photo",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine Photo \u2014 image processing, AI upscaling, composition analysis, and media asset management pipeline. Integrates with Replicate and local Sharp for production-grade image transformations.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "dev": "npx tsx src/server.ts"
+  },
+  "dependencies": {
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vitest": "^1.2.0"
+  }
+}

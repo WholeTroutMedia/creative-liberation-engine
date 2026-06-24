@@ -1,0 +1,32 @@
+{
+  "generatedAt": "2026-04-16T17:46:30.407Z",
+  "conflicts": [],
+  "missingRequiredGroups": [],
+  "missingFromArchitecture": [
+    "audio",
+    "beacon",
+    "flux",
+    "forge",
+    "logd",
+    "mapd",
+    "muxd",
+    "navd",
+    "northstar",
+    "prism",
+    "relayd",
+    "sift",
+    "spatial",
+    "strata",
+    "syntax",
+    "vault",
+    "vision",
+    "watchd"
+  ],
+  "packageOnly": [
+    "chronos",
+    "claude",
+    "genki",
+    "nexus",
+    "zero"
+  ]
+}

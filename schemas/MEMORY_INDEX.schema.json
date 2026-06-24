@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/memory-index.schema.json",
+  "title": "V6 Memory Index",
+  "description": "Schema for a collection of canonical memory records.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "collection", "items"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v[0-9]+(\\.[0-9]+)*$"
+    },
+    "collection": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 200
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "https://cle-engine.local/schemas/v6/memory-contract.schema.json"
+      }
+    }
+  }
+}

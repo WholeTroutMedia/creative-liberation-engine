@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/ledger-transaction.schema.json",
+  "title": "V6 Ledger Transaction",
+  "description": "Schema governing financial ledger transactions and double-entry postings.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transactionId",
+    "date",
+    "amount",
+    "currency",
+    "description",
+    "source",
+    "postings",
+    "status"
+  ],
+  "properties": {
+    "transactionId": {
+      "type": "string",
+      "pattern": "^tx_[a-z0-9_\\-]{3,64}$"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 10
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "source": {
+      "type": "string",
+      "enum": ["stripe", "plaid", "mercury", "manual", "solana", "shopify"]
+    },
+    "postings": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["account", "amount", "type"],
+        "properties": {
+          "account": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_\\-:]+$"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["debit", "credit"]
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "reconciled", "unreconciled"]
+    },
+    "metadata": {
+      "type": "object"
+    }
+  }
+}

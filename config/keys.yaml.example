@@ -1,0 +1,18 @@
+# BYOK (Bring Your Own Key) Configuration
+# Users can optionally provide their own API keys for instant execution and bypassing local compute.
+# The Creative Liberation Engine will always default to local/sovereign models if keys are not provided.
+
+openai_api_key: "sk-..."
+anthropic_api_key: "sk-ant-..."
+gemini_api_key: "AIzaSy..."
+
+# Preferred providers for different subsystems
+trading_agents:
+  default_provider: "openai" # Options: "local", "openai", "anthropic"
+  model: "gpt-4o"
+  fallback_to_local: true
+
+visual_feedback:
+  default_provider: "openai" # Options: "local", "openai"
+  model: "gpt-4o" # E.g., gpt-4o for vision
+  fallback_to_local: true

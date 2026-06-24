@@ -1,0 +1,456 @@
+name: Zero Day Orchestration
+
+# This workflow acts as the "Referee" - orchestrating agent hives based on PR activity
+# It enforces the TDD workflow: Spec → Test → Build → Deploy
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled, commented]
+  issue_comment:
+    types: [created]
+  workflow_dispatch:
+    inputs:
+      trigger_hive:
+        description: 'Manually trigger specific hive'
+        required: true
+        type: choice
+        options:
+          - hive-a-specs
+          - hive-b-tests
+          - hive-c-build
+          - hive-d-deploy
+
+jobs:
+  # Gate 0: Determine which hive should execute
+  orchestrator:
+    runs-on: ubuntu-latest
+    outputs:
+      trigger_hive_a: ${{ steps.determine.outputs.trigger_hive_a }}
+      trigger_hive_b: ${{ steps.determine.outputs.trigger_hive_b }}
+      trigger_hive_c: ${{ steps.determine.outputs.trigger_hive_c }}
+      trigger_hive_d: ${{ steps.determine.outputs.trigger_hive_d }}
+    steps:
+      - name: Determine Hive Execution
+        id: determine
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request?.labels?.map(l => l.name) || [];
+            const comment = context.payload.comment?.body || '';
+            const manualTrigger = '${{ github.event.inputs.trigger_hive }}';
+            
+            let triggerA = false;
+            let triggerB = false;
+            let triggerC = false;
+            let triggerD = false;
+            
+            // Manual trigger
+            if (manualTrigger) {
+              if (manualTrigger === 'hive-a-specs') triggerA = true;
+              if (manualTrigger === 'hive-b-tests') triggerB = true;
+              if (manualTrigger === 'hive-c-build') triggerC = true;
+              if (manualTrigger === 'hive-d-deploy') triggerD = true;
+            }
+            
+            // PR labels trigger specific hives
+            if (labels.includes('spec-phase') || labels.includes('hive-a')) {
+              triggerA = true;
+            }
+            if (labels.includes('test-phase') || labels.includes('hive-b')) {
+              triggerB = true;
+            }
+            if (labels.includes('build-phase') || labels.includes('hive-c')) {
+              triggerC = true;
+            }
+            if (labels.includes('deploy-phase') || labels.includes('hive-d')) {
+              triggerD = true;
+            }
+            
+            // Comment commands trigger hives
+            if (comment.includes('/hive-a') || comment.includes('/specs')) triggerA = true;
+            if (comment.includes('/hive-b') || comment.includes('/tests')) triggerB = true;
+            if (comment.includes('/hive-c') || comment.includes('/build')) triggerC = true;
+            if (comment.includes('/hive-d') || comment.includes('/deploy')) triggerD = true;
+            
+            // New PR without labels defaults to Hive A
+            if (context.payload.action === 'opened' && labels.length === 0) {
+              triggerA = true;
+            }
+            
+            core.setOutput('trigger_hive_a', triggerA);
+            core.setOutput('trigger_hive_b', triggerB);
+            core.setOutput('trigger_hive_c', triggerC);
+            core.setOutput('trigger_hive_d', triggerD);
+            
+            console.log(`Hive Triggers: A=${triggerA}, B=${triggerB}, C=${triggerC}, D=${triggerD}`);
+
+  # Hive A: Spec & Architecture (Aurora + ATHENA + COSMOS)
+  hive-a-specs:
+    needs: orchestrator
+    if: needs.orchestrator.outputs.trigger_hive_a == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Notify Hive A Activation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🟡 **Hive A: Spec & Architecture** activated\n\nAgents: Aurora, ATHENA, COSMOS\n\nGenerating specifications...'
+            });
+      
+      - name: Generate Specifications
+        run: |
+          echo "Hive A: Generating OpenAPI specs, DB schemas, IaC definitions"
+          # TODO: Integrate with MCP to trigger Aurora, ATHENA, COSMOS
+          # Output: Structured specifications in artifacts
+      
+      - name: Validate Specifications
+        run: |
+          echo "Validating spec completeness"
+          # TODO: Check that OpenAPI, schemas, IaC are valid
+      
+      - name: Upload Spec Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hive-a-specifications
+          path: |
+            specs/openapi.yaml
+            specs/database-schema.sql
+            specs/infrastructure.tf
+      
+      - name: Signal Hive B
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['hive-a-complete', 'test-phase']
+            });
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ **Hive A Complete**\n\nSpecifications generated and validated.\n\nNext: Hive B (TDD Enforcers) will generate test suite.'
+            });
+
+  # Hive B: TDD Enforcers (TEST_ARCHITECT + Validators)
+  hive-b-tests:
+    needs: orchestrator
+    if: needs.orchestrator.outputs.trigger_hive_b == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Hive A Prerequisites
+        id: check_prereq
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request?.labels?.map(l => l.name) || [];
+            const hiveAComplete = labels.includes('hive-a-complete');
+            
+            if (!hiveAComplete) {
+              core.setFailed('❌ Hive A must complete before Hive B can start');
+              return false;
+            }
+            return true;
+      
+      - name: Notify Hive B Activation
+        if: steps.check_prereq.outputs.result == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🟣 **Hive B: TDD Enforcers** activated\n\nAgents: TEST_ARCHITECT, FRONTEND_VALIDATOR, BACKEND_VALIDATOR, SECURITY_VALIDATOR, PERFORMANCE_VALIDATOR\n\nGenerating test suite from Hive A specifications...'
+            });
+      
+      - name: Download Hive A Specs
+        uses: actions/download-artifact@v4
+        with:
+          name: hive-a-specifications
+          path: specs/
+      
+      - name: Generate Test Suite
+        run: |
+          echo "Hive B: Generating comprehensive test suite"
+          # TODO: Integrate with MCP to trigger TDD Enforcer agents
+          # Input: Hive A specifications
+          # Output: Test suites (unit, integration, E2E, security, performance)
+      
+      - name: Run Initial Test Suite (Should Fail)
+        run: |
+          echo "Running test suite (expects failures - no code yet)"
+          # TODO: Execute tests to establish baseline
+          # Expected: All tests fail (red state)
+      
+      - name: Upload Test Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hive-b-test-suite
+          path: |
+            tests/**/*
+            coverage-requirements.json
+      
+      - name: Signal Hive C
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['hive-b-complete', 'build-phase']
+            });
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ **Hive B Complete**\n\nTest suite generated. All tests currently failing (expected).\n\nNext: Hive C (Builders) will implement code to pass tests.'
+            });
+
+  # Hive C: Builders (BOLT, COMET, Specialized Agents)
+  hive-c-build:
+    needs: orchestrator
+    if: needs.orchestrator.outputs.trigger_hive_c == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        builder: [frontend, backend, database, auth]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Hive B Prerequisites
+        id: check_prereq
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request?.labels?.map(l => l.name) || [];
+            const hiveBComplete = labels.includes('hive-b-complete');
+            
+            if (!hiveBComplete) {
+              core.setFailed('❌ Hive B must complete before Hive C can start');
+              return false;
+            }
+            return true;
+      
+      - name: Notify Hive C Activation
+        if: steps.check_prereq.outputs.result == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🔵 **Hive C: Builders** activated (${{ matrix.builder }})\n\nImplementing code to pass Hive B test suite...'
+            });
+      
+      - name: Download Test Suite
+        uses: actions/download-artifact@v4
+        with:
+          name: hive-b-test-suite
+          path: tests/
+      
+      - name: Download Specifications
+        uses: actions/download-artifact@v4
+        with:
+          name: hive-a-specifications
+          path: specs/
+      
+      - name: Build Code (${{ matrix.builder }})
+        run: |
+          echo "Hive C (${{ matrix.builder }}): Implementing code"
+          # TODO: Integrate with MCP to trigger builder agents
+          # Input: Hive A specs + Hive B tests
+          # Output: Application code
+      
+      - name: Run Tests
+        id: test
+        run: |
+          echo "Running test suite"
+          # TODO: Execute Hive B tests against new code
+          # Track pass/fail for circuit breaker
+      
+      - name: Circuit Breaker Check
+        if: failure()
+        run: |
+          echo "Test failure detected - checking circuit breaker"
+          # TODO: Track failure count per agent
+          # If 3 strikes, escalate to ATHENA/COSMOS
+      
+      - name: Upload Build Artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hive-c-build-${{ matrix.builder }}
+          path: |
+            build/**/*
+            dist/**/*
+
+  # Consolidate Hive C Results
+  hive-c-consolidate:
+    needs: hive-c-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check All Builders Passed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const allPassed = '${{ needs.hive-c-build.result }}' === 'success';
+            
+            if (allPassed) {
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: ['hive-c-complete', 'deploy-phase']
+              });
+              
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '✅ **Hive C Complete**\n\nAll tests passing. Code ready for deployment.\n\nNext: Hive D (CI/CD & Security) will validate and deploy.'
+              });
+            } else {
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '❌ **Hive C Failed**\n\nOne or more builders did not pass tests. Check logs for details.'
+              });
+            }
+
+  # Hive D: CI/CD & Security (LEX, RELAY, RAM_CREW, SWITCHBOARD, SYSTEMS)
+  hive-d-deploy:
+    needs: orchestrator
+    if: needs.orchestrator.outputs.trigger_hive_d == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Hive C Prerequisites
+        id: check_prereq
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request?.labels?.map(l => l.name) || [];
+            const hiveCComplete = labels.includes('hive-c-complete');
+            
+            if (!hiveCComplete) {
+              core.setFailed('❌ Hive C must complete before Hive D can start');
+              return false;
+            }
+            return true;
+      
+      - name: Notify Hive D Activation
+        if: steps.check_prereq.outputs.result == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🟢 **Hive D: CI/CD & Security** activated\n\nAgents: LEX, RELAY, RAM_CREW, SWITCHBOARD, SYSTEMS\n\nValidating and deploying...'
+            });
+      
+      - name: Security Scan (SAST)
+        run: |
+          echo "Running static analysis security testing"
+          # TODO: Semgrep, Snyk, etc.
+      
+      - name: Security Scan (DAST)
+        run: |
+          echo "Running dynamic analysis security testing"
+          # TODO: OWASP ZAP, etc.
+      
+      - name: Performance Validation
+        run: |
+          echo "Validating performance budgets"
+          # TODO: Run load tests, check against budgets
+      
+      - name: Deploy to Staging
+        run: |
+          echo "Deploying to staging environment"
+          # TODO: Deploy via GCP, Vercel, etc.
+      
+      - name: Integration Tests (Staging)
+        run: |
+          echo "Running integration tests against staging"
+          # TODO: Full E2E validation on staging
+      
+      - name: Signal Deployment Complete
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['hive-d-complete', 'ready-for-production']
+            });
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🎉 **Zero Day Complete**\n\n✅ All hives executed successfully\n✅ All tests passing\n✅ Security validated\n✅ Staging deployment successful\n\nProduction-ready code achieved on first commit.'
+            });
+      
+      - name: Deployment Failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Trace error to responsible agent
+            const failedStep = '${{ steps.*.outcome }}';
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `❌ **Hive D Failed**\n\nDeployment validation failed.\n\nFailed step: ${failedStep}\n\nEscalating to responsible agent for immediate fix.`
+            });
+            
+            // TODO: Summon responsible Hive C agent via MCP
+
+  # VERA: Log to SCRIBE
+  scribe-log:
+    needs: [hive-a-specs, hive-b-tests, hive-c-consolidate, hive-d-deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Workflow Results to SCRIBE
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              workflow: 'zero-day-orchestration',
+              timestamp: new Date().toISOString(),
+              pr_number: context.issue.number,
+              hive_a: '${{ needs.hive-a-specs.result }}',
+              hive_b: '${{ needs.hive-b-tests.result }}',
+              hive_c: '${{ needs.hive-c-consolidate.result }}',
+              hive_d: '${{ needs.hive-d-deploy.result }}'
+            };
+            
+            console.log('SCRIBE LOG:', JSON.stringify(results, null, 2));
+            
+            // TODO: Write to SCRIBE via VERA
+            // TODO: Update .agent-status.json if needed

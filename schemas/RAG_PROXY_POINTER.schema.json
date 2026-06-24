@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.ai/schemas/RAG_PROXY_POINTER.schema.json",
+  "title": "RAG Proxy Pointer Contract",
+  "description": "Schema for exact-document proxy-pointer retrieval inside the memory spine.",
+  "type": "object",
+  "required": [
+    "pointerId",
+    "summary",
+    "canonicalUri",
+    "domain"
+  ],
+  "properties": {
+    "pointerId": {
+      "type": "string",
+      "description": "Unique identifier for the proxy pointer (e.g., ptr_a1b2c3d4)",
+      "pattern": "^ptr_[a-z0-9_\\-]{6,80}$"
+    },
+    "summary": {
+      "type": "string",
+      "description": "The distilled, dense semantic summary used for vector embedding generation. This is what the vector DB searches against."
+    },
+    "canonicalUri": {
+      "type": "string",
+      "description": "The absolute UNC path or URI to the raw, canonical file on the NAS (e.g., \\\\127.0.0.1\\docker\\genesis-deploy\\rag_data\\academy\\udemy\\aim810-genai.json)"
+    },
+    "domain": {
+      "type": "string",
+      "description": "The knowledge domain this pointer belongs to (e.g., academy, tech, strategy, operations)"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional keyword tags for hybrid search filtering"
+    }
+  }
+}

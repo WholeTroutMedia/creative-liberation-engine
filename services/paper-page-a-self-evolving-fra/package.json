@@ -1,0 +1,10 @@
+{
+  "name": "@cle/paper-page-a-self-evolving-fra",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0011",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

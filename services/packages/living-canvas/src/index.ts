@@ -1,0 +1,1 @@
+export function init() { console.log("Living Canvas Generative UI initialized"); }

@@ -1,0 +1,7 @@
+{
+  "_note": "This is a local copy of the agent registry, auto-synced from agents/.agent-status.json",
+  "_last_synced": "2026-02-07T11:16:00-08:00",
+  "_source": "agents/.agent-status.json",
+  "total_agents": 28,
+  "view_full_registry": "See agents/.agent-status.json for complete registry"
+}

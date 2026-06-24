@@ -1,0 +1,130 @@
+# ─────────────────────────────────────────────────────────────
+# CLOUDFLARE TUNNEL — CREATIVE LIBERATION ENGINE GENESIS
+# Sovereign NAS Ingress: Zero exposed ports. Zero IP leakage.
+#
+# Usage:
+#   1. Create tunnel: cloudflared tunnel create cle-genesis
+#   2. Copy tunnel UUID into CLOUDFLARE_TUNNEL_TOKEN in .env
+#   3. Start with: docker compose -f docker-compose.genesis.yml up -d cloudflared
+#
+# All traffic routes: internet → Cloudflare Edge → encrypted tunnel → NAS service
+# Your home/office IP is NEVER exposed. Not in DNS. Not in headers. Not anywhere.
+# ─────────────────────────────────────────────────────────────
+
+# Tunnel UUID (must match the tunnel that issued CLOUDFLARE_TUNNEL_TOKEN). Token auth does not use creds.json.
+tunnel: ${CLOUDFLARE_TUNNEL_ID}
+
+# Log level: warn in production (info for debugging)
+loglevel: warn
+
+# ── Ingress Rules ────────────────────────────────────────────
+# Format: hostname → internal Docker service URL
+# Processed top-to-bottom; first match wins.
+# The final catch-all returns 404 for any unmatched hostname.
+ingress:
+  # ── Dispatch Server (primary AVERI mesh endpoint) ─────────
+  - hostname: dispatch.${TUNNEL_DOMAIN}
+    service: http://dispatch:5160
+    originRequest:
+      connectTimeout: 10s
+      noTLSVerify: false
+
+  # ── Genkit AI Engine ─────────────────────────────────────
+  - hostname: genkit.${TUNNEL_DOMAIN}
+    service: http://genkit:4000
+    originRequest:
+      connectTimeout: 15s
+
+  # ── Gateway (unified API surface) ────────────────────────
+  - hostname: api.${TUNNEL_DOMAIN}
+    service: http://gateway:3000
+    originRequest:
+      connectTimeout: 10s
+
+  # ── Zero-Day (GTM Engine + Client Intake) ────────────────
+  - hostname: zero-day.${TUNNEL_DOMAIN}
+    service: http://zero-day:9000
+    originRequest:
+      connectTimeout: 10s
+
+  # ── COMET C1 (NAS Browser Agent - MCP SSE endpoint) ──────
+  - hostname: comet-c1.${TUNNEL_DOMAIN}
+    service: http://comet-c1:7200
+    originRequest:
+      connectTimeout: 15s
+
+  # ── Campaign Engine ───────────────────────────────────────
+  - hostname: campaign.${TUNNEL_DOMAIN}
+    service: http://campaign:4006
+
+  # ── Blueprints Runtime ────────────────────────────────────
+  - hostname: blueprints.${TUNNEL_DOMAIN}
+    service: http://blueprints:4200
+
+  # ── GenMedia Studio ─────────────────────────────────────
+  - hostname: genmedia.${TUNNEL_DOMAIN}
+    service: http://genmedia:4300
+
+  # ── Forgejo (Sovereign Git) ──────────────────────────────
+  - hostname: git.${TUNNEL_DOMAIN}
+    service: http://forgejo:3000
+
+  # ── NTFY (Push Notifications) ────────────────────────────
+  - hostname: push.${TUNNEL_DOMAIN}
+    service: http://ntfy:80
+
+  # ── Scribe Daemon (Memory Webhook) ───────────────────────
+  - hostname: scribe.${TUNNEL_DOMAIN}
+    service: http://scribe-daemon:9100
+
+  # ── Atlas Live (Broadcast Engine) ────────────────────────
+  - hostname: atlas.${TUNNEL_DOMAIN}
+    service: http://atlas-live:8000
+
+  # ── GHOST QA Engine (Telnyx SMS Webhook) ─────────────────
+  - hostname: ghost.${TUNNEL_DOMAIN}
+    service: http://ghost:6000
+    originRequest:
+      connectTimeout: 10s
+
+  # ── Root Domain → Loading Page (CLEENGINE.SYSTEMS) ─
+  # The zero-day server serves packages/zero-day/landing/index.html
+  # at the root via express.static. /api/pulse gives live telemetry.
+  - hostname: ${TUNNEL_DOMAIN}
+    service: http://zero-day:9000
+    originRequest:
+      connectTimeout: 10s
+
+  # ── NAS MCP FLEET ── Phase 1-3 NAS Integration ───────────
+  # Docker Control MCP — FORGE agent can manage NAS containers
+  - hostname: mcp-docker.${TUNNEL_DOMAIN}
+    service: http://localhost:8081
+    originRequest:
+      connectTimeout: 10s
+
+  # FileSystem MCP — reads /volume1/Active_Projects, drops proxy files
+  - hostname: mcp-fs.${TUNNEL_DOMAIN}
+    service: http://localhost:8082
+    originRequest:
+      connectTimeout: 10s
+
+  # SQLite/Knowledge MCP — local metadata cache without hitting Firebase
+  - hostname: mcp-db.${TUNNEL_DOMAIN}
+    service: http://localhost:8083
+    originRequest:
+      connectTimeout: 10s
+
+  # Home Assistant MCP — spatial presence + Unifi/Omada QoS control
+  - hostname: mcp-ha.${TUNNEL_DOMAIN}
+    service: http://localhost:8123
+    originRequest:
+      connectTimeout: 10s
+
+  # ── CLE Deck ────────────────────────────────────────
+  - hostname: deck.${TUNNEL_DOMAIN}
+    service: http://127.0.0.1:8085
+    originRequest:
+      connectTimeout: 10s
+
+  # ── Catch-all: reject everything unmatched ────────────────
+  - service: http_status:404

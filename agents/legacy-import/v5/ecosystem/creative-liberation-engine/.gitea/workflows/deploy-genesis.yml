@@ -1,0 +1,113 @@
+﻿name: Deploy GENESIS Stack
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Only keep the latest deploy — cancel stale queued runs
+concurrency:
+  group: deploy-genesis
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to NAS
+    runs-on: self-hosted
+    env:
+      # Pin Docker client API to match Synology NAS daemon max version
+      DOCKER_API_VERSION: "1.43"
+      DOCKER_HOST: "unix:///var/run/docker.sock"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Verify Docker (daemon reachable)
+        run: |
+          docker --version
+          docker ps -q > /dev/null && echo "OK Docker daemon reachable" || (echo "❌ Docker daemon unreachable" && exit 1)
+
+      - name: Prune stale Docker networks
+        run: |
+          docker network prune -f 2>&1 || true
+          echo "✓ Stale networks cleared"
+
+      - name: Stop standalone Genkit (port conflict)
+        run: |
+          docker stop $(docker ps -q --filter "publish=4000") 2>/dev/null || true
+          docker stop $(docker ps -q --filter "publish=8000") 2>/dev/null || true
+          echo "OK Ports 4000 + 8000 cleared"
+
+      - name: Ensure persistent volumes exist
+        run: |
+          docker volume create genesis-redis-data 2>/dev/null || true
+          docker volume create genesis-dispatch-data 2>/dev/null || true
+          echo "✓ Redis + Dispatch data volumes ready (external, survive teardown)"
+
+      - name: Tear down stale stack
+        run: |
+          docker compose -p creative-liberation-engine-v5 -f docker-compose.genesis.yml down --remove-orphans 2>&1 || true
+          echo "✓ Stale containers cleared (volumes preserved)"
+
+      - name: Deploy GENESIS stack
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+          FAL_KEY: ${{ secrets.FAL_KEY }}
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          RUNWAY_API_SECRET: ${{ secrets.RUNWAY_API_SECRET }}
+        run: |
+          cat > .env <<EOF
+          GEMINI_API_KEY=${GEMINI_API_KEY}
+          OPENAI_API_KEY=${OPENAI_API_KEY}
+          ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+          PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+          POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+          REDIS_PASSWORD=${REDIS_PASSWORD}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+          LINEAR_API_KEY=${LINEAR_API_KEY}
+          SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+          FIGMA_ACCESS_TOKEN=${FIGMA_ACCESS_TOKEN}
+          FAL_KEY=${FAL_KEY}
+          ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+          RUNWAY_API_SECRET=${RUNWAY_API_SECRET}
+          GITEA_DOMAIN=127.0.0.1
+          GITEA_URL=http://127.0.0.1:3000
+          EOF
+          docker compose -p creative-liberation-engine-v5 -f docker-compose.genesis.yml up -d --build
+          echo "OK GENESIS stack deployed"
+
+      - name: Health check
+        run: |
+          sleep 20
+          echo "=== GENESIS Service Health ==="
+          curl -sf http://localhost:4000/health && echo "✅ Genkit"        || echo "❌ Genkit"
+          curl -sf http://localhost:5100/health && echo "✅ Relay-MCP"     || echo "❌ Relay-MCP"
+          curl -sf http://localhost:5050/health && echo "✅ Dispatch"      || echo "❌ Dispatch"
+          curl -sf http://localhost:9000/health && echo "✅ Zero-Day"      || echo "❌ Zero-Day"
+          curl -sf http://localhost:6000/health && echo "✅ Ghost"         || echo "❌ Ghost"
+          curl -sf http://localhost:4006/health && echo "✅ Campaign"      || echo "❌ Campaign"
+          curl -sf http://localhost:3080/health && echo "✅ Gateway"       || echo "❌ Gateway"
+          curl -sf http://localhost:3090/index.html && echo "✅ Console"   || echo "❌ Console"
+          # Dispatch worker has no HTTP port — check container status
+          WORKER=$(docker ps --filter "name=dispatch-worker" --format "{{.Status}}" | head -1)
+          if [ -n "$WORKER" ]; then echo "✅ Dispatch-Worker  ($WORKER)"; else echo "❌ Dispatch-Worker  (not running)"; fi
+          echo ""
+          docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+      - name: Cleanup Docker networks (always)
+        if: always()
+        run: |
+          docker network prune -f 2>&1 || true
+          echo "✓ Post-run network cleanup complete"

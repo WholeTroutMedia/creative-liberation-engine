@@ -1,0 +1,106 @@
+{
+    "name": "Content Topic Generator",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "1a2b3c4d-5e6f-4a1b-b2c3-d4e5f6a1b2c3",
+            "name": "Schedule Trigger",
+            "type": "n8n-nodes-base.cron",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.openai.com/v1/chat/completions",
+                "authentication": "headerAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "value": "=Bearer {{$env.OPENAI_API_KEY}}"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "model",
+                            "value": "gpt-4o"
+                        },
+                        {
+                            "name": "messages",
+                            "value": "=[{\"role\": \"system\", \"content\": \"You are an elite Content Strategist. Generate targeted content topics. Output ONLY a raw JSON array of objects with exactly these keys: 'id' (string), 'keyword' (string), 'velocity' (number), 'category' (string), 'daysToPeak' (number). No markdown, no explanations.\"}, {\"role\": \"user\", \"content\": \"Generate 5 topics for a health and wellness brand based on latest industry trends.\"}]"
+                        }
+                    ]
+                }
+            },
+            "id": "2b3c4d5e-6f7a-4b2c-c3d4-e5f6a1b2c3d4",
+            "name": "GPT-4o Topic Scoring & Ideation",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                650,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "PATCH",
+                "url": "=https://firestore.googleapis.com/v1/projects/studio-5830771855-17c40/databases/(default)/documents/generated_topics/latest",
+                "authentication": "none",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "fields",
+                            "value": "={{ { topicsList: { stringValue: $json.choices[0].message.content } } }}"
+                        }
+                    ]
+                }
+            },
+            "id": "3c4d5e6f-7a8b-4c3d-d4e5-f6a1b2c3d4e5",
+            "name": "Publish to Firebase Dashboard",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                850,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Schedule Trigger": {
+            "main": [
+                [
+                    {
+                        "node": "GPT-4o Topic Scoring & Ideation",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "GPT-4o Topic Scoring & Ideation": {
+            "main": [
+                [
+                    {
+                        "node": "Publish to Firebase Dashboard",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {}
+}

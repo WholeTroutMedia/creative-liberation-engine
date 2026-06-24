@@ -1,0 +1,192 @@
+name: 🧠 Update Master System Prompt
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'automation/**'
+      - 'backend/**'
+      - 'frontend/**'
+      - 'spec/**'
+      - '**.md'
+  schedule:
+    # Every 6 hours - ensures prompt stays fresh
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      force_major_update:
+        description: 'Force a major version bump'
+        required: false
+        default: 'false'
+      custom_context:
+        description: 'Additional context for the update'
+        required: false
+
+jobs:
+  update-master-prompt:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for comprehensive analysis
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: 📦 Install Dependencies
+        run: |
+          pip install --upgrade pip
+          pip install anthropic openai pyyaml jinja2 gitpython rich
+      
+      - name: 🔍 Extract Latest Best Practices
+        id: extract
+        run: |
+          python automation/extract_best_practices.py \
+            --since-date "$(git log -1 --format=%cd --date=iso MASTER_SYSTEM_PROMPT.md)" \
+            --output-file extracted_practices.json
+          
+          # Check if there are significant changes
+          CHANGE_COUNT=$(jq '.change_count' extracted_practices.json)
+          echo "change_count=$CHANGE_COUNT" >> $GITHUB_OUTPUT
+          
+          if [ "$CHANGE_COUNT" -gt 5 ]; then
+            echo "significant_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "significant_changes=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: 🧠 Synthesize Learnings with AI
+        if: steps.extract.outputs.significant_changes == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python automation/synthesize_learnings.py \
+            --input extracted_practices.json \
+            --current-prompt MASTER_SYSTEM_PROMPT.md \
+            --output synthesized_updates.md
+      
+      - name: ✨ Generate Updated Master Prompt
+        if: steps.extract.outputs.significant_changes == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CUSTOM_CONTEXT: ${{ github.event.inputs.custom_context }}
+        run: |
+          python automation/update_master_prompt.py \
+            --current MASTER_SYSTEM_PROMPT.md \
+            --updates synthesized_updates.md \
+            --force-major ${{ github.event.inputs.force_major_update }} \
+            --output MASTER_SYSTEM_PROMPT.md.new
+      
+      - name: 🔬 Validate Updated Prompt
+        if: steps.extract.outputs.significant_changes == 'true'
+        run: |
+          python automation/validate_prompt.py \
+            --prompt MASTER_SYSTEM_PROMPT.md.new \
+            --schema spec/ai/prompt-schema.json
+      
+      - name: 📊 Generate Change Report
+        if: steps.extract.outputs.significant_changes == 'true'
+        id: report
+        run: |
+          python automation/generate_change_report.py \
+            --old MASTER_SYSTEM_PROMPT.md \
+            --new MASTER_SYSTEM_PROMPT.md.new \
+            --output PROMPT_CHANGES.md
+          
+          # Create summary for PR
+          echo "REPORT<<EOF" >> $GITHUB_OUTPUT
+          cat PROMPT_CHANGES.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: 🎭 Apply Update
+        if: steps.extract.outputs.significant_changes == 'true'
+        run: |
+          mv MASTER_SYSTEM_PROMPT.md.new MASTER_SYSTEM_PROMPT.md
+      
+      - name: 🎨 Update Version Badge
+        if: steps.extract.outputs.significant_changes == 'true'
+        run: |
+          python automation/update_version_badge.py
+      
+      - name: 🎯 Update CLE Cascade Status
+        if: steps.extract.outputs.significant_changes == 'true'
+        run: |
+          python automation/generate_cascade_status.py
+          echo "✅ Cascade status updated with latest system state"
+      
+      - name: 📝 Create Pull Request
+        if: steps.extract.outputs.significant_changes == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: |
+            🧠 Auto-update: Master System Prompt with latest best practices
+            
+            Changes extracted from:
+            - ${{ steps.extract.outputs.change_count }} new patterns
+            - Recent commits and documentation updates
+            - System improvements and fixes
+            - Updated cascade status for agent context
+          branch: auto-update/master-prompt-${{ github.run_number }}
+          delete-branch: true
+          title: '🧠 [Auto] Master Prompt Update - Latest Best Practices'
+          body: |
+            ## 🧠 Automated Master Prompt Update
+            
+            This PR contains automatically extracted best practices and improvements from recent development.
+            
+            ### 📊 Summary
+            - **Changes Detected:** ${{ steps.extract.outputs.change_count }}
+            - **Update Type:** ${{ github.event.inputs.force_major_update == 'true' && 'Major' || 'Minor' }}
+            - **Triggered By:** ${{ github.event_name }}
+            
+            ### 📋 What Changed
+            ${{ steps.report.outputs.REPORT }}
+            
+            ### ✅ Validation
+            - [x] Schema validation passed
+            - [x] All sections present
+            - [x] Version incremented
+            - [x] No TODO placeholders
+            - [x] Cascade status updated
+            
+            ### 🔍 Review Checklist
+            - [ ] New best practices are accurate
+            - [ ] No sensitive information exposed
+            - [ ] Examples are production-ready
+            - [ ] Tone and style consistent
+            - [ ] Cascade status reflects current state
+            
+            ---
+            
+            🤖 This PR was automatically generated by the Living Documentation System
+          labels: |
+            documentation
+            automation
+            master-prompt
+            auto-generated
+          reviewers: jaharoni
+      
+      - name: 🎉 Celebrate Success
+        if: steps.extract.outputs.significant_changes == 'true'
+        run: |
+          echo "🎉 Master prompt updated successfully!"
+          echo "📈 Captured ${{ steps.extract.outputs.change_count }} improvements"
+          echo "🎯 Cascade status refreshed for agent context"
+          echo "🔮 The brain grows smarter..."
+      
+      - name: 😴 No Changes Needed
+        if: steps.extract.outputs.significant_changes == 'false'
+        run: |
+          echo "✨ Master prompt is already up-to-date"
+          echo "🧠 No significant changes detected"
+          echo "💤 Skipping update..."

@@ -1,0 +1,10 @@
+{
+  "name": "@cle/vcs-are-chasing-ai-infrastruct",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0099",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@cle/creative",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Creative media pipeline for Creative Liberation Engine V6 \u2014 generative media, motion engine, media ingest, and photo processing.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./motion": "./src/motion.mjs",
+    "./ingest": "./src/ingest.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*",
+    "@cle/inference": "workspace:*",
+    "@cle/memory": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_genmedia",
+    "cap_motion_engine",
+    "cap_media_ingest",
+    "cap_ie_engine_photo"
+  ]
+}

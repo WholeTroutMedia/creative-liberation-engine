@@ -1,0 +1,9 @@
+{
+  "name": "@cle/hooks",
+  "version": "2.0.3",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "component": {
+    "$description": "Component-level design tokens — the bridge between semantics and implementation",
+
+    "button": {
+      "primary": {
+        "bg": { "$type": "color", "$value": "{color.interactive.primary.default}" },
+        "bgHover": { "$type": "color", "$value": "{color.interactive.primary.hover}" },
+        "bgActive": { "$type": "color", "$value": "{color.interactive.primary.active}" },
+        "bgDisabled": { "$type": "color", "$value": "{color.interactive.primary.disabled}" },
+        "text": { "$type": "color", "$value": "#ffffff" },
+        "textDisabled": { "$type": "color", "$value": "{color.text.disabled}" },
+        "borderRadius": { "$type": "dimension", "$value": "{radius.md}" },
+        "paddingX": { "$type": "dimension", "$value": "{spacing.inset.lg}" },
+        "paddingY": { "$type": "dimension", "$value": "{spacing.inset.sm}" },
+        "gap": { "$type": "dimension", "$value": "{spacing.inline.xs}" },
+        "minHeight": { "$type": "dimension", "$value": "40px" },
+        "shadow": { "$type": "shadow", "$value": "{shadow.sm}" }
+      },
+      "secondary": {
+        "bg": { "$type": "color", "$value": "{color.interactive.secondary.default}" },
+        "bgHover": { "$type": "color", "$value": "{color.interactive.secondary.hover}" },
+        "text": { "$type": "color", "$value": "{color.text.primary}" },
+        "border": { "$type": "color", "$value": "{color.border.muted}" },
+        "borderRadius": { "$type": "dimension", "$value": "{radius.md}" }
+      },
+      "ghost": {
+        "bg": { "$type": "color", "$value": "transparent" },
+        "bgHover": { "$type": "color", "$value": "rgba(160, 160, 176, 0.08)" },
+        "text": { "$type": "color", "$value": "{color.text.secondary}" },
+        "textHover": { "$type": "color", "$value": "{color.text.primary}" }
+      },
+      "icon": {
+        "size": { "$type": "dimension", "$value": "36px" },
+        "borderRadius": { "$type": "dimension", "$value": "{radius.sm}" },
+        "padding": { "$type": "dimension", "$value": "{spacing.inset.xs}" }
+      }
+    },
+
+    "card": {
+      "bg": { "$type": "color", "$value": "{color.background.subtle}" },
+      "bgHover": { "$type": "color", "$value": "{color.background.muted}" },
+      "border": { "$type": "color", "$value": "{color.border.default}" },
+      "borderHover": { "$type": "color", "$value": "{color.border.muted}" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.lg}" },
+      "padding": { "$type": "dimension", "$value": "{spacing.inset.lg}" },
+      "shadow": { "$type": "shadow", "$value": "{shadow.md}" },
+      "shadowHover": { "$type": "shadow", "$value": "{shadow.lg}" },
+      "gap": { "$type": "dimension", "$value": "{spacing.stack.sm}" },
+      "glass": {
+        "bg": { "$type": "color", "$value": "{color.background.glass}" },
+        "backdrop": { "$type": "string", "$value": "blur(16px) saturate(180%)" },
+        "border": { "$type": "color", "$value": "rgba(255, 255, 255, 0.06)" }
+      }
+    },
+
+    "input": {
+      "bg": { "$type": "color", "$value": "{color.background.muted}" },
+      "bgFocus": { "$type": "color", "$value": "{color.background.elevated}" },
+      "border": { "$type": "color", "$value": "{color.border.default}" },
+      "borderHover": { "$type": "color", "$value": "{color.border.muted}" },
+      "borderFocus": { "$type": "color", "$value": "{color.border.focus}" },
+      "borderError": { "$type": "color", "$value": "{color.border.danger}" },
+      "text": { "$type": "color", "$value": "{color.text.primary}" },
+      "placeholder": { "$type": "color", "$value": "{color.text.tertiary}" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.md}" },
+      "paddingX": { "$type": "dimension", "$value": "{spacing.inset.md}" },
+      "paddingY": { "$type": "dimension", "$value": "{spacing.inset.sm}" },
+      "minHeight": { "$type": "dimension", "$value": "40px" },
+      "focusRing": { "$type": "string", "$value": "0 0 0 2px rgba(37, 99, 235, 0.4)" }
+    },
+
+    "modal": {
+      "bg": { "$type": "color", "$value": "{color.background.elevated}" },
+      "overlay": { "$type": "color", "$value": "{color.background.overlay}" },
+      "border": { "$type": "color", "$value": "{color.border.muted}" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.xl}" },
+      "padding": { "$type": "dimension", "$value": "{spacing.inset.xl}" },
+      "shadow": { "$type": "shadow", "$value": "{shadow.2xl}" },
+      "maxWidth": { "$type": "dimension", "$value": "480px" },
+      "backdropBlur": { "$type": "string", "$value": "blur(8px)" }
+    },
+
+    "badge": {
+      "borderRadius": { "$type": "dimension", "$value": "{radius.full}" },
+      "paddingX": { "$type": "dimension", "$value": "{spacing.inset.sm}" },
+      "paddingY": { "$type": "dimension", "$value": "2px" },
+      "fontSize": { "$type": "dimension", "$value": "{font.size.xs}" },
+      "fontWeight": { "$type": "fontWeight", "$value": "{font.weight.semibold}" }
+    },
+
+    "tooltip": {
+      "bg": { "$type": "color", "$value": "#1a1a24" },
+      "text": { "$type": "color", "$value": "{color.text.primary}" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.sm}" },
+      "padding": { "$type": "dimension", "$value": "{spacing.inset.sm}" },
+      "fontSize": { "$type": "dimension", "$value": "{font.size.xs}" },
+      "shadow": { "$type": "shadow", "$value": "{shadow.lg}" },
+      "maxWidth": { "$type": "dimension", "$value": "240px" }
+    },
+
+    "sidebar": {
+      "bg": { "$type": "color", "$value": "{color.background.glass-heavy}" },
+      "width": { "$type": "dimension", "$value": "260px" },
+      "widthCollapsed": { "$type": "dimension", "$value": "64px" },
+      "borderRight": { "$type": "color", "$value": "{color.border.subtle}" },
+      "itemPaddingX": { "$type": "dimension", "$value": "{spacing.inset.md}" },
+      "itemPaddingY": { "$type": "dimension", "$value": "{spacing.inset.sm}" },
+      "itemBorderRadius": { "$type": "dimension", "$value": "{radius.md}" },
+      "itemHoverBg": { "$type": "color", "$value": "rgba(160, 160, 176, 0.08)" },
+      "itemActiveBg": { "$type": "color", "$value": "rgba(37, 99, 235, 0.12)" },
+      "itemActiveText": { "$type": "color", "$value": "{color.text.brand}" }
+    },
+
+    "table": {
+      "headerBg": { "$type": "color", "$value": "{color.background.muted}" },
+      "headerText": { "$type": "color", "$value": "{color.text.secondary}" },
+      "rowBg": { "$type": "color", "$value": "transparent" },
+      "rowHoverBg": { "$type": "color", "$value": "rgba(160, 160, 176, 0.04)" },
+      "rowAlternateBg": { "$type": "color", "$value": "rgba(160, 160, 176, 0.02)" },
+      "borderColor": { "$type": "color", "$value": "{color.border.subtle}" },
+      "cellPaddingX": { "$type": "dimension", "$value": "{spacing.inset.md}" },
+      "cellPaddingY": { "$type": "dimension", "$value": "{spacing.inset.sm}" }
+    },
+
+    "avatar": {
+      "sizes": {
+        "xs": { "$type": "dimension", "$value": "24px" },
+        "sm": { "$type": "dimension", "$value": "32px" },
+        "md": { "$type": "dimension", "$value": "40px" },
+        "lg": { "$type": "dimension", "$value": "56px" },
+        "xl": { "$type": "dimension", "$value": "80px" }
+      },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.full}" },
+      "border": { "$type": "color", "$value": "{color.border.muted}" },
+      "fallbackBg": { "$type": "color", "$value": "{color.accent.indigo}" },
+      "fallbackText": { "$type": "color", "$value": "#ffffff" }
+    },
+
+    "toast": {
+      "bg": { "$type": "color", "$value": "{color.background.elevated}" },
+      "border": { "$type": "color", "$value": "{color.border.muted}" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.lg}" },
+      "padding": { "$type": "dimension", "$value": "{spacing.inset.md}" },
+      "shadow": { "$type": "shadow", "$value": "{shadow.xl}" },
+      "maxWidth": { "$type": "dimension", "$value": "400px" }
+    },
+
+    "skeleton": {
+      "bg": { "$type": "color", "$value": "rgba(160, 160, 176, 0.08)" },
+      "shimmer": { "$type": "color", "$value": "rgba(160, 160, 176, 0.12)" },
+      "borderRadius": { "$type": "dimension", "$value": "{radius.md}" }
+    },
+
+    "divider": {
+      "color": { "$type": "color", "$value": "{color.border.subtle}" },
+      "thickness": { "$type": "dimension", "$value": "1px" },
+      "spacing": { "$type": "dimension", "$value": "{spacing.stack.md}" }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+name: CI/CD Pipeline - Complete Production Deploy
+# Fixes Issue #24 - NO MVP - Full automated testing and deployment
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+env:
+  PROJECT_ID: gen-lang-client-0309937953
+  REGION: us-central1
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pytest-asyncio black flake8 mypy
+      
+      - name: Code formatting check
+        run: black --check .
+      
+      - name: Linting
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      
+      - name: Type checking
+        run: mypy . --ignore-missing-imports
+      
+      - name: Run unit tests
+        run: pytest tests/ -v --cov=. --cov-report=xml
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  build:
+    name: Build Container
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+      
+      - name: Configure Docker
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+      
+      - name: Build and push container
+        run: |
+          docker build -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:${{ github.sha }} .
+          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:${{ github.sha }}
+          docker tag ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:${{ github.sha }} \
+                     ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:latest
+          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:latest
+
+  deploy:
+    name: Deploy to Cloud Run
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy agentic-studio-backend \
+            --image=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/agentic-studio/backend:${{ github.sha }} \
+            --platform=managed \
+            --region=${{ env.REGION }} \
+            --allow-unauthenticated \
+            --service-account=agentic-studio-backend@${{ env.PROJECT_ID }}.iam.gserviceaccount.com \
+            --set-env-vars="PROJECT_ID=${{ env.PROJECT_ID }},ENVIRONMENT=production" \
+            --set-secrets="DATABASE_URL=database-password:latest" \
+            --min-instances=1 \
+            --max-instances=10 \
+            --memory=2Gi \
+            --cpu=2 \
+            --timeout=300
+      
+      - name: Verify deployment
+        run: |
+          SERVICE_URL=$(gcloud run services describe agentic-studio-backend \
+            --region=${{ env.REGION }} \
+            --format='value(status.url)')
+          echo "Service deployed to: $SERVICE_URL"
+          curl -f $SERVICE_URL/health || exit 1
+
+  notify:
+    name: Notify on completion
+    runs-on: ubuntu-latest
+    needs: [deploy]
+    if: always()
+    
+    steps:
+      - name: Deployment status
+        run: |
+          if [ "${{ needs.deploy.result }}" == "success" ]; then
+            echo "✅ Deployment successful"
+          else
+            echo "❌ Deployment failed"
+            exit 1
+          fi

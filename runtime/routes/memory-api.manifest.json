@@ -1,0 +1,91 @@
+{
+  "version": "v6.0",
+  "service": "memory-api",
+  "routes": [
+    {
+      "routeId": "route_memory_write",
+      "path": "/api/memory",
+      "method": "POST",
+      "owner": "STRATA",
+      "upstreamService": "memory-api",
+      "upstreamPath": "/api/memory",
+      "authPolicy": "service_token",
+      "timeoutMs": 5000,
+      "criticality": "tier0",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "memoryId", "kind"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_memory_read",
+      "path": "/api/memory/:memoryId",
+      "method": "GET",
+      "owner": "STRATA",
+      "upstreamService": "memory-api",
+      "upstreamPath": "/api/memory/:memoryId",
+      "authPolicy": "service_token",
+      "timeoutMs": 2000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "memoryId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_memory_search",
+      "path": "/api/memory/search",
+      "method": "POST",
+      "owner": "STRATA",
+      "upstreamService": "memory-api",
+      "upstreamPath": "/api/memory/search",
+      "authPolicy": "service_token",
+      "timeoutMs": 10000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "resultCount"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_memory_collections",
+      "path": "/api/collections",
+      "method": "GET",
+      "owner": "STRATA",
+      "upstreamService": "memory-api",
+      "upstreamPath": "/api/collections",
+      "authPolicy": "internal_only",
+      "timeoutMs": 3000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_memory_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "STRATA",
+      "upstreamService": "memory-api",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

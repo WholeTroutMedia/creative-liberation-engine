@@ -1,0 +1,29 @@
+/* Graphite & Sage (Architectural Organic) */
+.theme-dark {
+  --background-primary: #121212 !important;
+  --background-secondary: #1a1a1a !important;
+  --background-modifier-border: rgba(255,255,255,0.05) !important;
+  
+  --interactive-accent: #8ea392; /* Sage Green */
+  --interactive-accent-hover: #a3b8a7;
+  --text-accent: #8ea392;
+  
+  --text-normal: #e0e0e0;
+  --text-muted: #808080;
+  
+  --font-interface: 'Inter', -apple-system, sans-serif !important;
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 12px !important;
+  margin: 6px !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4) !important;
+}
+
+.workspace-leaf.mod-active {
+  border-color: rgba(142, 163, 146, 0.4) !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(142, 163, 146, 0.1) !important;
+}

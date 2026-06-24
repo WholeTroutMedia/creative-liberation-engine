@@ -1,0 +1,166 @@
+services:
+
+  # ── Genkit AI Provider Runtime (TypeScript / Node) ────────────────────────
+  genkit:
+    build:
+      context: .
+      dockerfile: packages/genkit/Dockerfile
+    ports:
+      - "4000:4000"   # Genkit developer UI
+      - "3400:3400"   # Genkit flows API
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - XAI_API_KEY=${XAI_API_KEY}
+      - FAL_API_KEY=${FAL_API_KEY}
+      - GOOGLE_CLOUD_PROJECT=${GOOGLE_CLOUD_PROJECT}
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://host.docker.internal:11434}
+      - MEMORY_DIR=/memory
+      - ACCESS_TIER=${ACCESS_TIER:-studio}
+    volumes:
+      - ./ecosystem/cle-memory:/memory
+    depends_on:
+      - chroma
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── Python FastAPI Engine (Constitutional Guard + Agent Registry) ────────────
+  engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - CLE_HOST=0.0.0.0
+      - CLE_PORT=8080
+      - CLE_DEBUG=false
+      - ACCESS_TIER=${ACCESS_TIER:-studio}
+      - MEMORY_DIR=/memory
+      - CHROMA_HOST=http://chroma:8000
+    volumes:
+      - ./ecosystem/cle-memory:/memory
+    depends_on:
+      - chroma
+    networks:
+      - cle
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── ChromaDB Vector Store ──────────────────────────────────────────────────────
+  chroma:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+    networks:
+      - cle
+    restart: unless-stopped
+
+  # ── Local PostgreSQL (Replaces AlloyDB) ────────────────────────────────────────
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=cle
+      - POSTGRES_PASSWORD=cle_secure_pass
+      - POSTGRES_DB=cle
+    volumes:
+      - /volume1/docker/cle-postgres/data:/var/lib/postgresql/data
+    networks:
+      - cle
+    restart: unless-stopped
+
+
+  # -- Qdrant Vector Store (WS-03 Benchmark) --
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+    networks:
+      - cle
+    restart: unless-stopped
+
+  nexus:
+    build:
+      context: ./apps/nexus
+      dockerfile: Dockerfile
+    ports:
+      - "3900:3900"
+    environment:
+      - VITE_DISPATCH_URL=http://127.0.0.1:5160
+    restart: unless-stopped
+    labels:
+      - "cle.service=nexus"
+      - "cle.surface=sovereign-shell"
+
+  nexus-bridge:
+    build:
+      context: ./services/nexus-bridge
+      dockerfile: Dockerfile
+    ports:
+      - "3901:3901"
+    volumes:
+      - /app/creative-liberation-engine:/repo:ro
+    environment:
+      - REPO_ROOT=/repo
+      - DISPATCH_BASE=http://127.0.0.1:5160
+    restart: unless-stopped
+    labels:
+      - "cle.service=nexus-bridge"
+
+  cle-ai-runtime:
+    build:
+      context: ./services/cle-ai-runtime
+      dockerfile: Dockerfile
+    ports:
+      - "5090:5090"
+    environment:
+      - RUNTIME_PORT=5090
+      - NODE_ENV=production
+    networks:
+      - cle
+    restart: unless-stopped
+    labels:
+      - "cle.service=cle-ai-runtime"
+
+  academy-director:
+    build:
+      context: .
+      dockerfile: Dockerfile.harvesters
+    command: ["python", "services/harvesters/academy_director.py"]
+    container_name: cle-academy-director
+    restart: unless-stopped
+    environment:
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - NAS_AUTH_DATA=/app/data
+      - NAS_RAG_DATA=/app/rag
+      - CDP_URL=http://127.0.0.1:9224
+    networks:
+      - cle
+    volumes:
+      - /app/creative-liberation-engine/playwright-profile:/app/data
+      - /volume1/cle/academy/rag_data:/app/rag
+      - /app/creative-liberation-engine/services/harvesters:/app/services/harvesters
+      - /app/creative-liberation-engine/.env:/app/.env:ro
+
+networks:
+  cle:
+    driver: bridge
+
+volumes:
+  chroma_data:
+  qdrant_data:

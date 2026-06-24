@@ -1,0 +1,45 @@
+{
+  "version": "v6.0",
+  "service": "shadow-qa",
+  "routes": [
+    {
+      "routeId": "route_observability_ingest",
+      "path": "/api/v1/observability/traces",
+      "method": "POST",
+      "owner": "IRIS",
+      "upstreamService": "shadow-qa",
+      "upstreamPath": "/api/v1/observability/traces",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 5000,
+      "criticality": "tier1",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "latencyMs", "agentId"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_observability_alerts",
+      "path": "/api/v1/observability/alerts",
+      "method": "GET",
+      "owner": "IRIS",
+      "upstreamService": "shadow-qa",
+      "upstreamPath": "/api/v1/observability/alerts",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_observability_metrics",
+      "path": "/api/v1/observability/agents/:agentId/metrics",
+      "method": "GET",
+      "owner": "IRIS",
+      "upstreamService": "shadow-qa",
+      "upstreamPath": "/api/v1/observability/agents/:agentId/metrics",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "agentId"] },
+      "lifecycle": "active"
+    }
+  ]
+}

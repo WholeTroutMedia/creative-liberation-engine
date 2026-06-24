@@ -1,0 +1,10 @@
+{
+  "name": "@cle/definity-embeds-agents-inside-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0091",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

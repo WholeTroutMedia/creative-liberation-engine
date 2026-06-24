@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/ouroboros-daemon.schema.json",
+  "title": "OuroborosDaemonConfig",
+  "description": "Ouroboros daemon scheduling and auto-fix policy for codebase hygiene.",
+  "type": "object",
+  "properties": {
+    "scanIntervalMs": {
+      "type": "number",
+      "description": "How often to scan the codebase for skeletons and unresolved issues"
+    },
+    "idleThresholdMs": {
+      "type": "number",
+      "description": "Only run cleanup if system has been idle for this long"
+    },
+    "useLocalModels": {
+      "type": "boolean",
+      "description": "Force the use of internal local models for analysis and fixing to avoid cloud timeouts"
+    },
+    "autoFix": {
+      "type": "boolean",
+      "description": "Whether to automatically apply fixes or just log them"
+    }
+  },
+  "required": ["scanIntervalMs", "idleThresholdMs", "useLocalModels", "autoFix"]
+}

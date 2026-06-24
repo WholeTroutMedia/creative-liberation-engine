@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle.engine/schemas/STRATEGIC_REPORT.schema.json",
+  "title": "STRATEGIC_REPORT",
+  "description": "Canonical strategic advisory report envelope for enterprise-grade analysis and recommendation output.",
+  "type": "object",
+  "required": [
+    "templateId",
+    "title",
+    "executiveTakeaway",
+    "hypotheses",
+    "findings",
+    "scorecard",
+    "recommendations",
+    "risks",
+    "evidence"
+  ],
+  "properties": {
+    "templateId": { "type": "string" },
+    "title": { "type": "string" },
+    "executiveTakeaway": { "type": "string" },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["hypothesis", "confidence"],
+        "properties": {
+          "hypothesis": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 100 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "scorecard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "score", "rationale"],
+        "properties": {
+          "dimension": { "type": "string" },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "rationale": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "recommendation",
+          "owner",
+          "timeline",
+          "kpi",
+          "dependencies",
+          "centralizationRisk",
+          "vendorLockInRisk"
+        ],
+        "properties": {
+          "recommendation": { "type": "string" },
+          "owner": { "type": "string" },
+          "timeline": { "type": "string" },
+          "kpi": { "type": "string" },
+          "dependencies": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "centralizationRisk": { "type": "number", "minimum": 0, "maximum": 100 },
+          "vendorLockInRisk": { "type": "number", "minimum": 0, "maximum": 100 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "severity", "likelihood", "mitigation"],
+        "properties": {
+          "name": { "type": "string" },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "likelihood": { "type": "string", "enum": ["low", "medium", "high"] },
+          "mitigation": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "level", "source", "confidence"],
+        "properties": {
+          "claim": { "type": "string" },
+          "level": {
+            "type": "string",
+            "enum": ["observed", "inferred", "benchmarked", "speculative"]
+          },
+          "source": { "type": "string" },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 100 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "ideaComparison": {
+      "type": "object",
+      "required": ["overlap", "differentiators", "viabilityVerdict", "confidence"],
+      "properties": {
+        "overlap": { "type": "array", "items": { "type": "string" } },
+        "differentiators": { "type": "array", "items": { "type": "string" } },
+        "viabilityVerdict": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 100 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

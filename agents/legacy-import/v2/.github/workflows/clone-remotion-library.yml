@@ -1,0 +1,40 @@
+name: Clone Remotion Design Library
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type YES to confirm cloning ~55 repos into design-library/remotion'
+        required: true
+        default: 'YES'
+
+jobs:
+  clone-remotion:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run clone script
+        run: |
+          chmod +x scripts/clone-remotion-library.sh
+          bash scripts/clone-remotion-library.sh
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status
+          git commit -m "Clone ALL Remotion templates, effects, examples into design-library - closes #2" || echo "No changes to commit"
+          git push

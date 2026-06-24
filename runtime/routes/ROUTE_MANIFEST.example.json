@@ -1,0 +1,23 @@
+{
+  "version": "v6.0",
+  "service": "example-service",
+  "routes": [
+    {
+      "routeId": "route_example_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "example-service",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

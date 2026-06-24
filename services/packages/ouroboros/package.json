@@ -1,0 +1,23 @@
+{
+  "name": "@cle/ouroboros",
+  "version": "2.0.3",
+  "description": "Ouroboros self-optimization engine \u2014 observability, distillation, and compaction infrastructure for the Creative Liberation Engine.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsc -b --watch",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "~5.7.2"
+  }
+}

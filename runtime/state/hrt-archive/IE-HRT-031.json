@@ -1,0 +1,36 @@
+{
+  "id": "IE-HRT-031",
+  "slug": "genmedia-orchestrator",
+  "title": "GenMedia â€” Unified Generative Media Pipeline",
+  "status": "IDEATED",
+  "version": 2,
+  "source": "v5-backlog",
+  "domain": "creative",
+  "categories": [
+    "creative",
+    "media",
+    "generative",
+    "runway"
+  ],
+  "relevance": 85,
+  "created": "2026-03-01T00:00:00Z",
+  "updated": "2026-04-30T18:07:14.076Z",
+  "lifecycle": {
+    "state": "IDEATED",
+    "transitioned": "2026-04-30T18:07:14.076Z",
+    "review_due": "2026-05-30T00:00:00Z",
+    "lastUpdated": "2026-05-03T19:34:42.482175+00:00"
+  },
+  "heritage": true,
+  "description": "\\n\\n--- CONSOLIDATED NOTES ---\\n\\n### From IE-IDX-0067: IE-IDX-0067\\n\\n### From IE-IDX-0114: IE-IDX-0114\\n\\n### From IE-HRT-033: DaVinci Resolve MCP â€” Programmatic Video Editing\\n\\n### From IE-HRT-034: Sony FX3 Auto-Ingest Pipeline\\n\\n### From IE-HRT-035: FFmpeg Swarm â€” Distributed Video Encoding\\n\\n",
+  "relationships": {
+    "related": [
+      "IE-IDX-0067",
+      "IE-IDX-0114",
+      "IE-HRT-033",
+      "IE-HRT-034",
+      "IE-HRT-035"
+    ]
+  },
+  "lastUpdated": "2026-05-03T19:34:42.482175+00:00"
+}

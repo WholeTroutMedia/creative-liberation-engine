@@ -1,0 +1,13 @@
+{
+  "title": "Business Growth & Opportunity Frame",
+  "ragStatus": "PITCH READY",
+  "harvestedAt": "2026-04-28",
+  "curriculum": [
+    {"section": 1, "title": "Phase 1: The Barnstorm Alpha Node"},
+    {"section": 2, "title": "Phase 2: Rack-Mounted Compute Pooling"},
+    {"section": 3, "title": "Phase 3: Apple Silicon Dev Environment"},
+    {"section": 4, "title": "Phase 4: Sovereign 'Company in a Box'"},
+    {"section": 5, "title": "Phase 5: Client Handoff (Physical Transfer)"},
+    {"section": 6, "title": "Phase 6: MSP (Managed Service Provider) Pivot"}
+  ]
+}

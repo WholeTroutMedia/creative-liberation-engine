@@ -1,0 +1,23 @@
+{
+  "name": "@cle/observability",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Observability for Creative Liberation Engine V6 \u2014 host telemetry, pulse monitoring, and compose hardening.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./pulse": "./src/pulse.mjs",
+    "./telemetry": "./src/telemetry.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*",
+    "@cle/engine-core": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_host_telemetry",
+    "cap_pulse_service",
+    "cap_compose_hardener",
+    "cap_capability_watcher"
+  ]
+}

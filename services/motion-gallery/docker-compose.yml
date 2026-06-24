@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  motion-gallery:
+    build: .
+    container_name: motion-gallery
+    restart: unless-stopped
+    ports:
+      - "3000:3000"          # HTTP gallery UI
+      - "9000:9000/udp"      # ZigSim OSC input
+    volumes:
+      - /app/vault/photos/North Fork Sun:/photos:ro
+    environment:
+      PHOTO_DIR: /photos
+      HTTP_PORT: 3000
+      OSC_PORT: 9000

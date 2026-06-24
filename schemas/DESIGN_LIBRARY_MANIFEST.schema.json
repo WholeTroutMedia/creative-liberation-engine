@@ -1,0 +1,62 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/design-library-manifest.schema.json",
+    "title":  "V6 Design Library Manifest",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "importedAt",
+                     "docs",
+                     "sources"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string",
+                                       "pattern":  "^v[0-9]+(\\.[0-9]+)*$"
+                                   },
+                       "importedAt":  {
+                                          "type":  "string",
+                                          "format":  "date-time"
+                                      },
+                       "docs":  {
+                                    "type":  "array",
+                                    "items":  {
+                                                  "type":  "string",
+                                                  "minLength":  3,
+                                                  "maxLength":  500
+                                              }
+                                },
+                       "sources":  {
+                                       "type":  "array",
+                                       "items":  {
+                                                     "type":  "object",
+                                                     "additionalProperties":  false,
+                                                     "required":  [
+                                                                      "source",
+                                                                      "files",
+                                                                      "catalog",
+                                                                      "readme"
+                                                                  ],
+                                                     "properties":  {
+                                                                        "source":  {
+                                                                                       "type":  "string",
+                                                                                       "minLength":  1,
+                                                                                       "maxLength":  120
+                                                                                   },
+                                                                        "files":  {
+                                                                                      "type":  "integer",
+                                                                                      "minimum":  0
+                                                                                  },
+                                                                        "catalog":  {
+                                                                                        "type":  "boolean"
+                                                                                    },
+                                                                        "readme":  {
+                                                                                       "type":  "boolean"
+                                                                                   }
+                                                                    }
+                                                 }
+                                   }
+                   },
+    "description":  "Design system import manifest for tokens, components, and typography."
+}

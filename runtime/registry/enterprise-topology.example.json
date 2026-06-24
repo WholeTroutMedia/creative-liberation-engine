@@ -1,0 +1,39 @@
+{
+  "version": "v6.0",
+  "topologyId": "TOP-CORTEX-01",
+  "governanceLevel": "autonomous",
+  "nodes": [
+    {
+      "agentId": "aurora",
+      "role": "Orchestrator",
+      "permissions": ["dispatch_task", "read_telemetry", "mcp_design_md", "mcp_logic_compiler"]
+    },
+    {
+      "agentId": "bolt",
+      "role": "Executor",
+      "permissions": ["write_fs", "run_containers"]
+    },
+    {
+      "agentId": "keeper",
+      "role": "Memory_Manager",
+      "permissions": ["read_memory", "write_memory"]
+    }
+  ],
+  "edges": [
+    {
+      "sourceAgent": "aurora",
+      "targetAgent": "bolt",
+      "communicationProtocol": "async"
+    },
+    {
+      "sourceAgent": "aurora",
+      "targetAgent": "keeper",
+      "communicationProtocol": "sync"
+    },
+    {
+      "sourceAgent": "bolt",
+      "targetAgent": "keeper",
+      "communicationProtocol": "async"
+    }
+  ]
+}

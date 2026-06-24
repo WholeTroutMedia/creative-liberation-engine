@@ -1,0 +1,418 @@
+{
+  "type": "div",
+  "props": {
+    "className": "weave-video-conductor-hud",
+    "style": {
+      "display": "grid",
+      "gridTemplateColumns": "1fr 1.2fr",
+      "gridTemplateRows": "auto 1fr auto",
+      "gap": "16px",
+      "padding": "20px",
+      "background": "#000000",
+      "color": "#F8FAFC",
+      "fontFamily": "var(--mono)",
+      "minHeight": "680px"
+    }
+  },
+  "children": [
+    {
+      "type": "div",
+      "props": {
+        "style": {
+          "gridColumn": "1 / span 2",
+          "display": "flex",
+          "justifyContent": "space-between",
+          "alignItems": "center",
+          "borderBottom": "1px solid #1A1A1A",
+          "paddingBottom": "12px",
+          "marginBottom": "8px"
+        }
+      },
+      "children": [
+        {
+          "type": "div",
+          "props": {},
+          "children": [
+            {
+              "type": "span",
+              "props": { "style": { "color": "#0EA5E9", "marginRight": "8px" } },
+              "children": ["◆"]
+            },
+            {
+              "type": "span",
+              "props": { "style": { "fontWeight": "bold", "letterSpacing": "1px" } },
+              "children": ["WEAVE // MULTI-MODAL VIDEO AGENCY CONDUCTOR"]
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "props": {},
+          "children": [
+            {
+              "type": "span",
+              "props": { "style": { "background": "rgba(14, 165, 233, 0.12)", "color": "#38BDF8", "padding": "4px 8px", "fontSize": "11px", "border": "1px solid rgba(56, 189, 248, 0.2)" } },
+              "children": ["12LABS + GOOGLE FLOW + DAVINCI RESOLVE"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "props": {
+        "style": {
+          "display": "flex",
+          "flexDirection": "column",
+          "gap": "16px"
+        }
+      },
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "background": "#080808",
+              "border": "1px solid #1A1A1A",
+              "padding": "16px",
+              "borderRadius": "4px"
+            }
+          },
+          "children": [
+            {
+              "type": "div",
+              "props": { "style": { "color": "#8B5CF6", "fontSize": "12px", "fontWeight": "bold", "marginBottom": "12px" } },
+              "children": ["01 // SEMANTIC SEARCH (TWELVE LABS PROXY)"]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "display": "flex", "gap": "8px", "marginBottom": "12px" } },
+              "children": [
+                {
+                  "type": "input",
+                  "props": {
+                    "placeholder": "Query raw NAS footage e.g., 'electrical conduit installation'...",
+                    "style": {
+                      "flex": "1",
+                      "background": "#000000",
+                      "border": "1px solid #334155",
+                      "color": "#F8FAFC",
+                      "padding": "8px 12px",
+                      "fontSize": "12px",
+                      "fontFamily": "var(--mono)"
+                    }
+                  }
+                },
+                {
+                  "type": "button",
+                  "props": {
+                    "style": {
+                      "background": "#0EA5E9",
+                      "color": "#000000",
+                      "border": "none",
+                      "padding": "8px 16px",
+                      "fontWeight": "bold",
+                      "cursor": "pointer"
+                    }
+                  },
+                  "children": ["QUERY"]
+                }
+              ]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "fontSize": "11px", "color": "#94A3B8" } },
+              "children": [
+                "Index Database Target: ",
+                {
+                  "type": "span",
+                  "props": { "style": { "color": "#F8FAFC" } },
+                  "children": ["synology-nas-vault-v6 (254 indexed assets)"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "background": "#080808",
+              "border": "1px solid #1A1A1A",
+              "padding": "16px",
+              "borderRadius": "4px"
+            }
+          },
+          "children": [
+            {
+              "type": "div",
+              "props": { "style": { "color": "#8B5CF6", "fontSize": "12px", "fontWeight": "bold", "marginBottom": "12px" } },
+              "children": ["02 // GOOGLE FLOW TIMELINE GENERATION"]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "display": "flex", "flexDirection": "column", "gap": "10px", "marginBottom": "12px" } },
+              "children": [
+                {
+                  "type": "textarea",
+                  "props": {
+                    "placeholder": "Enter character, style and camera telemetry prompt...",
+                    "style": {
+                      "height": "60px",
+                      "background": "#000000",
+                      "border": "1px solid #334155",
+                      "color": "#F8FAFC",
+                      "padding": "8px",
+                      "fontSize": "12px",
+                      "fontFamily": "var(--mono)",
+                      "resize": "none"
+                    }
+                  }
+                },
+                {
+                  "type": "div",
+                  "props": { "style": { "display": "grid", "gridTemplateColumns": "1fr 1fr", "gap": "10px" } },
+                  "children": [
+                    {
+                      "type": "select",
+                      "props": {
+                        "style": {
+                          "background": "#000000",
+                          "border": "1px solid #334155",
+                          "color": "#F8FAFC",
+                          "padding": "6px",
+                          "fontSize": "11px",
+                          "fontFamily": "var(--mono)"
+                        }
+                      },
+                      "children": [
+                        { "type": "option", "children": ["Style: Cinematic Realism"] },
+                        { "type": "option", "children": ["Style: Brutalist 3D Canvas"] }
+                      ]
+                    },
+                    {
+                      "type": "select",
+                      "props": {
+                        "style": {
+                          "background": "#000000",
+                          "border": "1px solid #334155",
+                          "color": "#F8FAFC",
+                          "padding": "6px",
+                          "fontSize": "11px",
+                          "fontFamily": "var(--mono)"
+                        }
+                      },
+                      "children": [
+                        { "type": "option", "children": ["Duration: 5s (Keyframe JPEGs)"] },
+                        { "type": "option", "children": ["Duration: 10s (Direct Orchestration)"] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "props": {
+                "style": {
+                  "width": "100%",
+                  "background": "linear-gradient(135deg, #0EA5E9, #8B5CF6)",
+                  "color": "#F8FAFC",
+                  "border": "none",
+                  "padding": "10px",
+                  "fontWeight": "bold",
+                  "cursor": "pointer",
+                  "borderRadius": "2px"
+                }
+              },
+              "children": ["ORCHESTRATE GOOGLE FLOW via CHROME-AGENT"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "props": {
+        "style": {
+          "background": "#080808",
+          "border": "1px solid #1A1A1A",
+          "padding": "16px",
+          "borderRadius": "4px",
+          "display": "flex",
+          "flexDirection": "column"
+        }
+      },
+      "children": [
+        {
+          "type": "div",
+          "props": { "style": { "color": "#8B5CF6", "fontSize": "12px", "fontWeight": "bold", "marginBottom": "12px" } },
+          "children": ["03 // CHROME-AGENT / FLOW HUD PROCESS TELEMETRY"]
+        },
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "flex": "1",
+              "background": "#000000",
+              "border": "1px solid #1A1A1A",
+              "padding": "12px",
+              "fontFamily": "var(--mono)",
+              "fontSize": "11px",
+              "color": "#64748B",
+              "overflowY": "auto",
+              "minHeight": "180px",
+              "maxHeight": "240px"
+            }
+          },
+          "children": [
+            { "type": "div", "props": { "style": { "color": "#10B981" } }, "children": ["[19:42:01] CLE Chrome-Agent initiated successfully."] },
+            { "type": "div", "props": { "style": { "color": "#10B981" } }, "children": ["[19:42:05] Synced session context with synology NAS volume `/app`."] },
+            { "type": "div", "props": { "style": { "color": "#0EA5E9" } }, "children": ["[19:42:12] Spawning headless Playwright browser to negotiate Google Flow."] },
+            { "type": "div", "props": {}, "children": ["[19:42:15] Found existing auth tokens in `cortex-chat-bridge` cookie database."] },
+            { "type": "div", "props": {}, "children": ["[19:42:20] Selecting base image frame: `y:\\media_intake\\Level_2_conduit.jpg`"] },
+            { "type": "div", "props": { "style": { "color": "#8B5CF6" } }, "children": ["[19:42:25] Flow Animation compilation pipeline active: 40% rendered."] }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "div",
+      "props": {
+        "style": {
+          "gridColumn": "1 / span 2",
+          "background": "#080808",
+          "border": "1px solid #1A1A1A",
+          "padding": "16px",
+          "borderRadius": "4px"
+        }
+      },
+      "children": [
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center",
+              "marginBottom": "12px"
+            }
+          },
+          "children": [
+            {
+              "type": "div",
+              "props": { "style": { "color": "#8B5CF6", "fontSize": "12px", "fontWeight": "bold" } },
+              "children": ["04 // SOVEREIGN EDIT TIMELINE PREVIEW"]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "fontSize": "11px", "color": "#10B981" } },
+              "children": ["Conform-ready JSON built locally"]
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "display": "grid",
+              "gridTemplateColumns": "120px 1fr",
+              "gap": "8px",
+              "background": "#000000",
+              "border": "1px solid #1A1A1A",
+              "padding": "12px",
+              "marginBottom": "16px"
+            }
+          },
+          "children": [
+            {
+              "type": "div",
+              "props": { "style": { "color": "#94A3B8", "fontSize": "11px", "display": "flex", "alignItems": "center" } },
+              "children": ["Track V1 (Raw Video)"]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "display": "flex", "gap": "2px", "height": "24px" } },
+              "children": [
+                {
+                  "type": "div",
+                  "props": { "style": { "flex": "4", "background": "#1E293B", "border": "1px solid #334155", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "10px", "color": "#F8FAFC" } },
+                  "children": ["Clip_12Labs_Conduit_01.mov (0:00 - 0:12)"]
+                },
+                {
+                  "type": "div",
+                  "props": { "style": { "flex": "2", "background": "#1E293B", "border": "1px solid #334155", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "10px", "color": "#F8FAFC" } },
+                  "children": ["Clip_Drywall_04.mov"]
+                }
+              ]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "color": "#94A3B8", "fontSize": "11px", "display": "flex", "alignItems": "center" } },
+              "children": ["Track V2 (Flow FX)"]
+            },
+            {
+              "type": "div",
+              "props": { "style": { "display": "flex", "gap": "2px", "height": "24px" } },
+              "children": [
+                {
+                  "type": "div",
+                  "props": { "style": { "flex": "2", "background": "transparent" } }
+                },
+                {
+                  "type": "div",
+                  "props": { "style": { "flex": "1", "background": "rgba(139, 92, 246, 0.2)", "border": "1px dashed #8B5CF6", "display": "flex", "alignItems": "center", "justifyContent": "center", "fontSize": "10px", "color": "#A78BFA" } },
+                  "children": ["Flow_Transition_A.mp4"]
+                },
+                {
+                  "type": "div",
+                  "props": { "style": { "flex": "3", "background": "transparent" } }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "div",
+          "props": {
+            "style": {
+              "display": "flex",
+              "justifyContent": "space-between",
+              "alignItems": "center"
+            }
+          },
+          "children": [
+            {
+              "type": "div",
+              "props": { "style": { "fontSize": "11px", "color": "#94A3B8" } },
+              "children": [
+                "Conformed Target: ",
+                {
+                  "type": "span",
+                  "props": { "style": { "color": "#F8FAFC" } },
+                  "children": ["DaVinci Resolve Local API (Port 5105)"]
+                }
+              ]
+            },
+            {
+              "type": "button",
+              "props": {
+                "style": {
+                  "background": "#10B981",
+                  "color": "#000000",
+                  "border": "none",
+                  "padding": "10px 20px",
+                  "fontWeight": "bold",
+                  "fontSize": "12px",
+                  "cursor": "pointer",
+                  "borderRadius": "2px"
+                }
+              },
+              "children": ["COMPILE & PUSH DIRECTLY TO DAVINCI RESOLVE"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

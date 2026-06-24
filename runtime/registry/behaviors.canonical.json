@@ -1,0 +1,12 @@
+{
+  "last_updated": "2026-04-26T22:30:00Z",
+  "active_behaviors": [
+    {
+      "behavior_id": "seed_vendor_idle_01",
+      "class_name": "VendorIdleBehavior",
+      "assembly_path": "/var/cle/simulation/scripts/VendorIdleBehavior.dll",
+      "status": "active",
+      "instances_count": 0
+    }
+  ]
+}

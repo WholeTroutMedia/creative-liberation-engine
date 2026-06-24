@@ -1,0 +1,31 @@
+{
+  "id": "IE-HRT-029",
+  "slug": "ghost-stealth-agent",
+  "title": "GHOST â€” Stealth Inference Agent",
+  "status": "IDEATED",
+  "version": 2,
+  "source": "v5-backlog",
+  "domain": "security",
+  "categories": [
+    "security",
+    "agents",
+    "privacy"
+  ],
+  "relevance": 70,
+  "created": "2026-03-01T00:00:00Z",
+  "updated": "2026-04-30T18:07:14.076Z",
+  "lifecycle": {
+    "state": "IDEATED",
+    "transitioned": "2026-04-30T18:07:14.076Z",
+    "review_due": "2026-05-30T00:00:00Z",
+    "lastUpdated": "2026-05-03T19:34:42.482175+00:00"
+  },
+  "heritage": true,
+  "description": "\\n\\n--- CONSOLIDATED NOTES ---\\n\\n### From IE-HRT-044: GHOST Workstream â€” Autonomous QA & Testing\\n\\n",
+  "relationships": {
+    "related": [
+      "IE-HRT-044"
+    ]
+  },
+  "lastUpdated": "2026-05-03T19:34:42.482175+00:00"
+}

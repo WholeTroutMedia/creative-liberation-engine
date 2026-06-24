@@ -1,0 +1,10 @@
+{
+  "name": "@cle/autograph-motion-design-visual",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0269_autograph-motion-design-visual-effects-t",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

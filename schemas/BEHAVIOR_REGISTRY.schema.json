@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/BEHAVIOR_REGISTRY.schema.json",
+  "title": "Active Behavior Registry",
+  "description": "Registry tracking which AI-generated logic scripts are currently compiled, loaded, and active in the simulation.",
+  "type": "object",
+  "required": ["last_updated", "active_behaviors"],
+  "properties": {
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "active_behaviors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["behavior_id", "class_name", "assembly_path", "status"],
+        "properties": {
+          "behavior_id": { "type": "string" },
+          "class_name": { "type": "string" },
+          "assembly_path": { "type": "string", "description": "Path to the compiled DLL or script in the simulation runtime." },
+          "status": {
+            "type": "string",
+            "enum": ["pending_compile", "active", "error", "unloaded"]
+          },
+          "error_log": { "type": "string" },
+          "instances_count": { "type": "integer", "default": 0 }
+        }
+      }
+    }
+  }
+}

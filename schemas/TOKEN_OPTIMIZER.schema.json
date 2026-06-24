@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/TOKEN_OPTIMIZER.schema.json",
+  "title": "Token Optimizer Schema",
+  "description": "Smart context management that eliminates redundant token usage across agent workflows.",
+  "type": "object",
+  "required": ["optimization_id", "created_at"],
+  "properties": {
+    "optimization_id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "scope": { "type": "string", "enum": ["single_task", "session", "agent", "system_wide"] },
+    "before_metrics": {
+      "type": "object",
+      "properties": {
+        "total_tokens": { "type": "integer" },
+        "context_tokens": { "type": "integer" },
+        "redundant_tokens": { "type": "integer" },
+        "estimated_cost_usd": { "type": "number" }
+      }
+    },
+    "after_metrics": {
+      "type": "object",
+      "properties": {
+        "total_tokens": { "type": "integer" },
+        "context_tokens": { "type": "integer" },
+        "redundant_tokens": { "type": "integer" },
+        "estimated_cost_usd": { "type": "number" }
+      }
+    },
+    "savings": {
+      "type": "object",
+      "properties": {
+        "tokens_saved": { "type": "integer" },
+        "percentage_reduction": { "type": "number", "minimum": 0, "maximum": 100 },
+        "cost_saved_usd": { "type": "number" }
+      }
+    },
+    "strategies_applied": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "strategy": { "type": "string", "enum": ["context_pruning", "semantic_dedup", "summary_compression", "cache_hit", "prompt_template_reuse", "incremental_context", "schema_shorthand"] },
+          "tokens_saved": { "type": "integer" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "cache_state": {
+      "type": "object",
+      "properties": {
+        "entries": { "type": "integer" },
+        "hit_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "total_size_tokens": { "type": "integer" },
+        "eviction_policy": { "type": "string", "enum": ["lru", "lfu", "ttl", "semantic_distance"] }
+      }
+    }
+  },
+  "additionalProperties": false
+}

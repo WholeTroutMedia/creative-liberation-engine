@@ -1,0 +1,83 @@
+{
+  "jobId": "IE-IDX-0170",
+  "jobNumber": 170,
+  "slug": "opencode-the-open-source-ai-coding-agent",
+  "filename": "IE-IDX-0170_opencode-the-open-source-ai-coding-agent",
+  "status": "DISCARDED",
+  "sourceArticle": {
+    "guid": "flipboard-mmE26ffUTI-XfkQY3vzJ0Q:a:4243649-1778513085",
+    "title": "OpenCode | The open source AI coding agent",
+    "url": "https://opencode.ai/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Unknown",
+    "pubDate": "Mon, 11 May 2026 15:24:45 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Artificial Intelligence",
+        "$": {
+          "domain": "https://flipboard.com/topic/artificialintelligence"
+        }
+      },
+      {
+        "_": "AI Coding",
+        "$": {
+          "domain": "https://flipboard.com/topic/aicoding"
+        }
+      },
+      {
+        "_": "Low-Code/No-Code",
+        "$": {
+          "domain": "https://flipboard.com/topic/lowcodenocode"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "Software Development",
+        "$": {
+          "domain": "https://flipboard.com/topic/softwaredevelopment"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "sovereignty",
+    "local-llm",
+    "agent",
+    "creative-tools",
+    "research",
+    "learning",
+    "competitive-intel",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "The Creative Liberation Engine will continue to architect and build its own sovereign, self-hosted AI coding agent, drawing inspiration from leading solutions like OpenCode while adhering strictly to Article I: Sovereignty.",
+    "rationale": "The Creative Liberation Engine's constitutional mandate (Article I: Sovereignty) and prior strategic decisions prioritize the development of entirely self-hosted, owned AI solutions. While OpenCode presents valuable features and an open-source model, its reliance on external LLM providers and existing AI subscriptions (GitHub Copilot, ChatGPT Plus) makes it fundamentally misaligned with the Creative Liberation Engine's core principle of self-ownership and sovereignty. The features demonstrated by OpenCode serve as excellent benchmarks and inspiration for capabilities to be engineered directly into the Creative Liberation Engine's own AI coding agent, a direction already established in previous ATHENA strategies. Therefore, a direct implementation or adoption of 'OpenCode' is redundant, as the Creative Liberation Engine is already on a path to embody and surpass such capabilities in a sovereign manner.",
+    "options": [],
+    "suggestedAgents": [],
+    "nextMode": "DISCARD",
+    "constitutionalFlags": [
+      "Article I: Sovereignty"
+    ]
+  },
+  "relatedJobs": [
+    "IE-IDX-0169",
+    "IE-IDX-0168"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0170_opencode-the-open-source-ai-coding-agent.md",
+  "comments": [],
+  "createdAt": "2026-05-11T15:30:28.585Z",
+  "ideatedAt": "2026-05-11T15:30:35.682Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "lifecycle": {
+    "status": "VERIFIED"
+  }
+}

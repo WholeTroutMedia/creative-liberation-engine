@@ -1,0 +1,88 @@
+{
+  "category": "huggingface-ml",
+  "description": "Hugging Face model training, datasets, and ML workflows",
+  "source": "Hugging Face (Official)",
+  "agents": ["IRIS", "ARCH"],
+  "skills": [
+    {
+      "id": "hf-cli",
+      "name": "Hugging Face Hub CLI",
+      "description": "Upload, download, manage models on HF Hub",
+      "complexity": "moderate",
+      "input": "Model files, repository name",
+      "output": "Uploaded model or downloaded artifacts",
+      "example": "Upload fine-tuned BERT model to Hub",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-datasets",
+      "name": "Hugging Face Datasets",
+      "description": "Create, manage, and share datasets",
+      "complexity": "moderate",
+      "input": "Dataset files or loading script",
+      "output": "Dataset on HF Hub with viewer",
+      "example": "Upload custom text classification dataset",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-evaluation",
+      "name": "Model Evaluation Framework",
+      "description": "Evaluate models with standard metrics",
+      "complexity": "expert",
+      "input": "Model, evaluation dataset, metrics",
+      "output": "Evaluation report with scores",
+      "example": "Evaluate LLM on MMLU benchmark",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-jobs",
+      "name": "Compute Jobs",
+      "description": "Run training jobs on HF compute infrastructure",
+      "complexity": "expert",
+      "input": "Training script, compute requirements",
+      "output": "Training job with logs and artifacts",
+      "example": "Fine-tune Llama on 8xA100 cluster",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-model-trainer",
+      "name": "Model Trainer (TRL, GRPO, DPO)",
+      "description": "Train models with reinforcement learning from feedback",
+      "complexity": "expert",
+      "input": "Base model, training data, method (RLHF/DPO)",
+      "output": "Fine-tuned model optimized for preferences",
+      "example": "Apply DPO to align model with human preferences",
+      "attribution": "Hugging Face TRL Library"
+    },
+    {
+      "id": "hf-paper-publisher",
+      "name": "Research Paper Publisher",
+      "description": "Publish research papers with models on HF",
+      "complexity": "moderate",
+      "input": "Paper PDF, model checkpoints, code",
+      "output": "Published paper with interactive demos",
+      "example": "Publish paper with Gradio demo",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-tool-builder",
+      "name": "Tool Builder for HF APIs",
+      "description": "Build tools that use Hugging Face APIs",
+      "complexity": "moderate",
+      "input": "API endpoint, tool specification",
+      "output": "Tool wrapper for HF inference",
+      "example": "Build chatbot tool using Inference API",
+      "attribution": "Hugging Face Official"
+    },
+    {
+      "id": "hf-trackio",
+      "name": "Experiment Tracking",
+      "description": "Track ML experiments with metrics and artifacts",
+      "complexity": "moderate",
+      "input": "Training run, metrics, hyperparameters",
+      "output": "Tracked experiment with visualizations",
+      "example": "Track fine-tuning runs with W&B integration",
+      "attribution": "Hugging Face Official"
+    }
+  ]
+}

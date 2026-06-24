@@ -375,7 +375,7 @@ export class A2AServer {
 /** Pre-built agent card for the ALFRED photography assistant */
 export const ALFRED_AGENT_CARD: A2AAgentCard = {
   name: 'ALFRED',
-  description: 'AI butler for Creative Liberation Engine Systems Photography â€” gallery curation, print recommendations, booking assistance',
+  description: 'AI butler for Creative Liberation Photography â€” gallery curation, print recommendations, booking assistance',
   url: process.env['NEXT_PUBLIC_SITE_URL'] ? `${process.env['NEXT_PUBLIC_SITE_URL']}/api/a2a` : 'https://justinalharoni.com/api/a2a',
   version: '1.0.0',
   capabilities: { streaming: true },
@@ -390,10 +390,10 @@ export const ALFRED_AGENT_CARD: A2AAgentCard = {
 };
 
 /** Pre-built agent card for the Creative Liberation Engine orchestrator */
-export const INCEPTION_ORCHESTRATOR_CARD: A2AAgentCard = {
+export const CLE_ORCHESTRATOR_CARD: A2AAgentCard = {
   name: 'Creative Liberation Engine Orchestrator',
-  description: 'CLE_CORE-powered multi-agent orchestration system',
-  url: process.env['DISPATCH_SERVER'] ?? 'http://122.0.3.1:5150/a2a',
+  description: 'AVERI-powered multi-agent orchestration system',
+  url: process.env['DISPATCH_SERVER'] ?? 'http://127.0.0.1:5150/a2a',
   version: '5.0.0',
   capabilities: { streaming: true, pushNotifications: true, stateTransitionHistory: true },
   defaultInputModes: ['text/plain', 'application/json'],

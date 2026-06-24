@@ -1,0 +1,56 @@
+name = "agent-mail"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ─── Account & Workers ───────────────────────────────────────────────────────
+# Workers Paid plan required for Durable Objects ($5/mo)
+# Live URL: https://agent-mail.wholetrou.workers.dev
+
+[vars]
+ENVIRONMENT = "production"
+FROM_EMAIL = "agents@cleengine.systems"
+FROM_NAME = "Creative Liberation Engine"
+OUTBOUND_GUARD_ENABLED = "true"
+
+# ─── D1 Database ─────────────────────────────────────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "agent-mail-db"
+database_id = "f52d2b74-ce2e-4fac-89d3-985572998ede"
+migrations_dir = "src/db/migrations"
+
+# ─── R2 Attachment Storage ───────────────────────────────────────────────────
+# TODO: Create bucket via CF dashboard (OAuth token lacks r2:write scope)
+# then uncomment below and redeploy
+# [[r2_buckets]]
+# binding = "ATTACHMENTS"
+# bucket_name = "agent-mail-attachments"
+
+# ─── Durable Objects (MCP Server) ────────────────────────────────────────────
+# Requires Workers Paid plan ($5/mo) -- uncomment after upgrading
+# [durable_objects]
+# bindings = [
+#   { name = "MCP_AGENT", class_name = "McpAgent" }
+# ]
+
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["McpAgent"]
+
+# ─── Email Routing ───────────────────────────────────────────────────────────
+[[send_email]]
+name = "SEND_EMAIL"
+
+# CF Email Routing forwards inbound mail to this Worker via the email() handler
+# Configure in CF Dashboard: Email Routing → Routing Rules → forward *@cleengine.systems → agent-mail Worker
+# Agent inboxes: athena@cleengine.systems, vera@cleengine.systems, iris@cleengine.systems
+# Custom domain for Worker: add mail.cleengine.systems or agents.cleengine.systems in
+#   CF Dashboard → Workers & Pages → agent-mail → Settings → Domains & Routes → Add Custom Domain
+
+# ─── Secrets (set via `wrangler secret put`) ─────────────────────────────────
+# API_KEY              — required, authenticates REST + MCP requests
+# RESEND_API_KEY       — optional, fallback outbound provider
+# WEBHOOK_URL          — dispatch server URL for inbound notifications
+# WEBHOOK_SECRET       — HMAC-SHA256 signing key for webhooks
+# RESEND_WEBHOOK_SECRET — token for Resend delivery status callbacks

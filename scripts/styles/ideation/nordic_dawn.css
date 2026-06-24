@@ -1,0 +1,33 @@
+/* Nordic Dawn */
+.theme-dark {
+  --background-primary: #2e3440 !important;
+  --background-secondary: #3b4252 !important;
+  --background-modifier-border: transparent !important;
+  
+  --interactive-accent: #ff9e9e; /* Pastel Peach/Pink */
+  --interactive-accent-hover: #ffbaba;
+  --text-accent: #8fbcbb; /* Pastel Mint */
+  
+  --text-normal: #eceff4;
+  --text-muted: #d8dee9;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 0px !important;
+}
+
+.workspace-leaf {
+  border: none !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 14px !important;
+  margin: 8px !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important;
+}
+
+.workspace-leaf.mod-active {
+  box-shadow: 0 0 0 2px rgba(143, 188, 187, 0.4) !important; /* Soft mint highlight */
+}
+
+.workspace-leaf-header-title {
+  color: var(--text-accent);
+  font-weight: 500 !important;
+}

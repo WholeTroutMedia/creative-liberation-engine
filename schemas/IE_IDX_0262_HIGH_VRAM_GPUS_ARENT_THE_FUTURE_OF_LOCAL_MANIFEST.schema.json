@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "",
+  "type": "object",
+  "description": "Capability scaffold for IE-IDX-0262_high-vram-gpus-arent-the-future-of-local",
+  "properties": {
+    "helix": {
+      "type": "string",
+      "const": "UNASSIGNED"
+    },
+    "status": {
+      "type": "string",
+      "const": "VERIFIED"
+    }
+  }
+}

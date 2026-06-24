@@ -1,0 +1,22 @@
+{
+  "name": "@cle/foley-engine",
+  "version": "2.0.3",
+  "description": "Foley Engine \u2014 AI-assisted audio synthesis layer. Generates, analyzes, and spatializes audio assets for Creative Liberation Engine media productions using Replicate + local ffmpeg.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check": "tsc --noEmit",
+    "dev": "npx tsx src/server.ts"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2"
+  }
+}

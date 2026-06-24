@@ -1,0 +1,32 @@
+{
+  "name": "@cle/memory",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Memory persistence for Creative Liberation Engine V6 \u2014 live bus, SCRIBE extraction, wiki projection, and vector search.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./scribe": "./src/scribe.mjs",
+    "./wiki": "./src/wiki.mjs",
+    "./vector": "./src/vector.mjs",
+    "./knowledge-fabric": "./src/knowledge-fabric.ts"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*",
+    "@cle/core": "workspace:*",
+    "@cle/engine-core": "workspace:*",
+    "@qdrant/js-client-rest": "^1.9.0",
+    "chromadb": "^1.10.5",
+    "zod": "^3.23.8"
+  },
+  "scripts": {
+    "build": "echo 'no build required'"
+  },
+  "capabilityIds": [
+    "cap_memory_live_bus",
+    "cap_scribe_mcp",
+    "cap_wiki_projection",
+    "cap_codex_wiki"
+  ]
+}

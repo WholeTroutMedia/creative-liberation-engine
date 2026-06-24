@@ -1,0 +1,1121 @@
+{
+  "version": "v6.1",
+  "generatedAt": "2026-05-15T17:45:00Z",
+  "generatedFrom": [
+    "architecture_v5",
+    "engine_status_v5",
+    "package_registry_v5"
+  ],
+  "counts": {
+    "total": 79,
+    "core_agent": 59,
+    "platform_agent": 5,
+    "lora_layer": 5
+  },
+  "agents": [
+    {
+      "agentId": "camera_ingest",
+      "name": "CAMERA_INGEST",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "muxd",
+      "sources": [
+        "camera_ingest_spec"
+      ],
+      "aliases": [
+        "CAMERA_INGEST",
+        "EDGE_INGEST"
+      ]
+    },
+    {
+      "agentId": "academy_agent_01",
+      "name": "ACADEMY_AGENT",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v6"
+      ],
+      "aliases": [
+        "ACADEMY",
+        "TUTOR"
+      ]
+    },
+    {
+      "agentId": "arch",
+      "name": "ARCH",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "ARCH"
+      ]
+    },
+    {
+      "agentId": "archon",
+      "name": "ARCHON",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "ARCHON"
+      ]
+    },
+    {
+      "agentId": "athena",
+      "name": "ATHENA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "ATHENA"
+      ]
+    },
+    {
+      "agentId": "atlas",
+      "name": "ATLAS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "ATLAS"
+      ]
+    },
+    {
+      "agentId": "audio",
+      "name": "AUDIO",
+      "kind": "lora_layer",
+      "status": "active",
+      "hive": "unknown",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "AUDIO"
+      ]
+    },
+    {
+      "agentId": "aurora",
+      "name": "AURORA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "AURORA",
+        "Aurora"
+      ]
+    },
+    {
+      "agentId": "beacon",
+      "name": "BEACON",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "MUXD",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "BEACON"
+      ]
+    },
+    {
+      "agentId": "bolt",
+      "name": "BOLT",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "BOLT"
+      ]
+    },
+    {
+      "agentId": "browser",
+      "name": "BROWSER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "BROWSER"
+      ]
+    },
+    {
+      "agentId": "buddha",
+      "name": "BUDDHA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "BUDDHA",
+        "Buddha"
+      ]
+    },
+    {
+      "agentId": "chronos",
+      "name": "CHRONOS",
+      "kind": "platform_agent",
+      "status": "active",
+      "hive": "platform",
+      "sources": [
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "CHRONOS"
+      ]
+    },
+    {
+      "agentId": "claude",
+      "name": "CLAUDE",
+      "kind": "platform_agent",
+      "status": "active",
+      "hive": "platform",
+      "sources": [
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "CLAUDE"
+      ]
+    },
+    {
+      "agentId": "codex",
+      "name": "CODEX",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "CODEX"
+      ]
+    },
+    {
+      "agentId": "comet",
+      "name": "COMET",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5"
+      ],
+      "aliases": [
+        "COMET"
+      ]
+    },
+    {
+      "agentId": "commerce",
+      "name": "COMMERCE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "COMMERCE"
+      ]
+    },
+    {
+      "agentId": "compass",
+      "name": "COMPASS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "COMPASS"
+      ]
+    },
+    {
+      "agentId": "control-room",
+      "name": "CONTROL_ROOM",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "CONTROL_ROOM"
+      ]
+    },
+    {
+      "agentId": "cosmos",
+      "name": "COSMOS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "COSMOS"
+      ]
+    },
+    {
+      "agentId": "echo",
+      "name": "ECHO",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "ECHO"
+      ]
+    },
+    {
+      "agentId": "flux",
+      "name": "FLUX",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "MUXD",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "FLUX"
+      ]
+    },
+    {
+      "agentId": "forge",
+      "name": "FORGE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "MUXD",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "FORGE"
+      ]
+    },
+    {
+      "agentId": "genki",
+      "name": "GENKI",
+      "kind": "platform_agent",
+      "status": "active",
+      "hive": "platform",
+      "sources": [
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "GENKI"
+      ]
+    },
+    {
+      "agentId": "graphics",
+      "name": "GRAPHICS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "GRAPHICS"
+      ]
+    },
+    {
+      "agentId": "harbor",
+      "name": "HARBOR",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "HARBOR"
+      ]
+    },
+    {
+      "agentId": "iris",
+      "name": "IRIS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "IRIS"
+      ]
+    },
+    {
+      "agentId": "keeper",
+      "name": "KEEPER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "KEEPER"
+      ]
+    },
+    {
+      "agentId": "language",
+      "name": "LANGUAGE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "LANGUAGE"
+      ]
+    },
+    {
+      "agentId": "leonardo",
+      "name": "LEONARDO",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "LEONARDO"
+      ]
+    },
+    {
+      "agentId": "lex",
+      "name": "LEX",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "LEX"
+      ]
+    },
+    {
+      "agentId": "logd",
+      "name": "LOGD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "CORTEX",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "LOGD"
+      ]
+    },
+    {
+      "agentId": "mapd",
+      "name": "MAPD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "BROADCAST",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "MAPD"
+      ]
+    },
+    {
+      "agentId": "math",
+      "name": "MATH",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "MATH"
+      ]
+    },
+    {
+      "agentId": "muxd",
+      "name": "MUXD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "MUXD",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "MUXD"
+      ]
+    },
+    {
+      "agentId": "navd",
+      "name": "NAVD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "LUMIND",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "NAVD"
+      ]
+    },
+    {
+      "agentId": "nexus",
+      "name": "NEXUS",
+      "kind": "platform_agent",
+      "status": "active",
+      "hive": "platform",
+      "sources": [
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "NEXUS"
+      ]
+    },
+    {
+      "agentId": "northstar",
+      "name": "NORTHSTAR",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "LEX",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "NORTHSTAR"
+      ]
+    },
+    {
+      "agentId": "prism",
+      "name": "PRISM",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "CORTEX",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "PRISM"
+      ]
+    },
+    {
+      "agentId": "proof",
+      "name": "PROOF",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "PROOF"
+      ]
+    },
+    {
+      "agentId": "ram-crew",
+      "name": "RAM_CREW",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "RAM_CREW"
+      ]
+    },
+    {
+      "agentId": "relay",
+      "name": "RELAY",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "RELAY"
+      ]
+    },
+    {
+      "agentId": "relayd",
+      "name": "RELAYD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "MUXD",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "RELAYD"
+      ]
+    },
+    {
+      "agentId": "sage",
+      "name": "SAGE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SAGE"
+      ]
+    },
+    {
+      "agentId": "scribe",
+      "name": "SCRIBE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "SCRIBE"
+      ]
+    },
+    {
+      "agentId": "sentinel",
+      "name": "SENTINEL",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5"
+      ],
+      "aliases": [
+        "SENTINEL"
+      ]
+    },
+    {
+      "agentId": "showrunner",
+      "name": "SHOWRUNNER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SHOWRUNNER"
+      ]
+    },
+    {
+      "agentId": "sift",
+      "name": "SIFT",
+      "kind": "lora_layer",
+      "status": "active",
+      "hive": "unknown",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SIFT"
+      ]
+    },
+    {
+      "agentId": "signal",
+      "name": "SIGNAL",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SIGNAL"
+      ]
+    },
+    {
+      "agentId": "spatial",
+      "name": "SPATIAL",
+      "kind": "lora_layer",
+      "status": "active",
+      "hive": "unknown",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SPATIAL"
+      ]
+    },
+    {
+      "agentId": "strata",
+      "name": "STRATA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "CORTEX",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "STRATA"
+      ]
+    },
+    {
+      "agentId": "studio",
+      "name": "STUDIO",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "STUDIO"
+      ]
+    },
+    {
+      "agentId": "sun-tzu",
+      "name": "SUN_TZU",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SUN_TZU",
+        "Sun_Tzu"
+      ]
+    },
+    {
+      "agentId": "switchboard",
+      "name": "SWITCHBOARD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "SWITCHBOARD"
+      ]
+    },
+    {
+      "agentId": "syntax",
+      "name": "SYNTAX",
+      "kind": "lora_layer",
+      "status": "active",
+      "hive": "unknown",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SYNTAX"
+      ]
+    },
+    {
+      "agentId": "systems",
+      "name": "SYSTEMS",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "SYSTEMS"
+      ]
+    },
+    {
+      "agentId": "vault",
+      "name": "VAULT",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "VAULT",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "VAULT"
+      ]
+    },
+    {
+      "agentId": "vera",
+      "name": "VERA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "VERA"
+      ]
+    },
+    {
+      "agentId": "vision",
+      "name": "VISION",
+      "kind": "lora_layer",
+      "status": "active",
+      "hive": "unknown",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "VISION"
+      ]
+    },
+    {
+      "agentId": "warren-buffett",
+      "name": "WARREN_BUFFETT",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v5",
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "WARREN_BUFFETT",
+        "Warren_Buffett"
+      ]
+    },
+    {
+      "agentId": "watchd",
+      "name": "WATCHD",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "NORTHSTAR",
+      "sources": [
+        "engine_status_v5"
+      ],
+      "aliases": [
+        "WATCHD"
+      ]
+    },
+    {
+      "agentId": "zero",
+      "name": "ZERO",
+      "kind": "platform_agent",
+      "status": "active",
+      "hive": "platform",
+      "sources": [
+        "package_registry_v5"
+      ],
+      "aliases": [
+        "ZERO"
+      ]
+    },
+    {
+      "agentId": "visual-qa-feedback",
+      "name": "VISUAL_QA",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "CORTEX",
+      "sources": [
+        "architecture_v6"
+      ],
+      "aliases": [
+        "VISUAL_QA",
+        "VQA"
+      ],
+      "runtime": {
+        "container": "visual-qa-feedback",
+        "image": "127.0.0.1:5000/visual-qa-feedback:latest",
+        "network": "genesis-deploy_default",
+        "dispatch_events": [
+          "build/complete"
+        ]
+      }
+    },
+    {
+      "agentId": "trading-architecture",
+      "name": "TRADING_ARCHITECTURE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "core",
+      "sources": [
+        "architecture_v6"
+      ],
+      "aliases": [
+        "TRADING",
+        "BULL_BEAR"
+      ],
+      "runtime": {
+        "container": "trading-architecture",
+        "image": "127.0.0.1:5000/trading-architecture:latest",
+        "network": "genesis-deploy_default",
+        "dispatch_events": [
+          "market/tick",
+          "news/alert"
+        ]
+      }
+    },
+    {
+      "agentId": "aegis_sentinel_01",
+      "name": "AEGIS_SENTINEL",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "security",
+      "sources": [
+        "helix_alpha_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "AEGIS",
+        "PENTESTER",
+        "SECURITY_SCANNER"
+      ]
+    },
+    {
+      "agentId": "debt_auditor_01",
+      "name": "DEBT_AUDITOR",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "governance",
+      "sources": [
+        "helix_alpha_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "DEBT_SCANNER",
+        "TECH_DEBT"
+      ]
+    },
+    {
+      "agentId": "trace_observer_01",
+      "name": "TRACE_OBSERVER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "observability",
+      "sources": [
+        "helix_alpha_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "OBSERVER",
+        "TRACER"
+      ]
+    },
+    {
+      "agentId": "local_first_guardian_01",
+      "name": "LOCAL_FIRST_GUARDIAN",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "data",
+      "sources": [
+        "helix_alpha_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "CRDT_GUARDIAN",
+        "LOCAL_FIRST"
+      ]
+    },
+    {
+      "agentId": "creative_director_01",
+      "name": "CREATIVE_DIRECTOR",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "creative",
+      "sources": [
+        "helix_beta_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "DIRECTOR",
+        "VIDEO_AGENCY"
+      ]
+    },
+    {
+      "agentId": "animation_engine_01",
+      "name": "ANIMATION_ENGINE",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "creative",
+      "sources": [
+        "helix_beta_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "ANIMATOR",
+        "FRAME_GEN"
+      ]
+    },
+    {
+      "agentId": "sovereign_coder_01",
+      "name": "SOVEREIGN_CODER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "dev_tools",
+      "sources": [
+        "helix_gamma_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "CODER",
+        "CODE_AGENT"
+      ]
+    },
+    {
+      "agentId": "voice_operator_01",
+      "name": "VOICE_OPERATOR",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "interface",
+      "sources": [
+        "helix_delta_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "VOICE",
+        "STT_TTS"
+      ]
+    },
+    {
+      "agentId": "spatial_renderer_01",
+      "name": "SPATIAL_RENDERER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "interface",
+      "sources": [
+        "helix_delta_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "SPATIAL",
+        "AR_GLASS"
+      ]
+    },
+    {
+      "agentId": "token_optimizer_01",
+      "name": "TOKEN_OPTIMIZER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "dev_tools",
+      "sources": [
+        "helix_gamma_sprint_2026_05_15"
+      ],
+      "aliases": [
+        "TOKEN_OPT",
+        "CONTEXT_MANAGER"
+      ]
+    },
+    {
+      "agentId": "ledger",
+      "name": "LEDGER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "ledger",
+      "sources": [
+        "ledger_swarm_2026"
+      ],
+      "aliases": [
+        "LEDGER",
+        "LEDGER_COORDINATOR"
+      ]
+    },
+    {
+      "agentId": "bookkeeper",
+      "name": "BOOKKEEPER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "ledger",
+      "sources": [
+        "ledger_swarm_2026"
+      ],
+      "aliases": [
+        "BOOKKEEPER",
+        "DOUBLE_ENTRY"
+      ]
+    },
+    {
+      "agentId": "treasury",
+      "name": "TREASURY",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "ledger",
+      "sources": [
+        "ledger_swarm_2026"
+      ],
+      "aliases": [
+        "TREASURY",
+        "BANKING_BRIDGE"
+      ]
+    },
+    {
+      "agentId": "reconciler",
+      "name": "RECONCILER",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "ledger",
+      "sources": [
+        "ledger_swarm_2026"
+      ],
+      "aliases": [
+        "RECONCILER",
+        "MATCHMAKER"
+      ]
+    },
+    {
+      "agentId": "tax",
+      "name": "TAX",
+      "kind": "core_agent",
+      "status": "active",
+      "hive": "ledger",
+      "sources": [
+        "ledger_swarm_2026"
+      ],
+      "aliases": [
+        "TAX",
+        "TAX_ANALYST"
+      ]
+    }
+  ]
+}

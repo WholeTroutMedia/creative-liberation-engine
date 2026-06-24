@@ -1,0 +1,26 @@
+{
+  "deviceClass": "Smart Security Floodlight Camera",
+  "manufacturer": "Ring",
+  "modelName": "Floodlight Cam Wired Pro",
+  "primaryComponents": [
+    "Main weather-resistant housing",
+    "Adjustable camera module (containing lens, image sensor, IR LEDs, microphone, speaker)",
+    "Two independently adjustable LED floodlight panels",
+    "Passive Infrared (PIR) motion sensor array",
+    "Integrated siren",
+    "Electrical junction box mounting bracket",
+    "Hardwired power connection interface (terminal block, wiring compartment)",
+    "Internal power supply/transformer circuitry",
+    "Adjustable mechanical joints/pivot points for camera and floodlights",
+    "Wi-Fi antenna assembly",
+    "Status indicator LED"
+  ],
+  "operationalLogic": "The device hardwires into a standard electrical junction box for continuous AC power. Its integrated PIR motion sensors detect movement within configured zones. Upon detection, the system can automatically activate the high-intensity LED floodlights, initiate video recording with audio, and send notifications to a user's mobile device. The camera module provides real-time video feed and two-way audio communication through its speaker and microphone. Night vision is facilitated by integrated IR LEDs. The siren can be manually or automatically triggered for deterrence. Adjustable mechanical joints allow for precise directional aiming of the camera and floodlight panels.",
+  "maintenanceNodes": [
+    "Exterior lens and sensor surfaces (require periodic cleaning for optimal performance)",
+    "Adjustable joints and mounting hardware (may require tightening or realignment over time)",
+    "Weather seals and gaskets (may degrade and require inspection or replacement after many years)",
+    "Electrical wiring connections (require professional inspection if power issues arise)",
+    "LED floodlight panels (long-lasting but if damaged, replacement of the panel assembly may be necessary)"
+  ]
+}

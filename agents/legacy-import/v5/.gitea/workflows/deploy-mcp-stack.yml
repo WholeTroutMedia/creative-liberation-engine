@@ -1,0 +1,136 @@
+name: Deploy CLE MCP Stack
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-mcp:
+    name: Deploy MCP Stack to NAS
+    runs-on: host
+
+    steps:
+      - name: Verify Docker daemon
+        run: |
+          docker info --format '{{.ServerVersion}}' && echo "✓ Docker daemon reachable"
+
+      - name: Create MCP stack directory
+        run: |
+          mkdir -p /volume1/docker/engine-core/db
+          mkdir -p /volume1/docker/engine-core/ha-config
+          echo "✓ Directories created"
+
+      - name: Write docker-compose.yml
+        env:
+          TUNNEL_TOKEN: ${{ secrets.CF_TUNNEL_TOKEN }}
+        run: |
+          cat > /volume1/docker/engine-core/docker-compose.yml << 'COMPOSE'
+          version: '3.8'
+
+          services:
+            cloudflared:
+              image: cloudflare/cloudflared:latest
+              container_name: cle_tunnel
+              restart: unless-stopped
+              command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+              network_mode: "host"
+
+            nginx-proxy:
+              image: nginx:alpine
+              container_name: cle_proxy
+              restart: unless-stopped
+              volumes:
+                - /volume1/docker/engine-core/nginx.conf:/etc/nginx/nginx.conf
+              network_mode: "host"
+
+            mcp-docker:
+              image: node:20-alpine
+              container_name: cle_mcp_docker
+              restart: unless-stopped
+              volumes:
+                - /var/run/docker.sock:/var/run/docker.sock
+              command: >
+                sh -c "npm install -g @modelcontextprotocol/server-docker &&
+                       npx @modelcontextprotocol/inspector --port 8081 npx @modelcontextprotocol/server-docker"
+              network_mode: "host"
+
+            mcp-filesystem:
+              image: node:20-alpine
+              container_name: cle_mcp_fs
+              restart: unless-stopped
+              volumes:
+                - /volume1:/app/workspace
+              command: >
+                sh -c "npm install -g @modelcontextprotocol/server-filesystem &&
+                       npx @modelcontextprotocol/inspector --port 8082 npx @modelcontextprotocol/server-filesystem /app/workspace"
+              network_mode: "host"
+
+            mcp-sqlite:
+              image: node:20-alpine
+              container_name: cle_mcp_db
+              restart: unless-stopped
+              volumes:
+                - /volume1/docker/engine-core/db:/app/db
+              command: >
+                sh -c "npm install -g @modelcontextprotocol/server-sqlite &&
+                       npx @modelcontextprotocol/inspector --port 8083 npx @modelcontextprotocol/server-sqlite /app/db/cle.db"
+              network_mode: "host"
+
+            homeassistant:
+              image: lscr.io/linuxserver/homeassistant:latest
+              container_name: cle_ha
+              environment:
+                - PUID=1024
+                - PGID=100
+                - TZ=America/New_York
+              volumes:
+                - /volume1/docker/engine-core/ha-config:/config
+              network_mode: "host"
+              restart: unless-stopped
+          COMPOSE
+          echo "✓ docker-compose.yml written"
+
+      - name: Write nginx.conf
+        run: |
+          cat > /volume1/docker/engine-core/nginx.conf << 'NGINX'
+          events {}
+          http {
+              server {
+                  listen 80;
+                  location /docker/ {
+                      proxy_pass http://127.0.0.1:8081/;
+                      proxy_set_header Connection "keep-alive";
+                  }
+                  location /fs/ {
+                      proxy_pass http://127.0.0.1:8082/;
+                      proxy_set_header Connection "keep-alive";
+                  }
+                  location /db/ {
+                      proxy_pass http://127.0.0.1:8083/;
+                      proxy_set_header Connection "keep-alive";
+                  }
+              }
+          }
+          NGINX
+          echo "✓ nginx.conf written"
+
+      - name: Write .env with tunnel token
+        env:
+          TUNNEL_TOKEN: ${{ secrets.CF_TUNNEL_TOKEN }}
+        run: |
+          echo "TUNNEL_TOKEN=${TUNNEL_TOKEN}" > /volume1/docker/engine-core/.env
+          echo "✓ .env written"
+
+      - name: Launch MCP Stack
+        run: |
+          cd /volume1/docker/engine-core
+          docker compose up -d --pull always
+          echo "✓ MCP Stack launched"
+
+      - name: Health check
+        run: |
+          sleep 20
+          echo "=== MCP Stack Status ==="
+          docker ps --filter "name=cle_" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+          echo ""
+          echo "Checking tunnel health..."
+          docker logs cle_tunnel 2>&1 | tail -5

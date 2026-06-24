@@ -1,0 +1,58 @@
+name: Zero Day Workflow
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  hive-a-spec:
+    name: Hive A - Generate Specs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Spec Generation
+        run: |
+          echo "🏭 Hive A: Generating OpenAPI specs for gallery API"
+          
+  hive-b-tests:
+    name: Hive B - Write Tests (TDD)
+    runs-on: ubuntu-latest
+    needs: hive-a-spec
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Generation
+        run: |
+          echo "🧪 Hive B: Writing tests for image optimization"
+          
+  hive-c-build:
+    name: Hive C - Build Code
+    runs-on: ubuntu-latest
+    needs: hive-b-tests
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build with Circuit Breaker
+        run: |
+          echo "⚡ Hive C: Building Next.js gallery"
+          npm run build
+      - name: Run Tests
+        run: npm test
+          
+  hive-d-deploy:
+    name: Hive D - Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: hive-c-build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy with Fallback
+        run: |
+          echo "🚀 Hive D: Deploying to Vercel with blue-green strategy"

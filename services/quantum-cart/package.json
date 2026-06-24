@@ -1,0 +1,26 @@
+{
+  "name": "@creative-liberation-engine/quantum-cart",
+  "version": "2.0.3",
+  "description": "Sovereign Predictive Commerce and Decoupled User Cart Storage",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "cle",
+    "commerce",
+    "cart",
+    "agentic"
+  ],
+  "author": "Creative Liberation Engine V6",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@creative-liberation-engine/mandate-service": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

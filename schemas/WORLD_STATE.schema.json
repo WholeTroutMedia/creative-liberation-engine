@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/WORLD_STATE.schema.json",
+  "title": "Simulation World State",
+  "description": "The canonical context window representing the active simulation state, passed to local LLMs for logic generation.",
+  "type": "object",
+  "required": ["timestamp", "simulation_mode", "entities"],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "simulation_mode": {
+      "type": "string",
+      "enum": ["idle", "combat", "narrative", "observation"]
+    },
+    "global_variables": {
+      "type": "object",
+      "additionalProperties": { "type": ["string", "number", "boolean"] }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "position"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "position": {
+            "type": "object",
+            "properties": {
+              "x": { "type": "number" },
+              "y": { "type": "number" },
+              "z": { "type": "number" }
+            }
+          },
+          "active_behavior": { "type": "string" },
+          "health": { "type": "number" },
+          "metadata": { "type": "object" }
+        }
+      }
+    }
+  }
+}

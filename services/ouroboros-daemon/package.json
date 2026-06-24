@@ -1,0 +1,21 @@
+{
+  "name": "@cle/ouroboros-daemon",
+  "version": "2.0.3",
+  "description": "Background autonomous agent that cleans up unresolved issues and optimizes the codebase using local models.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsc -b --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@cle/ouroboros": "workspace:*",
+    "@creative-liberation-engine/model-arbitrage": "workspace:*",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "@types/node": "^22.0.0"
+  }
+}

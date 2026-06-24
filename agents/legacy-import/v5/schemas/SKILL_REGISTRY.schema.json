@@ -1,0 +1,80 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/skill-registry.schema.json",
+    "title":  "V6 Skill Registry",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "skills"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string",
+                                       "pattern":  "^v[0-9]+(\\.[0-9]+)*$"
+                                   },
+                       "skills":  {
+                                      "type":  "array",
+                                      "items":  {
+                                                    "type":  "object",
+                                                    "additionalProperties":  false,
+                                                    "required":  [
+                                                                     "skillId",
+                                                                     "name",
+                                                                     "path",
+                                                                     "source",
+                                                                     "summary"
+                                                                 ],
+                                                    "properties":  {
+                                                                       "skillId":  {
+                                                                                       "type":  "string",
+                                                                                       "pattern":  "^[a-z0-9_\\-]{2,64}$"
+                                                                                   },
+                                                                       "name":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  2,
+                                                                                    "maxLength":  120
+                                                                                },
+                                                                       "path":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  3,
+                                                                                    "maxLength":  500
+                                                                                },
+                                                                       "source":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  [
+                                                                                                   "v6",
+                                                                                                   "v5-import",
+                                                                                                   "legacy-import"
+                                                                                               ]
+                                                                                  },
+                                                                       "summary":  {
+                                                                                       "type":  "string",
+                                                                                       "minLength":  2,
+                                                                                       "maxLength":  500
+                                                                                   },
+                                                                       "agentCallable":  {
+                                                                                             "type":  "boolean"
+                                                                                         },
+                                                                       "constitutionalArticles":  {
+                                                                                                      "type":  "array",
+                                                                                                      "items":  {
+                                                                                                                    "type":  "string",
+                                                                                                                    "minLength":  1,
+                                                                                                                    "maxLength":  30
+                                                                                                                }
+                                                                                                  },
+                                                                       "leadAgents":  {
+                                                                                          "type":  "array",
+                                                                                          "items":  {
+                                                                                                        "type":  "string",
+                                                                                                        "minLength":  2,
+                                                                                                        "maxLength":  60
+                                                                                                    }
+                                                                                      }
+                                                                   }
+                                                }
+                                  }
+                   },
+    "description":  "Full skill registry imported from heritage pipeline."
+}

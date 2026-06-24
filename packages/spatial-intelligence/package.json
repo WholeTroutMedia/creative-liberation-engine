@@ -1,0 +1,17 @@
+{
+  "name": "@cle/spatial-intelligence",
+  "version": "2.0.3",
+  "exports": {
+    "./spatial-pipeline": {
+      "types": "./dist/spatial-pipeline.d.ts",
+      "import": "./dist/spatial-pipeline.js",
+      "default": "./dist/spatial-pipeline.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

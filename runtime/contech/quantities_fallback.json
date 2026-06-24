@@ -1,0 +1,11 @@
+{
+  "project_name": "Sovereign B2B ConTech Operations",
+  "blueprint_file": "/app/creative-liberation-engine/scratch/does_not_exist.png",
+  "status": "COMPLETED",
+  "quantities": {
+    "plumbing_fixtures": 12,
+    "doors_windows": 8,
+    "drywall_linear_foot": 320.5
+  },
+  "extracted_at": "2026-06-02T09:17:46.638479"
+}

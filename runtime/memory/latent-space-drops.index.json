@@ -1,0 +1,41 @@
+{
+  "version": "v6.0",
+  "collection": "latent-space-drops",
+  "items": [
+    {
+      "memoryId": "mem_latent_space_drop_img3368",
+      "kind": "artifact",
+      "title": "THE COLOSSEUM (NYC Flyover Drop)",
+      "summary": "Curated NYC flyover drop seed: THE COLOSSEUM. Captured at Yankee Stadium (Interior Field & Seating) at coordinates 40.8296° N, 73.9262° W. Altitude 1,200 FT AGL. Sony ILCE-7RM4 with FE 70-200mm F2.8 GM OSS lens.",
+      "bodyRef": "../../wiki/examples/mem_latent_space_drop_img3368.md",
+      "source": "VAULT",
+      "provenance": {
+        "recordedBy": "LUMIND",
+        "recordedAt": "2026-06-08T12:24:36Z",
+        "conversationId": "02ce6a88-7f74-4cfa-95dd-e2a315ea9c53",
+        "artifactRefs": [
+          "D:/Google Antigravity/cleengine-systems/latent-space-theme/assets/drops_catalog.json"
+        ]
+      },
+      "confidence": 1.0,
+      "retentionClass": "durable",
+      "tags": [
+        "latent-space",
+        "fine-art",
+        "photography",
+        "yankee-stadium",
+        "nyc-flyover",
+        "landscape"
+      ],
+      "relations": [
+        {
+          "type": "derived_from",
+          "targetId": "mem_nas_raw_photo_img3368"
+        }
+      ],
+      "createdAt": "2026-06-08T12:24:36Z",
+      "updatedAt": "2026-06-08T12:24:36Z",
+      "lifecycleState": "active"
+    }
+  ]
+}

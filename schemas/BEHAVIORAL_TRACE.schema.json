@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/BEHAVIORAL_TRACE.schema.json",
+  "title": "Agent Behavioral Step-Trace Schema",
+  "description": "Defines the structure for recording the granular, sequential step-level ('Observe-Reason-Act-Adapt') reasoning loops of an agent within Creative Liberation Engine V6.",
+  "type": "object",
+  "required": [
+    "trace_id",
+    "conversation_id",
+    "timestamp",
+    "steps"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this overall trace run"
+    },
+    "conversation_id": {
+      "type": "string",
+      "description": "The target engine conversation or execution scope ID"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The exact start timestamp of this trace session"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "model_name": { "type": "string" },
+        "active_sprint": { "type": "string" },
+        "lead_agent": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "steps": {
+      "type": "array",
+      "description": "Chronological list of agent execution steps",
+      "items": {
+        "type": "object",
+        "required": [
+          "step_index",
+          "stance",
+          "observation",
+          "reasoning",
+          "action"
+        ],
+        "properties": {
+          "step_index": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1-indexed sequence number of this agent step"
+          },
+          "stance": {
+            "type": "string",
+            "enum": ["INFRASTRUCTURE", "CREATIVE_DIRECTOR", "FRONTEND_LOGIC"],
+            "description": "The active role posture dictating tool prioritization"
+          },
+          "observation": {
+            "type": "string",
+            "description": "Raw input, logs, or changes detected from the environment or user"
+          },
+          "reasoning": {
+            "type": "string",
+            "description": "Internal thought process, analysis, and strategic rationale"
+          },
+          "action": {
+            "type": "object",
+            "required": ["type", "target"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["tool_call", "response", "handoff", "noop"],
+                "description": "The type of operation proposed"
+              },
+              "target": {
+                "type": "string",
+                "description": "Name of the tool, subagent, recipient, or user output target"
+              },
+              "payload": {
+                "type": "object",
+                "description": "Arguments, input parameters, or content delivered",
+                "additionalProperties": true
+              }
+            }
+          },
+          "outcome": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": ["success", "failure", "timeout", "rejected"]
+              },
+              "message": { "type": "string" },
+              "exit_code": { "type": "integer" },
+              "latency_ms": { "type": "integer", "minimum": 0 }
+            },
+            "required": ["status"]
+          },
+          "adaptation": {
+            "type": "object",
+            "properties": {
+              "previous_failure_resolved": { "type": "boolean" },
+              "self_correction_rationale": {
+                "type": "string",
+                "description": "How the plan was modified to recover from an error"
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "cost_summary": {
+      "type": "object",
+      "properties": {
+        "input_tokens": { "type": "integer", "minimum": 0 },
+        "output_tokens": { "type": "integer", "minimum": 0 },
+        "cost_usd": { "type": "number", "minimum": 0 }
+      },
+      "required": ["input_tokens", "output_tokens"]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,215 @@
+{
+  "server": "SPAD-PLEX",
+  "scanned_at": 1778095006,
+  "movies": {
+    "total": 580,
+    "with_subs": 0,
+    "titles": [
+      {
+        "title": "2 Fast 2 Furious",
+        "year": 2003,
+        "key": "27410"
+      },
+      {
+        "title": "8 Mile",
+        "year": 2002,
+        "key": "8"
+      },
+      {
+        "title": "21 Jump Street",
+        "year": 2012,
+        "key": "27400"
+      },
+      {
+        "title": "22 Jump Street",
+        "year": 2014,
+        "key": "21153"
+      },
+      {
+        "title": "28 Days Later",
+        "year": 2002,
+        "key": "7"
+      },
+      {
+        "title": "28 Weeks Later",
+        "year": 2007,
+        "key": "26435"
+      },
+      {
+        "title": "28 Years Later",
+        "year": 2025,
+        "key": "26434"
+      },
+      {
+        "title": "28 Years Later: The Bone Temple",
+        "year": 2026,
+        "key": "38288"
+      },
+      {
+        "title": "The 40-Year-Old Virgin",
+        "year": 2005,
+        "key": "54622"
+      },
+      {
+        "title": "Ace Ventura: Pet Detective",
+        "year": 1994,
+        "key": "10191"
+      },
+      {
+        "title": "Ace Ventura: When Nature Calls",
+        "year": 1995,
+        "key": "10205"
+      },
+      {
+        "title": "Act of Valor",
+        "year": 2012,
+        "key": "37416"
+      },
+      {
+        "title": "Aladdin",
+        "year": 1992,
+        "key": "41"
+      },
+      {
+        "title": "Aladdin",
+        "year": 2019,
+        "key": "83"
+      },
+      {
+        "title": "Alcatraz",
+        "year": 2018,
+        "key": "37417"
+      },
+      {
+        "title": "Alice in Wonderland",
+        "year": 1951,
+        "key": "10340"
+      },
+      {
+        "title": "Alice in Wonderland",
+        "year": 2010,
+        "key": "9838"
+      },
+      {
+        "title": "Alice Through the Looking Glass",
+        "year": 2016,
+        "key": "10141"
+      },
+      {
+        "title": "American Psycho",
+        "year": 2000,
+        "key": "84"
+      },
+      {
+        "title": "American Sniper",
+        "year": 2014,
+        "key": "36193"
+      }
+    ]
+  },
+  "shows": {
+    "total": 270,
+    "titles": [
+      {
+        "title": "2 Broke Girls",
+        "year": 2011,
+        "key": "57227"
+      },
+      {
+        "title": "3 Body Problem",
+        "year": 2024,
+        "key": "22223"
+      },
+      {
+        "title": "13 Reasons Why",
+        "year": 2017,
+        "key": "2598"
+      },
+      {
+        "title": "24",
+        "year": 2001,
+        "key": "2655"
+      },
+      {
+        "title": "56 Days",
+        "year": 2026,
+        "key": "38274"
+      },
+      {
+        "title": "The 100",
+        "year": 2014,
+        "key": "53695"
+      },
+      {
+        "title": "90210",
+        "year": 2008,
+        "key": "36728"
+      },
+      {
+        "title": "Adolescence",
+        "year": 2025,
+        "key": "28559"
+      },
+      {
+        "title": "Adventure Time",
+        "year": 2010,
+        "key": "2870"
+      },
+      {
+        "title": "The Adventures of Jimmy Neutron: Boy Genius",
+        "year": 2002,
+        "key": "46890"
+      },
+      {
+        "title": "American Dad!",
+        "year": 2005,
+        "key": "11789"
+      },
+      {
+        "title": "American Horror Story",
+        "year": 2011,
+        "key": "28414"
+      },
+      {
+        "title": "The Angry Beavers",
+        "year": 1997,
+        "key": "46760"
+      },
+      {
+        "title": "Aqua Teen Hunger Force",
+        "year": 2000,
+        "key": "3178"
+      },
+      {
+        "title": "Archer (2009)",
+        "year": 2009,
+        "key": "3332"
+      },
+      {
+        "title": "Are You Smarter Than a 5th Grader?",
+        "year": 2007,
+        "key": "27531"
+      },
+      {
+        "title": "Are You Smarter Than a 5th Grader? (2019)",
+        "year": 2019,
+        "key": "27509"
+      },
+      {
+        "title": "Arrested Development",
+        "year": 2003,
+        "key": "28379"
+      },
+      {
+        "title": "Arrow",
+        "year": 2012,
+        "key": "59611"
+      },
+      {
+        "title": "Attack on Titan",
+        "year": 2013,
+        "key": "12182"
+      }
+    ]
+  }
+}

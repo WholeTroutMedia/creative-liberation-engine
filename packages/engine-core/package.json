@@ -1,0 +1,20 @@
+{
+  "name": "@cle/engine-core",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Creative Liberation Engine V6 core runtime \u2014 agent lifecycle, boot sequence, health checks, and service coordination.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./health": "./src/health.mjs",
+    "./registry": "./src/registry.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*"
+  },
+  "scripts": {
+    "build": "echo 'no build required'"
+  },
+  "capabilityId": "cap_engine_core"
+}

@@ -1,0 +1,73 @@
+{
+  "jobId": "IE-IDX-0146",
+  "jobNumber": 146,
+  "slug": "maket-ai-powered-floor-plan-creation",
+  "filename": "IE-IDX-0146_maket-ai-powered-floor-plan-creation",
+  "status": "ACTIVATED",
+  "sourceArticle": {
+    "guid": "flipboard-Iy8voNVnROOyNW-1lZpubA:a:4243649-1778061929",
+    "title": "Maket | AI-Powered Floor Plan Creation",
+    "url": "https://www.maket.ai/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Unknown",
+    "pubDate": "Wed, 06 May 2026 10:05:29 GMT",
+    "imageUrl": null,
+    "categories": [
+      ""
+    ]
+  },
+  "categories": [
+    "creative-tools",
+    "learning",
+    "spatial"
+  ],
+  "cleRelevance": 40,
+  "athenaOutput": {
+    "directive": "Establish the Creative Liberation Engine as the sovereign, indispensable platform for AI-driven architectural design and spatial planning, empowering creators from initial concept to build-ready specifications.",
+    "rationale": "The market demonstrates a clear demand for intuitive, AI-accelerated design tools, as evidenced by Maket. By leveraging our constitutional principles of sovereignty and complete implementations, we can develop a superior, self-owned solution that integrates deeply with future Creative Liberation Engine capabilities, moving beyond mere floor plans to full spatial ecosystems. This strategic direction ensures we build a foundational, comprehensive design intelligence for future expansion.",
+    "options": [
+      {
+        "title": "The Sovereign Architect Engine",
+        "description": "Develop a fully self-hosted, AI-driven architectural design platform capable of generating not just floor plans, but complete, context-aware building designs (interior, exterior, structural considerations) based on highly granular user inputs, environmental data, and local building codes. Focus on a deep understanding of user preferences, learning and adapting over time to become a true 'personal architect AI.' Integrate with material selection, energy efficiency simulations, and comprehensive cost estimations to deliver build-ready specifications.",
+        "tradeoffs": "High initial development complexity and resource investment due to the breadth and depth of architectural and engineering knowledge required. Significant data acquisition and training for the AI. Potential regulatory hurdles for code compliance validation across diverse geographies. Requires robust computational infrastructure.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Spatial Nexus: Collaborative Design Platform",
+        "description": "Create a platform that facilitates real-time collaborative design between multiple stakeholders (homeowners, builders, interior designers, architects). The AI acts as an intelligent assistant, offering suggestions, optimizing layouts, and flagging potential issues in a shared workspace. Crucially, this option focuses on deep, secure integration with external services and APIs (e.g., smart home systems, material suppliers, contractor networks) to create an end-to-end ecosystem from design to procurement and construction project management.",
+        "tradeoffs": "Reliance on external integrations introduces dependencies, potential security vulnerabilities, and maintenance overhead. Complex user management, permissioning, and version control for collaborative features. Risk of becoming a 'jack of all trades, master of none' if the core AI design capabilities are not exceptionally robust.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Genesis XR: Immersive Spatial Creation",
+        "description": "Develop an AI-powered design tool with a primary focus on immersive experiences. Users would design and iterate within AR/VR environments, 'walking through' their creations in real-time. The AI would interpret gestures, voice commands, and spatial interactions to generate and refine designs. This would include photorealistic rendering, virtual staging, and environmental simulations, allowing users to experience and modify their future spaces before they are built, with a strong emphasis on user intuition over technical design skills.",
+        "tradeoffs": "High technical barrier for AR/VR development, requiring specialized expertise and significant investment in rendering pipelines. Limited accessibility for users without advanced hardware, potentially narrowing the user base. A strong focus on visualization might inadvertently de-emphasize critical underlying architectural engineering and buildability aspects, requiring careful balancing.",
+        "recommendation": "viable"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "BOLT",
+      "KEEPER"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty",
+      "Article IV: Quality Standards",
+      "Article IX: Ship Complete or Don't Ship",
+      "Article XX: Zero human wait time"
+    ]
+  },
+  "relatedJobs": [],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0146_maket-ai-powered-floor-plan-creation.md",
+  "comments": [],
+  "createdAt": "2026-05-06T10:15:22.871Z",
+  "ideatedAt": "2026-05-06T10:15:39.001Z",
+  "activatedAt": "2026-05-17T22:23:03.479Z",
+  "completedAt": null,
+  "digestBatchId": null,
+  "emailedAt": "2026-05-06T10:15:40.090Z",
+  "lifecycle": {
+    "status": "VERIFIED",
+    "execution_started_at": "2026-05-18T18:10:07.147223Z"
+  }
+}

@@ -1,0 +1,5 @@
+# Model Sentinel — Dependencies
+requests>=2.31.0
+pyyaml>=6.0
+rich>=13.0.0
+huggingface-hub>=0.20.0

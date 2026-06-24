@@ -1,0 +1,6 @@
+# Agent Resources
+
+This directory stores agent-specific resources:
+- templates/: Reusable templates
+- documentation/: Reference documentation
+- references/: External references and links

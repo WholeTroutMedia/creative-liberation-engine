@@ -1,0 +1,31 @@
+# PULSE — Video-Based Biometric Sensing Service
+# Core
+opencv-python>=4.9.0
+mediapipe>=0.10.14
+numpy>=1.26.0
+scipy>=1.12.0
+
+# rPPG / Signal Processing
+scikit-learn>=1.4.0
+
+# Deep Learning (EfficientPhys / PhysNet)
+torch>=2.2.0
+torchvision>=0.17.0
+onnxruntime-gpu>=1.17.0
+
+# Output Protocols
+python-osc>=1.8.3
+mido>=1.3.2
+python-rtmidi>=1.5.8
+websockets>=12.0
+
+# Server / Telemetry
+aiohttp>=3.9.0
+aiohttp-sse>=2.2.0
+
+# Configuration
+pyyaml>=6.0.1
+pydantic>=2.6.0
+
+# Utilities
+colorama>=0.4.6

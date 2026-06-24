@@ -1,0 +1,11 @@
+{
+  "name": "@cle/model-sentinel",
+  "version": "2.0.3",
+  "description": "Zero-Trust Model Guard capability IE-IDX-0186",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node --experimental-strip-types src/index.ts",
+    "test": "node --experimental-strip-types src/run-test.ts"
+  }
+}

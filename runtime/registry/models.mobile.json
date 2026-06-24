@@ -1,0 +1,53 @@
+{
+  "node_id": "iphone15-promax",
+  "client_model": {
+    "name": "Gemma-4-2B-Instruct-LiteRT",
+    "architecture": "gemma",
+    "parameters": "2.1B",
+    "precision": "INT4",
+    "accelerator": "Apple Neural Engine (ANE)",
+    "context_window": 4096,
+    "quantization": "Q4_K_M"
+  },
+  "remote_model": {
+    "name": "Gemma-4-9B-Instruct-vLLM",
+    "architecture": "gemma2",
+    "parameters": "9.2B",
+    "precision": "FP16",
+    "accelerator": "NVIDIA RTX 4090 (24GB VRAM)",
+    "context_window": 8192,
+    "vllm_endpoint": "http://127.0.0.1:11434/v1"
+  },
+  "runtime_thresholds": {
+    "min_token_speed_tps": 12.5,
+    "max_prompt_length_chars": 3000,
+    "battery_charge_min_percent": 15.0,
+    "ane_thermal_limit_celsius": 80.0
+  },
+  "intent_routing_rules": [
+    {
+      "intent_domain": "sensory_log",
+      "action": "log_sensory",
+      "executor": "local",
+      "description": "Voice notes, fast garden photo captures, telemetry parsing."
+    },
+    {
+      "intent_domain": "agent_command",
+      "action": "start_task",
+      "executor": "remote",
+      "description": "Heavy codebase edits, automated tests execution, git operations."
+    },
+    {
+      "intent_domain": "general_inquiry",
+      "action": "chat",
+      "executor": "local",
+      "description": "General conversational parsing, brainstorming."
+    },
+    {
+      "intent_domain": "image_generation",
+      "action": "generate_image",
+      "executor": "remote",
+      "description": "Fal AI or midjourney image renders, creative UI previews."
+    }
+  ]
+}

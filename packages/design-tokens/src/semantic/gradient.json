@@ -1,0 +1,105 @@
+{
+  "gradient": {
+    "$description": "Gradient system — the cinematic visual identity of the Creative Liberation Engine",
+
+    "brand": {
+      "primary": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)",
+        "$description": "Blue → Violet — the Creative Liberation Engine signature gradient"
+      },
+      "primarySubtle": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(124, 58, 237, 0.15) 100%)",
+        "$description": "Subtle tint version — backgrounds, cards"
+      },
+      "midnight": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%)",
+        "$description": "Deep midnight — hero sections, full-bleed backgrounds"
+      },
+      "aurora": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #2563eb 0%, #7c3aed 33%, #06b6d4 66%, #10b981 100%)",
+        "$description": "Full spectrum aurora — celebration, premium moments"
+      }
+    },
+
+    "surface": {
+      "card": {
+        "$type": "gradient",
+        "$value": "linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%)",
+        "$description": "Subtle top-lit card gradient — adds depth perception"
+      },
+      "shine": {
+        "$type": "gradient",
+        "$value": "linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.03) 55%, transparent 60%)",
+        "$description": "Metallic shine sweep — hover micro-animation"
+      },
+      "noise": {
+        "$type": "string",
+        "$value": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E\")",
+        "$description": "Film grain noise texture overlay — gives surfaces analog warmth"
+      },
+      "mesh": {
+        "$type": "string",
+        "$value": "radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 50% 80%, rgba(6, 182, 212, 0.04) 0%, transparent 50%)",
+        "$description": "Mesh gradient — multi-point ambient color wash"
+      }
+    },
+
+    "status": {
+      "hard": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)",
+        "$description": "Hard error or destructive action"
+      },
+      "soft": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+        "$description": "Soft warning"
+      },
+      "nudge": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)",
+        "$description": "Informational nudge"
+      },
+      "celebration": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #22c55e 0%, #2563eb 100%)",
+        "$description": "Success celebration"
+      }
+    },
+
+    "text": {
+      "brand": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%)",
+        "$description": "Gradient text — hero headings, brand moments"
+      },
+      "premium": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)",
+        "$description": "Gold gradient text — premium/exclusive features"
+      },
+      "holographic": {
+        "$type": "gradient",
+        "$value": "linear-gradient(90deg, #60a5fa 0%, #a78bfa 25%, #f0abfc 50%, #22d3ee 75%, #60a5fa 100%)",
+        "$description": "Holographic shimmer text — animated with background-position"
+      }
+    },
+
+    "border": {
+      "brand": {
+        "$type": "gradient",
+        "$value": "linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)",
+        "$description": "Gradient border — use with border-image or pseudo-element technique"
+      },
+      "rainbow": {
+        "$type": "gradient",
+        "$value": "conic-gradient(from 0deg, #60a5fa, #a78bfa, #f0abfc, #fbbf24, #4ade80, #22d3ee, #60a5fa)",
+        "$description": "Conic rainbow border — status indicators, loading states"
+      }
+    }
+  }
+}

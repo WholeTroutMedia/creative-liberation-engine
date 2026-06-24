@@ -1,0 +1,45 @@
+{
+  "$schema": "relay-agent.contract.v1",
+  "version": "1.0.0",
+  "dataMinimization": {
+    "enabled": true,
+    "stripPii": true,
+    "hashBeforeSend": true,
+    "maxPayloadBytes": 65536
+  },
+  "approvedEndpoints": [
+    {
+      "name": "gemini",
+      "urlPattern": "https://generativelanguage.googleapis.com/*",
+      "dataClass": "prompt_only",
+      "retention": "none",
+      "maxPayloadBytes": 65536
+    },
+    {
+      "name": "twelvelabs",
+      "urlPattern": "https://api.twelvelabs.io/*",
+      "dataClass": "media_reference",
+      "retention": "index_only",
+      "maxPayloadBytes": 65536
+    },
+    {
+      "name": "perplexity",
+      "urlPattern": "https://api.perplexity.ai/*",
+      "dataClass": "query_only",
+      "retention": "none",
+      "maxPayloadBytes": 16384
+    },
+    {
+      "name": "airtable",
+      "urlPattern": "https://api.airtable.com/*",
+      "dataClass": "query_only",
+      "retention": "index_only",
+      "maxPayloadBytes": 32768
+    }
+  ],
+  "blockedPatterns": [
+    "*.openai.com/*",
+    "*.anthropic.com/*"
+  ],
+  "fallback": "reject"
+}

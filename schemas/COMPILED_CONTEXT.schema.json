@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.ai/schemas/COMPILED_CONTEXT.schema.json",
+  "title": "Compiled Context Record",
+  "description": "Post-RAG compilation-stage knowledge record. Replaces raw chunk retrieval with pre-synthesized citation-linked agent-ready knowledge artifacts that carry provenance confidence and temporal validity.",
+  "type": "object",
+  "required": [
+    "contextId",
+    "version",
+    "compiledAt",
+    "domain",
+    "synthesizedText",
+    "citations",
+    "confidence",
+    "validUntil"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contextId": {
+      "type": "string",
+      "pattern": "^ctx_[a-z0-9_-]+$",
+      "description": "Unique ID for this compiled context unit"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Monotonically increasing version — recompilation bumps this"
+    },
+    "compiledAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of last compilation pass"
+    },
+    "domain": {
+      "type": "string",
+      "enum": [
+        "academy",
+        "tech",
+        "strategy",
+        "operations",
+        "creative",
+        "spatial",
+        "legal",
+        "finance"
+      ],
+      "description": "Knowledge domain for routing and access control"
+    },
+    "synthesizedText": {
+      "type": "string",
+      "minLength": 50,
+      "description": "The pre-compiled dense knowledge synthesis. This is what agents consume directly — no further RAG retrieval needed at inference time."
+    },
+    "citations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["pointerId", "sourceUri", "relevance"],
+        "additionalProperties": false,
+        "properties": {
+          "pointerId": {
+            "type": "string",
+            "description": "Reference to the RAG_PROXY_POINTER record that sourced this"
+          },
+          "sourceUri": {
+            "type": "string",
+            "description": "Canonical URI to the raw document"
+          },
+          "relevance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "How much this source contributed to the synthesis"
+          },
+          "excerpt": {
+            "type": "string",
+            "description": "Key excerpt from the source used during compilation"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Model confidence in the synthesis quality"
+    },
+    "validUntil": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Temporal validity — after this date the context should be recompiled"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^ctx_"
+      },
+      "description": "Other CompiledContext records this one depends on"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "accessControl": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Agent IDs authorized to consume this context"
+        },
+        "classification": {
+          "type": "string",
+          "enum": ["public", "internal", "confidential", "sovereign"],
+          "default": "internal"
+        }
+      }
+    }
+  }
+}

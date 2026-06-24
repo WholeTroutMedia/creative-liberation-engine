@@ -1,0 +1,77 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/agent-registry.schema.json",
+    "title":  "V6 Agent Registry",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "agents"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string",
+                                       "pattern":  "^v[0-9]+(\\.[0-9]+)*$"
+                                   },
+                       "agents":  {
+                                      "type":  "array",
+                                      "items":  {
+                                                    "type":  "object",
+                                                    "additionalProperties":  false,
+                                                    "required":  [
+                                                                     "agentId",
+                                                                     "name",
+                                                                     "role",
+                                                                     "status",
+                                                                     "source"
+                                                                 ],
+                                                    "properties":  {
+                                                                       "agentId":  {
+                                                                                       "type":  "string",
+                                                                                       "pattern":  "^[a-z0-9_\\-]{2,64}$"
+                                                                                   },
+                                                                       "name":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  2,
+                                                                                    "maxLength":  120
+                                                                                },
+                                                                       "role":  {
+                                                                                    "type":  "string",
+                                                                                    "minLength":  2,
+                                                                                    "maxLength":  300
+                                                                                },
+                                                                       "status":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  [
+                                                                                                   "active",
+                                                                                                   "legacy",
+                                                                                                   "planned"
+                                                                                               ]
+                                                                                  },
+                                                                       "source":  {
+                                                                                      "type":  "string",
+                                                                                      "enum":  [
+                                                                                                   "v6",
+                                                                                                   "v5-import",
+                                                                                                   "legacy-import",
+                                                                                                   "manual"
+                                                                                               ]
+                                                                                  },
+                                                                       "hive":  {
+                                                                                    "type":  "string",
+                                                                                    "maxLength":  80
+                                                                                },
+                                                                       "capabilities":  {
+                                                                                            "type":  "array",
+                                                                                            "items":  {
+                                                                                                          "type":  "string",
+                                                                                                          "minLength":  2,
+                                                                                                          "maxLength":  120
+                                                                                                      }
+                                                                                        }
+                                                                   }
+                                                }
+                                  }
+                   },
+    "description":  "Full agent registry imported from V1-V5 heritage pipeline."
+}

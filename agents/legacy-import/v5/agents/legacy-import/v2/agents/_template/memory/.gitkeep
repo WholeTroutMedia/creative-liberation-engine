@@ -1,0 +1,6 @@
+# Agent Memory Storage
+
+This directory stores agent-specific memory:
+- session-logs/: Records of work sessions
+- decisions/: Important decisions made
+- patterns/: Learned patterns and solutions

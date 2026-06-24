@@ -1,0 +1,23 @@
+{
+  "name": "@cle/inference",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Inference orchestration for Creative Liberation Engine V6 \u2014 Genkit integration, model arbitrage, and sovereign Ollama routing.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./arbitrage": "./src/arbitrage.mjs",
+    "./ollama": "./src/ollama.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*",
+    "@cle/engine-core": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_genkit_inference",
+    "cap_model_arbitrage",
+    "cap_ollama_mcp",
+    "cap_claude_agent"
+  ]
+}

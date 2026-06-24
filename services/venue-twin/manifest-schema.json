@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "venue-manifest-v1",
+  "title": "Creative Liberation Engine Venue Manifest",
+  "description": "Schema for venue digital twin metadata and processing state.",
+  "type": "object",
+  "required": ["venue_id", "name", "region", "captured", "rooms", "processing_status"],
+  "properties": {
+    "venue_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Kebab-case unique identifier for the venue."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable venue name."
+    },
+    "region": {
+      "type": "string",
+      "description": "Geographic region grouping (e.g., Hill Country)."
+    },
+    "address": {
+      "type": "string"
+    },
+    "geo": {
+      "type": "object",
+      "properties": {
+        "lat": { "type": "number" },
+        "lon": { "type": "number" }
+      },
+      "required": ["lat", "lon"]
+    },
+    "captured": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO date of primary scan capture."
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" }
+      }
+    },
+    "rooms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["room_id", "name"],
+        "properties": {
+          "room_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "scan_files": {
+            "type": "object",
+            "properties": {
+              "glb": { "type": "string" },
+              "obj": { "type": "string" },
+              "ply": { "type": "string" },
+              "usdz": { "type": "string" }
+            },
+            "description": "Relative paths to raw scan exports."
+          },
+          "processed": {
+            "type": "object",
+            "properties": {
+              "glb_high": { "type": "string" },
+              "glb_medium": { "type": "string" },
+              "glb_low": { "type": "string" },
+              "floorplan_svg": { "type": "string" },
+              "thumbnail": { "type": "string" },
+              "pointcloud_cleaned": { "type": "string" }
+            },
+            "description": "Relative paths to processed outputs."
+          },
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "length_m": { "type": "number" },
+              "width_m": { "type": "number" },
+              "height_m": { "type": "number" },
+              "area_sqm": { "type": "number" },
+              "volume_m3": { "type": "number" }
+            }
+          },
+          "capacity": {
+            "type": "object",
+            "properties": {
+              "standing": { "type": "integer" },
+              "seated_theater": { "type": "integer" },
+              "seated_banquet": { "type": "integer" },
+              "seated_classroom": { "type": "integer" }
+            }
+          },
+          "features": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Semantic feature labels (stage, bar, dance_floor, etc.)."
+          },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "caption": { "type": "string" },
+          "room_id": { "type": "string" }
+        },
+        "required": ["path"]
+      }
+    },
+    "audio_ir": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "room_id": { "type": "string" },
+          "format": { "type": "string" }
+        }
+      }
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": ["pending", "ingesting", "processing", "complete", "error"],
+      "description": "Current pipeline processing state."
+    },
+    "processing_log": {
+      "type": "string",
+      "description": "Relative path to processing log file."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

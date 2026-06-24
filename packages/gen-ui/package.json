@@ -1,0 +1,29 @@
+{
+  "name": "@cle/gen-ui",
+  "version": "2.0.3",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@genkit-ai/google-genai": "^1.29.0",
+    "@genkit-ai/googleai": "^1.28.0",
+    "@cle/design-agent": "workspace:*",
+    "@cle/genkit": "workspace:*",
+    "genkit": "^1.29.0",
+    "zod": "^4.3.6",
+    "@google/genai": "^1.44.0",
+    "yaml": "^2.3.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "tsc -b"
+  }
+}

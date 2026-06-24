@@ -1,0 +1,10 @@
+{
+  "name": "@cle/the-staggering-number-jensen-h",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0203",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

@@ -1,0 +1,149 @@
+name: "\U0001F4CA Agent Performance Tracker"
+
+# Tracks agent effectiveness and learning patterns
+# Measures constitutional alignment, success rates, and performance metrics
+
+on:
+  repository_dispatch:
+    types: [agent_invoked]
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  track-performance:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "\U0001F4E5 Checkout Repository"
+        uses: actions/checkout@v4
+      
+      - name: "\U0001F40D Setup Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: "\U0001F4E6 Install Dependencies"
+        run: |
+          pip install -r requirements.txt
+      
+      - name: "\U0001F4C1 Create Required Directories"
+        run: |
+          mkdir -p reports
+      
+      - name: "\U0001F4DD Record Agent Metrics"
+        if: github.event_name == 'repository_dispatch'
+        run: |
+          python scripts/automation/track_agent_performance.py \
+            --agent "${{ github.event.client_payload.agent_name }}" \
+            --task "${{ github.event.client_payload.task }}" \
+            --duration ${{ github.event.client_payload.duration_ms }} \
+            --success ${{ github.event.client_payload.success }} \
+            --vera-score ${{ github.event.client_payload.vera_score || 0.0 }} \
+            --output performance_data.json
+      
+      - name: "\U0001F4CA Create Default Performance Data"
+        if: github.event_name != 'repository_dispatch'
+        run: |
+          python -c "
+import json
+from datetime import datetime, timezone
+data = {
+  'event_type': 'scheduled_batch',
+  'agent_name': 'all',
+  'metrics': {},
+  'timestamp': datetime.now(timezone.utc).isoformat()
+}
+with open('performance_data.json', 'w') as f:
+  json.dump(data, f, indent=2)
+"
+      
+      - name: "\U0001F504 Update Agent Registry"
+        run: |
+          python scripts/automation/update_agent_status.py \
+            --agent "${{ github.event.client_payload.agent_name || 'all' }}" \
+            --performance performance_data.json \
+            --registry CORE_FOUNDATION/agents/.agent-status.json
+        continue-on-error: true
+      
+      - name: "\U0001F4CA Generate Performance Report"
+        run: |
+          python scripts/automation/generate_performance_report.py \
+            --period 7d \
+            --registry CORE_FOUNDATION/agents/.agent-status.json \
+            --tracker KEEPER/migration-tracker.json \
+            --output reports/agent_performance_$(date +%Y%m%d).md
+        continue-on-error: true
+      
+      - name: "\U0001F4C8 Calculate Performance Trends"
+        run: |
+          python scripts/automation/calculate_performance_trends.py \
+            --registry CORE_FOUNDATION/agents/.agent-status.json \
+            --lookback 30d \
+            --output trends.json
+        continue-on-error: true
+      
+      - name: "\U0001F3AF Identify Top Performers"
+        id: top_performers
+        run: |
+          python scripts/automation/identify_top_performers.py \
+            --trends trends.json \
+            --metrics "success_rate,vera_score,efficiency" \
+            --output top_performers.json
+          
+          if [ -f "top_performers.json" ]; then
+            TOP_AGENT=$(python -c "import json; data=json.load(open('top_performers.json')); print(data.get('agents', [{'name': 'N/A'}])[0]['name'])" 2>/dev/null || echo "N/A")
+            echo "top_agent=$TOP_AGENT" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: true
+      
+      - name: "\u26A0\uFE0F Identify Struggling Agents"
+        run: |
+          python scripts/automation/identify_struggling_agents.py \
+            --trends trends.json \
+            --threshold 0.70 \
+            --output struggling.json
+        continue-on-error: true
+      
+      - name: "\U0001F4BE Commit Updates"
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "\U0001F4CA Agent performance update"
+          file_pattern: 'CORE_FOUNDATION/agents/.agent-status.json reports/agent_performance_*.md'
+          commit_user_name: 'Performance Tracker'
+          commit_user_email: 'tracker@cle-engine.ai'
+      
+      - name: "\U0001F514 Alert on Low Performance"
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            if (fs.existsSync('struggling.json')) {
+              const struggling = JSON.parse(fs.readFileSync('struggling.json', 'utf8'));
+              
+              if (struggling.agents && struggling.agents.length > 0) {
+                let body = '## Agent Performance Alert\n\n';
+                body += `${struggling.agents.length} agent(s) below performance threshold:\n\n`;
+                
+                struggling.agents.forEach(agent => {
+                  body += `- **${agent.name}** (${agent.hive})\n`;
+                  body += `  - Success Rate: ${agent.success_rate}%\n`;
+                  body += `  - VERA Score: ${agent.vera_score}\n`;
+                  body += `  - Recommendation: ${agent.recommendation}\n\n`;
+                });
+                
+                github.rest.issues.create({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  title: `Agent Performance Review Needed`,
+                  body: body,
+                  labels: ['performance', 'agent-review', 'vera-check']
+                });
+              }
+            }

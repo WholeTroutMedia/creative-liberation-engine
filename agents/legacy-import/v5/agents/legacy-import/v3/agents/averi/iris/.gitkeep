@@ -1,0 +1,8 @@
+# IRIS Workspace
+
+Swift action, blocker removal, execution.
+
+## Structure
+
+- `memory/` - Execution logs, rapid deployments
+- `resources/` - Execution templates, deployment patterns

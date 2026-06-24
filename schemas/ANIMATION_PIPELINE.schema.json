@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/ANIMATION_PIPELINE.schema.json",
+  "title": "Animation Pipeline Schema",
+  "description": "Defines multi-scene, frame-by-frame animation generation pipeline using ComfyUI and professional 2D animation workflows.",
+  "type": "object",
+  "required": ["job_id", "project_name", "scenes", "output_config"],
+  "properties": {
+    "job_id": { "type": "string", "format": "uuid" },
+    "project_name": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "preprocessing", "generating", "compositing", "encoding", "completed", "failed"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": ["string", "null"], "format": "date-time" },
+    "style_config": {
+      "type": "object",
+      "properties": {
+        "art_style": {
+          "type": "string",
+          "enum": ["hand_drawn", "cel_shaded", "watercolor", "ink_wash", "digital_paint", "pixel_art", "custom"]
+        },
+        "style_reference_images": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "lora_id": { "type": "string" },
+        "checkpoint_model": { "type": "string" },
+        "color_palette": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+        },
+        "line_weight": { "type": "number", "minimum": 0.1, "maximum": 10 },
+        "consistency_seed": { "type": "integer" }
+      }
+    },
+    "character_sheets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["character_id", "name"],
+        "properties": {
+          "character_id": { "type": "string" },
+          "name": { "type": "string" },
+          "reference_images": { "type": "array", "items": { "type": "string" } },
+          "description": { "type": "string" },
+          "lora_trigger": { "type": "string" }
+        }
+      }
+    },
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["scene_id", "scene_number", "duration_frames"],
+        "properties": {
+          "scene_id": { "type": "string" },
+          "scene_number": { "type": "integer", "minimum": 1 },
+          "description": { "type": "string" },
+          "duration_frames": { "type": "integer", "minimum": 1 },
+          "keyframes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["frame_number", "prompt"],
+              "properties": {
+                "frame_number": { "type": "integer", "minimum": 0 },
+                "prompt": { "type": "string" },
+                "negative_prompt": { "type": "string" },
+                "camera": {
+                  "type": "object",
+                  "properties": {
+                    "position": { "type": "string", "enum": ["wide", "medium", "close_up", "extreme_close", "overhead", "low_angle", "dutch"] },
+                    "movement": { "type": "string", "enum": ["static", "pan_left", "pan_right", "tilt_up", "tilt_down", "zoom_in", "zoom_out", "dolly", "track"] }
+                  }
+                },
+                "characters_present": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "controlnet_inputs": {
+                  "type": "object",
+                  "properties": {
+                    "pose_image": { "type": "string" },
+                    "depth_map": { "type": "string" },
+                    "edge_map": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "transition": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string", "enum": ["cut", "dissolve", "fade_black", "fade_white", "wipe", "match_cut"] },
+              "duration_frames": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "audio": {
+            "type": "object",
+            "properties": {
+              "dialogue": { "type": "string" },
+              "sfx_tags": { "type": "array", "items": { "type": "string" } },
+              "music_mood": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "output_config": {
+      "type": "object",
+      "required": ["fps", "resolution"],
+      "properties": {
+        "fps": { "type": "integer", "enum": [12, 15, 24, 30, 60] },
+        "resolution": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "integer" },
+            "height": { "type": "integer" }
+          },
+          "required": ["width", "height"]
+        },
+        "codec": { "type": "string", "default": "h264" },
+        "format": { "type": "string", "enum": ["mp4", "mov", "webm", "gif"] },
+        "interpolation": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "method": { "type": "string", "enum": ["rife", "film", "optical_flow"] },
+            "multiplier": { "type": "integer", "enum": [2, 4, 8] }
+          }
+        }
+      }
+    },
+    "comfyui_workflow": {
+      "type": "object",
+      "description": "ComfyUI workflow configuration",
+      "properties": {
+        "workflow_path": { "type": "string" },
+        "server_url": { "type": "string" },
+        "queue_priority": { "type": "integer", "minimum": 0, "maximum": 10 }
+      }
+    },
+    "touchdesigner_workflow": {
+      "type": "object",
+      "description": "TouchDesigner real-time rendering and LLM integration pipeline (via DotSimulate LOPs & StreamDiffusionTD)",
+      "properties": {
+        "project_tox_path": { "type": "string", "description": "Path to the main TouchDesigner .tox or .toe file" },
+        "stream_diffusion": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "version": { "type": "string", "default": "0.3.1" },
+            "model_type": { "type": "string", "enum": ["SDXL", "SD1.5"] },
+            "acceleration": { "type": "string", "enum": ["TensorRT", "CUDA"] }
+          }
+        },
+        "lops_integration": {
+          "type": "object",
+          "description": "Language Operators (LOPs) integration for multi-turn agentic control",
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "version": { "type": "string", "default": "0.3.0" },
+            "speech_to_text": { "type": "string", "enum": ["Whisper", "AssemblyAI", "Kyutai", "none"] }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

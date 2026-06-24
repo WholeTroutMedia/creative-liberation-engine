@@ -1,0 +1,55 @@
+{
+  "motion": {
+    "$description": "Motion system — enterprise-grade animation choreography",
+    "duration": {
+      "instant": { "$type": "duration", "$value": "0ms", "$description": "No animation — state snaps" },
+      "fast": { "$type": "duration", "$value": "120ms", "$description": "Micro-interactions — hover, focus, toggle" },
+      "normal": { "$type": "duration", "$value": "200ms", "$description": "Standard UI — menus, tooltips" },
+      "slow": { "$type": "duration", "$value": "350ms", "$description": "Panel transitions, drawers" },
+      "slower": { "$type": "duration", "$value": "500ms", "$description": "Page transitions, hero animations" },
+      "dramatic": { "$type": "duration", "$value": "800ms", "$description": "Cinematic — full-page reveals" },
+      "glacial": { "$type": "duration", "$value": "1200ms", "$description": "Background ambient — breathing, pulsing" }
+    },
+    "easing": {
+      "$description": "Cubic-bezier curves for natural motion feel",
+      "ease": { "$type": "cubicBezier", "$value": "cubic-bezier(0.25, 0.1, 0.25, 1)" },
+      "easeIn": { "$type": "cubicBezier", "$value": "cubic-bezier(0.42, 0, 1, 1)", "$description": "Accelerate — elements leaving" },
+      "easeOut": { "$type": "cubicBezier", "$value": "cubic-bezier(0, 0, 0.58, 1)", "$description": "Decelerate — elements entering" },
+      "easeInOut": { "$type": "cubicBezier", "$value": "cubic-bezier(0.42, 0, 0.58, 1)" },
+      "spring": { "$type": "cubicBezier", "$value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "$description": "Elastic overshoot — playful interactions" },
+      "bounce": { "$type": "cubicBezier", "$value": "cubic-bezier(0.22, 1.5, 0.36, 1)", "$description": "Bouncy — notifications, toasts" },
+      "snappy": { "$type": "cubicBezier", "$value": "cubic-bezier(0.2, 0, 0, 1)", "$description": "Snappy — Apple-style crisp motion" },
+      "smooth": { "$type": "cubicBezier", "$value": "cubic-bezier(0.4, 0, 0.2, 1)", "$description": "Material-style smooth" },
+      "linear": { "$type": "cubicBezier", "$value": "linear", "$description": "No easing — progress bars, loaders" }
+    },
+    "transition": {
+      "subtle": { "$type": "string", "$value": "120ms cubic-bezier(0.25, 0.1, 0.25, 1)", "$description": "Hover, focus ring" },
+      "default": { "$type": "string", "$value": "200ms cubic-bezier(0.25, 0.1, 0.25, 1)", "$description": "Standard UI" },
+      "enter": { "$type": "string", "$value": "350ms cubic-bezier(0, 0, 0.58, 1)", "$description": "Elements appearing" },
+      "exit": { "$type": "string", "$value": "120ms cubic-bezier(0.42, 0, 1, 1)", "$description": "Elements disappearing (faster)" },
+      "spring": { "$type": "string", "$value": "500ms cubic-bezier(0.34, 1.56, 0.64, 1)", "$description": "Elastic interactions" },
+      "dramatic": { "$type": "string", "$value": "800ms cubic-bezier(0.2, 0, 0, 1)", "$description": "Hero transitions" },
+      "color": { "$type": "string", "$value": "200ms cubic-bezier(0.25, 0.1, 0.25, 1)", "$description": "Color-only transitions" },
+      "transform": { "$type": "string", "$value": "350ms cubic-bezier(0.2, 0, 0, 1)", "$description": "Scale, translate, rotate" },
+      "opacity": { "$type": "string", "$value": "200ms linear", "$description": "Fade in/out" }
+    },
+    "animation": {
+      "fadein": { "$type": "string", "$value": "fadein 200ms cubic-bezier(0, 0, 0.58, 1) both" },
+      "fadeout": { "$type": "string", "$value": "fadeout 120ms cubic-bezier(0.42, 0, 1, 1) both" },
+      "slideup": { "$type": "string", "$value": "slideup 350ms cubic-bezier(0, 0, 0.58, 1) both" },
+      "slidedown": { "$type": "string", "$value": "slidedown 350ms cubic-bezier(0, 0, 0.58, 1) both" },
+      "scalein": { "$type": "string", "$value": "scalein 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both" },
+      "pulse": { "$type": "string", "$value": "pulse 2000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite" },
+      "spin": { "$type": "string", "$value": "spin 1000ms linear infinite" },
+      "shimmer": { "$type": "string", "$value": "shimmer 2000ms linear infinite", "$description": "Skeleton loading shimmer" },
+      "breathe": { "$type": "string", "$value": "breathe 4000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite", "$description": "Ambient glow breathing" },
+      "float": { "$type": "string", "$value": "float 6000ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite", "$description": "Floating element — parallax feel" }
+    },
+    "stagger": {
+      "$description": "Stagger delays for cascading list animations",
+      "fast": { "$type": "duration", "$value": "30ms" },
+      "normal": { "$type": "duration", "$value": "50ms" },
+      "slow": { "$type": "duration", "$value": "80ms" }
+    }
+  }
+}

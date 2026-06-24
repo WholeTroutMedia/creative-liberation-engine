@@ -1,0 +1,10 @@
+{
+  "name": "@cle/ai-codings-discipline-turn-thr",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0234",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

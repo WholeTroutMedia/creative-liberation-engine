@@ -1,0 +1,43 @@
+{
+  "wtm_cinema_vault": [
+    {
+      "id": "wtm_jaymee_lifestyle",
+      "name": "Jaymee Commercial Lifestyle",
+      "description": "Standard WTM commercial grade with bright, clean commercial tones.",
+      "type": "powergrade",
+      "target_gallery_name": "PowerGrades",
+      "target_still_name": "Jaymee"
+    },
+    {
+      "id": "wtm_barnstorm_standard",
+      "name": "Barnstorm Standard Event",
+      "description": "General purpose outdoor/indoor event look.",
+      "type": "powergrade",
+      "target_gallery_name": "PowerGrades",
+      "target_still_name": "Barnstorm"
+    },
+    {
+      "id": "wtm_barnstorm_rao_red",
+      "name": "Barnstorm RAO Red",
+      "description": "Specialized event grade compensating for intense red evening lighting.",
+      "type": "powergrade",
+      "target_gallery_name": "PowerGrades",
+      "target_still_name": "Barnstorm_RAO_Red"
+    },
+    {
+      "id": "wtm_barnstorm_hill_country",
+      "name": "Barnstorm Hill Country Night",
+      "description": "Specialized event grade for terrible/low lighting scenarios at night.",
+      "type": "powergrade",
+      "target_gallery_name": "PowerGrades",
+      "target_still_name": "Barnstorm_Hill_Country"
+    },
+    {
+      "id": "motionvfx_flare_01",
+      "name": "MotionVFX Cinematic Flare",
+      "description": "Standard optical lens flare overlay.",
+      "type": "macro",
+      "macro_name": "mFlare"
+    }
+  ]
+}

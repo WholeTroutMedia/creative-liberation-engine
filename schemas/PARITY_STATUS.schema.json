@@ -1,0 +1,112 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/parity-status.schema.json",
+    "title":  "V6 Capability Parity Status",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "generatedAt",
+                     "summary",
+                     "capabilities"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string"
+                                   },
+                       "generatedAt":  {
+                                           "type":  "string",
+                                           "format":  "date-time"
+                                       },
+                       "summary":  {
+                                       "type":  "object",
+                                       "additionalProperties":  false,
+                                       "required":  [
+                                                        "total",
+                                                        "native",
+                                                        "bridged",
+                                                        "better",
+                                                        "deprecated"
+                                                    ],
+                                       "properties":  {
+                                                          "total":  {
+                                                                        "type":  "integer",
+                                                                        "minimum":  1
+                                                                    },
+                                                          "native":  {
+                                                                         "type":  "integer",
+                                                                         "minimum":  0
+                                                                     },
+                                                          "bridged":  {
+                                                                          "type":  "integer",
+                                                                          "minimum":  0
+                                                                      },
+                                                          "better":  {
+                                                                         "type":  "integer",
+                                                                         "minimum":  0
+                                                                     },
+                                                          "deprecated":  {
+                                                                             "type":  "integer",
+                                                                             "minimum":  0
+                                                                         }
+                                                      }
+                                   },
+                       "capabilities":  {
+                                            "type":  "array",
+                                            "minItems":  1,
+                                            "items":  {
+                                                          "type":  "object",
+                                                          "additionalProperties":  false,
+                                                          "required":  [
+                                                                           "capabilityId",
+                                                                           "name",
+                                                                           "v5Source",
+                                                                           "status",
+                                                                           "deliveryMode",
+                                                                           "evidence"
+                                                                       ],
+                                                          "properties":  {
+                                                                             "capabilityId":  {
+                                                                                                  "type":  "string",
+                                                                                                  "pattern":  "^cap-[a-z0-9-]{2,100}$"
+                                                                                              },
+                                                                             "name":  {
+                                                                                          "type":  "string",
+                                                                                          "minLength":  2
+                                                                                      },
+                                                                             "v5Source":  {
+                                                                                              "type":  "string",
+                                                                                              "minLength":  3
+                                                                                          },
+                                                                             "status":  {
+                                                                                            "type":  "string",
+                                                                                            "enum":  [
+                                                                                                         "same",
+                                                                                                         "better",
+                                                                                                         "deprecated-by-design"
+                                                                                                     ]
+                                                                                        },
+                                                                             "deliveryMode":  {
+                                                                                                  "type":  "string",
+                                                                                                  "enum":  [
+                                                                                                               "native-v6",
+                                                                                                               "v5-bridge"
+                                                                                                           ]
+                                                                                              },
+                                                                             "evidence":  {
+                                                                                              "type":  "array",
+                                                                                              "minItems":  1,
+                                                                                              "items":  {
+                                                                                                            "type":  "string",
+                                                                                                            "minLength":  3
+                                                                                                        }
+                                                                                          },
+                                                                             "notes":  {
+                                                                                           "type":  "string"
+                                                                                       }
+                                                                         }
+                                                      }
+                                        }
+                   },
+    "description":  "V5 to V6 capability parity status matrix."
+}

@@ -1,0 +1,136 @@
+name: 💤 Memory Consolidation (Sleep Cycle)
+
+# Mimics sleep consolidation: ephemeral → long-term memory
+# Runs nightly to synthesize knowledge and optimize storage
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # 4 AM daily (system "sleep")
+  workflow_dispatch:
+    inputs:
+      age_threshold:
+        description: 'Memory age threshold (hours)'
+        required: false
+        default: '24'
+      importance_threshold:
+        description: 'Importance threshold (0.0-1.0)'
+        required: false
+        default: '0.7'
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  consolidate-memory:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: 📦 Install Dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: 📁 Create Required Directories
+        run: |
+          mkdir -p consolidation
+          mkdir -p SESSION_LOGS
+          mkdir -p docs
+      
+      - name: 🧠 Run Hippocampus Consolidation
+        id: consolidate
+        run: |
+          python cle_engine/memory/consolidation_pipeline.py \
+            --source cle_engine/memory/episodic.py \
+            --target cle_engine/memory/neocortex.py \
+            --age-threshold ${{ github.event.inputs.age_threshold || 24 }}h \
+            --importance-threshold ${{ github.event.inputs.importance_threshold || 0.7 }} \
+            --output consolidation/consolidated_memories.json
+          
+          CONSOLIDATED=$(python -c "import json; print(len(json.load(open('consolidation/consolidated_memories.json'))['memories']))")
+          echo "consolidated=$CONSOLIDATED" >> $GITHUB_OUTPUT
+      
+      - name: 🔄 Update Pattern Accumulator
+        run: |
+          python cle_engine/memory/pattern_accumulator.py \
+            --consolidated consolidation/consolidated_memories.json \
+            --update-patterns \
+            --output consolidation/updated_patterns.json
+      
+      - name: 🗑️ Prune Low-Priority Memories
+        id: prune
+        run: |
+          python scripts/automation/memory_pruning.py \
+            --score-threshold 0.3 \
+            --age-threshold 30d \
+            --preserve-constitutional \
+            --output consolidation/pruning_report.json
+          
+          PRUNED=$(python -c "import json; print(json.load(open('consolidation/pruning_report.json'))['pruned_count'])")
+          echo "pruned=$PRUNED" >> $GITHUB_OUTPUT
+      
+      - name: 📊 Generate Consolidation Report
+        run: |
+          python scripts/automation/consolidation_report.py \
+            --consolidated consolidation/consolidated_memories.json \
+            --pruned consolidation/pruning_report.json \
+            --patterns consolidation/updated_patterns.json \
+            --output SESSION_LOGS/consolidation_$(date +%Y%m%d).md
+      
+      - name: 🧹 Optimize Memory Storage
+        run: |
+          python scripts/automation/optimize_memory_storage.py \
+            --episodic cle_engine/memory/episodic.py \
+            --neocortex cle_engine/memory/neocortex.py \
+            --compress \
+            --deduplicate
+      
+      - name: 📈 Calculate Memory Metrics
+        run: |
+          python scripts/automation/calculate_memory_metrics.py \
+            --before consolidation/pre_consolidation_stats.json \
+            --after consolidation/post_consolidation_stats.json \
+            --output consolidation/metrics.json
+      
+      - name: 💾 Commit Memory Updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "💤 Nightly memory consolidation: ${{ steps.consolidate.outputs.consolidated }} consolidated, ${{ steps.prune.outputs.pruned }} pruned"
+          file_pattern: 'cle_engine/memory/ SESSION_LOGS/consolidation_*.md consolidation/'
+          commit_user_name: 'Memory Consolidator'
+          commit_user_email: 'memory@cle-engine.ai'
+      
+      - name: 📊 Update Memory Dashboard
+        run: |
+          python scripts/automation/update_memory_dashboard.py \
+            --metrics consolidation/metrics.json \
+            --dashboard docs/MEMORY_DASHBOARD.md
+      
+      - name: 💾 Commit Dashboard
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📊 Update memory dashboard"
+          file_pattern: 'docs/MEMORY_DASHBOARD.md'
+          commit_user_name: 'Memory Consolidator'
+          commit_user_email: 'memory@cle-engine.ai'
+      
+      - name: 🔔 Alert on Storage Issues
+        if: steps.prune.outputs.pruned < 10 && steps.consolidate.outputs.consolidated > 1000
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ Memory Storage Alert: Low Pruning Rate',
+              body: `## ⚠️ Memory Storage Warning\n\n**Consolidated**: ${{ steps.consolidate.outputs.consolidated }}\n**Pruned**: ${{ steps.prune.outputs.pruned }}\n\nConsider adjusting importance thresholds or reviewing memory retention policies.`,
+              labels: ['memory', 'storage', 'optimization']
+            });

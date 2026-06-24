@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "helix": {
+      "type": "string",
+      "const": "UNASSIGNED"
+    },
+    "status": {
+      "type": "string",
+      "const": "IMPLEMENTING"
+    }
+  }
+}

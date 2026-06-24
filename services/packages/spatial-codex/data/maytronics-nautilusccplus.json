@@ -1,0 +1,33 @@
+{
+  "deviceClass": "Robotic Pool Cleaner",
+  "manufacturer": "Maytronics",
+  "modelName": "Nautilus CC Plus",
+  "primaryComponents": [
+    "Main Chassis/Body (Durable plastic housing)",
+    "Drive Motors (2, sealed DC motors)",
+    "Drive Tracks/Belts (Continuous rubber/PVC tracks)",
+    "Pump Motor (1, high-efficiency sealed motor)",
+    "Impeller (Within pump housing for suction)",
+    "Filter Baskets/Cartridges (Removable, fine-mesh for debris capture)",
+    "Scrubbing Brushes (Cylindrical, PVC/rubber, for surface agitation)",
+    "Floating Power Cable (Kink-resistant, with swivel mechanism)",
+    "External Power Supply (Transformer/Controller, converts AC to low-voltage DC)",
+    "Internal Control Board (PCB with microprocessor, motor drivers, sensor interfaces)",
+    "Navigation Sensors (e.g., obstacle detection, wall climbing logic)",
+    "Water Intake Ports (On underside for debris suction)",
+    "Water Outlets/Jets (For expelling filtered water and propulsion assist)",
+    "Handle (Integrated for retrieval and transport)",
+    "Buoyancy Elements (Internal components to maintain orientation)"
+  ],
+  "operationalLogic": "The Dolphin Nautilus CC Plus operates by connecting to an external power supply via a floating cable and submerging into the pool. It utilizes two independent drive motors to power continuous rubber tracks, enabling movement across the pool floor, walls, and steps. As it moves, integrated scrubbing brushes rotate to dislodge dirt and debris from surfaces. Simultaneously, a powerful pump motor drives an impeller, creating suction that draws water and suspended particles through intake ports and into fine-mesh filter baskets for purification. Clean water is then expelled back into the pool through strategically placed outlets. The internal control board guides the robot's navigation through pre-programmed patterns and sensor feedback, ensuring comprehensive cleaning of the entire pool surface, including the waterline.",
+  "maintenanceNodes": [
+    "Filter Baskets/Cartridges (Requires regular rinsing and eventual replacement)",
+    "Scrubbing Brushes (Requires inspection for wear and eventual replacement)",
+    "Drive Tracks/Belts (Requires inspection for wear, cracks, and eventual replacement)",
+    "Impeller & Pump Intake (Requires periodic clearing of debris/blockages)",
+    "Floating Power Cable (Requires inspection for damage or cuts)",
+    "Swivel Mechanism (Requires occasional inspection to ensure tangle-free operation)",
+    "Water Outlets (Requires periodic checking for blockages)",
+    "External Power Supply (Requires proper storage and protection from elements)"
+  ]
+}

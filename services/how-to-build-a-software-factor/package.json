@@ -1,0 +1,10 @@
+{
+  "name": "@cle/how-to-build-a-software-factor",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0268_how-to-build-a-software-factory-with-cla",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

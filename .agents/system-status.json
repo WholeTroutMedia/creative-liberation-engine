@@ -1,0 +1,27 @@
+﻿{
+    "cortex":  {
+                   "STRATA":  "active",
+                   "PRISM":  "active",
+                   "LOGD":  "active"
+               },
+    "nas":  {
+                "ip":  "127.0.0.1",
+                "online":  true
+            },
+    "genkit":  {
+                   "endpoint":  "http://127.0.0.1:4100",
+                   "online":  true
+               },
+    "timestamp":  "2026-05-20T10:04:26.9174269-04:00",
+    "system":  {
+                   "user":  "jahar",
+                   "hostname":  "OFFICE"
+               },
+    "dispatch":  {
+                     "agents":  0,
+                     "queued":  0,
+                     "done":  0,
+                     "active":  0,
+                     "online":  false
+                 }
+}

@@ -1,0 +1,62 @@
+{
+    "manifest_version": 3,
+    "name": "CLE Agent",
+    "short_name": "CLE",
+    "version": "1.0.0",
+    "description": "Creative Liberation Engine browser agent — connects your active tab to the dispatch mesh, runs ALFRED intelligence in any context, and feeds live browsing signals to the spatial web layer.",
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "storage",
+        "tabs",
+        "contextMenus",
+        "alarms"
+    ],
+    "host_permissions": [
+        "http://localhost:5050/*",
+        "https://*.wholetrout.media/*",
+        "https://*.wholettroutmedia.com/*",
+        "https://*.justinaharoni.com/*",
+        "https://*.run.app/*"
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "CLE Agent",
+        "default_icon": {
+            "16": "icons/cle-16.png",
+            "48": "icons/cle-48.png",
+            "128": "icons/cle-128.png"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "icons": {
+        "16": "icons/cle-16.png",
+        "48": "icons/cle-48.png",
+        "128": "icons/cle-128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "*.js",
+                "*.css"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

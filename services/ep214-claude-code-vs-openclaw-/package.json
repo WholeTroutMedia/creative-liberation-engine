@@ -1,0 +1,10 @@
+{
+  "name": "@cle/ep214-claude-code-vs-openclaw-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0172",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

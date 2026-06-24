@@ -1,0 +1,10 @@
+{
+  "name": "@cle/why-massive-ai-models-actually",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0162",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

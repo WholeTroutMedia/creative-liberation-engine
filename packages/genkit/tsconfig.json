@@ -1,0 +1,27 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "rootDir": "src",
+        "composite": true,
+        "incremental": true,
+        "tsBuildInfoFile": ".tsbuildinfo",
+        "declarationDir": "dist",
+        "sourceMap": false,
+        "declarationMap": false,
+        "strict": false,
+        "noImplicitAny": false,
+        "lib": ["ES2022", "DOM", "DOM.Iterable"],
+        "paths": {
+            "@cle/spatial-intelligence/*": ["../spatial-intelligence/dist/*"]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

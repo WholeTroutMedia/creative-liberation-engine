@@ -1,0 +1,21 @@
+src/flows/conversationalAveri.ts(91,35): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/flows/rem-consolidation.ts(74,32): error TS2339: Property 'agentName' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(74,54): error TS2339: Property 'task' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(74,74): error TS2339: Property 'outcome' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(136,34): error TS2339: Property 'sessionId' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(136,54): error TS2339: Property 'agentName' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(192,33): error TS2353: Object literal may only specify known properties, and 'outcome' does not exist in type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(193,69): error TS2339: Property 'task' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(227,119): error TS2339: Property 'task' does not exist on type 'TieredMemoryEntry'.
+src/flows/rem-consolidation.ts(233,116): error TS2339: Property 'task' does not exist on type 'TieredMemoryEntry'.
+src/server.ts(718,79): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/server.ts(725,39): error TS2339: Property 'metadatas' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(42,20): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(65,77): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(66,20): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(123,40): error TS2339: Property 'documents' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(127,37): error TS2339: Property 'ids' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(128,43): error TS2339: Property 'distances' does not exist on type 'unknown'.
+src/tools/chromadb-retriever.ts(131,37): error TS2339: Property 'metadatas' does not exist on type 'unknown'.
+src/tools/toolbox-tools.ts(210,24): error TS2352: Conversion of type 'JWTDecodeResult' to type 'Record<string, unknown>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Index signature for type 'string' is missing in type 'JWTDecodeResult'.

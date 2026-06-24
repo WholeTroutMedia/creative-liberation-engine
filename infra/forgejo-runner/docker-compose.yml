@@ -1,0 +1,34 @@
+version: '3.9'
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Sovereign NAS Runner — Forgejo Actions CI/CD
+# Mounts docker socket + injects config.yml so job containers can call docker
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+  forgejo-runner:
+    image: gitea/act_runner:latest
+    container_name: forgejo-runner
+    restart: unless-stopped
+    user: root
+    # Host network: runner and all job containers share the NAS host network stack.
+    # This eliminates per-job Docker subnet creation and fixes IPv4 pool exhaustion.
+    network_mode: host
+    volumes:
+      # Docker socket — lets the runner and job containers call docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Runner data — stores registration token & state
+      - runner-data:/data
+      # Config — passes docker socket into every spawned job container
+      - ./config.yml:/data/config.yml:ro
+    environment:
+      # IMPORTANT: gitea/act_runner reads GITEA_* prefix ONLY.
+      # FORGEJO_* vars are silently ignored — using them caused a 24h outage (2026-03-16).
+      GITEA_INSTANCE_URL: http://127.0.0.1:3000
+      GITEA_RUNNER_NAME: Sovereign-NAS-Runner
+      CONFIG_FILE: /data/config.yml
+      # To regenerate token: POST /api/v1/repos/WholeTroutMedia/creative-liberation-engine-v5/actions/runners/registration-token
+      GITEA_RUNNER_REGISTRATION_TOKEN: p8nmrme5CtRkcLLDEQNJY3VNyRP1siQJVU69Jmbca
+
+volumes:
+  runner-data:

@@ -1,0 +1,10 @@
+{
+  "name": "@cle/96-of-it-pros-use-ai-now-their",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0233",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

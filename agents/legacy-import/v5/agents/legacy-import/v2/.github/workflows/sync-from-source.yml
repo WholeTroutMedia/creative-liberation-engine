@@ -1,0 +1,92 @@
+name: Sync Clean Files from Source
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type SYNC to confirm'
+        required: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'SYNC'
+    
+    steps:
+      - name: Checkout creative-liberation-engine-v2
+        uses: actions/checkout@v4
+        with:
+          path: target
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Clone source repo (private - using PAT)
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/WholeTroutMedia/agentic-studio-creative-liberation-engine.git source
+
+      - name: Copy CORE folders
+        run: |
+          cp -r source/cle_engine target/ 2>/dev/null || true
+          cp -r source/agents target/ 2>/dev/null || true
+          cp -r source/backend target/ 2>/dev/null || true
+          cp -r source/frontend target/ 2>/dev/null || true
+          cp -r source/core target/ 2>/dev/null || true
+
+      - name: Copy CONFIG folders
+        run: |
+          cp -r source/.claude target/ 2>/dev/null || true
+          cp -r source/.husky target/ 2>/dev/null || true
+          cp -r source/.devcontainer target/ 2>/dev/null || true
+
+      - name: Copy DOCS folders
+        run: |
+          cp -r source/docs target/ 2>/dev/null || true
+          cp -r source/governance target/ 2>/dev/null || true
+          cp -r source/guides target/ 2>/dev/null || true
+
+      - name: Copy INFRASTRUCTURE folders
+        run: |
+          cp -r source/orchestration target/ 2>/dev/null || true
+          cp -r source/automation target/ 2>/dev/null || true
+          cp -r source/integrations target/ 2>/dev/null || true
+          cp -r source/api target/ 2>/dev/null || true
+          cp -r source/database target/ 2>/dev/null || true
+          cp -r source/tests target/ 2>/dev/null || true
+
+      - name: Copy SYSTEM folders
+        run: |
+          cp -r source/system target/ 2>/dev/null || true
+          cp -r source/prompts target/ 2>/dev/null || true
+          cp -r source/knowledge-base target/ 2>/dev/null || true
+
+      - name: Copy AGENT SYSTEM folders
+        run: |
+          cp -r source/agent-workspaces target/ 2>/dev/null || true
+          cp -r source/LANGUAGE target/ 2>/dev/null || true
+          cp -r source/MATH target/ 2>/dev/null || true
+
+      - name: Copy DESIGN folders
+        run: |
+          cp -r source/design target/ 2>/dev/null || true
+          cp -r source/design-system target/ 2>/dev/null || true
+          cp -r source/design-library target/ 2>/dev/null || true
+
+      - name: Copy ROOT config files
+        run: |
+          cp source/package.json target/ 2>/dev/null || true
+          cp source/package-lock.json target/ 2>/dev/null || true
+          cp source/tsconfig.json target/ 2>/dev/null || true
+          cp source/.gitignore target/ 2>/dev/null || true
+          cp source/.nvmrc target/ 2>/dev/null || true
+          cp source/.env.example target/ 2>/dev/null || true
+          cp source/Makefile target/ 2>/dev/null || true
+          cp source/docker-compose.yml target/ 2>/dev/null || true
+          cp source/CLAUDE.md target/ 2>/dev/null || true
+
+      - name: Commit and push changes
+        run: |
+          cd target
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet || git commit -m "Sync clean files from agentic-studio-creative-liberation-engine"
+          git push

@@ -1,0 +1,74 @@
+{
+  "version": "v6.0",
+  "service": "google-workspace-mesh-bridge",
+  "routes": [
+    {
+      "routeId": "route_google_workspace_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "google-workspace-mesh-bridge",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 2000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_google_workspace_mcp",
+      "path": "/api/mcp",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "google-workspace-mesh-bridge",
+      "upstreamPath": "/api/mcp",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "toolName"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_google_workspace_mcp_sse",
+      "path": "/mcp/sse",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "google-workspace-mesh-bridge",
+      "upstreamPath": "/mcp/sse",
+      "authPolicy": "internal_only",
+      "timeoutMs": 60000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_google_workspace_mcp_messages",
+      "path": "/mcp/messages",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "google-workspace-mesh-bridge",
+      "upstreamPath": "/mcp/messages",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

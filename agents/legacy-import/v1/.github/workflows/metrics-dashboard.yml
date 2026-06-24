@@ -1,0 +1,39 @@
+name: Update Metrics Dashboard
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update-metrics:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/metrics-dashboard
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install PyGithub google-cloud-run
+      
+      - name: Generate metrics dashboard
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        run: |
+          python scripts/collect_metrics.py
+      
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'COMET Metrics Bot'
+          git config --global user.email 'comet@cle-engine.ai'
+          git add METRICS.md
+          git diff --quiet && git diff --staged --quiet || git commit -m "📊 Update metrics dashboard"
+          git push

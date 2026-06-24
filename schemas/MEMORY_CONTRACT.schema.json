@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/memory-contract.schema.json",
+  "title": "V6 Memory Contract",
+  "description": "Canonical memory record schema used by SCRIBE, VAULT, KI, and Wiki projections.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "memoryId",
+    "kind",
+    "title",
+    "summary",
+    "source",
+    "provenance",
+    "confidence",
+    "retentionClass",
+    "tags",
+    "createdAt",
+    "updatedAt",
+    "lifecycleState"
+  ],
+  "properties": {
+    "memoryId": {
+      "type": "string",
+      "pattern": "^mem_[a-z0-9_\\-]{6,80}$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "decision",
+        "pattern",
+        "session",
+        "artifact",
+        "incident",
+        "experiment",
+        "workflow",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 4000
+    },
+    "bodyRef": {
+      "type": "string",
+      "maxLength": 800
+    },
+    "source": {
+      "type": "string",
+      "enum": ["SCRIBE", "VAULT", "KI", "HANDOFF", "DISPATCH", "MANUAL"]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recordedBy", "recordedAt"],
+      "properties": {
+        "recordedBy": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "recordedAt": { "type": "string", "format": "date-time" },
+        "conversationId": { "type": "string", "maxLength": 120 },
+        "artifactRefs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 3, "maxLength": 500 }
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "retentionClass": {
+      "type": "string",
+      "enum": ["ephemeral", "working", "durable", "canonical", "archived"]
+    },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_\\-]{2,64}$"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "targetId"],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["depends_on", "supersedes", "duplicates", "relates_to", "derived_from"]
+          },
+          "targetId": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 120
+          }
+        }
+      },
+      "default": []
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lifecycleState": {
+      "type": "string",
+      "enum": ["draft", "active", "superseded", "deprecated", "archived"]
+    }
+  }
+}

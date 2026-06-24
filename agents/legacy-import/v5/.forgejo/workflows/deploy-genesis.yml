@@ -1,0 +1,198 @@
+name: Deploy GENESIS Stack
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to NAS
+    # CRITICAL: must run on host runner — direct NAS shell access to Docker daemon
+    runs-on: host
+    env:
+      DOCKER_API_VERSION: "1.43"
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────────
+      # Uses fetch+reset pattern instead of git clone — handles non-empty dirs
+      # on re-runs without failing with "destination path '.' already exists"
+      - name: Checkout
+        run: |
+          REPO_DIR="/opt/cle/creative-liberation-engine-v5"
+          mkdir -p "$REPO_DIR"
+          cd "$REPO_DIR"
+
+          if [ -d ".git" ]; then
+            echo "→ Existing repo found, fetching latest..."
+            git remote set-url origin "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git"
+            git fetch --depth=1 origin main
+            git reset --hard origin/main
+            git clean -fd
+          else
+            echo "→ Fresh clone..."
+            git clone --depth=1 "http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git" "$REPO_DIR"
+          fi
+
+          echo "✓ At commit: $(git log -1 --oneline)"
+
+      # ── 2. Sanity-check Docker ─────────────────────────────────────────────
+      - name: Verify Docker daemon
+        run: |
+          docker info --format '{{.ServerVersion}}' && echo "✓ Docker daemon reachable"
+          docker compose version && echo "✓ Docker Compose ready"
+
+      # ── 3. Clear port conflicts ────────────────────────────────────────────
+      - name: Stop conflicting standalone containers
+        run: |
+          for PORT in 4000 4100 5050; do
+            CIDS=$(docker ps -q --filter "publish=$PORT" 2>/dev/null || true)
+            if [ -n "$CIDS" ]; then
+              docker stop $CIDS 2>/dev/null || true
+              echo "✓ Stopped containers on port $PORT"
+            fi
+          done
+          echo "✓ Port conflicts cleared"
+
+      # ── 4. Write .env from secrets ─────────────────────────────────────────
+      - name: Write .env
+        env:
+          GEMINI_API_KEY:         ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY:         ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY:         ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY:      ${{ secrets.ANTHROPIC_API_KEY }}
+          PERPLEXITY_API_KEY:     ${{ secrets.PERPLEXITY_API_KEY }}
+          POSTGRES_PASSWORD:      ${{ secrets.POSTGRES_PASSWORD }}
+          REDIS_PASSWORD:         ${{ secrets.REDIS_PASSWORD }}
+          STRIPE_SECRET_KEY:      ${{ secrets.STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET:  ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+          SCRIBE_WEBHOOK_SECRET:  ${{ secrets.SCRIBE_WEBHOOK_SECRET }}
+          LINEAR_API_KEY:         ${{ secrets.LINEAR_API_KEY }}
+          SLACK_BOT_TOKEN:        ${{ secrets.SLACK_BOT_TOKEN }}
+          FIGMA_ACCESS_TOKEN:     ${{ secrets.FIGMA_ACCESS_TOKEN }}
+          FAL_KEY:                ${{ secrets.FAL_KEY }}
+          ELEVENLABS_API_KEY:     ${{ secrets.ELEVENLABS_API_KEY }}
+          RUNWAY_API_SECRET:      ${{ secrets.RUNWAY_API_SECRET }}
+          HASS_TOKEN:             ${{ secrets.HASS_TOKEN }}
+        run: |
+          cat > .env << 'ENVEOF'
+          GEMINI_API_KEY=${GEMINI_API_KEY}
+          GOOGLE_API_KEY=${GEMINI_API_KEY}
+          OPENAI_API_KEY=${OPENAI_API_KEY}
+          ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+          PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+          POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+          REDIS_PASSWORD=${REDIS_PASSWORD}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+          SCRIBE_WEBHOOK_SECRET=${SCRIBE_WEBHOOK_SECRET}
+          LINEAR_API_KEY=${LINEAR_API_KEY}
+          SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+          FIGMA_ACCESS_TOKEN=${FIGMA_ACCESS_TOKEN}
+          FAL_KEY=${FAL_KEY}
+          ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+          RUNWAY_API_SECRET=${RUNWAY_API_SECRET}
+          HASS_TOKEN=${HASS_TOKEN}
+          FORGEJO_DOMAIN=127.0.0.1
+          FORGEJO_URL=http://127.0.0.1:3000
+          GOOGLE_CLOUD_PROJECT=creative-liberation-engine
+          VERTEX_LOCATION=us-central1
+          GOOGLE_OAUTH_CLIENT_ID=759644855630-lbqb213qdpnf4knsq9m89qfp0jvd43qd.apps.googleusercontent.com
+          GOOGLE_OAUTH_CLIENT_SECRET=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
+          USER_GOOGLE_EMAIL=inquiries@creativeliberationengine.org
+          ENVEOF
+          echo "✓ .env written"
+
+      # ── 5. Ensure Docker volumes exist ─────────────────────────────────────
+      - name: Ensure Docker volumes
+        run: |
+          for VOL in genesis-redis-data genesis-dispatch-data genesis-nas-assets \
+                     genesis-postgres-data genesis-chroma-data genesis-comet-memory; do
+            docker volume create "$VOL" 2>/dev/null || true
+          done
+          echo "✓ Volumes ready"
+      # ── 5b. Downgrade Docker CLI to 24.x for NAS daemon compatibility ───────
+      - name: Downgrade Docker CLI
+        run: |
+          echo "⏬ Downgrading Docker CLI to 24.0.0 to support NAS API 1.43..."
+          curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-24.0.0.tgz
+          tar xzvf docker-24.0.0.tgz
+          sudo cp docker/docker /usr/local/bin/ || true
+          sudo cp docker/docker /usr/bin/ || true
+          docker version || true
+          curl -SL https://github.com/docker/compose/releases/download/v2.24.0/docker-compose-linux-x86_64 -o /tmp/docker-compose
+          sudo chmod +x /tmp/docker-compose
+          sudo cp /tmp/docker-compose /usr/local/bin/docker-compose || true
+          sudo cp /tmp/docker-compose /usr/local/lib/docker/cli-plugins/docker-compose || true
+          sudo cp /tmp/docker-compose /usr/libexec/docker/cli-plugins/docker-compose || true
+          echo "✅ Docker Compose versions:"
+          docker-compose version || true
+          docker compose version || true
+
+      # ── DEBUG: Test Docker Client ───────────────────────────────────────────
+      - name: Debug Docker
+        run: |
+          docker version || true
+          docker compose version || true
+          DOCKER_API_VERSION=1.43 docker info || true
+
+      # ── 6. Pull pre-built images (best-effort) ─────────────────────────────
+      - name: Pull latest images
+        run: |
+          docker compose -f docker-compose.genesis.yml pull --ignore-pull-failures || true
+          echo "✓ Pull complete"
+
+      # ── 7. Build + Deploy ───────────────────────────────────────────────────
+      # COMPOSE_DOCKER_CLI_BUILD=1 forces legacy builder for large monorepo contexts
+      # --remove-orphans cleans up services removed from the compose file
+      - name: Deploy GENESIS stack
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: "0"
+          DOCKER_BUILDKIT: "1"
+        run: |
+          docker compose -f docker-compose.genesis.yml up -d \
+            --build \
+            --remove-orphans \
+            --timeout 300
+          echo "✓ GENESIS stack deployed"
+
+      # ── 8. Wait for core services ──────────────────────────────────────────
+      - name: Wait for services
+        run: |
+          echo "Waiting 60s for services to initialize..."
+          sleep 60
+
+      # ── 9. Health check ────────────────────────────────────────────────────
+      - name: Health check GENESIS services
+        run: |
+          echo "=== GENESIS Service Health ==="
+          check() { curl -sf "$1" >/dev/null 2>&1 && echo "✓ $2" || echo "✗ $2 (non-fatal)"; }
+
+          # Critical path
+          check http://localhost:5050/health   "Dispatch    :5050"
+          check http://localhost:4000/health   "Genkit      :4000"
+          check http://localhost:5050/health   "Dispatch    :5050"
+
+          # Extended services
+          check http://localhost:5100/health   "Relay-MCP   :5100"
+          check http://localhost:9000/health   "Zero-Day    :9000"
+          check http://localhost:6000/health   "Ghost       :6000"
+          check http://localhost:3080/health   "Gateway     :3080"
+          check http://localhost:4006/health   "Campaign    :4006"
+          check http://localhost:7100/health   "NAVD       :7100"
+          check http://localhost:9100/health   "Scribe      :9100"
+          check http://localhost:4350/health   "Wearable    :4350"
+          check "http://localhost:8000/api/v2/heartbeat" "ChromaDB  :8000"
+
+          echo ""
+          echo "=== Running Containers ==="
+          docker compose -f docker-compose.genesis.yml ps --format "table {{.Name}}\t{{.Status}}\t{{.Ports}}"
+
+          echo ""
+          echo "=== GENESIS deploy complete ✓ ==="
+
+      # ── 10. Prune stale images ─────────────────────────────────────────────
+      - name: Prune stale images
+        run: |
+          docker image prune -f --filter "until=24h" || true
+          echo "✓ Image prune complete"

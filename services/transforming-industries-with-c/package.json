@@ -1,0 +1,10 @@
+{
+  "name": "@cle/transforming-industries-with-c",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0263_transforming-industries-with-conversatio",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

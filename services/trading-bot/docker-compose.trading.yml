@@ -1,0 +1,28 @@
+services:
+  trading-bot:
+    build:
+      context: ./services/trading-bot
+      dockerfile: Dockerfile
+    container_name: cle-trading-bot
+    restart: unless-stopped
+    env_file:
+      - ./services/trading-bot/.env
+    volumes:
+      - trading-bot-logs:/var/log/trading-bot
+    networks:
+      - cle-network
+    labels:
+      - "com.cle.service=trading-bot"
+      - "com.cle.version=1.0.0"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  trading-bot-logs:
+
+networks:
+  cle-network:
+    external: true

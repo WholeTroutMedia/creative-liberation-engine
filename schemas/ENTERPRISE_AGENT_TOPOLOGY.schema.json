@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/enterprise-agent-topology.schema.json",
+  "title": "V6 Enterprise Agent Topology",
+  "description": "Defines self-organizing agentic teams and their governance rules for the Agentic Enterprise OS Foundation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "topologyId", "governanceLevel", "nodes", "edges"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v[0-9]+(\\.[0-9]+)*$"
+    },
+    "topologyId": {
+      "type": "string",
+      "minLength": 3
+    },
+    "governanceLevel": {
+      "type": "string",
+      "enum": ["autonomous", "human_in_the_loop", "strict_audit"]
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["agentId", "role"],
+        "properties": {
+          "agentId": {
+            "type": "string",
+            "pattern": "^[a-z0-9\\-]{2,80}$"
+          },
+          "role": {
+            "type": "string"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sourceAgent", "targetAgent", "communicationProtocol"],
+        "properties": {
+          "sourceAgent": {
+            "type": "string"
+          },
+          "targetAgent": {
+            "type": "string"
+          },
+          "communicationProtocol": {
+            "type": "string",
+            "enum": ["sync", "async", "event_stream"]
+          }
+        }
+      }
+    }
+  }
+}

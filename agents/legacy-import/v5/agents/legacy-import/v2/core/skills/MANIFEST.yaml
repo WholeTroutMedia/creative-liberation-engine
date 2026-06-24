@@ -1,0 +1,142 @@
+# Neural Armory Registry
+# Defines all available LoRA adapters and their context triggers
+
+apiVersion: wholetrout.network/v1
+kind: SkillManifest
+
+metadata:
+  name: neural-armory
+  description: "Registry of all trained skill cartridges (LoRA adapters)"
+  created: "2026-01-17T05:58:00Z"
+
+system_default: base_llama3
+
+dynamic_injection:
+  enabled: true
+  confidence_threshold: 0.85
+  description: "Automatically inject adapters when context matches"
+
+base_models:
+  base_llama3:
+    model_name: unsloth/llama-3-8b-bnb-4bit
+    provider: ollama
+    quantization: 4bit
+    context_window: 8192
+    description: "Base foundation model for all adapters"
+
+available_cartridges:
+  - skill_id: founder_voice
+    display_name: "Founder Voice Adapter"
+    adapter_path: core/skills/adapters/lora_founder_voice_v1.gguf
+    base_model: base_llama3
+    version: "1.0.0"
+    trained_date: "2026-01-17"
+    
+    context_trigger:
+      intention: COMMUNICATION
+      confidence_threshold: 0.85
+      keywords:
+        - email
+        - marketing
+        - tweet
+        - response
+        - outreach
+      
+      description: "Artist's writing style for emails, marketing, and social media"
+    
+    metadata:
+      training_dataset: core/skills/forge/datasets/justin_emails.jsonl
+      training_steps: 1000
+      lora_rank: 16
+      lora_alpha: 32
+      performance_metrics:
+        perplexity: 2.34
+        accuracy: 0.89
+  
+  - skill_id: react_architect
+    display_name: "React Architecture Expert"
+    adapter_path: core/skills/adapters/lora_react_architect_v1.gguf
+    base_model: base_llama3
+    version: "1.0.0"
+    trained_date: null  # Not yet trained
+    
+    context_trigger:
+      intention: CODING
+      confidence_threshold: 0.85
+      keywords:
+        - react
+        - component
+        - hook
+        - jsx
+        - typescript
+      
+      description: "Expert in React best practices, hooks, and component design"
+    
+    metadata:
+      training_dataset: core/skills/forge/datasets/react_examples.jsonl
+      status: PENDING_TRAINING
+  
+  - skill_id: api_designer
+    display_name: "RESTful API Designer"
+    adapter_path: core/skills/adapters/lora_api_designer_v1.gguf
+    base_model: base_llama3
+    version: "1.0.0"
+    trained_date: null
+    
+    context_trigger:
+      intention: CODING
+      confidence_threshold: 0.85
+      keywords:
+        - api
+        - rest
+        - endpoint
+        - fastapi
+        - express
+      
+      description: "Designs RESTful APIs with best practices"
+    
+    metadata:
+      training_dataset: core/skills/forge/datasets/api_patterns.jsonl
+      status: PENDING_TRAINING
+
+skill_forge_queue:
+  description: "Adapters queued for training"
+  
+  - recipe_path: core/skills/forge/recipes/recipe_founder_voice.yaml
+    priority: HIGH
+    estimated_training_time_minutes: 30
+    estimated_cost_usd: 2.50
+  
+  - recipe_path: core/skills/forge/recipes/recipe_react_architect.yaml
+    priority: MEDIUM
+    estimated_training_time_minutes: 60
+    estimated_cost_usd: 5.00
+
+usage_policies:
+  auto_select: true
+  allow_fallback_to_base: true
+  
+  selection_strategy:
+    - match_intention_and_keywords
+    - check_confidence_threshold
+    - verify_adapter_available
+    - inject_or_fallback
+  
+  performance_monitoring:
+    track_metrics:
+      - adapter_hit_rate
+      - quality_improvement_vs_base
+      - latency_overhead
+    
+    auto_disable_if:
+      quality_degradation: true
+      latency_overhead_ms: 500
+
+marketplace:
+  enabled: false  # Future feature
+  allow_community_submissions: false
+  revenue_share_percentage: 30
+
+version_info:
+  manifest_version: "1.0.0"
+  last_updated: "2026-01-17T05:58:00Z"

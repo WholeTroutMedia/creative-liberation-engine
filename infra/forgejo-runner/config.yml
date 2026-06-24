@@ -1,0 +1,38 @@
+log:
+  level: info
+
+runner:
+  capacity: 5
+  # Labels control what runs-on: values this runner accepts.
+  # CRITICAL: self-hosted must be here — most NAS-targeting workflows use it.
+  # Map each label to the act container image to use for that label.
+  labels:
+    - "self-hosted:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+    - "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+    - "ubuntu-22.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+    - "ubuntu-24.04:docker://ghcr.io/catthehacker/ubuntu:act-22.04"
+    - "host:host"
+
+container:
+  # VERIFIED: docker_host:automount automatically mounts /var/run/docker.sock
+  # into every job container. Requires forgejo-runner >= 5.0.3
+
+  # Allow all volume mounts (required for docker socket passthrough)
+  valid_volumes:
+    - "**"
+
+  # Fix 1: Resolve `forgejo` hostname to NAS IP inside job containers
+  # The checkout action uses http://forgejo:3000 — without this it fails with
+  # "Could not resolve host: forgejo"
+  extra_hosts:
+    - "forgejo:127.0.0.1"
+    - "nas:127.0.0.1"
+
+  # Fix 2: Pin Docker API version to 1.43 — NAS Docker Engine max supported
+  # Without this: "client version 1.53 is too new. Maximum supported API version is 1.43"
+  env:
+    DOCKER_HOST: "unix:///var/run/docker.sock"
+    DOCKER_API_VERSION: "1.43"
+
+  network: ""
+  privileged: false

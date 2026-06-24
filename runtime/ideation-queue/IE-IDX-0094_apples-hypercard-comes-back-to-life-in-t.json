@@ -1,0 +1,111 @@
+{
+  "id": "IE-IDX-0094",
+  "version": 2,
+  "slug": "apples-hypercard-comes-back-to-life-in-t",
+  "status": "BRAINSTORM",
+  "source": {
+    "type": "flipboard_rss",
+    "feedId": "ai-hk2mtjn0z",
+    "guid": "flipboard--OEjxA2dQhW89MzTu6iMfg:a:4243649-1777502417",
+    "title": "Apple\u2019s HyperCard comes back to life in the form of this cool new animated browser",
+    "url": "https://www.fastcompany.com/91532926/flipbook-animated-browser-inspired-by-apple-hypercard?partner=rss&amp&utm_source=rss&amp&utm_medium=feed&amp&utm_campaign=rss+fastcompany&amp&utm_content=rss",
+    "author": "BY Jesus Diaz",
+    "publishedAt": "Wed, 29 Apr 2026 22:40:17 GMT",
+    "imageUrl": null,
+    "excerpt": null,
+    "fullText": null,
+    "ingestedAt": "2026-04-29T22:45:01.835Z",
+    "ingestedBy": "flipboard-sentinel"
+  },
+  "classification": {
+    "categories": [
+      "infrastructure",
+      "sovereignty",
+      "edge-ai",
+      "creative-tools",
+      "learning",
+      "competitive-intel",
+      "spatial",
+      "Technology",
+      "Apps",
+      "LLMs",
+      "Machine Learning",
+      "Illustration"
+    ],
+    "tags": [],
+    "cleRelevance": 100,
+    "urgency": "high",
+    "domain": "infrastructure"
+  },
+  "athena": null,
+  "lifecycle": {
+    "transitions": [
+      {
+        "from": "INGESTED",
+        "to": "BRAINSTORM",
+        "at": "2026-04-29T22:45:01.835Z",
+        "by": "flipboard-sentinel",
+        "reason": "RSS article ingested and queued for ATHENA analysis"
+      },
+      {
+        "to": "ARCHIVED",
+        "timestamp": "2026-05-13T17:22:33.558Z",
+        "trigger": "system_consolidation",
+        "note": "Consolidated into Epic: Theme-4-Live-Artifacts"
+      }
+    ],
+    "owner": null,
+    "priority": 2,
+    "blockedBy": [],
+    "notes": [],
+    "status": "VERIFIED"
+  },
+  "timestamps": {
+    "createdAt": "2026-04-29T22:45:01.835Z",
+    "brainstormedAt": "2026-04-29T22:45:01.835Z",
+    "ideatedAt": null,
+    "reviewedAt": null,
+    "activatedAt": null,
+    "shippedAt": null,
+    "validatedAt": null,
+    "completedAt": null,
+    "archivedAt": null,
+    "lastModifiedAt": "2026-04-29T22:45:01.835Z",
+    "lastReviewedAt": null,
+    "nextReviewDue": null
+  },
+  "relations": {
+    "crossRefs": [
+      {
+        "targetId": "IE-IDX-0104",
+        "similarity": 0.4,
+        "relationship": "similar"
+      }
+    ],
+    "parentId": null,
+    "childIds": [],
+    "projectId": null,
+    "conversationIds": []
+  },
+  "deliverables": {
+    "obsidianPath": "/app/genesis-deploy/runtime/nexus-vault/Sentinel\\IE-IDX-0094_apples-hypercard-comes-back-to-life-in-t.md",
+    "artifacts": []
+  },
+  "notifications": {
+    "emailSentAt": null,
+    "emailTo": null,
+    "digestBatchId": null,
+    "slackSentAt": null,
+    "chatSentAt": null
+  },
+  "review": {
+    "reviews": [],
+    "reviewCadence": "monthly",
+    "improvementSuggestions": []
+  },
+  "metadata": {
+    "v1Filename": "IE-IDX-0094_apples-hypercard-comes-back-to-life-in-t",
+    "migratedAt": "2026-04-30T17:46:28.055Z",
+    "migratedFrom": "V1-flat-schema"
+  }
+}

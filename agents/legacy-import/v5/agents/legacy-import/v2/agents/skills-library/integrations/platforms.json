@@ -1,0 +1,138 @@
+{
+  "category": "platform-integrations",
+  "description": "Third-party platform integrations and APIs",
+  "source": "Community",
+  "agents": ["COMET", "IRIS"],
+  "skills": [
+    {
+      "id": "stripe-best-practices",
+      "name": "Stripe Integration Best Practices",
+      "description": "Implement Stripe payments with best practices",
+      "complexity": "expert",
+      "input": "Payment requirements",
+      "output": "Stripe integration with webhooks",
+      "example": "Build subscription billing with SCA compliance",
+      "attribution": "Stripe Community"
+    },
+    {
+      "id": "stripe-upgrade",
+      "name": "Upgrade Stripe SDK",
+      "description": "Migrate to latest Stripe SDK version",
+      "complexity": "moderate",
+      "input": "Current Stripe version",
+      "output": "Upgraded integration with migrations",
+      "example": "Upgrade from Stripe v8 to v14",
+      "attribution": "Stripe Community"
+    },
+    {
+      "id": "better-auth-best-practices",
+      "name": "Better Auth Integration",
+      "description": "Implement authentication with Better Auth",
+      "complexity": "expert",
+      "input": "Auth requirements",
+      "output": "Complete auth system",
+      "example": "Add OAuth + magic links + 2FA",
+      "attribution": "Better Auth Community"
+    },
+    {
+      "id": "better-auth-create",
+      "name": "Create Better Auth Setup",
+      "description": "Bootstrap Better Auth in new project",
+      "complexity": "moderate",
+      "input": "Project type, auth providers",
+      "output": "Configured Better Auth",
+      "example": "Set up auth with Google + GitHub providers",
+      "attribution": "Better Auth Community"
+    },
+    {
+      "id": "notion-skills",
+      "name": "Notion API Operations",
+      "description": "Create, read, update Notion pages and databases",
+      "complexity": "moderate",
+      "input": "Notion operation",
+      "output": "Executed Notion API call",
+      "example": "Create project dashboard in Notion",
+      "attribution": "danielraffel (Community)"
+    },
+    {
+      "id": "linear-claude-skill",
+      "name": "Linear Issue Management",
+      "description": "Manage Linear issues, projects, and workflows",
+      "complexity": "moderate",
+      "input": "Linear operation",
+      "output": "Executed Linear action",
+      "example": "Create issue with labels and assignment",
+      "attribution": "yuchou (Community)"
+    },
+    {
+      "id": "whatsapp-integrate",
+      "name": "WhatsApp Integration",
+      "description": "Connect WhatsApp Business API",
+      "complexity": "expert",
+      "input": "WhatsApp Business account",
+      "output": "Working WhatsApp integration",
+      "example": "Set up automated customer support",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "whatsapp-automate",
+      "name": "WhatsApp Automation",
+      "description": "Automate WhatsApp messages and workflows",
+      "complexity": "moderate",
+      "input": "Automation rules",
+      "output": "Automated WhatsApp workflows",
+      "example": "Send order confirmations via WhatsApp",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "whatsapp-observe",
+      "name": "WhatsApp Delivery Debugging",
+      "description": "Debug WhatsApp message delivery issues",
+      "complexity": "moderate",
+      "input": "Delivery logs, error messages",
+      "output": "Root cause and fix",
+      "example": "Fix template message rejection issues",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "sheets-cli",
+      "name": "Google Sheets CLI",
+      "description": "Command-line operations for Google Sheets",
+      "complexity": "simple",
+      "input": "Sheet operation",
+      "output": "Executed sheet command",
+      "example": "Export analytics data to sheet",
+      "attribution": "joshuami (Community)"
+    },
+    {
+      "id": "spotify-skill",
+      "name": "Spotify API Integration",
+      "description": "Access Spotify Web API for music data",
+      "complexity": "moderate",
+      "input": "Spotify operation",
+      "output": "Spotify data or action",
+      "example": "Get user's top tracks and create playlist",
+      "attribution": "jrcribb (Community)"
+    },
+    {
+      "id": "dev-browser",
+      "name": "Browser Capability",
+      "description": "Control browser for testing and automation",
+      "complexity": "expert",
+      "input": "Browser automation task",
+      "output": "Executed browser actions",
+      "example": "Screenshot website across viewports",
+      "attribution": "QuantGeekDev (Community)"
+    },
+    {
+      "id": "claudisms",
+      "name": "SMS Messaging",
+      "description": "Send SMS messages via Twilio or similar",
+      "complexity": "simple",
+      "input": "Message content, recipient",
+      "output": "Sent SMS",
+      "example": "Send 2FA codes via SMS",
+      "attribution": "sirmews (Community)"
+    }
+  ]
+}

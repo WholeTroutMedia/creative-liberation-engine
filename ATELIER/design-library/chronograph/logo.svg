@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <!-- Carbon Monochrome HUD Grid Baseline -->
+  <style>
+    .hud-line { stroke: #F5F5F4; stroke-opacity: 0.08; stroke-width: 1; }
+    .hud-axis { stroke: #F5F5F4; stroke-opacity: 0.15; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .hud-ring-outer { stroke: #F5F5F4; stroke-opacity: 0.15; stroke-width: 1; }
+    .hud-ring-inner { stroke: #F5F5F4; stroke-opacity: 0.3; stroke-width: 1.5; stroke-dasharray: 8 6; }
+    .hud-active-trace { stroke: #F5F5F4; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 6px rgba(245, 245, 244, 0.4)); }
+    .hud-node-primary { fill: #F5F5F4; stroke: #121214; stroke-width: 2; }
+    .hud-node-secondary { fill: #A8A29E; stroke: #121214; stroke-width: 1.5; }
+    .hud-node-tertiary { fill: #57534E; }
+    .hud-accent-ticks { stroke: #F5F5F4; stroke-opacity: 0.4; stroke-width: 2; }
+    .hud-mono-text { fill: #F5F5F4; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.25em; }
+    .hud-mono-subtext { fill: #A8A29E; font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 8px; font-weight: 500; letter-spacing: 0.15em; }
+  </style>
+
+  <!-- Background Canvas Card (Optional but matches Carbon Theme when embedded) -->
+  <rect width="512" height="512" rx="24" fill="#121214" />
+  <rect width="508" height="508" x="2" y="2" rx="22" stroke="#F5F5F4" stroke-opacity="0.05" stroke-width="2" />
+
+  <!-- Technical HUD Crosshair Guides -->
+  <line x1="256" y1="40" x2="256" y2="472" class="hud-axis" />
+  <line x1="40" y1="256" x2="472" y2="256" class="hud-axis" />
+  
+  <!-- Subtle HUD Grid Matrix -->
+  <circle cx="256" cy="256" r="216" class="hud-ring-outer" />
+  <circle cx="256" cy="256" r="160" class="hud-ring-inner" />
+  <circle cx="256" cy="256" r="96" class="hud-line" />
+  <circle cx="256" cy="256" r="32" class="hud-line" stroke-dasharray="2 2" />
+
+  <!-- Diagonal Tech Marks -->
+  <line x1="104" y1="104" x2="408" y2="408" class="hud-line" stroke-dasharray="6 6" />
+  <line x1="408" y1="104" x2="104" y2="408" class="hud-line" stroke-dasharray="6 6" />
+
+  <!-- Chrono-Tension Circular Tick Rings -->
+  <!-- Outer scale ticks -->
+  <g transform="translate(256, 256)">
+    <path d="M 0,-216 L 0,-224 M 0,216 L 0,224 M -216,0 L -224,0 M 216,0 L 224,0" class="hud-accent-ticks" />
+    <path d="M -152.7,-152.7 L -158.4,-158.4 M 152.7,152.7 L 158.4,158.4 M -152.7,152.7 L -158.4,158.4 M 152.7,-152.7 L 158.4,-158.4" class="hud-accent-ticks" stroke-opacity="0.25" />
+    
+    <!-- Fine ticks around the ring -->
+    <circle cx="0" cy="0" r="192" stroke="#F5F5F4" stroke-opacity="0.05" stroke-width="12" stroke-dasharray="1 10" />
+  </g>
+
+  <!-- High-Density Temporal Workflow Graph (Active Traces) -->
+  <!-- Node A: Start / Trigger Anchor -->
+  <path d="M 120,320 L 176,220 L 256,220 L 296,140 L 392,140 M 256,220 L 316,340 L 376,340" class="hud-active-trace" />
+  <path d="M 176,220 L 236,320 L 316,320" stroke="#A8A29E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2" />
+
+  <!-- Connective Nodes -->
+  <!-- Start Node (120, 320) -->
+  <circle cx="120" cy="320" r="7" class="hud-node-primary" />
+  <circle cx="120" cy="320" r="2" fill="#121214" />
+  
+  <!-- Step 1 Node (176, 220) -->
+  <circle cx="176" cy="220" r="5" class="hud-node-secondary" />
+
+  <!-- Intersection/Routing Node (256, 220) -->
+  <circle cx="256" cy="220" r="6" class="hud-node-primary" />
+  <polygon points="256,216 260,222 252,222" fill="#121214" />
+  
+  <!-- Upper Peak Node (296, 140) -->
+  <circle cx="296" cy="140" r="5" class="hud-node-secondary" />
+  
+  <!-- Lower Divergence Node (316, 340) -->
+  <circle cx="316" cy="340" r="5" class="hud-node-secondary" />
+
+  <!-- End Node Upper (392, 140) -->
+  <circle cx="392" cy="140" r="7" class="hud-node-primary" />
+  <line x1="388" y1="140" x2="396" y2="140" stroke="#121214" stroke-width="1.5" />
+  <line x1="392" y1="136" x2="392" y2="144" stroke="#121214" stroke-width="1.5" />
+
+  <!-- End Node Lower (376, 340) -->
+  <circle cx="376" cy="340" r="7" class="hud-node-primary" />
+  
+  <!-- Passive Node details -->
+  <circle cx="236" cy="320" r="4" class="hud-node-secondary" />
+  <circle cx="316" cy="320" r="3" class="hud-node-tertiary" />
+
+  <!-- Telemetry Metrics & Corner Bracket Design Details -->
+  <!-- Top Left Bracket -->
+  <path d="M 40,64 L 40,40 L 64,40" stroke="#F5F5F4" stroke-opacity="0.3" stroke-width="1.5" fill="none" />
+  <!-- Top Right Bracket -->
+  <path d="M 472,64 L 472,40 L 448,40" stroke="#F5F5F4" stroke-opacity="0.3" stroke-width="1.5" fill="none" />
+  <!-- Bottom Left Bracket -->
+  <path d="M 40,448 L 40,472 L 64,472" stroke="#F5F5F4" stroke-opacity="0.3" stroke-width="1.5" fill="none" />
+  <!-- Bottom Right Bracket -->
+  <path d="M 472,448 L 472,472 L 448,472" stroke="#F5F5F4" stroke-opacity="0.3" stroke-width="1.5" fill="none" />
+
+  <!-- HUD Telemetry Text & Metadata Labels -->
+  <text x="56" y="60" class="hud-mono-text" font-size="8px">SYS.LOC // ATELIER_V6</text>
+  <text x="56" y="72" class="hud-mono-subtext">CORE.TRACE_ACTIVE [120HZ]</text>
+
+  <text x="340" y="60" class="hud-mono-text" font-size="8px">SYS.STATUS: SYNCD</text>
+  <text x="340" y="72" class="hud-mono-subtext" text-anchor="start">T_DELTA_MU: 2.14MS</text>
+  
+  <!-- Bottom Central Brand Panel -->
+  <g transform="translate(256, 420)">
+    <!-- ChronoGraph Brand Text -->
+    <text x="0" y="0" text-anchor="middle" class="hud-mono-text" font-size="16px">CHRONOGRAPH</text>
+    <!-- Dynamic observability badge label -->
+    <text x="0" y="16" text-anchor="middle" class="hud-mono-subtext">TEMPORAL WORKFLOW HUD • OP_V7.0.0</text>
+  </g>
+
+  <!-- Technical coordinates in subtle locations -->
+  <text x="44" y="440" class="hud-mono-subtext">N: 512.62.90</text>
+  <text x="390" y="440" class="hud-mono-subtext">W: 127.0.0.1</text>
+</svg>

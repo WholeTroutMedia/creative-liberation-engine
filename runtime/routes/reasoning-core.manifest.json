@@ -1,0 +1,89 @@
+{
+  "version": "v6.0",
+  "service": "reasoning-core",
+  "routes": [
+    {
+      "routeId": "route_reasoning_core_reason",
+      "path": "/api/reason",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "reasoning-core",
+      "upstreamPath": "/api/reason",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 30,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 60000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "strategy"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_reasoning_core_evaluate",
+      "path": "/api/reason/evaluate",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "reasoning-core",
+      "upstreamPath": "/api/reason/evaluate",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 60,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 15000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "score"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_reasoning_core_self_harness_optimize",
+      "path": "/api/reason/self-harness/optimize",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "reasoning-core",
+      "upstreamPath": "/api/reason/self-harness/optimize",
+      "authPolicy": "service_token",
+      "rateLimit": {
+        "enabled": true,
+        "requests": 20,
+        "windowSeconds": 60
+      },
+      "timeoutMs": 30000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "sandboxCheckPassed"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_reasoning_core_health",
+      "path": "/health",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "reasoning-core",
+      "upstreamPath": "/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

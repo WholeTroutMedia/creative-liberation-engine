@@ -1,0 +1,10 @@
+{
+  "name": "@cle/why-ai-will-create-more-engine",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0238",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

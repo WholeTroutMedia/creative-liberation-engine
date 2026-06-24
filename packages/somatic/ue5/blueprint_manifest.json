@@ -1,0 +1,17 @@
+{
+  "blueprint_name": "BP_A2F_MetaHuman_OSC",
+  "osc_port": 5005,
+  "blendshape_count": 52,
+  "osc_addresses": {
+    "batch": "/a2f/batch",
+    "head_rotation": "/a2f/head/rotation",
+    "eye_gaze": "/a2f/eye/gaze",
+    "individual_prefix": "/a2f/blendshapes"
+  },
+  "generated_files": [
+    "editor_script",
+    "ini_patch",
+    "event_graph_spec"
+  ],
+  "dry_run": false
+}

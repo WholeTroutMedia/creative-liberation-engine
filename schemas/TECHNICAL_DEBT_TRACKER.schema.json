@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/TECHNICAL_DEBT_TRACKER.schema.json",
+  "title": "Technical Debt Tracker Schema",
+  "description": "Tracks agentic technical debt: stale prompts, orphaned tools, unchecked fallbacks, and anti-patterns within the Creative Liberation Engine.",
+  "type": "object",
+  "required": ["scan_id", "scanned_at", "scan_scope", "findings"],
+  "properties": {
+    "scan_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "scanned_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scan_scope": {
+      "type": "string",
+      "enum": ["full_system", "agent_registry", "route_manifests", "memory_layer", "schema_validation", "service_health"]
+    },
+    "scanner_version": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_findings": { "type": "integer", "minimum": 0 },
+        "critical": { "type": "integer", "minimum": 0 },
+        "high": { "type": "integer", "minimum": 0 },
+        "medium": { "type": "integer", "minimum": 0 },
+        "low": { "type": "integer", "minimum": 0 },
+        "debt_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "0 = pristine, 100 = critical debt load"
+        }
+      },
+      "required": ["total_findings", "debt_score"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding_id", "category", "severity", "title", "description"],
+        "properties": {
+          "finding_id": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": [
+              "stale_prompt", "orphaned_tool", "unchecked_fallback",
+              "missing_schema", "broken_route", "dead_agent",
+              "memory_leak", "token_waste", "security_gap",
+              "missing_test", "deprecated_dependency", "anti_pattern"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low"]
+          },
+          "title": { "type": "string" },
+          "description": { "type": "string" },
+          "affected_component": { "type": "string" },
+          "affected_file": { "type": "string" },
+          "remediation": { "type": "string" },
+          "estimated_effort": {
+            "type": "string",
+            "enum": ["trivial", "small", "medium", "large", "epic"]
+          },
+          "auto_fixable": { "type": "boolean" },
+          "created_at": { "type": "string", "format": "date-time" },
+          "resolved_at": { "type": ["string", "null"], "format": "date-time" }
+        }
+      }
+    },
+    "trend": {
+      "type": "object",
+      "properties": {
+        "previous_score": { "type": ["number", "null"] },
+        "direction": { "type": "string", "enum": ["improving", "stable", "degrading"] },
+        "new_findings_since_last": { "type": "integer" },
+        "resolved_since_last": { "type": "integer" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

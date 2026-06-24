@@ -1,0 +1,3 @@
+"""
+PULSE — rPPG subpackage
+"""

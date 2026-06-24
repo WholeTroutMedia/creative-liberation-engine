@@ -1,0 +1,79 @@
+{
+  "category": "code-generation",
+  "description": "Creating code, templates, scaffolds, and boilerplate",
+  "agents": ["IRIS", "COMET", "AURORA"],
+  "skills": [
+    {
+      "id": "generate-react-component",
+      "name": "Generate React Component",
+      "description": "Create fully-typed React components with props, state, and lifecycle",
+      "complexity": "moderate",
+      "input": "Component name, props interface, requirements",
+      "output": "Complete .tsx file with types and tests",
+      "example": "Generate a UserCard component with avatar, name, email props"
+    },
+    {
+      "id": "scaffold-api-endpoint",
+      "name": "Scaffold API Endpoint",
+      "description": "Generate RESTful API endpoints with validation, error handling",
+      "complexity": "moderate",
+      "input": "Route, HTTP method, request/response schemas",
+      "output": "Express/Fastify route handler with types",
+      "example": "Create POST /api/users endpoint with validation"
+    },
+    {
+      "id": "create-database-schema",
+      "name": "Create Database Schema",
+      "description": "Generate database schemas with migrations and models",
+      "complexity": "expert",
+      "input": "Entity definitions, relationships",
+      "output": "Prisma/TypeORM schema + migration files",
+      "example": "Create User, Post, Comment schema with relations"
+    },
+    {
+      "id": "generate-test-suite",
+      "name": "Generate Test Suite",
+      "description": "Create comprehensive test suites for components/functions",
+      "complexity": "moderate",
+      "input": "Code to test, testing requirements",
+      "output": "Jest/Vitest test files with multiple cases",
+      "example": "Generate tests for authentication service"
+    },
+    {
+      "id": "scaffold-full-crud",
+      "name": "Scaffold Full CRUD",
+      "description": "Generate complete CRUD operations for an entity",
+      "complexity": "expert",
+      "input": "Entity name, fields, business rules",
+      "output": "API routes, service layer, data layer, tests",
+      "example": "Create full CRUD for Product with inventory"
+    },
+    {
+      "id": "create-monorepo-workspace",
+      "name": "Create Monorepo Workspace",
+      "description": "Initialize monorepo with packages and shared configs",
+      "complexity": "expert",
+      "input": "Workspace structure, package dependencies",
+      "output": "Turborepo/nx workspace with packages",
+      "example": "Create monorepo with web, api, shared packages"
+    },
+    {
+      "id": "generate-graphql-schema",
+      "name": "Generate GraphQL Schema",
+      "description": "Create GraphQL schemas with resolvers and types",
+      "complexity": "expert",
+      "input": "Data model, query/mutation requirements",
+      "output": "GraphQL schema + resolvers + types",
+      "example": "Generate User/Post GraphQL API"
+    },
+    {
+      "id": "create-docker-setup",
+      "name": "Create Docker Setup",
+      "description": "Generate Dockerfiles and docker-compose configs",
+      "complexity": "moderate",
+      "input": "Application stack, environment requirements",
+      "output": "Dockerfile, docker-compose.yml, .dockerignore",
+      "example": "Create Docker setup for Next.js + Postgres"
+    }
+  ]
+}

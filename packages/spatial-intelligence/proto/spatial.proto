@@ -1,0 +1,113 @@
+syntax = "proto3";
+
+package inception.spatial;
+
+option java_package = "ai.inception.spatial";
+option go_package = "inception/spatial";
+
+// Point cloud data
+message PointCloud {
+  repeated float coords = 1 [packed = true];   // flat xyz: [x0,y0,z0, x1,y1,z1, ...]
+  repeated float colors = 2 [packed = true];   // flat rgb: [r0,g0,b0, ...] 0-255
+  repeated float normals = 3 [packed = true];  // flat normals: [nx,ny,nz, ...]
+  int32 num_points = 4;
+}
+
+// Feature tensor
+message FeatureTensor {
+  repeated float data = 1 [packed = true];  // flat (N, C) features
+  int32 num_points = 2;
+  int32 channels = 3;
+}
+
+// Depth estimation
+message DepthRequest {
+  bytes image_data = 1;        // raw RGB bytes or encoded image
+  int32 width = 2;
+  int32 height = 3;
+  string method = 4;           // "da3" | "depthpro"
+  bool return_confidence = 5;
+}
+
+message DepthResponse {
+  repeated float depth_map = 1 [packed = true];  // (H, W) depth values
+  repeated float confidence = 2 [packed = true]; // optional confidence map
+  float focal_length = 3;      // estimated focal length (DepthPro only)
+  float field_of_view = 4;     // estimated FOV (DepthPro only)
+  int32 width = 5;
+  int32 height = 6;
+}
+
+// Point cloud encoding
+message EncodeRequest {
+  PointCloud point_cloud = 1;
+  int32 upcast_levels = 2;     // feature upcast depth (default 2)
+}
+
+message EncodeResponse {
+  FeatureTensor features = 1;  // per-point features
+  int32 grid_points = 2;       // number of grid-sampled points
+}
+
+// Spatial query
+message SpatialQuery {
+  PointCloud scene = 1;
+  string query = 2;            // natural language: "what's to the left of the chair?"
+}
+
+message SpatialQueryResponse {
+  string answer = 1;
+  repeated Region regions = 2;
+}
+
+message Region {
+  string label = 1;
+  repeated float bbox_min = 2; // 3D bounding box min [x,y,z]
+  repeated float bbox_max = 3; // 3D bounding box max [x,y,z]
+  float confidence = 4;
+}
+
+// Scene understanding
+message SceneGraphRequest {
+  PointCloud scene = 1;
+  bool include_relationships = 2;
+}
+
+message SceneGraph {
+  repeated SceneNode nodes = 1;
+  repeated SceneEdge edges = 2;
+}
+
+message SceneNode {
+  int32 id = 1;
+  string label = 2;
+  repeated float centroid = 3; // [x, y, z]
+  repeated float bbox_min = 4;
+  repeated float bbox_max = 5;
+  float confidence = 6;
+}
+
+message SceneEdge {
+  int32 source_id = 1;
+  int32 target_id = 2;
+  string relationship = 3;  // "on", "left_of", "behind", "contains", etc.
+  float confidence = 4;
+}
+
+// Main service
+service SpatialIntelligence {
+  // Encode point cloud into feature space
+  rpc EncodePointCloud(EncodeRequest) returns (EncodeResponse);
+
+  // Estimate depth from RGB image
+  rpc EstimateDepth(DepthRequest) returns (DepthResponse);
+
+  // Answer spatial queries about a scene
+  rpc QueryScene(SpatialQuery) returns (SpatialQueryResponse);
+
+  // Build scene graph from point cloud
+  rpc BuildSceneGraph(SceneGraphRequest) returns (SceneGraph);
+
+  // Streaming encode for large point clouds
+  rpc StreamEncode(stream EncodeRequest) returns (stream EncodeResponse);
+}

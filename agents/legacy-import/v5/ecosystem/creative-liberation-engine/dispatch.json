@@ -1,0 +1,280 @@
+{
+    "summary":  {
+                    "queued":  0,
+                    "active":  0,
+                    "done":  16,
+                    "blocked":  0,
+                    "total_agents":  0,
+                    "total_projects":  4
+                },
+    "active_agents":  [
+
+                      ],
+    "idle_agents":  [
+
+                    ],
+    "done_tasks":  [
+                       {
+                           "id":  "T20260307-EXEC01",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "cowork-bridge",
+                           "title":  "Create packages/cowork-bridge with MCP server wrappers for Cowork config protocol",
+                           "priority":  "P0",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-07T17:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/cowork-bridge/src/mcp-wrapper.ts",
+                                             "packages/cowork-bridge/src/config-loader.ts",
+                                             "packages/cowork-bridge/src/types.ts",
+                                             "packages/cowork-bridge/src/index.ts"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260307-EXEC02",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "cowork-bridge",
+                           "title":  "Build IE_CONTEXT.md generator from CLAUDE.md + constitutional framework",
+                           "priority":  "P0",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-07T17:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/cowork-bridge/src/context-generator.ts"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260307-EXEC03",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "cowork-bridge",
+                           "title":  "Wire cowork_runtime.py multi-model backend into orchestrator.py dispatch",
+                           "priority":  "P0",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-07T17:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/cowork-bridge/src/model-router.ts"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260307-EXEC04",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "cowork-bridge",
+                           "title":  "Implement agent-ownership.json boundary enforcement in dispatch server",
+                           "priority":  "P0",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-07T17:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/cowork-bridge/agent-ownership.json",
+                                             "packages/cowork-bridge/src/mcp-wrapper.ts"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-652",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Scaffold packages/design-tokens with W3C DTCG structure",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/design-tokens/"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-373",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Author primitive token files (color, spacing, type, radius, shadow, motion)",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/design-tokens/src/primitives/"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-556",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Author semantic token files with role mappings",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/design-tokens/src/semantic/"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-269",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Configure Style Dictionary v4 (CSS + JS + iOS + Android outputs)",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/design-tokens/style-dictionary.config.mjs"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-181",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Write JSON Schema validator that enforces tier constraints",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/design-tokens/src/guardrails/"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-258",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "design-system",
+                           "title":  "Scaffold packages/ui with Radix + CVA + token integration",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-ANTIGRAVITY",
+                           "completed_at":  "2026-03-06T22:00:00.000Z",
+                           "artifacts":  [
+                                             "packages/ui/"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260308-DOCKER01",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "infra-docker",
+                           "title":  "Fix node-service.Dockerfile resilience to missing pnpm-lock.yaml",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-BROWSER",
+                           "completed_at":  "2026-03-08T03:40:00.000Z",
+                           "artifacts":  [
+                                             "docker/node-service.Dockerfile"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260308-INFRA01",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "infra-docker",
+                           "title":  "File Docker API version mismatch issue (client 1.43 vs 1.44)",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "claimed_by":  "NAVD-BROWSER",
+                           "completed_at":  "2026-03-08T03:45:00.000Z",
+                           "artifacts":  [
+                                             "issues/45"
+                                         ]
+                       },
+                       {
+                           "id":  "T20260306-706",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "infra-docker",
+                           "title":  "Scaffold Dockerfile for autonomous Creative Liberation Engine NAS instance",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_task_id":  null,
+                           "spawned_by":  null,
+                           "assigned_to_agent":  null,
+                           "assigned_to_capability":  null,
+                           "claimed_by":  "ANTIGRAVITY",
+                           "claimed_at":  null,
+                           "completed_at":  null,
+                           "handoff_note":  null,
+                           "artifacts":  [
+
+                                         ],
+                           "created":  "2026-03-06T17:04:48.025Z",
+                           "updated":  "2026-03-06T17:04:48.025Z"
+                       },
+                       {
+                           "id":  "T20260306-601",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "infra-docker",
+                           "title":  "Add cle-nas service to docker-compose.genesis.yml with DinD mounts",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_task_id":  null,
+                           "spawned_by":  null,
+                           "assigned_to_agent":  null,
+                           "assigned_to_capability":  null,
+                           "claimed_by":  "ANTIGRAVITY",
+                           "claimed_at":  null,
+                           "completed_at":  null,
+                           "handoff_note":  null,
+                           "artifacts":  [
+
+                                         ],
+                           "created":  "2026-03-06T17:04:48.101Z",
+                           "updated":  "2026-03-06T17:04:48.101Z"
+                       },
+                       {
+                           "id":  "T20260306-328",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "genkit-flows",
+                           "title":  "Build packages/nas-watcher/src/daemon.ts for headless task/pubsub polling",
+                           "priority":  "P1",
+                           "status":  "done",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_task_id":  null,
+                           "spawned_by":  null,
+                           "assigned_to_agent":  null,
+                           "assigned_to_capability":  null,
+                           "claimed_by":  "ANTIGRAVITY",
+                           "claimed_at":  null,
+                           "completed_at":  null,
+                           "handoff_note":  null,
+                           "artifacts":  [
+
+                                         ],
+                           "created":  "2026-03-06T17:04:48.117Z",
+                           "updated":  "2026-03-06T17:04:48.117Z"
+                       },
+                       {
+                           "id":  "T20260306-513",
+                           "org":  "WholeTroutMedia",
+                           "workstream":  "zero-day",
+                           "title":  "Wire Zero-Day Redis pub/sub to NAS agent daemon",
+                           "priority":  "P2",
+                           "status":  "done",
+                           "dependencies":  [
+
+                                            ],
+                           "parent_task_id":  null,
+                           "spawned_by":  null,
+                           "assigned_to_agent":  null,
+                           "assigned_to_capability":  null,
+                           "claimed_by":  "ANTIGRAVITY",
+                           "claimed_at":  null,
+                           "completed_at":  null,
+                           "handoff_note":  null,
+                           "artifacts":  [
+
+                                         ],
+                           "created":  "2026-03-06T17:04:48.133Z",
+                           "updated":  "2026-03-06T17:04:48.133Z"
+                       }
+                   ],
+    "queued_tasks":  [
+
+                     ],
+    "active_tasks":  [
+
+                     ]
+}

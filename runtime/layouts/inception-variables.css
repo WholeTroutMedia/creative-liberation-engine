@@ -1,0 +1,94 @@
+:root {
+  /* Color Tokens */
+  --color-primary: #0EA5E9;
+  --color-primary-dark: #0284C7;
+  --color-primary-light: #38BDF8;
+  --color-primary-subtle: rgba(14, 165, 233, 0.12);
+  --color-accent: #8B5CF6;
+  --color-accent-dark: #7C3AED;
+  --color-accent-light: #A78BFA;
+  --color-accent-subtle: rgba(139, 92, 246, 0.12);
+  --color-surface-base: #0F172A;
+  --color-surface-elevated: #1E293B;
+  --color-surface-overlay: #334155;
+  --color-surface-glass: rgba(15, 23, 42, 0.85);
+  --color-surface-glass-border: rgba(248, 250, 252, 0.08);
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-text-disabled: #475569;
+  --color-success: #10B981;
+  --color-success-subtle: rgba(16, 185, 129, 0.12);
+  --color-warning: #F59E0B;
+  --color-warning-subtle: rgba(245, 158, 11, 0.12);
+  --color-error: #EF4444;
+  --color-error-subtle: rgba(239, 68, 68, 0.12);
+  --color-info: #06B6D4;
+  --color-info-subtle: rgba(6, 182, 212, 0.12);
+  --color-gradient-primary: "linear-gradient(135deg,;
+  --color-gradient-surface: "linear-gradient(180deg,;
+  --color-gradient-glow: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.15), transparent 70%);
+
+  /* Typography Tokens */
+  --font-heading: "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+  --font-size-5xl: 48px;
+  --font-size-6xl: 60px;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing Tokens */
+  --spacing-unit: 4px;
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+  --spacing-24: 96px;
+
+  /* Border Radii */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Effects */
+  --glass-blur: blur(16px);
+  --glass-background: rgba(15, 23, 42, 0.85);
+  --glass-border: 1px solid rgba(248, 250, 252, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow-primary: 0 0 24px rgba(14, 165, 233, 0.25);
+  --shadow-glow-accent: 0 0 24px rgba(139, 92, 246, 0.25);
+
+  /* Animation */
+  --transition-duration-fast: 150ms;
+  --transition-duration-default: 200ms;
+  --transition-duration-slow: 300ms;
+  --transition-duration-complex: 500ms;
+  --transition-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --transition-easing-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-easing-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

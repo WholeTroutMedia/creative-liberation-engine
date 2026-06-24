@@ -1,4 +1,4 @@
-# Hardening Status
+# V6 Hardening Status
 
 > **Honest assessment as of 2026-05-24T12:04:44-04:00.**
 > Previous status falsely claimed all helices "hardened" with no evidence.

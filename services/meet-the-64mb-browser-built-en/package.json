@@ -1,0 +1,10 @@
+{
+  "name": "@cle/meet-the-64mb-browser-built-en",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0088_meet-the-64mb-browser-built-entirely-for",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

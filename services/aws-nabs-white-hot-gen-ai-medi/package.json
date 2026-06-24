@@ -1,0 +1,10 @@
+{
+  "name": "@cle/aws-nabs-white-hot-gen-ai-medi",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0259_aws-nabs-white-hot-gen-ai-media-creation",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

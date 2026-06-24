@@ -1,0 +1,94 @@
+{
+  "$schema": "report-task.contract.v1",
+  "version": "1.0.0",
+  "taskType": "report-assembly",
+  "defaultQualityGates": [
+    "section-completeness",
+    "source-attribution",
+    "staleness-check",
+    "constitutional-alignment"
+  ],
+  "outputSchema": "STRATEGIC_REPORT.schema.json",
+  "templates": [
+    {
+      "templateId": "mckinsey-strategy",
+      "name": "Decision Pyramid Strategy Brief",
+      "minTier": "free",
+      "dataSkills": ["deep-research", "cost-arbitrage", "change-impact-estimator"],
+      "assemblyAgent": "ATHENA",
+      "sections": ["Executive takeaway", "Issue tree", "Findings", "Actions", "Risks"]
+    },
+    {
+      "templateId": "big4-risk-controls",
+      "name": "Risk And Controls Assessment",
+      "minTier": "pro",
+      "dataSkills": ["attack-surface-mapper", "authz-policy-verifier", "compliance-evidence-packager"],
+      "assemblyAgent": "SENTINEL",
+      "sections": ["Control inventory", "Gap map", "Severity profile", "Remediation roadmap"]
+    },
+    {
+      "templateId": "gartner-capability-maturity",
+      "name": "Capability Maturity Roadmap",
+      "minTier": "pro",
+      "dataSkills": ["eval-harness", "benchmark-suite-runner", "agent-performance-profiler"],
+      "assemblyAgent": "SAGE",
+      "sections": ["Capability stack", "Maturity scores", "Target state", "Migration steps"]
+    },
+    {
+      "templateId": "pe-commercial-diligence",
+      "name": "Commercial Diligence Pack",
+      "minTier": "pro",
+      "dataSkills": ["deep-research", "cost-arbitrage"],
+      "assemblyAgent": "NORTHSTAR",
+      "sections": ["Market map", "Growth vectors", "Competitive pressure", "Investment view"]
+    },
+    {
+      "templateId": "pe-technical-diligence",
+      "name": "Technical Diligence Pack",
+      "minTier": "pro",
+      "dataSkills": ["dependency-auditor", "sbom-vulnerability-gate", "config-drift-detector"],
+      "assemblyAgent": "SYSTEMS",
+      "sections": ["Architecture posture", "Engineering velocity", "Debt burden", "Critical remediations"]
+    },
+    {
+      "templateId": "cfo-operating-review",
+      "name": "CFO Operating Review",
+      "minTier": "pro",
+      "dataSkills": ["runtime-cost-observer", "capacity-forecast", "cost-arbitrage"],
+      "assemblyAgent": "NORTHSTAR",
+      "sections": ["Baseline economics", "Scenario tree", "Cash-risk trajectory", "Plan of record"]
+    },
+    {
+      "templateId": "ciso-board-brief",
+      "name": "CISO Board Brief",
+      "minTier": "sovereign",
+      "dataSkills": ["security-hardener", "secret-scanner", "threat-model-updater", "attack-surface-mapper"],
+      "assemblyAgent": "SENTINEL",
+      "sections": ["Threat model", "Exposure score", "Control status", "Board actions"]
+    },
+    {
+      "templateId": "regulatory-readiness",
+      "name": "Regulatory Readiness Matrix",
+      "minTier": "sovereign",
+      "dataSkills": ["compliance-evidence-packager", "constitutional-policy-linter"],
+      "assemblyAgent": "LEX",
+      "sections": ["Framework mapping", "Evidence status", "Gap closure plan", "Audit readiness"]
+    },
+    {
+      "templateId": "board-value-creation",
+      "name": "Board Value Creation Plan",
+      "minTier": "sovereign",
+      "dataSkills": ["deep-research", "change-impact-estimator", "cost-arbitrage"],
+      "assemblyAgent": "ATHENA",
+      "sections": ["Value levers", "Initiative stack", "Execution governance", "Risk-adjusted outcomes"]
+    },
+    {
+      "templateId": "vendor-sovereignty-audit",
+      "name": "Vendor Sovereignty Audit",
+      "minTier": "sovereign",
+      "dataSkills": ["attack-surface-mapper", "compliance-evidence-packager", "dependency-auditor"],
+      "assemblyAgent": "PROOF",
+      "sections": ["Dependency graph", "Lock-in profile", "Exit feasibility", "Sovereignty roadmap"]
+    }
+  ]
+}

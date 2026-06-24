@@ -1,0 +1,10 @@
+{
+  "name": "@cle/apples-hypercard-comes-back-to",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0094",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

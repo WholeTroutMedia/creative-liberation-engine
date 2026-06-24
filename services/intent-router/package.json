@@ -1,0 +1,31 @@
+{
+  "name": "@cle/intent-router",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine Intent Routing Microservice \u2014 Deterministic and Semantic Intent Resolution",
+  "main": "build/server.js",
+  "types": "build/server.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/server.js",
+    "dev": "tsx watch src/server.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "chromadb": "^1.8.1",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.0.0",
+    "@types/uuid": "^9.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "capabilityIds": [
+    "cap_intent_router"
+  ]
+}

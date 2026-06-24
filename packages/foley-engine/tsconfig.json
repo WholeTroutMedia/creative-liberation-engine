@@ -1,0 +1,26 @@
+{
+    "include":  [
+                    "src"
+                ],
+    "exclude":  [
+                    "node_modules",
+                    "dist"
+                ],
+    "compilerOptions":  {
+                            "sourceMap":  true,
+                            "strict":  true,
+                            "declaration":  true,
+                            "module":  "ESNext",
+                            "noUnusedLocals":  true,
+                            "moduleResolution":  "bundler",
+                            "rootDir":  "./src",
+                            "outDir":  "./dist",
+                            "verbatimModuleSyntax":  true,
+                            "target":  "ES2022",
+                            "noUnusedParameters":  true,
+                            "lib":  [
+                                        "ES2022"
+                                    ],
+                            "skipLibCheck":  true
+                        }
+}

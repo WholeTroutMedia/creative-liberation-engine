@@ -1,0 +1,21 @@
+{
+  "name": "@cle/design-tokens",
+  "version": "2.0.3",
+  "private": true,
+  "type": "module",
+  "description": "Design token system for Creative Liberation Engine V6 \u2014 colors, typography, spacing, and governance.",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "dependencies": {
+    "@cle/config": "workspace:*"
+  },
+  "capabilityIds": [
+    "cap_design_tokens",
+    "cap_atelier_typography",
+    "cap_ui_component_lib",
+    "cap_design_governance",
+    "cap_theme_engine"
+  ]
+}

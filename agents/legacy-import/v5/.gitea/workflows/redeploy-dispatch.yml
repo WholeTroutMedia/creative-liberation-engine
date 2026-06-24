@@ -1,0 +1,56 @@
+name: Redeploy Dispatch Only
+on:
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: host
+    steps:
+      - name: Check out repository
+        run: |
+          git init .
+          git config --local credential.helper '!f() { echo "username=wtm-admin"; echo "password=${FORGEJO_TOKEN}"; }; f'
+          git remote add origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git || true
+          git remote set-url origin http://127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git
+          git fetch origin main
+          git reset --hard FETCH_HEAD
+        env:
+          FORGEJO_TOKEN: ${{ secrets.FORGEJO_TOKEN }}
+
+      - name: Ensure Docker CLI + Compose available
+        run: |
+          if command -v docker &>/dev/null; then
+            echo "✓ Docker CLI in PATH: $(docker --version)"
+          else
+            echo "Docker CLI not found — downloading static binary..."
+            ARCH=$(uname -m)
+            case "$ARCH" in
+              x86_64|amd64) DOCKER_ARCH="x86_64" ;;
+              aarch64|arm64) DOCKER_ARCH="aarch64" ;;
+              *) echo "Unsupported arch: $ARCH" && exit 1 ;;
+            esac
+            mkdir -p /tmp/docker-dl
+            wget -q -O /tmp/docker-dl/docker.tgz \
+              "https://download.docker.com/linux/static/stable/${DOCKER_ARCH}/docker-24.0.9.tgz"
+            tar xzf /tmp/docker-dl/docker.tgz -C /tmp/docker-dl
+            cp /tmp/docker-dl/docker/docker /usr/local/bin/docker
+            chmod +x /usr/local/bin/docker
+            rm -rf /tmp/docker-dl
+            echo "✓ Docker CLI installed: $(docker --version)"
+          fi
+          if ! docker compose version &>/dev/null 2>&1; then
+            mkdir -p /usr/local/lib/docker/cli-plugins
+            wget -q -O /usr/local/lib/docker/cli-plugins/docker-compose \
+              "https://github.com/docker/compose/releases/download/v2.24.7/docker-compose-linux-$(uname -m)"
+            chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+            echo "✓ Compose: $(docker compose version)"
+          fi
+
+      - name: Build and Restart Dispatch
+        env:
+          DOCKER_HOST: "unix:///var/run/docker.sock"
+          DOCKER_API_VERSION: "1.43"
+        run: |
+          docker compose -p creative-liberation-engine-v5 -f docker-compose.genesis.yml up -d --build dispatch
+          echo "✅ Dispatch service redeployed"
+          docker ps --filter "name=dispatch" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

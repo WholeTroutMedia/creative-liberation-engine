@@ -1,0 +1,7 @@
+{
+  "name": "@cle/agent-spawner",
+  "version": "2.0.3",
+  "scripts": {
+    "build": "echo 'no build required'"
+  }
+}

@@ -1,0 +1,433 @@
+{
+  "version": "v6.1",
+  "generatedAt": "2026-04-17T14:43:48.225Z",
+  "mode": "v5-bridge",
+  "entries": [
+    {
+      "capabilityId": "cap-agent-mail",
+      "package": "agent-mail",
+      "sourcePath": "agents/legacy-import/v5/packages/agent-mail",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-agent-spawner",
+      "package": "agent-spawner",
+      "sourcePath": "agents/legacy-import/v5/packages/agent-spawner",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-answer-injector",
+      "package": "answer-injector",
+      "sourcePath": "agents/legacy-import/v5/packages/answer-injector",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-archaeon",
+      "package": "archaeon",
+      "sourcePath": "agents/legacy-import/v5/packages/archaeon",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-atelier",
+      "package": "atelier",
+      "sourcePath": "agents/legacy-import/v5/packages/atelier",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-atlas-live",
+      "package": "atlas-live",
+      "sourcePath": "agents/legacy-import/v5/packages/atlas-live",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-blockchain",
+      "package": "blockchain",
+      "sourcePath": "agents/legacy-import/v5/packages/blockchain",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-blueprints",
+      "package": "blueprints",
+      "sourcePath": "agents/legacy-import/v5/packages/blueprints",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-browser-mesh-coordinator",
+      "package": "browser-mesh-coordinator",
+      "sourcePath": "agents/legacy-import/v5/packages/browser-mesh-coordinator",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-capability-watcher",
+      "package": "capability-watcher",
+      "sourcePath": "agents/legacy-import/v5/packages/capability-watcher",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-claude-agent",
+      "package": "claude-agent",
+      "sourcePath": "agents/legacy-import/v5/packages/claude-agent",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-cloud-mesh",
+      "package": "cloud-mesh",
+      "sourcePath": "agents/legacy-import/v5/packages/cloud-mesh",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-codex-delta",
+      "package": "codex-delta",
+      "sourcePath": "agents/legacy-import/v5/packages/codex-delta",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-comet",
+      "package": "comet",
+      "sourcePath": "agents/legacy-import/v5/packages/comet",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-compose-hardener",
+      "package": "compose-hardener",
+      "sourcePath": "agents/legacy-import/v5/packages/compose-hardener",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-config",
+      "package": "config",
+      "sourcePath": "agents/legacy-import/v5/packages/config",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-constitution",
+      "package": "constitution",
+      "sourcePath": "agents/legacy-import/v5/packages/constitution",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-davinci-resolve-mcp",
+      "package": "davinci-resolve-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/davinci-resolve-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-design-agent",
+      "package": "design-agent",
+      "sourcePath": "agents/legacy-import/v5/packages/design-agent",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-design-governance",
+      "package": "design-governance",
+      "sourcePath": "agents/legacy-import/v5/packages/design-governance",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-design-ingest",
+      "package": "design-ingest",
+      "sourcePath": "agents/legacy-import/v5/packages/design-ingest",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-design-sandbox",
+      "package": "design-sandbox",
+      "sourcePath": "agents/legacy-import/v5/packages/design-sandbox",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-design-tokens",
+      "package": "design-tokens",
+      "sourcePath": "agents/legacy-import/v5/packages/design-tokens",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-destroyer",
+      "package": "destroyer",
+      "sourcePath": "agents/legacy-import/v5/packages/destroyer",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-director",
+      "package": "director",
+      "sourcePath": "agents/legacy-import/v5/packages/director",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-engine",
+      "package": "engine",
+      "sourcePath": "agents/legacy-import/v5/packages/engine",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-engine-core",
+      "package": "engine-core",
+      "sourcePath": "agents/legacy-import/v5/packages/engine-core",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-eon-capability-bridge",
+      "package": "eon-capability-bridge",
+      "sourcePath": "agents/legacy-import/v5/packages/eon-capability-bridge",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-fly-mesh",
+      "package": "fly-mesh",
+      "sourcePath": "agents/legacy-import/v5/packages/fly-mesh",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-foley-engine",
+      "package": "foley-engine",
+      "sourcePath": "agents/legacy-import/v5/packages/foley-engine",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-forge",
+      "package": "forge",
+      "sourcePath": "agents/legacy-import/v5/packages/forge",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-gen-ui",
+      "package": "gen-ui",
+      "sourcePath": "agents/legacy-import/v5/packages/gen-ui",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-genmedia",
+      "package": "genmedia",
+      "sourcePath": "agents/legacy-import/v5/packages/genmedia",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ghost",
+      "package": "ghost",
+      "sourcePath": "agents/legacy-import/v5/packages/ghost",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-god-prompt",
+      "package": "god-prompt",
+      "sourcePath": "agents/legacy-import/v5/packages/god-prompt",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-helix",
+      "package": "helix",
+      "sourcePath": "agents/legacy-import/v5/packages/helix",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-host-telemetry",
+      "package": "host-telemetry",
+      "sourcePath": "agents/legacy-import/v5/packages/host-telemetry",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-idv-engine",
+      "package": "idv-engine",
+      "sourcePath": "agents/legacy-import/v5/packages/idv-engine",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ie-engine-math",
+      "package": "ie-engine-math",
+      "sourcePath": "agents/legacy-import/v5/packages/ie-engine-math",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ie-engine-photo",
+      "package": "ie-engine-photo",
+      "sourcePath": "agents/legacy-import/v5/packages/ie-engine-photo",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ie-terminal",
+      "package": "ie-terminal",
+      "sourcePath": "agents/legacy-import/v5/packages/ie-terminal",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-cle-agent-extension",
+      "package": "cle-agent-extension",
+      "sourcePath": "agents/legacy-import/v5/packages/cle-agent-extension",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-cle-agent-sdk",
+      "package": "cle-agent-sdk",
+      "sourcePath": "agents/legacy-import/v5/packages/cle-agent-sdk",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-cle-browser",
+      "package": "cle-browser",
+      "sourcePath": "agents/legacy-import/v5/packages/cle-browser",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-cle-core",
+      "package": "cle-core",
+      "sourcePath": "agents/legacy-import/v5/packages/cle-core",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-living-canvas",
+      "package": "living-canvas",
+      "sourcePath": "agents/legacy-import/v5/packages/living-canvas",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-mcp-fetch-proxy",
+      "package": "mcp-fetch-proxy",
+      "sourcePath": "agents/legacy-import/v5/packages/mcp-fetch-proxy",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-media-ingest",
+      "package": "media-ingest",
+      "sourcePath": "agents/legacy-import/v5/packages/media-ingest",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-mobile-bridge",
+      "package": "mobile-bridge",
+      "sourcePath": "agents/legacy-import/v5/packages/mobile-bridge",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-motion",
+      "package": "motion",
+      "sourcePath": "agents/legacy-import/v5/packages/motion",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-nas-watcher",
+      "package": "nas-watcher",
+      "sourcePath": "agents/legacy-import/v5/packages/nas-watcher",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ollama-mcp",
+      "package": "ollama-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/ollama-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-orchestrator",
+      "package": "orchestrator",
+      "sourcePath": "agents/legacy-import/v5/packages/orchestrator",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ouroboros",
+      "package": "ouroboros",
+      "sourcePath": "agents/legacy-import/v5/packages/ouroboros",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-pulse",
+      "package": "pulse",
+      "sourcePath": "agents/legacy-import/v5/packages/pulse",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-scribe-mcp",
+      "package": "scribe-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/scribe-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-social",
+      "package": "social",
+      "sourcePath": "agents/legacy-import/v5/packages/social",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-somatic",
+      "package": "somatic",
+      "sourcePath": "agents/legacy-import/v5/packages/somatic",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-sovereign-home-mesh",
+      "package": "sovereign-home-mesh",
+      "sourcePath": "agents/legacy-import/v5/packages/sovereign-home-mesh",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-sovereign-mesh",
+      "package": "sovereign-mesh",
+      "sourcePath": "agents/legacy-import/v5/packages/sovereign-mesh",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-spatial",
+      "package": "spatial",
+      "sourcePath": "agents/legacy-import/v5/packages/spatial",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-spatial-core",
+      "package": "spatial-core",
+      "sourcePath": "agents/legacy-import/v5/packages/spatial-core",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-spectre",
+      "package": "spectre",
+      "sourcePath": "agents/legacy-import/v5/packages/spectre",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-synology-media-mcp",
+      "package": "synology-media-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/synology-media-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-theme-engine",
+      "package": "theme-engine",
+      "sourcePath": "agents/legacy-import/v5/packages/theme-engine",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-tsconfig",
+      "package": "tsconfig",
+      "sourcePath": "agents/legacy-import/v5/packages/tsconfig",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-ui",
+      "package": "ui",
+      "sourcePath": "agents/legacy-import/v5/packages/ui",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-vercel-mcp",
+      "package": "vercel-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/vercel-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-voc-mcp",
+      "package": "voc-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/voc-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-wire-ingestion-mcp",
+      "package": "wire-ingestion-mcp",
+      "sourcePath": "agents/legacy-import/v5/packages/wire-ingestion-mcp",
+      "bridgeType": "legacy-package-bridge"
+    },
+    {
+      "capabilityId": "cap-zero-to-spec-engine",
+      "package": "zero-to-spec-engine",
+      "sourcePath": "agents/legacy-import/v5/packages/zero-to-spec-engine",
+      "bridgeType": "legacy-package-bridge"
+    }
+  ]
+}

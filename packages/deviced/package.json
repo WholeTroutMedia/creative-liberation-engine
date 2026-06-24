@@ -1,19 +1,17 @@
 {
   "name": "@cle/deviced",
   "version": "2.0.3",
-  "description": "Aegis-Sense Native Discovery Daemon Interface",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "Zero-Knowledge Elastic Bursting and device hardware orchestrator",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "mcp:start": "node dist/mcp_server.js"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.6.0"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
   }
 }

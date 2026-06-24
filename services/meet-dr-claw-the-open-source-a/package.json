@@ -1,0 +1,10 @@
+{
+  "name": "@cle/meet-dr-claw-the-open-source-a",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0208",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

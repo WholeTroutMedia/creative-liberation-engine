@@ -1,0 +1,10 @@
+{
+  "name": "@cle/meet-gitnexus-an-open-source-m",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0064",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

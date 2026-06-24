@@ -1,0 +1,15 @@
+{
+  "name": "@cle/v6-registry-api",
+  "private": true,
+  "version": "2.0.3",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "capabilityIds": [
+    "cap_v6_registry_api"
+  ]
+}

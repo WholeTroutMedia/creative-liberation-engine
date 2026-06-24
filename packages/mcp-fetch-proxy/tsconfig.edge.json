@@ -1,0 +1,11 @@
+{
+  "extends": "../../packages/tsconfig/base.json",
+  "compilerOptions": {
+    "outDir": "./dist/edge",
+    "rootDir": "./src",
+    "types": ["@cloudflare/workers-types"],
+    "lib": ["ES2022"]
+  },
+  "include": ["src/edge-gateway.ts"],
+  "exclude": ["node_modules", "dist"]
+}

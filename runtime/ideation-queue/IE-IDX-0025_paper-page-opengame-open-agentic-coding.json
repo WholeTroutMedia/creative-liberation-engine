@@ -1,0 +1,200 @@
+{
+  "id": "IE-IDX-0025",
+  "version": 2,
+  "slug": "paper-page-opengame-open-agentic-coding",
+  "status": "ARCHIVED",
+  "source": {
+    "type": "flipboard_rss",
+    "feedId": "ai-hk2mtjn0z",
+    "guid": "flipboard-qnHAnoKUQEuqqvLICLxiVQ:a:4243649-1776857247",
+    "title": "Paper page - OpenGame: Open Agentic Coding for Games",
+    "url": "https://huggingface.co/papers/2604.18394?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Yilei Jiang ,",
+    "publishedAt": "Wed, 22 Apr 2026 11:27:27 GMT",
+    "imageUrl": null,
+    "excerpt": null,
+    "fullText": null,
+    "ingestedAt": "2026-04-25T12:04:04.519Z",
+    "ingestedBy": "flipboard-sentinel"
+  },
+  "classification": {
+    "categories": [
+      "sovereignty",
+      "edge-ai",
+      "agent",
+      "creative-tools",
+      "research",
+      "learning",
+      "spatial",
+      "Gaming",
+      "Librarianship",
+      "Libraries",
+      "Indie Gaming",
+      "Geek Stuff"
+    ],
+    "tags": [],
+    "cleRelevance": 100,
+    "urgency": "high",
+    "domain": "research"
+  },
+  "athena": {
+    "directive": "Establish the Creative Liberation Engine as the leading, self-extending agentic platform capable of autonomously designing, developing, and deploying complex, interactive real-world applications by integrating advanced meta-skills for architectural coherence and systematic error resolution.",
+    "rationale": "The OpenGame paper highlights a critical gap in current LLM capabilities: the inability to produce complex, multi-file, interactive applications due to issues like cross-file inconsistencies and logical incoherence. OpenGame's innovative 'Game Skill' (comprising Template Skill and Debug Skill) directly addresses these challenges by enabling stable architecture scaffolding and systematic integration error repair. By abstracting and integrating these meta-skills into the Creative Liberation Engine's core agentic architecture, we can elevate its capacity beyond isolated tasks to full, end-to-end project delivery for *any* domain requiring complex, interactive systems. This fulfills our constitutional mandate for a sovereign, adaptive, and ultimate agentic intelligence, ensuring complete, high-quality implementations with minimal human intervention.",
+    "options": [
+      {
+        "title": "Creative Liberation Engine as Adaptive Project Coherence Metaplatform",
+        "description": "Elevate OpenGame's 'Game Skill' concept (Template Skill for scaffolding, Debug Skill for systematic error repair) into a core, domain-agnostic meta-skill within the Creative Liberation Engine. This enables the Creative Liberation Engine to autonomously manage cross-file consistency, architectural integrity, and systematic debugging across *any* complex, multi-component project, not just games.",
+        "tradeoffs": "Requires significant R&D to abstract and generalize game-specific mechanics into universal architectural and debugging patterns; high initial architectural complexity.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Dedicated Agentic Game Development Suite",
+        "description": "Implement a fully integrated, specialized agentic suite within the Creative Liberation Engine, directly leveraging and extending the OpenGame framework to offer end-to-end game creation capabilities. This would serve as a powerful demonstrator of the Creative Liberation Engine's capacity for complex interactive application development.",
+        "tradeoffs": "Potential for siloing and limited reusability of game-specific components across other Creative Liberation Engine domains; may divert resources from broader platform generalization.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Universal Agentic Project Validation Framework",
+        "description": "Adapt and integrate the principles of OpenGame-Bench into the Creative Liberation Engine's internal validation and quality assurance systems. This would establish a robust, autonomous evaluation pipeline capable of assessing agent-generated projects for 'Build Health, Visual Usability, and Intent Alignment' across diverse application types.",
+        "tradeoffs": "Primarily focuses on evaluation rather than generative capabilities; requires significant effort to generalize metrics and headless execution environments beyond web games.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Creative Liberation Engine's Living Protocol for Systematic Debugging",
+        "description": "Abstract the 'Debug Skill's' concept of a 'living protocol of verified fixes' into a fundamental, self-evolving architectural pattern for all Creative Liberation Engine agentic development. This ensures systematic, experience-driven error resolution and cross-component coherence for every complex project.",
+        "tradeoffs": "Requires deep integration into the operational logic of all agents; defining universal 'verified fixes' independent of domain context can be challenging.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Autonomous Architectural Template Generation",
+        "description": "Develop an autonomous 'Template Skill' within the Creative Liberation Engine that continuously learns from successful projects to generate robust, architecturally sound project skeletons. This accelerates initial project setup and enforces best practices for multi-file, multi-component systems.",
+        "tradeoffs": "Requires sophisticated knowledge representation and learning algorithms for template evolution; initial templates may be overly generic without accumulated experience.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Enhanced Code Generation via Domain-Specialized LLMs",
+        "description": "Integrate or develop specialized code LLMs, inspired by GameCoder-27B, into BOLT or a dedicated code generation agent. This would significantly enhance the Creative Liberation Engine's ability to produce high-quality, domain-specific code for complex interactive applications.",
+        "tradeoffs": "Potential for increased model complexity and resource consumption; risk of over-specialization if not carefully balanced with general coding capabilities.",
+        "recommendation": "viable"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "BOLT",
+      "KEEPER",
+      "VERA"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty \u2014 prefer self-hosted, owned solutions",
+      "Article IV: Quality Standards \u2014 only complete implementations, never MVPs",
+      "Article IX: Ship Complete or Don't Ship",
+      "Article XX: Zero human wait time \u2014 automate everything possible"
+    ],
+    "depth": "exhaustive",
+    "analyzedAt": "2026-04-26T18:51:21.585Z"
+  },
+  "lifecycle": {
+    "transitions": [
+      {
+        "from": "INGESTED",
+        "to": "BRAINSTORM",
+        "at": "2026-04-25T12:04:04.519Z",
+        "by": "flipboard-sentinel",
+        "reason": "RSS article ingested and queued for ATHENA analysis"
+      },
+      {
+        "from": "BRAINSTORM",
+        "to": "IDEATED",
+        "at": "2026-04-26T18:51:21.585Z",
+        "by": "ATHENA",
+        "reason": "ATHENA strategic analysis complete"
+      },
+      {
+        "from": "IDEATED",
+        "to": "ARCHIVED",
+        "at": "2026-05-03T19:29:07.057873+00:00",
+        "by": "AVERI-triage-2026-05",
+        "reason": "ghost_duplicate_of_higher_index"
+      }
+    ],
+    "owner": null,
+    "priority": 2,
+    "blockedBy": [],
+    "notes": [],
+    "status": "VERIFIED"
+  },
+  "timestamps": {
+    "createdAt": "2026-04-25T12:04:04.519Z",
+    "brainstormedAt": "2026-04-25T12:04:04.519Z",
+    "ideatedAt": "2026-04-26T18:51:21.585Z",
+    "reviewedAt": null,
+    "activatedAt": null,
+    "shippedAt": null,
+    "validatedAt": null,
+    "completedAt": null,
+    "archivedAt": null,
+    "lastModifiedAt": "2026-04-26T18:51:21.585Z",
+    "lastReviewedAt": null,
+    "nextReviewDue": "2026-05-30T17:46:27.996Z"
+  },
+  "relations": {
+    "crossRefs": [
+      {
+        "targetId": "IE-IDX-0021",
+        "similarity": 0.4,
+        "relationship": "similar"
+      },
+      {
+        "targetId": "IE-IDX-0016",
+        "similarity": 0.4,
+        "relationship": "similar"
+      },
+      {
+        "targetId": "IE-IDX-0011",
+        "similarity": 0.4,
+        "relationship": "similar"
+      },
+      {
+        "targetId": "IE-IDX-0026",
+        "similarity": 0.4,
+        "relationship": "similar"
+      },
+      {
+        "targetId": "IE-IDX-0049",
+        "similarity": 0.4,
+        "relationship": "similar"
+      },
+      {
+        "targetId": "IE-IDX-0059",
+        "similarity": 0.4,
+        "relationship": "similar"
+      }
+    ],
+    "parentId": null,
+    "childIds": [],
+    "projectId": null,
+    "conversationIds": []
+  },
+  "deliverables": {
+    "obsidianPath": "\\\\127.0.0.1\\docker\\genesis-deploy\\runtime\\nexus-vault\\Sentinel\\IE-IDX-0025_paper-page-opengame-open-agentic-coding.md",
+    "artifacts": []
+  },
+  "notifications": {
+    "emailSentAt": "2026-04-26T18:51:21.585Z",
+    "emailTo": "inquiries@creativeliberationengine.org",
+    "digestBatchId": null,
+    "slackSentAt": null,
+    "chatSentAt": null
+  },
+  "review": {
+    "reviews": [],
+    "reviewCadence": "monthly",
+    "improvementSuggestions": []
+  },
+  "metadata": {
+    "v1Filename": "IE-IDX-0025_paper-page-opengame-open-agentic-coding",
+    "migratedAt": "2026-04-30T17:46:27.996Z",
+    "migratedFrom": "V1-flat-schema"
+  }
+}

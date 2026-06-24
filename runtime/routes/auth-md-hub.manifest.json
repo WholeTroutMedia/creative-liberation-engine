@@ -1,0 +1,74 @@
+{
+  "version": "v6.0",
+  "service": "auth-md-hub",
+  "routes": [
+    {
+      "routeId": "route_auth_md_health",
+      "path": "/api/auth-md/health",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "auth-md-hub",
+      "upstreamPath": "/api/auth-md/health",
+      "authPolicy": "public",
+      "timeoutMs": 2000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_auth_md_discover",
+      "path": "/api/auth-md/discover",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "auth-md-hub",
+      "upstreamPath": "/api/auth-md/discover",
+      "authPolicy": "public",
+      "timeoutMs": 2000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_auth_md_register",
+      "path": "/api/auth-md/register",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "auth-md-hub",
+      "upstreamPath": "/api/auth-md/register",
+      "authPolicy": "public",
+      "timeoutMs": 5000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_auth_md_verify",
+      "path": "/api/auth-md/verify",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "auth-md-hub",
+      "upstreamPath": "/api/auth-md/verify",
+      "authPolicy": "service_token",
+      "timeoutMs": 3000,
+      "criticality": "tier0",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

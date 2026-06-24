@@ -1,0 +1,7 @@
+[
+  { "id": 1, "speaker": "Artist", "start": "00:00:02", "end": "00:00:08", "text": "Welcome back to the Creative Liberation Engine podcast, episode forty-two.", "filler": false },
+  { "id": 2, "speaker": "Artist", "start": "00:00:08", "end": "00:00:11", "text": "Um, today we are going to talk about sovereign infrastructure.", "filler": true, "fillerWord": "Um," },
+  { "id": 3, "speaker": "Guest", "start": "00:00:12", "end": "00:00:18", "text": "Thanks for having me. I think this is a really important topic for creators right now.", "filler": false },
+  { "id": 4, "speaker": "Artist", "start": "00:00:18", "end": "00:00:25", "text": "Absolutely. So, uh, the big question is — why should artists care about owning their tools?", "filler": true, "fillerWord": "uh," },
+  { "id": 5, "speaker": "Guest", "start": "00:00:26", "end": "00:00:35", "text": "Because every SaaS subscription is a dependency. You are renting your creative pipeline from someone who can change the terms at any time.", "filler": false }
+]

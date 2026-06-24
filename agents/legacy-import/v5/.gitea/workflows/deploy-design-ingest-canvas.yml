@@ -1,0 +1,45 @@
+name: Deploy design-ingest-canvas (NAS)
+
+# SOVEREIGN DEPLOY — NAS self-hosted runner builds and runs Docker locally.
+# No workstation copy to D:; artifact lives in registry + container on NAS.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/design-ingest-canvas/**"
+      - "services/design-ingest-canvas/**"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-design-ingest-canvas
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build, push, and run on NAS
+    runs-on: host
+    env:
+      DOCKER_HOST: unix:///var/run/docker.sock
+      REGISTRY: 127.0.0.1:5000
+      COMPOSE_FILE: docker-compose.nas.yml
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build and push image
+        run: |
+          docker build -f services/design-ingest-canvas/Dockerfile \
+            -t $REGISTRY/design-ingest-canvas:${{ github.sha }} \
+            -t $REGISTRY/design-ingest-canvas:latest \
+            .
+          docker push $REGISTRY/design-ingest-canvas:${{ github.sha }}
+          docker push $REGISTRY/design-ingest-canvas:latest
+
+      - name: Recreate service
+        run: |
+          docker compose -f $COMPOSE_FILE up -d --build design-ingest-canvas
+          sleep 2
+          curl -sfI http://127.0.0.1:3042/ | head -n1 || true
+          echo "OK design-ingest-canvas — open http://127.0.0.1:3042/ on LAN"

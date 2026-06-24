@@ -1,0 +1,14 @@
+{
+  "name": "ingestion-mesh",
+  "version": "2.0.3",
+  "description": "Automated Media Ingestion Mesh",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "sqlite3": "^6.0.1"
+  }
+}

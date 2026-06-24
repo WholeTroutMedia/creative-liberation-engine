@@ -1,0 +1,10 @@
+{
+  "name": "@cle/superset-run-10-parallel-codin",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0199",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

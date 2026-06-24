@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/CSHARP_BEHAVIOR.schema.json",
+  "title": "C# Behavior Injection Contract",
+  "description": "Defines the structure for an autonomously generated C# behavior script to be compiled and injected into the active simulation at runtime.",
+  "type": "object",
+  "required": ["behavior_id", "namespace", "class_name", "base_class", "source_code"],
+  "properties": {
+    "behavior_id": {
+      "type": "string",
+      "description": "Unique identifier for this behavior (e.g., 'vendor_hostile_01')."
+    },
+    "namespace": {
+      "type": "string",
+      "description": "The C# namespace for the generated behavior."
+    },
+    "class_name": {
+      "type": "string",
+      "description": "The name of the generated class."
+    },
+    "base_class": {
+      "type": "string",
+      "description": "The interface or base class this behavior implements (e.g., 'IEntityBehavior')."
+    },
+    "source_code": {
+      "type": "string",
+      "description": "The complete, syntactically valid C# source code."
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "generated_by": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "prompt_hash": { "type": "string" }
+      }
+    }
+  }
+}

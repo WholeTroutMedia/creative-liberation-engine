@@ -1,0 +1,79 @@
+/* 
+  Pitch Black Brutalist (Theme 4 + 5 Hybrid)
+  Ultra-premium, high-density, enterprise-grade dark mode.
+  Pitch black void with charcoal structural borders, muted gold, and ice-blue telemetry accents.
+*/
+
+.theme-dark {
+  --background-primary: #000000;
+  --background-secondary: #080808;
+  --background-modifier-border: #1a1a1a;
+  
+  --text-normal: #e0e0e0;
+  --text-muted: #6b6b6b;
+  --text-accent: #c1a65d; /* Muted Gold */
+  
+  --interactive-accent: #c1a65d;
+  --interactive-accent-hover: #e0c885;
+  --background-modifier-active-hover: rgba(126, 162, 214, 0.1); /* Ice Blue tint */
+  
+  --radius-s: 0px;
+  --radius-m: 2px;
+  --radius-l: 2px;
+
+  --divider-color: #1a1a1a;
+  --divider-width: 1px;
+}
+
+/* 4-Pane Structural Enforcements */
+.workspace-leaf-content {
+  background-color: var(--background-primary) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  border-radius: var(--radius-m) !important;
+  box-shadow: none !important;
+}
+
+/* Hard structural splitters */
+.workspace-split.mod-horizontal > * > .workspace-leaf-resize-handle,
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+  background-color: var(--background-modifier-border) !important;
+  width: 1px !important;
+  opacity: 1 !important;
+}
+
+/* Tab headers - brutalist */
+.workspace-tab-header-container {
+  background-color: var(--background-secondary) !important;
+  border-bottom: 1px solid var(--background-modifier-border) !important;
+  padding: 0 !important;
+}
+
+.workspace-tab-header {
+  border-right: 1px solid var(--background-modifier-border) !important;
+  border-radius: 0 !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.workspace-tab-header.is-active {
+  background-color: var(--background-primary) !important;
+  color: var(--text-normal) !important;
+  border-bottom: 1px solid var(--interactive-accent) !important;
+}
+
+/* Code blocks and specific dense elements */
+.markdown-source-view.mod-cm6 .cm-scroller {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+/* Muted Ice Blue for secondary accents (like links) */
+.markdown-preview-view a.internal-link {
+  color: #7EA2D6;
+  text-decoration: none;
+  border-bottom: 1px dotted #7EA2D6;
+}

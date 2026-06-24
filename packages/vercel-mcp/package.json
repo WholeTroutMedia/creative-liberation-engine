@@ -1,0 +1,21 @@
+{
+  "name": "@cle/vercel-mcp",
+  "version": "2.0.3",
+  "description": "Sovereign Vercel MCP service \u2014 exposes Vercel API as an SSE MCP endpoint on the NAS",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "vercel-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "vercel-mcp-server": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.37",
+    "typescript": "^5.4.5"
+  }
+}

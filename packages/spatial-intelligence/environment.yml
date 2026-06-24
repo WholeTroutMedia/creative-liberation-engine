@@ -1,0 +1,27 @@
+name: spatial-intel
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pytorch=2.3
+  - torchvision
+  - cuda-toolkit=12.1
+  - numpy
+  - scipy
+  - open3d
+  - pip
+  - pip:
+    - grpcio>=1.60
+    - grpcio-tools>=1.60
+    - protobuf>=4.25
+    - transformers>=4.40
+    - depth-anything-v2
+    - timm
+    - safetensors
+    - huggingface-hub
+    - pointcept
+    - flash-attn
+    - spconv-cu121

@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/CODING_AGENT.schema.json",
+  "title": "Coding Agent Schema",
+  "description": "Sovereign coding agent with plugin architecture, code generation, and knowledge-powered RAG.",
+  "type": "object",
+  "required": ["task_id", "task_type", "created_at"],
+  "properties": {
+    "task_id": { "type": "string", "format": "uuid" },
+    "task_type": { "type": "string", "enum": ["generate", "refactor", "debug", "review", "explain", "test", "document", "migrate"] },
+    "status": { "type": "string", "enum": ["pending", "analyzing", "planning", "executing", "validating", "completed", "failed"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": ["string", "null"], "format": "date-time" },
+    "context": {
+      "type": "object",
+      "properties": {
+        "workspace_root": { "type": "string" },
+        "target_files": { "type": "array", "items": { "type": "string" } },
+        "language": { "type": "string" },
+        "framework": { "type": "string" }
+      }
+    },
+    "instruction": {
+      "type": "object",
+      "required": ["prompt"],
+      "properties": {
+        "prompt": { "type": "string" },
+        "constraints": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "model_used": { "type": "string" },
+        "token_usage": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "integer" },
+            "output": { "type": "integer" },
+            "total": { "type": "integer" },
+            "optimized_savings": { "type": "integer" }
+          }
+        },
+        "files_modified": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "action": { "type": "string", "enum": ["created", "modified", "deleted"] },
+              "lines_changed": { "type": "integer" }
+            }
+          }
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "lint_passed": { "type": "boolean" },
+            "type_check_passed": { "type": "boolean" },
+            "tests_passed": { "type": "boolean" },
+            "build_succeeded": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "plugins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["plugin_id", "name", "version"],
+        "properties": {
+          "plugin_id": { "type": "string" },
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "sandbox_mode": { "type": "string", "enum": ["strict", "permissive", "disabled"] }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

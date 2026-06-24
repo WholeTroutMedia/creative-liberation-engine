@@ -1,0 +1,44 @@
+name: Scaffold Templates
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Template ID (02-20) or "all"'
+        required: true
+        default: 'all'
+        type: string
+  push:
+    paths:
+      - 'template_generator.py'
+      - 'template_configs.json'
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run template generator
+        run: |
+          python template_generator.py ${{ github.event.inputs.target || 'all' }}
+
+      - name: Commit generated templates
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add templates/
+          git diff --staged --quiet || (
+            git commit -m "feat(scaffold): Auto-generate templates via template_generator.py"
+            git push
+          )
+          echo "Templates scaffolded successfully."

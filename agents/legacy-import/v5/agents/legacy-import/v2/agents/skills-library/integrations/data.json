@@ -1,0 +1,88 @@
+{
+  "category": "data-integrations",
+  "description": "Database, data processing, and storage integrations",
+  "source": "Community",
+  "agents": ["COMET", "VERA"],
+  "skills": [
+    {
+      "id": "postgres-supabase",
+      "name": "Supabase Postgres",
+      "description": "Use Supabase Postgres with realtime and auth",
+      "complexity": "moderate",
+      "input": "Database operation",
+      "output": "Executed Supabase query",
+      "example": "Query users with RLS policies",
+      "attribution": "Supabase Community"
+    },
+    {
+      "id": "postgres-neon",
+      "name": "Neon Serverless Postgres",
+      "description": "Use Neon's serverless Postgres",
+      "complexity": "moderate",
+      "input": "Database operation",
+      "output": "Executed Neon query",
+      "example": "Scale database with branching",
+      "attribution": "Neon Community"
+    },
+    {
+      "id": "postgres-read-only-queries",
+      "name": "Safe Read-Only SQL Queries",
+      "description": "Execute safe read-only database queries",
+      "complexity": "moderate",
+      "input": "Query requirements",
+      "output": "Safe SELECT query",
+      "example": "Query analytics without modification risk",
+      "attribution": "dwatow (Community)"
+    },
+    {
+      "id": "tinybird-best-practices",
+      "name": "Tinybird Real-Time Analytics",
+      "description": "Build real-time analytics with Tinybird",
+      "complexity": "expert",
+      "input": "Analytics requirements",
+      "output": "Tinybird pipes and endpoints",
+      "example": "Build real-time dashboard with sub-second latency",
+      "attribution": "Tinybird Community"
+    },
+    {
+      "id": "csv-summarizer",
+      "name": "CSV Analysis and Summarization",
+      "description": "Analyze and summarize CSV data",
+      "complexity": "moderate",
+      "input": "CSV file",
+      "output": "Summary with insights",
+      "example": "Analyze sales data and find trends",
+      "attribution": "Community"
+    },
+    {
+      "id": "embeddings-management",
+      "name": "Vector Embeddings Management",
+      "description": "Generate and manage vector embeddings",
+      "complexity": "expert",
+      "input": "Text to embed",
+      "output": "Vector embeddings",
+      "example": "Generate embeddings for semantic search",
+      "attribution": "Community"
+    },
+    {
+      "id": "vector-store-operations",
+      "name": "Vector Database Operations",
+      "description": "Use Pinecone, Qdrant, or similar vector DBs",
+      "complexity": "expert",
+      "input": "Vector operation",
+      "output": "Executed vector DB operation",
+      "example": "Semantic search across documentation",
+      "attribution": "Community"
+    },
+    {
+      "id": "data-processing-transform",
+      "name": "Data Transformation Pipelines",
+      "description": "Build ETL/ELT data pipelines",
+      "complexity": "expert",
+      "input": "Data source and target",
+      "output": "Complete transformation pipeline",
+      "example": "Transform raw events to analytics schema",
+      "attribution": "Community"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "color": {
+    "background": {
+      "$description": "Surface hierarchy — darkest (void) to lightest (elevated)",
+      "void": { "$type": "color", "$value": "#000000", "$description": "True black — canvas backdrop, behind everything" },
+      "default": { "$type": "color", "$value": "#0a0a0f", "$description": "Primary app background" },
+      "subtle": { "$type": "color", "$value": "#111118", "$description": "Cards, sidebars, secondary surfaces" },
+      "muted": { "$type": "color", "$value": "#1a1a24", "$description": "Input fields, code blocks, recessed areas" },
+      "elevated": { "$type": "color", "$value": "#22222e", "$description": "Dropdowns, popovers, floating panels" },
+      "overlay": { "$type": "color", "$value": "rgba(0, 0, 0, 0.72)", "$description": "Modal backdrop, scrims" },
+      "inverse": { "$type": "color", "$value": "#f0f0f5", "$description": "Inverse surface for contrast flips" },
+      "glass": { "$type": "color", "$value": "rgba(17, 17, 24, 0.65)", "$description": "Glassmorphism panels — blur required" },
+      "glass-heavy": { "$type": "color", "$value": "rgba(10, 10, 15, 0.85)", "$description": "Heavy glassmorphism — sidebars, navs" }
+    },
+    "text": {
+      "$description": "Text hierarchy — luminance-based readability scale",
+      "primary": { "$type": "color", "$value": "#f0f0f5", "$description": "High-emphasis text — headings, primary content" },
+      "secondary": { "$type": "color", "$value": "#a0a0b0", "$description": "Medium-emphasis — descriptions, supporting text" },
+      "tertiary": { "$type": "color", "$value": "#6b6b7b", "$description": "Low-emphasis — timestamps, metadata, hints" },
+      "disabled": { "$type": "color", "$value": "#404050", "$description": "Disabled state text" },
+      "inverse": { "$type": "color", "$value": "#0a0a0f", "$description": "Text on inverse/light surfaces" },
+      "brand": { "$type": "color", "$value": "#60a5fa", "$description": "Brand-colored text — links, accents" },
+      "success": { "$type": "color", "$value": "#4ade80", "$description": "Success state text" },
+      "warning": { "$type": "color", "$value": "#fbbf24", "$description": "Warning state text" },
+      "danger": { "$type": "color", "$value": "#f87171", "$description": "Error state text" },
+      "info": { "$type": "color", "$value": "#60a5fa", "$description": "Informational text" },
+      "code": { "$type": "color", "$value": "#c4b5fd", "$description": "Inline code text — violet tint" }
+    },
+    "border": {
+      "$description": "Border hierarchy — visibility scale",
+      "default": { "$type": "color", "$value": "#22222e", "$description": "Subtle dividers — low contrast" },
+      "subtle": { "$type": "color", "$value": "#1a1a24", "$description": "Near-invisible structure lines" },
+      "muted": { "$type": "color", "$value": "#2a2a38", "$description": "Visible borders — cards, sections" },
+      "strong": { "$type": "color", "$value": "#404050", "$description": "High-contrast borders — active elements" },
+      "focus": { "$type": "color", "$value": "#60a5fa", "$description": "Focus ring — accessibility critical" },
+      "brand": { "$type": "color", "$value": "#7c3aed", "$description": "Brand-accent border — selected states" },
+      "danger": { "$type": "color", "$value": "#f87171", "$description": "Error borders — validation" },
+      "success": { "$type": "color", "$value": "#4ade80", "$description": "Success borders — confirmation" }
+    },
+    "interactive": {
+      "$description": "Interactive element colors — buttons, links, controls",
+      "primary": {
+        "default": { "$type": "color", "$value": "#2563eb", "$description": "Primary action — CTA buttons" },
+        "hover": { "$type": "color", "$value": "#3b82f6", "$description": "Primary hover state" },
+        "active": { "$type": "color", "$value": "#1d4ed8", "$description": "Primary active/pressed state" },
+        "disabled": { "$type": "color", "$value": "#1e3a5f", "$description": "Primary disabled state" }
+      },
+      "secondary": {
+        "default": { "$type": "color", "$value": "#22222e", "$description": "Secondary/ghost button background" },
+        "hover": { "$type": "color", "$value": "#2a2a38", "$description": "Secondary hover" },
+        "active": { "$type": "color", "$value": "#1a1a24", "$description": "Secondary active" }
+      },
+      "destructive": {
+        "default": { "$type": "color", "$value": "#dc2626", "$description": "Destructive action" },
+        "hover": { "$type": "color", "$value": "#ef4444", "$description": "Destructive hover" },
+        "active": { "$type": "color", "$value": "#b91c1c", "$description": "Destructive active" }
+      },
+      "link": {
+        "default": { "$type": "color", "$value": "#60a5fa", "$description": "Text links" },
+        "hover": { "$type": "color", "$value": "#93c5fd", "$description": "Link hover" },
+        "visited": { "$type": "color", "$value": "#a78bfa", "$description": "Visited link — violet shift" }
+      }
+    },
+    "status": {
+      "$description": "Semantic status colors — feedback system",
+      "success": {
+        "bg": { "$type": "color", "$value": "rgba(34, 197, 94, 0.12)", "$description": "Success background tint" },
+        "border": { "$type": "color", "$value": "rgba(34, 197, 94, 0.24)", "$description": "Success border" },
+        "text": { "$type": "color", "$value": "#4ade80" },
+        "icon": { "$type": "color", "$value": "#22c55e" }
+      },
+      "warning": {
+        "bg": { "$type": "color", "$value": "rgba(251, 191, 36, 0.12)" },
+        "border": { "$type": "color", "$value": "rgba(251, 191, 36, 0.24)" },
+        "text": { "$type": "color", "$value": "#fbbf24" },
+        "icon": { "$type": "color", "$value": "#f59e0b" }
+      },
+      "danger": {
+        "bg": { "$type": "color", "$value": "rgba(248, 113, 113, 0.12)" },
+        "border": { "$type": "color", "$value": "rgba(248, 113, 113, 0.24)" },
+        "text": { "$type": "color", "$value": "#f87171" },
+        "icon": { "$type": "color", "$value": "#ef4444" }
+      },
+      "info": {
+        "bg": { "$type": "color", "$value": "rgba(96, 165, 250, 0.12)" },
+        "border": { "$type": "color", "$value": "rgba(96, 165, 250, 0.24)" },
+        "text": { "$type": "color", "$value": "#60a5fa" },
+        "icon": { "$type": "color", "$value": "#3b82f6" }
+      },
+      "neutral": {
+        "bg": { "$type": "color", "$value": "rgba(160, 160, 176, 0.08)" },
+        "border": { "$type": "color", "$value": "rgba(160, 160, 176, 0.16)" },
+        "text": { "$type": "color", "$value": "#a0a0b0" },
+        "icon": { "$type": "color", "$value": "#6b6b7b" }
+      }
+    },
+    "accent": {
+      "$description": "Accent palette — blue-violet axis per DESIGN.md",
+      "blue": { "$type": "color", "$value": "#2563eb" },
+      "violet": { "$type": "color", "$value": "#7c3aed" },
+      "indigo": { "$type": "color", "$value": "#4f46e5" },
+      "cyan": { "$type": "color", "$value": "#06b6d4" },
+      "emerald": { "$type": "color", "$value": "#10b981" },
+      "rose": { "$type": "color", "$value": "#f43f5e" },
+      "amber": { "$type": "color", "$value": "#f59e0b" }
+    },
+    "chart": {
+      "$description": "Data visualization palette — ordered for maximum distinguishability",
+      "1": { "$type": "color", "$value": "#60a5fa" },
+      "2": { "$type": "color", "$value": "#a78bfa" },
+      "3": { "$type": "color", "$value": "#34d399" },
+      "4": { "$type": "color", "$value": "#fbbf24" },
+      "5": { "$type": "color", "$value": "#f87171" },
+      "6": { "$type": "color", "$value": "#22d3ee" },
+      "7": { "$type": "color", "$value": "#fb923c" },
+      "8": { "$type": "color", "$value": "#e879f9" }
+    }
+  }
+}

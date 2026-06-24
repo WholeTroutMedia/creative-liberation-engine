@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+celery
+redis
+opencv-python-headless
+numpy
+requests
+google-generativeai
+moviepy

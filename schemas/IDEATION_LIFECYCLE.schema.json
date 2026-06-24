@@ -1,0 +1,462 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/IDEATION_LIFECYCLE.schema.json",
+  "title": "Ideation Lifecycle Entity",
+  "description": "Canonical schema for all ideation entities within the Creative Liberation Engine. Every brainstorm, ideation, plan, and execution is a first-class OS object with full lifecycle tracking, source provenance, review history, and cross-referencing.",
+  "type": "object",
+  "required": ["id", "version", "status", "source", "timestamps", "lifecycle"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^IE-IDX-[0-9]{4,}$",
+      "description": "Canonical ideation ID. Monotonically increasing, globally unique within the engine."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Schema version for forward-compatible migrations."
+    },
+    "slug": {
+      "type": "string",
+      "maxLength": 60,
+      "description": "URL-safe identifier derived from the source title."
+    },
+    "status": {
+      "$ref": "#/definitions/IdeationStatus",
+      "description": "Current lifecycle stage of this ideation."
+    },
+    "source": {
+      "$ref": "#/definitions/Source",
+      "description": "Provenance — where this ideation originated."
+    },
+    "classification": {
+      "$ref": "#/definitions/Classification",
+      "description": "Categorical and relevance metadata."
+    },
+    "athena": {
+      "$ref": "#/definitions/AthenaOutput",
+      "description": "ATHENA's strategic analysis output. Null until IDEATED."
+    },
+    "lifecycle": {
+      "$ref": "#/definitions/Lifecycle",
+      "description": "Full lifecycle tracking — transitions, reviews, ownership."
+    },
+    "timestamps": {
+      "$ref": "#/definitions/Timestamps",
+      "description": "Canonical timestamp record for every lifecycle event."
+    },
+    "relations": {
+      "$ref": "#/definitions/Relations",
+      "description": "Cross-references to other ideations, agents, and outputs."
+    },
+    "deliverables": {
+      "$ref": "#/definitions/Deliverables",
+      "description": "Artifacts produced from this ideation (code, designs, docs)."
+    },
+    "notifications": {
+      "$ref": "#/definitions/Notifications",
+      "description": "Email/alert delivery tracking."
+    },
+    "review": {
+      "$ref": "#/definitions/ReviewRecord",
+      "description": "Monthly review cycle and improvement tracking."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Open-ended metadata for extension without schema changes.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false,
+
+  "definitions": {
+    "IdeationStatus": {
+      "type": "string",
+      "enum": [
+        "INGESTED",
+        "BRAINSTORM",
+        "IDEATED",
+        "REVIEWED",
+        "ACTIVATED",
+        "IN_PROGRESS",
+        "SHIPPED",
+        "VALIDATED",
+        "COMPLETED",
+        "PARKED",
+        "ARCHIVED",
+        "DISCARDED"
+      ],
+      "description": "State machine: INGESTED → BRAINSTORM → IDEATED → REVIEWED → ACTIVATED → IN_PROGRESS → SHIPPED → VALIDATED → COMPLETED. Side-exits: PARKED (revisit later), ARCHIVED (done, historical), DISCARDED (rejected)."
+    },
+
+    "Source": {
+      "type": "object",
+      "required": ["type", "title", "url", "ingestedAt"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["flipboard_rss", "manual", "chat", "email", "research", "agent_generated", "cross_reference"],
+          "description": "How this ideation entered the system."
+        },
+        "feedId": {
+          "type": ["string", "null"],
+          "description": "RSS feed identifier if source is flipboard_rss."
+        },
+        "guid": {
+          "type": ["string", "null"],
+          "description": "Original RSS GUID for deduplication."
+        },
+        "title": {
+          "type": "string",
+          "description": "Original source title."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Original source URL."
+        },
+        "author": {
+          "type": ["string", "null"],
+          "description": "Source author if known."
+        },
+        "publishedAt": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Original publication date."
+        },
+        "imageUrl": {
+          "type": ["string", "null"],
+          "description": "Hero image from the source."
+        },
+        "excerpt": {
+          "type": ["string", "null"],
+          "description": "Short excerpt or RSS description."
+        },
+        "fullText": {
+          "type": ["string", "null"],
+          "description": "Full scraped article text (if available)."
+        },
+        "ingestedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When this source entered the Creative Liberation Engine."
+        },
+        "ingestedBy": {
+          "type": "string",
+          "default": "flipboard-sentinel",
+          "description": "Which service or agent ingested this source."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Classification": {
+      "type": "object",
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Topic categories (AI, Infrastructure, Design, etc.)."
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Fine-grained tags for search and filtering."
+        },
+        "cleRelevance": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "0-100 relevance score to the Creative Liberation Engine mission."
+        },
+        "urgency": {
+          "type": "string",
+          "enum": ["critical", "high", "medium", "low", "informational"],
+          "default": "medium",
+          "description": "How time-sensitive is this ideation."
+        },
+        "domain": {
+          "type": "string",
+          "enum": ["infrastructure", "product", "research", "governance", "creative", "business", "security", "operations"],
+          "description": "Primary domain this ideation belongs to."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "AthenaOutput": {
+      "type": ["object", "null"],
+      "properties": {
+        "directive": {
+          "type": "string",
+          "description": "ATHENA's primary strategic statement."
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Reasoning behind the directive."
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title", "description", "tradeoffs", "recommendation"],
+            "properties": {
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "tradeoffs": { "type": "string" },
+              "recommendation": {
+                "type": "string",
+                "enum": ["preferred", "viable", "avoid"]
+              }
+            }
+          },
+          "description": "Strategic options evaluated."
+        },
+        "suggestedAgents": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Agents recommended for execution."
+        },
+        "nextMode": {
+          "type": "string",
+          "enum": ["IDEATE", "PLAN", "SHIP", "VALIDATE"],
+          "description": "Recommended next operational mode."
+        },
+        "constitutionalFlags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Constitutional articles triggered."
+        },
+        "depth": {
+          "type": "string",
+          "enum": ["surface", "deep", "exhaustive"],
+          "description": "Analysis depth that was used."
+        },
+        "analyzedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When ATHENA completed analysis."
+        }
+      }
+    },
+
+    "Lifecycle": {
+      "type": "object",
+      "required": ["transitions"],
+      "properties": {
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "at"],
+            "properties": {
+              "from": { "$ref": "#/definitions/IdeationStatus" },
+              "to": { "$ref": "#/definitions/IdeationStatus" },
+              "at": { "type": "string", "format": "date-time" },
+              "by": {
+                "type": "string",
+                "description": "Agent or user who triggered the transition."
+              },
+              "reason": {
+                "type": ["string", "null"],
+                "description": "Why this transition happened."
+              }
+            }
+          },
+          "description": "Full audit trail of every status change."
+        },
+        "owner": {
+          "type": ["string", "null"],
+          "description": "Current owner/assignee (agent or human)."
+        },
+        "priority": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 3,
+          "description": "Execution priority (1 = highest, 5 = lowest)."
+        },
+        "blockedBy": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "IDs of ideations or tasks blocking this one."
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text", "at"],
+            "properties": {
+              "text": { "type": "string" },
+              "at": { "type": "string", "format": "date-time" },
+              "by": { "type": "string" }
+            }
+          },
+          "default": [],
+          "description": "Human or agent annotations."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Timestamps": {
+      "type": "object",
+      "required": ["createdAt"],
+      "properties": {
+        "createdAt": { "type": "string", "format": "date-time" },
+        "brainstormedAt": { "type": ["string", "null"], "format": "date-time" },
+        "ideatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "reviewedAt": { "type": ["string", "null"], "format": "date-time" },
+        "activatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "shippedAt": { "type": ["string", "null"], "format": "date-time" },
+        "validatedAt": { "type": ["string", "null"], "format": "date-time" },
+        "completedAt": { "type": ["string", "null"], "format": "date-time" },
+        "archivedAt": { "type": ["string", "null"], "format": "date-time" },
+        "lastModifiedAt": { "type": "string", "format": "date-time" },
+        "lastReviewedAt": { "type": ["string", "null"], "format": "date-time" },
+        "nextReviewDue": { "type": ["string", "null"], "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+
+    "Relations": {
+      "type": "object",
+      "properties": {
+        "crossRefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["targetId", "similarity"],
+            "properties": {
+              "targetId": { "type": "string" },
+              "similarity": { "type": "number", "minimum": 0, "maximum": 1 },
+              "relationship": {
+                "type": "string",
+                "enum": ["similar", "prerequisite", "successor", "contradicts", "extends", "supersedes"]
+              }
+            }
+          },
+          "description": "Semantic cross-references to other ideations."
+        },
+        "parentId": {
+          "type": ["string", "null"],
+          "description": "If this was spawned from another ideation."
+        },
+        "childIds": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Ideations spawned from this one."
+        },
+        "projectId": {
+          "type": ["string", "null"],
+          "description": "If activated into a project, the project reference."
+        },
+        "conversationIds": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Antigravity conversation IDs where this was discussed."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Deliverables": {
+      "type": "object",
+      "properties": {
+        "obsidianPath": {
+          "type": ["string", "null"],
+          "description": "Path to the Obsidian note in the Nexus Vault."
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "path"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": ["document", "code", "design", "deployment", "presentation", "research"]
+              },
+              "path": { "type": "string" },
+              "description": { "type": "string" },
+              "createdAt": { "type": "string", "format": "date-time" }
+            }
+          },
+          "default": [],
+          "description": "Files and artifacts produced from this ideation."
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "Notifications": {
+      "type": "object",
+      "properties": {
+        "emailSentAt": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When the ideation email was delivered."
+        },
+        "emailTo": {
+          "type": ["string", "null"],
+          "description": "Email recipient."
+        },
+        "digestBatchId": {
+          "type": ["string", "null"],
+          "description": "If included in a batch digest, the digest ID."
+        },
+        "slackSentAt": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        },
+        "chatSentAt": {
+          "type": ["string", "null"],
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "ReviewRecord": {
+      "type": "object",
+      "properties": {
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["reviewedAt", "verdict"],
+            "properties": {
+              "reviewedAt": { "type": "string", "format": "date-time" },
+              "reviewedBy": { "type": "string" },
+              "verdict": {
+                "type": "string",
+                "enum": ["still_relevant", "needs_update", "superseded", "deprioritized", "activate_now"]
+              },
+              "notes": { "type": ["string", "null"] },
+              "nextReviewDue": { "type": ["string", "null"], "format": "date-time" }
+            }
+          },
+          "default": [],
+          "description": "Monthly review cycle entries."
+        },
+        "reviewCadence": {
+          "type": "string",
+          "enum": ["monthly", "quarterly", "on_demand", "none"],
+          "default": "monthly",
+          "description": "How often this ideation should be revisited."
+        },
+        "improvementSuggestions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "Accumulated improvement suggestions from reviews."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

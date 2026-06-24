@@ -1,0 +1,30 @@
+{
+  "name": "@creative-liberation-engine/a2a-protocol",
+  "version": "2.0.3",
+  "description": "Sovereign binary-efficient Agent-to-Agent communication protocol",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "cle",
+    "a2a",
+    "protocol",
+    "agents"
+  ],
+  "author": "Creative Liberation Engine V6",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

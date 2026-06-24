@@ -1,0 +1,27 @@
+{
+  "version": "v6.0",
+  "mode": "local-first",
+  "authority": "creative-liberation-engine",
+  "referenceRoots": [
+    "../creative-liberation-engine-v2",
+    "../creative-liberation-engine-v3",
+    "../creative-liberation-engine-v4",
+    "./services"
+  ],
+  "writeTargets": [
+    "docs",
+    "schemas",
+    "inventory",
+    "wiki",
+    "packages",
+    "apps",
+    "services",
+    "runtime",
+    "tests",
+    "tools"
+  ],
+  "forbiddenWriteTargets": [
+    "./services"
+  ],
+  "promotionState": "not-ready"
+}

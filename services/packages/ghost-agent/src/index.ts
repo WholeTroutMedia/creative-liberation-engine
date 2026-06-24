@@ -1,0 +1,1 @@
+export function init() { console.log("GHOST Stealth Agent initialized"); }

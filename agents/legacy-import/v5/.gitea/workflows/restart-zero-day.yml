@@ -1,0 +1,52 @@
+name: Restart Zero-Day Container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  restart:
+    name: Restart zero-day on NAS
+    runs-on: host
+    timeout-minutes: 10
+    env:
+      DOCKER_HOST: "unix:///var/run/docker.sock"
+
+    steps:
+      - name: Check current zero-day container state
+        run: |
+          echo "=== Current state ==="
+          docker ps -a --filter "name=creative-liberation-engine-v5-zero-day" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" || true
+          echo ""
+          echo "=== Last 30 log lines ==="
+          docker logs --tail 30 creative-liberation-engine-v5-zero-day-1 2>&1 || true
+
+      - name: Restart zero-day container
+        run: |
+          if docker ps -a --format "{{.Names}}" | grep -q "creative-liberation-engine-v5-zero-day-1"; then
+            echo "Container exists — restarting..."
+            docker restart creative-liberation-engine-v5-zero-day-1
+            echo "✅ Restarted"
+          else
+            echo "Container not found — attempting docker compose up for zero-day only..."
+            cd /volume1/docker/creative-liberation-engine-v5 2>/dev/null || cd /opt/creative-liberation-engine-v5 2>/dev/null || (echo "Cannot find compose dir" && docker ps -a | head -20 && exit 1)
+            docker compose -p creative-liberation-engine-v5 -f docker-compose.genesis.yml up -d --no-build zero-day
+          fi
+
+      - name: Wait and health check
+        run: |
+          echo "Waiting 15s for startup..."
+          sleep 15
+          if wget -qO- http://localhost:9000/health > /dev/null 2>&1; then
+            echo "✅ zero-day HEALTHY at :9000"
+          else
+            echo "⚠️ /health not responding — checking container status:"
+            docker ps --filter "name=zero-day" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+            echo ""
+            docker logs --tail 50 creative-liberation-engine-v5-zero-day-1 2>&1 || true
+          fi
+
+      - name: Final status
+        if: always()
+        run: |
+          echo "=== Final container state ==="
+          docker ps -a --filter "name=zero-day" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"

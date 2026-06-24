@@ -1,0 +1,72 @@
+{
+  "jobId": "IE-IDX-0389",
+  "jobNumber": 389,
+  "slug": "10-github-repositories-for-web-developme",
+  "filename": "IE-IDX-0389_10-github-repositories-for-web-developme",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-fnXTPgrlSemhom9pMBSGnw:a:4243649-1781042980",
+    "title": "10 GitHub Repositories for Web Development in Python - KDnuggets",
+    "url": "https://www.kdnuggets.com/10-github-repositories-for-web-development-in-python?utm_source=flipboard&utm_content=topic/pythonscript",
+    "author": "Abid Ali Awan",
+    "pubDate": "Tue, 09 Jun 2026 22:09:40 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Web Development",
+        "$": {
+          "domain": "https://flipboard.com/topic/webdevelopment"
+        }
+      },
+      {
+        "_": "Machine Learning",
+        "$": {
+          "domain": "https://flipboard.com/topic/machinelearning"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "Web Applications",
+        "$": {
+          "domain": "https://flipboard.com/topic/webapplication"
+        }
+      },
+      {
+        "_": "The Web",
+        "$": {
+          "domain": "https://flipboard.com/topic/worldwideweb"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "infrastructure",
+    "creative-tools",
+    "business",
+    "learning",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "options": [],
+    "suggestedAgents": [],
+    "nextMode": "PLAN",
+    "constitutionalFlags": []
+  },
+  "relatedJobs": [
+    "IE-IDX-0385"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0389_10-github-repositories-for-web-developme.md",
+  "comments": [],
+  "createdAt": "2026-06-09T22:15:25.543Z",
+  "ideatedAt": "2026-06-09T22:15:44.136Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article"
+}

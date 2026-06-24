@@ -1,0 +1,37 @@
+/* Glass-Canvas (Spatial Minimalist) */
+.theme-dark {
+  --background-primary: rgba(255, 255, 255, 0.03) !important;
+  --background-secondary: rgba(255, 255, 255, 0.01) !important;
+  --background-modifier-border: transparent !important;
+  
+  --interactive-accent: rgba(255, 255, 255, 0.8);
+  --interactive-accent-hover: rgba(255, 255, 255, 1);
+  --text-accent: #ffffff;
+  
+  --text-normal: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.5);
+  
+  --font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  --border-width: 0px !important;
+}
+
+/* Obsidian requires a background image on the body to see the glass effect */
+body {
+  background-image: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Sample fluid background */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.workspace-leaf {
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: var(--background-primary) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 24px !important;
+  margin: 8px !important;
+}
+
+.workspace-leaf-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}

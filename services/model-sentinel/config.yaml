@@ -1,0 +1,147 @@
+# ============================================================
+# Model Sentinel — Configuration
+# Creative Liberation Engine V6 | Automated Model Fleet Management
+# ============================================================
+
+sentinel:
+  version: "1.0.0"
+  schedule: "0 3 * * 0"  # Every Sunday at 3:00 AM
+  auto_pull: false        # Require approval before pulling new models
+  auto_sunset: false      # Require approval before removing models
+  report_dir: "runtime/reports/model-sentinel"
+  registry_path: "runtime/registry/models.canonical.json"
+  blessed_path: "runtime/registry/models.blessed.md"
+
+sandbox_testing:
+  enabled: true
+  test_prompt: "Write a Python function to compute the Fibonacci sequence and calculate the 50th number. Return only code."
+  cleanup_after_test: true  # Deletes model if auto_pull is false
+
+
+# Hardware endpoints for model deployment
+endpoints:
+  workstation:
+    name: "OFFICE"
+    url: "http://localhost:11434"
+    gpu: "NVIDIA RTX 4090"
+    vram_gb: 24
+    ram_gb: 128
+    role: "primary-inference"
+    priority: 1
+  # NAS is CPU-only — reserved for lightweight utility models
+  # Uncomment when Ollama is deployed on NAS
+  # nas:
+  #   name: "NAS"
+  #   url: "http://127.0.0.1:11434"
+  #   gpu: null
+  #   ram_gb: 32
+  #   role: "utility-inference"
+  #   priority: 2
+
+# Upstream sources to monitor for new releases
+sources:
+  ollama_library:
+    enabled: true
+    api_url: "https://ollama.com/api"
+    # Track these model families
+    watch_families:
+      - "qwen"
+      - "gemma"
+      - "llama"
+      - "mistral"
+      - "nomic-embed-text"
+      - "llava"
+      - "codestral"
+      - "deepseek"
+      - "phi"
+      - "command-r"
+
+  huggingface:
+    enabled: true
+    api_url: "https://huggingface.co/api"
+    # Organizations to watch for new model releases
+    watch_orgs:
+      - "Qwen"
+      - "google"
+      - "meta-llama"
+      - "mistralai"
+      - "NousResearch"
+      - "deepseek-ai"
+      - "microsoft"
+      - "nvidia"
+    # Minimum downloads to consider a model relevant
+    min_downloads: 10000
+    # Filter by task relevance
+    relevant_tasks:
+      - "text-generation"
+      - "text2text-generation"
+      - "feature-extraction"
+      - "image-text-to-text"
+
+  openrouter:
+    enabled: true
+    api_url: "https://openrouter.ai/api/v1"
+    track_pricing: true
+    # Track cloud-tier models for cost optimization
+    watch_providers:
+      - "anthropic"
+      - "google"
+      - "openai"
+      - "meta-llama"
+      - "mistralai"
+      - "qwen"
+      - "deepseek"
+      - "perplexity"
+
+# Tier-to-hardware mapping
+# Defines where each model tier should preferentially run
+tier_placement:
+  "local:code":
+    prefer: "workstation"
+    min_vram_gb: 16
+    tags: ["code", "agentic"]
+  "local:code:fast":
+    prefer: "workstation"
+    min_vram_gb: 4
+    tags: ["code", "fast"]
+  "local:fast":
+    prefer: "workstation"
+    min_vram_gb: 2
+    tags: ["general", "fast"]
+  "local:large":
+    prefer: "workstation"
+    min_vram_gb: 16
+    tags: ["general", "reasoning"]
+  "local:vision":
+    prefer: "workstation"
+    min_vram_gb: 20
+    tags: ["vision", "multimodal"]
+  "local:embed":
+    prefer: "workstation"  # Move to NAS when Ollama deployed there
+    min_vram_gb: 0
+    tags: ["embedding"]
+  "local:world":
+    prefer: "workstation"
+    min_vram_gb: 0
+    tags: ["world-model", "experimental"]
+
+# Notification channels
+notifications:
+  dispatch_server:
+    enabled: false  # Enable when dispatch server is confirmed running
+    url: "http://127.0.0.1:5150"
+    endpoint: "/api/notify"
+  email:
+    enabled: true
+    to: "inquiries@creativeliberationengine.org"
+  file_report:
+    enabled: true  # Always write report to disk
+
+# Scoring weights for model comparison
+scoring:
+  benchmark_weight: 0.35
+  size_efficiency_weight: 0.20
+  recency_weight: 0.15
+  community_adoption_weight: 0.10
+  license_compatibility_weight: 0.10
+  vram_fit_weight: 0.10

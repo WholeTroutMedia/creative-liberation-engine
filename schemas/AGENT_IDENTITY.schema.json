@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/agent-identity.schema.json",
+  "title": "V6 Agent Identity Certificate Metadata",
+  "description": "Schema for agent identity records. Each agent has a cryptographic identity bound to its canonical registry entry. Used by dispatch and routing to verify agent authenticity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "agentId",
+    "commonName",
+    "certFingerprint",
+    "issuedAt",
+    "expiresAt",
+    "issuer",
+    "keyUsage",
+    "status"
+  ],
+  "properties": {
+    "agentId": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-_]{2,80}$",
+      "description": "Must match agentId in agents.canonical.json"
+    },
+    "commonName": {
+      "type": "string",
+      "description": "X.509 Common Name — matches agentId"
+    },
+    "certFingerprint": {
+      "type": "string",
+      "pattern": "^SHA256:[A-Fa-f0-9:]{95}$",
+      "description": "SHA-256 fingerprint of the agent's certificate"
+    },
+    "publicKeyHash": {
+      "type": "string",
+      "description": "SHA-256 hash of the agent's public key for cert-pinning"
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Certificate issuance timestamp"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Certificate expiration timestamp"
+    },
+    "issuer": {
+      "type": "string",
+      "const": "Creative Liberation Engine Root CA",
+      "description": "Issuing CA — must be our sovereign root"
+    },
+    "keyUsage": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["digitalSignature", "keyEncipherment", "clientAuth", "serverAuth"]
+      },
+      "minItems": 1,
+      "description": "Permitted key usage for this agent"
+    },
+    "permittedRoutes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Route patterns this agent is authorized to invoke. Wildcard '*' means unrestricted."
+    },
+    "permittedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["dispatch", "claim", "complete", "spawn", "query", "admin"]
+      },
+      "description": "Dispatch actions this agent is authorized to perform"
+    },
+    "meshZone": {
+      "type": "string",
+      "enum": ["core", "edge", "external", "client"],
+      "description": "Network zone classification for zero-trust routing"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "revoked", "expired", "pending_rotation"],
+      "description": "Current certificate status"
+    },
+    "revokedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Revocation timestamp, if status is 'revoked'"
+    },
+    "revokedReason": {
+      "type": "string",
+      "description": "Human-readable revocation reason"
+    },
+    "rotationDue": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Scheduled rotation date — triggers automated renewal"
+    }
+  }
+}

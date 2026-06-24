@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/visual-rag-pipeline.schema.json",
+  "title": "V6 Visual RAG Pipeline",
+  "description": "Contract for the Sovereign Media Mesh Visual RAG pipeline powered by LeWM (LeWorldModel). Defines the ingestion, training, and inference parameters for visual understanding.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pipelineId",
+    "status",
+    "modelTier",
+    "ingestionTarget",
+    "lossFunctions",
+    "hardwareTarget"
+  ],
+  "properties": {
+    "pipelineId": {
+      "type": "string",
+      "pattern": "^vrag_[a-z0-9_\\-]{3,64}$"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["proposed", "training", "active", "deprecated"]
+    },
+    "modelTier": {
+      "type": "string",
+      "enum": ["local:world"]
+    },
+    "ingestionTarget": {
+      "type": "object",
+      "required": ["sourceType", "path"],
+      "properties": {
+        "sourceType": {
+          "type": "string",
+          "enum": ["camera_log", "vfx_plate", "ui_canvas", "mixed"]
+        },
+        "path": {
+          "type": "string",
+          "description": "UNC path or local NAS directory to the raw pixel dataset"
+        }
+      }
+    },
+    "lossFunctions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 4,
+      "items": {
+        "type": "string",
+        "enum": [
+          "next-embedding",
+          "gaussian-regularizer",
+          "dctl-math-boundary",
+          "physics-implausibility"
+        ]
+      }
+    },
+    "hardwareTarget": {
+      "type": "string",
+      "enum": ["workstation_rtx4090", "edge_node_sixfab", "nas_cpu"]
+    },
+    "automatedQcEnabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "dispatchIntegration": {
+      "type": "boolean",
+      "description": "Whether this pipeline registers a listener on the dispatch server for autonomous execution."
+    }
+  }
+}

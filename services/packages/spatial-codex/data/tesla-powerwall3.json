@@ -1,0 +1,31 @@
+{
+  "deviceClass": "Home Energy Storage System",
+  "manufacturer": "Tesla",
+  "modelName": "Powerwall 3",
+  "primaryComponents": [
+    "External Enclosure (Weather-resistant, typically powder-coated aluminum/steel chassis)",
+    "Lithium Iron Phosphate (LFP) Battery Cells (Prismatic type)",
+    "Battery Module Structure (Internal framework holding cells, busbars, and cell monitoring hardware)",
+    "Integrated Hybrid Inverter (Contains power electronics like IGBTs/MOSFETs, capacitors, inductors, and control boards on heatsinks)",
+    "Battery Management System (BMS) Hardware (Circuit boards, sensors for cell voltage, temperature, and balancing)",
+    "Thermal Management System Components (Heatsinks for power electronics, cooling fans/blowers, internal air ducts, external ventilation grilles)",
+    "High-Voltage DC Busbars and Cables (For power distribution within battery and to inverter)",
+    "AC Wiring and Input/Output Terminals (For grid, solar, and home load connections)",
+    "Power Contactors/Relays (Electromechanical switches for power isolation and safety)",
+    "DC and AC Circuit Breakers/Fuses (Overcurrent protection devices)",
+    "Main Control Unit/Processor Board (Central microcontroller for system operation and communication)",
+    "Mounting Plate/Bracket (For secure wall installation)",
+    "User Interface/Status Indicators (External LEDs for operational status)"
+  ],
+  "operationalLogic": "The Tesla Powerwall 3 integrates an LFP battery pack with a hybrid inverter, enabling it to charge from solar panels (DC input) or the electrical grid (AC input). It stores energy and converts it to AC power to supply the home during grid outages (providing backup power) or to optimize energy usage based on user settings or time-of-use rates. The integrated inverter simplifies installation by handling both DC-to-AC conversion for solar and battery output, and AC-to-DC conversion for battery charging. The BMS actively monitors and manages the battery cells for safety and longevity, while the thermal management system maintains optimal operating temperatures for both battery and inverter components.",
+  "maintenanceNodes": [
+    "External Enclosure and Ventilation Grilles (Requires periodic cleaning to prevent dust and debris accumulation)",
+    "Air Filters (If present, require inspection and cleaning/replacement)",
+    "Wiring Terminals and Connections (Should be professionally checked for tightness and corrosion during service intervals)",
+    "Circuit Breakers/Fuses (May require replacement if tripped due to electrical faults)",
+    "Software/Firmware (Requires periodic updates for performance, security, and new features)",
+    "Battery Module/Cells (Primary component with finite lifespan, eventual replacement required due to degradation)",
+    "Integrated Inverter Components (Fans, capacitors, and other power electronics components have limited lifespans and may eventually require service or replacement)",
+    "Mounting Hardware (Requires periodic inspection for secure attachment to the wall)"
+  ]
+}

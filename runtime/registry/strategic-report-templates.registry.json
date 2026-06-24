@@ -1,0 +1,76 @@
+{
+  "version": "1.0.0",
+  "updatedAt": "2026-04-27T00:00:00.000Z",
+  "templates": [
+    {
+      "id": "mckinsey-strategy",
+      "name": "Decision Pyramid Strategy Brief",
+      "minTier": "free",
+      "industryStandard": "Top-tier strategy consulting style",
+      "sections": ["Executive takeaway", "Issue tree", "Findings", "Actions", "Risks"]
+    },
+    {
+      "id": "big4-risk-controls",
+      "name": "Risk And Controls Assessment",
+      "minTier": "pro",
+      "industryStandard": "Big 4 risk advisory style",
+      "sections": ["Control inventory", "Gap map", "Severity profile", "Remediation roadmap"]
+    },
+    {
+      "id": "gartner-capability-maturity",
+      "name": "Capability Maturity Roadmap",
+      "minTier": "pro",
+      "industryStandard": "Capability maturity model approach",
+      "sections": ["Capability stack", "Maturity scores", "Target state", "Migration steps"]
+    },
+    {
+      "id": "pe-commercial-diligence",
+      "name": "Commercial Diligence Pack",
+      "minTier": "pro",
+      "industryStandard": "Private equity commercial diligence",
+      "sections": ["Market map", "Growth vectors", "Competitive pressure", "Investment view"]
+    },
+    {
+      "id": "pe-technical-diligence",
+      "name": "Technical Diligence Pack",
+      "minTier": "pro",
+      "industryStandard": "Private equity technical diligence",
+      "sections": ["Architecture posture", "Engineering velocity", "Debt burden", "Critical remediations"]
+    },
+    {
+      "id": "cfo-operating-review",
+      "name": "CFO Operating Review",
+      "minTier": "pro",
+      "industryStandard": "CFO operating cadence",
+      "sections": ["Baseline economics", "Scenario tree", "Cash-risk trajectory", "Plan of record"]
+    },
+    {
+      "id": "ciso-board-brief",
+      "name": "CISO Board Brief",
+      "minTier": "sovereign",
+      "industryStandard": "Board cybersecurity briefing",
+      "sections": ["Threat model", "Exposure score", "Control status", "Board actions"]
+    },
+    {
+      "id": "regulatory-readiness",
+      "name": "Regulatory Readiness Matrix",
+      "minTier": "sovereign",
+      "industryStandard": "Enterprise compliance readiness",
+      "sections": ["Framework mapping", "Evidence status", "Gap closure plan", "Audit readiness"]
+    },
+    {
+      "id": "board-value-creation",
+      "name": "Board Value Creation Plan",
+      "minTier": "sovereign",
+      "industryStandard": "Board transformation planning",
+      "sections": ["Value levers", "Initiative stack", "Execution governance", "Risk-adjusted outcomes"]
+    },
+    {
+      "id": "vendor-sovereignty-audit",
+      "name": "Vendor Sovereignty Audit",
+      "minTier": "sovereign",
+      "industryStandard": "Sovereign infrastructure review",
+      "sections": ["Dependency graph", "Lock-in profile", "Exit feasibility", "Sovereignty roadmap"]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+##
+## @cle/somatic — OSC Bridge Sidecar
+## Dockerfile for the a2f_osc_bridge.py Python sidecar container
+##
+
+FROM python:3.11-slim
+
+LABEL maintainer="Creative Liberation Engine <cle@wholetrout.media>"
+LABEL description="Audio2Face NIM → OSC/UDP → UE5 MetaHuman bridge sidecar"
+LABEL com.cle.service="a2f-osc-bridge"
+
+WORKDIR /app
+
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python dependencies — explicit pinned versions for sovereignty
+COPY docker/requirements.osc-bridge.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy bridge script
+COPY scripts/a2f_osc_bridge.py ./a2f_osc_bridge.py
+
+# Non-root user for security
+RUN useradd -m -u 1001 somatic
+USER somatic
+
+# Health check — bridge exposes a minimal HTTP status endpoint
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -sf http://localhost:8080/health || exit 1
+
+CMD ["python", "-u", "a2f_osc_bridge.py"]

@@ -1,0 +1,19 @@
+services:
+  sentinel-dashboard:
+    build: .
+    container_name: sentinel-dashboard
+    ports:
+      - '4200:4200'
+    environment:
+      - GENKIT_BASE_URL=http://127.0.0.1:4110
+      - GENKIT_API_KEY=v6-nas-key
+      - CORTEX_CDP_URL=http://127.0.0.1:9222
+      - RAG_DIR=/data/rag
+    volumes:
+      - /app/genesis-deploy/runtime/ideation-queue:/data/ideation-queue
+      - /app/genesis-deploy/runtime/registry:/data/registry:ro
+      - /app/genesis-deploy/runtime/nexus-vault/Sentinel:/data/nexus-vault/Sentinel:ro
+      - /app/genesis-deploy/rag_data:/data/rag:ro
+    restart: unless-stopped
+    networks:
+      - default

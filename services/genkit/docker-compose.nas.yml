@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  genkit-orchestrator:
+    build: .
+    container_name: genkit-orchestrator-v6
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+      - "4100:4100"
+    env_file:
+      - .env
+    environment:
+      - GENKIT_ENV=dev
+      - HOST=0.0.0.0
+      - GENKIT_HOST=0.0.0.0
+      - OLLAMA_HOST=http://127.0.0.1:11434
+    volumes:
+      - ./logs:/app/logs

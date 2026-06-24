@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  cache:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 256M
+
+  api:
+    image: node:18-alpine
+    command: npm start
+    ports:
+      - 127.0.0.1:3000:3000
+    depends_on:
+      - cache
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+
+  sandbox-executor:
+    image: python:3.10-alpine
+    command: python -c "print('hello')"
+    ports:
+      - 127.0.0.1:8888:8888
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 128M
+    networks:
+      - agent-sandbox-net
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+networks:
+  agent-sandbox-net:
+    driver: bridge
+    internal: true

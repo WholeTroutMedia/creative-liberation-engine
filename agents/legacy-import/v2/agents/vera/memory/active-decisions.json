@@ -1,0 +1,183 @@
+{
+  "$schema": "./schemas/active-decisions.schema.json",
+  "version": "1.0.0",
+  "last_updated": "2026-02-06T10:10:00-08:00",
+  
+  "active_decisions": [
+    {
+      "id": "DEC-2026-02-06-001",
+      "date": "2026-02-06T09:51:00-08:00",
+      "decision": "Execute Zero Day GTM for agent architecture standardization",
+      "status": "active",
+      "priority": "critical",
+      "owner": "Sovereign Artist",
+      
+      "what_was_decided": "Standardize all agent architecture in ONE day. Create templates, checklists, validation standards. Audit all 28 agents. Fix critical issues immediately.",
+      
+      "why": "Too many incidents of confusion about agent locations, missing agents, registry drift. Need to prevent days like 2026-02-06 from happening again.",
+      
+      "impact": {
+        "scope": "all_agents",
+        "urgency": "immediate",
+        "effort": "high",
+        "risk": "medium"
+      },
+      
+      "action_items": [
+        {
+          "item": "Audit all 28 agents for compliance",
+          "assigned_to": ["ATHENA", "ARCH", "CODEX"],
+          "deadline": "2026-02-06T18:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Build validation script",
+          "assigned_to": ["RAM_CREW"],
+          "deadline": "2026-02-06T18:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Establish enforcement protocols",
+          "assigned_to": ["LEX"],
+          "deadline": "2026-02-06T18:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Standardize agent READMEs",
+          "assigned_to": ["VERA"],
+          "deadline": "2026-02-13T18:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Broadcast standards to all agents",
+          "assigned_to": ["RELAY"],
+          "deadline": "2026-02-06T18:00:00-08:00",
+          "status": "in_progress"
+        }
+      ],
+      
+      "success_criteria": [
+        "Validation script operational",
+        "All 28 agents audited",
+        "Critical issues identified and prioritized",
+        "All CRITICAL issues resolved by end of day",
+        "All ERROR issues resolved by end of week",
+        "100% validation pass rate by end of month"
+      ],
+      
+      "artifacts_created": [
+        "ARCHITECTURE.md",
+        "agents/_template/",
+        "agents/AGENT_CREATION_CHECKLIST.md",
+        "agents/VALIDATION_STANDARDS.md"
+      ],
+      
+      "dependencies": [],
+      "blocks": []
+    },
+    {
+      "id": "DEC-2026-02-06-004",
+      "date": "2026-02-06T10:10:00-08:00",
+      "decision": "Build Cross-Session Coordination System",
+      "status": "active",
+      "priority": "critical",
+      "owner": "VERA + SWITCHBOARD",
+      
+      "what_was_decided": "Build system to persist context across chat threads. Every new thread loads last 3 sessions, active decisions, current state. Eliminate confusion.",
+      
+      "why": "Artist experiencing pain of bouncing between threads. Each thread starts from scratch. No memory. Causes confusion about agent availability and repo state.",
+      
+      "impact": {
+        "scope": "all_sessions",
+        "urgency": "immediate",
+        "effort": "medium",
+        "risk": "low"
+      },
+      
+      "action_items": [
+        {
+          "item": "Create cross-session-state.json",
+          "assigned_to": ["VERA"],
+          "deadline": "2026-02-06T10:30:00-08:00",
+          "status": "complete"
+        },
+        {
+          "item": "Create active-decisions.json",
+          "assigned_to": ["VERA"],
+          "deadline": "2026-02-06T10:30:00-08:00",
+          "status": "complete"
+        },
+        {
+          "item": "Create thread coordination protocol",
+          "assigned_to": ["SWITCHBOARD"],
+          "deadline": "2026-02-06T11:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Create session init protocol",
+          "assigned_to": ["SWITCHBOARD"],
+          "deadline": "2026-02-06T11:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Create session end protocol",
+          "assigned_to": ["VERA"],
+          "deadline": "2026-02-06T11:00:00-08:00",
+          "status": "in_progress"
+        },
+        {
+          "item": "Test with next chat thread",
+          "assigned_to": ["Artist", "VERA"],
+          "deadline": "2026-02-06T12:00:00-08:00",
+          "status": "pending"
+        }
+      ],
+      
+      "success_criteria": [
+        "New chat threads load context automatically",
+        "No more 'where are agents' questions",
+        "Active decisions visible in all threads",
+        "Work completed persists across threads",
+        "Zero confusion about current state"
+      ],
+      
+      "artifacts_created": [
+        "agents/vera/memory/cross-session-state.json",
+        "agents/vera/memory/active-decisions.json",
+        "agents/switchboard/protocols/thread-coordination.md",
+        "agents/switchboard/protocols/session-init-protocol.md",
+        "agents/vera/protocols/session-end-protocol.md"
+      ],
+      
+      "dependencies": ["DEC-2026-02-06-001"],
+      "blocks": []
+    }
+  ],
+  
+  "completed_decisions": [
+    {
+      "id": "DEC-2026-02-06-002",
+      "date": "2026-02-06T09:48:00-08:00",
+      "decision": "All hands emergency assembly - 28 agents summoned",
+      "status": "complete",
+      "completed_at": "2026-02-06T09:50:00-08:00",
+      "outcome": "All 28 agents assembled and ready. Session log created. Team assignments made."
+    },
+    {
+      "id": "DEC-2026-02-06-003",
+      "date": "2026-02-06T09:45:00-08:00",
+      "decision": "Create LANGUAGE LoRa layer parallel to MATH",
+      "status": "complete",
+      "completed_at": "2026-02-06T09:47:00-08:00",
+      "outcome": "LANGUAGE LoRa created with full structure. README, LORA_CONCEPT, TypeScript implementation, RAM_CREW, SCRIBES, RELAYS all in place."
+    }
+  ],
+  
+  "decision_metadata": {
+    "total_active": 2,
+    "total_completed_today": 2,
+    "critical_priority_count": 2,
+    "high_priority_count": 0,
+    "next_decision_id": "DEC-2026-02-06-005"
+  }
+}

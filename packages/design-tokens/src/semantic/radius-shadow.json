@@ -1,0 +1,85 @@
+{
+  "shadow": {
+    "$description": "Elevation system — Material-inspired depth scale tuned for dark UI",
+    "none": {
+      "$type": "shadow",
+      "$value": "none"
+    },
+    "xs": {
+      "$type": "shadow",
+      "$value": "0 1px 2px rgba(0, 0, 0, 0.3)",
+      "$description": "Minimal lift — buttons, chips"
+    },
+    "sm": {
+      "$type": "shadow",
+      "$value": "0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3)",
+      "$description": "Low elevation — cards at rest"
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": "0 4px 6px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3)",
+      "$description": "Medium elevation — cards on hover, dropdowns"
+    },
+    "lg": {
+      "$type": "shadow",
+      "$value": "0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3)",
+      "$description": "High elevation — floating panels"
+    },
+    "xl": {
+      "$type": "shadow",
+      "$value": "0 20px 25px rgba(0, 0, 0, 0.4), 0 8px 10px rgba(0, 0, 0, 0.3)",
+      "$description": "Extra-high — modals, overlays"
+    },
+    "2xl": {
+      "$type": "shadow",
+      "$value": "0 25px 50px rgba(0, 0, 0, 0.5)",
+      "$description": "Maximum elevation — command palettes, spotlight"
+    },
+    "inner": {
+      "$type": "shadow",
+      "$value": "inset 0 2px 4px rgba(0, 0, 0, 0.3)",
+      "$description": "Inset shadow — pressed buttons, recessed inputs"
+    },
+    "glow": {
+      "blue": {
+        "$type": "shadow",
+        "$value": "0 0 20px rgba(37, 99, 235, 0.25), 0 0 60px rgba(37, 99, 235, 0.1)",
+        "$description": "Blue glow — primary accent halo"
+      },
+      "violet": {
+        "$type": "shadow",
+        "$value": "0 0 20px rgba(124, 58, 237, 0.25), 0 0 60px rgba(124, 58, 237, 0.1)",
+        "$description": "Violet glow — brand accent halo"
+      },
+      "success": {
+        "$type": "shadow",
+        "$value": "0 0 20px rgba(34, 197, 94, 0.25), 0 0 60px rgba(34, 197, 94, 0.1)"
+      },
+      "danger": {
+        "$type": "shadow",
+        "$value": "0 0 20px rgba(248, 113, 113, 0.25), 0 0 60px rgba(248, 113, 113, 0.1)"
+      },
+      "cyan": {
+        "$type": "shadow",
+        "$value": "0 0 20px rgba(6, 182, 212, 0.25), 0 0 60px rgba(6, 182, 212, 0.1)",
+        "$description": "Cyan glow — telemetry / data elements"
+      }
+    },
+    "focus": {
+      "$type": "shadow",
+      "$value": "0 0 0 2px #0a0a0f, 0 0 0 4px rgba(37, 99, 235, 0.5)",
+      "$description": "Accessibility focus ring — double-ring for visibility on any surface"
+    }
+  },
+  "radius": {
+    "$description": "Border radius scale — geometric progression",
+    "none": { "$type": "dimension", "$value": "0px" },
+    "xs": { "$type": "dimension", "$value": "2px" },
+    "sm": { "$type": "dimension", "$value": "4px" },
+    "md": { "$type": "dimension", "$value": "8px" },
+    "lg": { "$type": "dimension", "$value": "12px" },
+    "xl": { "$type": "dimension", "$value": "16px" },
+    "2xl": { "$type": "dimension", "$value": "24px" },
+    "full": { "$type": "dimension", "$value": "9999px" }
+  }
+}

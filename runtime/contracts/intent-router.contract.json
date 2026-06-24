@@ -1,0 +1,48 @@
+{
+  "$schema": "intent-router.contract.v1",
+  "version": "1.0.0",
+  "service": "intent-router",
+  "role": "intent-resolution",
+  "endpoints": [
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "auth": "internal_only",
+      "criticality": "tier1",
+      "slaMs": 2000
+    },
+    {
+      "path": "/api/intent/resolve",
+      "method": "POST",
+      "auth": "service_token",
+      "criticality": "tier0",
+      "slaMs": 500
+    },
+    {
+      "path": "/api/intent/refresh",
+      "method": "POST",
+      "auth": "service_token",
+      "criticality": "tier1",
+      "slaMs": 10000
+    }
+  ],
+  "dependencies": {
+    "redis": {
+      "purpose": "query caching",
+      "optional": true
+    },
+    "chromadb": {
+      "purpose": "semantic matching fallback",
+      "optional": false
+    },
+    "registries": [
+      "skills.canonical.json",
+      "strategic-report-templates.registry.json",
+      "workflows.canonical.json"
+    ]
+  },
+  "dataGovernance": {
+    "stripPii": true,
+    "logExclusions": ["request.body.text"]
+  }
+}

@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+networks:
+  default:
+    name: genesis-deploy_genesis-net
+    external: true

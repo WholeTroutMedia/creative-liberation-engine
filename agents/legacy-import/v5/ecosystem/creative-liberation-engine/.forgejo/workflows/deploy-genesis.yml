@@ -1,0 +1,106 @@
+name: Deploy GENESIS Stack
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to NAS
+    # CRITICAL: must run on the NAS self-hosted act_runner so we have
+    # direct Docker socket access to the local daemon on 127.0.0.1
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        run: |
+          git clone http://oauth2:${{ github.token }}@127.0.0.1:3000/WholeTroutMedia/creative-liberation-engine-v5.git .
+          git checkout ${{ github.sha }}
+          echo "✓ Checked out $(git log -1 --oneline)"
+
+      - name: Verify Docker daemon
+        run: |
+          docker info --format '{{.ServerVersion}}' && echo "✓ Docker daemon reachable"
+
+      - name: Stop conflicting standalone containers (port 4000)
+        run: |
+          docker stop $(docker ps -q --filter "publish=4000") 2>/dev/null || true
+          echo "✓ Port 4000 cleared"
+
+      - name: Write .env
+        env:
+          GEMINI_API_KEY:        ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY:        ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY:     ${{ secrets.ANTHROPIC_API_KEY }}
+          PERPLEXITY_API_KEY:    ${{ secrets.PERPLEXITY_API_KEY }}
+          POSTGRES_PASSWORD:     ${{ secrets.POSTGRES_PASSWORD }}
+          REDIS_PASSWORD:        ${{ secrets.REDIS_PASSWORD }}
+          STRIPE_SECRET_KEY:     ${{ secrets.STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+          SCRIBE_WEBHOOK_SECRET: ${{ secrets.SCRIBE_WEBHOOK_SECRET }}
+          LINEAR_API_KEY:        ${{ secrets.LINEAR_API_KEY }}
+          SLACK_BOT_TOKEN:       ${{ secrets.SLACK_BOT_TOKEN }}
+          FIGMA_ACCESS_TOKEN:    ${{ secrets.FIGMA_ACCESS_TOKEN }}
+          FAL_KEY:               ${{ secrets.FAL_KEY }}
+          ELEVENLABS_API_KEY:    ${{ secrets.ELEVENLABS_API_KEY }}
+          RUNWAY_API_SECRET:     ${{ secrets.RUNWAY_API_SECRET }}
+        run: |
+          cat > .env << EOF
+          GEMINI_API_KEY=${GEMINI_API_KEY}
+          OPENAI_API_KEY=${OPENAI_API_KEY}
+          ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+          PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+          POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+          REDIS_PASSWORD=${REDIS_PASSWORD}
+          STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+          STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+          SCRIBE_WEBHOOK_SECRET=${SCRIBE_WEBHOOK_SECRET}
+          LINEAR_API_KEY=${LINEAR_API_KEY}
+          SLACK_BOT_TOKEN=${SLACK_BOT_TOKEN}
+          FIGMA_ACCESS_TOKEN=${FIGMA_ACCESS_TOKEN}
+          FAL_KEY=${FAL_KEY}
+          ELEVENLABS_API_KEY=${ELEVENLABS_API_KEY}
+          RUNWAY_API_SECRET=${RUNWAY_API_SECRET}
+          FORGEJO_DOMAIN=127.0.0.1
+          FORGEJO_URL=http://127.0.0.1:3000
+          EOF
+          echo "✓ .env file written"
+
+      - name: Ensure external Docker volumes exist
+        run: |
+          docker volume create genesis-redis-data    2>/dev/null || true
+          docker volume create genesis-dispatch-data 2>/dev/null || true
+          docker volume create genesis-nas-assets    2>/dev/null || true
+          echo "✓ External volumes ready"
+
+      - name: Deploy GENESIS stack
+        run: |
+          docker compose -f docker-compose.genesis.yml pull --ignore-pull-failures || true
+          docker compose -f docker-compose.genesis.yml up -d --build --remove-orphans
+          echo "✓ GENESIS stack up"
+
+      - name: Wait for services to start
+        run: sleep 45
+
+      - name: Health check all GENESIS services
+        run: |
+          echo "=== GENESIS Service Health ==="
+          # Core
+          curl -sf http://localhost:4000/health  && echo "✓ Genkit :4000"      || echo "✗ Genkit :4000"
+          curl -sf http://localhost:5100/health  && echo "✓ Relay-MCP :5100"   || echo "✗ Relay-MCP :5100"
+          curl -sf http://localhost:9000/health  && echo "✓ Zero-Day :9000"    || echo "✗ Zero-Day :9000"
+          curl -sf http://localhost:6000/health  && echo "✓ Ghost :6000"       || echo "✗ Ghost :6000"
+          curl -sf http://localhost:5050/health  && echo "✓ Dispatch :5050"    || echo "✗ Dispatch :5050"
+          curl -sf http://localhost:3080/health  && echo "✓ Gateway :3080"     || echo "✗ Gateway :3080"
+          curl -sf http://localhost:4006/health  && echo "✓ Campaign :4006"    || echo "✗ Campaign :4006"
+          curl -sf http://localhost:7100/health  && echo "✓ COMET :7100"       || echo "✗ COMET :7100"
+          curl -sf http://localhost:9100/health  && echo "✓ Scribe :9100"      || echo "✗ Scribe :9100"
+          curl -sf http://localhost:8000/api/v2/heartbeat && echo "✓ ChromaDB :8000" || echo "✗ ChromaDB :8000"
+          echo ""
+          docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+      - name: Prune stale images
+        run: |
+          docker image prune -f --filter "until=24h" || true
+          echo "✓ Image prune complete"

@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.ai/schemas/SPATIAL_PIPELINE.schema.json",
+  "title": "Spatial Pipeline Contract",
+  "description": "Contract for the unified spatial/video pipeline combining depth estimation, point cloud reasoning, video stabilization via FlowAnchor, and generation via UniVidX. Operates on workstation RTX 4090.",
+  "type": "object",
+  "required": [
+    "pipelineId",
+    "stage",
+    "inputModality",
+    "outputModality",
+    "hardwareTarget"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "pipelineId": {
+      "type": "string",
+      "pattern": "^spat_[a-z0-9_-]{3,64}$"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "perception",
+        "reasoning",
+        "generation",
+        "editing",
+        "stabilization"
+      ],
+      "description": "Pipeline stage this config governs"
+    },
+    "inputModality": {
+      "type": "string",
+      "enum": [
+        "rgb_frame",
+        "depth_map",
+        "point_cloud",
+        "video_clip",
+        "text_prompt",
+        "scene_graph",
+        "arkit_mesh"
+      ],
+      "description": "Input data type"
+    },
+    "outputModality": {
+      "type": "string",
+      "enum": [
+        "depth_map",
+        "point_cloud",
+        "scene_graph",
+        "video_clip",
+        "edited_video",
+        "spatial_features",
+        "metahuman_osc"
+      ],
+      "description": "Output data type"
+    },
+    "hardwareTarget": {
+      "type": "string",
+      "enum": [
+        "workstation_rtx4090",
+        "nas_cpu",
+        "edge_ios",
+        "cloud_a100"
+      ]
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "purpose"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "sizeGB": {
+            "type": "number"
+          },
+          "license": {
+            "type": "string"
+          },
+          "localPath": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "anchoring": {
+      "type": "object",
+      "description": "FlowAnchor dual-anchoring config for video editing stabilization",
+      "properties": {
+        "spatialAnchorStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.7
+        },
+        "motionAdaptiveStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5
+        },
+        "temporalWindowFrames": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 16
+        },
+        "inversionFree": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "generation": {
+      "type": "object",
+      "description": "UniVidX multimodal video generation config",
+      "properties": {
+        "conditionalInputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image",
+              "video",
+              "audio",
+              "depth",
+              "pose",
+              "sketch"
+            ]
+          }
+        },
+        "diffusionSteps": {
+          "type": "integer",
+          "default": 50
+        },
+        "guidanceScale": {
+          "type": "number",
+          "default": 7.5
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "512x512",
+            "768x768",
+            "1024x576",
+            "1920x1080"
+          ]
+        },
+        "fps": {
+          "type": "integer",
+          "default": 24
+        }
+      }
+    },
+    "ue5Integration": {
+      "type": "object",
+      "description": "Unreal Engine 5 MetaHuman bridge config",
+      "properties": {
+        "oscHost": {
+          "type": "string",
+          "default": "127.0.0.1"
+        },
+        "oscPort": {
+          "type": "integer",
+          "default": 7000
+        },
+        "arkitBlendshapes": {
+          "type": "boolean",
+          "default": true
+        },
+        "liveLink": {
+          "type": "boolean",
+          "default": true
+        },
+        "metaHumanId": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

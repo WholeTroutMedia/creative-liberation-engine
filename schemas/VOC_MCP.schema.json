@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/voc-mcp.schema.json",
+  "title": "VOC_MCP",
+  "description": "Voice-of-customer MCP bridge toggle and configuration envelope.",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    }
+  }
+}

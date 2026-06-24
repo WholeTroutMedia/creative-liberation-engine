@@ -1,0 +1,32 @@
+{
+  "zIndex": {
+    "$description": "Z-index stacking layer system — prevents z-fighting",
+    "base": { "$type": "number", "$value": 0, "$description": "Default document flow" },
+    "dropdown": { "$type": "number", "$value": 100, "$description": "Dropdowns, selects" },
+    "sticky": { "$type": "number", "$value": 200, "$description": "Sticky headers, footers" },
+    "overlay": { "$type": "number", "$value": 300, "$description": "Overlay scrims" },
+    "modal": { "$type": "number", "$value": 400, "$description": "Modal dialogs" },
+    "popover": { "$type": "number", "$value": 500, "$description": "Popovers, menus on top of modals" },
+    "toast": { "$type": "number", "$value": 600, "$description": "Toast notifications" },
+    "tooltip": { "$type": "number", "$value": 700, "$description": "Tooltips — always on top" },
+    "spotlight": { "$type": "number", "$value": 9999, "$description": "Command palette, spotlight search" }
+  },
+  "breakpoint": {
+    "$description": "Responsive breakpoints — mobile-first scale",
+    "xs": { "$type": "dimension", "$value": "375px", "$description": "Small phones" },
+    "sm": { "$type": "dimension", "$value": "640px", "$description": "Large phones, small tablets" },
+    "md": { "$type": "dimension", "$value": "768px", "$description": "Tablets" },
+    "lg": { "$type": "dimension", "$value": "1024px", "$description": "Small desktops, landscape tablets" },
+    "xl": { "$type": "dimension", "$value": "1280px", "$description": "Standard desktops" },
+    "2xl": { "$type": "dimension", "$value": "1536px", "$description": "Large desktops" },
+    "3xl": { "$type": "dimension", "$value": "1920px", "$description": "Ultra-wide / 4K" }
+  },
+  "container": {
+    "$description": "Max-width containers for content constraint",
+    "sm": { "$type": "dimension", "$value": "640px" },
+    "md": { "$type": "dimension", "$value": "768px" },
+    "lg": { "$type": "dimension", "$value": "1024px" },
+    "xl": { "$type": "dimension", "$value": "1280px" },
+    "prose": { "$type": "dimension", "$value": "720px", "$description": "Optimal reading width for long-form text" }
+  }
+}

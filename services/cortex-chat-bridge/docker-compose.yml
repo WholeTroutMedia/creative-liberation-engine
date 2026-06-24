@@ -1,0 +1,26 @@
+services:
+  cortex-chat-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile.v4
+    container_name: cortex-chat-bridge
+    restart: unless-stopped
+    environment:
+      - CDP_URL=http://cortex-browser:9224
+      - DISPATCH_URL=http://127.0.0.1:5160
+      - GENKIT_URL=http://127.0.0.1:4000
+      - POLL_INTERVAL=5
+      - LOG_LEVEL=DEBUG
+      - CORTEX_EMAIL=inquiries@creativeliberationengine.org
+      - TARGET_DM=Artist
+    volumes:
+      - ./data:/app/data
+    networks:
+      - cortex-browser_default
+      - creative-liberation-engine_genesis-net
+
+networks:
+  cortex-browser_default:
+    external: true
+  creative-liberation-engine_genesis-net:
+    external: true

@@ -1,0 +1,29 @@
+/* Aetheris Executive (Refined Baseline) */
+.theme-dark {
+  --background-primary: #0a0e17 !important;
+  --background-secondary: #0f1522 !important;
+  --background-modifier-border: rgba(163, 144, 228, 0.15) !important;
+  
+  --interactive-accent: #a390e4; /* Elegant Pastel Lilac */
+  --interactive-accent-hover: #bdaef0;
+  --text-accent: #a390e4;
+  
+  --text-normal: #dce0e8;
+  --text-muted: #7f8a9e;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid transparent !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 14px !important;
+  margin: 6px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 2px 10px rgba(0,0,0,0.3) !important; /* Debossed inner shadow */
+}
+
+.workspace-leaf.mod-active {
+  border-color: var(--background-modifier-border) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 2px 10px rgba(163, 144, 228, 0.05) !important;
+}

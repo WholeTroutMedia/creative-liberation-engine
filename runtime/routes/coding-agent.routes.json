@@ -1,0 +1,45 @@
+{
+  "version": "v6.0",
+  "service": "workspace-autonomy",
+  "routes": [
+    {
+      "routeId": "route_coding_task",
+      "path": "/api/v1/code/task",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/code/task",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 120000,
+      "criticality": "tier1",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "latencyMs", "taskType"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_coding_task_status",
+      "path": "/api/v1/code/task/:taskId",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/code/task/:taskId",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_coding_plugins",
+      "path": "/api/v1/code/plugins",
+      "method": "GET",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/code/plugins",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    }
+  ]
+}

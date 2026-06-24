@@ -1,0 +1,10 @@
+{
+  "name": "@cle/every-organization-is-pouring-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0257_every-organization-is-pouring-money-into",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

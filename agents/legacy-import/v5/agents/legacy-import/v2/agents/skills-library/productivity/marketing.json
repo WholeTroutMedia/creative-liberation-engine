@@ -1,0 +1,88 @@
+{
+  "category": "marketing-content",
+  "description": "Marketing, content creation, and publishing skills",
+  "source": "Community",
+  "agents": ["SCRIBE", "AURORA"],
+  "skills": [
+    {
+      "id": "marketing-skills-suite",
+      "name": "Marketing Skills Suite (23+ skills)",
+      "description": "Comprehensive marketing automation and content creation",
+      "complexity": "expert",
+      "input": "Marketing task",
+      "output": "Marketing content or automation",
+      "example": "Generate email campaign with A/B testing",
+      "attribution": "shredders001 (Community)"
+    },
+    {
+      "id": "x-article-publisher",
+      "name": "X (Twitter) Article Publisher",
+      "description": "Publish long-form articles to X/Twitter",
+      "complexity": "simple",
+      "input": "Article content",
+      "output": "Published X article",
+      "example": "Publish technical blog post to X",
+      "attribution": "Aydinhamedi (Community)"
+    },
+    {
+      "id": "ppt-nanobana",
+      "name": "AI-Powered PPT Generation",
+      "description": "Generate PowerPoint presentations with AI",
+      "complexity": "moderate",
+      "input": "Presentation topic and outline",
+      "output": "Complete PowerPoint deck",
+      "example": "Generate sales pitch deck",
+      "attribution": "nanobana (Community)"
+    },
+    {
+      "id": "slides-frontend",
+      "name": "HTML Presentation Builder",
+      "description": "Create presentations with HTML/CSS/JS",
+      "complexity": "moderate",
+      "input": "Presentation content",
+      "output": "Interactive HTML slides",
+      "example": "Build reveal.js presentation",
+      "attribution": "Community"
+    },
+    {
+      "id": "readme-comprehensive",
+      "name": "Comprehensive README Generator",
+      "description": "Generate detailed README files for projects",
+      "complexity": "simple",
+      "input": "Project details",
+      "output": "Complete README.md",
+      "example": "Generate README with badges, examples, API docs",
+      "attribution": "Community"
+    },
+    {
+      "id": "screenshots-marketing",
+      "name": "Marketing Screenshot Generator",
+      "description": "Generate polished screenshots for marketing",
+      "complexity": "simple",
+      "input": "App or website",
+      "output": "Marketing-ready screenshots",
+      "example": "Create App Store screenshots with device frames",
+      "attribution": "Community"
+    },
+    {
+      "id": "prose-beautiful",
+      "name": "Beautiful Prose Writing",
+      "description": "Enhance writing style and clarity",
+      "complexity": "moderate",
+      "input": "Draft text",
+      "output": "Polished, engaging prose",
+      "example": "Improve blog post readability and flow",
+      "attribution": "Community"
+    },
+    {
+      "id": "speed-reader-claude",
+      "name": "Speed Reader (600+ WPM)",
+      "description": "Present text for speed reading",
+      "complexity": "simple",
+      "input": "Text to read",
+      "output": "Speed reading formatted text",
+      "example": "Present article for rapid consumption",
+      "attribution": "kp2pml30 (Community)"
+    }
+  ]
+}

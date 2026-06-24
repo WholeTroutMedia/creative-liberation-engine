@@ -1,0 +1,6 @@
+packages:
+  - "packages/*"
+  - "genkit"
+  - "packages/flipboard-sentinel"
+  - "dispatch"
+  - "ouroboros-daemon"

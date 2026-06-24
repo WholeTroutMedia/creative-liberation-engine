@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle-engine.local/schemas/v6/self_harness.schema.json",
+  "title": "Self-Harness API Schema",
+  "description": "Schema mapping the request and response payloads for the reasoning-core Self-Harnessing heuristics optimizer.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "optimizationRequest",
+    "optimizationResponse"
+  ],
+  "properties": {
+    "optimizationRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rules", "context"],
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The current operational rules or heuristics to optimize."
+        },
+        "context": {
+          "type": "string",
+          "description": "The target domain or context for which to optimize the rules (e.g. speed, accuracy, resource constraints)."
+        },
+        "performanceMetrics": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Optional performance telemetry to guide the optimizer (e.g., token usage, duration, pass rates)."
+        }
+      }
+    },
+    "optimizationResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["optimizedRules", "sandboxCheckPassed", "modifications"],
+      "properties": {
+        "optimizedRules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The proposed optimized operational heuristics."
+        },
+        "sandboxCheckPassed": {
+          "type": "boolean",
+          "description": "Indicates whether the proposed rule revisions passed the constitutional safety sandbox check."
+        },
+        "modifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["original", "proposed", "rationale"],
+            "properties": {
+              "original": { "type": "string" },
+              "proposed": { "type": "string" },
+              "rationale": { "type": "string" }
+            }
+          },
+          "description": "Detailed log of rule modifications proposed by the self-harness run."
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Details of any validation or sandbox errors if sandboxCheckPassed is false."
+        }
+      }
+    }
+  }
+}

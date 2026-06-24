@@ -1,0 +1,30 @@
+{
+  "name": "@cle/mcp-fetch-proxy",
+  "version": "2.0.3",
+  "description": "MCP Fetch Proxy \u2014 enables COMET browser to POST to dispatch/API endpoints via a trusted gateway",
+  "bin": {
+    "mcp-fetch-proxy": "./dist/mcp-server.js"
+  },
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node dist/server.js",
+    "start:mcp": "node dist/mcp-server.js",
+    "dev": "tsx src/server.ts",
+    "build": "tsc",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260310.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.25",
+    "@types/node": "^20.19.37",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
+  }
+}

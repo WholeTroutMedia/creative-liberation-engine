@@ -1,0 +1,75 @@
+# Spatial Intelligence Service - Docker Compose
+# Run: docker compose up --build
+# GPU: Requires NVIDIA Container Toolkit
+
+version: '3.9'
+
+services:
+  spatial-intelligence:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ie-spatial-intelligence
+    restart: unless-stopped
+    ports:
+      - "${SPATIAL_PORT:-50051}:50051"   # gRPC
+      - "${GRADIO_PORT:-7860}:7860"     # Gradio demo
+    volumes:
+      - ./models:/app/models             # Model weights
+      - spatial-cache:/app/cache         # Feature cache
+      - ./data:/app/data:ro              # Sample data
+    environment:
+      - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
+      - SPATIAL_DEVICE=${SPATIAL_DEVICE:-cuda:0}
+      - SPATIAL_MAX_WORKERS=${SPATIAL_MAX_WORKERS:-4}
+      - UTONIA_CHECKPOINT=${UTONIA_CHECKPOINT:-/app/models/utonia_ptv3_base.pth}
+      - DEPTH_METHOD=${DEPTH_METHOD:-da3}
+      - GRPC_PORT=50051
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MODEL_DIR=/app/models
+      - CACHE_DIR=/app/cache
+      # NEXUS agent bus connection
+      - NEXUS_HOST=${NEXUS_HOST:-nexus}
+      - NEXUS_PORT=${NEXUS_PORT:-8765}
+      - AGENT_ID=spatial-intelligence
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import grpc; ch=grpc.insecure_channel('localhost:50051'); grpc.channel_ready_future(ch).result(timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "3"
+    networks:
+      - ie-network
+
+  # Optional: gRPC reflection + health probe
+  grpc-probe:
+    image: fullstorydev/grpcurl:latest
+    depends_on:
+      spatial-intelligence:
+        condition: service_healthy
+    entrypoint: ["grpcurl", "-plaintext", "spatial-intelligence:50051", "list"]
+    networks:
+      - ie-network
+    profiles:
+      - debug
+
+volumes:
+  spatial-cache:
+    driver: local
+
+networks:
+  ie-network:
+    external: true
+    name: ${NETWORK_NAME:-creative-liberation-engine-v5_default}

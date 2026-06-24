@@ -1,0 +1,10 @@
+{
+  "name": "@cle/how-to-build-a-claude-code-pow",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0173",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

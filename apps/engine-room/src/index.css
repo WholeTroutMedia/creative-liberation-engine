@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-container: #00ff41;
+  --color-primary-fixed: #72ff70;
+  --color-primary-fixed-dim: #00e639;
+  --color-surface: #10141a;
+  --color-surface-dim: #10141a;
+  --color-surface-container-lowest: #0a0e14;
+  --color-surface-container-low: #181c22;
+  --color-surface-container-high: #262a31;
+  --color-surface-container-highest: #31353c;
+  --color-surface-variant: #31353c;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-primary: #003907;
+  --color-on-surface: #dfe2eb;
+  
+  --font-space: "Space Grotesk", monospace;
+  --font-mono: ui-monospace, Consolas, monospace;
+}
+
+body {
+  background-color: #0d1117;
+  color: #c9d1d9;
+  font-family: var(--font-space);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 100;
+  background: linear-gradient(0deg, rgba(0, 255, 65, 0) 0%, rgba(0, 255, 65, 0.02) 50%, rgba(0, 255, 65, 0) 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.glow-active {
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.4);
+}
+
+.pane-border {
+  border: 1px solid rgba(0, 255, 65, 0.15);
+}
+
+.glass-panel {
+  background: rgba(24, 28, 34, 0.4);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}

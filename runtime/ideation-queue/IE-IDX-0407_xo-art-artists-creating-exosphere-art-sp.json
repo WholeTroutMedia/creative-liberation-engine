@@ -1,0 +1,93 @@
+{
+  "jobId": "IE-IDX-0407",
+  "jobNumber": 407,
+  "slug": "xo-art-artists-creating-exosphere-art-sp",
+  "filename": "IE-IDX-0407_xo-art-artists-creating-exosphere-art-sp",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-FEDYUO3CQQin5nwOoTQm3A:a:4243649-1781441776",
+    "title": "XO Art | Artists Creating Exosphere Art | Sphere",
+    "url": "https://www.thesphere.com/xo-art?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Unknown",
+    "pubDate": "Sun, 14 Jun 2026 12:56:16 GMT",
+    "imageUrl": null,
+    "categories": [
+      ""
+    ]
+  },
+  "categories": [
+    "edge-ai",
+    "creative-tools",
+    "learning",
+    "competitive-intel",
+    "cinematography",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "To democratize the world's most monumental digital canvas by providing sovereign, open-source creation, preview, and deployment pipelines that liberate artists from proprietary studio gatekeeping.",
+    "rationale": "The Exosphere (MSG Sphere) represents the current pinnacle of digital exhibition, yet access to its format, testing environments, and spatial mapping is heavily restricted to elite studios and corporate budgets. By engineering a sovereign 'XO Art' pipeline, we empower independent creators to sculpt, render, and validate Exosphere-scale art locally and autonomously. This directly answers our core constitutional question: it makes artists more free by granting them technical ownership over the world's most complex medium, completely bypassing the need for corporate intermediaries.",
+    "options": [
+      {
+        "title": "Sovereign Exosphere Digital Twin (Pre-Viz Engine)",
+        "description": "A high-fidelity, self-hosted 3D simulation environment (built on Godot or Unreal) allowing artists to visualize their work mapped accurately to the Sphere's unique LED topology, physical scale, and viewing angles from various Las Vegas vantage points.",
+        "tradeoffs": "High computational requirement for local rendering; requires maintaining strict technical parity with the physical Sphere's proprietary specs without violating NDAs.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Equirectangular AI Upscaling & Warping Pipeline",
+        "description": "A local, ComfyUI/CLE-driven pipeline that ingests standard aspect ratio artworks and intelligently outpaints, upscales, and mathematically warps them into the precise 16K equirectangular format required for the Exosphere.",
+        "tradeoffs": "Risk of AI hallucination altering the artist's original intent during outpainting; extremely high local VRAM requirements for 16K video processing.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Open-Source Exosphere Authoring Plugins (Blender/Unreal)",
+        "description": "A suite of open-source plugins integrated directly into Blender and Unreal Engine, providing exact camera rigs, resolution gates, UV maps, and codec export presets specifically tailored for Exosphere delivery.",
+        "tradeoffs": "Tied to the update cycles of third-party software; requires creating extensive documentation for 2D artists unfamiliar with complex 3D pipelines.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Spatial Audio-Visual Sync Matrix",
+        "description": "A specialized timeline editor focused entirely on syncing visual cues with the Exosphere's massive beamforming audio system, using open protocols (OSC/MIDI) to simulate spatial sound.",
+        "tradeoffs": "Highly niche; useless without the accompanying visual pipeline; extremely difficult to test spatial audio accurately on standard studio monitors.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Guerrilla 'Micro-Sphere' Projection Mapping Kit",
+        "description": "A hardware/software blueprint for artists to build and projection-map their own 10-foot to 50-foot spherical canvases in public spaces globally, democratizing the format if the Las Vegas venue remains corporately locked.",
+        "tradeoffs": "Diverts focus from the actual MSG Sphere; requires physical hardware fabrication, logistics, and local municipal permitting.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "XO Art Collective DAO & Time-Share Protocol",
+        "description": "A smart-contract governance framework allowing independent artists to pool funds, collectively purchase physical Exosphere exhibition time, and democratically curate the playlist.",
+        "tradeoffs": "High regulatory and logistical friction dealing with the venue's corporate sales team; shifts focus from technical creation to administrative and financial management.",
+        "recommendation": "avoid"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "LEONARDO",
+      "BOLT",
+      "KEEPER"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty (Self-hosted preview environments)",
+      "Article IV: Quality Standards (16K resolution support)",
+      "Article IX: Ship Complete (End-to-end pipeline from creation to export)"
+    ]
+  },
+  "relatedJobs": [
+    "IE-IDX-0408"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0407_xo-art-artists-creating-exosphere-art-sp.md",
+  "comments": [],
+  "createdAt": "2026-06-14T13:00:02.464Z",
+  "ideatedAt": "2026-06-15T14:24:21.550Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "emailedAt": "2026-06-15T14:24:27.061Z"
+}

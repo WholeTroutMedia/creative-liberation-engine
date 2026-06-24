@@ -1,0 +1,213 @@
+name: Comet Automation Suite
+
+on:
+  # Trigger on design doc changes
+  push:
+    paths:
+      - 'docs/designs/**/*.md'
+      - 'IMPLEMENTATION_TRACKER.md'
+    branches:
+      - main
+  
+  # Trigger on workflow completion
+  workflow_run:
+    workflows: ["Tests", "Build"]
+    types:
+      - completed
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        type: choice
+        options:
+          - sync-manuscript
+          - extract-directives
+          - analyze-build
+          - full-cycle
+      design_doc:
+        description: 'Design doc to process (optional)'
+        required: false
+        type: string
+
+env:
+  PYTHON_VERSION: '3.11'
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      design_changed: ${{ steps.changes.outputs.designs }}
+      tracker_changed: ${{ steps.changes.outputs.tracker }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            designs:
+              - 'docs/designs/**/*.md'
+            tracker:
+              - 'IMPLEMENTATION_TRACKER.md'
+
+  sync-manuscript:
+    needs: detect-changes
+    if: |
+      needs.detect-changes.outputs.design_changed == 'true' ||
+      github.event.inputs.action == 'sync-manuscript' ||
+      github.event.inputs.action == 'full-cycle'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install requests python-dateutil
+      
+      - name: Sync manuscript with design changes
+        run: |
+          python scripts/update_manuscript.py \
+            --design-docs docs/designs \
+            --manuscript docs/manuscript.md \
+            --output docs/manuscript.md
+      
+      - name: Commit manuscript updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'docs(automation): sync manuscript with design changes'
+          file_pattern: 'docs/manuscript.md'
+
+  extract-directives:
+    needs: detect-changes
+    if: |
+      needs.detect-changes.outputs.tracker_changed == 'true' ||
+      github.event.inputs.action == 'extract-directives' ||
+      github.event.inputs.action == 'full-cycle'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Extract build directives
+        run: |
+          python scripts/extract_directives.py \
+            --tracker IMPLEMENTATION_TRACKER.md \
+            --output .comet/directives.json
+      
+      - name: Upload directives artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-directives
+          path: .comet/directives.json
+
+  analyze-build:
+    if: |
+      github.event_name == 'workflow_run' ||
+      github.event.inputs.action == 'analyze-build' ||
+      github.event.inputs.action == 'full-cycle'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Analyze build results
+        run: |
+          WORKFLOW_ID=${{ github.event.workflow_run.id || github.run_id }}
+          python scripts/analyze_build.py \
+            --workflow-id $WORKFLOW_ID \
+            --output docs/build_learnings/latest.json
+      
+      - name: Archive build analysis
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-analysis
+          path: docs/build_learnings/latest.json
+
+  auto-implement:
+    needs: [extract-directives]
+    if: |
+      github.event.inputs.action == 'full-cycle' &&
+      always() &&
+      needs.extract-directives.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Download directives
+        uses: actions/download-artifact@v4
+        with:
+          name: build-directives
+          path: .comet/
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          pip install requests pyyaml
+      
+      - name: Run auto-implementation
+        env:
+          DESIGN_DOC: ${{ github.event.inputs.design_doc }}
+        run: |
+          python scripts/auto_implement.py \
+            --directives .comet/directives.json \
+            --design-doc "${DESIGN_DOC:-}" \
+            --output .comet/implementation_plan.json
+      
+      - name: Create implementation PR
+        if: success()
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: 'feat(automation): implement design directives'
+          body: |
+            This PR was automatically generated by the Comet Automation Suite.
+            
+            ## Changes
+            - Implemented directives from design documents
+            - See `.comet/implementation_plan.json` for details
+          branch: comet/auto-implement-${{ github.run_number }}
+          commit-message: 'feat(automation): auto-implement design directives'
+          labels: automation, comet
+
+  report-status:
+    needs: [sync-manuscript, extract-directives, analyze-build, auto-implement]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report workflow status
+        run: |
+          echo "## Comet Automation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Sync Manuscript | ${{ needs.sync-manuscript.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Extract Directives | ${{ needs.extract-directives.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Analyze Build | ${{ needs.analyze-build.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Auto Implement | ${{ needs.auto-implement.result || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY

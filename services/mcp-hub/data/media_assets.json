@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "Podcast_EP_042.mov", "type": "video", "size": "4.2 GB", "date": "2026-05-06", "status": "transcribed", "duration": "01:23:45" },
+  { "id": 2, "name": "Interview_Raw.wav", "type": "audio", "size": "890 MB", "date": "2026-05-05", "status": "raw", "duration": "00:45:12" },
+  { "id": 3, "name": "Keynote_Recording.mp4", "type": "video", "size": "2.1 GB", "date": "2026-05-04", "status": "edited", "duration": "00:32:18" },
+  { "id": 4, "name": "BTS_FX30_Capture.mxf", "type": "video", "size": "6.8 GB", "date": "2026-05-03", "status": "processing", "duration": "02:10:33" }
+]

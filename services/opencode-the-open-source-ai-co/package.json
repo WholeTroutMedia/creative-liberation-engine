@@ -1,0 +1,10 @@
+{
+  "name": "@cle/opencode-the-open-source-ai-co",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0170",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "jobId": "IE-IDX-0379",
+  "jobNumber": 379,
+  "slug": "anthropics-complete-guide-to-claude-skil",
+  "filename": "IE-IDX-0379_anthropics-complete-guide-to-claude-skil",
+  "status": "PLANNED",
+  "sourceArticle": {
+    "guid": "flipboard-do7ImSOuRDmy64M1sN8psA:a:4243649-1780948892",
+    "title": "Anthropic's Complete Guide to Claude Skills Building",
+    "url": "https://www.kdnuggets.com/anthropics-complete-guide-to-claude-skills-building?utm_source=flipboard&utm_content=topic/technology",
+    "author": "Shittu Olumide",
+    "pubDate": "Mon, 08 Jun 2026 20:01:32 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Claude Code",
+        "$": {
+          "domain": "https://flipboard.com/topic/claudecode"
+        }
+      },
+      {
+        "_": "Anthropic",
+        "$": {
+          "domain": "https://flipboard.com/topic/anthropic"
+        }
+      },
+      {
+        "_": "Claude AI",
+        "$": {
+          "domain": "https://flipboard.com/topic/claudeai"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "GitHub",
+        "$": {
+          "domain": "https://flipboard.com/topic/github"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "infrastructure",
+    "sovereignty",
+    "edge-ai",
+    "agent",
+    "creative-tools",
+    "research",
+    "learning",
+    "competitive-intel",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "Design and specify the Creative Liberation Engine's native Capability Module system, defining its structure, progressive disclosure mechanism, and integration points for discovery and execution.",
+    "rationale": "Adopting the principles of Anthropic's Claude Skills, a native Creative Liberation Engine Capability Module system will enable repeatable, context-aware, and efficient task execution. This approach prevents repetitive context setting, embeds specialized expertise, and aligns with Creative Liberation Engine Constitutional Laws, particularly Article I (Sovereignty) by ensuring self-hosted ownership, Article IV (Quality Standards) and Article IX (Ship Complete) by demanding a robust, complete implementation, and Article XX (Zero human wait time) by automating context and task execution.",
+    "options": [
+      {
+        "title": "Native Creative Liberation Engine Capability Modules",
+        "description": "Implement a self-hosted, fully integrated 'Capability Module' system within the Creative Liberation Engine. Each module will be a structured directory containing a `module.yaml` file for metadata and relevance detection, a `MODULE.md` file for core instructions and workflows, and optional `scripts/`, `references/`, and `assets/` directories for executable code, documentation, and supporting files respectively. RELAY will manage module discovery via `module.yaml` metadata, KEEPER will handle storage and versioning, and IRIS will execute `MODULE.md` instructions, orchestrating other agents as specified within the module. This system will leverage a three-level progressive disclosure mechanism to optimize token usage and context loading.",
+        "tradeoffs": "Requires significant initial development effort to establish the framework, define internal standards for module structure, and integrate discovery and execution mechanisms across multiple agents. However, it offers maximum control, deep integration, and complete adherence to Article I (Sovereignty).",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Adapter Layer for External Skill Formats",
+        "description": "Develop an adapter layer capable of ingesting and translating external skill formats (e.g., Anthropic's Claude Skills) into an Creative Liberation Engine-compatible internal representation. This would still necessitate an internal execution framework but would allow for leveraging existing external skill repositories. The adapter would map external skill components to the Creative Liberation Engine's internal module structure and progressive disclosure system.",
+        "tradeoffs": "Introduces a dependency on external formats, which may evolve independently, requiring ongoing maintenance of the adapter. The adapter layer adds complexity and may not fully satisfy Article I (Sovereignty) if external skills are directly consumed without full internal ownership and control. It could offer faster initial capability expansion but risks long-term architectural debt.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Manual Prompt Engineering per Task",
+        "description": "Continue the current practice of manually crafting detailed prompts and re-establishing context for each task or session. This involves human operators providing all necessary instructions, style guides, and domain knowledge repeatedly.",
+        "tradeoffs": "Highly inefficient, prone to inconsistencies, and requires significant human intervention. Directly violates Article XX (Zero human wait time) and the core principle of automation within the Creative Liberation Engine. This approach is the problem the proposed 'Capability Module' system aims to solve.",
+        "recommendation": "avoid"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "BOLT",
+      "KEEPER",
+      "RELAY",
+      "IRIS",
+      "VERA"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty",
+      "Article IV: Quality Standards",
+      "Article IX: Ship Complete or Don't Ship",
+      "Article XX: Zero human wait time"
+    ]
+  },
+  "relatedJobs": [
+    "IE-IDX-0176",
+    "IE-IDX-0182",
+    "IE-IDX-0215",
+    "IE-IDX-0309",
+    "IE-IDX-0387",
+    "IE-IDX-0169",
+    "IE-IDX-0305",
+    "IE-IDX-0405",
+    "IE-IDX-0425",
+    "IE-IDX-0445"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0379_anthropics-complete-guide-to-claude-skil.md",
+  "comments": [],
+  "createdAt": "2026-06-08T20:15:01.574Z",
+  "ideatedAt": "2026-06-09T17:26:47.393Z",
+  "activatedAt": "2026-06-09T20:17:06.866Z",
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "veraOutput": {
+    "verdict": "The content is factually accurate and internally consistent. The ATHENA DIRECTIVE clearly outlines a design task for a Capability Module system. The RATIONALE logically supports this directive by referencing plausible benefits derived from adopting principles similar to 'Anthropic's Claude Skills' and by aligning with the stated Creative Liberation Engine Constitutional Laws (Article I, IV, IX, XX). Each constitutional article's application is consistent with its described purpose within the rationale.",
+    "confidence": 0.95,
+    "contradictions": [],
+    "pattern": ""
+  },
+  "emailedAt": "2026-06-09T23:04:36.752Z"
+}

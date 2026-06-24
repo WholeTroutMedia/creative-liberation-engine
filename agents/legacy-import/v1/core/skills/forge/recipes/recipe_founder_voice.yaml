@@ -1,0 +1,108 @@
+# LoRA Training Recipe: Founder Voice
+# Trains an adapter to mimic Artist's writing style
+
+apiVersion: wholetrout.network/v1
+kind: SkillForgeRecipe
+
+metadata:
+  name: founder-voice-adapter
+  description: "Fine-tune for Artist's email/marketing/tweet writing style"
+  created: "2026-01-17T05:58:00Z"
+
+base_model:
+  model_name: unsloth/llama-3-8b-bnb-4bit
+  provider: huggingface
+  quantization:
+    method: bnb_4bit
+    compute_dtype: float16
+
+dataset:
+  path: core/skills/forge/datasets/justin_emails.jsonl
+  format: sharegpt  # {"conversations": [{"from": "human", "value": "..."}, {"from": "gpt", "value": "..."}]}
+  
+  preprocessing:
+    - remove_duplicates
+    - filter_min_length: 50
+    - filter_max_length: 2048
+  
+  split:
+    train: 0.9
+    validation: 0.1
+
+lora_config:
+  lora_r: 16           # Rank of LoRA matrices
+  lora_alpha: 32       # Scaling factor (typically 2x rank)
+  lora_dropout: 0.05   # Dropout for regularization
+  
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  
+  bias: none
+  task_type: CAUSAL_LM
+
+training_hyperparameters:
+  epochs: 3
+  learning_rate: 0.0002
+  batch_size: 4
+  gradient_accumulation_steps: 4
+  
+  warmup_steps: 100
+  weight_decay: 0.01
+  
+  optimizer:
+    type: adamw_8bit
+    betas: [0.9, 0.999]
+    epsilon: 1e-8
+  
+  scheduler:
+    type: cosine
+    num_cycles: 0.5
+
+quantization:
+  method: q4_k_m         # GGUF quantization method
+  output_format: gguf    # For Ollama compatibility
+  output_path: core/skills/adapters/lora_founder_voice_v1.gguf
+
+evaluation:
+  metrics:
+    - perplexity
+    - accuracy
+  
+  validation_frequency: 100  # steps
+  save_best_checkpoint: true
+
+meta_trigger:
+  intention: COMMUNICATION
+  keywords:
+    - email
+    - marketing
+    - tweet
+    - response
+    - outreach
+  
+  description: "Use this adapter when generating emails, marketing copy, or social media content in Artist's voice"
+
+resource_requirements:
+  gpu_memory_gb: 16
+  estimated_training_time_minutes: 30
+  estimated_cost_usd: 2.50
+
+post_training:
+  actions:
+    - update_manifest: core/skills/MANIFEST.yaml
+    - notify: sovereign_architect
+    - run_quality_tests: true
+  
+  quality_gates:
+    min_perplexity: 3.0
+    min_accuracy: 0.80
+
+version_info:
+  recipe_version: "1.0.0"
+  compatible_forge_versions: ["0.1.0"]

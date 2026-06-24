@@ -1,0 +1,43 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/lora-model-compatibility.schema.json",
+    "title":  "LoRA To Model Compatibility",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "mappings"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string"
+                                   },
+                       "mappings":  {
+                                        "type":  "array",
+                                        "minItems":  1,
+                                        "items":  {
+                                                      "type":  "object",
+                                                      "additionalProperties":  false,
+                                                      "required":  [
+                                                                       "loraId",
+                                                                       "compatibleTiers"
+                                                                   ],
+                                                      "properties":  {
+                                                                         "loraId":  {
+                                                                                        "type":  "string",
+                                                                                        "pattern":  "^[a-z0-9\\-]{2,120}$"
+                                                                                    },
+                                                                         "compatibleTiers":  {
+                                                                                                 "type":  "array",
+                                                                                                 "minItems":  1,
+                                                                                                 "items":  {
+                                                                                                               "type":  "string",
+                                                                                                               "minLength":  3
+                                                                                                           }
+                                                                                             }
+                                                                     }
+                                                  }
+                                    }
+                   },
+    "description":  "LoRA-to-model compatibility matrix for routing governance."
+}

@@ -1,0 +1,68 @@
+{
+  "category": "specialized-integrations",
+  "description": "Specialized and mobile platform integrations",
+  "source": "Community",
+  "agents": ["AURORA", "IRIS"],
+  "skills": [
+    {
+      "id": "expo-app-design",
+      "name": "Expo App Design",
+      "description": "Design React Native apps with Expo",
+      "complexity": "expert",
+      "input": "App requirements",
+      "output": "Expo app with navigation and components",
+      "example": "Build cross-platform mobile app",
+      "attribution": "Expo Community"
+    },
+    {
+      "id": "expo-deployment",
+      "name": "Expo App Deployment",
+      "description": "Deploy Expo apps to app stores",
+      "complexity": "moderate",
+      "input": "Built Expo app",
+      "output": "Deployed app to stores",
+      "example": "Submit to iOS App Store and Google Play",
+      "attribution": "Expo Community"
+    },
+    {
+      "id": "expo-upgrading",
+      "name": "Expo SDK Upgrades",
+      "description": "Upgrade Expo SDK versions safely",
+      "complexity": "moderate",
+      "input": "Current SDK version",
+      "output": "Upgraded Expo project",
+      "example": "Upgrade from SDK 49 to SDK 52",
+      "attribution": "Expo Community"
+    },
+    {
+      "id": "win11-management",
+      "name": "Windows 11 System Management",
+      "description": "Manage Windows 11 system configurations",
+      "complexity": "moderate",
+      "input": "System management task",
+      "output": "Executed Windows command",
+      "example": "Configure Windows features via PowerShell",
+      "attribution": "qudix (Community)"
+    },
+    {
+      "id": "health-assistant",
+      "name": "Health Information Assistant",
+      "description": "Provide health and wellness information",
+      "complexity": "simple",
+      "input": "Health question",
+      "output": "Evidence-based health information",
+      "example": "Explain nutrition guidelines",
+      "attribution": "TechWithTy (Community)"
+    },
+    {
+      "id": "gallery-scraper",
+      "name": "Image Gallery Downloader",
+      "description": "Download images from web galleries",
+      "complexity": "moderate",
+      "input": "Gallery URL",
+      "output": "Downloaded images",
+      "example": "Download product images from website",
+      "attribution": "jrcribb (Community)"
+    }
+  ]
+}

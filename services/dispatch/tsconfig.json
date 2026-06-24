@@ -1,0 +1,19 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "outDir": "build",
+        "rootDir": "src",
+        "types": ["node", "express", "better-sqlite3", "pg", "uuid", "ws"]
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "build",
+        "src/queue_batch_job.ts",
+        "src/**/*.test.ts"
+    ]
+}

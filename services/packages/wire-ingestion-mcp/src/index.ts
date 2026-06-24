@@ -1,0 +1,1 @@
+export function init() { console.log("Wire Ingestion MCP initialized"); }

@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/VOICE_FABRIC.schema.json",
+  "title": "Voice Fabric Schema",
+  "description": "Self-hosted voice processing pipeline with STT/TTS, real-time streaming, and agent command routing.",
+  "type": "object",
+  "required": ["session_id", "created_at", "mode"],
+  "properties": {
+    "session_id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "mode": { "type": "string", "enum": ["stt", "tts", "bidirectional", "command"] },
+    "status": { "type": "string", "enum": ["idle", "listening", "processing", "speaking", "error"] },
+    "stt_config": {
+      "type": "object",
+      "properties": {
+        "model": { "type": "string", "default": "whisper-large-v3" },
+        "language": { "type": "string", "default": "en" },
+        "sample_rate": { "type": "integer", "default": 16000 },
+        "vad_enabled": { "type": "boolean", "default": true },
+        "streaming": { "type": "boolean", "default": true }
+      }
+    },
+    "tts_config": {
+      "type": "object",
+      "properties": {
+        "model": { "type": "string", "default": "piper" },
+        "voice_id": { "type": "string" },
+        "speed": { "type": "number", "minimum": 0.5, "maximum": 2.0, "default": 1.0 },
+        "pitch": { "type": "number", "minimum": 0.5, "maximum": 2.0, "default": 1.0 }
+      }
+    },
+    "transcription": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "language_detected": { "type": "string" },
+        "duration_seconds": { "type": "number" },
+        "word_timestamps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "word": { "type": "string" },
+              "start": { "type": "number" },
+              "end": { "type": "number" },
+              "confidence": { "type": "number" }
+            }
+          }
+        }
+      }
+    },
+    "agent_routing": {
+      "type": "object",
+      "description": "Routes voice commands to appropriate dispatch agents",
+      "properties": {
+        "intent_detected": { "type": "string" },
+        "confidence": { "type": "number" },
+        "routed_to_agent": { "type": "string" },
+        "dispatch_task_id": { "type": "string" },
+        "response_text": { "type": "string" },
+        "response_audio_url": { "type": "string" }
+      }
+    },
+    "latency": {
+      "type": "object",
+      "properties": {
+        "stt_ms": { "type": "integer" },
+        "processing_ms": { "type": "integer" },
+        "tts_ms": { "type": "integer" },
+        "total_ms": { "type": "integer" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

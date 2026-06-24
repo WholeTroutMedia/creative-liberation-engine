@@ -1,0 +1,134 @@
+name: DNA Reverse Sync
+
+# Target repos run this workflow to pull updates from creative-liberation-engine-v2
+
+on:
+  schedule:
+    # Check for DNA updates every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  check-for-dna-updates:
+    name: Check creative-liberation-engine-v2 for DNA Updates
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v4
+        with:
+          path: current
+          fetch-depth: 0
+
+      - name: Checkout creative-liberation-engine-v2
+        uses: actions/checkout@v4
+        with:
+          repository: WholeTroutMedia/creative-liberation-engine-v2
+          path: source
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check DNA version
+        id: version_check
+        run: |
+          # Get DNA version from source
+          SOURCE_VERSION=$(jq -r '.version' source/package.json)
+          
+          # Get DNA version from current repo (if exists)
+          if [ -f current/packages/cle-dna/package.json ]; then
+            CURRENT_VERSION=$(jq -r '.version' current/packages/cle-dna/package.json)
+          else
+            CURRENT_VERSION="0.0.0"
+          fi
+          
+          echo "source_version=$SOURCE_VERSION" >> $GITHUB_OUTPUT
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          
+          if [ "$SOURCE_VERSION" != "$CURRENT_VERSION" ]; then
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+            echo "🔄 DNA update available: $CURRENT_VERSION → $SOURCE_VERSION"
+          else
+            echo "needs_update=false" >> $GITHUB_OUTPUT
+            echo "✅ DNA is up to date: $CURRENT_VERSION"
+          fi
+
+      - name: Sync DNA if outdated
+        if: steps.version_check.outputs.needs_update == 'true'
+        run: |
+          cd current
+          git config user.name "CLE DNA Bot"
+          git config user.email "bot@wholetroutmedia.com"
+          
+          BRANCH_NAME="dna-reverse-sync-$(date +%s)"
+          git checkout -b $BRANCH_NAME
+          
+          # Sync all DNA
+          echo "🧬 Syncing Constitutional DNA..."
+          mkdir -p packages
+          cp -r ../source/packages/cle-dna packages/
+          
+          mkdir -p governance/constitution
+          cp -r ../source/governance/constitution/* governance/constitution/
+          
+          echo "🎨 Syncing Design DNA..."
+          mkdir -p design-system
+          cp -r ../source/design-system/* design-system/
+          
+          echo "🛠️ Syncing Infrastructure DNA..."
+          mkdir -p .github/workflows
+          cp ../source/.github/workflows/rap-audit.yml .github/workflows/
+          cp ../source/.github/workflows/dna-auto-merge.yml .github/workflows/
+          cp ../source/.github/workflows/dna-reverse-sync.yml .github/workflows/
+          
+          mkdir -p scripts
+          cp ../source/scripts/rap-*.js scripts/
+          cp ../source/scripts/install-hooks.sh scripts/
+          
+          echo "📚 Syncing Knowledge DNA..."
+          mkdir -p docs
+          cp ../source/docs/QUALITY-STANDARDS-V2-RAP-RESISTANT.md docs/
+          cp ../source/docs/CREATIVE-AUTHENTICITY-BUDGET.md docs/
+          cp ../source/docs/AUTHENTICITY-FEEDBACK-PROTOCOL.md docs/
+          cp ../source/docs/CREATIVE-DECISION-DOCUMENTATION.md docs/
+          cp ../source/docs/BRAND-DUAL-TRACK-FRAMEWORK.md docs/
+          
+          # Update package.json
+          if [ -f package.json ]; then
+            node -e "
+              const fs = require('fs');
+              const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+              if (!pkg.dependencies) pkg.dependencies = {};
+              if (!pkg.scripts) pkg.scripts = {};
+              pkg.dependencies['@creative-liberation-engine/cle-dna'] = 'file:./packages/cle-dna';
+              pkg.scripts['rap:audit'] = 'node scripts/rap-audit.js';
+              pkg.scripts['rap:health'] = 'node scripts/rap-health-check.js';
+              pkg.scripts['rap:install-hooks'] = 'bash scripts/install-hooks.sh';
+              pkg.scripts['postinstall'] = 'npm run rap:install-hooks';
+              fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+            "
+          fi
+          
+          git add .
+          git commit -m "🧬 DNA Reverse Sync: ${{ steps.version_check.outputs.current_version }} → ${{ steps.version_check.outputs.source_version }}
+
+✅ All DNA helixes synchronized from creative-liberation-engine-v2
+✅ Article XIX enforcement active
+✅ RAP audit system operational
+
+Auto-synced by DNA Reverse Sync workflow"
+          
+          git push origin $BRANCH_NAME
+          
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create PR
+        if: steps.version_check.outputs.needs_update == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        working-directory: current
+        run: |
+          gh pr create \
+            --title "🧬 DNA Reverse Sync: v${{ steps.version_check.outputs.source_version }}" \
+            --body "## 🔄 Automatic DNA Update\n\nThis repo's DNA is outdated. Syncing from creative-liberation-engine-v2.\n\n**Version Update:** ${{ steps.version_check.outputs.current_version }} → ${{ steps.version_check.outputs.source_version }}\n\n### What's Updated:\n\n- 🧬 Constitutional DNA (Article XIX + all updates)\n- 🎨 Design DNA (design system, tokens)\n- 🛠️ Infrastructure DNA (workflows, hooks, scripts)\n- 📚 Knowledge DNA (docs, standards)\n\n### Auto-Merge Enabled\n\nThis PR will auto-merge if:\n- ✅ Tests pass\n- ✅ RAP Audit passes (≥7/10)\n- ✅ Constitutional compliance verified\n\n---\n\n**Self-propagating DNA system active** 🧬" \
+            --head $BRANCH_NAME \
+            --base main

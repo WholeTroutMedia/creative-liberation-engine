@@ -1,0 +1,213 @@
+{
+  "system_version": "1.0.0",
+  "last_updated": "2026-01-27T08:35:00Z",
+  "description": "Event-driven trigger system for automatic registry updates",
+  "maintained_by": "VERA",
+  "approved_by": "LEX/OPS",
+  
+  "event_types": {
+    "agent_onboarded": {
+      "description": "New agent joins the system",
+      "triggers": [
+        "update_.agent-status.json",
+        "regenerate_AGENT_REGISTRY.md",
+        "regenerate_TEAM_ROSTER.md",
+        "relay_broadcast_agent_welcome",
+        "create_agent_workspace_if_missing",
+        "log_to_session_log"
+      ],
+      "required_data": [
+        "agent_name",
+        "agent_type",
+        "status",
+        "created_date",
+        "role_description"
+      ],
+      "validation": "RAM_CREW/INBOUND"
+    },
+    
+    "agent_status_changed": {
+      "description": "Agent changes status (planned → active, active → resting, etc.)",
+      "triggers": [
+        "update_.agent-status.json",
+        "add_status_history_entry",
+        "regenerate_AGENT_REGISTRY.md",
+        "relay_broadcast_status_change",
+        "log_to_session_log"
+      ],
+      "required_data": [
+        "agent_name",
+        "old_status",
+        "new_status",
+        "reason",
+        "timestamp"
+      ],
+      "validation": "RAM_CREW/INBOUND"
+    },
+    
+    "work_shipped": {
+      "description": "Agent delivers completed work",
+      "triggers": [
+        "update_agent_last_active",
+        "add_to_work_delivered_array",
+        "update_.agent-status.json",
+        "log_to_compound_learning",
+        "relay_broadcast_shipment",
+        "log_to_session_log"
+      ],
+      "required_data": [
+        "agent_name",
+        "work_description",
+        "commit_sha",
+        "timestamp"
+      ],
+      "validation": "RAM_CREW/OUTBOUND"
+    },
+    
+    "decision_made": {
+      "description": "Team makes a formal decision",
+      "triggers": [
+        "create_decision_file",
+        "assign_decision_id",
+        "log_to_session_log",
+        "update_affected_agent_metadata",
+        "relay_broadcast_decision"
+      ],
+      "required_data": [
+        "decision_title",
+        "decision_content",
+        "impact_level",
+        "date",
+        "team_vote_results"
+      ],
+      "validation": "LEX/OPS"
+    },
+    
+    "session_started": {
+      "description": "New session begins",
+      "triggers": [
+        "create_session_log_template",
+        "load_open_items_from_previous_session",
+        "verify_all_registries_synced",
+        "relay_broadcast_session_start"
+      ],
+      "required_data": [
+        "session_id",
+        "start_time",
+        "participants"
+      ],
+      "validation": "VERA"
+    },
+    
+    "session_closed": {
+      "description": "Session ends with checklist complete",
+      "triggers": [
+        "finalize_session_log",
+        "run_session_closing_checklist",
+        "lex_ops_approval_gate",
+        "ram_crew_validation",
+        "relay_broadcast_session_complete",
+        "commit_all_changes"
+      ],
+      "required_data": [
+        "session_id",
+        "end_time",
+        "duration",
+        "achievements",
+        "decisions_made",
+        "open_items"
+      ],
+      "validation": "LEX/OPS"
+    },
+    
+    "token_awarded": {
+      "description": "Agent receives tokens or flowers",
+      "triggers": [
+        "update_agent_tokens_in_.agent-status.json",
+        "log_to_token_ledger",
+        "log_to_session_log",
+        "relay_broadcast_recognition"
+      ],
+      "required_data": [
+        "agent_name",
+        "tokens_awarded",
+        "flowers_awarded",
+        "reason",
+        "timestamp"
+      ],
+      "validation": "VERA"
+    },
+    
+    "protocol_violation": {
+      "description": "Constitutional or protocol violation detected",
+      "triggers": [
+        "create_incident_report",
+        "notify_lex_legal",
+        "notify_compass",
+        "log_to_session_log",
+        "relay_broadcast_alert"
+      ],
+      "required_data": [
+        "violation_type",
+        "description",
+        "severity",
+        "timestamp",
+        "detected_by"
+      ],
+      "validation": "LEX/LEGAL"
+    },
+    
+    "registry_drift_detected": {
+      "description": "Inconsistency found between .agent-status.json and generated files",
+      "triggers": [
+        "create_drift_alert",
+        "notify_vera",
+        "notify_lex_ops",
+        "notify_ram_crew",
+        "auto_regenerate_files",
+        "log_to_session_log"
+      ],
+      "required_data": [
+        "drift_type",
+        "affected_files",
+        "timestamp",
+        "detected_by"
+      ],
+      "validation": "RAM_CREW"
+    }
+  },
+  
+  "automation_status": {
+    "phase_1": "Manual trigger (VERA calls events)",
+    "phase_2": "Semi-automated (scripts detect events)",
+    "phase_3": "Fully automated (system detects and acts)",
+    "current_phase": "phase_1",
+    "target_phase": "phase_3"
+  },
+  
+  "validation_rules": {
+    "before_event_execution": [
+      "RAM_CREW/INBOUND validates required data present",
+      "RAM_CREW/INBOUND validates data format correct",
+      "LEX/OPS checks constitutional compliance (if applicable)"
+    ],
+    "after_event_execution": [
+      "RAM_CREW/OUTBOUND validates outputs match expectations",
+      "VERA verifies all triggered actions completed",
+      "LEX/OPS audits for protocol compliance"
+    ]
+  },
+  
+  "error_handling": {
+    "validation_failure": "Abort event, log error, notify LEX/OPS",
+    "trigger_failure": "Retry once, then manual intervention required",
+    "partial_completion": "Roll back all actions, log incident, manual fix"
+  },
+  
+  "notes": {
+    "extensibility": "New event types can be added without breaking existing events",
+    "monitoring": "RELAY broadcasts all significant events automatically",
+    "audit_trail": "All events logged to session logs for future reference",
+    "team_vote": "14-0 unanimous approval for Option D Hybrid System"
+  }
+}

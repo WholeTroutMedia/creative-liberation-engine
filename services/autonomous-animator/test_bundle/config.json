@@ -1,0 +1,18 @@
+{
+  "project_id": "test_1924_animation",
+  "fps_target": 12,
+  "fps_internal": 24,
+  "resolution": {
+    "width": 512,
+    "height": 512
+  },
+  "style": {
+    "aesthetic": "1924_vintage",
+    "lora_weights": {}
+  },
+  "assets": {
+    "characters": [],
+    "backgrounds": [],
+    "audio_tracks": []
+  }
+}

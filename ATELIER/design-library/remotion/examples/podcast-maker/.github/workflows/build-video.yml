@@ -1,0 +1,184 @@
+name: Create video
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - 'content/**'
+            - 'content/*.json'
+            - '**.json'
+    workflow_dispatch:
+        inputs:
+            debug_mode:
+                description: 'Debug with SSH'
+                type: boolean
+                required: false
+                default: false
+
+env:
+    DEBUG: 1
+    AZURE_TTS_KEY: ${{ secrets.AZURE_TTS_KEY }}
+    AZURE_TTS_REGION: ${{ secrets.AZURE_TTS_REGION }}
+    GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+    GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+    GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    INSTAGRAM_EMAIL: ${{ secrets.INSTAGRAM_EMAIL }}
+    INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+    YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+    GOOGLE_MAKERSUITE_API_KEY: ${{ secrets.GOOGLE_MAKERSUITE_API_KEY }}
+    IMAGE_GENERATOR_URL: ${{ secrets.IMAGE_GENERATOR_URL }}
+    IMAGE_GENERATOR_API_KEY: ${{ secrets.IMAGE_GENERATOR_API_KEY }}
+    #  ACTIONS_RUNNER_DEBUG: true
+    #  ACTIONS_STEP_DEBUG: true
+
+jobs:
+    TextToSpeech:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup Node.JS environment
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+            
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 8
+
+            - name: podcast-maker CLI cache
+              uses: actions/cache@v3
+              id: podcast-maker-cache
+              with:
+                  path: |
+                      **/node_modules
+                      dist
+                      bin
+                  key: cli-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/pnpm.lock') }}
+
+            - name: Build
+              if: steps.podcast-maker-cache.outputs.cache-hit != 'true'
+              run: |
+                  pnpm i
+                  pnpm build
+
+            - name: Move content file to be processed
+              run: |
+                File=$(ls content/*.json | sort -n -t '-' -k 1 | tail -n 1)
+                Destination=$(./bin/dev info content --dir)
+                echo "Coping from $File to $Destination"
+                cp $File $Destination
+
+            - name: Get tmp path
+              id: tmp
+              run: echo "tmpPath=$(./bin/run info tmp --dir)" >> $GITHUB_OUTPUT
+
+            - name: Create TTS
+              run: ./bin/run create tts
+
+            - name: Save TTS files in Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: audio-files
+                  path: |
+                    ${{ steps.tmp.outputs.tmpPath }}/*.mp3
+                    ${{ steps.tmp.outputs.tmpPath }}/*.json
+                    !${{ steps.tmp.outputs.tmpPath }}/example.json
+                  retention-days: 3
+
+            - name: SSH debug
+              if: ${{ failure() }}
+              uses: mxschmitt/action-tmate@v3
+              with:
+                  limit-access-to-actor: true
+
+    YouTube:
+        needs: [TextToSpeech]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup Node.JS environment
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 8
+
+            - name: Install FFMPEG
+              uses: FedericoCarboni/setup-ffmpeg@v1
+
+            - name: podcast-maker CLI cache
+              uses: actions/cache@v3
+              id: podcast-maker-cache
+              with:
+                  path: |
+                      **/node_modules
+                      dist
+                      bin
+                  key: cli-${{ hashFiles('**/package.json') }}-${{ hashFiles('**/pnpm.lock') }}
+
+            - name: Build
+              if: steps.podcast-maker-cache.outputs.cache-hit != 'true'
+              run: |
+                  pnpm i
+                  pnpm build
+
+            - name: Get tmp path
+              id: tmp
+              run: echo "tmpPath=$(./bin/run info tmp --dir)" >> $GITHUB_OUTPUT
+
+            - name: Download TTS files
+              uses: actions/download-artifact@v4
+              with:
+                  name: audio-files
+                  path: ${{ steps.tmp.outputs.tmpPath }}/
+
+            - name: Link public folder to tmp
+              run: |
+                Tmp=$(./bin/run info tmp --dir)
+                echo "Linking $Tmp to public"
+                ln -sf $Tmp public
+
+            - name: Debug
+              if: ${{ inputs.debug_mode }}
+              uses: mxschmitt/action-tmate@v3
+              with:
+                  limit-access-to-actor: true
+
+            - name: Create Youtube video
+              run: ./bin/run create youtube --upload
+
+            - name: Save video in Artifacts
+              if: ${{ failure() }}
+              uses: actions/upload-artifact@v4
+              with:
+                  name: youtube-video-assets
+                  path: |
+                      ${{ steps.tmp.outputs.tmpPath }}/*.mp4
+                      ${{ steps.tmp.outputs.tmpPath }}/*.jpeg
+                      ${{ steps.tmp.outputs.tmpPath }}/*.json
+                      !${{ steps.tmp.outputs.tmpPath }}/example.json
+                  retention-days: 2
+
+            - name: Save content in Artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: content-file
+                  path: |
+                      ${{ steps.tmp.outputs.tmpPath }}/*.json
+                      !${{ steps.tmp.outputs.tmpPath }}/example.json
+                  retention-days: 2
+
+            - name: SSH debug
+              if: ${{ failure() }}
+              uses: mxschmitt/action-tmate@v3
+              with:
+                  limit-access-to-actor: true

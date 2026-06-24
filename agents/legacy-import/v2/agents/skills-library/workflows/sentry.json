@@ -1,0 +1,78 @@
+{
+  "category": "sentry-workflows",
+  "description": "Sentry development workflow and automation skills",
+  "source": "Sentry",
+  "agents": ["IRIS", "RAM_CREW", "SCRIBE"],
+  "skills": [
+    {
+      "id": "sentry-agents-md",
+      "name": "Generate AGENTS.md Files",
+      "description": "Create agent configuration documentation",
+      "complexity": "simple",
+      "input": "Agent capabilities, workflows",
+      "output": "AGENTS.md file with complete specs",
+      "example": "Document all agents for repository",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-claude-settings-audit",
+      "name": "Claude Settings Audit",
+      "description": "Audit and optimize Claude configuration",
+      "complexity": "moderate",
+      "input": "Current Claude settings",
+      "output": "Audit report with recommendations",
+      "example": "Optimize MCP server configuration",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-code-review",
+      "name": "Perform Code Reviews",
+      "description": "Comprehensive code review with best practices",
+      "complexity": "expert",
+      "input": "Pull request or code changes",
+      "output": "Detailed review with suggestions",
+      "example": "Review PR for performance and security",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-commit",
+      "name": "Create Commits with Best Practices",
+      "description": "Generate well-formatted commit messages",
+      "complexity": "simple",
+      "input": "Changes made",
+      "output": "Conventional commit message",
+      "example": "Create commit: feat(auth): add OAuth2 support",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-create-pr",
+      "name": "Create Pull Requests",
+      "description": "Create PRs with complete context and templates",
+      "complexity": "moderate",
+      "input": "Changes, PR requirements",
+      "output": "Complete PR with description and checklist",
+      "example": "Create PR for database migration",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-find-bugs",
+      "name": "Find and Identify Bugs",
+      "description": "Systematic bug hunting in codebase",
+      "complexity": "expert",
+      "input": "Codebase or module",
+      "output": "Bug report with reproduction steps",
+      "example": "Find edge cases in payment processing",
+      "attribution": "Sentry"
+    },
+    {
+      "id": "sentry-iterate-pr",
+      "name": "Iterate on PR Feedback",
+      "description": "Address PR review comments iteratively",
+      "complexity": "moderate",
+      "input": "PR feedback, original code",
+      "output": "Updated PR addressing all comments",
+      "example": "Address 5 review comments with explanations",
+      "attribution": "Sentry"
+    }
+  ]
+}

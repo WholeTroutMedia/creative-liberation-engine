@@ -1,0 +1,118 @@
+{
+  "category": "ai-research",
+  "description": "Research tools, content generation, and scientific computing",
+  "source": "Community Research Tools",
+  "agents": ["IRIS", "SCRIBE", "VERA"],
+  "skills": [
+    {
+      "id": "claude-scientific",
+      "name": "Scientific Research Tools",
+      "description": "Tools for scientific research and analysis",
+      "complexity": "expert",
+      "input": "Research question, data",
+      "output": "Research analysis with citations",
+      "example": "Analyze experimental data with statistical tests",
+      "attribution": "K-Dense-AI (Community)"
+    },
+    {
+      "id": "ai-research-skills",
+      "name": "77 AI Research Engineering Skills",
+      "description": "Comprehensive AI research and engineering toolkit",
+      "complexity": "expert",
+      "input": "Research engineering task",
+      "output": "Implementation with best practices",
+      "example": "Implement novel attention mechanism",
+      "attribution": "zechenzhangAGI (Community)"
+    },
+    {
+      "id": "materials-simulation",
+      "name": "Materials Simulation",
+      "description": "Computational materials science simulations",
+      "complexity": "expert",
+      "input": "Material properties, simulation parameters",
+      "output": "Simulation results with analysis",
+      "example": "Simulate crystal structure formation",
+      "attribution": "Community"
+    },
+    {
+      "id": "deep-research",
+      "name": "Multi-Step Research with Gemini",
+      "description": "Deep research using multi-step reasoning",
+      "complexity": "expert",
+      "input": "Research topic, depth requirements",
+      "output": "Comprehensive research report",
+      "example": "Research emerging technology landscape",
+      "attribution": "sanjay3290 (Community)"
+    },
+    {
+      "id": "imagen-generation",
+      "name": "Imagen Generation with Gemini",
+      "description": "Generate images using Google Gemini",
+      "complexity": "moderate",
+      "input": "Text prompt, style parameters",
+      "output": "Generated image from Gemini",
+      "example": "Generate diagram for technical documentation",
+      "attribution": "sanjay3290 (Community)"
+    },
+    {
+      "id": "image-enhancer",
+      "name": "Image Quality Enhancement",
+      "description": "Improve image quality with AI enhancement",
+      "complexity": "moderate",
+      "input": "Image to enhance",
+      "output": "Enhanced high-quality image",
+      "example": "Enhance old photo for restoration",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "remotion-video",
+      "name": "Programmatic Video Creation",
+      "description": "Create videos programmatically with React",
+      "complexity": "expert",
+      "input": "Video script, assets, timeline",
+      "output": "Rendered video file",
+      "example": "Generate data visualization video",
+      "attribution": "Remotion Official"
+    },
+    {
+      "id": "notebooklm-conversations",
+      "name": "NotebookLM Document Conversations",
+      "description": "Have conversations about documents with NotebookLM",
+      "complexity": "moderate",
+      "input": "Document, questions",
+      "output": "Conversational insights from document",
+      "example": "Query research paper for key findings",
+      "attribution": "PleasePrompto (Community)"
+    },
+    {
+      "id": "content-research-writer",
+      "name": "Content Research Writer",
+      "description": "Enhance writing with automated research",
+      "complexity": "moderate",
+      "input": "Topic, writing requirements",
+      "output": "Well-researched content with sources",
+      "example": "Write blog post with cited research",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "meeting-insights-analyzer",
+      "name": "Meeting Insights Analyzer",
+      "description": "Analyze meeting patterns and extract insights",
+      "complexity": "moderate",
+      "input": "Meeting transcripts or recordings",
+      "output": "Insights report with action items",
+      "example": "Identify recurring blockers from standups",
+      "attribution": "ComposioHQ (Community)"
+    },
+    {
+      "id": "competitive-ads-extractor",
+      "name": "Competitive Ads Analysis",
+      "description": "Extract and analyze competitor advertising",
+      "complexity": "moderate",
+      "input": "Competitor domains or ad data",
+      "output": "Analysis of competitor ad strategies",
+      "example": "Analyze competitor Facebook ad creative",
+      "attribution": "ComposioHQ (Community)"
+    }
+  ]
+}

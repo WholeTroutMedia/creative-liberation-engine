@@ -1,0 +1,772 @@
+name: Scaffold Motion Studio Project
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type YES to scaffold the full project'
+        required: true
+        default: 'YES'
+
+jobs:
+  scaffold:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create project structure
+        run: |
+          # Create directories
+          mkdir -p src/app/api/generate
+          mkdir -p src/app/api/render
+          mkdir -p src/app/api/status
+          mkdir -p src/app/editor
+          mkdir -p src/components/ui
+          mkdir -p src/components/editor
+          mkdir -p src/components/preview
+          mkdir -p src/lib/ai
+          mkdir -p src/lib/remotion
+          mkdir -p src/lib/utils
+          mkdir -p src/remotion/compositions
+          mkdir -p src/remotion/components
+          mkdir -p src/remotion/templates
+          mkdir -p src/types
+          mkdir -p public/assets
+
+      - name: Create package.json
+        run: |
+          cat > package.json << 'PKGJSON'
+          {
+            "name": "motion-studio",
+            "version": "0.1.0",
+            "private": true,
+            "scripts": {
+              "dev": "next dev",
+              "build": "next build",
+              "start": "next start",
+              "lint": "next lint",
+              "remotion:studio": "remotion studio",
+              "remotion:render": "remotion render",
+              "remotion:bundle": "remotion bundle"
+            },
+            "dependencies": {
+              "@anthropic-ai/sdk": "^0.39.0",
+              "@google/generative-ai": "^0.24.0",
+              "@remotion/bundler": "^4.0.0",
+              "@remotion/cli": "^4.0.0",
+              "@remotion/player": "^4.0.0",
+              "@remotion/renderer": "^4.0.0",
+              "@remotion/zod-types": "^4.0.0",
+              "ai": "^4.0.0",
+              "class-variance-authority": "^0.7.0",
+              "clsx": "^2.1.0",
+              "framer-motion": "^11.0.0",
+              "lucide-react": "^0.469.0",
+              "next": "15.1.0",
+              "react": "^19.0.0",
+              "react-dom": "^19.0.0",
+              "remotion": "^4.0.0",
+              "tailwind-merge": "^2.6.0",
+              "zod": "^3.24.0",
+              "zustand": "^5.0.0"
+            },
+            "devDependencies": {
+              "@types/node": "^22.0.0",
+              "@types/react": "^19.0.0",
+              "@types/react-dom": "^19.0.0",
+              "autoprefixer": "^10.4.20",
+              "eslint": "^9.0.0",
+              "eslint-config-next": "15.1.0",
+              "postcss": "^8.4.49",
+              "tailwindcss": "^3.4.16",
+              "typescript": "^5.0.0"
+            }
+          }
+          PKGJSON
+
+      - name: Create tsconfig.json
+        run: |
+          cat > tsconfig.json << 'EOF'
+          {
+            "compilerOptions": {
+              "lib": ["dom", "dom.iterable", "esnext"],
+              "allowJs": true,
+              "skipLibCheck": true,
+              "strict": true,
+              "noEmit": true,
+              "esModuleInterop": true,
+              "module": "esnext",
+              "moduleResolution": "bundler",
+              "resolveJsonModule": true,
+              "isolatedModules": true,
+              "jsx": "preserve",
+              "incremental": true,
+              "plugins": [{"name": "next"}],
+              "paths": {"@/*": ["./src/*"]}
+            },
+            "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+            "exclude": ["node_modules"]
+          }
+          EOF
+
+      - name: Create next.config.ts
+        run: |
+          cat > next.config.ts << 'EOF'
+          import type { NextConfig } from "next";
+
+          const nextConfig: NextConfig = {
+            reactStrictMode: true,
+            serverExternalPackages: ["@remotion/renderer"],
+            webpack: (config) => {
+              config.resolve.alias.canvas = false;
+              return config;
+            },
+          };
+
+          export default nextConfig;
+          EOF
+
+      - name: Create tailwind.config.ts
+        run: |
+          cat > tailwind.config.ts << 'EOF'
+          import type { Config } from "tailwindcss";
+
+          export default {
+            content: [
+              "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+              "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+              "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+            ],
+            theme: {
+              extend: {
+                colors: {
+                  background: "var(--background)",
+                  foreground: "var(--foreground)",
+                },
+              },
+            },
+            plugins: [],
+          } satisfies Config;
+          EOF
+
+      - name: Create .env.example
+        run: |
+          cat > .env.example << 'EOF'
+          # AI Providers
+          ANTHROPIC_API_KEY=sk-ant-...
+          GOOGLE_GENERATIVE_AI_API_KEY=...
+          
+          # App Config
+          NEXT_PUBLIC_APP_URL=http://localhost:3000
+          EOF
+
+      - name: Create .gitignore
+        run: |
+          cat > .gitignore << 'EOF'
+          # Dependencies
+          node_modules/
+          .pnp
+          .pnp.js
+          
+          # Build
+          .next/
+          out/
+          build/
+          dist/
+          
+          # Remotion
+          .remotion/
+          remotion-bundle/
+          
+          # Environment
+          .env
+          .env.local
+          .env.*.local
+          
+          # Debug
+          npm-debug.log*
+          
+          # IDE
+          .idea/
+          .vscode/
+          *.swp
+          
+          # OS
+          .DS_Store
+          Thumbs.db
+          
+          # Vercel
+          .vercel
+          
+          # TypeScript
+          *.tsbuildinfo
+          next-env.d.ts
+          EOF
+
+      - name: Create AI provider - Claude
+        run: |
+          cat > src/lib/ai/claude.ts << 'EOF'
+          import Anthropic from "@anthropic-ai/sdk";
+
+          const anthropic = new Anthropic({
+            apiKey: process.env.ANTHROPIC_API_KEY,
+          });
+
+          export interface VideoScript {
+            title: string;
+            scenes: Scene[];
+            duration: number;
+            fps: number;
+            width: number;
+            height: number;
+          }
+
+          export interface Scene {
+            id: string;
+            type: "text" | "image" | "transition" | "animation";
+            content: string;
+            startFrame: number;
+            durationFrames: number;
+            style?: Record<string, string | number>;
+          }
+
+          export async function generateVideoScript(
+            prompt: string,
+            options: { duration?: number; style?: string } = {}
+          ): Promise<VideoScript> {
+            const { duration = 10, style = "modern" } = options;
+            
+            const systemPrompt = `You are an AI video director. Generate video scripts as JSON.
+            Output format: { title, scenes[], duration, fps: 30, width: 1920, height: 1080 }
+            Each scene: { id, type, content, startFrame, durationFrames, style }`;
+
+            const message = await anthropic.messages.create({
+              model: "claude-sonnet-4-20250514",
+              max_tokens: 4096,
+              system: systemPrompt,
+              messages: [
+                {
+                  role: "user",
+                  content: `Create a ${duration}s ${style} video about: ${prompt}`,
+                },
+              ],
+            });
+
+            const text = message.content[0].type === "text" ? message.content[0].text : "";
+            const jsonMatch = text.match(/```json\n?([\s\S]*?)\n?```/) || [null, text];
+            return JSON.parse(jsonMatch[1] || text);
+          }
+
+          export async function generateRemotionCode(
+            script: VideoScript
+          ): Promise<string> {
+            const message = await anthropic.messages.create({
+              model: "claude-sonnet-4-20250514",
+              max_tokens: 8192,
+              system: `You are a Remotion expert. Generate React/Remotion component code.
+              Use: import { AbsoluteFill, Sequence, useCurrentFrame, interpolate } from "remotion";
+              Output ONLY the component code, no markdown.`,
+              messages: [
+                {
+                  role: "user",
+                  content: `Generate Remotion component for this video script:\n${JSON.stringify(script, null, 2)}`,
+                },
+              ],
+            });
+
+            const text = message.content[0].type === "text" ? message.content[0].text : "";
+            const codeMatch = text.match(/```(?:tsx|jsx)?\n?([\s\S]*?)\n?```/);
+            return codeMatch ? codeMatch[1] : text;
+          }
+          EOF
+
+      - name: Create AI provider - Gemini
+        run: |
+          cat > src/lib/ai/gemini.ts << 'EOF'
+          import { GoogleGenerativeAI } from "@google/generative-ai";
+
+          const genAI = new GoogleGenerativeAI(
+            process.env.GOOGLE_GENERATIVE_AI_API_KEY || ""
+          );
+
+          export async function generateWithGemini(
+            prompt: string,
+            options: { model?: string } = {}
+          ) {
+            const { model = "gemini-2.0-flash" } = options;
+            const geminiModel = genAI.getGenerativeModel({ model });
+            
+            const result = await geminiModel.generateContent(prompt);
+            const response = await result.response;
+            return response.text();
+          }
+
+          export async function generateVideoIdeas(topic: string): Promise<string[]> {
+            const prompt = `Generate 5 creative video ideas about: ${topic}
+            Format: JSON array of strings ["idea1", "idea2", ...]`;
+            
+            const text = await generateWithGemini(prompt);
+            const match = text.match(/\[([\s\S]*?)\]/);
+            return match ? JSON.parse(match[0]) : [];
+          }
+          EOF
+
+      - name: Create AI index
+        run: |
+          cat > src/lib/ai/index.ts << 'EOF'
+          export * from "./claude";
+          export * from "./gemini";
+          EOF
+
+      - name: Create Remotion Root
+        run: |
+          cat > src/remotion/index.ts << 'EOF'
+          import { registerRoot } from "remotion";
+          import { RemotionRoot } from "./Root";
+
+          registerRoot(RemotionRoot);
+          EOF
+
+      - name: Create Remotion Root component
+        run: |
+          cat > src/remotion/Root.tsx << 'EOF'
+          import React from "react";
+          import { Composition } from "remotion";
+          import { MainComposition } from "./compositions/MainComposition";
+
+          export const RemotionRoot: React.FC = () => {
+            return (
+              <>
+                <Composition
+                  id="MainVideo"
+                  component={MainComposition}
+                  durationInFrames={300}
+                  fps={30}
+                  width={1920}
+                  height={1080}
+                  defaultProps={{
+                    title: "Motion Studio",
+                    scenes: [],
+                  }}
+                />
+              </>
+            );
+          };
+          EOF
+
+      - name: Create Main Composition
+        run: |
+          cat > src/remotion/compositions/MainComposition.tsx << 'EOF'
+          import React from "react";
+          import {
+            AbsoluteFill,
+            Sequence,
+            useCurrentFrame,
+            interpolate,
+            spring,
+            useVideoConfig,
+          } from "remotion";
+
+          interface Scene {
+            id: string;
+            type: string;
+            content: string;
+            startFrame: number;
+            durationFrames: number;
+            style?: Record<string, string | number>;
+          }
+
+          interface MainCompositionProps {
+            title: string;
+            scenes: Scene[];
+          }
+
+          export const MainComposition: React.FC<MainCompositionProps> = ({
+            title,
+            scenes,
+          }) => {
+            const frame = useCurrentFrame();
+            const { fps } = useVideoConfig();
+
+            const titleOpacity = interpolate(frame, [0, 30], [0, 1], {
+              extrapolateRight: "clamp",
+            });
+
+            const titleScale = spring({
+              frame,
+              fps,
+              config: { damping: 100 },
+            });
+
+            return (
+              <AbsoluteFill
+                style={{
+                  backgroundColor: "#0a0a0a",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Sequence from={0} durationInFrames={90}>
+                  <AbsoluteFill
+                    style={{
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h1
+                      style={{
+                        color: "white",
+                        fontSize: 80,
+                        fontFamily: "Inter, sans-serif",
+                        fontWeight: 700,
+                        opacity: titleOpacity,
+                        transform: `scale(${titleScale})`,
+                      }}
+                    >
+                      {title}
+                    </h1>
+                  </AbsoluteFill>
+                </Sequence>
+
+                {scenes.map((scene, index) => (
+                  <Sequence
+                    key={scene.id}
+                    from={scene.startFrame}
+                    durationInFrames={scene.durationFrames}
+                  >
+                    <SceneRenderer scene={scene} />
+                  </Sequence>
+                ))}
+              </AbsoluteFill>
+            );
+          };
+
+          const SceneRenderer: React.FC<{ scene: Scene }> = ({ scene }) => {
+            const frame = useCurrentFrame();
+            const opacity = interpolate(frame, [0, 15], [0, 1], {
+              extrapolateRight: "clamp",
+            });
+
+            return (
+              <AbsoluteFill
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  opacity,
+                  ...scene.style,
+                }}
+              >
+                {scene.type === "text" && (
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: 48,
+                      fontFamily: "Inter, sans-serif",
+                      textAlign: "center",
+                      maxWidth: "80%",
+                    }}
+                  >
+                    {scene.content}
+                  </p>
+                )}
+              </AbsoluteFill>
+            );
+          };
+          EOF
+
+      - name: Create App Layout
+        run: |
+          cat > src/app/layout.tsx << 'EOF'
+          import type { Metadata } from "next";
+          import "./globals.css";
+
+          export const metadata: Metadata = {
+            title: "Motion Studio - AI Video Creation",
+            description: "Create videos with AI using Remotion, Claude, and Gemini",
+          };
+
+          export default function RootLayout({
+            children,
+          }: {
+            children: React.ReactNode;
+          }) {
+            return (
+              <html lang="en">
+                <body className="antialiased">{children}</body>
+              </html>
+            );
+          }
+          EOF
+
+      - name: Create Global CSS
+        run: |
+          cat > src/app/globals.css << 'EOF'
+          @tailwind base;
+          @tailwind components;
+          @tailwind utilities;
+
+          :root {
+            --background: #0a0a0a;
+            --foreground: #ededed;
+          }
+
+          body {
+            color: var(--foreground);
+            background: var(--background);
+            font-family: Inter, system-ui, sans-serif;
+          }
+          EOF
+
+      - name: Create Home Page
+        run: |
+          cat > src/app/page.tsx << 'EOF'
+          import Link from "next/link";
+
+          export default function Home() {
+            return (
+              <main className="min-h-screen flex flex-col items-center justify-center p-8">
+                <div className="text-center max-w-3xl">
+                  <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    Motion Studio
+                  </h1>
+                  <p className="text-xl text-gray-400 mb-8">
+                    Create stunning videos with AI. Powered by Remotion, Claude, and Gemini.
+                  </p>
+                  <div className="flex gap-4 justify-center">
+                    <Link
+                      href="/editor"
+                      className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition-colors"
+                    >
+                      Open Editor
+                    </Link>
+                    <a
+                      href="https://github.com/WholeTroutMedia/motion-studio"
+                      className="px-8 py-4 border border-gray-700 hover:border-gray-500 rounded-lg font-semibold transition-colors"
+                    >
+                      View Source
+                    </a>
+                  </div>
+                </div>
+              </main>
+            );
+          }
+          EOF
+
+      - name: Create Editor Page
+        run: |
+          cat > src/app/editor/page.tsx << 'EOF'
+          "use client";
+
+          import { useState } from "react";
+          import { Player } from "@remotion/player";
+          import { MainComposition } from "@/remotion/compositions/MainComposition";
+
+          export default function EditorPage() {
+            const [prompt, setPrompt] = useState("");
+            const [isGenerating, setIsGenerating] = useState(false);
+            const [videoData, setVideoData] = useState<any>(null);
+
+            const handleGenerate = async () => {
+              if (!prompt.trim()) return;
+              setIsGenerating(true);
+              try {
+                const res = await fetch("/api/generate", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ prompt }),
+                });
+                const data = await res.json();
+                setVideoData(data);
+              } catch (error) {
+                console.error("Generation failed:", error);
+              } finally {
+                setIsGenerating(false);
+              }
+            };
+
+            return (
+              <div className="min-h-screen flex">
+                {/* Sidebar */}
+                <aside className="w-80 bg-gray-900 p-6 border-r border-gray-800">
+                  <h2 className="text-xl font-bold mb-4">AI Video Generator</h2>
+                  <textarea
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                    placeholder="Describe your video..."
+                    className="w-full h-32 p-3 bg-gray-800 border border-gray-700 rounded-lg resize-none focus:outline-none focus:border-blue-500"
+                  />
+                  <button
+                    onClick={handleGenerate}
+                    disabled={isGenerating}
+                    className="w-full mt-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 rounded-lg font-semibold transition-colors"
+                  >
+                    {isGenerating ? "Generating..." : "Generate Video"}
+                  </button>
+                </aside>
+
+                {/* Preview */}
+                <main className="flex-1 p-6">
+                  <div className="aspect-video bg-black rounded-lg overflow-hidden">
+                    <Player
+                      component={MainComposition}
+                      durationInFrames={300}
+                      fps={30}
+                      compositionWidth={1920}
+                      compositionHeight={1080}
+                      style={{ width: "100%", height: "100%" }}
+                      controls
+                      inputProps={{
+                        title: videoData?.title || "Motion Studio",
+                        scenes: videoData?.scenes || [],
+                      }}
+                    />
+                  </div>
+                </main>
+              </div>
+            );
+          }
+          EOF
+
+      - name: Create Generate API Route
+        run: |
+          cat > src/app/api/generate/route.ts << 'EOF'
+          import { NextRequest, NextResponse } from "next/server";
+          import { generateVideoScript } from "@/lib/ai/claude";
+
+          export async function POST(req: NextRequest) {
+            try {
+              const { prompt, duration = 10, style = "modern" } = await req.json();
+
+              if (!prompt) {
+                return NextResponse.json(
+                  { error: "Prompt is required" },
+                  { status: 400 }
+                );
+              }
+
+              const script = await generateVideoScript(prompt, { duration, style });
+
+              return NextResponse.json(script);
+            } catch (error) {
+              console.error("Generation error:", error);
+              return NextResponse.json(
+                { error: "Failed to generate video script" },
+                { status: 500 }
+              );
+            }
+          }
+          EOF
+
+      - name: Create PostCSS config
+        run: |
+          cat > postcss.config.mjs << 'EOF'
+          const config = {
+            plugins: {
+              tailwindcss: {},
+              autoprefixer: {},
+            },
+          };
+          export default config;
+          EOF
+
+      - name: Update README
+        run: |
+          cat > README.md << 'READMEOF'
+          # Motion Studio
+
+          AI-powered video creation studio built with Remotion, Claude, and Gemini.
+
+          ## Features
+
+          - **AI Script Generation**: Describe your video in natural language
+          - **Real-time Preview**: Instant preview with Remotion Player
+          - **Claude Integration**: Advanced script and code generation
+          - **Gemini Integration**: Video ideas and creative suggestions
+          - **Full Video Control**: Export to MP4, customize everything
+
+          ## Tech Stack
+
+          - **Framework**: Next.js 15 (App Router)
+          - **Video Engine**: Remotion 4
+          - **AI**: Claude (Anthropic) + Gemini (Google)
+          - **Styling**: Tailwind CSS
+          - **Language**: TypeScript
+
+          ## Getting Started
+
+          ```bash
+          # Clone the repo
+          git clone https://github.com/WholeTroutMedia/motion-studio.git
+          cd motion-studio
+
+          # Install dependencies
+          npm install
+
+          # Set up environment variables
+          cp .env.example .env
+          # Add your API keys to .env
+
+          # Run development server
+          npm run dev
+
+          # Open Remotion Studio
+          npm run remotion:studio
+          ```
+
+          ## Environment Variables
+
+          ```
+          ANTHROPIC_API_KEY=sk-ant-...
+          GOOGLE_GENERATIVE_AI_API_KEY=...
+          ```
+
+          ## Project Structure
+
+          ```
+          motion-studio/
+          ├── src/
+          │   ├── app/              # Next.js App Router
+          │   │   ├── api/          # API routes
+          │   │   ├── editor/       # Video editor page
+          │   │   └── page.tsx      # Home page
+          │   ├── components/       # React components
+          │   ├── lib/
+          │   │   ├── ai/           # AI providers (Claude, Gemini)
+          │   │   └── remotion/     # Remotion utilities
+          │   ├── remotion/         # Remotion compositions
+          │   │   ├── compositions/ # Video compositions
+          │   │   ├── components/   # Remotion components
+          │   │   └── templates/    # Video templates
+          │   └── types/            # TypeScript types
+          └── public/               # Static assets
+          ```
+
+          ## Scripts
+
+          - `npm run dev` - Start Next.js development server
+          - `npm run remotion:studio` - Open Remotion Studio
+          - `npm run remotion:render` - Render video to file
+          - `npm run build` - Build for production
+
+          ## License
+
+          Private - WholeTroutMedia
+          READMEOF
+
+      - name: Commit and push all files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status
+          git commit -m "Scaffold complete Motion Studio project - AI video creation with Remotion + Claude + Gemini" || echo "No changes"
+          git push

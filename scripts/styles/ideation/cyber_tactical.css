@@ -1,0 +1,35 @@
+/* Cyber-Tactical (Avionics Edge) */
+.theme-dark {
+  --background-primary: #18191c !important;
+  --background-secondary: #212328 !important;
+  --background-modifier-border: #343a40 !important;
+  
+  --interactive-accent: #ff6b00; /* High-vis orange */
+  --interactive-accent-hover: #ff8c33;
+  --text-accent: #ffcc00; /* High-vis yellow */
+  
+  --text-normal: #ced4da;
+  --text-muted: #6c757d;
+  
+  --font-interface: 'Roboto', 'Inter', sans-serif !important;
+  --font-text: 'Roboto', 'Inter', sans-serif !important;
+  
+  /* Hard lines, inset panels */
+  --border-width: 1px !important;
+  --divider-color: #343a40 !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: var(--background-primary) !important;
+  border-radius: 4px !important;
+  margin: 4px !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.4) !important;
+}
+
+.workspace-leaf-header-title {
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700 !important;
+}

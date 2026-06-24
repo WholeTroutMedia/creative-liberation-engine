@@ -1,0 +1,1646 @@
+{
+  "_manifest": {
+    "type": "IDEATION_REGISTRY",
+    "version": "v6.0.0",
+    "last_synced": "2026-05-18T18:12:01.713222Z",
+    "total_items": 204,
+    "status_counts": {
+      "VERIFIED": 204,
+      "DESIGN_HOLD": 0
+    }
+  },
+  "ideations": [
+    {
+      "id": "IE-IDX-0106",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0106_refero-styles-design-systems.json"
+    },
+    {
+      "id": "IE-IDX-0107",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "manual",
+      "file_path": "runtime/ideation-queue/IE-IDX-0107_threads-mangto-design-md.json"
+    },
+    {
+      "id": "IE-IDX-0108_photographer-builds-his-own-tethering-ap",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0108_photographer-builds-his-own-tethering-ap.json"
+    },
+    {
+      "id": "IE-IDX-0109_continually-improving-our-agent-harness",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0109_continually-improving-our-agent-harness.json"
+    },
+    {
+      "id": "IE-IDX-0110_a-22-year-old-dropout-just-reverse-engin",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0110_a-22-year-old-dropout-just-reverse-engin.json"
+    },
+    {
+      "id": "IE-IDX-0111_environment-setup-swarms",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0111_environment-setup-swarms.json"
+    },
+    {
+      "id": "IE-IDX-0112_nvidia-nemotron-3-nano-omni-powers-multi",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0112_nvidia-nemotron-3-nano-omni-powers-multi.json"
+    },
+    {
+      "id": "IE-IDX-0113_proxy-pointer-rag-multimodal-answers-wit",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0113_proxy-pointer-rag-multimodal-answers-wit.json"
+    },
+    {
+      "id": "IE-IDX-0114_paper-page-flowanchor-stabilizing-the-ed",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0114_paper-page-flowanchor-stabilizing-the-ed.json"
+    },
+    {
+      "id": "IE-IDX-0115_how-googles-new-deepmind-medical-ai-coul",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0115_how-googles-new-deepmind-medical-ai-coul.json"
+    },
+    {
+      "id": "IE-IDX-0116_who-could-gain-from-deepseeks-v4-with-ch",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0116_who-could-gain-from-deepseeks-v4-with-ch.json"
+    },
+    {
+      "id": "IE-IDX-0117_paper-page-unividx-a-unified-multimodal",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0117_paper-page-unividx-a-unified-multimodal.json"
+    },
+    {
+      "id": "IE-IDX-0118_google-tells-developers-to-build-for-ai",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0118_google-tells-developers-to-build-for-ai.json"
+    },
+    {
+      "id": "IE-IDX-0119_open-design-destroys-claude-design",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0119_open-design-destroys-claude-design.json"
+    },
+    {
+      "id": "IE-IDX-0120_claude-comes-to-cad-anthropics-ai-can-no",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0120_claude-comes-to-cad-anthropics-ai-can-no.json"
+    },
+    {
+      "id": "IE-IDX-0121_ai-agents-are-about-to-route-around-ever",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0121_ai-agents-are-about-to-route-around-ever.json"
+    },
+    {
+      "id": "IE-IDX-0122_how-ai-made-communication-the-most-impor",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0122_how-ai-made-communication-the-most-impor.json"
+    },
+    {
+      "id": "IE-IDX-0123_your-phone-has-sensors-you-have-never-us",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0123_your-phone-has-sensors-you-have-never-us.json"
+    },
+    {
+      "id": "IE-IDX-0124_lawyer-explains-how-to-incorporate-ai-pr",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0124_lawyer-explains-how-to-incorporate-ai-pr.json"
+    },
+    {
+      "id": "IE-IDX-0125_the-rag-era-is-ending-for-agentic-ai-a-n",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0125_the-rag-era-is-ending-for-agentic-ai-a-n.json"
+    },
+    {
+      "id": "IE-IDX-0126_introducing-the-google-cloud-knowledge-c",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0126_introducing-the-google-cloud-knowledge-c.json"
+    },
+    {
+      "id": "IE-IDX-0127_deepclaude-lets-you-run-claude-code-with",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0127_deepclaude-lets-you-run-claude-code-with.json"
+    },
+    {
+      "id": "IE-IDX-0128_github-nexu-ioopen-design-local-first-op",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0128_github-nexu-ioopen-design-local-first-op.json"
+    },
+    {
+      "id": "IE-IDX-0129_wall-streets-15-billion-plan-to-build-th",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0129_wall-streets-15-billion-plan-to-build-th.json"
+    },
+    {
+      "id": "IE-IDX-0001",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0001_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0002",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0002_how-i-made-gemma-4-10x-faster-on-jetson.json"
+    },
+    {
+      "id": "IE-IDX-0003",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0003_your-automation-strategy-has-a-blind-spo.json"
+    },
+    {
+      "id": "IE-IDX-0004",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0004_minisforums-beastly-n5-max-nas-comes-pow.json"
+    },
+    {
+      "id": "IE-IDX-0005",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0005_the-modern-data-stack-was-built-for-huma.json"
+    },
+    {
+      "id": "IE-IDX-0006",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0006_an-amateur-just-solved-a-60-year-old-mat.json"
+    },
+    {
+      "id": "IE-IDX-0007",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0007_deepseek-v4-arrives-with-near-state-of-t.json"
+    },
+    {
+      "id": "IE-IDX-0008",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0008_google-to-invest-up-to-40b-in-anthropic.json"
+    },
+    {
+      "id": "IE-IDX-0009",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0009_googles-new-ai-smart-glasses-are-leaving.json"
+    },
+    {
+      "id": "IE-IDX-0010",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0010_claudes-new-live-artifacts-are-changing.json"
+    },
+    {
+      "id": "IE-IDX-0011",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0011_paper-page-a-self-evolving-framework-for.json"
+    },
+    {
+      "id": "IE-IDX-0012",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0012_local-llms-changed-how-i-use-home-assist.json"
+    },
+    {
+      "id": "IE-IDX-0013",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0013_microcredentials-from-aws-are-now-freehe.json"
+    },
+    {
+      "id": "IE-IDX-0014",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0014_ai-just-discovered-new-physics-in-the-fo.json"
+    },
+    {
+      "id": "IE-IDX-0015",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0015_how-1-non-coder-used-ai-to-make-money-an.json"
+    },
+    {
+      "id": "IE-IDX-0016",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0016_photon-releases-spectrum-an-open-source.json"
+    },
+    {
+      "id": "IE-IDX-0017",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0017_13-openclaw-skills-that-push-ai-beyond-b.json"
+    },
+    {
+      "id": "IE-IDX-0018",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0018_nature-has-the-solution-researchers-fuse.json"
+    },
+    {
+      "id": "IE-IDX-0019",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0019_openai-just-open-sourced-a-tool-that-scr.json"
+    },
+    {
+      "id": "IE-IDX-0020",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0020_1302-real-world-gen-ai-use-cases-from-th.json"
+    },
+    {
+      "id": "IE-IDX-0021",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0021_neural-computers.json"
+    },
+    {
+      "id": "IE-IDX-0022",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0022_flipbook.json"
+    },
+    {
+      "id": "IE-IDX-0023",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0023_designdotmddirectory.json"
+    },
+    {
+      "id": "IE-IDX-0024",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0024_googles-new-deep-research-and-deep-resea.json"
+    },
+    {
+      "id": "IE-IDX-0025",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0025_paper-page-opengame-open-agentic-coding.json"
+    },
+    {
+      "id": "IE-IDX-0026",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0026_paper-page-multiworld-scalable-multi-age.json"
+    },
+    {
+      "id": "IE-IDX-0027",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0027_proxy-pointer-rag-structure-meets-scale.json"
+    },
+    {
+      "id": "IE-IDX-0028",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0028_github-google-labs-codedesignmd-a-format.json"
+    },
+    {
+      "id": "IE-IDX-0029",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0029_why-we-should-be-reading-paul-churchland.json"
+    },
+    {
+      "id": "IE-IDX-0030",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0030_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0031",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0031_how-i-made-gemma-4-10x-faster-on-jetson.json"
+    },
+    {
+      "id": "IE-IDX-0032",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0032_awareness-as-the-heart-of-working-memory.json"
+    },
+    {
+      "id": "IE-IDX-0033",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0033_sequoia-distributes-200-engraved-mac-min.json"
+    },
+    {
+      "id": "IE-IDX-0034",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0034_why-xboxs-leaked-1200-project-helix-cons.json"
+    },
+    {
+      "id": "IE-IDX-0035",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0035_scott-bessent-has-an-urgent-message-for.json"
+    },
+    {
+      "id": "IE-IDX-0036",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0036_telegram-bot-features.json"
+    },
+    {
+      "id": "IE-IDX-0037",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0037_supersplat-the-home-for-3d-gaussian-spla.json"
+    },
+    {
+      "id": "IE-IDX-0038",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0038_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0039",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0039_awareness-as-the-heart-of-working-memory.json"
+    },
+    {
+      "id": "IE-IDX-0040",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0040_how-i-made-gemma-4-10x-faster-on-jetson.json"
+    },
+    {
+      "id": "IE-IDX-0041",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0041_your-automation-strategy-has-a-blind-spo.json"
+    },
+    {
+      "id": "IE-IDX-0042",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0042_minisforums-beastly-n5-max-nas-comes-pow.json"
+    },
+    {
+      "id": "IE-IDX-0043",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0043_the-modern-data-stack-was-built-for-huma.json"
+    },
+    {
+      "id": "IE-IDX-0044",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0044_an-amateur-just-solved-a-60-year-old-mat.json"
+    },
+    {
+      "id": "IE-IDX-0045",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0045_deepseek-v4-arrives-with-near-state-of-t.json"
+    },
+    {
+      "id": "IE-IDX-0046",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0046_google-to-invest-up-to-40b-in-anthropic.json"
+    },
+    {
+      "id": "IE-IDX-0047",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0047_googles-new-ai-smart-glasses-are-leaving.json"
+    },
+    {
+      "id": "IE-IDX-0048",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0048_claudes-new-live-artifacts-are-changing.json"
+    },
+    {
+      "id": "IE-IDX-0049",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0049_paper-page-a-self-evolving-framework-for.json"
+    },
+    {
+      "id": "IE-IDX-0050_local-llms-changed-how-i-use-home-assist",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0050_local-llms-changed-how-i-use-home-assist.json"
+    },
+    {
+      "id": "IE-IDX-0051",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0051_microcredentials-from-aws-are-now-freehe.json"
+    },
+    {
+      "id": "IE-IDX-0052",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0052_ai-just-discovered-new-physics-in-the-fo.json"
+    },
+    {
+      "id": "IE-IDX-0053",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0053_how-1-non-coder-used-ai-to-make-money-an.json"
+    },
+    {
+      "id": "IE-IDX-0054",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0054_photon-releases-spectrum-an-open-source.json"
+    },
+    {
+      "id": "IE-IDX-0055",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0055_13-openclaw-skills-that-push-ai-beyond-b.json"
+    },
+    {
+      "id": "IE-IDX-0056",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0056_nature-has-the-solution-researchers-fuse.json"
+    },
+    {
+      "id": "IE-IDX-0057",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0057_openai-just-open-sourced-a-tool-that-scr.json"
+    },
+    {
+      "id": "IE-IDX-0058",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0058_1302-real-world-gen-ai-use-cases-from-th.json"
+    },
+    {
+      "id": "IE-IDX-0059",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0059_neural-computers.json"
+    },
+    {
+      "id": "IE-IDX-0060",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0060_flipbook.json"
+    },
+    {
+      "id": "IE-IDX-0061",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0061_designdotmddirectory.json"
+    },
+    {
+      "id": "IE-IDX-0062",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0062_why-no-one-will-know-that-viral-photo-is.json"
+    },
+    {
+      "id": "IE-IDX-0063",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0063_360-degree-cameras-have-a-new-superpower.json"
+    },
+    {
+      "id": "IE-IDX-0064",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0064_meet-gitnexus-an-open-source-mcp-native.json"
+    },
+    {
+      "id": "IE-IDX-0065",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0065_google-deepmind-introduces-vision-banana.json"
+    },
+    {
+      "id": "IE-IDX-0066",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0066_multica-the-open-source-tool-that-makes.json"
+    },
+    {
+      "id": "IE-IDX-0067",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0067_codex-just-replaced-1000-hours-of-video.json"
+    },
+    {
+      "id": "IE-IDX-0068",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0068_claude-design-claude-skills-automate-you.json"
+    },
+    {
+      "id": "IE-IDX-0069",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0069_claude-design-builds-beautiful-3d-websit.json"
+    },
+    {
+      "id": "IE-IDX-0070",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0070_azure-mcp-server-now-available-as-an-mcp.json"
+    },
+    {
+      "id": "IE-IDX-0071",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0071_claude-cowork-now-runs-any-llm-test-it-f.json"
+    },
+    {
+      "id": "IE-IDX-0072",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0072_how-to-build-a-personal-agentic-operatin.json"
+    },
+    {
+      "id": "IE-IDX-0073",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0073_a-coding-tutorial-on-openmythos-on-recur.json"
+    },
+    {
+      "id": "IE-IDX-0074",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0074_claude-code-next-gen-website-workflow.json"
+    },
+    {
+      "id": "IE-IDX-0075",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0075_semantic-caching-for-llms-fastapi-redis.json"
+    },
+    {
+      "id": "IE-IDX-0076",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0076_why-pairing-claude-code-with-karpathys-s.json"
+    },
+    {
+      "id": "IE-IDX-0077",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0077_7-claude-design-use-cases-to-speed-up-yo.json"
+    },
+    {
+      "id": "IE-IDX-0078",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0078_autodesk-flow-studio-ai-powered-creative.json"
+    },
+    {
+      "id": "IE-IDX-0079",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0079_effective-context-engineering-for-ai-age.json"
+    },
+    {
+      "id": "IE-IDX-0080",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0080_i-used-claudes-new-dispatch-feature-for.json"
+    },
+    {
+      "id": "IE-IDX-0081",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0081_anthropic-releases-9-claude-connectors-f.json"
+    },
+    {
+      "id": "IE-IDX-0082",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0082_real-time-data-streaming-for-ai-workload.json"
+    },
+    {
+      "id": "IE-IDX-0083",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0083_the-connective-tissue-between-your-data.json"
+    },
+    {
+      "id": "IE-IDX-0084",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0084_how-to-build-custom-reasoning-agents-wit.json"
+    },
+    {
+      "id": "IE-IDX-0085",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0085_copyright-infringement-suits-loom-with-u.json"
+    },
+    {
+      "id": "IE-IDX-0086",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0086_study-finds-a-third-of-new-websites-are.json"
+    },
+    {
+      "id": "IE-IDX-0087",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0087_build-an-autonomous-ai-agent-system-in-u.json"
+    },
+    {
+      "id": "IE-IDX-0088_meet-the-64mb-browser-built-entirely-for",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0088_meet-the-64mb-browser-built-entirely-for.json"
+    },
+    {
+      "id": "IE-IDX-0089",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0089_why-claudes-new-live-artifacts-are-repla.json"
+    },
+    {
+      "id": "IE-IDX-0090",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0090_4-yaml-files-instead-of-pyspark-how-we-l.json"
+    },
+    {
+      "id": "IE-IDX-0091",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0091_definity-embeds-agents-inside-spark-pipe.json"
+    },
+    {
+      "id": "IE-IDX-0092",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0092_chamath-palihapitiya-warns-software-indu.json"
+    },
+    {
+      "id": "IE-IDX-0093",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0093_the-creatives-are-about-to-become-more-p.json"
+    },
+    {
+      "id": "IE-IDX-0094",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0094_apples-hypercard-comes-back-to-life-in-t.json"
+    },
+    {
+      "id": "IE-IDX-0095_github-agno-agiscout-open-source-company",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0095_github-agno-agiscout-open-source-company.json"
+    },
+    {
+      "id": "IE-IDX-0096",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0096_amazons-openai-gambit-signals-a-new-phas.json"
+    },
+    {
+      "id": "IE-IDX-0097",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0097_something-is-about-to-happen.json"
+    },
+    {
+      "id": "IE-IDX-0098",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0098_self-hosted-llms-in-the-real-world-limit.json"
+    },
+    {
+      "id": "IE-IDX-0099",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0099_vcs-are-chasing-ai-infrastructure-while.json"
+    },
+    {
+      "id": "IE-IDX-0100",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0100_apple-researchers-built-an-ai-that-tests.json"
+    },
+    {
+      "id": "IE-IDX-0101",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0101_the-retrieval-rebuild-why-hybrid-retriev.json"
+    },
+    {
+      "id": "IE-IDX-0102_nvidia-launches-nemotron-3-nano-omni-mod",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0102_nvidia-launches-nemotron-3-nano-omni-mod.json"
+    },
+    {
+      "id": "IE-IDX-0103",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0103_how-i-do-content-engineering-with-claude.json"
+    },
+    {
+      "id": "IE-IDX-0104",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0104_an-open-source-spec-for-orchestration-sy.json"
+    },
+    {
+      "id": "IE-IDX-0105",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "flipboard_rss",
+      "file_path": "runtime/ideation-queue/IE-IDX-0105_speeding-up-agentic-workflows-with-webso.json"
+    },
+    {
+      "id": "IE-IDX-0130_firecrawl-is-becoming-ais-default-web-la",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0130_firecrawl-is-becoming-ais-default-web-la.json"
+    },
+    {
+      "id": "IE-IDX-0131_copilotkit-raises-27m-to-help-devs-deplo",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0131_copilotkit-raises-27m-to-help-devs-deplo.json"
+    },
+    {
+      "id": "IE-IDX-0132_sequoia-backed-astrocade-raises-56-milli",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0132_sequoia-backed-astrocade-raises-56-milli.json"
+    },
+    {
+      "id": "IE-IDX-0133_exclusive-nova-intelligence-raises-315-m",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0133_exclusive-nova-intelligence-raises-315-m.json"
+    },
+    {
+      "id": "IE-IDX-0134_anthropic-is-working-on-orbit-its-upcomi",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0134_anthropic-is-working-on-orbit-its-upcomi.json"
+    },
+    {
+      "id": "IE-IDX-0135_the-context-window-has-been-shattered-su",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0135_the-context-window-has-been-shattered-su.json"
+    },
+    {
+      "id": "IE-IDX-0136_n8ns-mcp-server-can-now-build-workflows",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0136_n8ns-mcp-server-can-now-build-workflows.json"
+    },
+    {
+      "id": "IE-IDX-0137_alibabas-metis-agent-cuts-redundant-ai-t",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0137_alibabas-metis-agent-cuts-redundant-ai-t.json"
+    },
+    {
+      "id": "IE-IDX-0138_we-dont-need-more-agents-we-need-a-bette",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0138_we-dont-need-more-agents-we-need-a-bette.json"
+    },
+    {
+      "id": "IE-IDX-0139_cisco-releases-open-source-tool-for-ai-m",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0139_cisco-releases-open-source-tool-for-ai-m.json"
+    },
+    {
+      "id": "IE-IDX-0140_miami-startup-subquadratic-claims-1000x",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0140_miami-startup-subquadratic-claims-1000x.json"
+    },
+    {
+      "id": "IE-IDX-0141_open-design-open-source-claude-design-fu",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0141_open-design-open-source-claude-design-fu.json"
+    },
+    {
+      "id": "IE-IDX-0142_zo-computer-your-personal-ai-cloud-compu",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0142_zo-computer-your-personal-ai-cloud-compu.json"
+    },
+    {
+      "id": "IE-IDX-0143_hyperagent",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0143_hyperagent.json"
+    },
+    {
+      "id": "IE-IDX-0144_untitled",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0144_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0145_forward-deployed-ai-accelerator-is-the-l",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0145_forward-deployed-ai-accelerator-is-the-l.json"
+    },
+    {
+      "id": "IE-IDX-0146_maket-ai-powered-floor-plan-creation",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0146_maket-ai-powered-floor-plan-creation.json"
+    },
+    {
+      "id": "IE-IDX-0147_untitled",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0147_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0148_magic-studio-once-ui",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0148_magic-studio-once-ui.json"
+    },
+    {
+      "id": "IE-IDX-0149_riverside-hd-podcast-video-software-free",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0149_riverside-hd-podcast-video-software-free.json"
+    },
+    {
+      "id": "IE-IDX-0150_apple-may-have-just-made-one-of-the-most",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0150_apple-may-have-just-made-one-of-the-most.json"
+    },
+    {
+      "id": "IE-IDX-0151_the-promise-and-panic-of-unity-ais-open",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0151_the-promise-and-panic-of-unity-ais-open.json"
+    },
+    {
+      "id": "IE-IDX-0152_ai-evaluation-startup-braintrust-confirm",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0152_ai-evaluation-startup-braintrust-confirm.json"
+    },
+    {
+      "id": "IE-IDX-0153_jensen-huang-on-why-agentic-will-rewire",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0153_jensen-huang-on-why-agentic-will-rewire.json"
+    },
+    {
+      "id": "IE-IDX-0154_the-aws-mcp-server-is-now-generally-avai",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0154_the-aws-mcp-server-is-now-generally-avai.json"
+    },
+    {
+      "id": "IE-IDX-0155_google-is-not-building-a-consultancy-it",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0155_google-is-not-building-a-consultancy-it.json"
+    },
+    {
+      "id": "IE-IDX-0156_claude-just-gained-an-infinite-context-w",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0156_claude-just-gained-an-infinite-context-w.json"
+    },
+    {
+      "id": "IE-IDX-0088_meet-the-64mb-browser-built-entirely-for-v2",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0088_meet-the-64mb-browser-built-entirely-for-v2.json"
+    },
+    {
+      "id": "IE-IDX-0131_copilotkit-raises-27m-to-help-devs-deplo-v2",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0131_copilotkit-raises-27m-to-help-devs-deplo-v2.json"
+    },
+    {
+      "id": "IE-IDX-0143_hyperagent-v2",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0143_hyperagent-v2.json"
+    },
+    {
+      "id": "IE-IDX-0159_playcanvas",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0159_playcanvas.json"
+    },
+    {
+      "id": "IE-IDX-0160_openai-brings-gpt-5-class-reasoning-to-r",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0160_openai-brings-gpt-5-class-reasoning-to-r.json"
+    },
+    {
+      "id": "IE-IDX-0161_timeliner-video-agency-management-softwa",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0161_timeliner-video-agency-management-softwa.json"
+    },
+    {
+      "id": "IE-IDX-0162_why-massive-ai-models-actually-generaliz",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0162_why-massive-ai-models-actually-generaliz.json"
+    },
+    {
+      "id": "IE-IDX-0163_immersive-narratives-how-vr-transforms-i",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0163_immersive-narratives-how-vr-transforms-i.json"
+    },
+    {
+      "id": "IE-IDX-0164_from-data-scientist-to-ai-architect",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0164_from-data-scientist-to-ai-architect.json"
+    },
+    {
+      "id": "IE-IDX-0165_hidden-technical-debt-in-agentic-systems",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0165_hidden-technical-debt-in-agentic-systems.json"
+    },
+    {
+      "id": "IE-IDX-0166_the-architecture-of-local-first-web-deve",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0166_the-architecture-of-local-first-web-deve.json"
+    },
+    {
+      "id": "IE-IDX-0167_a-manual-pentest-costs-50000-dollars-int",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0167_a-manual-pentest-costs-50000-dollars-int.json"
+    },
+    {
+      "id": "IE-IDX-0168_the-hidden-google-ai-tools-you-probably",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0168_the-hidden-google-ai-tools-you-probably.json"
+    },
+    {
+      "id": "IE-IDX-0169_7-opencode-plugins-that-make-ai-coding-m",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0169_7-opencode-plugins-that-make-ai-coding-m.json"
+    },
+    {
+      "id": "IE-IDX-0170_opencode-the-open-source-ai-coding-agent",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0170_opencode-the-open-source-ai-coding-agent.json"
+    },
+    {
+      "id": "IE-IDX-0171_stop-wasting-tokens-a-smarter-alternativ",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0171_stop-wasting-tokens-a-smarter-alternativ.json"
+    },
+    {
+      "id": "IE-IDX-0172_ep214-claude-code-vs-openclaw-5-design-d",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0172_ep214-claude-code-vs-openclaw-5-design-d.json"
+    },
+    {
+      "id": "IE-IDX-0173_how-to-build-a-claude-code-powered-knowl",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0173_how-to-build-a-claude-code-powered-knowl.json"
+    },
+    {
+      "id": "IE-IDX-0174_claude-ai-agents-are-driving-record-mac",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0174_claude-ai-agents-are-driving-record-mac.json"
+    },
+    {
+      "id": "IE-IDX-0175_openai-launches-4bn-deployment-company-w",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0175_openai-launches-4bn-deployment-company-w.json"
+    },
+    {
+      "id": "IE-IDX-0176_thinking-machines-lab",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0176_thinking-machines-lab.json"
+    },
+    {
+      "id": "IE-IDX-0177_n8n-desk-the-open-source-claude-desktop",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0177_n8n-desk-the-open-source-claude-desktop.json"
+    },
+    {
+      "id": "IE-IDX-0178_perceptron-mk1-shocks-with-highly-perfor",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0178_perceptron-mk1-shocks-with-highly-perfor.json"
+    },
+    {
+      "id": "IE-IDX-0179_air-creative-operations-platform",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0179_air-creative-operations-platform.json"
+    },
+    {
+      "id": "IE-IDX-0180_start-learning-with-googles-new-ai-educa",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0180_start-learning-with-googles-new-ai-educa.json"
+    },
+    {
+      "id": "IE-IDX-0181_untitled",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0181_untitled.json"
+    },
+    {
+      "id": "IE-IDX-0182_claude-for-small-business-shows-where-wh",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0182_claude-for-small-business-shows-where-wh.json"
+    },
+    {
+      "id": "IE-IDX-0183_too-much-is-happening-too-fast",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0183_too-much-is-happening-too-fast.json"
+    },
+    {
+      "id": "IE-IDX-0184_anthropic-announces-programmatic-credit",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0184_anthropic-announces-programmatic-credit.json"
+    },
+    {
+      "id": "IE-IDX-0185_graphon-ai-exits-stealth-with-83m-to-bui",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0185_graphon-ai-exits-stealth-with-83m-to-bui.json"
+    },
+    {
+      "id": "IE-IDX-0186_developers-can-now-debug-and-evaluate-ai",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0186_developers-can-now-debug-and-evaluate-ai.json"
+    },
+    {
+      "id": "IE-IDX-0187_i-built-my-own-ai-back-office-anthropic",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0187_i-built-my-own-ai-back-office-anthropic.json"
+    },
+    {
+      "id": "IE-IDX-0188_a-grad-students-wild-idea-sparks-a-major",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0188_a-grad-students-wild-idea-sparks-a-major.json"
+    },
+    {
+      "id": "IE-IDX-0189_want-to-start-an-ai-company-heres-what-v",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0189_want-to-start-an-ai-company-heres-what-v.json"
+    },
+    {
+      "id": "IE-IDX-0190_for-the-first-time-in-its-history-humank",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0190_for-the-first-time-in-its-history-humank.json"
+    },
+    {
+      "id": "IE-IDX-0191_the-wait-is-over-build-for-display-glass",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0191_the-wait-is-over-build-for-display-glass.json"
+    },
+    {
+      "id": "IE-IDX-0192_8-low-maintenance-shade-perennials-that",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0192_8-low-maintenance-shade-perennials-that.json"
+    },
+    {
+      "id": "IE-IDX-0193_the-secret-to-unlocking-unlimited-ai-cod",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0193_the-secret-to-unlocking-unlimited-ai-cod.json"
+    },
+    {
+      "id": "IE-IDX-0194_osaurus-brings-both-local-and-cloud-ai-m",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0194_osaurus-brings-both-local-and-cloud-ai-m.json"
+    },
+    {
+      "id": "IE-IDX-0195_the-inner-map-how-the-brain-navigates-sp",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0195_the-inner-map-how-the-brain-navigates-sp.json"
+    },
+    {
+      "id": "IE-IDX-0196_i-vibe-coded-a-complex-data-visualisatio",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0196_i-vibe-coded-a-complex-data-visualisatio.json"
+    },
+    {
+      "id": "IE-IDX-0197_paper-page-trackcraft3r-repurposing-vide",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0197_paper-page-trackcraft3r-repurposing-vide.json"
+    },
+    {
+      "id": "IE-IDX-0198_paper-page-nanoresearch-co-evolving-skil",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0198_paper-page-nanoresearch-co-evolving-skil.json"
+    },
+    {
+      "id": "IE-IDX-0199_superset-run-10-parallel-coding-agents-o",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0199_superset-run-10-parallel-coding-agents-o.json"
+    },
+    {
+      "id": "IE-IDX-0200_paper-page-qwen-image-vae-20-technical-r",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0200_paper-page-qwen-image-vae-20-technical-r.json"
+    },
+    {
+      "id": "IE-IDX-0201_anthropics-open-source-claude-desktop-bu",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0201_anthropics-open-source-claude-desktop-bu.json"
+    },
+    {
+      "id": "IE-IDX-0202_the-semantic-medallion-building-a-knowle",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0202_the-semantic-medallion-building-a-knowle.json"
+    },
+    {
+      "id": "IE-IDX-0203_the-staggering-number-jensen-huang-just",
+      "title": "",
+      "status": "VERIFIED",
+      "helix": "UNASSIGNED",
+      "source": "unknown",
+      "file_path": "runtime/ideation-queue/IE-IDX-0203_the-staggering-number-jensen-huang-just.json"
+    }
+  ]
+}

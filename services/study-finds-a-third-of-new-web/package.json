@@ -1,0 +1,10 @@
+{
+  "name": "@cle/study-finds-a-third-of-new-web",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0086",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

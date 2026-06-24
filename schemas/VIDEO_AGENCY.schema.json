@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/VIDEO_AGENCY.schema.json",
+  "title": "Video Agency Management Schema",
+  "description": "Defines project tracking, timecoding, client review, and financial operations for AI-augmented video production within the Creative Liberation Engine.",
+  "type": "object",
+  "required": ["project_id", "title", "status", "created_at"],
+  "properties": {
+    "project_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "title": { "type": "string" },
+    "client": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "company": { "type": "string" }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["briefing", "pre_production", "production", "post_production", "review", "revision", "approved", "delivered", "archived"]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "deadline": { "type": ["string", "null"], "format": "date-time" },
+    "timeline": {
+      "type": "object",
+      "properties": {
+        "duration_seconds": { "type": "number" },
+        "fps": { "type": "number" },
+        "resolution": {
+          "type": "object",
+          "properties": {
+            "width": { "type": "integer" },
+            "height": { "type": "integer" }
+          }
+        },
+        "sequences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["sequence_id", "name", "start_tc", "end_tc"],
+            "properties": {
+              "sequence_id": { "type": "string" },
+              "name": { "type": "string" },
+              "start_tc": { "type": "string", "pattern": "^\\d{2}:\\d{2}:\\d{2}[;:]\\d{2}$" },
+              "end_tc": { "type": "string", "pattern": "^\\d{2}:\\d{2}:\\d{2}[;:]\\d{2}$" },
+              "status": { "type": "string", "enum": ["pending", "in_progress", "review", "approved"] },
+              "assigned_to": { "type": "string" },
+              "notes": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["asset_id", "name", "type"],
+        "properties": {
+          "asset_id": { "type": "string" },
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["footage", "audio", "graphics", "lut", "font", "project_file", "export", "reference"] },
+          "path": { "type": "string" },
+          "version": { "type": "integer", "minimum": 1 },
+          "size_bytes": { "type": "integer" },
+          "checksum": { "type": "string" }
+        }
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["review_id", "reviewer", "submitted_at", "verdict"],
+        "properties": {
+          "review_id": { "type": "string" },
+          "reviewer": { "type": "string" },
+          "submitted_at": { "type": "string", "format": "date-time" },
+          "verdict": { "type": "string", "enum": ["approved", "revision_needed", "rejected"] },
+          "timecoded_notes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "timecode": { "type": "string" },
+                "note": { "type": "string" },
+                "priority": { "type": "string", "enum": ["must_fix", "should_fix", "nice_to_have", "praise"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "financials": {
+      "type": "object",
+      "properties": {
+        "currency": { "type": "string", "default": "USD" },
+        "budget": { "type": "number" },
+        "spent": { "type": "number" },
+        "invoices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "invoice_id": { "type": "string" },
+              "amount": { "type": "number" },
+              "status": { "type": "string", "enum": ["draft", "sent", "paid", "overdue"] },
+              "due_date": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

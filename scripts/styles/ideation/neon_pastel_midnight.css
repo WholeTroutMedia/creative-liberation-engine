@@ -1,0 +1,36 @@
+/* Neon-Pastel Midnight */
+.theme-dark {
+  --background-primary: #050508 !important;
+  --background-secondary: #0a0a10 !important;
+  --background-modifier-border: transparent !important;
+  
+  --interactive-accent: #c882ff; /* Electric Lavender */
+  --interactive-accent-hover: #e0b3ff;
+  --text-accent: #00ffff; /* Soft Cyan */
+  
+  --text-normal: #d1d1e0;
+  --text-muted: #73738c;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 0px !important;
+}
+
+.workspace-leaf {
+  border: none !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 20px !important;
+  margin: 8px !important;
+  box-shadow: 0 0 20px rgba(200, 130, 255, 0.08), inset 0 0 0 1px rgba(200, 130, 255, 0.15) !important;
+  transition: all 0.3s ease !important;
+}
+
+.workspace-leaf.mod-active {
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.15), inset 0 0 0 1px rgba(0, 255, 255, 0.3) !important;
+}
+
+.workspace-leaf-header-title {
+  color: var(--text-accent);
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

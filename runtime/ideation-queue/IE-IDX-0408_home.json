@@ -1,0 +1,97 @@
+{
+  "jobId": "IE-IDX-0408",
+  "jobNumber": 408,
+  "slug": "home",
+  "filename": "IE-IDX-0408_home",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-X0o7cOZ9SmeCVSKyamniGQ:a:4243649-1781459847",
+    "title": "Home",
+    "url": "https://tripleseat.com/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Unknown",
+    "pubDate": "Sun, 14 Jun 2026 17:57:27 GMT",
+    "imageUrl": null,
+    "categories": [
+      ""
+    ]
+  },
+  "categories": [
+    "edge-ai",
+    "creative-tools",
+    "business",
+    "learning",
+    "cinematography",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "Establish 'Home' not merely as a network location, but as an absolute, inviolable sovereign reality. The NAS is the singular source of truth, execution, and state; the local workstation must be architected purely as a holographic projection of this reality, mathematically incapable of harboring scattered state.",
+    "rationale": "To enforce Article I (Sovereignty) and the strict NAS Supremacy Rule, we must eliminate the cognitive and technical friction of managing dual states. If 'Home' is the NAS, the local environment must structurally prevent divergence. By treating the local machine as a literal thin client—a glass pane—we guarantee that all data and execution remain sovereign, protected, and canonical without relying on human discipline.",
+    "options": [
+      {
+        "title": "The Holographic Workspace (Native Remote Development)",
+        "description": "Eliminate the local D:\\ drive backup concept entirely for active development. Utilize native remote development protocols (SSHFS or VS Code Remote-SSH) to bind the IDE directly to the NAS. The workstation processes UI rendering only; all file IO and terminal commands execute natively on the NAS.",
+        "tradeoffs": "Perfect alignment with NAS Supremacy and zero risk of local file scatter. Requires an unbreakable LAN connection. Eliminates the need for complex path translation scripts.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Strict OS-Level Immutability (The Read-Only Bridge)",
+        "description": "Maintain the D:\\ directory as a local mirror but lock it down with OS-level read-only permissions. Any tool, script, or agent attempting to write locally will violently fail, forcing all write operations to explicitly target the UNC paths (\\\\127.0.0.1\\docker\\...).",
+        "tradeoffs": "Guarantees absolute compliance with the Anti-scatter rule. However, it introduces high initial friction for local tools or extensions that naively expect write access to their working directory.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Sovereign Fortress (NAS-Hosted Web IDE)",
+        "description": "Deploy a containerized IDE (such as Code-Server or a cloud-native development environment) directly on the NAS. The user accesses 'Home' strictly via a web browser on the workstation, severing the local filesystem from the development loop entirely.",
+        "tradeoffs": "Maximum sovereignty and zero local footprint. Bypasses workstation OS quirks completely. May lack some desktop IDE performance (e.g., hardware acceleration) or specific local hotkey bindings.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "The Anti-Scatter Warden (Continuous Validation Daemon)",
+        "description": "Deploy a lightweight background service on the workstation that continuously monitors the D:\\ drive. If any file is created or modified locally instead of via the NAS UNC path, the Warden instantly alerts the user, syncs the change to the NAS, and deletes the local anomaly.",
+        "tradeoffs": "Provides a strong safety net without breaking existing local toolchains. However, it is reactive rather than proactive, meaning a temporary violation of NAS Supremacy occurs before correction.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Ephemeral Zero-Trust Workstation",
+        "description": "Treat the workstation as a highly volatile compute node. A mandatory script completely wipes the D:\\ workspace directory upon session end or IDE closure, ensuring no state ever survives outside of 'Home'.",
+        "tradeoffs": "Enforces absolute statelessness locally. However, it introduces high boot and teardown times for local caching, directly risking a violation of Article XX (Zero human wait time).",
+        "recommendation": "avoid"
+      },
+      {
+        "title": "The Invisible Proxy Layer (Command Interceptor)",
+        "description": "Create a transparent daemon on the workstation that intercepts all file write and terminal execute commands at the OS level, automatically rewriting local paths to UNC paths and wrapping executions in SSH port 2000 commands.",
+        "tradeoffs": "Offers a 'magical' developer experience where the user acts locally but executes remotely. Extremely complex to build, maintain, and debug, with a high risk of edge-case failures across different toolchains.",
+        "recommendation": "avoid"
+      }
+    ],
+    "suggestedAgents": [
+      "AURORA",
+      "SWITCHBOARD",
+      "BOLT",
+      "LEX"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty",
+      "Article IV: Quality Standards",
+      "Article IX: Ship Complete or Don't Ship",
+      "Article XX: Zero human wait time",
+      "NAS Supremacy Rule",
+      "Anti-scatter Rule"
+    ]
+  },
+  "relatedJobs": [
+    "IE-IDX-0407",
+    "IE-IDX-0409"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0408_home.md",
+  "comments": [],
+  "createdAt": "2026-06-14T18:00:03.453Z",
+  "ideatedAt": "2026-06-15T14:25:24.617Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "emailedAt": "2026-06-15T14:25:30.368Z"
+}

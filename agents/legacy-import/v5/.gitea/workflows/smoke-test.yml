@@ -1,0 +1,16 @@
+name: Runner Smoke Test
+on:
+  workflow_dispatch:
+jobs:
+  smoke:
+    name: Smoke Test
+    runs-on: host
+    steps:
+      - name: Hello
+        run: |
+          echo "Runner is working!"
+          echo "Host: $(hostname)"
+          echo "User: $(whoami)"
+          which docker && docker --version || echo "No docker"
+          docker ps -q > /dev/null && echo "? Docker daemon reachable" || echo "? Docker daemon not reachable"
+          which git && git --version || echo "No git"

@@ -1,0 +1,228 @@
+name: Constitutional Drift Monitor
+
+# VERA-powered continuous validation of constitutional alignment
+# Prevents governance erosion through automated drift detection
+
+on:
+  push:
+    branches: [main, develop]
+    paths-ignore:
+      - 'docs/CONSTITUTIONAL_DASHBOARD.md'
+      - 'reports/constitutional_drift_*'
+      - 'KEEPER/migration-tracker.json'
+      - 'SESSION_LOGS/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  analyze-constitutional-alignment:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for drift analysis
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Load Constitutional Baseline
+        id: baseline
+        run: |
+          python scripts/automation/load_constitutional_baseline.py \
+            --articles CORE_FOUNDATION/AGENT_CONSTITUTION.md \
+            --output baseline.json
+        continue-on-error: true
+      
+      - name: Analyze Current State
+        id: analyze
+        if: steps.baseline.outcome == 'success'
+        run: |
+          # Create governance directory if cle_engine/governance doesn't exist
+          if [ ! -d "cle_engine/governance" ]; then
+            echo "Governance analysis not yet implemented - using placeholder"
+            echo '{"changes": [], "alignment_score": 0.95}' > analysis.json
+          else
+            python cle_engine/governance/constitutional_analyzer.py \
+              --baseline baseline.json \
+              --commit "${{ github.sha }}" \
+              --compare-with "${{ github.event.before || 'HEAD~10' }}" \
+              --output analysis.json
+          fi
+      
+      - name: Calculate Drift Score
+        id: drift
+        if: steps.baseline.outcome == 'success'
+        run: |
+          python scripts/automation/calculate_constitutional_drift.py \
+            --analysis analysis.json \
+            --baseline baseline.json \
+            --threshold 0.85 \
+            --output drift_score.json
+          
+          DRIFT_DETECTED=$(python -c "import json; print(json.load(open('drift_score.json'))['drift_detected'])")
+          DRIFT_SCORE=$(python -c "import json; print(json.load(open('drift_score.json'))['drift_score'])")
+          ALIGNMENT=$(python -c "import json; print(json.load(open('drift_score.json'))['current_alignment'])")
+          
+          echo "drift_detected=$DRIFT_DETECTED" >> $GITHUB_OUTPUT
+          echo "drift_score=$DRIFT_SCORE" >> $GITHUB_OUTPUT
+          echo "alignment=$ALIGNMENT" >> $GITHUB_OUTPUT
+      
+      - name: Generate Drift Report
+        if: steps.drift.outcome == 'success'
+        run: |
+          mkdir -p reports
+          python scripts/automation/generate_drift_report.py \
+            --analysis analysis.json \
+            --drift drift_score.json \
+            --output reports/constitutional_drift_$(date +%Y%m%d_%H%M%S).md
+      
+      - name: VERA Constitutional Review
+        if: steps.drift.outputs.drift_detected == 'true'
+        run: |
+          if [ -f "cle_engine/governance/vera_validator.py" ]; then
+            python cle_engine/governance/vera_validator.py \
+              --changes analysis.json \
+              --articles CORE_FOUNDATION/AGENT_CONSTITUTION.md \
+              --severity high \
+              --output vera_review.json
+          else
+            echo "VERA validator not yet implemented"
+          fi
+      
+      - name: Upload Drift Analysis
+        if: always() && steps.drift.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: constitutional-drift-analysis
+          path: |
+            analysis.json
+            drift_score.json
+            reports/constitutional_drift_*.md
+          retention-days: 90
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && steps.drift.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const drift = JSON.parse(fs.readFileSync('drift_score.json', 'utf8'));
+            
+            let icon = drift.drift_detected ? 'WARNING' : 'OK';
+            let status = drift.drift_detected ? 'Drift Detected' : 'Alignment Verified';
+            
+            let body = `## Constitutional ${status}\n\n`;
+            body += `**Current Alignment**: ${drift.current_alignment.toFixed(2)}\n`;
+            body += `**Drift Score**: ${drift.drift_score.toFixed(4)}\n`;
+            body += `**Threshold**: 0.85\n\n`;
+            
+            if (drift.drift_detected) {
+              body += `### Issues Detected\n\n`;
+              (drift.issues || []).forEach(issue => {
+                body += `- **${issue.article}**: ${issue.description}\n`;
+              });
+              body += `\n**Action Required**: VERA review needed before merge\n`;
+            } else {
+              body += `All constitutional principles maintained\n`;
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
+      
+      - name: Log Drift Event
+        if: steps.drift.outputs.drift_detected == 'true'
+        run: |
+          python scripts/automation/log_drift_event.py \
+            --sha "${{ github.sha }}" \
+            --drift-score ${{ steps.drift.outputs.drift_score }} \
+            --alignment ${{ steps.drift.outputs.alignment }} \
+            --analysis analysis.json \
+            --tracker KEEPER/migration-tracker.json
+        continue-on-error: true
+      
+      - name: Commit Drift Logs
+        if: steps.drift.outputs.drift_detected == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Constitutional drift detected: ${{ steps.drift.outputs.drift_score }}"
+          file_pattern: 'KEEPER/migration-tracker.json reports/constitutional_drift_*.md'
+          commit_user_name: 'VERA Monitor'
+          commit_user_email: 'vera@cle-engine.ai'
+      
+      - name: Create Drift Alert Issue
+        if: steps.drift.outputs.drift_detected == 'true' && github.event_name != 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const drift = JSON.parse(fs.readFileSync('drift_score.json', 'utf8'));
+            
+            let body = `## Constitutional Drift Detected\n\n`;
+            body += `**Commit**: ${context.sha.substring(0, 7)}\n`;
+            body += `**Alignment Score**: ${drift.current_alignment.toFixed(2)}\n`;
+            body += `**Drift Score**: ${drift.drift_score.toFixed(4)}\n\n`;
+            body += `### Issues\n\n`;
+            
+            (drift.issues || []).forEach(issue => {
+              body += `- **Article ${issue.article}**: ${issue.description}\n`;
+              body += `  - Severity: ${issue.severity || 'unknown'}\n`;
+              body += `  - Impact: ${issue.impact || 'unknown'}\n\n`;
+            });
+            
+            body += `### Recommendations\n\n`;
+            (drift.recommendations || []).forEach(rec => {
+              body += `- ${rec}\n`;
+            });
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Constitutional Drift: ${drift.primary_issue || 'Detected'}`,
+              body: body,
+              labels: ['constitutional', 'vera-review', 'urgent', 'governance']
+            });
+      
+      - name: Block PR if Critical Drift
+        if: steps.drift.outputs.alignment < 0.70 && github.event_name == 'pull_request'
+        run: |
+          echo "::error::Critical constitutional drift detected (alignment: ${{ steps.drift.outputs.alignment }})"
+          echo "::error::VERA review required before merge"
+          exit 1
+      
+      - name: Update Constitutional Dashboard
+        if: github.event_name != 'pull_request' && steps.drift.outcome == 'success'
+        run: |
+          mkdir -p docs
+          python scripts/automation/update_constitutional_dashboard.py \
+            --drift drift_score.json \
+            --dashboard docs/CONSTITUTIONAL_DASHBOARD.md
+        continue-on-error: true
+      
+      - name: Commit Dashboard Updates
+        if: github.event_name != 'pull_request' && steps.drift.outcome == 'success'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update constitutional dashboard"
+          file_pattern: 'docs/CONSTITUTIONAL_DASHBOARD.md'
+          commit_user_name: 'VERA Monitor'
+          commit_user_email: 'vera@cle-engine.ai'

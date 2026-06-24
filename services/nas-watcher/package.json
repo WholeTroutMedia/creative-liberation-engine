@@ -1,0 +1,17 @@
+{
+  "name": "@cle/nas-watcher",
+  "version": "2.0.3",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.mjs"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0"
+  },
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "capabilityIds": [
+    "cap_nas_watcher"
+  ]
+}

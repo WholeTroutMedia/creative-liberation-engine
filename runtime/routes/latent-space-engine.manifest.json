@@ -1,0 +1,52 @@
+{
+  "version": "v6.0",
+  "service": "latent-space-engine",
+  "routes": [
+    {
+      "routeId": "route_latent_space_curate_next",
+      "path": "/api/v6/latent-space/curate",
+      "method": "POST",
+      "owner": "LUMIND",
+      "upstreamService": "latent-space-engine",
+      "upstreamPath": "/api/curate",
+      "authPolicy": "api_key",
+      "timeoutMs": 15000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_latent_space_sync_printful",
+      "path": "/api/v6/latent-space/sync-printful",
+      "method": "POST",
+      "owner": "LUMIND",
+      "upstreamService": "latent-space-engine",
+      "upstreamPath": "/api/sync-printful",
+      "authPolicy": "service_token",
+      "timeoutMs": 120000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_latent_space_catalog_get",
+      "path": "/api/v6/latent-space/catalog",
+      "method": "GET",
+      "owner": "LUMIND",
+      "upstreamService": "latent-space-engine",
+      "upstreamPath": "/api/catalog",
+      "authPolicy": "public",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "lifecycle": "active"
+    }
+  ]
+}

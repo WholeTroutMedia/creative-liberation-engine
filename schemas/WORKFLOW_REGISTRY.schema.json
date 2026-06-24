@@ -1,0 +1,59 @@
+{
+    "$schema":  "https://json-schema.org/draft/2020-12/schema",
+    "$id":  "https://cle-engine.local/schemas/v6/workflow-registry.schema.json",
+    "title":  "V6 Workflow Registry",
+    "type":  "object",
+    "additionalProperties":  false,
+    "required":  [
+                     "version",
+                     "workflows"
+                 ],
+    "properties":  {
+                       "version":  {
+                                       "type":  "string",
+                                       "pattern":  "^v[0-9]+(\\.[0-9]+)*$"
+                                   },
+                       "workflows":  {
+                                         "type":  "array",
+                                         "items":  {
+                                                       "type":  "object",
+                                                       "additionalProperties":  false,
+                                                       "required":  [
+                                                                        "workflowId",
+                                                                        "name",
+                                                                        "path",
+                                                                        "source"
+                                                                    ],
+                                                       "properties":  {
+                                                                          "workflowId":  {
+                                                                                             "type":  "string",
+                                                                                             "pattern":  "^[a-z0-9_\\-]{2,64}$"
+                                                                                         },
+                                                                          "name":  {
+                                                                                       "type":  "string",
+                                                                                       "minLength":  2,
+                                                                                       "maxLength":  120
+                                                                                   },
+                                                                          "path":  {
+                                                                                       "type":  "string",
+                                                                                       "minLength":  3,
+                                                                                       "maxLength":  500
+                                                                                   },
+                                                                          "source":  {
+                                                                                         "type":  "string",
+                                                                                         "enum":  [
+                                                                                                      "v6",
+                                                                                                      "v5-import",
+                                                                                                      "legacy-import"
+                                                                                                  ]
+                                                                                     },
+                                                                          "summary":  {
+                                                                                          "type":  "string",
+                                                                                          "maxLength":  500
+                                                                                      }
+                                                                      }
+                                                   }
+                                     }
+                   },
+    "description":  "Full workflow registry imported from heritage pipeline."
+}

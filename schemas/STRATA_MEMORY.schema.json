@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cle.engine/schemas/STRATA_MEMORY.schema.json",
+  "title": "STRATA Memory Schema",
+  "description": "Schema for the STRATA semantic memory spine in Creative Liberation Engine V6. This defines the structure of knowledge artifacts before they are embedded into the vector database.",
+  "type": "object",
+  "required": ["id", "source", "content", "metadata", "timestamp"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the knowledge fragment (UUID or hash)."
+    },
+    "source": {
+      "type": "string",
+      "enum": ["CORTEX_HARVEST", "USER_INPUT", "AGENT_REFLECTION", "DOCUMENTATION"],
+      "description": "The origin of this memory fragment."
+    },
+    "platform": {
+      "type": "string",
+      "description": "If harvested, the platform it originated from (e.g., Udemy, Threads, X)."
+    },
+    "content": {
+      "type": "string",
+      "description": "The raw text content or markdown to be embedded."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional tags and structural information for hybrid search.",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "author": { "type": "string" },
+        "url": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this knowledge was ingested."
+    }
+  }
+}

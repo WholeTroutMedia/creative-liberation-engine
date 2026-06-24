@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "venue-registry-v1",
+  "title": "Creative Liberation Engine Venue Registry",
+  "description": "Master index of all venue digital twins in the system.",
+  "type": "object",
+  "required": ["version", "venues"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_venues": {
+      "type": "integer"
+    },
+    "total_rooms": {
+      "type": "integer"
+    },
+    "regions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "venues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["venue_id", "name", "region", "path", "status"],
+        "properties": {
+          "venue_id": { "type": "string" },
+          "name": { "type": "string" },
+          "region": { "type": "string" },
+          "path": {
+            "type": "string",
+            "description": "Relative path from Venues/ root to the venue directory."
+          },
+          "room_count": { "type": "integer" },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "ingesting", "processing", "complete", "error"]
+          },
+          "captured": { "type": "string", "format": "date" },
+          "geo": {
+            "type": "object",
+            "properties": {
+              "lat": { "type": "number" },
+              "lon": { "type": "number" }
+            }
+          },
+          "manifest_path": {
+            "type": "string",
+            "description": "Relative path to the venue's manifest.json."
+          }
+        }
+      }
+    }
+  }
+}

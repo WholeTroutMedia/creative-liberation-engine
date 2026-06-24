@@ -1,0 +1,104 @@
+﻿{
+    "ZERO_DAY":  {
+                     "fingerprint":  "B4:3A:B1:5F:04:44:CD:9D:D0:99:36:27:2A:D1:33:5C:2A:FE:B3:49:F1:62:06:A5:C9:87:7C:03:6C:A0:D9:A8",
+                     "cn":  "zero_day.agent.cle.local",
+                     "certPath":  "agents/zero_day/zero_day.crt",
+                     "expires":  "Apr 30 15:53:55 2027 GMT"
+                 },
+    "MOBILE_BRIDGE":  {
+                          "fingerprint":  "9F:30:3F:4C:5D:14:6E:A5:25:1A:D4:05:4A:7D:DB:6B:AD:A7:04:C0:5B:93:FC:F1:B1:6E:3C:F8:6A:EA:59:6C",
+                          "cn":  "mobile_bridge.agent.cle.local",
+                          "certPath":  "agents/mobile_bridge/mobile_bridge.crt",
+                          "expires":  "Apr 30 15:53:58 2027 GMT"
+                      },
+    "GENKIT":  {
+                   "fingerprint":  "CB:D4:35:5F:A4:57:2F:2E:02:C1:8D:C3:8F:75:10:08:B7:DA:66:B4:3A:C1:6C:90:25:32:72:BA:EC:DD:40:D2",
+                   "cn":  "genkit.agent.cle.local",
+                   "certPath":  "agents/genkit/genkit.crt",
+                   "expires":  "Apr 30 15:53:56 2027 GMT"
+               },
+    "ATLAS":  {
+                  "fingerprint":  "D1:48:65:B5:E1:07:A5:59:56:F3:DC:DC:31:FD:2F:C1:F8:59:79:1E:19:49:DB:07:68:4E:94:71:DC:45:04:79",
+                  "cn":  "atlas.agent.cle.local",
+                  "certPath":  "agents/atlas/atlas.crt",
+                  "expires":  "Apr 30 15:53:55 2027 GMT"
+              },
+    "IRIS":  {
+                 "fingerprint":  "CD:73:18:CE:1C:3E:42:95:01:B7:FC:37:7B:ED:C9:23:1B:6A:23:67:2A:E2:04:C7:FC:6B:5B:42:55:81:C1:05",
+                 "cn":  "iris.agent.cle.local",
+                 "certPath":  "agents/iris/iris.crt",
+                 "expires":  "Apr 30 15:53:51 2027 GMT"
+             },
+    "CORTEX":  {
+                   "fingerprint":  "43:00:0E:47:26:02:79:D3:43:A8:DA:6A:B4:05:42:99:D4:0F:60:A0:35:77:82:09:74:C8:CE:6D:17:41:B0:C2",
+                   "cn":  "cortex.agent.cle.local",
+                   "certPath":  "agents/cortex/cortex.crt",
+                   "expires":  "Apr 30 15:53:54 2027 GMT"
+               },
+    "PULSE":  {
+                  "fingerprint":  "93:6E:B5:A9:E3:47:13:47:A5:E6:89:27:9C:69:34:60:2E:6F:0B:2D:CE:BA:0E:6F:F7:4B:EE:5E:7A:A0:B5:EF",
+                  "cn":  "pulse.agent.cle.local",
+                  "certPath":  "agents/pulse/pulse.crt",
+                  "expires":  "Apr 30 15:53:52 2027 GMT"
+              },
+    "ATHENA":  {
+                   "fingerprint":  "05:28:B0:45:AE:A0:77:08:CB:45:80:33:00:2D:CE:86:FC:FA:1D:D2:DD:35:0B:56:47:60:D9:8D:80:A4:EF:96",
+                   "cn":  "athena.agent.cle.local",
+                   "certPath":  "agents/athena/athena.crt",
+                   "expires":  "Apr 30 15:53:50 2027 GMT"
+               },
+    "ARCHAEON":  {
+                     "fingerprint":  "EA:C7:45:91:8B:6F:06:FD:DF:C4:7C:39:E3:B1:D1:F8:EE:FA:27:1D:30:2D:ED:3A:D4:91:83:49:AA:BA:86:00",
+                     "cn":  "archaeon.agent.cle.local",
+                     "certPath":  "agents/archaeon/archaeon.crt",
+                     "expires":  "Apr 30 15:53:52 2027 GMT"
+                 },
+    "DISPATCH":  {
+                     "fingerprint":  "37:24:0A:1F:5A:E3:CB:13:85:36:8D:AB:9E:09:66:73:4B:4C:6A:65:EE:A1:3E:50:7D:98:45:CE:E9:DB:62:E7",
+                     "cn":  "dispatch.agent.cle.local",
+                     "certPath":  "agents/dispatch/dispatch.crt",
+                     "expires":  "Apr 30 15:53:56 2027 GMT"
+                 },
+    "VERA":  {
+                 "fingerprint":  "90:5A:62:23:74:75:4E:CA:7A:DE:46:C9:7E:2D:C1:2E:52:41:81:82:05:D0:55:8B:E9:2A:2D:EC:33:A1:37:EB",
+                 "cn":  "vera.agent.cle.local",
+                 "certPath":  "agents/vera/vera.crt",
+                 "expires":  "Apr 30 15:53:50 2027 GMT"
+             },
+    "SENTINEL":  {
+                     "fingerprint":  "50:46:4B:6F:B0:B3:F6:1D:05:5F:78:7E:F2:65:33:62:B0:67:1D:3A:2F:D1:E4:48:7B:A9:8D:76:2A:FB:03:3F",
+                     "cn":  "sentinel.agent.cle.local",
+                     "certPath":  "agents/sentinel/sentinel.crt",
+                     "expires":  "Apr 30 15:53:53 2027 GMT"
+                 },
+    "NEXUS":  {
+                  "fingerprint":  "65:E1:48:42:1D:C1:8C:72:C0:93:FD:69:33:9E:80:74:66:B9:3B:E2:04:5E:FB:EB:D4:20:B2:D2:C2:E1:A8:D0",
+                  "cn":  "nexus.agent.cle.local",
+                  "certPath":  "agents/nexus/nexus.crt",
+                  "expires":  "Apr 30 15:53:51 2027 GMT"
+              },
+    "CHROME_AGENT":  {
+                         "fingerprint":  "E8:19:B5:D8:A2:D5:96:45:75:18:C2:CB:B0:F1:E3:6A:1D:16:7B:E3:76:BD:6D:FA:52:65:9D:79:07:9A:36:C4",
+                         "cn":  "chrome_agent.agent.cle.local",
+                         "certPath":  "agents/chrome_agent/chrome_agent.crt",
+                         "expires":  "Apr 30 15:53:57 2027 GMT"
+                     },
+    "BARNSTORM":  {
+                      "fingerprint":  "65:52:04:58:EA:35:5A:65:F1:74:E4:85:02:A3:A7:58:84:7D:FB:35:8E:7A:F6:10:A2:A7:23:5A:60:F1:68:45",
+                      "cn":  "barnstorm.agent.cle.local",
+                      "certPath":  "agents/barnstorm/barnstorm.crt",
+                      "expires":  "Apr 30 15:53:55 2027 GMT"
+                  },
+    "NAS_WATCHER":  {
+                        "fingerprint":  "5B:58:49:22:3C:E0:B1:68:A5:BE:83:80:ED:85:31:A1:F4:B1:D9:12:A6:28:09:4B:6B:A1:66:3A:32:2F:32:0B",
+                        "cn":  "nas_watcher.agent.cle.local",
+                        "certPath":  "agents/nas_watcher/nas_watcher.crt",
+                        "expires":  "Apr 30 15:53:57 2027 GMT"
+                    },
+    "MEMORY_API":  {
+                       "fingerprint":  "98:EF:E0:02:C7:FB:51:3B:A3:A6:97:C9:FF:BC:24:23:1C:8D:CF:37:C1:4B:10:1C:94:F3:7D:35:2C:71:B1:CB",
+                       "cn":  "memory_api.agent.cle.local",
+                       "certPath":  "agents/memory_api/memory_api.crt",
+                       "expires":  "Apr 30 15:53:57 2027 GMT"
+                   }
+}

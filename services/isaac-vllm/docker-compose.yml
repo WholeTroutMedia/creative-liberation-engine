@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  isaac-vllm:
+    image: vllm/vllm-openai:latest
+    container_name: isaac-vllm
+    runtime: nvidia
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-} 
+    ports:
+      - "8000:8000"
+    volumes:
+      - /app/creative-liberation-engine/runtime/models/huggingface:/root/.cache/huggingface
+    command: --model PerceptronAI/Isaac-0.1 --trust-remote-code --max-model-len 4096
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

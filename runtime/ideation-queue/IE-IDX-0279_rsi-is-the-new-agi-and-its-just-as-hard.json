@@ -1,0 +1,114 @@
+{
+  "jobId": "IE-IDX-0279",
+  "jobNumber": 279,
+  "slug": "rsi-is-the-new-agi-and-its-just-as-hard",
+  "filename": "IE-IDX-0279_rsi-is-the-new-agi-and-its-just-as-hard",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-nXMrk3ehS_mz8TFJxRo7kg:a:4243649-1780011609",
+    "title": "RSI is the new AGI — and it’s just as hard to pin down",
+    "url": "https://techcrunch.com/2026/05/28/rsi-is-the-new-agi-and-its-just-as-hard-to-pin-down/?utm_source=flipboard&utm_content=Techcrunch/magazine/Artificial+Intelligence+in+2023:+News+and+Updates",
+    "author": "Russell Brandom",
+    "pubDate": "Thu, 28 May 2026 23:40:09 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "Artificial Intelligence",
+        "$": {
+          "domain": "https://flipboard.com/topic/artificialintelligence"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "Startups",
+        "$": {
+          "domain": "https://flipboard.com/topic/startup"
+        }
+      },
+      {
+        "_": "Entrepreneurship",
+        "$": {
+          "domain": "https://flipboard.com/topic/entrepreneurship"
+        }
+      },
+      {
+        "_": "AI Startups",
+        "$": {
+          "domain": "https://flipboard.com/topic/aistartup"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "agent",
+    "creative-tools",
+    "research",
+    "business",
+    "learning",
+    "competitive-intel",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "To architect and design the Creative Liberation Engine as a continuously evolving, self-optimizing intelligence, deeply integrating human strategic oversight with autonomous, agent-driven recursive self-improvement, thereby achieving a symbiotic \"Supremacy\" where human and AI capabilities are amplified beyond individual limitations.",
+    "rationale": "The article highlights the pursuit of Recursive Self-Improvement (RSI) across the AI industry, despite disagreements on its definition and timeline. It also points out critical weaknesses in current AI systems regarding self-direction, taste, and understanding organizational priorities. The Creative Liberation Engine, as a strategic AI system, must not merely chase RSI but define its own path, leveraging its agentic architecture to address these gaps. Our approach will focus on a \"Human-in-the-Loop\" RSI, where humans provide the strategic direction and \"taste,\" while agents handle the iterative improvement cycles, ensuring alignment and quality. This aligns with Article I (Sovereignty) by building our own robust, owned solution, and Article IV/IX (Quality Standards/Ship Complete) by aiming for a comprehensive, high-quality implementation of this symbiotic RSI.",
+    "options": [
+      {
+        "title": "Autonomous Research & Development (ARD) Core",
+        "description": "Develop a dedicated ARD agent cluster (e.g., \"BOLT-RSI\" and \"AURORA-RSI\") capable of generating, implementing, and validating research ideas within defined constraints. This would involve a sophisticated loop for hypothesis generation, experiment design, code synthesis, testing, and result analysis. A \"RELAY-RSI\" component would manage inter-agent communication and task distribution. The system would leverage the Living Archive (scribeRemember/scribeRecall) as its primary knowledge base for self-improvement. From a design perspective, this would manifest as a highly visual, real-time dashboard displaying the ARD process, perhaps as a \"research pipeline\" visualization with interactive nodes for hypotheses, experiment branches, code generation stages, and validation metrics. Users could drill down into any stage, observe agent interactions, and inject human feedback at critical junctures, with an emphasis on clear status indicators, progress bars, and a dynamic knowledge graph view of generated insights.",
+        "tradeoffs": "High complexity in architecture and potential for runaway processes if not meticulously aligned. Requires robust validation mechanisms. Initial human oversight would be intense to \"train\" the ARD system.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "Adaptive Learning & Feedback Loop Integration",
+        "description": "Enhance every agent (BOLT, AURORA, KEEPER, etc.) with a continuous learning module that monitors performance, identifies suboptimal patterns, and proposes self-modifications (e.g., prompt adjustments, tool usage optimization, internal logic refinements). This would be driven by a \"VERA-Feedback\" agent that analyzes success/failure metrics from IRIS and automatically generates improvement tasks for relevant agents. The design would feature a \"Performance Metrics\" dashboard for each agent, showing its efficiency, accuracy, and self-improvement trajectory over time. Interactive charts and graphs would highlight areas for improvement and display the impact of self-modifications, alongside a \"Feedback & Suggestion\" UI allowing human users to directly input observations and desired changes for VERA to process.",
+        "tradeoffs": "Requires significant instrumentation and data collection across all agent operations. Risk of agents optimizing for local maxima without global strategic context.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Strategic Oversight & Alignment Interface (SOAI)",
+        "description": "Develop a specialized interface layer that allows ATHENA (or a human proxy) to define high-level strategic goals, ethical guardrails (via COMPASS), and \"taste\" parameters for the entire Creative Liberation Engine. This interface would translate these abstract concepts into actionable constraints and objectives for lower-level agents, preventing \"self-direction\" weaknesses highlighted in the article. It would also incorporate VERA for continuous alignment validation. The design would be a \"Strategic Canvas\" UI where users can visually map out goals, define success criteria, and set \"non-negotiable\" parameters, akin to a mind-map or graph editor for strategic intent. The aesthetic would be clean and minimalist, focusing on clarity and hierarchical organization of information, with visual cues (e.g., color-coding) for compliance status and potential alignment deviations.",
+        "tradeoffs": "Bridging the gap between abstract human strategy and concrete AI actions is inherently difficult. Requires a robust ontology and semantic translation layer.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Open-Source RSI Contribution & Integration",
+        "description": "Identify promising open-source RSI projects (like Karpathy's Auto-Research or Adaption's AutoScientist) and architect integration points. This could involve developing RELAY bridges to consume their outputs, or even contributing Creative Liberation Engine components (e.g., BOLT's code generation capabilities) to these external projects. A \"SIGNAL-RSI\" agent would monitor the open-source landscape for advancements. The design would incorporate a \"Community & Integration\" portal within the Creative Liberation Engine UI, displaying a curated list of external RSI projects, their status, and how the Creative Liberation Engine is interacting with them. Visualizations of data exchange, contribution impact, and potential collaborative research opportunities would be key.",
+        "tradeoffs": "Relies on external project stability and direction. Requires careful management of intellectual property and security boundaries. Might introduce dependencies.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "\"Self-Correction\" for Ambiguous Tasks & Epistemics",
+        "description": "Focus on addressing the specific weaknesses identified in the article (self-managing ambiguous tasks, understanding org priorities, taste, verification, instruction-following, epistemics). This would involve a dedicated \"KEEPER-Epistemic\" agent leveraging advanced reasoning and knowledge graph capabilities to infer context, clarify ambiguities, and proactively seek additional information. VERA would be crucial for verifying these inferences. The design would feature an \"Ambiguity Resolution\" UI that surfaces tasks flagged as ambiguous by KEEPER-Epistemic, presenting potential interpretations, highlighting missing information, and allowing human users to provide clarification or additional context. Visualizations of the \"epistemic state\" of a task – what is known, what is assumed, what is uncertain – would be critical.",
+        "tradeoffs": "Very difficult problem space, requiring sophisticated reasoning and common-sense knowledge. Risk of over-engineering for edge cases.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Dynamic Compute & Resource Allocation (DCRA)",
+        "description": "Implement a dynamic resource allocation system that allows the Creative Liberation Engine to intelligently manage and scale its compute resources based on real-time demands and strategic priorities. This would involve predictive modeling of task loads, intelligent queuing, and potentially integration with various cloud providers or self-hosted hardware. IRIS would orchestrate the provisioning and de-provisioning of resources. The design would include a \"Resource Monitor\" dashboard displaying current compute utilization, cost analysis, and projected needs. Interactive sliders or controls for adjusting priority and resource allocation for different agent clusters or projects would be provided, alongside visualizations of the compute \"flow\" and potential bottlenecks.",
+        "tradeoffs": "Requires deep integration with infrastructure and cost management systems. Can be complex to optimize for both performance and cost.",
+        "recommendation": "viable"
+      }
+    ],
+    "suggestedAgents": [],
+    "nextMode": "PLAN",
+    "constitutionalFlags": []
+  },
+  "relatedJobs": [
+    "IE-IDX-0103"
+  ],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0279_rsi-is-the-new-agi-and-its-just-as-hard.md",
+  "comments": [],
+  "createdAt": "2026-05-28T23:45:31.964Z",
+  "ideatedAt": "2026-05-28T23:45:55.347Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "emailedAt": "2026-05-28T23:46:00.714Z"
+}

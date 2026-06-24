@@ -1,0 +1,27 @@
+{
+  "version": "2026-04-17",
+  "roots": {
+    "vault_root": "\\\\127.0.0.1\\The Vault",
+    "engine_root": "\\\\127.0.0.1\\The Vault\\Creative Liberation Engine",
+    "engine_telemetry_root": "\\\\127.0.0.1\\The Vault\\Creative Liberation Engine\\telemetry",
+    "engine_telemetry_workstation": "\\\\127.0.0.1\\The Vault\\Creative Liberation Engine\\telemetry\\workstation",
+    "media_raw_archive_root": "\\\\127.0.0.1\\The Vault\\RAW Backups",
+    "media_ingest_live_root": "\\\\127.0.0.1\\The Vault\\RAW Backups\\2026\\Barnstorm\\live-ingest",
+    "nas_docker_root_volume2": "/app",
+    "nas_v6_runtime_root": "/volume2/cle-engine/v6"
+  },
+  "classification": {
+    "telemetry_allowed_prefixes": [
+      "\\\\127.0.0.1\\The Vault\\Creative Liberation Engine\\telemetry"
+    ],
+    "telemetry_forbidden_prefixes": [
+      "\\\\127.0.0.1\\The Vault\\RAW Backups"
+    ],
+    "media_allowed_prefixes": [
+      "\\\\127.0.0.1\\The Vault\\RAW Backups"
+    ],
+    "v6_runtime_allowed_prefixes": [
+      "/volume2/cle-engine/v6"
+    ]
+  }
+}

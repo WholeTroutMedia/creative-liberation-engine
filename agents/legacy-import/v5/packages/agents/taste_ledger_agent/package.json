@@ -1,0 +1,11 @@
+{
+  "name": "@cle/taste-ledger-agent",
+  "version": "2.0.3",
+  "description": "Taste Ledger Agent for Creative Liberation Engine V6",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {}
+}

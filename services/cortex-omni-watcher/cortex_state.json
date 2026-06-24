@@ -1,0 +1,855 @@
+{
+  "cookies": [
+    {
+      "name": "__Host-next-auth.csrf-token",
+      "value": "",
+      "domain": "learn.deeplearning.ai",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-next-auth.callback-url",
+      "value": "",
+      "domain": "learn.deeplearning.ai",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "e79d2bf4da9603c4863b9214ab815aca",
+      "value": "",
+      "domain": "www-api.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "60c6221daf02d56baedd5f6c84cea585",
+      "value": "",
+      "domain": "transwidget.5bcb70fa.public.multi-containers.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "BMAID",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "BM_SESSION_ID",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/analytics",
+      "expires": 1777235403.403881,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IBM_YL_locale",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IBM_YL_locale",
+      "value": "",
+      "domain": "sso.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OPTOUTMULTI",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "TAsessionID",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1777235403.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_AUTH_DOMAIN",
+      "value": "",
+      "domain": ".yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1808683199.1553078,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_NEXT_GEN",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_NEXT_GEN.sig",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_SESSION",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_SESSION.sig",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "YL_UI_TENANT_ID",
+      "value": "",
+      "domain": ".yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1808683199.1553612,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cflb",
+      "value": "",
+      "domain": "api.yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1777237204.0555248,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cflb",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1777237202.0886517,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cflb",
+      "value": "",
+      "domain": "sso.yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1777237198.111889,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_abck",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.4039173,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_FYECCCS21D",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_sg_b_p",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1777234804.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ak_bmsc",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1777240803.4039688,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "analytics-csrf",
+      "value": "",
+      "domain": "cloud.ibm.com",
+      "path": "/analytics",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "bm_sz",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1777248003.4040165,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "com.ibm.cloud.console.analytics.anonymousId",
+      "value": "",
+      "domain": ".cloud.ibm.com",
+      "path": "/analytics",
+      "expires": 1793003603.4037876,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "com.ibm.cloud.console.nEU",
+      "value": "",
+      "domain": ".cloud.ibm.com",
+      "path": "/",
+      "expires": 1777320003.4038315,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ef25c488f41b6106d6afd66822cc207d",
+      "value": "",
+      "domain": "chatbot-wxo.5bcb70fa.public.multi-containers.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ga_visitor",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1785009603.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "notice_behavior",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "notice_preferences_master",
+      "value": "",
+      "domain": "www-api.ibm.com",
+      "path": "/",
+      "expires": 1808769603.1732483,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "pageviewContext",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "userContext",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "utag_main",
+      "value": "",
+      "domain": ".ibm.com",
+      "path": "/",
+      "expires": 1808769603.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "yl-ui-node",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "yl-ui-node",
+      "value": "",
+      "domain": "sso.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "yl-ui-prevgen",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "CSRF3-Token",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1778097626.0832615,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "FPLC",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1777305628.5069218,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IR_PI",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811793628.3823414,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IR_gbd",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__204u",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1808769626.0833626,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_sg_b_v",
+      "value": "",
+      "domain": "skills.yourlearning.ibm.com",
+      "path": "/",
+      "expires": 1785009623.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "g_state",
+      "value": "",
+      "domain": "www.coursera.org",
+      "path": "/",
+      "expires": 1792785628.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "CAUTH",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1781553658.4617424,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "profileconsent",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_clck",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1808769681.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_hjSession_3196229",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1777236741.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__400v",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1777237233.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-next-auth.session-token",
+      "value": "",
+      "domain": "learn.deeplearning.ai",
+      "path": "/",
+      "expires": 1779827638.8821583,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AMP_9f370ddd42",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1808771639.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "FPID",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795641.2378082,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "IR_14726",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1808771640.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__hssc",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1777237439.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__hssrc",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__hstc",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1792787639.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_clsk",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1777322041.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_fbp",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1785011641.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_fbp",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1785011639.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.9377918,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1811795639.2807636,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_7GZ59JSFWQ",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.9370594,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_BQMBGW8LLT",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1811795639.1782055,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_FR2MZ1VLMS",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1811795639.2189636,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_TV7DD9GNTN",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1811795639.2804108,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_ZCE2Q9YZ3F",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.6995678,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_gcl_au",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1785009628.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_hjSessionUser_3196229",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1808771639.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_rdt_em",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1785011641.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_rdt_uuid",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1785011641.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_tt_enable_cookie",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1810931641.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ttp",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1810931641.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetsid",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1777322041.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_uetvid",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1810931642.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab.storage.deviceId.6b512fd4-04b5-4fd4-8b44-3f482bc8dcf9",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab.storage.sessionId.6b512fd4-04b5-4fd4-8b44-3f482bc8dcf9",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ab.storage.userId.6b512fd4-04b5-4fd4-8b44-3f482bc8dcf9",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1811795640.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "hubspotutk",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1792787639.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ph_VfwpB7hg0i5IkyEVw5zgUuuSRjKtUwajwjNBON3mRRc_posthog",
+      "value": "",
+      "domain": ".deeplearning.ai",
+      "path": "/",
+      "expires": 1808771640.0,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "profileconsent",
+      "value": "",
+      "domain": "www.coursera.org",
+      "path": "/",
+      "expires": 1777322041.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ttcsid",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1810931642.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ttcsid_CTIORPRC77UDE4D3R2FG",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1810931642.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__400vt",
+      "value": "",
+      "domain": ".coursera.org",
+      "path": "/",
+      "expires": 1777237447.0,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

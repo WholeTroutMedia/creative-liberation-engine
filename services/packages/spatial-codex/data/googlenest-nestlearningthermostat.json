@@ -1,0 +1,29 @@
+{
+  "deviceClass": "Smart HVAC Thermostat",
+  "manufacturer": "Google Nest",
+  "modelName": "Nest Learning Thermostat",
+  "primaryComponents": [
+    "Display Unit Housing (often polycarbonate with metal trim)",
+    "High-resolution LCD Display Panel",
+    "Rotatable Outer Ring (e.g., stainless steel)",
+    "Capacitive Touch/Encoder Mechanism (for ring rotation and press detection)",
+    "Internal Rechargeable Lithium-ion Battery",
+    "Microprocessor/Microcontroller Unit",
+    "Wi-Fi and Bluetooth Communication Modules",
+    "Ambient Temperature Sensor",
+    "Humidity Sensor",
+    "PIR (Passive Infrared) Motion Sensor (for occupancy/proximity)",
+    "Ambient Light Sensor",
+    "Mounting Base Plate",
+    "HVAC Wiring Terminal Block (for R, C, W, Y, G, O/B, Aux, E wires)",
+    "Power Management Circuitry (on both display and base plate)",
+    "Connector Pins (for electrical and data connection between display unit and base plate)",
+    "Wall Mounting Hardware (screws, anchors)"
+  ],
+  "operationalLogic": "The display unit, acting as the user interface, continuously monitors ambient conditions (temperature, humidity, occupancy, light) via its integrated sensors. User input is registered by the rotatable outer ring and its press mechanism. A central processor uses learned preferences and real-time data to determine the optimal HVAC system state. This unit communicates control signals through its connector pins to the base plate. The base plate, connected directly to the HVAC system's wiring, interprets these signals to activate or deactivate specific HVAC functions (heating, cooling, fan) by opening or closing electrical circuits via internal relays or solid-state switches. The display unit's rechargeable battery is typically trickle-charged by the HVAC system's common (C) wire or through parasitic power draw from other HVAC wires.",
+  "maintenanceNodes": [
+    "Rechargeable battery (in display unit) - requires eventual replacement due to degradation or occasional manual charging if no C-wire connection.",
+    "HVAC wiring connections (at base plate) - prone to loosening or corrosion, requiring periodic inspection and tightening for secure electrical contact.",
+    "Exterior casing and sensor lenses - accumulation of dust or debris can impede sensor accuracy and affect aesthetics, requiring periodic cleaning."
+  ]
+}

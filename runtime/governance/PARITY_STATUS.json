@@ -1,0 +1,1045 @@
+{
+  "version": "v6.1",
+  "generatedAt": "2026-04-17T14:43:48.222Z",
+  "summary": {
+    "total": 83,
+    "native": 12,
+    "bridged": 71,
+    "better": 6,
+    "deprecated": 0
+  },
+  "capabilities": [
+    {
+      "capabilityId": "cap-agent-mail",
+      "name": "agent-mail",
+      "v5Source": "packages/agent-mail",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/agent-mail",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-agent-spawner",
+      "name": "agent-spawner",
+      "v5Source": "packages/agent-spawner",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/agent-spawner",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-agents",
+      "name": "agents",
+      "v5Source": "packages/agents",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-answer-injector",
+      "name": "answer-injector",
+      "v5Source": "packages/answer-injector",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/answer-injector",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-archaeon",
+      "name": "archaeon",
+      "v5Source": "packages/archaeon",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/archaeon",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-atelier",
+      "name": "atelier",
+      "v5Source": "packages/atelier",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/atelier",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-atlas-live",
+      "name": "atlas-live",
+      "v5Source": "packages/atlas-live",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/atlas-live",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-auth",
+      "name": "auth",
+      "v5Source": "packages/auth",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-blockchain",
+      "name": "blockchain",
+      "v5Source": "packages/blockchain",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/blockchain",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-blueprints",
+      "name": "blueprints",
+      "v5Source": "packages/blueprints",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/blueprints",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-browser-mesh-coordinator",
+      "name": "browser-mesh-coordinator",
+      "v5Source": "packages/browser-mesh-coordinator",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/browser-mesh-coordinator",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-capability-watcher",
+      "name": "capability-watcher",
+      "v5Source": "packages/capability-watcher",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/capability-watcher",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-claude-agent",
+      "name": "claude-agent",
+      "v5Source": "packages/claude-agent",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/claude-agent",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-cloud-mesh",
+      "name": "cloud-mesh",
+      "v5Source": "packages/cloud-mesh",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/cloud-mesh",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-codex-delta",
+      "name": "codex-delta",
+      "v5Source": "packages/codex-delta",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/codex-delta",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-comet",
+      "name": "comet",
+      "v5Source": "packages/comet",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/comet",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-compose-hardener",
+      "name": "compose-hardener",
+      "v5Source": "packages/compose-hardener",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/compose-hardener",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-config",
+      "name": "config",
+      "v5Source": "packages/config",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/config",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-constitution",
+      "name": "constitution",
+      "v5Source": "packages/constitution",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/constitution",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-davinci-resolve-mcp",
+      "name": "davinci-resolve-mcp",
+      "v5Source": "packages/davinci-resolve-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/davinci-resolve-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-design-agent",
+      "name": "design-agent",
+      "v5Source": "packages/design-agent",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/design-agent",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-design-governance",
+      "name": "design-governance",
+      "v5Source": "packages/design-governance",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/design-governance",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-design-ingest",
+      "name": "design-ingest",
+      "v5Source": "packages/design-ingest",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/design-ingest",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-design-sandbox",
+      "name": "design-sandbox",
+      "v5Source": "packages/design-sandbox",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/design-sandbox",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-design-tokens",
+      "name": "design-tokens",
+      "v5Source": "packages/design-tokens",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/design-tokens",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-destroyer",
+      "name": "destroyer",
+      "v5Source": "packages/destroyer",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/destroyer",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-director",
+      "name": "director",
+      "v5Source": "packages/director",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/director",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-dispatch",
+      "name": "dispatch",
+      "v5Source": "packages/dispatch",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-engine",
+      "name": "engine",
+      "v5Source": "packages/engine",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/engine",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-engine-core",
+      "name": "engine-core",
+      "v5Source": "packages/engine-core",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/engine-core",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-eon-capability-bridge",
+      "name": "eon-capability-bridge",
+      "v5Source": "packages/eon-capability-bridge",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/eon-capability-bridge",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-fly-mesh",
+      "name": "fly-mesh",
+      "v5Source": "packages/fly-mesh",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/fly-mesh",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-foley-engine",
+      "name": "foley-engine",
+      "v5Source": "packages/foley-engine",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/foley-engine",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-forge",
+      "name": "forge",
+      "v5Source": "packages/forge",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/forge",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-gen-ui",
+      "name": "gen-ui",
+      "v5Source": "packages/gen-ui",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/gen-ui",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-genkit",
+      "name": "genkit",
+      "v5Source": "packages/genkit",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-genmedia",
+      "name": "genmedia",
+      "v5Source": "packages/genmedia",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/genmedia",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ghost",
+      "name": "ghost",
+      "v5Source": "packages/ghost",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ghost",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-god-prompt",
+      "name": "god-prompt",
+      "v5Source": "packages/god-prompt",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/god-prompt",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-helix",
+      "name": "helix",
+      "v5Source": "packages/helix",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/helix",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-host-telemetry",
+      "name": "host-telemetry",
+      "v5Source": "packages/host-telemetry",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/host-telemetry",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-idv-engine",
+      "name": "idv-engine",
+      "v5Source": "packages/idv-engine",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/idv-engine",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ie-engine-math",
+      "name": "ie-engine-math",
+      "v5Source": "packages/ie-engine-math",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ie-engine-math",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ie-engine-photo",
+      "name": "ie-engine-photo",
+      "v5Source": "packages/ie-engine-photo",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ie-engine-photo",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ie-terminal",
+      "name": "ie-terminal",
+      "v5Source": "packages/ie-terminal",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ie-terminal",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-cle-agent-extension",
+      "name": "cle-agent-extension",
+      "v5Source": "packages/cle-agent-extension",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/cle-agent-extension",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-cle-agent-sdk",
+      "name": "cle-agent-sdk",
+      "v5Source": "packages/cle-agent-sdk",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/cle-agent-sdk",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-cle-browser",
+      "name": "cle-browser",
+      "v5Source": "packages/cle-browser",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/cle-browser",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-cle-core",
+      "name": "cle-core",
+      "v5Source": "packages/cle-core",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/cle-core",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-living-canvas",
+      "name": "living-canvas",
+      "v5Source": "packages/living-canvas",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/living-canvas",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-mcp-fetch-proxy",
+      "name": "mcp-fetch-proxy",
+      "v5Source": "packages/mcp-fetch-proxy",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/mcp-fetch-proxy",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-mcp-router",
+      "name": "mcp-router",
+      "v5Source": "packages/mcp-router",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-media-ingest",
+      "name": "media-ingest",
+      "v5Source": "packages/media-ingest",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/media-ingest",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-memory",
+      "name": "memory",
+      "v5Source": "packages/memory",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-mobile-bridge",
+      "name": "mobile-bridge",
+      "v5Source": "packages/mobile-bridge",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/mobile-bridge",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-model-arbitrage",
+      "name": "model-arbitrage",
+      "v5Source": "packages/model-arbitrage",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-motion",
+      "name": "motion",
+      "v5Source": "packages/motion",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/motion",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-nas-watcher",
+      "name": "nas-watcher",
+      "v5Source": "packages/nas-watcher",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/nas-watcher",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ollama-mcp",
+      "name": "ollama-mcp",
+      "v5Source": "packages/ollama-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ollama-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-orchestrator",
+      "name": "orchestrator",
+      "v5Source": "packages/orchestrator",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/orchestrator",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ouroboros",
+      "name": "ouroboros",
+      "v5Source": "packages/ouroboros",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ouroboros",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-pulse",
+      "name": "pulse",
+      "v5Source": "packages/pulse",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/pulse",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-scribe-mcp",
+      "name": "scribe-mcp",
+      "v5Source": "packages/scribe-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/scribe-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-sensor-mesh",
+      "name": "sensor-mesh",
+      "v5Source": "packages/sensor-mesh",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-skills",
+      "name": "skills",
+      "v5Source": "packages/skills",
+      "status": "better",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-social",
+      "name": "social",
+      "v5Source": "packages/social",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/social",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-somatic",
+      "name": "somatic",
+      "v5Source": "packages/somatic",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/somatic",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-sovereign-home-mesh",
+      "name": "sovereign-home-mesh",
+      "v5Source": "packages/sovereign-home-mesh",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/sovereign-home-mesh",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-sovereign-mesh",
+      "name": "sovereign-mesh",
+      "v5Source": "packages/sovereign-mesh",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/sovereign-mesh",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-spatial",
+      "name": "spatial",
+      "v5Source": "packages/spatial",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/spatial",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-spatial-codex",
+      "name": "spatial-codex",
+      "v5Source": "packages/spatial-codex",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-spatial-core",
+      "name": "spatial-core",
+      "v5Source": "packages/spatial-core",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/spatial-core",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-spectre",
+      "name": "spectre",
+      "v5Source": "packages/spectre",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/spectre",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-synology-media-mcp",
+      "name": "synology-media-mcp",
+      "v5Source": "packages/synology-media-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/synology-media-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-theme-engine",
+      "name": "theme-engine",
+      "v5Source": "packages/theme-engine",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/theme-engine",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-toolbox",
+      "name": "toolbox",
+      "v5Source": "packages/toolbox",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-tsconfig",
+      "name": "tsconfig",
+      "v5Source": "packages/tsconfig",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/tsconfig",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-ui",
+      "name": "ui",
+      "v5Source": "packages/ui",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/ui",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-vercel-mcp",
+      "name": "vercel-mcp",
+      "v5Source": "packages/vercel-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/vercel-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-voc-mcp",
+      "name": "voc-mcp",
+      "v5Source": "packages/voc-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/voc-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-wire-ingestion-mcp",
+      "name": "wire-ingestion-mcp",
+      "v5Source": "packages/wire-ingestion-mcp",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/wire-ingestion-mcp",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    },
+    {
+      "capabilityId": "cap-zero-day",
+      "name": "zero-day",
+      "v5Source": "packages/zero-day",
+      "status": "same",
+      "deliveryMode": "native-v6",
+      "evidence": [
+        "runtime/registry/agents.canonical.json",
+        "runtime/registry/skills.canonical.json",
+        "runtime/registry/workflows.canonical.json",
+        "runtime/registry/models.canonical.json",
+        "runtime/hardening/HARDENING_STATUS.md"
+      ],
+      "notes": "Capability delivered directly in V6 runtime foundation."
+    },
+    {
+      "capabilityId": "cap-zero-to-spec-engine",
+      "name": "zero-to-spec-engine",
+      "v5Source": "packages/zero-to-spec-engine",
+      "status": "same",
+      "deliveryMode": "v5-bridge",
+      "evidence": [
+        "agents/legacy-import/v5/packages/zero-to-spec-engine",
+        "runtime/interop/V5_BRIDGE_MANIFEST.json"
+      ],
+      "notes": "Capability delivered through V5 bridge until native lane lands."
+    }
+  ]
+}

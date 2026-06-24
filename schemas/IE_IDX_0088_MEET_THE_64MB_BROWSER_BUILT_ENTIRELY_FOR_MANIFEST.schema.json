@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "",
+  "type": "object",
+  "description": "Capability scaffold for IE-IDX-0088_meet-the-64mb-browser-built-entirely-for",
+  "properties": {
+    "helix": {
+      "type": "string",
+      "const": "UNASSIGNED"
+    },
+    "status": {
+      "type": "string",
+      "const": "VERIFIED"
+    }
+  }
+}

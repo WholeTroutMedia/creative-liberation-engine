@@ -1,0 +1,75 @@
+version: '3.9'
+
+# ── All images from Docker Hub — no Codeberg/Anubis dependency ───────────────
+# Codeberg added bot-protection (Anubis) that blocks Docker pulls from
+# code.forgejo.org. Gitea is Forgejo's parent — 100% compatible repos + Actions.
+
+services:
+  forgejo:
+    image: gitea/gitea:latest
+    container_name: forgejo
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - forgejo-data:/data                                          # fresh config + db
+      - /volume1/docker/forgejo-anchor/gitea/git:/data/git          # old repos ← all repos here
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=forgejo-db:5432
+      - GITEA__database__NAME=forgejo
+      - GITEA__database__USER=forgejo
+      - GITEA__database__PASSWD=forgejo_secret
+      # ── Race Condition Fix T20260308-758 ──────────────────────────────────────
+      # Agents push every few seconds → web editor fires "edited elsewhere" loop.
+      # Set editor idle timeout to 0 (disable stale-check) and enforce last-write-wins.
+      - GITEA__repository__PULL_REQUEST_WORK_IN_PROGRESS_PREFIXES=WIP,wip,[WIP]
+      - GITEA__repository__DEFAULT_MERGE_STYLE=merge
+      # Disable the web editor conflict detection TTL (0 = no timeout / last-write-wins)
+      - GITEA__repository__EDITOR_IDLE_TTL=0
+      # Prevent the "This file was edited by another user" banner in web UI
+      - GITEA__ui__AMBIGUOUS_UNICODE_DETECTION=false
+      # Reduce default branch protection debounce — agents need near-instant commits
+      - GITEA__repository__PULL_REQUEST_DEFAULT_MERGE_MESSAGE_COMMITS_LIMIT=50
+    depends_on:
+      - forgejo-db
+
+  forgejo-db:
+    image: postgres:15-alpine            # Docker Hub ✓
+    container_name: forgejo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: forgejo
+      POSTGRES_PASSWORD: forgejo_secret
+      POSTGRES_DB: forgejo
+    volumes:
+      - forgejo-db-data:/var/lib/postgresql/data
+
+  forgejo-runner:
+    image: gitea/act_runner:latest-dind
+    container_name: forgejo-runner
+    restart: unless-stopped
+    privileged: true
+    depends_on:
+      - forgejo
+    volumes:
+      - runner-data-v2:/data   # v2 = fresh container, clears stale DinD networks
+    environment:
+      GITEA_INSTANCE_URL: http://forgejo:3000
+      GITEA_RUNNER_REGISTRATION_TOKEN: YZ2gPGcYFIzB3WErW16aWgmsDSp9MdpwQul4YeUt
+      GITEA_RUNNER_NAME: Sovereign-NAS-Runner
+      DOCKER_OPTS: "--default-address-pool base=10.100.0.0/16,size=24"
+    # Write host-mode config before runner starts — jobs run in runner container, no Docker bridge per job
+    command: >
+      sh -c 'mkdir -p /data &&
+      printf "log:\n  level: info\nrunner:\n  labels:\n    - \"ubuntu-latest:host\"\n    - \"ubuntu-22.04:host\"\n    - \"ubuntu-24.04:host\"\n" > /data/config.yml &&
+      exec gitea-act-runner daemon --config /data/config.yml'
+
+volumes:
+  forgejo-data:
+  forgejo-db-data:
+  runner-data:
+  runner-data-v2:

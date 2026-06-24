@@ -1,0 +1,31 @@
+{
+  "channels": [
+    {
+      "name": "blendshapes-primary",
+      "source": "somatic-bridge (a2f_osc_bridge.py)",
+      "destination": "UE5 BP_MetaHuman_OSC_Receiver",
+      "port": 9000,
+      "address": "/avatar/blendshapes",
+      "format": "float[52]",
+      "enabled": true
+    },
+    {
+      "name": "head-rotation",
+      "source": "sensor-mesh ZigSimBridge",
+      "destination": "UE5 Head IK Target",
+      "port": 9000,
+      "address": "/avatar/head/rotation",
+      "format": "float[3] — pitch, yaw, roll (degrees)",
+      "enabled": true
+    },
+    {
+      "name": "body-pose",
+      "source": "sensor-mesh SpatialDirector",
+      "destination": "UE5 Body IK Target",
+      "port": 9000,
+      "address": "/avatar/body/pose",
+      "format": "float[17] — MediaPipe 17-joint keypoints",
+      "enabled": false
+    }
+  ]
+}

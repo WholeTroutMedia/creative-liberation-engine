@@ -1,0 +1,91 @@
+{
+  "version": "v6.0",
+  "service": "cle-ai-runtime",
+  "routes": [
+    {
+      "routeId": "route_cle_ai_runtime_status",
+      "path": "/api/v1/runtime/status",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "cle-ai-runtime",
+      "upstreamPath": "/api/v1/runtime/status",
+      "authPolicy": "service_token",
+      "timeoutMs": 10000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_cle_ai_runtime_load",
+      "path": "/api/v1/runtime/models/:modelId/load",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "cle-ai-runtime",
+      "upstreamPath": "/api/v1/runtime/models/:modelId/load",
+      "authPolicy": "service_token",
+      "timeoutMs": 60000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "modelId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_cle_ai_runtime_unload",
+      "path": "/api/v1/runtime/models/:modelId/unload",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "cle-ai-runtime",
+      "upstreamPath": "/api/v1/runtime/models/:modelId/unload",
+      "authPolicy": "service_token",
+      "timeoutMs": 15000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "modelId"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_cle_ai_runtime_pull",
+      "path": "/api/v1/runtime/models/pull",
+      "method": "POST",
+      "owner": "SYSTEMS",
+      "upstreamService": "cle-ai-runtime",
+      "upstreamPath": "/api/v1/runtime/models/pull",
+      "authPolicy": "service_token",
+      "timeoutMs": 15000,
+      "criticality": "tier3",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_cle_ai_runtime_health",
+      "path": "/api/v1/runtime/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "cle-ai-runtime",
+      "upstreamPath": "/api/v1/runtime/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 3000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": false,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+name: Maintenance - Fix Docker Network Pool
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fix-networks:
+    name: Prune Networks & Expand Pool
+    runs-on: host
+
+    steps:
+      - name: Prune all stale Docker networks
+        run: |
+          echo "=== Networks before prune ==="
+          docker network ls
+          echo ""
+          docker network prune -f
+          echo ""
+          echo "=== Networks after prune ==="
+          docker network ls
+          echo "? Prune complete. Count: $(docker network ls | wc -l)"
+
+      - name: Expand Docker default address pool
+        run: |
+          DAEMON_JSON="/etc/docker/daemon.json"
+
+          # Backup existing config
+          if [ -f "$DAEMON_JSON" ]; then
+            echo "=== Existing daemon.json ==="
+            cat "$DAEMON_JSON"
+            cp "$DAEMON_JSON" "${DAEMON_JSON}.bak"
+          fi
+
+          # Write expanded pool config
+          cat > "$DAEMON_JSON" <<'EOF'
+          {
+            "default-address-pools": [
+              { "base": "172.17.0.0/12", "size": 20 },
+              { "base": "192.168.128.0/18", "size": 24 }
+            ]
+          }
+          EOF
+
+          echo "=== New daemon.json ==="
+          cat "$DAEMON_JSON"
+          echo "? Address pool expanded"
+
+      - name: Restart Docker daemon
+        run: |
+          if command -v systemctl &>/dev/null; then
+            systemctl restart docker
+            echo "? Docker restarted via systemctl"
+          elif command -v service &>/dev/null; then
+            service docker restart
+            echo "? Docker restarted via service"
+          else
+            /usr/syno/bin/synopkg restart Docker
+            echo "? Docker restarted via synopkg"
+          fi
+          sleep 5
+          docker info --format '{{.ServerVersion}}' && echo "? Docker back online"

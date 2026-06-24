@@ -1,0 +1,16 @@
+agent_id: CAMERA_INGEST
+version: "1.0.0"
+node_ip: "192.168.2.165"
+status: "active"
+pool: "NAS_PRIMARY"
+watch_paths:
+  - path: "/opt/camera-ingest/dropzone"
+    device_hint: "ALPON_X5_001"
+contracts:
+  - "schemas/storage-contracts/camera-generic.yml"
+npu_enabled: true
+model_path: "/opt/camera-ingest/models/yolov8n.onnx"
+stability_check:
+  enabled: true
+  interval_seconds: 2
+  max_wait_seconds: 30

@@ -1,0 +1,12 @@
+name: Force Cleanup
+on: [workflow_dispatch]
+jobs:
+  cleanup:
+    runs-on: self-hosted
+    steps:
+      - name: Force remove dangling containers
+        run: |
+          docker rm -f dispatch || true
+          docker rm -f cle-cloudflared || true
+          docker network prune -f || true
+          docker ps -a

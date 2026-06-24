@@ -1,0 +1,13 @@
+contract_id: "camera-generic"
+allowed_extensions:
+  - ".arw"
+  - ".cr3"
+  - ".nef"
+  - ".dng"
+  - ".jpg"
+  - ".jpeg"
+  - ".heic"
+  - ".mp4"
+  - ".mov"
+naming_pattern: "{DEVICE}_{YYYYMMDD}_{HHMMSS}_{SEQ}.{EXT}"
+path_template: "/app/creative-liberation-engine/runtime/ingestion/photos/{year}/{month}/{day}/{device}/unsorted/"

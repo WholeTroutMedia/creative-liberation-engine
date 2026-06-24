@@ -1,0 +1,39 @@
+/* Quantum Matrix (Wireframe Hologram) */
+.theme-dark {
+  --background-primary: #000000 !important;
+  --background-secondary: #000000 !important;
+  --background-modifier-border: #ff00ff !important; /* Magenta borders */
+  
+  --interactive-accent: #00ffff; /* Cyan accents */
+  --interactive-accent-hover: #80ffff;
+  --text-accent: #00ffff;
+  
+  --text-normal: #e0e0e0;
+  --text-muted: #808080;
+  
+  --font-interface: 'Space Mono', 'Consolas', monospace !important;
+  --font-text: 'Inter', sans-serif !important;
+  
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  margin: 8px !important;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2), inset 0 0 15px rgba(255, 0, 255, 0.1) !important;
+}
+
+.workspace-leaf.mod-active {
+  border-color: var(--interactive-accent) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 255, 0.1) !important;
+}
+
+.workspace-leaf-header {
+  border-bottom: 1px solid var(--background-modifier-border) !important;
+}
+
+.workspace-leaf.mod-active .workspace-leaf-header {
+  border-bottom-color: var(--interactive-accent) !important;
+}

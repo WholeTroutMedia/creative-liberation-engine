@@ -1,0 +1,60 @@
+{
+  "product": {
+    "name": "The AI Cinematographer — Professional Prompt Pack",
+    "tagline": "60+ cinematic prompts built by a working cinematographer, not an AI tutorial channel.",
+    "version": "1.0",
+    "price": {
+      "suggested": 19.00,
+      "minimum": 9.00,
+      "currency": "USD"
+    },
+    "platforms": {
+      "gumroad": {
+        "status": "ready_to_list",
+        "category": "Digital Tools",
+        "tags": ["AI prompts", "cinematography", "midjourney", "dall-e", "stable diffusion", "filmmaking", "photography", "creative tools"]
+      },
+      "etsy": {
+        "status": "planned",
+        "category": "Digital Downloads"
+      }
+    },
+    "contents": {
+      "files": [
+        "THE_AI_CINEMATOGRAPHER_v1.pdf",
+        "QUICK_REFERENCE_CARD.pdf",
+        "BONUS_genre_modifier_cheatsheet.pdf"
+      ],
+      "prompt_count": 60,
+      "sections": [
+        "Wide Shots & Establishing (4 prompts)",
+        "Medium Shots & Coverage (4 prompts)",
+        "Close-Ups & Detail (3 prompts)",
+        "Specialty Shots (4 prompts)",
+        "Lighting Setups (3 prompts)",
+        "Genre Modifiers (5 templates)",
+        "Negative Prompt Templates (3 sets)",
+        "Platform-Specific Settings (3 platforms)"
+      ]
+    },
+    "listing": {
+      "title": "The AI Cinematographer — 60+ Professional Cinematic AI Prompts | Midjourney, DALL-E, Stable Diffusion",
+      "description": "Stop generating generic AI images. Start generating cinema.\n\nThis isn't another prompt dump from someone who watched a YouTube tutorial. The AI Cinematographer is built by a working cinematographer with real production experience — every prompt is crafted with actual knowledge of lens choices, lighting setups, composition theory, and color science.\n\n🎬 WHAT YOU GET:\n• 60+ production-grade prompts organized by shot type\n• Wide shots, mediums, close-ups, specialty shots, lighting setups\n• 5 genre modifier templates (Horror, Sci-Fi, Romance, Documentary, Noir)\n• 3 negative prompt templates for clean, cinematic output\n• Platform-specific settings for Midjourney, DALL-E, and Stable Diffusion\n• Quick reference card for on-the-fly use\n\n🎯 WHO THIS IS FOR:\n• Content creators who want cinematic-quality AI visuals\n• Filmmakers previsualizating shots before production\n• Storyboard artists building reference imagery\n• Social media creators leveling up their visual game\n• Anyone tired of generic, flat AI-generated images\n\n💡 THE DIFFERENCE:\nEvery prompt references real cinematography concepts — Rembrandt lighting, anamorphic lens characteristics, specific film stocks, actual camera systems. This is the knowledge gap between 'AI art' and 'AI cinema.'\n\nInstant digital download. Use for personal and commercial projects.",
+      "seo_keywords": [
+        "AI prompts cinematography",
+        "midjourney cinematic prompts",
+        "professional AI image prompts",
+        "dall-e photography prompts",
+        "filmmaking AI tools",
+        "cinematic lighting prompts",
+        "stable diffusion camera prompts",
+        "AI visual storytelling"
+      ]
+    },
+    "marketing": {
+      "medium_article_title": "Why Your AI Images Look Amateur (And How Real Cinematography Fixes Them)",
+      "pinterest_board": "AI Cinematography Inspiration",
+      "hook": "The difference between AI art and AI cinema is the same difference between a phone snapshot and a Roger Deakins frame."
+    }
+  }
+}

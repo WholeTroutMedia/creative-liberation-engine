@@ -1,0 +1,123 @@
+{
+  "jobId": "IE-IDX-0424",
+  "jobNumber": 424,
+  "slug": "introducing-the-mdn-mcp-server-mdn-blog",
+  "filename": "IE-IDX-0424_introducing-the-mdn-mcp-server-mdn-blog",
+  "status": "IDEATED",
+  "sourceArticle": {
+    "guid": "flipboard-DQ9jTc1VQtGzoXaHp7gMGg:a:4243649-1781701098",
+    "title": "Introducing the MDN MCP server | MDN Blog",
+    "url": "https://developer.mozilla.org/en-US/blog/introducing-mdn-mcp-server/?utm_source=flipboard&utm_content=jaharoni%2Fmagazine%2FAI",
+    "author": "Unknown",
+    "pubDate": "Wed, 17 Jun 2026 12:58:18 GMT",
+    "imageUrl": null,
+    "categories": [
+      {
+        "_": "The Web",
+        "$": {
+          "domain": "https://flipboard.com/topic/worldwideweb"
+        }
+      },
+      {
+        "_": "Technology",
+        "$": {
+          "domain": "https://flipboard.com/topic/technology"
+        }
+      },
+      {
+        "_": "Firefox",
+        "$": {
+          "domain": "https://flipboard.com/topic/firefox"
+        }
+      },
+      {
+        "_": "Google Chrome",
+        "$": {
+          "domain": "https://flipboard.com/topic/googlechrome"
+        }
+      },
+      {
+        "_": "How-To",
+        "$": {
+          "domain": "https://flipboard.com/topic/howto"
+        }
+      }
+    ]
+  },
+  "categories": [
+    "infrastructure",
+    "sovereignty",
+    "edge-ai",
+    "agent",
+    "creative-tools",
+    "learning",
+    "spatial"
+  ],
+  "cleRelevance": 100,
+  "athenaOutput": {
+    "directive": "Embed the MDN MCP server as a sovereign, containerized knowledge primitive within the NAS infrastructure to eliminate web API hallucinations and enforce gold-standard front-end code generation.",
+    "rationale": "MDN is the definitive source of truth for web standards. By coupling this knowledge graph directly to our agents via the Model Context Protocol (MCP), we elevate BOLT and AURORA's output quality to Article IV standards. Crucially, aligning with Article I (Sovereignty) and NAS Supremacy, we must deploy this MCP server internally on our Docker infrastructure rather than relying on external cloud pings, ensuring zero latency, absolute privacy, and offline capability.",
+    "options": [
+      {
+        "title": "Sovereign NAS Deployment (Local MCP Container)",
+        "description": "Deploy the MDN MCP server as a standalone Docker container on the NAS (\\127.0.0.1\\docker\\creative-liberation-engine\\mcp-mdN). Route all agent web-doc queries through this local instance via SWITCHBOARD.",
+        "tradeoffs": "Requires initial DevOps effort to containerize and maintain updates for the MDN dataset, but guarantees 100% uptime, zero external tracking, and strict adherence to Article I.",
+        "recommendation": "preferred"
+      },
+      {
+        "title": "KEEPER Continuous Ingestion Pipeline",
+        "description": "Utilize the MDN MCP server not just for live queries, but as a pipeline to systematically ingest core web standards into the KEEPER strata/vector DB as native Knowledge Items (KIs).",
+        "tradeoffs": "High storage overhead and requires complex sync logic to handle MDN updates, but creates a deeply integrated, native memory spine that doesn't require separate MCP tool calls.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Dynamic Context Routing via SIGNAL",
+        "description": "Implement a routing interceptor where any task tagged with 'frontend', 'react', 'css', or 'web-api' automatically triggers a pre-fetch from the MDN MCP server to load the exact API specs into the context window before BOLT writes code.",
+        "tradeoffs": "Optimizes token usage and ensures context relevance, but adds a pre-processing step that could slightly increase time-to-first-token during execution.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "TDD-ENFORCERS Validation Protocol",
+        "description": "Integrate the MDN MCP exclusively into the testing and validation phase. TDD-ENFORCERS query the MCP to verify that the generated code uses non-deprecated, standard-compliant APIs before allowing a merge.",
+        "tradeoffs": "Acts as an excellent safety net and enforces Article IV, but doesn't help the generative agents (BOLT/AURORA) get it right on the first try.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Automated Skill-Generation Engine",
+        "description": "Command an agent to periodically query the MDN MCP for new or updated web APIs (e.g., WebGPU, View Transitions) and automatically synthesize new, optimized skills for the SKILLS-LIBRARY.",
+        "tradeoffs": "Keeps the Creative Liberation Engine permanently on the bleeding edge of web dev, but risks bloating the skills registry if not strictly filtered by LEX or KEEPER.",
+        "recommendation": "viable"
+      },
+      {
+        "title": "Direct Cloud API Integration",
+        "description": "Connect agents directly to Mozilla's public-facing MDN MCP endpoint over the open internet via standard tool calling.",
+        "tradeoffs": "Fastest to implement with zero infrastructure overhead, but explicitly violates Article I (Sovereignty) by creating a hard dependency on an external cloud service that could experience downtime or rate-limiting.",
+        "recommendation": "avoid"
+      }
+    ],
+    "suggestedAgents": [
+      "SWITCHBOARD",
+      "BOLT",
+      "KEEPER",
+      "AURORA",
+      "SIGNAL"
+    ],
+    "nextMode": "PLAN",
+    "constitutionalFlags": [
+      "Article I: Sovereignty (Self-hosted over cloud)",
+      "Article IV: Quality Standards (Complete implementations)",
+      "Article XXIII: LLMs Are Components, Not Architecture",
+      "NAS Supremacy Rule"
+    ]
+  },
+  "relatedJobs": [],
+  "obsidianPath": "/app/creative-liberation-engine/runtime/nexus-vault/Sentinel\\IE-IDX-0424_introducing-the-mdn-mcp-server-mdn-blog.md",
+  "comments": [],
+  "createdAt": "2026-06-17T13:00:04.232Z",
+  "ideatedAt": "2026-06-17T13:00:42.157Z",
+  "activatedAt": null,
+  "completedAt": null,
+  "digestBatchId": null,
+  "sourceType": "article",
+  "emailedAt": "2026-06-17T13:00:46.933Z"
+}

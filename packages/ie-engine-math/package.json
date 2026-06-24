@@ -1,0 +1,21 @@
+{
+  "name": "@cle/ie-engine-math",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine Math \u2014 symbolic computation, data analysis, and formula evaluation layer. Powers financial modeling, statistical reasoning, and live telemetry calculations across the engine.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2"
+  }
+}

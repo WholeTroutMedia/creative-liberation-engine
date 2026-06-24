@@ -1,0 +1,11 @@
+{
+  "name": "@cle/synology-media-mcp",
+  "version": "2.0.3",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.mjs"
+  },
+  "capabilityIds": [
+    "cap_synology_media_mcp"
+  ]
+}

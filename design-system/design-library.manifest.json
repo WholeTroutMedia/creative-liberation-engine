@@ -1,0 +1,109 @@
+{
+  "version": "v6.0",
+  "importedAt": "2026-04-16T14:25:38.595Z",
+  "docs": [
+    "design-system/docs-import/DESIGN_SYSTEM_SPEC.md",
+    "design-system/docs-import/GOVERNANCE_RUNBOOK.md",
+    "design-system/docs-import/design-toolchain.md",
+    "design-system/docs-import/pattern-index.md",
+    "design-system/docs-import/penpot-compose-fragment.yml"
+  ],
+  "sources": [
+    {
+      "source": "_screenshots",
+      "files": 1,
+      "catalog": false,
+      "readme": true
+    },
+    {
+      "source": "flora",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "framer",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "framify",
+      "files": 3,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "freepik",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "godly",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "kling",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "lottiefiles",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "magicui",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "mobbin",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "motion",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "quebec-movie",
+      "files": 7,
+      "catalog": false,
+      "readme": false
+    },
+    {
+      "source": "relume",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "runwayml",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "spline",
+      "files": 2,
+      "catalog": true,
+      "readme": true
+    },
+    {
+      "source": "vc-analysis.html",
+      "files": 1,
+      "catalog": false,
+      "readme": false
+    }
+  ]
+}

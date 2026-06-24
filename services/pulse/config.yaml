@@ -1,0 +1,121 @@
+# ───────────────────────────────────
+# PULSE Service Configuration
+# Video-Based Biometric Sensing for Creative Liberation Engine
+# ───────────────────────────────────
+
+service:
+  name: pulse
+  version: "0.1.0"
+  log_level: INFO
+
+# ─── Video Capture ──────────────
+capture:
+  # "webcam" | "rtsp" | "file"
+  source: webcam
+  # Device index for webcam (0 = default)
+  device_index: 0
+  # RTSP URL (when source = rtsp)
+  rtsp_url: ""
+  # File path (when source = file, for testing with recorded video)
+  file_path: ""
+  # Resolution
+  width: 1280
+  height: 720
+  # Target FPS (higher = better signal, more compute)
+  fps: 30
+  # Buffer size in frames for rPPG window
+  buffer_seconds: 10
+
+# ─── Face Detection ─────────────
+face_detection:
+  # MediaPipe confidence thresholds
+  min_detection_confidence: 0.7
+  min_tracking_confidence: 0.5
+  # ROI strategy: "forehead" | "cheeks" | "full_face" | "multi_roi"
+  roi_strategy: multi_roi
+  # Skin segmentation refinement
+  refine_landmarks: true
+
+# ─── rPPG Engine ───────────────
+rppg:
+  # Method: "chrom" | "pos" | "ica" | "green" | "efficientphys" | "physnet"
+  method: chrom
+  # Fallback if DL model unavailable
+  fallback_method: chrom
+  # Signal processing
+  bandpass_low: 0.7    # Hz (~42 BPM)
+  bandpass_high: 4.0   # Hz (~240 BPM)
+  # Welch PSD window for HR estimation
+  welch_window_seconds: 6
+  # Update interval (how often to emit new readings)
+  update_interval_seconds: 1.0
+
+# ─── Signal Outputs ────────────
+signals:
+  # Which signals to extract and broadcast
+  heart_rate: true
+  hrv: true                # Heart Rate Variability (RMSSD)
+  respiratory_rate: true   # Derived from BVP modulation
+  stress_index: true       # Derived from HRV metrics
+  raw_bvp: false           # Raw blood volume pulse (high bandwidth)
+
+# ─── Output: OSC ───────────────
+osc:
+  enabled: true
+  host: "127.0.0.1"
+  port: 9000
+  # OSC address patterns
+  addresses:
+    heart_rate: "/pulse/hr"
+    hrv: "/pulse/hrv"
+    respiratory_rate: "/pulse/rr"
+    stress_index: "/pulse/stress"
+    raw_bvp: "/pulse/bvp"
+    confidence: "/pulse/confidence"
+
+# ─── Output: MIDI ──────────────
+midi:
+  enabled: true
+  # Virtual MIDI port name (creates a virtual port)
+  port_name: "PULSE Biometric"
+  # CC mappings (channel 1)
+  channel: 0
+  cc_mappings:
+    heart_rate: 1        # CC1 — HR mapped 40-200 BPM → 0-127
+    hrv: 2               # CC2 — HRV (RMSSD) 0-200ms → 0-127
+    respiratory_rate: 3  # CC3 — RR 4-30 BrPM → 0-127
+    stress_index: 4      # CC4 — Stress 0-100 → 0-127
+    confidence: 5        # CC5 — Signal confidence 0-100 → 0-127
+
+# ─── Output: WebSocket ─────────
+websocket:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8765
+  # Broadcast interval in ms
+  broadcast_interval_ms: 100
+
+# ─── Output: SSE (Telemetry Bus)
+sse:
+  enabled: true
+  host: "0.0.0.0"
+  port: 8766
+  # Event type for telemetry integration
+  event_type: "pulse-biometric"
+
+# ─── Dashboard ─────────────────
+dashboard:
+  enabled: true
+  # Served on the SSE port at /dashboard
+  static_dir: "./pulse/dashboard"
+
+# ─── Dispatch Integration ──────
+dispatch:
+  enabled: false
+  # Dispatch server URL (NAS)
+  url: "http://127.0.0.1:5150"
+  # Threshold alerts
+  alerts:
+    hr_high: 150       # BPM — trigger alert above this
+    hr_low: 45          # BPM — trigger alert below this
+    stress_high: 80     # Stress index — trigger alert above this

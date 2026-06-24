@@ -1,0 +1,49 @@
+{
+  "version": "v6.0",
+  "service": "autonomous-animator",
+  "routes": [
+    {
+      "routeId": "route_animation_generate",
+      "path": "/api/v1/animation/generate",
+      "method": "POST",
+      "owner": "VERA",
+      "upstreamService": "autonomous-animator",
+      "upstreamPath": "/api/v1/animation/generate",
+      "authPolicy": "agent_identity",
+      "timeoutMs": 600000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "latencyMs", "jobId", "sceneCount"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_animation_status",
+      "path": "/api/v1/animation/status/:jobId",
+      "method": "GET",
+      "owner": "VERA",
+      "upstreamService": "autonomous-animator",
+      "upstreamPath": "/api/v1/animation/status/:jobId",
+      "authPolicy": "internal_only",
+      "timeoutMs": 5000,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode", "jobId"] },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_animation_health",
+      "path": "/api/v1/animation/health",
+      "method": "GET",
+      "owner": "SYSTEMS",
+      "upstreamService": "autonomous-animator",
+      "upstreamPath": "/api/v1/animation/health",
+      "authPolicy": "internal_only",
+      "timeoutMs": 500,
+      "criticality": "tier2",
+      "observability": { "trace": true, "metrics": true, "logFields": ["routeId", "statusCode"] },
+      "lifecycle": "active"
+    }
+  ]
+}

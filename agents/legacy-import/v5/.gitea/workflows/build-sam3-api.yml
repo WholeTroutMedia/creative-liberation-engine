@@ -1,0 +1,40 @@
+name: Build SAM3 API (GPU image)
+
+# Large CUDA image — ensure runner has disk (~15GB+) and outbound network.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "services/sam3-api/**"
+      - "services/cle-engine/**"
+      - "packages/genkit/src/routes/model-fleet.ts"
+      - "packages/genkit/src/middleware/api-key-auth.ts"
+      - "packages/genkit/src/server.ts"
+      - "gateway/nginx.conf"
+      - "docker-compose.genesis.yml"
+      - "cle/engine/vfx_routes.py"
+
+concurrency:
+  group: build-sam3-api
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    name: Docker build + push to NAS registry
+    runs-on: host
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build and push
+        run: |
+          REGISTRY="${REGISTRY:-127.0.0.1:5000}"
+          docker build \
+            -f services/sam3-api/Dockerfile \
+            -t "${REGISTRY}/sam3-api:${{ github.sha }}" \
+            -t "${REGISTRY}/sam3-api:latest" \
+            .
+          docker push "${REGISTRY}/sam3-api:${{ github.sha }}"
+          docker push "${REGISTRY}/sam3-api:latest"
+          echo "Pushed ${REGISTRY}/sam3-api:latest"

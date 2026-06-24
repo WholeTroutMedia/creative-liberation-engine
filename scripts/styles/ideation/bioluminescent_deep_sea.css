@@ -1,0 +1,32 @@
+/* Bioluminescent Deep Sea */
+.theme-dark {
+  --background-primary: #04141c !important;
+  --background-secondary: #061d29 !important;
+  --background-modifier-border: transparent !important;
+  
+  --interactive-accent: #4df0ff; /* Glowing Aquamarine */
+  --interactive-accent-hover: #80f5ff;
+  --text-accent: #b399ff; /* Glowing Lilac */
+  
+  --text-normal: #cce6ff;
+  --text-muted: #6699cc;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 0px !important;
+}
+
+.workspace-leaf {
+  border: none !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 18px !important;
+  margin: 6px !important;
+  box-shadow: 0 8px 24px rgba(77, 240, 255, 0.05), inset 0 0 0 1px rgba(179, 153, 255, 0.1) !important;
+}
+
+.workspace-leaf.mod-active {
+  box-shadow: 0 8px 32px rgba(77, 240, 255, 0.15), inset 0 0 0 1px rgba(77, 240, 255, 0.3) !important;
+}
+
+.workspace-leaf-header-title {
+  color: var(--text-accent);
+}

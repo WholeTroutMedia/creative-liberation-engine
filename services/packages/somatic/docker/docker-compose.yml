@@ -1,0 +1,159 @@
+##
+## @cle/somatic — Audio2Face NIM Docker Compose
+## T20260308-002: Complete A2F NIM service stack
+##
+## Services:
+##   a2f-nim        — NVIDIA Audio2Face NIM container (GPU inference, port 8011)
+##   a2f-osc-bridge — Python sidecar: NIM REST → OSC/UDP → UE5 (port 5005)
+##   redis          — Optional latency tracking store (port 6379)
+##
+## Prerequisites:
+##   - NGC API key in environment: NGC_API_KEY=<your-key>
+##   - NVIDIA Container Toolkit installed
+##   - Docker with GPU passthrough enabled
+##   - GPU: RTX 3070+ (or A10G for cloud)
+##
+## Usage:
+##   export NGC_API_KEY=<your-api-key>
+##   docker compose -f docker/docker-compose.yml up -d
+##
+## Environment variables:
+##   UE5_HOST       IP of the running UE5 instance (default: host.docker.internal)
+##   UE5_OSC_PORT   UE5 OSC listen port (default: 5005)
+##   A2F_PORT       Audio2Face REST API port (default: 8011)
+##   OSC_RATE_HZ    Target OSC emission rate — blendshape FPS (default: 60)
+##
+
+services:
+
+  # ── Audio2Face NIM ───────────────────────────────────────────────────────────
+  a2f-nim:
+    image: nvcr.io/nim/nvidia/audio2face-3d:latest
+    container_name: cle-a2f-nim
+    restart: unless-stopped
+
+    environment:
+      NGC_API_KEY: "${NGC_API_KEY:?NGC_API_KEY is required — https://ngc.nvidia.com/}"
+      # Audio2Face model selection
+      A2F_MODEL: "mark"            # Options: mark, claire, james, female
+      # gRPC streaming (preferred for sub-30ms roundtrip)
+      A2F_GRPC_PORT: "50051"
+      # REST fallback (what ConsciousnessLoop uses by default)
+      A2F_HTTP_PORT: "8011"
+
+    ports:
+      - "${A2F_PORT:-8011}:8011"   # REST API
+      - "50051:50051"              # gRPC streaming (optional — for future upgrade)
+
+    volumes:
+      - a2f_model_cache:/tmp/ngc/hub   # Cache downloaded model weights
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -sf http://localhost:8011/v1/health/ready || exit 1"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s   # NIM takes ~45s to load model on first boot
+
+    networks:
+      - somatic-net
+
+    labels:
+      com.cle.service: "audio2face-nim"
+      com.cle.tier: "1"
+      com.cle.team: "somatic"
+
+  # ── OSC Bridge Sidecar ───────────────────────────────────────────────────────
+  a2f-osc-bridge:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.osc-bridge
+    container_name: cle-a2f-osc-bridge
+    restart: unless-stopped
+
+    environment:
+      # Audio2Face NIM endpoint — routed via internal docker network
+      A2F_HOST: "a2f-nim"
+      A2F_PORT: "${A2F_PORT:-8011}"
+
+      # UE5 target — host machine (or override to a remote IP)
+      UE5_HOST: "${UE5_HOST:-host.docker.internal}"
+      UE5_OSC_PORT: "${UE5_OSC_PORT:-5005}"
+
+      # OSC emission rate (blendshape frames per second)
+      OSC_RATE_HZ: "${OSC_RATE_HZ:-60}"
+
+      # Redis for latency telemetry (optional — disable with REDIS_ENABLED=false)
+      REDIS_ENABLED: "${REDIS_ENABLED:-true}"
+      REDIS_URL: "redis://redis:6379"
+
+      # Logging
+      LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+
+    depends_on:
+      a2f-nim:
+        condition: service_healthy
+
+    # UDP passthrough for OSC — container sends directly to UE5
+    network_mode: "host"
+
+    labels:
+      com.cle.service: "a2f-osc-bridge"
+      com.cle.tier: "2"
+      com.cle.team: "somatic"
+
+  # ── Redis (Telemetry Store) ──────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: cle-somatic-redis
+    restart: unless-stopped
+
+    command: redis-server --maxmemory 64mb --maxmemory-policy allkeys-lru
+
+    ports:
+      - "6379:6379"
+
+    volumes:
+      - redis_data:/data
+
+    networks:
+      - somatic-net
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+    labels:
+      com.cle.service: "redis-telemetry"
+      com.cle.team: "somatic"
+
+# ─── Networks & Volumes ────────────────────────────────────────────────────────
+
+networks:
+  somatic-net:
+    driver: bridge
+    labels:
+      com.cle.network: "somatic"
+
+volumes:
+  a2f_model_cache:
+    name: cle-a2f-model-cache
+    labels:
+      com.cle.volume: "model-cache"
+
+  redis_data:
+    name: cle-somatic-redis-data

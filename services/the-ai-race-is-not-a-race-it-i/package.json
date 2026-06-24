@@ -1,0 +1,10 @@
+{
+  "name": "@cle/the-ai-race-is-not-a-race-it-i",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0227",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

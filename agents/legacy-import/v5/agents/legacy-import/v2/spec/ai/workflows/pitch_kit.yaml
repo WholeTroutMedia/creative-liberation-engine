@@ -1,0 +1,28 @@
+version: "1.0"
+name: pitch_kit
+description: "Generate complete VC pitch kit with deck, analysis, projections"
+
+stages:
+  - name: market_research
+    agent_type: reasoning
+    requires_approval: false
+    critical: false
+    timeout: 120000
+
+  - name: pitch_deck
+    agent_type: architect
+    requires_approval: true
+    critical: true
+    timeout: 180000
+
+  - name: financial_model
+    agent_type: coder
+    requires_approval: false
+    critical: false
+    timeout: 120000
+
+  - name: presentation_site
+    agent_type: coder
+    requires_approval: false
+    critical: false
+    timeout: 90000

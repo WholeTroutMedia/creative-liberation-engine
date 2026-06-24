@@ -1,0 +1,20 @@
+name: Debug NAS Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  debug-deploy:
+    runs-on: host
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Compose Config
+        run: docker compose -f docker-compose.nas.yml config
+
+      - name: Check Compose Logs
+        run: docker compose -f docker-compose.nas.yml logs --tail 200 || echo "Logs failed"
+
+      - name: Check Docker ps
+        run: docker ps -a

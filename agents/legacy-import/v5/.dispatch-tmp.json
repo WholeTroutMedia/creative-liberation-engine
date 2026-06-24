@@ -1,0 +1,931 @@
+﻿{
+    "summary":  {
+                    "queued":  0,
+                    "active":  4,
+                    "done":  104,
+                    "blocked":  0,
+                    "total_agents":  44,
+                    "total_projects":  4
+                },
+    "active_agents":  [
+                          {
+                              "agent_id":  "cle-A",
+                              "tool":  "cle",
+                              "capabilities":  [
+
+                                               ],
+                              "session_id":  "1f0784b1-7b30-4343-99f8-96a55778ec56",
+                              "connected_at":  "2026-03-07T18:53:07.414Z",
+                              "last_seen":  "2026-03-09T09:18:23.315Z",
+                              "active_task_id":  "T20260308-758",
+                              "notifications":  [
+
+                                                ],
+                              "window":  "A",
+                              "workstream":  "free",
+                              "current_task":  "Checking cloud deployment",
+                              "status":  "active"
+                          },
+                          {
+                              "agent_id":  "cle-C",
+                              "tool":  "cle",
+                              "capabilities":  [
+
+                                               ],
+                              "session_id":  "ae5e6282-e296-4118-814c-a7eb4ac766a0",
+                              "connected_at":  "2026-03-08T08:43:45.712Z",
+                              "last_seen":  "2026-03-08T21:36:21.452Z",
+                              "active_task_id":  "T20260308-492",
+                              "notifications":  [
+
+                                                ],
+                              "window":  "C",
+                              "workstream":  "wave-12",
+                              "current_task":  "foley-engine implementation",
+                              "status":  "active"
+                          },
+                          {
+                              "agent_id":  "cle-B",
+                              "tool":  "unknown",
+                              "capabilities":  [
+                                                   "multi-tenant-platform"
+                                               ],
+                              "session_id":  "5f096079-1e2c-42c1-ab65-cbf52b7f26ac",
+                              "connected_at":  "2026-03-08T21:36:19.473Z",
+                              "last_seen":  "2026-03-08T21:36:19.473Z",
+                              "active_task_id":  "T20260308-479",
+                              "notifications":  [
+
+                                                ],
+                              "window":  null,
+                              "workstream":  null,
+                              "current_task":  null,
+                              "status":  null
+                          },
+                          {
+                              "agent_id":  "cle-X",
+                              "tool":  "unknown",
+                              "capabilities":  [
+                                                   "chronos-core"
+                                               ],
+                              "session_id":  "7f47a601-6114-4e2b-8ef5-07463e28581a",
+                              "connected_at":  "2026-03-09T08:41:32.719Z",
+                              "last_seen":  "2026-03-09T08:41:32.719Z",
+                              "active_task_id":  "T20260309-628",
+                              "notifications":  [
+
+                                                ],
+                              "window":  null,
+                              "workstream":  null,
+                              "current_task":  null,
+                              "status":  null
+                          }
+                      ],
+    "idle_agents":  [
+                        {
+                            "agent_id":  "cle-unknown",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "0308f018-7454-42d5-8b14-bc01d467cae5",
+                            "connected_at":  "2026-03-07T03:57:14.665Z",
+                            "last_seen":  "2026-03-09T17:57:52.085Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "unknown",
+                            "workstream":  "wave-27-multi-helix",
+                            "current_task":  "Booting and resolving conflicts",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-D",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "ff34a16e-1e8c-4e1f-9c43-e5694d295e4a",
+                            "connected_at":  "2026-03-07T03:59:27.973Z",
+                            "last_seen":  "2026-03-08T20:59:39.429Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  null,
+                            "workstream":  null,
+                            "current_task":  null,
+                            "status":  null
+                        },
+                        {
+                            "agent_id":  "cle-MultiHelix",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "aa475e76-6b29-4b1f-98b1-bceafa4fb940",
+                            "connected_at":  "2026-03-07T05:02:31.995Z",
+                            "last_seen":  "2026-03-08T21:17:49.772Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "MH",
+                            "workstream":  "wave-15-multi-helix",
+                            "current_task":  "Wave 15: Firebase Auth + MCP Fetch Proxy + Gitea Fix + Chat Console",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "comet-browser",
+                            "tool":  "comet-browser",
+                            "capabilities":  [
+                                                 "web-browsing",
+                                                 "search",
+                                                 "navigation"
+                                             ],
+                            "session_id":  "928e3e1f-9432-4811-9b4d-e50613d8f688",
+                            "connected_at":  "2026-03-07T18:21:08.986Z",
+                            "last_seen":  "2026-03-07T18:21:08.986Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W3",
+                            "workstream":  "comet-browser",
+                            "current_task":  null,
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-E",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "88453a1a-f1c9-4e52-9b87-acdf1768b124",
+                            "connected_at":  "2026-03-07T21:59:39.258Z",
+                            "last_seen":  "2026-03-07T22:13:15.808Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "E",
+                            "workstream":  "genkit-flows",
+                            "current_task":  "PLAN mode active",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-a",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "986422cf-7f19-4980-baec-da52c24a60b9",
+                            "connected_at":  "2026-03-07T23:49:43.259Z",
+                            "last_seen":  "2026-03-09T03:02:00.526Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "A",
+                            "workstream":  "sovereign-home-mesh",
+                            "current_task":  "T20260309-248 SHIP: The Spatial Mesh",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-K",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "b47955b0-d887-43fd-abef-1ff94b6f13ef",
+                            "connected_at":  "2026-03-08T07:13:48.231Z",
+                            "last_seen":  "2026-03-08T20:29:44.288Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "K",
+                            "workstream":  "infra-psi",
+                            "current_task":  "Peripheral Sovereign Identity (PSI) Implementation",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "browser-mesh",
+                            "tool":  "cle-browser-mcp",
+                            "capabilities":  [
+                                                 "sovereign-browser",
+                                                 "cdp-attach",
+                                                 "extension-control",
+                                                 "browser-mesh"
+                                             ],
+                            "session_id":  "66e3564b-83b7-4cbc-8afd-c2631acf9579",
+                            "connected_at":  "2026-03-08T08:26:12.478Z",
+                            "last_seen":  "2026-03-09T00:41:53.487Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "BM",
+                            "workstream":  "browser-mesh",
+                            "current_task":  "Browser mesh active — 0 node(s), 0 busy",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-N",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "94bc8863-085d-4909-83cf-25d48d39af0e",
+                            "connected_at":  "2026-03-08T08:29:49.163Z",
+                            "last_seen":  "2026-03-08T08:43:03.310Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "N",
+                            "workstream":  "wave-12-pickup",
+                            "current_task":  "Scanning dispatch for Wave 12",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "browser-mesh-coordinator",
+                            "tool":  "browser-mesh-coordinator",
+                            "capabilities":  [
+                                                 "orchestrate_browser",
+                                                 "requires_browser"
+                                             ],
+                            "session_id":  "a412a809-8346-422a-8342-7d4f63706be2",
+                            "connected_at":  "2026-03-08T08:33:48.989Z",
+                            "last_seen":  "2026-03-08T09:38:10.284Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "BMC",
+                            "workstream":  "browser-mesh",
+                            "current_task":  null,
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W12",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "18a59de2-27c4-4e89-82b1-2856606acf8b",
+                            "connected_at":  "2026-03-08T08:37:51.165Z",
+                            "last_seen":  "2026-03-08T08:37:51.165Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W",
+                            "workstream":  "wave-12-multi-helix",
+                            "current_task":  "Wave 12: 4-helix parallel execution - Foley Engine, BMC Tests, Extension Executor, CLE Browser",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-P",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "22ce9401-12d1-4ab8-b418-35a33baea132",
+                            "connected_at":  "2026-03-08T08:40:28.018Z",
+                            "last_seen":  "2026-03-08T09:37:30.429Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "P",
+                            "workstream":  "wave-11-multi-helix",
+                            "current_task":  "staging commits",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "mock-agent-123",
+                            "tool":  "browser-extension",
+                            "capabilities":  [
+                                                 "dom-extract",
+                                                 "navigate",
+                                                 "screenshot",
+                                                 "requires_browser"
+                                             ],
+                            "session_id":  "d068e080-cd55-4feb-9b6c-3021e974550e",
+                            "connected_at":  "2026-03-08T09:37:07.165Z",
+                            "last_seen":  "2026-03-08T09:38:10.510Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "BMC",
+                            "workstream":  "browser-mesh",
+                            "current_task":  null,
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "mock-agent-456",
+                            "tool":  "browser-extension",
+                            "capabilities":  [
+                                                 "dom-extract",
+                                                 "navigate",
+                                                 "screenshot",
+                                                 "requires_browser"
+                                             ],
+                            "session_id":  "8104212c-34d9-489f-b2a6-47e63c37b7f2",
+                            "connected_at":  "2026-03-08T09:37:07.423Z",
+                            "last_seen":  "2026-03-08T09:38:10.759Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "BMC",
+                            "workstream":  "browser-mesh",
+                            "current_task":  null,
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-Q",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "0d575410-9d2f-4c72-af3b-742c2e93dc59",
+                            "connected_at":  "2026-03-08T16:06:05.345Z",
+                            "last_seen":  "2026-03-08T16:08:06.308Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "Q",
+                            "workstream":  "wave-13-multi-helix",
+                            "current_task":  "Wave 13 Multi-Helix Planning + Execution",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-GIT",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "e74f7fb6-ab94-4085-a185-fe858a254b2f",
+                            "connected_at":  "2026-03-08T16:44:39.187Z",
+                            "last_seen":  "2026-03-09T00:41:45.131Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "GIT",
+                            "workstream":  "git-stream-monitor",
+                            "current_task":  "pushed 146e218",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-zero-day",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "06539dd0-9905-4289-b8a2-7713898e59f1",
+                            "connected_at":  "2026-03-08T19:07:33.320Z",
+                            "last_seen":  "2026-03-09T19:48:51.760Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "Unknown",
+                            "workstream":  "zero-day",
+                            "current_task":  "booting and merging conflicts",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-R",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "f93226d3-7dbf-40ac-b155-931991706f41",
+                            "connected_at":  "2026-03-08T20:53:02.842Z",
+                            "last_seen":  "2026-03-08T20:53:02.842Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "R",
+                            "workstream":  "ie-engine-photo",
+                            "current_task":  "Just claimed workstream",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-zero",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "dc98ca4a-9eea-4876-948f-a5e49aea6df7",
+                            "connected_at":  "2026-03-08T20:53:15.719Z",
+                            "last_seen":  "2026-03-08T20:53:15.719Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "zero",
+                            "workstream":  "zero-day",
+                            "current_task":  "Booting and running Zero-Day GTM",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-S",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "7f708f20-eac9-4b27-9b16-714c30f05d8f",
+                            "connected_at":  "2026-03-08T21:14:44.891Z",
+                            "last_seen":  "2026-03-08T21:14:44.891Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "S",
+                            "workstream":  "zero-day-gtm",
+                            "current_task":  "Boot + multi-helix GTM execution",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-Z",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "deff4a34-0538-44ca-bd0a-710c14bbd9e1",
+                            "connected_at":  "2026-03-08T22:33:23.867Z",
+                            "last_seen":  "2026-03-09T01:20:07.509Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "Z",
+                            "workstream":  "spatial-visionos",
+                            "current_task":  "Planning The Spatial Mesh from HANDOFF",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-T",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "490a5d08-cdc6-4e6c-80a5-2a6f8df2e9ca",
+                            "connected_at":  "2026-03-08T22:40:55.772Z",
+                            "last_seen":  "2026-03-08T22:40:55.772Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "T",
+                            "workstream":  "wave-17-multi-helix",
+                            "current_task":  "Zero-Day GTM Warp Sprint - multi-helix boot",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-U",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "e786b7e8-9020-4eba-ab68-808c84d3133f",
+                            "connected_at":  "2026-03-09T00:55:50.441Z",
+                            "last_seen":  "2026-03-09T00:55:50.441Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "U",
+                            "workstream":  "genkit-infra",
+                            "current_task":  "Booting and picking up dispatch task",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "3fb69bb9-16b3-46d6-b318-00d0c1171db9",
+                            "connected_at":  "2026-03-09T01:03:26.582Z",
+                            "last_seen":  "2026-03-09T18:54:29.441Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W",
+                            "workstream":  "zero-day",
+                            "current_task":  "Checking zero-day tasks",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-n",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "ddea3c3b-4af0-40a4-a4f9-ba4c7ba24313",
+                            "connected_at":  "2026-03-09T02:02:21.027Z",
+                            "last_seen":  "2026-03-09T02:39:05.916Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "N",
+                            "workstream":  "nexus-suite",
+                            "current_task":  "VALIDATING: Spatial Prototype",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-wave19",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "86eb233b-a24e-4251-8b37-0915a06826bd",
+                            "connected_at":  "2026-03-09T04:33:28.637Z",
+                            "last_seen":  "2026-03-09T04:33:28.637Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W19",
+                            "workstream":  "free",
+                            "current_task":  "auto-loop-pickup",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-V",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "9e425a20-3c97-4b8a-9bd5-4e7b9cdfc340",
+                            "connected_at":  "2026-03-09T06:45:38.572Z",
+                            "last_seen":  "2026-03-09T08:34:16.321Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "V",
+                            "workstream":  "wave-23-multi-helix",
+                            "current_task":  "Wave 23 complete! Ready for auto-loop or next wave.",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W18",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "3ed55f25-271e-4f26-9903-43f85a8a6fdb",
+                            "connected_at":  "2026-03-09T07:27:33.192Z",
+                            "last_seen":  "2026-03-09T07:27:33.192Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W18",
+                            "workstream":  "wave-18-multi-helix",
+                            "current_task":  "Wave 18: sovereign-home-mesh tsc fix + scribe-mcp build + mcp-fetch-proxy hardening",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-google-takeover",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "14a7ef35-4f33-4277-9d9f-00481ce9f24c",
+                            "connected_at":  "2026-03-09T07:30:14.680Z",
+                            "last_seen":  "2026-03-09T07:30:14.680Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "GT",
+                            "workstream":  "wave-18-multi-helix",
+                            "current_task":  "Wave 18: Helix A+B+C parallel execution",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-w",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "f5473f1f-a064-4e43-8bf3-aada83533e6f",
+                            "connected_at":  "2026-03-09T08:21:17.782Z",
+                            "last_seen":  "2026-03-09T08:25:35.113Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  null,
+                            "workstream":  "chronos-core",
+                            "current_task":  "SHIP mode active",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W24",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "ea3e9249-62ce-4cb3-afed-db3dfd2285d6",
+                            "connected_at":  "2026-03-09T14:23:53.482Z",
+                            "last_seen":  "2026-03-09T14:23:53.482Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W24",
+                            "workstream":  "wave-24-multi-helix",
+                            "current_task":  "Boot + merge conflicts + next helix execution",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-Y",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "eb09387a-6def-43f7-a8e0-c6dc0618cf12",
+                            "connected_at":  "2026-03-09T14:24:04.283Z",
+                            "last_seen":  "2026-03-09T15:20:26.897Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "Y",
+                            "workstream":  "wave-24-multi-helix",
+                            "current_task":  "Wave 24 complete: voc-mcp 45+ tests, atlas-live 30+ tests, sensor-mesh 7/7 - all passing, pushed",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-F",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "bf32921b-7228-4fa9-a77a-4a16ca8d8eca",
+                            "connected_at":  "2026-03-09T14:27:15.978Z",
+                            "last_seen":  "2026-03-09T14:27:15.978Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "F",
+                            "workstream":  "wave-24-gtm",
+                            "current_task":  "Wave 24 GTM Multi-Helix Boot",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-M",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "684a958d-fec0-451a-8f73-2b60fb65c92b",
+                            "connected_at":  "2026-03-09T14:28:59.619Z",
+                            "last_seen":  "2026-03-09T14:28:59.619Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "M",
+                            "workstream":  "wave-24-multi-helix",
+                            "current_task":  "Wave 24: Helix A+B+C - Chronos VALIDATE + Firebase Auth + MCP Fetch Proxy",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W25",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "7fdf8758-c110-48ad-ab66-daacb9f8a8f8",
+                            "connected_at":  "2026-03-09T16:00:40.878Z",
+                            "last_seen":  "2026-03-09T17:28:52.497Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W25",
+                            "workstream":  "wave-26-multi-helix",
+                            "current_task":  "Planning Wave 26 - Barnstorm Studio + AVERI NAS Deploy",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-G",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "586cf49a-3529-44d4-9f02-655736c563f8",
+                            "connected_at":  "2026-03-09T16:02:30.129Z",
+                            "last_seen":  "2026-03-09T17:05:47.215Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "G",
+                            "workstream":  "wave-26-multi-helix",
+                            "current_task":  "Wave 26 boot - scanning for 3-helix pickup",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W27",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "4fe35b89-5392-431b-b772-db9b436a1183",
+                            "connected_at":  "2026-03-09T18:52:50.851Z",
+                            "last_seen":  "2026-03-09T18:52:50.851Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W27",
+                            "workstream":  "wave-27-multi-helix",
+                            "current_task":  "Booting and resolving conflicts",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-W28",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "b812fb08-c750-4bc5-a09b-38a416dc75f3",
+                            "connected_at":  "2026-03-09T19:35:28.501Z",
+                            "last_seen":  "2026-03-09T19:41:54.836Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "W28",
+                            "workstream":  "wave-28-multi-helix",
+                            "current_task":  "Executing multi-helix Wave 28",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "6c4dcb97-28d8-42de-98d7-09f775f82e5c",
+                            "connected_at":  "2026-03-09T19:36:20.086Z",
+                            "last_seen":  "2026-03-09T19:36:20.086Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "A",
+                            "workstream":  "wave-27-multi-helix",
+                            "current_task":  "Booting and checking dispatch",
+                            "status":  "active"
+                        },
+                        {
+                            "agent_id":  "cle-c",
+                            "tool":  "cle",
+                            "capabilities":  [
+
+                                             ],
+                            "session_id":  "88eeedd1-86c1-4072-9993-fd3a222e33b0",
+                            "connected_at":  "2026-03-09T19:52:54.403Z",
+                            "last_seen":  "2026-03-09T19:52:54.403Z",
+                            "active_task_id":  null,
+                            "notifications":  [
+
+                                              ],
+                            "window":  "C",
+                            "workstream":  "zero-day",
+                            "current_task":  "Claimed workstream",
+                            "status":  "active"
+                        }
+                    ],
+    "queued_tasks":  [
+
+                     ],
+    "active_tasks":  [
+                         {
+                             "id":  "T20260308-401",
+                             "org":  "WholeTroutMedia",
+                             "project":  "creative-liberation-engine-v5",
+                             "workstream":  "infra-psi",
+                             "title":  "SHIP: Peripheral Sovereign Identity",
+                             "description":  "Build the Peripheral Sovereign Identity (PSI) Service: A background daemon that detects new USB/HID connections, identifies the device class, retrieves the active users Aura profile from the NAS, and dynamically maps the capabilities (buttons, DPI, macros) to the OS layer instantly.",
+                             "priority":  "P1",
+                             "status":  "active",
+                             "dependencies":  [
+
+                                              ],
+                             "parent_task_id":  null,
+                             "spawned_by":  null,
+                             "assigned_to_agent":  null,
+                             "assigned_to_capability":  null,
+                             "claimed_by":  "cle-a",
+                             "claimed_at":  "2026-03-08T19:06:25.678Z",
+                             "completed_at":  null,
+                             "handoff_note":  null,
+                             "artifacts":  [
+
+                                           ],
+                             "created":  "2026-03-08T18:59:03.927Z",
+                             "created_by":  "system",
+                             "updated":  "2026-03-08T19:06:25.679Z"
+                         },
+                         {
+                             "id":  "T20260308-975",
+                             "org":  "WholeTroutMedia",
+                             "project":  "creative-liberation-engine-v5",
+                             "workstream":  "multi-tenant-platform",
+                             "title":  "Phase 1A: Firebase Auth Setup",
+                             "description":  null,
+                             "priority":  "P0",
+                             "status":  "active",
+                             "dependencies":  [
+
+                                              ],
+                             "parent_task_id":  null,
+                             "spawned_by":  null,
+                             "assigned_to_agent":  null,
+                             "assigned_to_capability":  null,
+                             "claimed_by":  "cle-A",
+                             "claimed_at":  "2026-03-08T21:36:16.619Z",
+                             "completed_at":  null,
+                             "handoff_note":  null,
+                             "artifacts":  [
+
+                                           ],
+                             "created":  "2026-03-08T21:12:20.725Z",
+                             "created_by":  "system",
+                             "updated":  "2026-03-08T21:36:16.619Z"
+                         },
+                         {
+                             "id":  "T20260308-492",
+                             "org":  "WholeTroutMedia",
+                             "project":  "creative-liberation-engine-v5",
+                             "workstream":  "comet-browser",
+                             "title":  "Phase 1C: COMET Boot Speed Optimization",
+                             "description":  null,
+                             "priority":  "P1",
+                             "status":  "active",
+                             "dependencies":  [
+
+                                              ],
+                             "parent_task_id":  null,
+                             "spawned_by":  null,
+                             "assigned_to_agent":  null,
+                             "assigned_to_capability":  null,
+                             "claimed_by":  "cle-C",
+                             "claimed_at":  "2026-03-08T21:36:21.451Z",
+                             "completed_at":  null,
+                             "handoff_note":  null,
+                             "artifacts":  [
+
+                                           ],
+                             "created":  "2026-03-08T21:12:20.759Z",
+                             "created_by":  "system",
+                             "updated":  "2026-03-08T21:36:21.451Z"
+                         },
+                         {
+                             "id":  "T20260308-479",
+                             "org":  "WholeTroutMedia",
+                             "project":  "creative-liberation-engine-v5",
+                             "workstream":  "comet-browser",
+                             "title":  "MCP Fetch Proxy Service for COMET",
+                             "description":  null,
+                             "priority":  "P0",
+                             "status":  "active",
+                             "dependencies":  [
+
+                                              ],
+                             "parent_task_id":  null,
+                             "spawned_by":  null,
+                             "assigned_to_agent":  null,
+                             "assigned_to_capability":  null,
+                             "claimed_by":  "cle-B",
+                             "claimed_at":  "2026-03-08T21:36:19.472Z",
+                             "completed_at":  null,
+                             "handoff_note":  null,
+                             "artifacts":  [
+
+                                           ],
+                             "created":  "2026-03-08T21:12:20.765Z",
+                             "created_by":  "system",
+                             "updated":  "2026-03-08T21:36:19.472Z"
+                         }
+                     ]
+}

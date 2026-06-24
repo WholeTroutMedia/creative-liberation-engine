@@ -1,0 +1,15 @@
+{
+  "name": "mdx-gitops",
+  "version": "2.0.3",
+  "description": "Sovereign Declarative Infrastructure Daemon",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "js-yaml": "^4.1.1",
+    "yaml": "^2.3.4"
+  }
+}

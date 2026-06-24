@@ -1,0 +1,503 @@
+{
+  "asset_type": "Blueprint",
+  "name": "BP_MetaHuman_OSC_Receiver",
+  "parent_class": "/Script/Engine.Actor",
+  "osc_config": {
+    "listen_port": 9000,
+    "address_pattern": "/avatar/blendshapes",
+    "message_format": "float[52] — ARKit blendshape values, index 0-51"
+  },
+  "blendshape_mapping": [
+    {
+      "index": 0,
+      "arkit": "eyeBlinkLeft",
+      "metahuman": "CTRL_L_eye_blink",
+      "description": "Left eye blink",
+      "multiplier": 1
+    },
+    {
+      "index": 1,
+      "arkit": "eyeLookDownLeft",
+      "metahuman": "CTRL_L_eye_lookDown",
+      "description": "Left eye look down",
+      "multiplier": 1
+    },
+    {
+      "index": 2,
+      "arkit": "eyeLookInLeft",
+      "metahuman": "CTRL_L_eye_lookIn",
+      "description": "Left eye look in (right)",
+      "multiplier": 1
+    },
+    {
+      "index": 3,
+      "arkit": "eyeLookOutLeft",
+      "metahuman": "CTRL_L_eye_lookOut",
+      "description": "Left eye look out (left)",
+      "multiplier": 1
+    },
+    {
+      "index": 4,
+      "arkit": "eyeLookUpLeft",
+      "metahuman": "CTRL_L_eye_lookUp",
+      "description": "Left eye look up",
+      "multiplier": 1
+    },
+    {
+      "index": 5,
+      "arkit": "eyeSquintLeft",
+      "metahuman": "CTRL_L_eye_squint",
+      "description": "Left eye squint",
+      "multiplier": 0.8
+    },
+    {
+      "index": 6,
+      "arkit": "eyeWideLeft",
+      "metahuman": "CTRL_L_eye_wide",
+      "description": "Left eye wide",
+      "multiplier": 1
+    },
+    {
+      "index": 7,
+      "arkit": "eyeBlinkRight",
+      "metahuman": "CTRL_R_eye_blink",
+      "description": "Right eye blink",
+      "multiplier": 1
+    },
+    {
+      "index": 8,
+      "arkit": "eyeLookDownRight",
+      "metahuman": "CTRL_R_eye_lookDown",
+      "description": "Right eye look down",
+      "multiplier": 1
+    },
+    {
+      "index": 9,
+      "arkit": "eyeLookInRight",
+      "metahuman": "CTRL_R_eye_lookIn",
+      "description": "Right eye look in (left)",
+      "multiplier": 1
+    },
+    {
+      "index": 10,
+      "arkit": "eyeLookOutRight",
+      "metahuman": "CTRL_R_eye_lookOut",
+      "description": "Right eye look out (right)",
+      "multiplier": 1
+    },
+    {
+      "index": 11,
+      "arkit": "eyeLookUpRight",
+      "metahuman": "CTRL_R_eye_lookUp",
+      "description": "Right eye look up",
+      "multiplier": 1
+    },
+    {
+      "index": 12,
+      "arkit": "eyeSquintRight",
+      "metahuman": "CTRL_R_eye_squint",
+      "description": "Right eye squint",
+      "multiplier": 0.8
+    },
+    {
+      "index": 13,
+      "arkit": "eyeWideRight",
+      "metahuman": "CTRL_R_eye_wide",
+      "description": "Right eye wide",
+      "multiplier": 1
+    },
+    {
+      "index": 14,
+      "arkit": "jawForward",
+      "metahuman": "CTRL_jaw_fwd",
+      "description": "Jaw forward",
+      "multiplier": 0.6
+    },
+    {
+      "index": 15,
+      "arkit": "jawLeft",
+      "metahuman": "CTRL_jaw_L",
+      "description": "Jaw left",
+      "multiplier": 0.7
+    },
+    {
+      "index": 16,
+      "arkit": "jawRight",
+      "metahuman": "CTRL_jaw_R",
+      "description": "Jaw right",
+      "multiplier": 0.7
+    },
+    {
+      "index": 17,
+      "arkit": "jawOpen",
+      "metahuman": "CTRL_jaw_open",
+      "description": "Jaw open",
+      "multiplier": 1
+    },
+    {
+      "index": 18,
+      "arkit": "mouthClose",
+      "metahuman": "CTRL_mouth_close",
+      "description": "Mouth close",
+      "multiplier": 1
+    },
+    {
+      "index": 19,
+      "arkit": "mouthFunnel",
+      "metahuman": "CTRL_mouth_funnel",
+      "description": "Mouth funnel (O shape)",
+      "multiplier": 1
+    },
+    {
+      "index": 20,
+      "arkit": "mouthPucker",
+      "metahuman": "CTRL_mouth_pucker",
+      "description": "Mouth pucker",
+      "multiplier": 1
+    },
+    {
+      "index": 21,
+      "arkit": "mouthLeft",
+      "metahuman": "CTRL_mouth_L",
+      "description": "Mouth left",
+      "multiplier": 0.8
+    },
+    {
+      "index": 22,
+      "arkit": "mouthRight",
+      "metahuman": "CTRL_mouth_R",
+      "description": "Mouth right",
+      "multiplier": 0.8
+    },
+    {
+      "index": 23,
+      "arkit": "mouthSmileLeft",
+      "metahuman": "CTRL_L_mouth_smile",
+      "description": "Left smile",
+      "multiplier": 1
+    },
+    {
+      "index": 24,
+      "arkit": "mouthSmileRight",
+      "metahuman": "CTRL_R_mouth_smile",
+      "description": "Right smile",
+      "multiplier": 1
+    },
+    {
+      "index": 25,
+      "arkit": "mouthFrownLeft",
+      "metahuman": "CTRL_L_mouth_frown",
+      "description": "Left frown",
+      "multiplier": 1
+    },
+    {
+      "index": 26,
+      "arkit": "mouthFrownRight",
+      "metahuman": "CTRL_R_mouth_frown",
+      "description": "Right frown",
+      "multiplier": 1
+    },
+    {
+      "index": 27,
+      "arkit": "mouthDimpleLeft",
+      "metahuman": "CTRL_L_mouth_dimple",
+      "description": "Left dimple",
+      "multiplier": 0.7
+    },
+    {
+      "index": 28,
+      "arkit": "mouthDimpleRight",
+      "metahuman": "CTRL_R_mouth_dimple",
+      "description": "Right dimple",
+      "multiplier": 0.7
+    },
+    {
+      "index": 29,
+      "arkit": "mouthStretchLeft",
+      "metahuman": "CTRL_L_mouth_stretch",
+      "description": "Left stretch",
+      "multiplier": 0.9
+    },
+    {
+      "index": 30,
+      "arkit": "mouthStretchRight",
+      "metahuman": "CTRL_R_mouth_stretch",
+      "description": "Right stretch",
+      "multiplier": 0.9
+    },
+    {
+      "index": 31,
+      "arkit": "mouthRollLower",
+      "metahuman": "CTRL_mouth_rollIn_lower",
+      "description": "Lower lip roll in",
+      "multiplier": 1
+    },
+    {
+      "index": 32,
+      "arkit": "mouthRollUpper",
+      "metahuman": "CTRL_mouth_rollIn_upper",
+      "description": "Upper lip roll in",
+      "multiplier": 1
+    },
+    {
+      "index": 33,
+      "arkit": "mouthShrugLower",
+      "metahuman": "CTRL_mouth_shrug_lower",
+      "description": "Lower lip shrug",
+      "multiplier": 0.8
+    },
+    {
+      "index": 34,
+      "arkit": "mouthShrugUpper",
+      "metahuman": "CTRL_mouth_shrug_upper",
+      "description": "Upper lip shrug",
+      "multiplier": 0.8
+    },
+    {
+      "index": 35,
+      "arkit": "mouthPressLeft",
+      "metahuman": "CTRL_L_mouth_press",
+      "description": "Left lip press",
+      "multiplier": 0.7
+    },
+    {
+      "index": 36,
+      "arkit": "mouthPressRight",
+      "metahuman": "CTRL_R_mouth_press",
+      "description": "Right lip press",
+      "multiplier": 0.7
+    },
+    {
+      "index": 37,
+      "arkit": "mouthLowerDownLeft",
+      "metahuman": "CTRL_L_mouth_lipsDown_lower",
+      "description": "Lower-left lip down",
+      "multiplier": 1
+    },
+    {
+      "index": 38,
+      "arkit": "mouthLowerDownRight",
+      "metahuman": "CTRL_R_mouth_lipsDown_lower",
+      "description": "Lower-right lip down",
+      "multiplier": 1
+    },
+    {
+      "index": 39,
+      "arkit": "mouthUpperUpLeft",
+      "metahuman": "CTRL_L_mouth_lipsUp_upper",
+      "description": "Upper-left lip up",
+      "multiplier": 1
+    },
+    {
+      "index": 40,
+      "arkit": "mouthUpperUpRight",
+      "metahuman": "CTRL_R_mouth_lipsUp_upper",
+      "description": "Upper-right lip up",
+      "multiplier": 1
+    },
+    {
+      "index": 41,
+      "arkit": "cheekPuff",
+      "metahuman": "CTRL_mouth_puff_L",
+      "description": "Cheek puff",
+      "multiplier": 0.5
+    },
+    {
+      "index": 42,
+      "arkit": "cheekSquintLeft",
+      "metahuman": "CTRL_L_eye_cheekRaise",
+      "description": "Left cheek squint",
+      "multiplier": 0.9
+    },
+    {
+      "index": 43,
+      "arkit": "cheekSquintRight",
+      "metahuman": "CTRL_R_eye_cheekRaise",
+      "description": "Right cheek squint",
+      "multiplier": 0.9
+    },
+    {
+      "index": 44,
+      "arkit": "noseSneerLeft",
+      "metahuman": "CTRL_L_nose_sneer",
+      "description": "Left nose sneer",
+      "multiplier": 1
+    },
+    {
+      "index": 45,
+      "arkit": "noseSneerRight",
+      "metahuman": "CTRL_R_nose_sneer",
+      "description": "Right nose sneer",
+      "multiplier": 1
+    },
+    {
+      "index": 46,
+      "arkit": "browDownLeft",
+      "metahuman": "CTRL_L_brow_down",
+      "description": "Left brow down",
+      "multiplier": 1
+    },
+    {
+      "index": 47,
+      "arkit": "browDownRight",
+      "metahuman": "CTRL_R_brow_down",
+      "description": "Right brow down",
+      "multiplier": 1
+    },
+    {
+      "index": 48,
+      "arkit": "browInnerUp",
+      "metahuman": "CTRL_brow_inner_up",
+      "description": "Inner brow raise",
+      "multiplier": 1
+    },
+    {
+      "index": 49,
+      "arkit": "browOuterUpLeft",
+      "metahuman": "CTRL_L_brow_outer_up",
+      "description": "Left outer brow raise",
+      "multiplier": 1
+    },
+    {
+      "index": 50,
+      "arkit": "browOuterUpRight",
+      "metahuman": "CTRL_R_brow_outer_up",
+      "description": "Right outer brow raise",
+      "multiplier": 1
+    },
+    {
+      "index": 51,
+      "arkit": "tongueOut",
+      "metahuman": "CTRL_mouth_tongueOut",
+      "description": "Tongue out",
+      "multiplier": 1
+    }
+  ],
+  "event_graph": {
+    "nodes": [
+      {
+        "id": "node_event_begin",
+        "type": "Event_BeginPlay",
+        "label": "Event BeginPlay",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "node_osc_init",
+        "type": "Function_Call",
+        "label": "OSC Server Create",
+        "x": 200,
+        "y": 0,
+        "properties": {
+          "function": "CreateOSCServer",
+          "port": 9000,
+          "address": "0.0.0.0"
+        }
+      },
+      {
+        "id": "node_bind_msg",
+        "type": "Function_Call",
+        "label": "Bind OSC Message Event",
+        "x": 450,
+        "y": 0,
+        "properties": {
+          "address_pattern": "/avatar/blendshapes"
+        }
+      },
+      {
+        "id": "node_event_osc",
+        "type": "Custom_Event",
+        "label": "On OSC Blendshape Message",
+        "x": 0,
+        "y": 200
+      },
+      {
+        "id": "node_parse_floats",
+        "type": "Function_Call",
+        "label": "Get All Floats (OSC Message)",
+        "x": 200,
+        "y": 200
+      },
+      {
+        "id": "node_for_each",
+        "type": "Macro_ForEachLoop",
+        "label": "For Each Loop (52 blendshapes)",
+        "x": 450,
+        "y": 200
+      },
+      {
+        "id": "node_get_mapping",
+        "type": "Function_Call",
+        "label": "Get Morph Target Name",
+        "x": 700,
+        "y": 200
+      },
+      {
+        "id": "node_set_morph",
+        "type": "Function_Call",
+        "label": "Set Morph Target",
+        "x": 950,
+        "y": 200,
+        "properties": {
+          "target": "MetaHumanMesh"
+        }
+      }
+    ],
+    "connections": [
+      {
+        "from_node": "node_event_begin",
+        "from_pin": "exec_out",
+        "to_node": "node_osc_init",
+        "to_pin": "exec_in"
+      },
+      {
+        "from_node": "node_osc_init",
+        "from_pin": "exec_out",
+        "to_node": "node_bind_msg",
+        "to_pin": "exec_in"
+      },
+      {
+        "from_node": "node_event_osc",
+        "from_pin": "exec_out",
+        "to_node": "node_parse_floats",
+        "to_pin": "exec_in"
+      },
+      {
+        "from_node": "node_parse_floats",
+        "from_pin": "floats_out",
+        "to_node": "node_for_each",
+        "to_pin": "array_in"
+      },
+      {
+        "from_node": "node_for_each",
+        "from_pin": "loop_body",
+        "to_node": "node_get_mapping",
+        "to_pin": "exec_in"
+      },
+      {
+        "from_node": "node_for_each",
+        "from_pin": "array_elem",
+        "to_node": "node_set_morph",
+        "to_pin": "value_in"
+      },
+      {
+        "from_node": "node_get_mapping",
+        "from_pin": "name_out",
+        "to_node": "node_set_morph",
+        "to_pin": "target_name"
+      },
+      {
+        "from_node": "node_get_mapping",
+        "from_pin": "multiplier",
+        "to_node": "node_set_morph",
+        "to_pin": "multiplier"
+      }
+    ]
+  },
+  "metadata": {
+    "generated_at": "2026-03-08T02:41:00.043Z",
+    "generator": "packages/spatial-intelligence/tools/ue5_osc_asset_generator.ts",
+    "task_id": "T20260308-559",
+    "constitutional_compliance": "Article IX: Complete asset. Article I: Sovereign (no cloud deps)."
+  }
+}

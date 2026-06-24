@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cleengine.systems/schemas/IDEATION_SHARD.schema.json",
+  "title": "Ideation Monthly Shard",
+  "description": "A monthly partition of the ideation index. Each shard contains lightweight index entries for ideations created in that calendar month. Archived/discarded entries are stored in archived.json regardless of creation month.",
+  "type": "object",
+  "required": ["version", "month", "generatedAt", "count", "ideations"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "month": {
+      "type": "string",
+      "pattern": "^(\\d{4}-\\d{2}|_archived|unknown)$",
+      "description": "YYYY-MM for monthly shards, '_archived' for the archive shard."
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of entries in this shard. Must match ideations array length."
+    },
+    "ideations": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/IdeationIndexEntry" }
+    }
+  },
+  "additionalProperties": false,
+
+  "definitions": {
+    "IdeationIndexEntry": {
+      "type": "object",
+      "required": ["id", "slug", "status", "title", "sourceType", "createdAt", "relevance"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^IE-IDX-[0-9]{4,}",
+          "description": "Canonical ideation ID."
+        },
+        "slug": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "INGESTED", "BRAINSTORM", "IDEATED", "REVIEWED",
+            "ACTIVATED", "IN_PROGRESS", "SHIPPED", "VALIDATED",
+            "COMPLETED", "SCAFFOLDED", "VERIFIED",
+            "PARKED", "ARCHIVED", "DISCARDED", "UNKNOWN"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Source article title for display."
+        },
+        "directive": {
+          "type": ["string", "null"],
+          "maxLength": 200,
+          "description": "ATHENA directive summary (truncated to 200 chars)."
+        },
+        "sourceType": { "type": "string" },
+        "sourceUrl": { "type": "string" },
+        "categories": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "domain": {
+          "type": ["string", "null"],
+          "enum": ["infrastructure", "product", "research", "governance", "creative", "business", "security", "operations", null]
+        },
+        "helix": {
+          "type": ["string", "null"],
+          "enum": [
+            "INFRASTRUCTURE", "COGNITIVE_CORE", "CREATIVE_DIRECTOR",
+            "VIDEO_PIPELINE", "EDGE_SECURITY", "PRODUCT_STRATEGY",
+            "AGENT_MESH", "UNASSIGNED", null
+          ],
+          "description": "Strategic helix classification."
+        },
+        "relevance": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "urgency": { "type": ["string", "null"] },
+        "priority": { "type": ["integer", "null"] },
+        "owner": { "type": ["string", "null"] },
+        "createdAt": { "type": "string" },
+        "ideatedAt": { "type": ["string", "null"] },
+        "lastModifiedAt": { "type": ["string", "null"] },
+        "nextReviewDue": { "type": ["string", "null"] },
+        "crossRefCount": { "type": "integer", "default": 0 },
+        "deliverableCount": { "type": "integer", "default": 0 },
+        "filePath": {
+          "type": "string",
+          "description": "Relative path to the full ideation JSON file."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Lightweight projection of an ideation for index queries. Full data lives in the individual queue file."
+    }
+  }
+}

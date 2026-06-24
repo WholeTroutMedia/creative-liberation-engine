@@ -1,0 +1,10 @@
+{
+  "name": "@cle/google-to-invest-up-to-40b-in-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0008",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

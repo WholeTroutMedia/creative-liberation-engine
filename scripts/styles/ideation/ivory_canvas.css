@@ -1,0 +1,29 @@
+/* Ivory Canvas (Professional Light Mode) */
+.theme-light, .theme-dark { /* Force light mode */
+  --background-primary: #f9f9f6 !important;
+  --background-secondary: #ffffff !important;
+  --background-modifier-border: rgba(0,0,0,0.06) !important;
+  
+  --interactive-accent: #1a365d; /* Deep Navy */
+  --interactive-accent-hover: #2a4365;
+  --text-accent: #721c24; /* Oxblood */
+  
+  --text-normal: #1a202c !important;
+  --text-muted: #718096 !important;
+  
+  --font-interface: 'Inter', sans-serif !important;
+  --border-width: 1px !important;
+}
+
+.workspace-leaf {
+  border: 1px solid var(--background-modifier-border) !important;
+  background-color: var(--background-secondary) !important;
+  border-radius: 12px !important;
+  margin: 6px !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04) !important;
+}
+
+.workspace-leaf.mod-active {
+  border-color: rgba(26, 54, 93, 0.2) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08) !important;
+}

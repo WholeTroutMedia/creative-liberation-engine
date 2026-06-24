@@ -1,0 +1,12 @@
+{
+  "name": "cortex-chat-function",
+  "version": "2.0.3",
+  "description": "CORTEX Google Chat App \u2014 Cloud Function",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "capabilityIds": [
+    "cortex_chat_function"
+  ]
+}

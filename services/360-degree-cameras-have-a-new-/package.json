@@ -1,0 +1,10 @@
+{
+  "name": "@cle/360-degree-cameras-have-a-new-",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0063",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

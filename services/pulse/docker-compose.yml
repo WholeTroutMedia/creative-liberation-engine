@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pulse:
+    build: .
+    container_name: pulse-biometrics
+    restart: unless-stopped
+    ports:
+      - "9000:9000/udp"  # OSC
+      - "8765:8765"      # WebSocket
+      - "8766:8766"      # SSE / Dashboard
+    # To use a local webcam mapped to the NAS, uncomment the devices section below.
+    # Note: If running on a NAS without a physical webcam, use 'rtsp' or 'file' source in config.yaml.
+    # devices:
+    #   - /dev/video0:/dev/video0
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1

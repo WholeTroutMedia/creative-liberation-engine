@@ -1,0 +1,11 @@
+# Sovereign PKI — NEVER commit private keys
+ca/cle-ca.key
+ca/cle-ca.srl
+agents/*.key
+agents/*.csr
+agents/*.ext
+
+# CA cert is safe to distribute
+!ca/cle-ca.crt
+# Agent certs are safe to distribute
+!agents/*.crt

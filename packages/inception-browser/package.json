@@ -1,0 +1,28 @@
+{
+  "name": "@cle/cle-browser",
+  "version": "2.0.3",
+  "description": "Sovereign agentic browser MCP server for Creative Liberation Engine V6 \u2014 60+ tools, constitutional governance, VERA memory, CDP mesh.",
+  "main": "dist/server.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "lint": "tsc --noEmit",
+    "install:browsers": "playwright install chromium"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "better-sqlite3": "^11.0.0",
+    "playwright": "^1.42.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0"
+  },
+  "private": true,
+  "license": "UNLICENSED"
+}

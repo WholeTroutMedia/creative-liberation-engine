@@ -1,0 +1,10 @@
+{
+  "name": "@cle/3-new-features-are-coming-to-g",
+  "version": "2.0.3",
+  "description": "Service capability IE-IDX-0216",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run"
+  }
+}

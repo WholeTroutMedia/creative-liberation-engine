@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+torch
+torchvision
+einops
+numpy
+pydantic
+huggingface-hub
+pillow
+python-multipart

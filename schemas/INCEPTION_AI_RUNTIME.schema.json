@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://cleengine.systems/schemas/CLE_AI_RUNTIME.schema.json",
+  "title": "CLE AI Runtime Schema",
+  "description": "Sovereign AI runtime manager orchestrating local models (Ollama, vLLM) for coding and agentic tasks.",
+  "type": "object",
+  "required": ["runtime_id", "status"],
+  "properties": {
+    "runtime_id": { "type": "string", "format": "uuid" },
+    "status": { "type": "string", "enum": ["online", "offline", "degraded"] },
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["model_id", "name", "state"],
+        "properties": {
+          "model_id": { "type": "string" },
+          "name": { "type": "string" },
+          "provider": { "type": "string", "enum": ["ollama", "vllm", "local"] },
+          "state": { "type": "string", "enum": ["loaded", "unloaded", "loading"] },
+          "size_gb": { "type": "number" },
+          "vram_usage_mb": { "type": "number" }
+        }
+      }
+    },
+    "system_metrics": {
+      "type": "object",
+      "properties": {
+        "cpu_load": { "type": "number" },
+        "ram_used_mb": { "type": "number" },
+        "vram_used_mb": { "type": "number" },
+        "vram_total_mb": { "type": "number" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

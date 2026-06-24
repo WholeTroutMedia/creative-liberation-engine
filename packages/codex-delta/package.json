@@ -1,0 +1,17 @@
+{
+  "name": "@cle/codex-delta",
+  "version": "2.0.3",
+  "description": "CODEX-DELTA \u2014 Pattern extractor and DSL compiler for the Ouroboros compaction cycle.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "check": "tsc --noEmit",
+    "analyze": "npx tsx src/index.ts analyze",
+    "report": "npx tsx src/index.ts report"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2"
+  }
+}

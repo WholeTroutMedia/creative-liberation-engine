@@ -1,0 +1,141 @@
+{
+    "name": "ICP Research Engine",
+    "nodes": [
+        {
+            "parameters": {},
+            "id": "e2f1e2f1-e2f1-4f1b-b7b7-4d4d4d4d4d4d",
+            "name": "Webhook (Trigger)",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ],
+            "webhookId": "icp-research-trigger"
+        },
+        {
+            "parameters": {
+                "url": "=https://firestore.googleapis.com/v1/projects/studio-5830771855-17c40/databases/(default)/documents/brands/{{ $json.body.brandId }}",
+                "method": "GET",
+                "authentication": "none"
+            },
+            "id": "a1b2c3d4-e5f6-4a1b-b2c3-d4e5f6a1b2c3",
+            "name": "Fetch Brand Profile (Firebase)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.anthropic.com/v1/messages",
+                "authentication": "headerAuth",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "x-api-key",
+                            "value": "={{$env.ANTHROPIC_API_KEY}}"
+                        },
+                        {
+                            "name": "anthropic-version",
+                            "value": "2023-06-01"
+                        },
+                        {
+                            "name": "content-type",
+                            "value": "application/json"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "model",
+                            "value": "claude-3-opus-20240229"
+                        },
+                        {
+                            "name": "max_tokens",
+                            "value": 4096
+                        },
+                        {
+                            "name": "messages",
+                            "value": "=[{\"role\": \"user\", \"content\": \"Analyze the following brand profile and generate 2 deep Psychographic ICP profiles. Output ONLY a raw JSON array of objects with exactly these keys: 'id' (string), 'name' (string), 'statusColor' (must be one of: 'emerald', 'sky', 'indigo', 'rose', 'amber'), 'status' (string, e.g. 'High Growth'), 'description' (string), 'corePainPoint' (string), 'recommendedFormat' (string). No markdown, no explanations. Brand profile data: \" + JSON.stringify($json)}]"
+                        }
+                    ]
+                }
+            },
+            "id": "b2c3d4e5-f6a1-4b2c-c3d4-e5f6a1b2c3d4",
+            "name": "Claude AI Psychographics Layer",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                650,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "PATCH",
+                "url": "=https://firestore.googleapis.com/v1/projects/studio-5830771855-17c40/databases/(default)/documents/icp_profiles/{{ $json.body.brandId }}",
+                "authentication": "none",
+                "sendBody": true,
+                "bodyParameters": {
+                    "parameters": [
+                        {
+                            "name": "fields",
+                            "value": "={{ { icpData: { stringValue: $json.content[0].text } } }}"
+                        }
+                    ]
+                }
+            },
+            "id": "c3d4e5f6-a1b2-4c3d-d4e5-f6a1b2c3d4e5",
+            "name": "Write to Firebase",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4,
+            "position": [
+                850,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook (Trigger)": {
+            "main": [
+                [
+                    {
+                        "node": "Fetch Brand Profile (Firebase)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Fetch Brand Profile (Firebase)": {
+            "main": [
+                [
+                    {
+                        "node": "Claude AI Psychographics Layer",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Claude AI Psychographics Layer": {
+            "main": [
+                [
+                    {
+                        "node": "Write to Firebase",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {}
+}

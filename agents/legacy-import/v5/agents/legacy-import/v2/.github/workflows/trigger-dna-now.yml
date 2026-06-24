@@ -1,0 +1,20 @@
+name: TRIGGER DNA NOW
+
+on:
+  push:
+    paths:
+      - '.github/workflows/trigger-dna-now.yml'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'WholeTroutMedia',
+              repo: 'creative-liberation-engine-v2',
+              workflow_id: 'dna-propagation.yml',
+              ref: 'main'
+            });

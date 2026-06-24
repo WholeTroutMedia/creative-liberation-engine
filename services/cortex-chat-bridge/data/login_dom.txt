@@ -1,0 +1,81 @@
+=== INPUTS ===
+ID:  | Name: authenticity_token | Type: hidden | Visible: False
+HTML: <input type="hidden" name="authenticity_token" value="kzjK0KleVtO0CSF7CC1J9bdf_iWNgWdZjZNEgqtdmXqtadEGT7612EasCxkZgD61cYRt7m0gSeIjCq5KsMGljw" autocomplete="off">
+
+ID: account_email | Name: account[email] | Type: email | Visible: True
+HTML: <input class="next-input email-typo-input" type="email" autocomplete="username" aria-required="true" aria-invalid="false" autofocus="autofocus" aria-describedby="help-9b90e9214dfe57d58fd1f2288c4685b2" size="30" name="account[email]" id="account_email">
+
+ID: account_password | Name: account[password] | Type: password | Visible: True
+HTML: <input type="password" autocomplete="current-password" tabindex="-1" class="next-input transferable-input" size="30" name="account[password]" id="account_password">
+
+ID:  | Name: h-captcha-response | Type: hidden | Visible: False
+HTML: <input type="hidden" name="h-captcha-response" value="">
+
+ID: credential_options | Name: credential_options | Type: hidden | Visible: False
+HTML: <input type="hidden" name="credential_options" id="credential_options" value="{&quot;challenge&quot;:&quot;f9+YVYlXplXWhPxX2przOWjBQ7AclfyOl1znpQWGRZU=&quot;,&quot;timeout&quot;:120000,&quot;extensions&quot;:{},&quot;allowCredentials&quot;:[],&quot;rpId&quot;:&quot;accounts.shopify.com&quot;,&quot;userVerification&quot;:&quot;preferred&quot;}" autocomplete="off">
+
+ID:  | Name: authenticity_token | Type: hidden | Visible: False
+HTML: <input type="hidden" name="authenticity_token" value="kzjK0KleVtO0CSF7CC1J9bdf_iWNgWdZjZNEgqtdmXqtadEGT7612EasCxkZgD61cYRt7m0gSeIjCq5KsMGljw" autocomplete="off">
+
+ID: web_authn_public_key_credential | Name: web_authn[public_key_credential] | Type: hidden | Visible: False
+HTML: <input type="hidden" name="web_authn[public_key_credential]" id="web_authn_public_key_credential" autocomplete="off">
+
+ID: web_authn_assertion_error | Name: web_authn[assertion_error] | Type: hidden | Visible: False
+HTML: <input type="hidden" name="web_authn[assertion_error]" id="web_authn_assertion_error" autocomplete="off">
+
+ID: account_empty | Name: account[empty] | Type: hidden | Visible: False
+HTML: <input type="hidden" name="account[empty]" id="account_empty" autocomplete="off">
+
+
+=== BUTTONS ===
+Text:    | Type: button | Disabled: False
+HTML: <button class="ui-button ui-button--transparent ui-button--icon-only" aria-label="Close message" type="button" name="button"><svg aria-hidden="true" focusable="false" class="next-icon next-icon--color-white next-icon--size-12"> <use xlink:href="#next-remove"></use> </svg></button>
+
+Text: 
+        Refresh
+       | Type: submit | Disabled: False
+HTML: <button class="ui-button" id="refresh-page-trigger">
+        Refresh
+      </button>
+
+Text: 
+    @.
+   | Type: button | Disabled: False
+HTML: <button type="button" class="ui-button ui-button--link">
+    <span class="suggested-local"></span>@<span class="suggested-second"></span><span class="suggested-period">.</span><span class="suggested-top"></span>
+  </button>
+
+Text: Continue with email | Type: submit | Disabled: True
+HTML: <button class="ui-button ui-button--primary ui-button--full-width ui-button--size-large captcha__submit login-button ui-button--has-hover-icon" type="submit" name="commit" disabled="disabled" data-bind-event-click="setLastAuthMethod(&quot;email&quot;)">
+      <span class="content">
+        <span class="ui-button__text">Continue with email</span>
+        <span class="ui-button__hover-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M3.49951 10C3.49951 9.58579 3.8353 9.25 4.24951 9.25L13.9391 9.25L11.2192 6.53036C10.9263 6.23748 10.9263 5.7626 11.2192 5.4697C11.512 5.17679 11.9869 5.17676 12.2798 5.46964L16.2802 9.46964C16.4209 9.6103 16.4999 9.80107 16.4999 10C16.4999 10.1989 16.4209 10.3897 16.2802 10.5304L12.2798 14.5304C11.9869 14.8232 11.512 14.8232 11.2192 14.5303C10.9263 14.2374 10.9263 13.7625 11.2192 13.4696L13.9391 10.75L4.24951 10.75C3.8353 10.75 3.49951 10.4142 3.49951 10Z" fill="currentColor"></path>
+</svg></span>
+      </span>
+      <span class="last-used-pill" style="display: none;">
+        Last used
+      </span>
+</button>
+
+Text: Sign in with passkey | Type: button | Disabled: False
+HTML: <button class="ui-button ui-button--full-width ui-button--size-large passkey-login-button" id="web_authn_btn_trigger" data-bind-event-click="setLastAuthMethod(&quot;psk&quot;), getLoadingAttestation()" type="button" name="button">
+    <span id="passkey-available-icon" class="next-icon next-icon--size-20 icon-reset">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9 3C7.067 3 5.5 4.567 5.5 6.5C5.5 8.433 7.067 10 9 10C10.933 10 12.5 8.433 12.5 6.5C12.5 4.567 10.933 3 9 3ZM7 6.5C7 5.39543 7.89543 4.5 9 4.5C10.1046 4.5 11 5.39543 11 6.5C11 7.60457 10.1046 8.5 9 8.5C7.89543 8.5 7 7.60457 7 6.5Z" fill="currentColor"></path>
+<path d="M4.82727 14.9552C5.66915 13.4398 7.26644 12.5 8.99999 12.5C9.4142 12.5 9.74999 12.1642 9.74999 11.75C9.74999 11.3358 9.4142 11 8.99999 11C6.72169 11 4.62247 12.2352 3.51603 14.2268L3.07937 15.0128C2.58406 15.9043 3.22875 17 4.24867 17H10.25C10.6642 17 11 16.6642 11 16.25C11 15.8358 10.6642 15.5 10.25 15.5H4.52463L4.82727 14.9552Z" fill="currentColor"></path>
+<path d="M15.125 12.5C15.6082 12.5 16 12.1082 16 11.625C16 11.1418 15.6082 10.75 15.125 10.75C14.6418 10.75 14.25 11.1418 14.25 11.625C14.25 12.1082 14.6418 12.5 15.125 12.5Z" fill="currentColor"></path>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6745 14.8747C18.3217 14.4561 18.75 13.7281 18.75 12.9V11.625C18.75 9.62297 17.127 8 15.125 8C13.123 8 11.5 9.62297 11.5 11.625V12.9C11.5 13.8004 12.0064 14.5826 12.75 14.9772V16.8509C12.75 17.24 12.8635 17.6207 13.0766 17.9462L13.4986 18.591C14.1635 19.6068 15.5727 19.8007 16.4873 19.0023L17.0399 18.5198C17.7394 17.9091 17.9009 16.9369 17.5338 16.1584C17.7228 15.7633 17.7765 15.3088 17.6745 14.8747ZM14.2026 13.9609C14.1351 13.8353 14.0025 13.75 13.85 13.75C13.3806 13.75 13 13.3694 13 12.9V11.625C13 10.4514 13.9514 9.5 15.125 9.5C16.2986 9.5 17.25 10.4514 17.25 11.625V12.9C17.25 13.3694 16.8694 13.75 16.4 13.75H16.1818C15.9938 13.75 15.8301 13.8537 15.7447 14.0071C15.7202 14.051 15.7021 14.0991 15.6918 14.15C15.6853 14.1823 15.6818 14.2158 15.6818 14.25V14.3215C15.6818 14.4106 15.7056 14.4975 15.75 14.5736C15.7632 14.5961 15.7781 14.6177 15.7948 14.6381L16.1262 15.0431C16.1487 15.0706 16.1672 15.0998 16.1818 15.13C16.2004 15.1685 16.2129 15.2087 16.2194 15.2493C16.2497 15.4405 16.15 15.6426 15.9533 15.7227C15.8642 15.759 15.7958 15.8192 15.75 15.8915C15.6613 16.0314 15.657 16.2166 15.75 16.3612C15.7742 16.3988 15.8049 16.4336 15.8424 16.4642L16.0405 16.6256C16.2807 16.8213 16.2869 17.1861 16.0535 17.3898L15.5008 17.8723C15.2722 18.0719 14.9199 18.0234 14.7536 17.7695L14.3316 17.1247C14.2784 17.0434 14.25 16.9482 14.25 16.8509V14.15C14.25 14.0816 14.2328 14.0172 14.2026 13.9609Z" fill="currentColor"></path>
+</svg>
+
+    </span>
+    <span id="passkey-loading-icon" class="hidden">
+      <span role="img" class="ui-spinner ui-spinner--size-small"></span>
+    </span>
+
+    <p>Sign in with passkey</p>
+      <span class="last-used-pill" style="display: none;">
+        Last used
+        </span>
+</button>
+

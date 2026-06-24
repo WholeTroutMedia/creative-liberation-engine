@@ -1,0 +1,17 @@
+{
+  "name": "@cle/davinci-resolve-mcp",
+  "version": "2.0.3",
+  "description": "Creative Liberation Engine v5 \u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u009d DaVinci Resolve MCP Server",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "devDependencies": {
+    "@cle/tsconfig": "workspace:*",
+    "@types/node": "^25.3.5",
+    "typescript": "^5.3.0"
+  }
+}
