@@ -1,9 +1,0 @@
-# Aurora Memory
-
-This directory stores Aurora's design decisions and learnings.
-
-## Structure
-
-- `design-decisions.json` - Major design choices with rationale
-- `learnings.md` - Compound learning contributions
-- `project-history.md` - Project work completed

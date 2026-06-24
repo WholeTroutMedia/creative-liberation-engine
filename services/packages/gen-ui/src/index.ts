@@ -1,1 +1,0 @@
-export function init() { console.log("Generative UI System initialized"); }

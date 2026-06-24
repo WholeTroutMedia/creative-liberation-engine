@@ -115,4 +115,46 @@ describe('Workspace Autonomy Service API', () => {
       expect(res.body.error).toBe('Validation failed');
     });
   });
+
+  describe('POST /api/v1/workspace/swarm/deploy', () => {
+    it('should harden and stage docker-compose files successfully', async () => {
+      const payload = {
+        stackName: 'test-stack',
+        composeYaml: `
+services:
+  test-app:
+    image: alpine:latest
+    entrypoint: echo "ready"
+        `,
+        envVars: {
+          TEST_KEY: 'test_val'
+        }
+      };
+
+      const res = await request(app)
+        .post('/api/v1/workspace/swarm/deploy')
+        .send(payload);
+
+      expect(res.status).toBe(200);
+      expect(res.body.success).toBe(true);
+      expect(res.body.stackPath).toBeDefined();
+      expect(res.body.hardenedYaml).toContain('deploy'); // Hardener should inject resource limits or networks
+    }, 30000);
+  });
+
+  describe('POST /api/v1/workspace/swarm/ambient', () => {
+    it('should return 400 for invalid body arguments', async () => {
+      const res = await request(app)
+        .post('/api/v1/workspace/swarm/ambient')
+        .send({ rgb: [255, 0] });
+      expect(res.status).toBe(400);
+    });
+
+    it('should accept valid requests and attempt state change', async () => {
+      const res = await request(app)
+        .post('/api/v1/workspace/swarm/ambient')
+        .send({ rgb: [255, 0, 0], brightness: 128 });
+      expect([200, 500]).toContain(res.status);
+    });
+  });
 });

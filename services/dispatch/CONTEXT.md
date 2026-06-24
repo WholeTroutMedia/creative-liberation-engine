@@ -30,7 +30,7 @@ Health:     http://127.0.0.1:5050/health
 
 ## Persistence
 
-JSON files at `/volume1/docker/dispatch/` on NAS (Z:\ Docker share):
+JSON files at `/app/dispatch/` on NAS (Z:\ Docker share):
 - `tasks.json` â€” all tasks
 - `agents.json` â€” connected agents
 - `projects.json` â€” org project registry

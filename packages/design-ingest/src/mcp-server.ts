@@ -2,7 +2,7 @@
 /**
  * Design Ingest MCP Server
  *
- * Brokers the Design Ingestion Pipeline: Framer, Mobbin, and Vision based RAG.
+ * Brokers the Design Ingestion Pipeline: Canvas, Mobbin, and Vision based RAG.
  */
 
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
@@ -11,12 +11,13 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import { FramerExtractor } from './framer.js';
+import { CanvasExtractor } from './framer.js';
 import { MobbinExtractor } from './mobbin.js';
 import { VisionExtractor } from './vision.js';
 import path from 'path';
+import fs from 'fs';
 
-const framerExtractor = new FramerExtractor();
+const canvasExtractor = new CanvasExtractor();
 const mobbinExtractor = new MobbinExtractor();
 const visionExtractor = new VisionExtractor();
 
@@ -28,12 +29,24 @@ const server = new Server(
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
     {
-      name: 'design.extract_framer',
-      description: 'Extracts living parameterized React code from a live Framer component URL using unframer.',
+      name: 'design.extract_canvas',
+      description: 'Extracts living parameterized React code from a live visual canvas component URL using unframer and applies style harmonization + layout constraints auditing.',
       inputSchema: {
         type: 'object',
         properties: {
-          url: { type: 'string', description: 'The Framer canvas URL' },
+          url: { type: 'string', description: 'The visual canvas component URL' },
+          targetComponent: { type: 'string', description: 'The specific component name to extract' }
+        },
+        required: ['url', 'targetComponent']
+      },
+    },
+    {
+      name: 'design.extract_framer',
+      description: 'Legacy alias for design.extract_canvas. Extracts component from visual canvas URL.',
+      inputSchema: {
+        type: 'object',
+        properties: {
+          url: { type: 'string', description: 'The visual canvas component URL' },
           targetComponent: { type: 'string', description: 'The specific component name to extract' }
         },
         required: ['url', 'targetComponent']
@@ -68,13 +81,18 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
   switch (name) {
+    case 'design.extract_canvas':
     case 'design.extract_framer': {
       const { url, targetComponent } = args as Record<string, string>;
-      const outDir = path.resolve('..', '..', 'apps', 'console', 'src', 'components', 'framer', targetComponent);
       
-      // Fire and forget since extraction might take a bit, but for MCP we'll await it to provide feedback
+      // Determine output directory - check if apps/engine-room exists
+      let outDir = path.resolve(process.cwd(), '..', '..', 'apps', 'engine-room', 'src', 'components', 'canvas', targetComponent);
+      if (!fs.existsSync(path.dirname(path.dirname(outDir)))) {
+          outDir = path.resolve(process.cwd(), '..', '..', 'apps', 'console', 'src', 'components', 'canvas', targetComponent);
+      }
+      
       try {
-          const result = await framerExtractor.extract(url, outDir);
+          const result = await canvasExtractor.extract(url, outDir, targetComponent);
           
           if (result.success) {
                return {
@@ -82,25 +100,25 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
                       type: 'text',
                       text: JSON.stringify({
                           status: 'extraction_complete',
-                          vector: 'framer',
+                          vector: 'canvas',
                           url,
                           targetComponent,
                           savedTo: result.outPath,
-                          message: 'Component successfully extracted and saved to Component Registry directory. You should now register this in apps/console/src/registry/components.ts'
+                          message: 'Component successfully extracted, style-harmonized, and registered in the Canvas Ingestion Library.'
                       })
                   }]
               };
           } else {
-              return {
+               return {
                   content: [{ type: 'text', text: `Extraction failed: ${result.error}` }],
                   isError: true
               };
           }
       } catch (err: any) {
-           return {
-               content: [{ type: 'text', text: `Extraction error: ${err.message}` }],
-               isError: true
-           };
+            return {
+                content: [{ type: 'text', text: `Extraction error: ${err.message}` }],
+                isError: true
+            };
       }
     }
     case 'design.extract_mobbin': {
@@ -127,7 +145,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     case 'design.vision_reconstruct': {
         const { url } = args as Record<string, string>;
         const componentName = url.replace(/[^a-zA-Z0-9]/g, '');
-        const outDir = path.resolve('..', '..', 'apps', 'console', 'src', 'components', 'vision', componentName);
+        const outDir = path.resolve(process.cwd(), '..', '..', 'apps', 'console', 'src', 'components', 'vision', componentName);
         
         try {
             const result = await visionExtractor.reconstruct(url, outDir);

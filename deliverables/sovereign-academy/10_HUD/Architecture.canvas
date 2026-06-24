@@ -1,1 +1,0 @@
-{"nodes":[{"id":"state-node","x":-300,"y":-100,"width":250,"height":150,"type":"file","file":"00_STATE/STATE.md"},{"id":"hud-node","x":100,"y":-100,"width":250,"height":150,"type":"file","file":"10_HUD/Main_Dashboard.md"}],"edges":[{"id":"edge-1","fromNode":"state-node","fromSide":"right","toNode":"hud-node","toSide":"left"}]}

@@ -244,6 +244,9 @@ importers:
       express:
         specifier: ^4.18.3
         version: 4.22.2
+      path-to-regexp:
+        specifier: 0.1.13
+        version: 0.1.13
       ws:
         specifier: ^8.16.0
         version: 8.20.0
@@ -2419,7 +2422,7 @@ importers:
         version: 4.22.2
       googleapis:
         specifier: ^144.0.0
-        version: 144.0.0
+        version: 144.0.0(encoding@0.1.13)
       zod:
         specifier: ^3.22.4
         version: 3.25.76
@@ -2785,6 +2788,9 @@ importers:
       express:
         specifier: ^4.18.2
         version: 4.22.2
+      path-to-regexp:
+        specifier: 0.1.13
+        version: 0.1.13
       zod:
         specifier: ^3.22.4
         version: 3.25.76
@@ -2816,6 +2822,9 @@ importers:
       express:
         specifier: ^4.18.2
         version: 4.22.2
+      path-to-regexp:
+        specifier: 0.1.13
+        version: 0.1.13
       ws:
         specifier: ^8.16.0
         version: 8.20.0
@@ -3151,6 +3160,9 @@ importers:
       express:
         specifier: ^4.21.2
         version: 4.22.2
+      path-to-regexp:
+        specifier: 0.1.13
+        version: 0.1.13
 
   services/render-daemon: {}
 
@@ -3210,6 +3222,9 @@ importers:
       express:
         specifier: ^4.21.0
         version: 4.22.2
+      path-to-regexp:
+        specifier: 0.1.13
+        version: 0.1.13
       pino:
         specifier: ^9.6.0
         version: 9.14.0
@@ -3504,6 +3519,12 @@ importers:
 
   services/workspace-autonomy:
     dependencies:
+      '@creative-liberation-engine/a2a-protocol':
+        specifier: workspace:*
+        version: link:../../packages/a2a-protocol
+      '@cle/compose-hardener':
+        specifier: workspace:*
+        version: link:../../packages/compose-hardener
       express:
         specifier: ^4.21.0
         version: 4.22.2
@@ -3519,6 +3540,9 @@ importers:
       uuid:
         specifier: ^11.1.0
         version: 11.1.1
+      ws:
+        specifier: ^8.18.0
+        version: 8.20.0
       zod:
         specifier: ^3.23.0
         version: 3.25.76
@@ -3535,6 +3559,9 @@ importers:
       '@types/uuid':
         specifier: ^10.0.0
         version: 10.0.0
+      '@types/ws':
+        specifier: ^8.5.12
+        version: 8.18.1
       supertest:
         specifier: ^7.0.0
         version: 7.2.2
@@ -18917,7 +18944,7 @@ snapshots:
       - encoding
       - supports-color
 
-  googleapis@144.0.0:
+  googleapis@144.0.0(encoding@0.1.13):
     dependencies:
       google-auth-library: 9.15.1(encoding@0.1.13)
       googleapis-common: 7.2.0(encoding@0.1.13)

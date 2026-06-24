@@ -52,7 +52,7 @@ volumes:
       type: none
       o: bind
       # NAS bind mount — symlink /data/dispatch to NAS volume
-      device: ${DISPATCH_DATA_PATH:-/volume1/docker/cle-dispatch/data}
+      device: ${DISPATCH_DATA_PATH:-/app/cle-dispatch/data}
 
 networks:
   cle-mesh:

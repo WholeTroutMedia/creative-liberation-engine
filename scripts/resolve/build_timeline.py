@@ -2,6 +2,7 @@ import os
 import json
 import random
 import argparse
+import subprocess
 import urllib.request
 import urllib.error
 
@@ -32,6 +33,7 @@ def main():
     parser.add_argument("--audio", "-a", required=True, help="Path to the master audio bed track on the NAS/network")
     parser.add_argument("--project", "-p", default="Sovereign Supercut", help="Name of the Resolve project to create")
     parser.add_argument("--timeline", "-t", default="Supercut Timeline", help="Name of the timeline within the project")
+    parser.add_argument("--database", "-d", default="Barnstorm", help="Target Resolve database/Project Library")
     parser.add_argument("--fps", type=float, default=23.976, help="Timeline frame rate (default 23.976)")
     parser.add_argument("--slice", "-s", type=float, default=3.0, help="Cut slice duration in seconds (default 3.0)")
     parser.add_argument("--use-proxies", action="store_true", help="If set, imports proxy clips in Resolve instead of high-res source files")
@@ -49,6 +51,7 @@ def main():
     print(f"Catalog JSON    : {args.catalog}")
     print(f"Master Audio    : {args.audio}")
     print(f"Resolve Project : {args.project}")
+    print(f"Target Database : {args.database}")
     print(f"Timeline Name   : {args.timeline}")
     print(f"Frame Rate (FPS): {args.fps}")
     print(f"Slice Duration  : {args.slice}s")
@@ -83,25 +86,22 @@ def main():
     
     print(f"Master Audio Duration: {song_duration:.2f} seconds | Slots: {total_slots}")
     
-    # 2. Divide song into slots and construct the EDL (Edit Decision List) sequence
+    # 2. Divide song into slots and construct the EDL sequence
     selected_sequence = []
     
     for k in range(total_slots):
         start_time = k * args.slice
         end_time = (k + 1) * args.slice
         
-        # Find matched clips covering this temporal range
         candidates = []
         for path, clip in matches.items():
             offset = clip["match_offset"]
             duration = clip["duration"]
             if offset <= start_time and (offset + duration) >= end_time:
-                # Resolve target clip path (source vs proxy)
                 target_path = find_proxy_path(path) if args.use_proxies else path
                 candidates.append((target_path, clip))
                 
         if candidates:
-            # Pick a random candidate clip for high visual energy
             target_path, clip = random.choice(candidates)
             source_in = int((start_time - clip["match_offset"]) * args.fps)
             source_out = source_in + slice_frames
@@ -113,7 +113,6 @@ def main():
                 "is_fallback": False
             })
         else:
-            # Fallback: select a random clip and cut a random 3-second segment (creates continuous pacing)
             path, clip = random.choice(list(matches.items()))
             target_path = find_proxy_path(path) if args.use_proxies else path
             duration_frames = int(clip["duration"] * args.fps)
@@ -130,13 +129,11 @@ def main():
                 "is_fallback": True
             })
             
-    # Deduplicate video import list
     unique_paths = list(set([item["path"] for item in selected_sequence]))
     print(f"Generated timeline sequence: {len(selected_sequence)} slices from {len(unique_paths)} unique videos.")
     
-    # 3. Helper to send code to Resolve bridge
     def execute_resolve_code(code, action_desc):
-        payload = {"code": code}
+        payload = {"code": code, "projectName": args.project}
         req = urllib.request.Request(args.bridge_url, data=json.dumps(payload).encode("utf-8"), method="POST")
         req.add_header("Content-Type", "application/json")
         try:
@@ -149,39 +146,113 @@ def main():
 
     print("\n--- INITIATING DYNAMIC TIMELINE ASSEMBLY ---")
 
-    # Step 3.1: Initialize Project, FPS settings and Import Master Audio
-    print("Step 1: Initializing Resolve project & importing master audio track...")
+    # Step 3.1: Initialize Project safely inside the target database & folder
+    print(f"Step 1: Safely connecting to database '{args.database}', creating/loading project '{args.project}'...")
     init_code = f"""
 resolve = dvr_script.scriptapp("Resolve")
 pm = resolve.GetProjectManager()
-current_project = pm.GetCurrentProject()
-if current_project:
-    pm.CloseProject(current_project)
 
-pm.DeleteProject("{args.project}")
-proj = pm.CreateProject("{args.project}")
+current_db = pm.GetCurrentDatabase()
+current_db_name = current_db.get("DbName", "")
+
+# 1. Database switching safety check
+if current_db_name != "{args.database}":
+    db_list = pm.GetDatabaseList()
+    target_db_info = None
+    for db in db_list:
+        if db.get("DbName") == "{args.database}":
+            target_db_info = db
+            break
+    if target_db_info:
+        active_proj = pm.GetCurrentProject()
+        if active_proj and active_proj.GetName() != "Untitled Project":
+            active_name = active_proj.GetName()
+            is_production_db = current_db_name in ["Barnstorm", "Jaymee", "Levi"]
+            is_test_proj = any(kw in active_name.lower() for kw in ["test", "autogen", "temp", "splat", "conform", "demo", "scratch"])
+            if is_production_db and not is_test_proj:
+                result = {{"success": False, "error": f"Resolve Safety Gate: Active GUI project '{{active_name}}' is open in library '{{current_db_name}}'. Switch to '{args.database}' rejected."}}
+                raise RuntimeError("Database switch safety block")
+        print("Switching database to: {args.database}")
+        pm.SetCurrentDatabase(target_db_info)
+
+# 2. Active project protection safety check
+active_proj = pm.GetCurrentProject()
+if active_proj and active_proj.GetName() != "Untitled Project" and active_proj.GetName() != "{args.project}":
+    active_name = active_proj.GetName()
+    current_db = pm.GetCurrentDatabase()
+    current_db_name = current_db.get("DbName", "")
+    is_production_db = current_db_name in ["Barnstorm", "Jaymee", "Levi"]
+    is_test_proj = any(kw in active_name.lower() for kw in ["test", "autogen", "temp", "splat", "conform", "demo", "scratch"])
+    if is_production_db and not is_test_proj:
+        result = {{"success": False, "error": f"Resolve Safety Gate: Active GUI project '{{active_name}}' is open. Project change to '{args.project}' rejected."}}
+        raise RuntimeError("Active project safety block")
+
+# 3. Dynamic project folder organization inside the database
+lower_path = "{args.project}".lower()
+if "patreon" in lower_path:
+    folder_path = "Patreon"
+elif "podcast" in lower_path:
+    folder_path = "Podcast"
+elif "splat" in lower_path or "3dgs" in lower_path:
+    folder_path = "3DGS_Splat"
+else:
+    folder_path = "Automation"
+
+pm.GotoRootFolder()
+existing_folders = pm.GetFolderListInCurrentFolder() or []
+if folder_path not in existing_folders:
+    pm.CreateFolder(folder_path)
+pm.OpenFolder(folder_path)
+
+# 4. Load or create project
+project_list = pm.GetProjectListInCurrentFolder() or []
+proj = None
+if "{args.project}" in project_list:
+    proj = pm.LoadProject("{args.project}")
+else:
+    proj = pm.CreateProject("{args.project}")
+
 if proj:
     proj.SetSetting("timelineFrameRate", "{args.fps}")
     mp = proj.GetMediaPool()
     root_folder = mp.GetRootFolder()
     
-    # Create or retrieve bins
-    audio_folder = mp.AddSubFolder(root_folder, "Master Audio")
-    video_folder = mp.AddSubFolder(root_folder, "Raw Video Clips")
-    
+    audio_folder = None
+    video_folder = None
+    for f in root_folder.GetSubFolderList():
+        if f.GetName() in ["Master Audio", "Audio"]:
+            audio_folder = f
+        elif f.GetName() in ["Raw Video Clips", "Proxies"]:
+            video_folder = f
+            
+    if not audio_folder:
+        audio_folder = mp.AddSubFolder(root_folder, "Master Audio")
+    if not video_folder:
+        video_folder = mp.AddSubFolder(root_folder, "Raw Video Clips")
+        
     mp.SetCurrentFolder(audio_folder)
-    mp.ImportMedia([r"{args.audio}"])
+    
+    # Avoid duplicate audio import
+    audio_exists = False
+    for clip in audio_folder.GetClipList() or []:
+        if clip.GetClipProperty("File Path") == r"{args.audio}":
+            audio_exists = True
+            break
+    if not audio_exists:
+        mp.ImportMedia([r"{args.audio}"])
+        
     pm.SaveProject()
     result = {{"success": True}}
 else:
-    result = {{"success": False, "error": "Failed to create project"}}
+    result = {{"success": False, "error": "Failed to create or load project"}}
 """
     res = execute_resolve_code(init_code, "Project Initialization")
     if not res or not res.get("success", False):
-        print("Initialization failed. Aborting assembly.")
+        error_msg = res.get("error", "Unknown error during project initialization.") if res else "Connection failed."
+        print(f"\n[ERROR] Initialization failed: {error_msg}")
         return
 
-    # Step 3.2: Batch Import Video Clips (chunked to avoid socket resets)
+    # Step 3.2: Batch Import Video Clips
     chunk_size = 5
     total_chunks = (len(unique_paths) - 1) // chunk_size + 1
     print(f"Step 2: Batch importing {len(unique_paths)} video assets into media pool in {total_chunks} chunk(s) (chunk size: {chunk_size})...")
@@ -198,13 +269,77 @@ root_folder = mp.GetRootFolder()
 
 video_folder = None
 for f in root_folder.GetSubFolderList():
-    if f.GetName() == "Raw Video Clips":
+    if f.GetName() in ["Raw Video Clips", "Proxies"]:
         video_folder = f
         break
 
 if video_folder:
     mp.SetCurrentFolder(video_folder)
-    mp.ImportMedia({repr(chunk)})
+    imported_clips = mp.ImportMedia({repr(chunk)})
+    if not imported_clips:
+        all_clips = video_folder.GetClipList() or []
+        imported_clips = []
+        chunk_basenames = [os.path.basename(p) for p in {repr(chunk)}]
+        for c in all_clips:
+            file_path = c.GetClipProperty("File Path")
+            if file_path and os.path.basename(file_path) in chunk_basenames:
+                imported_clips.append(c)
+    
+    # Metadata Injection logic
+    import os
+    import json
+    for mv in imported_clips or []:
+        file_path = mv.GetClipProperty("File Path")
+        if not file_path:
+            continue
+        sidecar_path = file_path + ".json"
+        if not os.path.exists(sidecar_path):
+            base, ext = os.path.splitext(file_path)
+            sidecar_path = base + ".json"
+            
+        if os.path.exists(sidecar_path):
+            try:
+                with open(sidecar_path, "r", encoding="utf-8") as sf:
+                    meta = json.load(sf)
+                tags = meta.get("tags", [])
+                env = meta.get("environmental", dict())
+                sync = meta.get("sync", dict())
+                
+                # Set description and keywords
+                description = ", ".join(tags)
+                mv.SetMetadata("Description", description)
+                mv.SetMetadata("Keywords", description)
+                
+                # Set comments
+                comments = f"Ingested by camera-ingest. Checksum: {{meta.get('checksum_sha256', '')}}"
+                mv.SetMetadata("Comments", comments)
+                
+                # Set Camera
+                camera_id = env.get("camera_id") or meta.get("source_device")
+                if camera_id:
+                    mv.SetMetadata("Camera", str(camera_id))
+                
+                # Set start timecode
+                tc = sync.get("timecode")
+                if tc:
+                    mv.SetMetadata("Start TC", str(tc))
+                    
+                # Set clip color based on sharpness
+                sharpness = env.get("sharpness", 120.0)
+                if sharpness > 150.0:
+                    mv.SetClipColor("Green")
+                    mv.AddFlag("Green")
+                elif sharpness < 90.0:
+                    mv.SetClipColor("Red")
+                    mv.AddFlag("Red")
+                else:
+                    mv.SetClipColor("Yellow")
+                    
+                if "selected" in [t.lower() for t in tags]:
+                    mv.AddFlag("Blue")
+            except Exception as me:
+                print(f"Error applying metadata inside bridge: {{me}}")
+                
     pm.SaveProject()
     result = {{"success": True}}
 else:
@@ -225,9 +360,9 @@ root_folder = mp.GetRootFolder()
 audio_folder = None
 video_folder = None
 for f in root_folder.GetSubFolderList():
-    if f.GetName() == "Master Audio":
+    if f.GetName() in ["Master Audio", "Audio"]:
         audio_folder = f
-    elif f.GetName() == "Raw Video Clips":
+    elif f.GetName() in ["Raw Video Clips", "Proxies"]:
         video_folder = f
 
 # Get all imported video items
@@ -256,7 +391,7 @@ timeline = mp.CreateEmptyTimeline("{args.timeline}")
 if audio_clip:
     mp.AppendToTimeline([audio_clip])
 
-# Append video slices sequentially (Audio automatically routes to Track 2)
+# Append video slices sequentially
 sequence = {repr(selected_sequence)}
 appended_count = 0
 

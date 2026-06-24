@@ -7,7 +7,7 @@ Runs at `127.0.0.1:5050` on the Synology NAS via Docker.
 
 ```bash
 # On the NAS (SSH in via Terminal)
-cd /volume1/docker/cle-dispatch
+cd /app/cle-dispatch
 
 # Copy env template
 cp .env.example .env
@@ -25,7 +25,7 @@ curl http://127.0.0.1:5050/health
 | Variable | Required | Default | Description |
 |---|---|---|---|
 | `DISPATCH_VAULT_KEY` | âœ… | â€” | 32-char AES key for secret vault encryption |
-| `DISPATCH_DATA_PATH` | â€” | `/volume1/docker/cle-dispatch/data` | NAS bind-mount for SQLite |
+| `DISPATCH_DATA_PATH` | â€” | `/app/cle-dispatch/data` | NAS bind-mount for SQLite |
 | `REDIS_ENABLED` | â€” | `false` | Enable Redis pub/sub for multi-instance SSE fanout |
 | `REDIS_HOST` | â€” | `127.0.0.1` | Redis host |
 | `REDIS_PORT` | â€” | `6379` | Redis port |

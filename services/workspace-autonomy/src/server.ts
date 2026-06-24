@@ -5,6 +5,8 @@ import { SAMRuntime } from './sam-runtime.js';
 import { SARRuntime } from './sar-runtime.js';
 import { GoogleSparkEngine, TelemetryPayload } from './modules/google-spark-engine.js';
 import { WorkspaceMcpClient } from './modules/mcp-client.js';
+import { SenchoClient } from './modules/sencho.js';
+import { MatterBridge } from './modules/matter-bridge.js';
 
 const logger = pino({
   name: 'workspace-autonomy:server',
@@ -172,6 +174,64 @@ app.post('/api/v1/workspace/spark/sweep', async (req, res) => {
     const summary = await executeSparkSweep();
     res.json({ success: true, summary });
   } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ─── SWARM STACK & AMBIENT TWIN ENDPOINTS ──────────────────────────────────────
+
+const senchoClient = new SenchoClient();
+const matterBridge = new MatterBridge();
+
+matterBridge.connect().then((connected) => {
+  if (connected) {
+    logger.info('[Matter Bridge] Pre-connected and active.');
+    matterBridge.registerPanicCallback(() => {
+      logger.warn('[Matter Bridge] Emergency Panic Event Triggered! Halting swarm tasks...');
+    });
+  } else {
+    logger.warn('[Matter Bridge] Pre-connection failed. Reconnecting in background.');
+  }
+}).catch(err => {
+  logger.error({ err: err.message }, '[Matter Bridge] Connection error during startup');
+});
+
+/**
+ * Deploy Docker Compose stacks via Sencho with hardener validation
+ */
+app.post('/api/v1/workspace/swarm/deploy', async (req, res) => {
+  const { stackName, composeYaml, envVars } = req.body;
+  if (!stackName || !composeYaml) {
+    return res.status(400).json({ error: 'Missing stackName or composeYaml' });
+  }
+
+  try {
+    const result = await senchoClient.deployStack(stackName, composeYaml, envVars);
+    if (result.success) {
+      res.json(result);
+    } else {
+      res.status(500).json(result);
+    }
+  } catch (err: any) {
+    logger.error({ err: err.message }, 'Sencho deployment route error');
+    res.status(500).json({ error: err.message });
+  }
+});
+
+/**
+ * Control ambient lighting twin state via HASS
+ */
+app.post('/api/v1/workspace/swarm/ambient', async (req, res) => {
+  const { rgb, brightness } = req.body;
+  if (!Array.isArray(rgb) || rgb.length !== 3 || typeof brightness !== 'number') {
+    return res.status(400).json({ error: 'Invalid rgb (array of 3 numbers) or brightness (number)' });
+  }
+
+  try {
+    const result = await matterBridge.setLightState(rgb as [number, number, number], brightness);
+    res.json({ success: true, result });
+  } catch (err: any) {
+    logger.error({ err: err.message }, 'Matter ambient route error');
     res.status(500).json({ error: err.message });
   }
 });

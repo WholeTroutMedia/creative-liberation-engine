@@ -87,7 +87,7 @@ export async function collectNASVolumes(): Promise<VolumeEntity[]> {
         { id: 'volume1', name: 'volume1', path: '/volume1' },
         { id: 'media', name: 'media', path: '/volume1/media' },
         { id: 'homes', name: 'homes', path: '/volume1/homes' },
-        { id: 'docker', name: 'docker', path: '/volume1/docker' },
+        { id: 'docker', name: 'docker', path: '/app' },
     ];
 
     // Try DSM API for real disk usage (no auth = limited data, auth optional)

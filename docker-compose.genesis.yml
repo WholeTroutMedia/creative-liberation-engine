@@ -1326,9 +1326,25 @@ services:
     environment:
       - TZ=America/New_York
     volumes:
-      - homeassistant_data:/config
+      - /app/creative-liberation-engine/infra/ha-hosting/ha-runtime:/config
     network_mode: host
     restart: unless-stopped
+
+  sencho:
+    image: ghcr.io/studio-saelix/sencho:latest
+    container_name: sencho
+    restart: unless-stopped
+    ports:
+      - "8082:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - /app/creative-liberation-engine/data/sencho:/app/data:rw
+      - /app/creative-liberation-engine:/workspace:rw
+    environment:
+      - TZ=America/New_York
+      - SENCHO_SECRET=${SENCHO_SECRET:-sovereign_sencho_secret_v6}
+    networks:
+      - genesis-net
 
   #  HOLYCLAUDE  Sovereign Remote AI Workplace 
   holyclaude:

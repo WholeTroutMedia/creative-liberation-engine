@@ -82,6 +82,68 @@ class ResolveBridgeRequestHandler(BaseHTTPRequestHandler):
         """Override to suppress noisy tracebacks for disconnected clients."""
         print(f"[bridge] {self.client_address[0]} - {format % args}")
 
+    def is_safe_to_modify(self, target_project=None):
+        resolve = get_resolve()
+        if not resolve:
+            return True, None
+            
+        pm = resolve.GetProjectManager()
+        if not pm:
+            return True, None
+            
+        # Check if GUI is running
+        try:
+            import subprocess
+            cmd = 'wmic process where "name=\'Resolve.exe\'" get ProcessId,CommandLine /format:list'
+            output = subprocess.check_output(cmd, shell=True).decode("utf-8", errors="ignore")
+            procs = []
+            current_proc = {}
+            for line in output.splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                if line.startswith("CommandLine="):
+                    current_proc["commandline"] = line[12:]
+                elif line.startswith("ProcessId="):
+                    current_proc["pid"] = line[10:]
+                    procs.append(current_proc)
+                    current_proc = {}
+                    
+            gui_running = False
+            for p in procs:
+                cmdline = p.get("commandline", "")
+                if cmdline and "-nogui" not in cmdline.lower():
+                    gui_running = True
+                    break
+            
+            # If no GUI is active, it is always safe to run background automation
+            if not gui_running:
+                return True, None
+        except Exception:
+            pass # Fallback to standard check if process check fails
+            
+        active_project = pm.GetCurrentProject()
+        current_db = pm.GetCurrentDatabase()
+        current_db_name = current_db.get("DbName", "")
+        
+        # Working production databases that must be protected
+        production_dbs = {"Barnstorm", "Jaymee", "Levi"}
+        
+        if active_project and active_project.GetName() != "Untitled Project":
+            active_name = active_project.GetName()
+            
+            # If target project matches active project, it is safe (media conforming in active project)
+            if target_project and active_name == target_project:
+                return True, None
+                
+            is_production_db = current_db_name in production_dbs
+            is_test_project = any(kw in active_name.lower() for kw in ["test", "autogen", "temp", "splat", "conform", "demo", "scratch"])
+            
+            if is_production_db and not is_test_project:
+                return False, f"Resolve Safety Gate: Active GUI project '{active_name}' is open in database '{current_db_name}'. Modified operation rejected to prevent interrupting your work."
+                
+        return True, None
+
     def do_OPTIONS(self):
         self._send_response(200, {"status": "ok"})
 
@@ -101,6 +163,18 @@ class ResolveBridgeRequestHandler(BaseHTTPRequestHandler):
             self._send_response(400, {"error": "Invalid JSON"})
             return
 
+        # safety gate on modifying operations
+        modifying_paths = {
+            "/transcribe", "/classify-audio", "/deblur", "/intellisearch",
+            "/slate-sync", "/generate-speech", "/assemble-timeline", "/execute"
+        }
+        if self.path in modifying_paths:
+            target_project = params.get("projectName", None)
+            is_safe, error_msg = self.is_safe_to_modify(target_project)
+            if not is_safe:
+                self._send_response(403, {"error": error_msg})
+                return
+
         if self.path == "/transcribe":
             self.handle_transcribe(params)
         elif self.path == "/classify-audio":
@@ -119,6 +193,7 @@ class ResolveBridgeRequestHandler(BaseHTTPRequestHandler):
             self.handle_execute(params)
         else:
             self._send_response(404, {"error": "Not Found"})
+
 
     def handle_health(self):
         resolve = get_resolve()

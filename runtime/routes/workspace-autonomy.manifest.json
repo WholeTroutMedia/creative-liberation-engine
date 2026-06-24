@@ -79,6 +79,57 @@
         "logFields": ["routeId", "statusCode"]
       },
       "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_spark_sweep",
+      "path": "/api/v1/workspace/spark/sweep",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/spark/sweep",
+      "authPolicy": "service_token",
+      "timeoutMs": 30000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_swarm_deploy",
+      "path": "/api/v1/workspace/swarm/deploy",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/swarm/deploy",
+      "authPolicy": "service_token",
+      "timeoutMs": 120000,
+      "criticality": "tier1",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode", "stackName"]
+      },
+      "lifecycle": "active"
+    },
+    {
+      "routeId": "route_workspace_autonomy_swarm_ambient",
+      "path": "/api/v1/workspace/swarm/ambient",
+      "method": "POST",
+      "owner": "ATHENA",
+      "upstreamService": "workspace-autonomy",
+      "upstreamPath": "/api/v1/workspace/swarm/ambient",
+      "authPolicy": "service_token",
+      "timeoutMs": 10000,
+      "criticality": "tier2",
+      "observability": {
+        "trace": true,
+        "metrics": true,
+        "logFields": ["routeId", "statusCode"]
+      },
+      "lifecycle": "active"
     }
   ]
 }

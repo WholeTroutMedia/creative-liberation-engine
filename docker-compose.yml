@@ -10,6 +10,7 @@ services:
       - "3400:3400"   # Genkit flows API
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
@@ -76,7 +77,7 @@ services:
       - POSTGRES_PASSWORD=cle_secure_pass
       - POSTGRES_DB=cle
     volumes:
-      - /volume1/docker/cle-postgres/data:/var/lib/postgresql/data
+      - /app/cle-postgres/data:/var/lib/postgresql/data
     networks:
       - cle
     restart: unless-stopped

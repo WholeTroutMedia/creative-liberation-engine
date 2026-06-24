@@ -1,9 +1,0 @@
-# Aurora Resources
-
-Design system assets, tokens, and component specifications.
-
-## Structure
-
-- `design-system/` - Component library
-- `tokens/` - Design tokens (colors, spacing, typography)
-- `component-specs/` - Reusable implementation specifications

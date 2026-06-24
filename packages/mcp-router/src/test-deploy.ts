@@ -18,7 +18,7 @@ async function run() {
         const result = await client.callTool({
             name: cmdTool.name,
             arguments: {
-                command: "cd /volume1/docker/genesis && git pull origin main && docker compose -f docker-compose.genesis.yml up -d --no-deps --build dispatch"
+                command: "cd /app/genesis && git pull origin main && docker compose -f docker-compose.genesis.yml up -d --no-deps --build dispatch"
             }
         });
         console.log("Execution Result:", JSON.stringify(result, null, 2));

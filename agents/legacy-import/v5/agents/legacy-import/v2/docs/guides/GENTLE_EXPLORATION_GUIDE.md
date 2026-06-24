@@ -1,4 +1,0 @@
-# Gentle Exploration Guide
-
-**MOVED FROM:** `/GENTLE_EXPLORATION_GUIDE.md` (2026-02-10)
-**CANONICAL LOCATION:** `/docs/guides/GENTLE_EXPLORATION_GUIDE.md`

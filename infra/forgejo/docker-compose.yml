@@ -14,7 +14,7 @@ services:
       - "2222:22"
     volumes:
       - forgejo-data:/data                                          # fresh config + db
-      - /volume1/docker/forgejo-anchor/gitea/git:/data/git          # old repos ← all repos here
+      - /app/forgejo-anchor/gitea/git:/data/git          # old repos ← all repos here
     environment:
       - USER_UID=1000
       - USER_GID=1000
