@@ -4,10 +4,8 @@ import { RegistryManager } from '@cle/registry';
 async function boot() {
   console.log('Booting Creative Liberation Engine (CLE)...');
   
-  // 1. Enforce Quantum Lock
-  const constitution = ConstitutionLock.verifyOrHalt();
-  console.log('--- CONSTITUTION LOADED ---');
-  console.log(constitution.substring(0, 150) + '...\n---------------------------');
+  // 1. Enforce Quantum Lock (Checks integrity of CONSTITUTION.md)
+  ConstitutionLock.verifyIntegrity();
 
   // 2. Load Memory Registry
   const status = RegistryManager.loadSystemStatus();
