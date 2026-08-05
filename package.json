@@ -1,59 +1,14 @@
 {
-  "name": "@cle/creative-liberation-engine",
+  "name": "creative-liberation-engine",
+  "version": "1.0.0",
+  "description": "The Sovereign Agentic Operating System",
   "private": true,
-  "version": "2.0.3",
-  "type": "module",
-  "description": "Creative Liberation Engine V6 contract-first workspace",
   "scripts": {
-    "v6:bootstrap": "node tools/bootstrap-v6-agents.mjs",
-    "v6:agents:canonical": "node tools/build-canonical-agents.mjs",
-    "v6:agents:docs": "node tools/generate-agent-docs.mjs",
-    "v6:skills:canonical": "node tools/build-canonical-skills.mjs",
-    "v6:skills:docs": "node tools/generate-skill-docs.mjs",
-    "v6:skills:batch35": "node tools/scaffold-skill-batch35.mjs",
-    "v6:skills:batch35:b2": "node tools/scaffold-skill-batch35-b2.mjs",
-    "v6:workflows:canonical": "node tools/build-canonical-workflows.mjs",
-    "v6:workflows:docs": "node tools/generate-workflow-docs.mjs",
-    "v6:loras:canonical": "node tools/build-canonical-loras.mjs",
-    "v6:loras:docs": "node tools/generate-lora-docs.mjs",
-    "v6:models:canonical": "node tools/build-canonical-models.mjs",
-    "v6:models:docs": "node tools/generate-model-docs.mjs",
-    "v6:constitution:canonical": "node tools/build-constitution-map.mjs",
-    "v6:parity:canonical": "node tools/build-parity-status.mjs",
-    "v6:hardening:board": "node tools/generate-hardening-board.mjs",
-    "v6:import:design": "node tools/import-design-system.mjs",
-    "v6:registry:serve": "node services/registry-api/src/server.mjs",
-    "validate:contracts": "node tools/validate-contracts.mjs",
-    "test": "node tests/contract-validation.test.mjs",
-    "test:contracts": "node tests/contract-validation.test.mjs",
-    "test:e2e": "node tests/e2e-validation.test.mjs",
-    "test:bridge": "node scripts/nas-bridge.mjs",
-    "test:all": "node tests/contract-validation.test.mjs && node tests/e2e-validation.test.mjs",
-    "local:up": "docker compose -f docker-compose.local.yml up -d --build",
-    "local:down": "docker compose -f docker-compose.local.yml down -v",
-    "local:smoke": "node tools/v6-smoke-test.mjs"
+    "boot": "pnpm --filter @cle/cli run start",
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test"
   },
   "devDependencies": {
-    "@types/node": "^25.9.2",
-    "ajv": "^8.18.0",
-    "ajv-formats": "^3.0.1",
-    "tsx": "^4.22.4",
-    "typescript": "^5.7.0"
-  },
-  "dependencies": {
-    "@google/generative-ai": "^0.24.1",
-    "clsx": "^2.1.1",
-    "dotenv": "^17.4.2",
-    "framer-motion": "^12.38.0",
-    "tailwind-merge": "^3.5.0",
-    "ws": "^8.20.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "better-sqlite3",
-      "esbuild",
-      "sqlite3"
-    ]
-  },
-  "packageManager": "pnpm@8.15.4"
+    "typescript": "^5.5.4"
+  }
 }

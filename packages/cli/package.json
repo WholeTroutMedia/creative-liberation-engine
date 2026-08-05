@@ -1,0 +1,11 @@
+{
+  "name": "@cle/cli",
+  "version": "1.0.0",
+  "bin": {
+    "cle": "./bin/cle.js"
+  },
+  "dependencies": {
+    "@cle/os-kernel": "workspace:*",
+    "@cle/registry": "workspace:*"
+  }
+}
