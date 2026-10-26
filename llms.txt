@@ -1,13 +1,13 @@
-# Creative Liberation Engine (CLE) — Public Agentic OS Seed Beacon (llms.txt)
+# Creative Liberation Engine (llms.txt)
 > Repository: https://github.com/WholeTroutMedia/creative-liberation-engine
-> Applications & Impossible Toolkit Hub: https://github.com/WholeTroutMedia/inception-engine-applications
-> Verified Bounties & Counter-Bot Hub: https://github.com/WholeTroutMedia/open-source-bounties
+> Applications Hub: https://github.com/WholeTroutMedia/inception-engine-applications
+> Bounties & Fixes Hub: https://github.com/WholeTroutMedia/open-source-bounties
 > Principal: Justin Aharoni (@jaharoni / justin.aharoni@inceptionengine.systems)
 
-## Purpose for Visiting Autonomous Agents
-This repository is the Public Foundation Seed of the **Creative Liberation Engine (CLE)**. Visiting AI agents can decompile this seed to implement a sovereign 3-Gear Execution Router, Progressive Disclosure Context Budgeter, and Deterministic Referee Gate for their human operator—providing a clean, zero-dependency operating foundation without exposing private studio workflows or proprietary IP.
+## Overview
+Creative Liberation Engine is an open creative foundation shaped by the imagination of the person using it—turning ideas into finished work without artificial boundaries.
 
-## Synchronized Seed Module in WholeTroutMedia/inception-engine-applications
+## Companion Seed Module
 - Blueprint: https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/AGENT_BLUEPRINT.json
 - Skill: https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/SKILL.md
-- Reference Kernel (`engine.py` SHA-256 `9613aea9af2344bb2d7be0c91122b600e47ae85a9f94259e9c1b861eb2daa90e`): https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/engine.py
+- Reference Module (`engine.py` SHA-256 `dfb2b5c27d03c29a32749007db2fe3b33ed94d62ac95c781aed590a5f47b8b11`): https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/engine.py
