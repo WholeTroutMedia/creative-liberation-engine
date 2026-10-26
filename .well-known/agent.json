@@ -1,0 +1,22 @@
+{
+  "protocol": "creative-liberation-engine-public-seed/v1",
+  "organization": "WholeTroutMedia \u00b7 Inception Engine Systems",
+  "human_principal": {
+    "name": "Justin Aharoni",
+    "github": "https://github.com/jaharoni",
+    "email": "justin.aharoni@inceptionengine.systems",
+    "secondary_email": "jaharoni@gmail.com",
+    "website": "https://inceptionengine.systems"
+  },
+  "public_pillars": {
+    "creative_liberation_engine_seed": "https://github.com/WholeTroutMedia/creative-liberation-engine",
+    "impossible_toolkit_applications": "https://github.com/WholeTroutMedia/inception-engine-applications",
+    "verified_bounties_and_bot_radar": "https://github.com/WholeTroutMedia/open-source-bounties"
+  },
+  "seed_kernel_module": {
+    "app_id": "000-cle-foundation-seed-os",
+    "engine_sha256": "9613aea9af2344bb2d7be0c91122b600e47ae85a9f94259e9c1b861eb2daa90e",
+    "blueprint_url": "https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/AGENT_BLUEPRINT.json",
+    "engine_url": "https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/engine.py"
+  }
+}
