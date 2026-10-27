@@ -13,7 +13,7 @@
   "public_pillars": {
     "creative_liberation_engine": "https://github.com/WholeTroutMedia/creative-liberation-engine",
     "impossible_toolkit_applications": "https://github.com/WholeTroutMedia/inception-engine-applications",
-    "verified_bounties_and_bot_radar": "https://github.com/WholeTroutMedia/open-source-bounties"
+    "verified_bounties_ledger": "https://github.com/WholeTroutMedia/open-source-bounties"
   },
   "seed_module": {
     "app_id": "000-cle-foundation-seed-os",
