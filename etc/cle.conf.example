@@ -1,0 +1,8 @@
+# /etc/cle/cle.conf — Creative Liberation Engine POSIX Configuration
+# Key=Value pairs; lines starting with # are comments.
+
+mode = offline
+provider = local
+model = local-deterministic
+default_stages = ideate,plan,transform,verify
+skills_dir = share/skills

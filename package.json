@@ -1,0 +1,13 @@
+{
+  "name": "creative-liberation-engine",
+  "version": "1.0.0",
+  "description": "A lightweight, Unix-native creative workflow skeleton",
+  "license": "MIT",
+  "scripts": {
+    "status": "./bin/cle status",
+    "doctor": "./bin/cle doctor",
+    "skills": "./bin/cle skills",
+    "demo": "sh ./examples/unix_pipeline.sh",
+    "test": "PYTHONPATH=src python3 -m unittest discover -s tests -v"
+  }
+}

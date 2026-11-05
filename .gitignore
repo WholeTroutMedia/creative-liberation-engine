@@ -1,0 +1,21 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+node_modules/
+
+# Local environment & runtime state
+.env
+.env.*
+!.env.example
+etc/cle.conf
+var/log/*.log
+var/run/*.pid
+*.sqlite3
+.DS_Store
