@@ -1,7 +1,44 @@
 {
-  "updated_at": "2026-11-07T10:40:20.697501+00:00",
+  "updated_at": "2026-11-07T10:49:14.200826+00:00",
   "total_ecosystem_clones": 8442,
   "total_ecosystem_unique_cloners": 1802,
+  "telemetry_signal_decomposition": {
+    "verified_human_discovery_clones": 1575,
+    "verified_human_discovery_unique_cloners": 644,
+    "upstream_ci_matrix_fork_clones": 739,
+    "upstream_ci_matrix_unique_cloners": 228,
+    "bot_detention_and_relay_clones": 6128,
+    "bot_detention_and_relay_unique_cloners": 930
+  },
+  "five_wall_strategic_mitigations": {
+    "wall_1_fiat_and_enterprise_purchasing_bridge": {
+      "status": "DUAL_RAIL_ACTIVE",
+      "rail_a_enterprise_fiat": "W-9, MSA, Stripe Invoicing, Corporate P-Card & Net-30 ACH via https://justinaharoni.com/contact and contact@jaharoni.com",
+      "rail_b_agentic_x402": "Autonomous HTTP x402 USDC/ETH micro-tollbooth (:5494) for agent-to-agent settlement"
+    },
+    "wall_2_platform_asymmetry_and_kill_switch_defense": {
+      "status": "PACED_AND_MIRRORED",
+      "upstream_pr_governor": "Strict <=1 open PR per target repository; 3 flagship ecosystems prioritized for deep human maintainer partnership",
+      "sovereign_domain_anchor": "https://justinaharoni.com (owned independent of GitHub/Discourse moderation)"
+    },
+    "wall_3_maintenance_debt_and_entropy_immunity": {
+      "status": "ZERO_DEPENDENCY_STDLIB_ENFORCED",
+      "policy": "All 6 CLE Community Gifts and reference micro-apps use 100% Python 3.9+ standard library (0 third-party pip/npm packages to rot)"
+    },
+    "wall_4_physical_infrastructure_spof_redundancy": {
+      "status": "THREE_PLANE_REPLICATED",
+      "planes": [
+        "Plane A: BIGBRAIN NVMe (/volume2/docker/brainchild-v7) + OFFICE RTX 4090 Tandem Pool",
+        "Plane B: SILO Synology Vault (/volume1/The Vault)",
+        "Plane C: ORACLE-A1 24/7 Cloud Bastion (132.145.159.202) + GitHub Canonical Archives"
+      ]
+    },
+    "wall_5_legal_copyright_and_ip_provenance": {
+      "status": "CLEAN_ROOM_MIT_VERIFIED",
+      "spdx_license": "MIT",
+      "viral_gpl_agpl_contamination_count": 0
+    }
+  },
   "active_external_referrers": [
     "github.com",
     "github.com",
