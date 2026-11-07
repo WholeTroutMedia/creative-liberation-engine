@@ -1,0 +1,94 @@
+{
+  "updated_at": "2026-11-07T10:31:44.673727+00:00",
+  "total_ecosystem_clones": 8442,
+  "total_ecosystem_unique_cloners": 1802,
+  "active_external_referrers": [
+    "github.com",
+    "github.com",
+    "forum.modular.com",
+    "Google",
+    "Google",
+    "market-pulse.t3ratech.co.zw"
+  ],
+  "welcome_message": "Thank you for cloning and exploring the Creative Liberation Engine! Whenever we notice builders from a technical or creative community visiting our repositories, we add a free, zero-dependency, copy-pasteable tool to `gifts/` for that community to take home.",
+  "gifts": [
+    {
+      "gift_id": "spatial-3d-manifold-auditor",
+      "domain_key": "spatial_3d",
+      "domain_label": "Spatial, 3D & WebGPU",
+      "title": "Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor",
+      "script_path": "gifts/spatial_manifold_auditor.py",
+      "community_honored": "Three.js & WebGPU Discourse (`discourse.threejs.org`), Gyroflow & OpenHMD (10 repo clones / 10 unique cloners + Three.js community unlock)",
+      "backtracked_clones": 10,
+      "backtracked_unique_cloners": 10,
+      "cli_example": "./bin/cle gifts --run spatial-3d-manifold-auditor",
+      "standalone_example": "python3 gifts/spatial_manifold_auditor.py --json",
+      "inception_engine_synergy": "Division III Spatial Computing (`SR-014` Closed-Manifold Surface Verification)"
+    },
+    {
+      "gift_id": "gpu-kv-cache-roofline-planner",
+      "domain_key": "gpu_inference",
+      "domain_label": "GPU Kernels, Modular MAX & LLM Inference",
+      "title": "PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner",
+      "script_path": "gifts/kv_cache_roofline_planner.py",
+      "community_honored": "Modular Forum (`forum.modular.com` referrer), vLLM & PyTorch communities (10 direct fork clones / 8 unique cloners + `forum.modular.com` referral traffic)",
+      "backtracked_clones": 10,
+      "backtracked_unique_cloners": 8,
+      "cli_example": "./bin/cle gifts --run gpu-kv-cache-roofline-planner",
+      "standalone_example": "python3 gifts/kv_cache_roofline_planner.py --gpu rtx-4090-24gb --json",
+      "inception_engine_synergy": "Division IV Sovereign Hardware Mesh (`SR-058` 36 GB Tandem VRAM Pool Planner)"
+    },
+    {
+      "gift_id": "async-utf8-sse-frame-doctor",
+      "domain_key": "async_streaming",
+      "domain_label": "Async Python, ASGI & MCP Streaming",
+      "title": "Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor",
+      "script_path": "gifts/utf8_sse_frame_doctor.py",
+      "community_honored": "Starlette, Uvicorn, Dramatiq & MCP builders (308 clones / 152 unique cloners across ASGI & sandbox repos)",
+      "backtracked_clones": 308,
+      "backtracked_unique_cloners": 152,
+      "cli_example": "./bin/cle gifts --run async-utf8-sse-frame-doctor",
+      "standalone_example": "python3 gifts/utf8_sse_frame_doctor.py --json",
+      "inception_engine_synergy": "Division I Sovereign Orchestration Fabric (`LIQUID-SYNTH-V3` MCP SSE Framing)"
+    },
+    {
+      "gift_id": "creative-shader-palette-forge",
+      "domain_key": "creative_shaders",
+      "domain_label": "Creative Coding, Shaders & Generative Art",
+      "title": "Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge",
+      "script_path": "gifts/cosine_palette_sdf_forge.py",
+      "community_honored": "Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (300 clones / 147 unique cloners)",
+      "backtracked_clones": 300,
+      "backtracked_unique_cloners": 147,
+      "cli_example": "./bin/cle gifts --run creative-shader-palette-forge",
+      "standalone_example": "python3 gifts/cosine_palette_sdf_forge.py --preset solar-brass --json",
+      "inception_engine_synergy": "Division II Creative Atelier (`ATELIER` OpenDesign Token & Shader Synthesis)"
+    },
+    {
+      "gift_id": "cloud-k3d-port-backoff-doctor",
+      "domain_key": "cloud_native",
+      "domain_label": "Cloud-Native, Kubernetes & Distributed Systems",
+      "title": "k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor",
+      "script_path": "gifts/k3d_port_and_backoff_doctor.py",
+      "community_honored": "k3d, ZIO, Mergo & Ecosystems distributed systems engineers (111 clones / 74 unique cloners)",
+      "backtracked_clones": 111,
+      "backtracked_unique_cloners": 74,
+      "cli_example": "./bin/cle gifts --run cloud-k3d-port-backoff-doctor",
+      "standalone_example": "python3 gifts/k3d_port_and_backoff_doctor.py --json",
+      "inception_engine_synergy": "Division IV 5-Node Sovereign Mesh & Bastion Retry Governance"
+    },
+    {
+      "gift_id": "db-savepoint-isolation-verifier",
+      "domain_key": "database_ledger",
+      "domain_label": "Database ORM, Savepoints & Ledger Integrity",
+      "title": "In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier",
+      "script_path": "gifts/savepoint_isolation_verifier.py",
+      "community_honored": "InvenTree, Advanced-Alchemy, UNIT3D & Solana systems builders (542 clones / 96 unique cloners)",
+      "backtracked_clones": 542,
+      "backtracked_unique_cloners": 96,
+      "cli_example": "./bin/cle gifts --run db-savepoint-isolation-verifier",
+      "standalone_example": "python3 gifts/savepoint_isolation_verifier.py --json",
+      "inception_engine_synergy": "Division V Constitutional Referee & Treasury Double-Entry Invariant Verification"
+    }
+  ]
+}
