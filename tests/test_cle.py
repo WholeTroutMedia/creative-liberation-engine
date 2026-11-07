@@ -1,4 +1,4 @@
-"""Unit tests for the Creative Liberation Engine Unix skeleton."""
+"""Unit tests for the Creative Liberation Engine Unix skeleton and Community Gift Shelf."""
 
 import json
 import os
@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 from cle.config import load_config
+from cle.gifts import list_gifts, run_gift_demo
 from cle.kernel import collect_status, run_doctor
 from cle.pipeline import run_pipeline
 from cle.skills import discover_skills, get_skill
@@ -23,9 +24,10 @@ class TestCleSkeleton(unittest.TestCase):
     def test_doctor_and_status(self) -> None:
         report = run_doctor(ROOT_DIR, self.config)
         self.assertTrue(report["healthy"])
-        status = collect_status(self.config)
+        status = collect_status(self.config, root_dir=ROOT_DIR)
         self.assertEqual(status["engine"], "creative-liberation-engine")
         self.assertGreaterEqual(status["skills_loaded"], 4)
+        self.assertGreaterEqual(status["community_gifts_unlocked"], 6)
 
     def test_skill_discovery(self) -> None:
         skills = discover_skills(self.config.skills_dir)
@@ -65,6 +67,26 @@ class TestCleSkeleton(unittest.TestCase):
         payload = json.loads(proc.stdout)
         self.assertEqual(payload["input_text"], "Compose a terminal shader")
         self.assertEqual(len(payload["stages"]), 2)
+
+    def test_community_gifts_catalog_and_runners(self) -> None:
+        gifts = list_gifts(ROOT_DIR)
+        self.assertEqual(len(gifts), 6)
+        for g in gifts:
+            gid = str(g["gift_id"])
+            demo = run_gift_demo(ROOT_DIR, gid)
+            self.assertIsNotNone(demo, f"Failed running gift demo for {gid}")
+            self.assertEqual(demo["gift_id"], gid)
+
+    def test_cli_gifts_subcommand_json(self) -> None:
+        proc = subprocess.run(
+            [os.path.join(ROOT_DIR, "bin", "cle"), "gifts", "--run", "spatial-3d-manifold-auditor", "--json"],
+            text=True,
+            capture_output=True,
+            check=True,
+        )
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["gift_id"], "spatial-3d-manifold-auditor")
+        self.assertTrue(payload["result"]["is_watertight_manifold"])
 
 
 if __name__ == "__main__":
