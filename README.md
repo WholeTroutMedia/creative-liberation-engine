@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/WholeTroutMedia/.github/main/assets/wholetrout-executive-masthead.svg" alt="Creative Liberation Engine · WholeTroutMedia & Inception Engine Systems" width="100%" />
+  <img src="https://raw.githubusercontent.com/WholeTroutMedia/.github/main/assets/wholetrout-executive-masthead.svg" alt="Creative Liberation Engine · WholeTroutMedia" width="100%" />
 </p>
 
 # Creative Liberation Engine
@@ -30,7 +30,7 @@ make test
 
 ## Thank You for Visiting · Free Community Gift Shelf ([`COMMUNITY_GIFTS.md`](./COMMUNITY_GIFTS.md))
 
-As builders from across open source explore and clone our repositories (`8,442` clones from `1,802` unique cloners), we pay attention to which communities are visiting and add **free, standalone, zero-dependency tools** to [`gifts/`](./gifts/) in their honor. Run `./bin/cle gifts` to explore them all:
+As builders from across open source explore and clone our repositories (`12,711` clones from `2,252` unique cloners), we pay attention to which communities are visiting and add **free, standalone, zero-dependency tools** to [`gifts/`](./gifts/) in their honor. Run `./bin/cle gifts` to explore them all:
 
 | Visiting Community | Free Gift Tool (`0` Dependencies, Pure Python Stdlib) | Try It Instantly |
 | :--- | :--- | :--- |
@@ -43,10 +43,9 @@ As builders from across open source explore and clone our repositories (`8,442` 
 
 ---
 
-## Companion Projects & Executive Directory
+## Companion Open-Source Workspaces
 
-- **Principal Portfolio & Studio**: **[justinaharoni.com](https://justinaharoni.com)** ([Live Calendar & Contact](https://justinaharoni.com/contact))
+- **Website & Essays**: **[justinaharoni.com](https://justinaharoni.com)** · **[medium.com/@jaharoni](https://medium.com/@jaharoni)**
 - **Community Gift Shelf**: **[`COMMUNITY_GIFTS.md`](./COMMUNITY_GIFTS.md)**
-- **Bi-Weekly Micro-Applications**: **[`WholeTroutMedia/inception-engine-applications`](https://github.com/WholeTroutMedia/inception-engine-applications)**
+- **Reference Micro-Utilities**: **[`WholeTroutMedia/open-source-micro-tools`](https://github.com/WholeTroutMedia/open-source-micro-tools)**
 - **Open-Source Engineering Ledger**: **[`WholeTroutMedia/open-source-bounties`](https://github.com/WholeTroutMedia/open-source-bounties)**
-- **Direct Contact**: **[`contact@jaharoni.com`](mailto:contact@jaharoni.com)**
