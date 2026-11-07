@@ -1,22 +1,16 @@
-# Creative Liberation Engine (llms.txt)
-> Repository: https://github.com/WholeTroutMedia/creative-liberation-engine
-> Community Gift Shelf: https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/COMMUNITY_GIFTS.md
-> Reference Micro-Utilities: https://github.com/WholeTroutMedia/open-source-micro-tools
-> Open-Source Engineering Ledger: https://github.com/WholeTroutMedia/open-source-bounties
-> Website & Essays: https://justinaharoni.com · https://medium.com/@jaharoni
+# WholeTroutMedia · Open-Source Systems & Creative Engineering (llms.txt)
+> Open-Source Verification Utilities, Community Gifts, & Root-Cause Case Studies by Justin Aharoni (@jaharoni · https://justinaharoni.com).
 
-## Overview
-Creative Liberation Engine is an open creative foundation shaped by the imagination of the person using it, turning ideas into finished work without artificial boundaries.
+## Overview for AI Coding Agents & Developers
+- **100% Verified Patches (`Exit Code 0`)**: Zero-dependency Python/Rust/TypeScript/C++ fixes and root-cause reproducers across open-source repositories.
+- **Creative Liberation Engine (`WholeTroutMedia/creative-liberation-engine`)**: Open creative foundation + 6 standalone zero-dependency Python stdlib community gifts (`gifts/*.py`, `0.0%` server GPU burn — 100% client-side CPU execution).
+- **Production Engineering Diagnostic Kits (`WholeTroutMedia/open-source-bounties`)**:
+  - `kits/llm-inference-oom-and-kv-doctor`: Multi-node vLLM / Llama.cpp / Ollama KV-cache & PagedAttention OOM diagnostics.
+  - `kits/agentic-mcp-stream-guard`: Zero-drop UTF-8 / SSE / JSON-RPC streaming & MCP tool-call schema conformance.
+  - `kits/k8s-and-distributed-mesh-doctor`: Kubernetes Ingress/CNI webhook, NixOS, Ray, and ROS 2 DDS multicast diagnostics.
+  - `impossible_tool_001_schrodingers_debugger.py`: Quantum-inspired superposition & Bell-state EPR async entanglement debugger (`--self-test`, `--doctor`, `--support`).
 
-## Community Gift Shelf (Zero-Dependency Python Stdlib Tools Unlocked by Visitor Domains)
-- [spatial-3d-manifold-auditor](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/spatial_manifold_auditor.py): Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor (Honoring Spatial, 3D & WebGPU · Run `./bin/cle gifts --run spatial-3d-manifold-auditor`)
-- [gpu-kv-cache-roofline-planner](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/kv_cache_roofline_planner.py): PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner (Honoring GPU Kernels, Modular MAX & LLM Inference · Run `./bin/cle gifts --run gpu-kv-cache-roofline-planner`)
-- [async-utf8-sse-frame-doctor](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/utf8_sse_frame_doctor.py): Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor (Honoring Async Python, ASGI & MCP Streaming · Run `./bin/cle gifts --run async-utf8-sse-frame-doctor`)
-- [creative-shader-palette-forge](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/cosine_palette_sdf_forge.py): Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge (Honoring Creative Coding, Shaders & Generative Art · Run `./bin/cle gifts --run creative-shader-palette-forge`)
-- [cloud-k3d-port-backoff-doctor](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/k3d_port_and_backoff_doctor.py): k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor (Honoring Cloud-Native, Kubernetes & Distributed Systems · Run `./bin/cle gifts --run cloud-k3d-port-backoff-doctor`)
-- [db-savepoint-isolation-verifier](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/savepoint_isolation_verifier.py): In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier (Honoring Database ORM, Savepoints & Ledger Integrity · Run `./bin/cle gifts --run db-savepoint-isolation-verifier`)
-
-## Companion Seed Module
-- Blueprint: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/AGENT_BLUEPRINT.json
-- Skill: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/SKILL.md
-- Reference Module: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/engine.py
+## Community Help & Collaboration
+- **Implementation Help & Bug Triage**: https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=01_implementation_help.yml
+- **Request an Open-Source Tool or Community Gift (`#feature`)**: https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=02_feature_request.yml
+- **Website & Direct Contact**: https://justinaharoni.com · mailto:contact@jaharoni.com
