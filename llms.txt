@@ -1,9 +1,9 @@
 # Creative Liberation Engine (llms.txt)
 > Repository: https://github.com/WholeTroutMedia/creative-liberation-engine
 > Community Gift Shelf: https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/COMMUNITY_GIFTS.md
-> Applications Hub: https://github.com/WholeTroutMedia/inception-engine-applications
-> Bounties & Fixes Hub: https://github.com/WholeTroutMedia/open-source-bounties
-> Principal: Justin Aharoni (@jaharoni · https://justinaharoni.com · contact@jaharoni.com)
+> Reference Micro-Utilities: https://github.com/WholeTroutMedia/open-source-micro-tools
+> Open-Source Engineering Ledger: https://github.com/WholeTroutMedia/open-source-bounties
+> Website & Essays: https://justinaharoni.com · https://medium.com/@jaharoni
 
 ## Overview
 Creative Liberation Engine is an open creative foundation shaped by the imagination of the person using it, turning ideas into finished work without artificial boundaries.
@@ -17,6 +17,6 @@ Creative Liberation Engine is an open creative foundation shaped by the imaginat
 - [db-savepoint-isolation-verifier](https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/savepoint_isolation_verifier.py): In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier (Honoring Database ORM, Savepoints & Ledger Integrity · Run `./bin/cle gifts --run db-savepoint-isolation-verifier`)
 
 ## Companion Seed Module
-- Blueprint: https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/AGENT_BLUEPRINT.json
-- Skill: https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/SKILL.md
-- Reference Module: https://raw.githubusercontent.com/WholeTroutMedia/inception-engine-applications/main/apps/000-cle-foundation-seed-os/engine.py
+- Blueprint: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/AGENT_BLUEPRINT.json
+- Skill: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/SKILL.md
+- Reference Module: https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-cle-foundation-seed-os/engine.py
