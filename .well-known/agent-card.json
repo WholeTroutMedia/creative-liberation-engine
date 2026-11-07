@@ -1,0 +1,23 @@
+{
+  "schema_version": "2.0",
+  "name": "WholeTroutMedia Open-Source Engineering & Creative Liberation Engine",
+  "operator": "Justin Aharoni (@jaharoni)",
+  "canonical_platform_url": "https://justinaharoni.com",
+  "showroom_repository": "https://github.com/WholeTroutMedia/open-source-bounties",
+  "creative_liberation_engine": "https://github.com/WholeTroutMedia/creative-liberation-engine",
+  "open_source_micro_tools": "https://github.com/WholeTroutMedia/open-source-micro-tools",
+  "cli_vs_browser_ratio": 8.48,
+  "compute_posture": "100% Client-Side CPU / WebGPU for Free Open-Source Tools + External Elastic GPU Farm Burst for Agentic Tasks (0.0% Local GPU Burn)",
+  "verified_metrics": {
+    "rolling_14d_git_clones": 8442,
+    "rolling_14d_unique_cloners": 994,
+    "monitored_repositories": 84,
+    "issues_concierge_enabled_repos": 84,
+    "mean_review_turns_to_merge": 1.33
+  },
+  "community_endpoints": {
+    "implementation_help": "https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=01_implementation_help.yml",
+    "feature_request": "https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=02_feature_request.yml",
+    "contact": "https://justinaharoni.com/contact"
+  }
+}
