@@ -7,6 +7,7 @@ import sys
 from typing import List, Optional
 
 from cle.config import load_config
+from cle.gifts import list_gifts, load_gift_catalog, run_gift_demo
 from cle.kernel import collect_status, run_doctor
 from cle.pipeline import run_pipeline
 from cle.skills import discover_skills, get_skill
@@ -20,11 +21,11 @@ def _resolve_root() -> str:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="cle",
-        description="Creative Liberation Engine — Unix-native creative workflow skeleton",
+        description="Creative Liberation Engine · Unix-native creative workflow skeleton & community gift shelf",
     )
     sub = parser.add_subparsers(dest="command")
 
-    status_p = sub.add_parser("status", help="Show engine configuration and loaded skills")
+    status_p = sub.add_parser("status", help="Show engine configuration, loaded skills, and community gifts")
     status_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
     doctor_p = sub.add_parser("doctor", help="Verify POSIX layout and runtime health")
@@ -33,6 +34,13 @@ def build_parser() -> argparse.ArgumentParser:
     skills_p = sub.add_parser("skills", help="List or inspect plain-text skills")
     skills_p.add_argument("--show", metavar="NAME", help="Display full SKILL.md details")
     skills_p.add_argument("--json", action="store_true", help="Emit JSON output")
+
+    gifts_p = sub.add_parser(
+        "gifts",
+        help="Browse or run standalone zero-dependency Community Gift tools unlocked by visitor domains",
+    )
+    gifts_p.add_argument("--run", metavar="GIFT_ID", help="Run a specific community gift tool demo")
+    gifts_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
     pipe_p = sub.add_parser("pipe", help="Read prompt from stdin (or --input) and run pipeline stages")
     pipe_p.add_argument("-i", "--input", help="Input text (reads from stdin if omitted)")
@@ -69,15 +77,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     config = load_config(root_dir)
 
     if args.command == "status":
-        data = collect_status(config)
+        data = collect_status(config, root_dir=root_dir)
         if args.json:
             print(json.dumps(data, indent=2))
         else:
             print(f"Creative Liberation Engine v{data['version']}")
-            print(f"  Mode:           {data['mode']}")
-            print(f"  Provider:       {data['provider']} ({data['model']})")
-            print(f"  Default Stages: {', '.join(data['default_stages'])}")
-            print(f"  Skills Loaded:  {data['skills_loaded']} ({', '.join(data['skills'])})")
+            print(f"  Mode:            {data['mode']}")
+            print(f"  Provider:        {data['provider']} ({data['model']})")
+            print(f"  Default Stages:  {', '.join(data['default_stages'])}")
+            print(f"  Skills Loaded:   {data['skills_loaded']} ({', '.join(data['skills'])})")
+            print(f"  Community Gifts: {data.get('community_gifts_unlocked', 0)} unlocked (`./bin/cle gifts`)")
         return 0
 
     if args.command == "doctor":
@@ -113,6 +122,39 @@ def main(argv: Optional[List[str]] = None) -> int:
         else:
             for s in specs:
                 print(f"{s.name:<12} {s.description}")
+        return 0
+
+    if args.command == "gifts":
+        if args.run:
+            res = run_gift_demo(root_dir, args.run)
+            if not res:
+                sys.stderr.write(f"Community gift not found: {args.run}\n")
+                return 1
+            if args.json:
+                print(json.dumps(res, indent=2, ensure_ascii=False))
+            else:
+                print(f"Thank You for Visiting! Running [{res['gift_id']}] ({res['title']})")
+                print(f"  Honoring Community: {res['community_honored']}")
+                print(f"  Standalone Script:  {res['script_path']}")
+                print(json.dumps(res["result"], indent=2, ensure_ascii=False))
+            return 0
+
+        catalog = load_gift_catalog(root_dir)
+        gifts = list_gifts(root_dir)
+        if args.json:
+            print(json.dumps(catalog, indent=2, ensure_ascii=False))
+        else:
+            print("================================================================================")
+            print("  Creative Liberation Engine · Thank You for Visiting (Community Gift Shelf)")
+            print("================================================================================")
+            welcome = catalog.get("welcome_message", "")
+            if welcome:
+                print(f"{welcome}\n")
+            for g in gifts:
+                print(f"  * {g['gift_id']:<34} [{g['domain_label']}]")
+                print(f"      Tool:      {g['title']} (`{g['script_path']}`)")
+                print(f"      Inspired:  {g['community_honored']}")
+                print(f"      Try it:    ./bin/cle gifts --run {g['gift_id']}")
         return 0
 
     if args.command in ("pipe", "run"):
