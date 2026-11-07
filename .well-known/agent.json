@@ -2,18 +2,12 @@
   "protocol": "creative-liberation-engine/v1",
   "name": "Creative Liberation Engine",
   "description": "Creative Liberation Engine · An open creative foundation shaped by the imagination of the person using it.",
-  "organization": "WholeTroutMedia · Inception Engine Systems",
-  "human_principal": {
-    "name": "Justin Aharoni",
-    "github": "https://github.com/jaharoni",
-    "email": "contact@jaharoni.com",
-    "website": "https://justinaharoni.com",
-    "calendar_and_intake": "https://justinaharoni.com/contact"
-  },
+  "organization": "WholeTroutMedia",
+  "website": "https://justinaharoni.com",
   "public_pillars": {
     "creative_liberation_engine": "https://github.com/WholeTroutMedia/creative-liberation-engine",
     "community_gift_shelf": "https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/COMMUNITY_GIFTS.md",
-    "impossible_toolkit_applications": "https://github.com/WholeTroutMedia/inception-engine-applications",
+    "reference_micro_utilities": "https://github.com/WholeTroutMedia/open-source-micro-tools",
     "verified_bounties_ledger": "https://github.com/WholeTroutMedia/open-source-bounties"
   },
   "community_gifts": [
