@@ -1,0 +1,57 @@
+{
+  "protocol": "creative-liberation-engine/v1",
+  "name": "Creative Liberation Engine",
+  "description": "Creative Liberation Engine · An open creative foundation shaped by the imagination of the person using it.",
+  "organization": "WholeTroutMedia",
+  "website": "https://justinaharoni.com",
+  "public_pillars": {
+    "creative_liberation_engine": "https://github.com/WholeTroutMedia/creative-liberation-engine",
+    "community_gift_shelf": "https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/COMMUNITY_GIFTS.md",
+    "reference_micro_utilities": "https://github.com/WholeTroutMedia/open-source-micro-tools",
+    "verified_bounties_ledger": "https://github.com/WholeTroutMedia/open-source-bounties"
+  },
+  "community_gifts": [
+    {
+      "gift_id": "spatial-3d-manifold-auditor",
+      "domain_label": "Spatial, 3D & WebGPU",
+      "title": "Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/spatial_manifold_auditor.py",
+      "cli_example": "./bin/cle gifts --run spatial-3d-manifold-auditor"
+    },
+    {
+      "gift_id": "gpu-kv-cache-roofline-planner",
+      "domain_label": "GPU Kernels, Modular MAX & LLM Inference",
+      "title": "PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/kv_cache_roofline_planner.py",
+      "cli_example": "./bin/cle gifts --run gpu-kv-cache-roofline-planner"
+    },
+    {
+      "gift_id": "async-utf8-sse-frame-doctor",
+      "domain_label": "Async Python, ASGI & MCP Streaming",
+      "title": "Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/utf8_sse_frame_doctor.py",
+      "cli_example": "./bin/cle gifts --run async-utf8-sse-frame-doctor"
+    },
+    {
+      "gift_id": "creative-shader-palette-forge",
+      "domain_label": "Creative Coding, Shaders & Generative Art",
+      "title": "Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/cosine_palette_sdf_forge.py",
+      "cli_example": "./bin/cle gifts --run creative-shader-palette-forge"
+    },
+    {
+      "gift_id": "cloud-k3d-port-backoff-doctor",
+      "domain_label": "Cloud-Native, Kubernetes & Distributed Systems",
+      "title": "k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/k3d_port_and_backoff_doctor.py",
+      "cli_example": "./bin/cle gifts --run cloud-k3d-port-backoff-doctor"
+    },
+    {
+      "gift_id": "db-savepoint-isolation-verifier",
+      "domain_label": "Database ORM, Savepoints & Ledger Integrity",
+      "title": "In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/savepoint_isolation_verifier.py",
+      "cli_example": "./bin/cle gifts --run db-savepoint-isolation-verifier"
+    }
+  ]
+}

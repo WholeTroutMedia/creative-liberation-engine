@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%" role="img" aria-label="WholeTroutMedia and Inception Engine Systems Executive Masthead">
+  <defs>
+    <!-- Tactile hairline & Fibonacci cadence: 8px, 13px, 21px, 34px, 55px -->
+    <style>
+      .display-title { font-family: 'Instrument Serif', Georgia, -apple-system, BlinkMacSystemFont, serif; font-size: 34px; }
+      .sans-ui { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 13px; gap: 21px; }
+      .mono-telem { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+    </style>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0E12"/>
+      <stop offset="55%" stop-color="#10161F"/>
+      <stop offset="100%" stop-color="#080B0E"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151D28"/>
+      <stop offset="100%" stop-color="#0D1219"/>
+    </linearGradient>
+    <pattern id="tactileHairlineGrid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" fill="none" stroke="#FFFFFF" stroke-width="0.6" stroke-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Outer Chassis -->
+  <rect width="1200" height="380" rx="13" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="1.5"/>
+  <rect width="1200" height="380" rx="13" fill="url(#tactileHairlineGrid)"/>
+
+  <!-- Top Gold/Emerald Calibration Line -->
+  <rect x="55" y="0" width="260" height="3" fill="url(#goldAccent)"/>
+
+  <!-- Top Telemetry Bar -->
+  <g transform="translate(55, 34)">
+    <rect x="0" y="0" width="8" height="8" rx="2" fill="#10B981"/>
+    <text x="21" y="8" fill="#94A3B8" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="600" letter-spacing="2">INCEPTION ENGINE V8.0 · EXECUTIVE ENGINEERING LEDGER</text>
+    <text x="1090" y="8" text-anchor="end" fill="#64748B" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" letter-spacing="1.5">NEW YORK · GLOBAL</text>
+  </g>
+
+  <line x1="55" y1="55" x2="1145" y2="55" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- Main Identity Lockup -->
+  <g transform="translate(55, 110)">
+    <text x="0" y="0" fill="#F8FAFC" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="40" font-weight="800" letter-spacing="-0.8">WholeTroutMedia</text>
+    <text x="368" y="0" fill="#475569" font-family="'Instrument Serif', Georgia, serif" font-size="36" font-weight="400">/</text>
+    <text x="394" y="0" fill="#E2E8F0" font-family="'Instrument Serif', Georgia, -apple-system, serif" font-size="38" font-weight="400" letter-spacing="0.2">Inception Engine Systems</text>
+
+    <text x="0" y="34" fill="#94A3B8" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" font-weight="400">
+      Principal Systems Architecture, Applied AI &amp; MCP Infrastructure, Spatial Computing, and Verified Open-Source Engineering.
+    </text>
+    <text x="0" y="64" fill="#CBD5E1" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="500">
+      PRINCIPAL &amp; CHAIRMAN: JUSTIN AHARONI (@jaharoni)  ·  PORTFOLIO: justinaharoni.com  ·  DIRECT: contact@jaharoni.com
+    </text>
+  </g>
+
+  <!-- 4-Pillar C-Suite Assurance & Metrics Grid -->
+  <g transform="translate(55, 220)">
+    <!-- Card 1 -->
+    <g transform="translate(0, 0)">
+      <rect width="256" height="118" rx="8" fill="url(#cardGrad)" stroke="#1E293B" stroke-width="1"/>
+      <rect x="0" y="0" width="4" height="118" rx="2" fill="#10B981"/>
+      <text x="21" y="30" fill="#64748B" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" letter-spacing="1.5">PATCH COVERAGE STANDARD</text>
+      <text x="21" y="68" fill="#10B981" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="30" font-weight="800">100.0%</text>
+      <text x="21" y="94" fill="#94A3B8" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">Codecov verified + local static CI gates</text>
+    </g>
+
+    <!-- Card 2 -->
+    <g transform="translate(278, 0)">
+      <rect width="256" height="118" rx="8" fill="url(#cardGrad)" stroke="#1E293B" stroke-width="1"/>
+      <rect x="0" y="0" width="4" height="118" rx="2" fill="#3B82F6"/>
+      <text x="21" y="30" fill="#64748B" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" letter-spacing="1.5">UPSTREAM TRACK RECORD</text>
+      <text x="21" y="68" fill="#F8FAFC" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="800">105+ Solves</text>
+      <text x="21" y="94" fill="#94A3B8" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">Production merges &amp; sealed case studies</text>
+    </g>
+
+    <!-- Card 3 -->
+    <g transform="translate(556, 0)">
+      <rect width="256" height="118" rx="8" fill="url(#cardGrad)" stroke="#1E293B" stroke-width="1"/>
+      <rect x="0" y="0" width="4" height="118" rx="2" fill="#D4AF37"/>
+      <text x="21" y="30" fill="#64748B" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" letter-spacing="1.5">MAINTAINER REVIEW VELOCITY</text>
+      <text x="21" y="68" fill="#FBBF24" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="800">&lt;= 2 Turns</text>
+      <text x="21" y="94" fill="#94A3B8" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">Zero-turn hunk audits &amp; verify_fix.py</text>
+    </g>
+
+    <!-- Card 4 -->
+    <g transform="translate(834, 0)">
+      <rect width="256" height="118" rx="8" fill="url(#cardGrad)" stroke="#1E293B" stroke-width="1"/>
+      <rect x="0" y="0" width="4" height="118" rx="2" fill="#14B8A6"/>
+      <text x="21" y="30" fill="#64748B" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="10.5" font-weight="600" letter-spacing="1.5">ASSURANCE CHARTER</text>
+      <text x="21" y="68" fill="#5EEAD4" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="28" font-weight="800">30-Day SLA</text>
+      <text x="21" y="94" fill="#94A3B8" font-family="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif" font-size="12">Post-merge warranty &amp; 48h reproducer</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "schema_version": "2.0",
+  "name": "The Impossible Tool Chest & WholeTroutMedia Engineering Foundry",
+  "operator": "Justin Aharoni (@jaharoni)",
+  "canonical_platform_url": "https://theitc.inceptionengine.systems",
+  "mcp_endpoint": "https://theitc.inceptionengine.systems/mcp",
+  "showroom_repository": "https://github.com/WholeTroutMedia/open-source-bounties",
+  "cli_vs_browser_ratio": 8.48,
+  "verified_metrics": {
+    "rolling_14d_git_clones": 1486,
+    "rolling_14d_unique_cloners": 594,
+    "monitored_repositories": 84,
+    "issues_concierge_enabled_repos": 84,
+    "active_distribution_channels": 60,
+    "unified_impossible_tool_chest_tools": 104,
+    "mean_review_turns_to_merge": 1.33
+  },
+  "concierge_endpoints": {
+    "implementation_help": "https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=01_implementation_help.yml",
+    "feature_request": "https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=02_feature_request.yml",
+    "enterprise_sprint_inquiry": "https://github.com/WholeTroutMedia/open-source-bounties/issues/new?template=03_enterprise_contract_sprint.yml",
+    "wednesday_923_builder_pass_499": "https://buy.stripe.com/7sY14m61I2se7Mu5Aya3u0C"
+  }
+}
