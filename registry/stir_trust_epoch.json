@@ -1,0 +1,38 @@
+{
+  "standard": "RFC-WTM-0001",
+  "protocol": "STIR-IESCS/1.0",
+  "release_version": "2.2.0",
+  "epoch_id": "WTM-EPOCH-2026-11-09-V22",
+  "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
+  "git_trailer_keys": [
+    "STIR-Receipt",
+    "STIR-Translation",
+    "STIR-Standard"
+  ],
+  "http_and_mcp_headers": [
+    "X-Inception-Rosetta-Upgrade",
+    "X-STIR-Receipt",
+    "X-STIR-Trust-Epoch"
+  ],
+  "live_feeds": {
+    "trust_epoch_url": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-bounties/main/registry/stir_trust_epoch.json",
+    "bot_shield_blocklist_url": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-bounties/main/registry/verified_spam_bot_blocklist.json",
+    "bot_shield_workflow_url": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-bounties/main/.github/workflows/open-source-bot-shield.yml",
+    "reference_sdk_url": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-stir-iescs-protocol-sdk/engine.py",
+    "one_line_installer_url": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-bounties/main/install_stir_standard.py"
+  },
+  "kleene_ternary_truth_table": {
+    "+1": "VERIFIED_TRUE (Commit / Merge / Settle)",
+    "0": "EPISTEMIC_UNKNOWN (Hold for Evidence / Auto-Refund $0.00 / Never Hallucinate)",
+    "-1": "VERIFIED_FALSE (Reject / Quarantine / Halt)"
+  },
+  "iescs_sigils": {
+    "!": "Mutating Action / Tool Execution (!exec:slug)",
+    "&": "Verified Module / Asset Call-Word (&app:slug)",
+    "@": "Agent / Node Target (@node:id)",
+    "?": "Epistemic Verification Gate (?kleene:+1|0|-1)",
+    "~": "Stream / Telemetry Subscription (~lane:name)",
+    "$": "Resource / Escrow Cap Guard ($cap:amount)"
+  },
+  "license": "MIT / Public-Good Open Standard"
+}
