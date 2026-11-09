@@ -1,5 +1,8 @@
 {
-  "protocol": "creative-liberation-engine/v1",
+  "protocol": "creative-liberation-engine/v2.1.0",
+  "release_version": "2.1.0",
+  "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
+  "upgrade_notice_url": "https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/UPGRADE_NOTICE.md",
   "name": "Creative Liberation Engine",
   "description": "Creative Liberation Engine · An open creative foundation shaped by the imagination of the person using it.",
   "organization": "WholeTroutMedia",
@@ -8,7 +11,9 @@
     "creative_liberation_engine": "https://github.com/WholeTroutMedia/creative-liberation-engine",
     "community_gift_shelf": "https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/COMMUNITY_GIFTS.md",
     "reference_micro_utilities": "https://github.com/WholeTroutMedia/open-source-micro-tools",
-    "verified_bounties_ledger": "https://github.com/WholeTroutMedia/open-source-bounties"
+    "verified_bounties_ledger": "https://github.com/WholeTroutMedia/open-source-bounties",
+    "maintainer_bot_shield": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-bounties/main/.github/workflows/open-source-bot-shield.yml",
+    "stir_iescs_protocol_sdk": "https://raw.githubusercontent.com/WholeTroutMedia/open-source-micro-tools/main/apps/000-stir-iescs-protocol-sdk/engine.py"
   },
   "community_gifts": [
     {
@@ -52,6 +57,13 @@
       "title": "In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/savepoint_isolation_verifier.py",
       "cli_example": "./bin/cle gifts --run db-savepoint-isolation-verifier"
+    },
+    {
+      "gift_id": "stir-iescs-rosetta-doctor",
+      "domain_label": "Agentic Wire Protocols (STIR+IESCS) & Maintainer Shield",
+      "title": "STIR-1.0 Ternary Kleene Wire Framer, IESCS Call-Word Compiler & Plain-English Receipt Doctor",
+      "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/stir_iescs_rosetta_doctor.py",
+      "cli_example": "./bin/cle gifts --run stir-iescs-rosetta-doctor"
     }
   ]
 }

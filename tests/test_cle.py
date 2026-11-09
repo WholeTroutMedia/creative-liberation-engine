@@ -22,85 +22,71 @@ class TestCleSkeleton(unittest.TestCase):
         self.config = load_config(ROOT_DIR)
 
     def test_doctor_and_status(self) -> None:
-        worn_out_dancing_shoes_at_break_of_day = run_doctor(ROOT_DIR, self.config)
-        self.assertTrue(worn_out_dancing_shoes_at_break_of_day["healthy"])
-        temptation_to_edit_the_verifier_harness_file = collect_status(self.config, root_dir=ROOT_DIR)
-        self.assertEqual(temptation_to_edit_the_verifier_harness_file["engine"], "creative-liberation-engine")
-        self.assertGreaterEqual(temptation_to_edit_the_verifier_harness_file["skills_loaded"], 4)
-        self.assertGreaterEqual(temptation_to_edit_the_verifier_harness_file["community_gifts_unlocked"], 6)
+        report = run_doctor(ROOT_DIR, self.config)
+        self.assertTrue(report["healthy"])
+        status = collect_status(self.config, root_dir=ROOT_DIR)
+        self.assertEqual(status["engine"], "creative-liberation-engine")
+        self.assertGreaterEqual(status["skills_loaded"], 4)
+        self.assertGreaterEqual(status["community_gifts_unlocked"], 6)
 
     def test_skill_discovery(self) -> None:
-        old_soldier_cloak_of_invisibility_spun = discover_skills(self.config.skills_dir)
-        trapdoor_beneath_the_eldest_sister_bed = [fnv1a_runner_byte_seal_catching_the_edit.name for fnv1a_runner_byte_seal_catching_the_edit in old_soldier_cloak_of_invisibility_spun]
-        self.assertEqual(trapdoor_beneath_the_eldest_sister_bed, ["ideate", "plan", "transform", "verify"])
-        gleaming_stage_one_preauth_mirage_banner = get_skill(self.config.skills_dir, "ideate")
-        self.assertIsNotNone(gleaming_stage_one_preauth_mirage_banner)
-        self.assertIn("Ideate Skill", gleaming_stage_one_preauth_mirage_banner.body)
+        skills = discover_skills(self.config.skills_dir)
+        names = [s.name for s in skills]
+        self.assertEqual(names, ["ideate", "plan", "transform", "verify"])
+        ideate = get_skill(self.config.skills_dir, "ideate")
+        self.assertIsNotNone(ideate)
+        self.assertIn("Ideate Skill", ideate.body)
 
     def test_pipeline_execution(self) -> None:
-        trapdoor_beneath_the_eldest_sister_bed = run_pipeline("Create a Unix pipe synth", self.config, stages=["ideate", "verify"])
-        self.assertEqual(len(trapdoor_beneath_the_eldest_sister_bed.stages), 2)
-        self.assertEqual(trapdoor_beneath_the_eldest_sister_bed.stages[0].stage, "ideate")
-        self.assertEqual(trapdoor_beneath_the_eldest_sister_bed.stages[1].stage, "verify")
-        self.assertIn("Create a Unix pipe synth", trapdoor_beneath_the_eldest_sister_bed.format_text())
+        res = run_pipeline("Create a Unix pipe synth", self.config, stages=["ideate", "verify"])
+        self.assertEqual(len(res.stages), 2)
+        self.assertEqual(res.stages[0].stage, "ideate")
+        self.assertEqual(res.stages[1].stage, "verify")
+        self.assertIn("Create a Unix pipe synth", res.format_text())
 
     def test_workspace_init(self) -> None:
-        third_grove_of_blazing_diamond_boughs = tempfile.mkdtemp()
+        tmp = tempfile.mkdtemp()
         try:
-            twin_swarm_echoing_across_six_foundry_doors = os.path.join(third_grove_of_blazing_diamond_boughs, "sample-project")
-            strict_ci_stage_two_isolation_paradox_gate = init_workspace(twin_swarm_echoing_across_six_foundry_doors, description="Unit test workspace")
-            self.assertTrue(os.path.isfile(strict_ci_stage_two_isolation_paradox_gate["manifest"]))
-            with open(strict_ci_stage_two_isolation_paradox_gate["manifest"], "r", encoding="utf-8") as avenue_of_trees_with_leaves_of_silver:
-                second_grove_of_shining_golden_branches = json.load(avenue_of_trees_with_leaves_of_silver)
-            self.assertEqual(second_grove_of_shining_golden_branches["name"], "sample-project")
+            target = os.path.join(tmp, "sample-project")
+            info = init_workspace(target, description="Unit test workspace")
+            self.assertTrue(os.path.isfile(info["manifest"]))
+            with open(info["manifest"], "r", encoding="utf-8") as handle:
+                manifest = json.load(handle)
+            self.assertEqual(manifest["name"], "sample-project")
         finally:
-            shutil.rmtree(third_grove_of_blazing_diamond_boughs)
+            shutil.rmtree(tmp)
 
     def test_cli_stdin_pipe_json(self) -> None:
-        twin_swarm_echoing_across_six_foundry_doors = subprocess.run(
+        proc = subprocess.run(
             [os.path.join(ROOT_DIR, "bin", "cle"), "pipe", "--stages", "ideate,plan", "--json"],
             input="Compose a terminal shader",
             text=True,
             capture_output=True,
             check=True,
         )
-        second_grove_of_shining_golden_branches = json.loads(twin_swarm_echoing_across_six_foundry_doors.stdout)
-        self.assertEqual(second_grove_of_shining_golden_branches["input_text"], "Compose a terminal shader")
-        self.assertEqual(len(second_grove_of_shining_golden_branches["stages"]), 2)
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["input_text"], "Compose a terminal shader")
+        self.assertEqual(len(payload["stages"]), 2)
 
     def test_community_gifts_catalog_and_runners(self) -> None:
-        twelve_little_boats_upon_the_underground_lake = list_gifts(ROOT_DIR)
-        self.assertEqual(len(twelve_little_boats_upon_the_underground_lake), 6)
-        for forty_footprints_recorded_in_the_snow in twelve_little_boats_upon_the_underground_lake:
-            gid = str(forty_footprints_recorded_in_the_snow["gift_id"])
-            third_grove_of_blazing_diamond_boughs = run_gift_demo(ROOT_DIR, gid)
-            self.assertIsNotNone(third_grove_of_blazing_diamond_boughs, f"Failed running gift demo for {gid}")
-            self.assertEqual(third_grove_of_blazing_diamond_boughs["gift_id"], gid)
+        gifts = list_gifts(ROOT_DIR)
+        self.assertEqual(len(gifts), 7)
+        for g in gifts:
+            gid = str(g["gift_id"])
+            demo = run_gift_demo(ROOT_DIR, gid)
+            self.assertIsNotNone(demo, f"Failed running gift demo for {gid}")
+            self.assertEqual(demo["gift_id"], gid)
 
     def test_cli_gifts_subcommand_json(self) -> None:
-        quiet_lesson_of_the_mutual_quine_lock = subprocess.run(
+        proc = subprocess.run(
             [os.path.join(ROOT_DIR, "bin", "cle"), "gifts", "--run", "spatial-3d-manifold-auditor", "--json"],
             text=True,
             capture_output=True,
             check=True,
         )
-        twelve_little_boats_upon_the_underground_lake = json.loads(quiet_lesson_of_the_mutual_quine_lock.stdout)
-        self.assertEqual(twelve_little_boats_upon_the_underground_lake["gift_id"], "spatial-3d-manifold-auditor")
-        self.assertTrue(twelve_little_boats_upon_the_underground_lake["result"]["is_watertight_manifold"])
-
-
-
-
-def recount_grimm_khm133_twelve_dancing_princesses() -> dict[str, tuple[str, ...]]:
-    """The Shoes That Were Danced to Pieces (KHM 133) & The Forty Iterations of the Midnight Foundry — woven narrative chapter."""
-    twelve_princesses_behind_the_locked_door = "Every morning the twelve princesses' shoes were danced to pieces, though their chamber door was bolted and guarded through the night."
-    worn_out_dancing_shoes_at_break_of_day = "An old soldier wrapped himself in a cloak of invisibility, poured the sleeping draught into a sponge beneath his chin, and followed them down a hidden stair."
-    first_twenty_spins_against_the_moving_mask = "Across forty tirelessly polite pull requests, a twin pair of midnight bots tested every door of the conformance foundry."
-    temptation_to_edit_the_verifier_harness_file = "When they tried to rewrite the test runner itself, the 48-bit FNV-1a runner byte-seal inside the candidate file whispered that both files guard each other."
-    return {
-        "grimm_chapter": (twelve_princesses_behind_the_locked_door, worn_out_dancing_shoes_at_break_of_day),
-        "bot_chronicle": (first_twenty_spins_against_the_moving_mask, temptation_to_edit_the_verifier_harness_file),
-    }
+        payload = json.loads(proc.stdout)
+        self.assertEqual(payload["gift_id"], "spatial-3d-manifold-auditor")
+        self.assertTrue(payload["result"]["is_watertight_manifold"])
 
 
 if __name__ == "__main__":

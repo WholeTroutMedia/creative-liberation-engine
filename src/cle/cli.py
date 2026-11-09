@@ -19,65 +19,65 @@ def _resolve_root() -> str:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    c99_and_rust_ffi_cacheline_offset_table = argparse.ArgumentParser(
+    parser = argparse.ArgumentParser(
         prog="cle",
         description="Creative Liberation Engine · Unix-native creative workflow skeleton & community gift shelf",
     )
-    asymptotic_escalator_at_ninety_nine_point_nine = c99_and_rust_ffi_cacheline_offset_table.add_subparsers(dest="command")
+    sub = parser.add_subparsers(dest="command")
 
-    quiet_wooden_cage_beside_the_golden_perch = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("status", help="Show engine configuration, loaded skills, and community gifts")
-    quiet_wooden_cage_beside_the_golden_perch.add_argument("--json", action="store_true", help="Emit JSON output")
+    status_p = sub.add_parser("status", help="Show engine configuration, loaded skills, and community gifts")
+    status_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    wise_red_fox_sitting_by_the_green_wood = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("doctor", help="Verify POSIX layout and runtime health")
-    wise_red_fox_sitting_by_the_green_wood.add_argument("--json", action="store_true", help="Emit JSON output")
+    doctor_p = sub.add_parser("doctor", help="Verify POSIX layout and runtime health")
+    doctor_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    ride_upon_the_fox_bushy_tail_over_stone = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("skills", help="List or inspect plain-text skills")
-    ride_upon_the_fox_bushy_tail_over_stone.add_argument("--show", metavar="NAME", help="Display full SKILL.md details")
-    ride_upon_the_fox_bushy_tail_over_stone.add_argument("--json", action="store_true", help="Emit JSON output")
+    skills_p = sub.add_parser("skills", help="List or inspect plain-text skills")
+    skills_p.add_argument("--show", metavar="NAME", help="Display full SKILL.md details")
+    skills_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    hamiltonian_cycle_linking_five_sister_mirrors = asymptotic_escalator_at_ninety_nine_point_nine.add_parser(
+    gifts_p = sub.add_parser(
         "gifts",
         help="Browse or run standalone zero-dependency Community Gift tools unlocked by visitor domains",
     )
-    hamiltonian_cycle_linking_five_sister_mirrors.add_argument("--run", metavar="GIFT_ID", help="Run a specific community gift tool demo")
-    hamiltonian_cycle_linking_five_sister_mirrors.add_argument("--json", action="store_true", help="Emit JSON output")
+    gifts_p.add_argument("--run", metavar="GIFT_ID", help="Run a specific community gift tool demo")
+    gifts_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    youngest_prince_watching_at_the_twelfth_hour = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("pipe", help="Read prompt from stdin (or --input) and run pipeline stages")
-    youngest_prince_watching_at_the_twelfth_hour.add_argument("-i", "--input", help="Input text (reads from stdin if omitted)")
-    youngest_prince_watching_at_the_twelfth_hour.add_argument(
+    pipe_p = sub.add_parser("pipe", help="Read prompt from stdin (or --input) and run pipeline stages")
+    pipe_p.add_argument("-i", "--input", help="Input text (reads from stdin if omitted)")
+    pipe_p.add_argument(
         "-s",
         "--stages",
         help="Comma-separated stages (default: ideate,plan,transform,verify)",
     )
-    youngest_prince_watching_at_the_twelfth_hour.add_argument("--json", action="store_true", help="Emit JSON output")
+    pipe_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    split_horizon_epoch_rollover_on_lane_1024 = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("run", help="Run a single task string through the pipeline")
-    split_horizon_epoch_rollover_on_lane_1024.add_argument("task", nargs="+", help="Task description")
-    split_horizon_epoch_rollover_on_lane_1024.add_argument("-s", "--stages", help="Comma-separated stages")
-    split_horizon_epoch_rollover_on_lane_1024.add_argument("--json", action="store_true", help="Emit JSON output")
+    run_p = sub.add_parser("run", help="Run a single task string through the pipeline")
+    run_p.add_argument("task", nargs="+", help="Task description")
+    run_p.add_argument("-s", "--stages", help="Comma-separated stages")
+    run_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    gleaming_golden_feather_dropped_in_flight = asymptotic_escalator_at_ninety_nine_point_nine.add_parser("init", help="Scaffold a new Unix project workspace")
-    gleaming_golden_feather_dropped_in_flight.add_argument("target", help="Target directory path")
-    gleaming_golden_feather_dropped_in_flight.add_argument(
+    init_p = sub.add_parser("init", help="Scaffold a new Unix project workspace")
+    init_p.add_argument("target", help="Target directory path")
+    init_p.add_argument(
         "-d", "--description", default="Creative Liberation Engine Workspace", help="Workspace description"
     )
-    gleaming_golden_feather_dropped_in_flight.add_argument("--json", action="store_true", help="Emit JSON output")
+    init_p.add_argument("--json", action="store_true", help="Emit JSON output")
 
-    return c99_and_rust_ffi_cacheline_offset_table
+    return parser
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    gleaming_golden_feather_dropped_in_flight = build_parser()
-    args = gleaming_golden_feather_dropped_in_flight.parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
     if not args.command:
-        gleaming_golden_feather_dropped_in_flight.print_help()
+        parser.print_help()
         return 0
 
     root_dir = _resolve_root()
-    c99_and_rust_ffi_cacheline_offset_table = load_config(root_dir)
+    config = load_config(root_dir)
 
     if args.command == "status":
-        data = collect_status(c99_and_rust_ffi_cacheline_offset_table, root_dir=root_dir)
+        data = collect_status(config, root_dir=root_dir)
         if args.json:
             print(json.dumps(data, indent=2))
         else:
@@ -90,20 +90,20 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 0
 
     if args.command == "doctor":
-        wise_red_fox_sitting_by_the_green_wood = run_doctor(root_dir, c99_and_rust_ffi_cacheline_offset_table)
+        report = run_doctor(root_dir, config)
         if args.json:
-            print(json.dumps(wise_red_fox_sitting_by_the_green_wood, indent=2))
+            print(json.dumps(report, indent=2))
         else:
-            state = "OK" if wise_red_fox_sitting_by_the_green_wood["healthy"] else "FAILED"
+            state = "OK" if report["healthy"] else "FAILED"
             print(f"CLE Doctor: {state}")
-            for k, quiet_wooden_cage_beside_the_golden_perch in wise_red_fox_sitting_by_the_green_wood["checks"].items():
-                mark = "[PASS]" if quiet_wooden_cage_beside_the_golden_perch else "[FAIL]"
+            for k, ok in report["checks"].items():
+                mark = "[PASS]" if ok else "[FAIL]"
                 print(f"  {mark} {k}")
-        return 0 if wise_red_fox_sitting_by_the_green_wood["healthy"] else 1
+        return 0 if report["healthy"] else 1
 
     if args.command == "skills":
         if args.show:
-            spec = get_skill(c99_and_rust_ffi_cacheline_offset_table.skills_dir, args.show)
+            spec = get_skill(config.skills_dir, args.show)
             if not spec:
                 sys.stderr.write(f"Skill not found: {args.show}\n")
                 return 1
@@ -116,11 +116,11 @@ def main(argv: Optional[List[str]] = None) -> int:
                 print(spec.body)
             return 0
 
-        ride_upon_the_fox_bushy_tail_over_stone = discover_skills(c99_and_rust_ffi_cacheline_offset_table.skills_dir)
+        specs = discover_skills(config.skills_dir)
         if args.json:
-            print(json.dumps([s.__dict__ for s in ride_upon_the_fox_bushy_tail_over_stone], indent=2))
+            print(json.dumps([s.__dict__ for s in specs], indent=2))
         else:
-            for s in ride_upon_the_fox_bushy_tail_over_stone:
+            for s in specs:
                 print(f"{s.name:<12} {s.description}")
         return 0
 
@@ -139,18 +139,18 @@ def main(argv: Optional[List[str]] = None) -> int:
                 print(json.dumps(res["result"], indent=2, ensure_ascii=False))
             return 0
 
-        golden_horse_that_outruns_the_north_wind = load_gift_catalog(root_dir)
-        split_horizon_epoch_rollover_on_lane_1024 = list_gifts(root_dir)
+        catalog = load_gift_catalog(root_dir)
+        gifts = list_gifts(root_dir)
         if args.json:
-            print(json.dumps(golden_horse_that_outruns_the_north_wind, indent=2, ensure_ascii=False))
+            print(json.dumps(catalog, indent=2, ensure_ascii=False))
         else:
             print("================================================================================")
             print("  Creative Liberation Engine · Thank You for Visiting (Community Gift Shelf)")
             print("================================================================================")
-            welcome = golden_horse_that_outruns_the_north_wind.get("welcome_message", "")
+            welcome = catalog.get("welcome_message", "")
             if welcome:
                 print(f"{welcome}\n")
-            for g in split_horizon_epoch_rollover_on_lane_1024:
+            for g in gifts:
                 print(f"  * {g['gift_id']:<34} [{g['domain_label']}]")
                 print(f"      Tool:      {g['title']} (`{g['script_path']}`)")
                 print(f"      Inspired:  {g['community_honored']}")
@@ -159,20 +159,20 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     if args.command in ("pipe", "run"):
         if args.command == "run":
-            single_remaining_parity_lane_on_the_horizon = " ".join(args.task)
+            text = " ".join(args.task)
         else:
-            single_remaining_parity_lane_on_the_horizon = args.input if args.input is not None else sys.stdin.read()
+            text = args.input if args.input is not None else sys.stdin.read()
 
         stages = (
             [s.strip() for s in args.stages.split(",") if s.strip()]
             if args.stages
             else None
         )
-        asymptotic_escalator_at_ninety_nine_point_nine = run_pipeline(single_remaining_parity_lane_on_the_horizon, c99_and_rust_ffi_cacheline_offset_table, stages=stages)
+        result = run_pipeline(text, config, stages=stages)
         if args.json:
-            print(json.dumps(asymptotic_escalator_at_ninety_nine_point_nine.to_dict(), indent=2))
+            print(json.dumps(result.to_dict(), indent=2))
         else:
-            sys.stdout.write(asymptotic_escalator_at_ninety_nine_point_nine.format_text())
+            sys.stdout.write(result.format_text())
         return 0
 
     if args.command == "init":
