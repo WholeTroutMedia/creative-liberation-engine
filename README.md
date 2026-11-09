@@ -1,5 +1,8 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/WholeTroutMedia/.github/main/assets/wholetrout-executive-masthead.svg" alt="Creative Liberation Engine · WholeTroutMedia" width="100%" />
+
+> **🌍 Global Walk-Into-Your-Folder Directory**: Browse all tools, verified Pull Requests, and ready-to-run friend kits by **Domain**, **Programming Language**, or **Global Builder Need** in **[`ECOSYSTEM_DIRECTORY.md`](./ECOSYSTEM_DIRECTORY.md)**.
+
 </p>
 
 # Creative Liberation Engine (`v2.1.0`)
