@@ -1,4 +1,4 @@
-# Creative Liberation Engine · Release & Upgrade Notice `v2.1.0` (2026-11-13 21:48 UTC)
+# Creative Liberation Engine · Release & Upgrade Notice `v2.1.0` (2026-11-13 21:53 UTC)
 
 If you previously cloned **`WholeTroutMedia/creative-liberation-engine`** (or any companion repository), run `git pull origin main` to receive the `v2.1.0` updates:
 
