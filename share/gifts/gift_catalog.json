@@ -1,14 +1,14 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-14T08:47:21.110982+00:00",
-  "total_ecosystem_clones": 36054,
-  "total_ecosystem_unique_cloners": 5021,
+  "updated_at": "2026-11-14T08:52:27.685148+00:00",
+  "total_ecosystem_clones": 36053,
+  "total_ecosystem_unique_cloners": 5020,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 4221,
     "verified_human_discovery_unique_cloners": 1274,
-    "upstream_ci_matrix_fork_clones": 794,
-    "upstream_ci_matrix_unique_cloners": 280,
+    "upstream_ci_matrix_fork_clones": 793,
+    "upstream_ci_matrix_unique_cloners": 279,
     "bot_detention_and_relay_clones": 31039,
     "bot_detention_and_relay_unique_cloners": 3467
   },
@@ -46,9 +46,9 @@
       "domain_label": "GPU Kernels, Modular MAX & LLM Inference",
       "title": "PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner",
       "script_path": "gifts/kv_cache_roofline_planner.py",
-      "community_honored": "Modular Forum (`forum.modular.com` referrer), vLLM & PyTorch communities (9 direct fork clones / 9 unique cloners)",
-      "backtracked_clones": 9,
-      "backtracked_unique_cloners": 9,
+      "community_honored": "Modular Forum (`forum.modular.com` referrer), vLLM & PyTorch communities (8 direct fork clones / 8 unique cloners)",
+      "backtracked_clones": 8,
+      "backtracked_unique_cloners": 8,
       "cli_example": "./bin/cle gifts --run gpu-kv-cache-roofline-planner",
       "standalone_example": "python3 gifts/kv_cache_roofline_planner.py --gpu rtx-4090-24gb --json",
       "compute_execution_mode": "CLIENT_SIDE_AND_EXTERNAL_GPU_FARM_BURST"
