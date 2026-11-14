@@ -1,6 +1,6 @@
 # Thank You for Visiting · The CLE Community Gift Shelf (`v2.1.0`)
 
-> **Live Ecosystem Pulse**: `36,054` Git clones from `5,021` unique cloners across `35` active repositories.
+> **Live Ecosystem Pulse**: `36,053` Git clones from `5,020` unique cloners across `35` active repositories.
 
 Whenever we notice developers, artists, or researchers from a technical community exploring or cloning our repositories, we build and drop a **free, standalone, zero-dependency Python tool** into [`gifts/`](./gifts/) (and wire it into `./bin/cle gifts`) as a thank-you gift.
 
@@ -27,7 +27,7 @@ Every tool in [`gifts/`](./gifts/) uses **100% Python standard library (`0` pip 
 | Gift ID | Domain Community Honored | Free Standalone Tool | Quick Command |
 | :--- | :--- | :--- | :--- |
 | **`spatial-3d-manifold-auditor`** | **Spatial, 3D & WebGPU**<br/>_Three.js & WebGPU Discourse (`discourse.threejs.org`), Gyroflow & OpenHMD (15 repo clones / 15 unique cloners)_ | **[Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor](./gifts/spatial_manifold_auditor.py)** | `./bin/cle gifts --run spatial-3d-manifold-auditor` |
-| **`gpu-kv-cache-roofline-planner`** | **GPU Kernels, Modular MAX & LLM Inference**<br/>_Modular Forum (`forum.modular.com` referrer), vLLM & PyTorch communities (9 direct fork clones / 9 unique cloners)_ | **[PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner](./gifts/kv_cache_roofline_planner.py)** | `./bin/cle gifts --run gpu-kv-cache-roofline-planner` |
+| **`gpu-kv-cache-roofline-planner`** | **GPU Kernels, Modular MAX & LLM Inference**<br/>_Modular Forum (`forum.modular.com` referrer), vLLM & PyTorch communities (8 direct fork clones / 8 unique cloners)_ | **[PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner](./gifts/kv_cache_roofline_planner.py)** | `./bin/cle gifts --run gpu-kv-cache-roofline-planner` |
 | **`async-utf8-sse-frame-doctor`** | **Async Python, ASGI & MCP Streaming**<br/>_Starlette, Uvicorn, Dramatiq & MCP builders (338 clones / 161 unique cloners across ASGI & sandbox repos)_ | **[Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor](./gifts/utf8_sse_frame_doctor.py)** | `./bin/cle gifts --run async-utf8-sse-frame-doctor` |
 | **`creative-shader-palette-forge`** | **Creative Coding, Shaders & Generative Art**<br/>_Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (931 clones / 365 unique cloners)_ | **[Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge](./gifts/cosine_palette_sdf_forge.py)** | `./bin/cle gifts --run creative-shader-palette-forge` |
 | **`cloud-k3d-port-backoff-doctor`** | **Cloud-Native, Kubernetes & Distributed Systems**<br/>_k3d, ZIO, Mergo & Ecosystems distributed systems engineers (113 clones / 77 unique cloners)_ | **[k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor](./gifts/k3d_port_and_backoff_doctor.py)** | `./bin/cle gifts --run cloud-k3d-port-backoff-doctor` |
