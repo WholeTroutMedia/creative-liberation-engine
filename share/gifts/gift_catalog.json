@@ -1,14 +1,14 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-14T11:37:25.278233+00:00",
-  "total_ecosystem_clones": 36092,
-  "total_ecosystem_unique_cloners": 5034,
+  "updated_at": "2026-11-14T11:42:02.461459+00:00",
+  "total_ecosystem_clones": 36093,
+  "total_ecosystem_unique_cloners": 5035,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 4255,
     "verified_human_discovery_unique_cloners": 1281,
-    "upstream_ci_matrix_fork_clones": 793,
-    "upstream_ci_matrix_unique_cloners": 279,
+    "upstream_ci_matrix_fork_clones": 794,
+    "upstream_ci_matrix_unique_cloners": 280,
     "bot_detention_and_relay_clones": 31044,
     "bot_detention_and_relay_unique_cloners": 3474
   },
@@ -98,9 +98,9 @@
       "domain_label": "Database ORM, Savepoints & Ledger Integrity",
       "title": "In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier",
       "script_path": "gifts/savepoint_isolation_verifier.py",
-      "community_honored": "InvenTree, Advanced-Alchemy, UNIT3D & Solana systems builders (569 clones / 117 unique cloners)",
-      "backtracked_clones": 569,
-      "backtracked_unique_cloners": 117,
+      "community_honored": "InvenTree, Advanced-Alchemy, UNIT3D & Solana systems builders (570 clones / 118 unique cloners)",
+      "backtracked_clones": 570,
+      "backtracked_unique_cloners": 118,
       "cli_example": "./bin/cle gifts --run db-savepoint-isolation-verifier",
       "standalone_example": "python3 gifts/savepoint_isolation_verifier.py --json",
       "compute_execution_mode": "CLIENT_SIDE_ZERO_SERVER_BURN"
