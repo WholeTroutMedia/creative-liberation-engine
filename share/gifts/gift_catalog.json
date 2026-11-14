@@ -1,14 +1,14 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-14T07:57:29.782034+00:00",
-  "total_ecosystem_clones": 36049,
-  "total_ecosystem_unique_cloners": 5017,
+  "updated_at": "2026-11-14T08:02:40.285297+00:00",
+  "total_ecosystem_clones": 36048,
+  "total_ecosystem_unique_cloners": 5016,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 4215,
     "verified_human_discovery_unique_cloners": 1269,
-    "upstream_ci_matrix_fork_clones": 795,
-    "upstream_ci_matrix_unique_cloners": 281,
+    "upstream_ci_matrix_fork_clones": 794,
+    "upstream_ci_matrix_unique_cloners": 280,
     "bot_detention_and_relay_clones": 31039,
     "bot_detention_and_relay_unique_cloners": 3467
   },
@@ -59,9 +59,9 @@
       "domain_label": "Async Python, ASGI & MCP Streaming",
       "title": "Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor",
       "script_path": "gifts/utf8_sse_frame_doctor.py",
-      "community_honored": "Starlette, Uvicorn, Dramatiq & MCP builders (339 clones / 162 unique cloners across ASGI & sandbox repos)",
-      "backtracked_clones": 339,
-      "backtracked_unique_cloners": 162,
+      "community_honored": "Starlette, Uvicorn, Dramatiq & MCP builders (338 clones / 161 unique cloners across ASGI & sandbox repos)",
+      "backtracked_clones": 338,
+      "backtracked_unique_cloners": 161,
       "cli_example": "./bin/cle gifts --run async-utf8-sse-frame-doctor",
       "standalone_example": "python3 gifts/utf8_sse_frame_doctor.py --json",
       "compute_execution_mode": "CLIENT_SIDE_ZERO_SERVER_BURN"
