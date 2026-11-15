@@ -1,14 +1,14 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-15T14:10:22.312999+00:00",
-  "total_ecosystem_clones": 37184,
-  "total_ecosystem_unique_cloners": 5336,
+  "updated_at": "2026-11-15T14:15:28.311459+00:00",
+  "total_ecosystem_clones": 37183,
+  "total_ecosystem_unique_cloners": 5335,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 5284,
     "verified_human_discovery_unique_cloners": 1554,
-    "upstream_ci_matrix_fork_clones": 791,
-    "upstream_ci_matrix_unique_cloners": 277,
+    "upstream_ci_matrix_fork_clones": 790,
+    "upstream_ci_matrix_unique_cloners": 276,
     "bot_detention_and_relay_clones": 31109,
     "bot_detention_and_relay_unique_cloners": 3505
   },
@@ -85,9 +85,9 @@
       "domain_label": "Cloud-Native, Kubernetes & Distributed Systems",
       "title": "k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor",
       "script_path": "gifts/k3d_port_and_backoff_doctor.py",
-      "community_honored": "k3d, ZIO, Mergo & Ecosystems distributed systems engineers (112 clones / 76 unique cloners)",
-      "backtracked_clones": 112,
-      "backtracked_unique_cloners": 76,
+      "community_honored": "k3d, ZIO, Mergo & Ecosystems distributed systems engineers (111 clones / 75 unique cloners)",
+      "backtracked_clones": 111,
+      "backtracked_unique_cloners": 75,
       "cli_example": "./bin/cle gifts --run cloud-k3d-port-backoff-doctor",
       "standalone_example": "python3 gifts/k3d_port_and_backoff_doctor.py --json",
       "compute_execution_mode": "CLIENT_SIDE_ZERO_SERVER_BURN"
