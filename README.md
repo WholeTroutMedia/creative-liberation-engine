@@ -36,7 +36,7 @@ make test
 
 ## Thank You for Visiting · Free Community Gift Shelf ([`COMMUNITY_GIFTS.md`](./COMMUNITY_GIFTS.md))
 
-As builders from across open source explore and clone our repositories (`37,127` clones from `5,316` unique cloners), we pay attention to which communities are visiting and add **free, standalone, zero-dependency tools** to [`gifts/`](./gifts/) in their honor. Run `./bin/cle gifts` to explore all 7 tools:
+As builders from across open source explore and clone our repositories (`37,143` clones from `5,320` unique cloners), we pay attention to which communities are visiting and add **free, standalone, zero-dependency tools** to [`gifts/`](./gifts/) in their honor. Run `./bin/cle gifts` to explore all 7 tools:
 
 | Visiting Community | Free Gift Tool (`0` Dependencies, Pure Python Stdlib) | Try It Instantly |
 | :--- | :--- | :--- |
