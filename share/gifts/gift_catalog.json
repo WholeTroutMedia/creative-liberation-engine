@@ -1,7 +1,7 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-16T14:18:03.509389+00:00",
+  "updated_at": "2026-11-16T14:23:34.559291+00:00",
   "total_ecosystem_clones": 37183,
   "total_ecosystem_unique_cloners": 5335,
   "telemetry_signal_decomposition": {
