@@ -1,12 +1,12 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-17T13:49:19.775935+00:00",
-  "total_ecosystem_clones": 37190,
-  "total_ecosystem_unique_cloners": 5349,
+  "updated_at": "2026-11-17T13:54:16.526573+00:00",
+  "total_ecosystem_clones": 41735,
+  "total_ecosystem_unique_cloners": 5988,
   "telemetry_signal_decomposition": {
-    "verified_human_discovery_clones": 5290,
-    "verified_human_discovery_unique_cloners": 1553,
+    "verified_human_discovery_clones": 9835,
+    "verified_human_discovery_unique_cloners": 2192,
     "upstream_ci_matrix_fork_clones": 753,
     "upstream_ci_matrix_unique_cloners": 260,
     "bot_detention_and_relay_clones": 31147,
@@ -21,9 +21,9 @@
   "active_external_referrers": [
     "github.com",
     "github.com",
+    "github.com",
     "forum.modular.com",
-    "Google",
-    "github.com"
+    "Google"
   ],
   "welcome_message": "Thank you for cloning and exploring the Creative Liberation Engine! Whenever we notice builders from a technical or creative community visiting our repositories, we add a free, zero-dependency, copy-pasteable tool to `gifts/` for that community to take home.",
   "gifts": [
@@ -72,9 +72,9 @@
       "domain_label": "Creative Coding, Shaders & Generative Art",
       "title": "Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge",
       "script_path": "gifts/cosine_palette_sdf_forge.py",
-      "community_honored": "Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (1959 clones / 637 unique cloners)",
-      "backtracked_clones": 1959,
-      "backtracked_unique_cloners": 637,
+      "community_honored": "Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (6504 clones / 1276 unique cloners)",
+      "backtracked_clones": 6504,
+      "backtracked_unique_cloners": 1276,
       "cli_example": "./bin/cle gifts --run creative-shader-palette-forge",
       "standalone_example": "python3 gifts/cosine_palette_sdf_forge.py --preset solar-brass --json",
       "compute_execution_mode": "CLIENT_SIDE_WEBGPU_AND_STDLIB"
