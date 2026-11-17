@@ -1,14 +1,14 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-17T09:18:29.506510+00:00",
-  "total_ecosystem_clones": 37187,
-  "total_ecosystem_unique_cloners": 5332,
+  "updated_at": "2026-11-17T09:23:09.967292+00:00",
+  "total_ecosystem_clones": 37186,
+  "total_ecosystem_unique_cloners": 5331,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 5290,
     "verified_human_discovery_unique_cloners": 1553,
-    "upstream_ci_matrix_fork_clones": 788,
-    "upstream_ci_matrix_unique_cloners": 274,
+    "upstream_ci_matrix_fork_clones": 787,
+    "upstream_ci_matrix_unique_cloners": 273,
     "bot_detention_and_relay_clones": 31109,
     "bot_detention_and_relay_unique_cloners": 3505
   },
@@ -33,9 +33,9 @@
       "domain_label": "Spatial, 3D & WebGPU",
       "title": "Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor",
       "script_path": "gifts/spatial_manifold_auditor.py",
-      "community_honored": "Three.js & WebGPU Discourse (`discourse.threejs.org`), Gyroflow & OpenHMD (15 repo clones / 15 unique cloners)",
-      "backtracked_clones": 15,
-      "backtracked_unique_cloners": 15,
+      "community_honored": "Three.js & WebGPU Discourse (`discourse.threejs.org`), Gyroflow & OpenHMD (14 repo clones / 14 unique cloners)",
+      "backtracked_clones": 14,
+      "backtracked_unique_cloners": 14,
       "cli_example": "./bin/cle gifts --run spatial-3d-manifold-auditor",
       "standalone_example": "python3 gifts/spatial_manifold_auditor.py --json",
       "compute_execution_mode": "CLIENT_SIDE_ZERO_SERVER_BURN"
