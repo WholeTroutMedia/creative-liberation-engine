@@ -1,16 +1,16 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-18T10:46:25.452088+00:00",
-  "total_ecosystem_clones": 44710,
-  "total_ecosystem_unique_cloners": 6347,
+  "updated_at": "2026-11-18T10:51:19.145879+00:00",
+  "total_ecosystem_clones": 44722,
+  "total_ecosystem_unique_cloners": 6349,
   "telemetry_signal_decomposition": {
     "verified_human_discovery_clones": 12826,
     "verified_human_discovery_unique_cloners": 2564,
     "upstream_ci_matrix_fork_clones": 730,
     "upstream_ci_matrix_unique_cloners": 244,
-    "bot_detention_and_relay_clones": 31154,
-    "bot_detention_and_relay_unique_cloners": 3539
+    "bot_detention_and_relay_clones": 31166,
+    "bot_detention_and_relay_unique_cloners": 3541
   },
   "elastic_compute_routing": {
     "local_gpu_burn_pct_for_public_requests": 0.0,
