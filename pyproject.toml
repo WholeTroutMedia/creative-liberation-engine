@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "creative-liberation-engine"
-version = "1.0.0"
-description = "A lightweight, Unix-native creative workflow skeleton"
+version = "2.2.0"
+description = "A lightweight, Unix-native creative workflow skeleton & zero-dependency developer gift shelf"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
@@ -16,3 +16,6 @@ cle = "cle.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+cle = ["bundled_assets/**/*", "bundled_assets/**/**/*", "bundled_assets/**/**/**/*"]
