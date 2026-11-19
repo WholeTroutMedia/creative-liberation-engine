@@ -1,6 +1,7 @@
 {
-  "protocol": "creative-liberation-engine/v2.1.0",
-  "release_version": "2.1.0",
+  "protocol": "creative-liberation-engine/v2.2.0",
+  "release_version": "2.2.0",
+  "wheel_url": "https://github.com/WholeTroutMedia/creative-liberation-engine/releases/download/v2.2.0/creative_liberation_engine-2.2.0-py3-none-any.whl",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
   "upgrade_notice_url": "https://github.com/WholeTroutMedia/creative-liberation-engine/blob/main/UPGRADE_NOTICE.md",
   "name": "Creative Liberation Engine",
@@ -21,49 +22,49 @@
       "domain_label": "Spatial, 3D & WebGPU",
       "title": "Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/spatial_manifold_auditor.py",
-      "cli_example": "./bin/cle gifts --run spatial-3d-manifold-auditor"
+      "cli_example": "cle gifts --run spatial-3d-manifold-auditor"
     },
     {
       "gift_id": "gpu-kv-cache-roofline-planner",
       "domain_label": "GPU Kernels, Modular MAX & LLM Inference",
       "title": "PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/kv_cache_roofline_planner.py",
-      "cli_example": "./bin/cle gifts --run gpu-kv-cache-roofline-planner"
+      "cli_example": "cle gifts --run gpu-kv-cache-roofline-planner"
     },
     {
       "gift_id": "async-utf8-sse-frame-doctor",
       "domain_label": "Async Python, ASGI & MCP Streaming",
       "title": "Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/utf8_sse_frame_doctor.py",
-      "cli_example": "./bin/cle gifts --run async-utf8-sse-frame-doctor"
+      "cli_example": "cle gifts --run async-utf8-sse-frame-doctor"
     },
     {
       "gift_id": "creative-shader-palette-forge",
       "domain_label": "Creative Coding, Shaders & Generative Art",
       "title": "Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/cosine_palette_sdf_forge.py",
-      "cli_example": "./bin/cle gifts --run creative-shader-palette-forge"
+      "cli_example": "cle gifts --run creative-shader-palette-forge"
     },
     {
       "gift_id": "cloud-k3d-port-backoff-doctor",
       "domain_label": "Cloud-Native, Kubernetes & Distributed Systems",
       "title": "k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/k3d_port_and_backoff_doctor.py",
-      "cli_example": "./bin/cle gifts --run cloud-k3d-port-backoff-doctor"
+      "cli_example": "cle gifts --run cloud-k3d-port-backoff-doctor"
     },
     {
       "gift_id": "db-savepoint-isolation-verifier",
       "domain_label": "Database ORM, Savepoints & Ledger Integrity",
       "title": "In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/savepoint_isolation_verifier.py",
-      "cli_example": "./bin/cle gifts --run db-savepoint-isolation-verifier"
+      "cli_example": "cle gifts --run db-savepoint-isolation-verifier"
     },
     {
       "gift_id": "stir-iescs-rosetta-doctor",
       "domain_label": "Agentic Wire Protocols (STIR+IESCS) & Maintainer Shield",
       "title": "STIR-1.0 Ternary Kleene Wire Framer, IESCS Call-Word Compiler & Plain-English Receipt Doctor",
       "raw_url": "https://raw.githubusercontent.com/WholeTroutMedia/creative-liberation-engine/main/gifts/stir_iescs_rosetta_doctor.py",
-      "cli_example": "./bin/cle gifts --run stir-iescs-rosetta-doctor"
+      "cli_example": "cle gifts --run stir-iescs-rosetta-doctor"
     }
   ]
 }
