@@ -2,14 +2,14 @@
   <img src="https://raw.githubusercontent.com/WholeTroutMedia/.github/main/assets/wholetrout-executive-masthead.svg" alt="Creative Liberation Engine · WholeTroutMedia" width="100%" />
 </p>
 
-# Creative Liberation Engine (`v2.1.0`)
+# Creative Liberation Engine (`v2.2.0`)
 
 An open creative foundation shaped by the imagination of the person using it.
 
-> **[`v2.1.0` Release & Upgrade Notice (`UPGRADE_NOTICE.md`)](./UPGRADE_NOTICE.md)**: Existing cloners should run `git pull origin main`.
-> - **Single Canonical Home**: `WholeTroutMedia/creative-liberation-engine` is the sole canonical repository for the Creative Liberation Engine.
-> - **New Community Gift #7 ([`gifts/stir_iescs_rosetta_doctor.py`](./gifts/stir_iescs_rosetta_doctor.py))**: Runnable `STIR-1.0` ternary Kleene wire framing + `IESCS` call-word and plain-English receipt doctor (`./bin/cle gifts --run stir-iescs-rosetta-doctor`).
-> - **Free Maintainer Bot-Shield (`open-source-bot-shield.yml`)**: Grab the zero-dependency workflow at **[`WholeTroutMedia/open-source-bounties/.github/workflows/open-source-bot-shield.yml`](https://github.com/WholeTroutMedia/open-source-bounties/blob/main/.github/workflows/open-source-bot-shield.yml)**.
+> **[`v2.2.0` Release & Upgrade Notice (`UPGRADE_NOTICE.md`)](./UPGRADE_NOTICE.md)** · **[Release Downloads (`v2.2.0`)](https://github.com/WholeTroutMedia/creative-liberation-engine/releases/tag/v2.2.0)**:
+> - **1-Command Wheel Install**: `pip install https://github.com/WholeTroutMedia/creative-liberation-engine/releases/download/v2.2.0/creative_liberation_engine-2.2.0-py3-none-any.whl`
+> - **Community Gift #7 ([`gifts/stir_iescs_rosetta_doctor.py`](./gifts/stir_iescs_rosetta_doctor.py))**: Runnable `STIR-1.0` ternary Kleene wire framing + `IESCS` call-word and plain-English receipt doctor (`cle gifts --run stir-iescs-rosetta-doctor`).
+> - **Free Maintainer Bot-Shield (`open-source-bot-shield.yml`)**: Grab the zero-dependency GitHub Action at **[`WholeTroutMedia/open-source-bounties/releases/tag/v2.2.0`](https://github.com/WholeTroutMedia/open-source-bounties/releases/tag/v2.2.0)**.
 
 ---
 
@@ -21,32 +21,38 @@ Whether you are sketching an early concept, composing media, building tools, or 
 
 ---
 
-## Getting Started
+## Getting Started (1-Command Install or Source Checkout)
 
 ```bash
+# Option A: Install self-contained v2.2.0 release wheel (zero dependencies)
+pip install https://github.com/WholeTroutMedia/creative-liberation-engine/releases/download/v2.2.0/creative_liberation_engine-2.2.0-py3-none-any.whl
+cle status
+cle gifts
+cle gifts --run stir-iescs-rosetta-doctor
+
+# Option B: Clone source repository
 git clone https://github.com/WholeTroutMedia/creative-liberation-engine.git
 cd creative-liberation-engine
 ./bin/cle status
-./bin/cle gifts
 ./bin/cle gifts --run stir-iescs-rosetta-doctor
 make test
 ```
 
 ---
 
-## Thank You for Visiting · Free Community Gift Shelf ([`COMMUNITY_GIFTS.md`](./COMMUNITY_GIFTS.md))
+## Community Gift Shelf ([`COMMUNITY_GIFTS.md`](./COMMUNITY_GIFTS.md))
 
-As builders from across open source explore and clone our repositories (`47,759` clones from `6,690` unique cloners), we pay attention to which communities are visiting and add **free, standalone, zero-dependency tools** to [`gifts/`](./gifts/) in their honor. Run `./bin/cle gifts` to explore all 7 tools:
+Each tool inside [`gifts/`](./gifts/) uses **100% Python standard library (`0` dependencies required)** and runs client-side with zero external runtime calls:
 
-| Visiting Community | Free Gift Tool (`0` Dependencies, Pure Python Stdlib) | Try It Instantly |
+| Domain Community | Free Gift Tool (`0` Dependencies, Pure Python Stdlib) | Try It Instantly |
 | :--- | :--- | :--- |
-| **`Spatial, 3D & WebGPU`** | **[Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor](./gifts/spatial_manifold_auditor.py)** | `./bin/cle gifts --run spatial-3d-manifold-auditor` |
-| **`GPU Kernels, Modular MAX & LLM Inference`** | **[PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner](./gifts/kv_cache_roofline_planner.py)** | `./bin/cle gifts --run gpu-kv-cache-roofline-planner` |
-| **`Async Python, ASGI & MCP Streaming`** | **[Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor](./gifts/utf8_sse_frame_doctor.py)** | `./bin/cle gifts --run async-utf8-sse-frame-doctor` |
-| **`Creative Coding, Shaders & Generative Art`** | **[Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge](./gifts/cosine_palette_sdf_forge.py)** | `./bin/cle gifts --run creative-shader-palette-forge` |
-| **`Cloud-Native, Kubernetes & Distributed Systems`** | **[k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor](./gifts/k3d_port_and_backoff_doctor.py)** | `./bin/cle gifts --run cloud-k3d-port-backoff-doctor` |
-| **`Database ORM, Savepoints & Ledger Integrity`** | **[In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier](./gifts/savepoint_isolation_verifier.py)** | `./bin/cle gifts --run db-savepoint-isolation-verifier` |
-| **`Agentic Wire Protocols (STIR+IESCS) & Maintainer Shield`** | **[STIR-1.0 Ternary Kleene Wire Framer, IESCS Call-Word Compiler & Plain-English Receipt Doctor](./gifts/stir_iescs_rosetta_doctor.py)** | `./bin/cle gifts --run stir-iescs-rosetta-doctor` |
+| **`Spatial, 3D & WebGPU`** | **[Watertight 3D Manifold, Winding-Order & Euler Characteristic Auditor](./gifts/spatial_manifold_auditor.py)** | `cle gifts --run spatial-3d-manifold-auditor` |
+| **`GPU Kernels, Modular MAX & LLM Inference`** | **[PagedAttention KV-Cache VRAM, GQA & Roofline Arithmetic Intensity Planner](./gifts/kv_cache_roofline_planner.py)** | `cle gifts --run gpu-kv-cache-roofline-planner` |
+| **`Async Python, ASGI & MCP Streaming`** | **[Stateful Multi-Byte UTF-8 Chunk Boundary & WHATWG SSE Frame Doctor](./gifts/utf8_sse_frame_doctor.py)** | `cle gifts --run async-utf8-sse-frame-doctor` |
+| **`Creative Coding, Shaders & Generative Art`** | **[Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge](./gifts/cosine_palette_sdf_forge.py)** | `cle gifts --run creative-shader-palette-forge` |
+| **`Cloud-Native, Kubernetes & Distributed Systems`** | **[k3d Local Cluster Port-Collision & Decorrelated-Jitter Backoff Doctor](./gifts/k3d_port_and_backoff_doctor.py)** | `cle gifts --run cloud-k3d-port-backoff-doctor` |
+| **`Database ORM, Savepoints & Ledger Integrity`** | **[In-Memory SQLite Nested Savepoint & Double-Entry Idempotency Verifier](./gifts/savepoint_isolation_verifier.py)** | `cle gifts --run db-savepoint-isolation-verifier` |
+| **`Agentic Wire Protocols (STIR+IESCS) & Maintainer Shield`** | **[STIR-1.0 Ternary Kleene Wire Framer, IESCS Call-Word Compiler & Plain-English Receipt Doctor](./gifts/stir_iescs_rosetta_doctor.py)** | `cle gifts --run stir-iescs-rosetta-doctor` |
 
 ---
 
