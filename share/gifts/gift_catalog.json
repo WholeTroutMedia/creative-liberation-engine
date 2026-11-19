@@ -1,16 +1,16 @@
 {
   "release_version": "2.1.0",
   "rosetta_upgrade_header": "X-Inception-Rosetta-Upgrade: STIR-IESCS/1.0",
-  "updated_at": "2026-11-19T06:23:25.507920+00:00",
-  "total_ecosystem_clones": 44649,
-  "total_ecosystem_unique_cloners": 6322,
+  "updated_at": "2026-11-19T08:13:43.024661+00:00",
+  "total_ecosystem_clones": 47759,
+  "total_ecosystem_unique_cloners": 6690,
   "telemetry_signal_decomposition": {
-    "verified_human_discovery_clones": 12803,
-    "verified_human_discovery_unique_cloners": 2562,
+    "verified_human_discovery_clones": 15908,
+    "verified_human_discovery_unique_cloners": 2923,
     "upstream_ci_matrix_fork_clones": 680,
     "upstream_ci_matrix_unique_cloners": 219,
-    "bot_detention_and_relay_clones": 31166,
-    "bot_detention_and_relay_unique_cloners": 3541
+    "bot_detention_and_relay_clones": 31171,
+    "bot_detention_and_relay_unique_cloners": 3548
   },
   "elastic_compute_routing": {
     "local_gpu_burn_pct_for_public_requests": 0.0,
@@ -71,9 +71,9 @@
       "domain_label": "Creative Coding, Shaders & Generative Art",
       "title": "Inigo Quilez Procedural Cosine Palette & GLSL/WGSL Shader Snippet Forge",
       "script_path": "gifts/cosine_palette_sdf_forge.py",
-      "community_honored": "Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (9530 clones / 1670 unique cloners)",
-      "backtracked_clones": 9530,
-      "backtracked_unique_cloners": 1670,
+      "community_honored": "Creative Liberation Engine, bsnes-hd & Obsidian/Logseq creative builders (12635 clones / 2031 unique cloners)",
+      "backtracked_clones": 12635,
+      "backtracked_unique_cloners": 2031,
       "cli_example": "./bin/cle gifts --run creative-shader-palette-forge",
       "standalone_example": "python3 gifts/cosine_palette_sdf_forge.py --preset solar-brass --json",
       "compute_execution_mode": "CLIENT_SIDE_WEBGPU_AND_STDLIB"
