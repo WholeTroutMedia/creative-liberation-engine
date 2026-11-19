@@ -15,7 +15,13 @@ from cle.workspace import init_workspace
 
 
 def _resolve_root() -> str:
-    return os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    candidate = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    if os.path.isfile(os.path.join(candidate, "share", "gifts", "gift_catalog.json")):
+        return candidate
+    bundled = os.path.join(os.path.dirname(__file__), "bundled_assets")
+    if os.path.isfile(os.path.join(bundled, "share", "gifts", "gift_catalog.json")):
+        return bundled
+    return candidate
 
 
 def build_parser() -> argparse.ArgumentParser:
