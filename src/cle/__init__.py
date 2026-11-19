@@ -1,3 +1,3 @@
-"""Creative Liberation Engine (cle) — Unix-native creative workflow skeleton."""
+"""Creative Liberation Engine - Open creative foundation & developer utilities."""
 
-__version__ = "1.0.0"
+__version__ = "2.2.0"
